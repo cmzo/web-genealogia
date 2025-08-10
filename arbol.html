@@ -388,7 +388,6 @@
       
       function showInfo(person, isSpouse){ 
         const p=isSpouse?person.spouse:person; 
-        const spouseName=person.spouse&&person.spouse.name?person.spouse.name:''; 
         dName.textContent=p.name||''; 
         dSubtitle.textContent=isSpouse&&person.name?`Pareja de ${person.name}`:''; 
         if(p.avatar) dAvatar.src=p.avatar; else dAvatar.removeAttribute('src'); 
@@ -417,8 +416,9 @@
           </div>
         </div>`;
         
-        // Sección de pareja si existe
-        if(spouseName) {
+        // Sección de pareja - lógica corregida
+        if (isSpouse) {
+          // Si estamos viendo la información del spouse, mostrar que está casado con el marido
           html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f59e0b; flex-shrink: 0; margin-top: 1px;">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -428,7 +428,21 @@
             </svg>
             <div style="flex: 1;">
               <div style="font-weight: 600; color: #92400e; margin-bottom: 2px; font-size: 12px;">Casado con</div>
-              <div style="color: #a16207; font-size: 12px;">${spouseName}</div>
+              <div style="color: #a16207; font-size: 12px;">${person.name}</div>
+            </div>
+          </div>`;
+        } else if (person.spouse && person.spouse.name) {
+          // Si estamos viendo la información del marido, mostrar que está casado con la mujer
+          html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f59e0b; flex-shrink: 0; margin-top: 1px;">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <div style="flex: 1;">
+              <div style="font-weight: 600; color: #92400e; margin-bottom: 2px; font-size: 12px;">Casado con</div>
+              <div style="color: #a16207; font-size: 12px;">${person.spouse.name}</div>
             </div>
           </div>`;
         }
