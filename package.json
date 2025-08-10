@@ -1,0 +1,20 @@
+{
+  "name": "web-genealogia",
+  "version": "1.0.0",
+  "description": "Sitio web de genealogía y memoria familiar",
+  "main": "index.html",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "nodemon --watch posts --watch templates --ext md,html --exec 'npm run build'",
+    "dev": "npm run build && python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "marked": "^9.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": ["genealogia", "blog", "markdown"],
+  "author": "Matías Clemenzo",
+  "license": "MIT"
+}

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="home">
+  <main class="home">
+    <header class="home-header">
+      <div class="header-content">
+        <div class="header-text">
+          <h1 class="home-title">Matías Clemenzo</h1>
+          <p class="home-subtitle">Genealogía, historias y memoria familiar</p>
+        </div>
+        <nav class="home-nav">
+          <a href="blog.html" class="nav-link">Ver todos los posts</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="cards" id="cards-container">
+      <!-- Las tarjetas se cargarán dinámicamente aquí -->
+      <div class="loading-cards">
+        <div class="loading-spinner"></div>
+        <p>Cargando contenido...</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Cargar entradas del blog dinámicamente
+    async function loadBlogEntries() {
+      try {
+        const response = await fetch('data/blog-entries.json');
+        const blogEntries = await response.json();
+        
+        // Combinar entradas estáticas y dinámicas
+        const allCards = [
+          // Entradas estáticas (siempre presentes)
+          {
+            id: 'quien-soy',
+            title: '¿Quién soy?',
+            description: 'Presentación personal y mapa de la memoria',
+            image: 'img/clemenzo-por-el-mundo.png',
+            url: 'quien-soy.html',
+            featured: true
+          },
+          {
+            id: 'arbol',
+            title: 'Árbol genealógico',
+            description: 'Visualización interactiva de la familia',
+            image: 'img/arbol.png',
+            url: 'arbol.html',
+            featured: true
+          },
+          // Entradas dinámicas del blog
+          ...blogEntries.filter(entry => entry.featured).slice(0, 2)
+        ];
+        
+        // Agregar entradas estáticas restantes
+        const staticCards = [
+          {
+            id: 'trama-mexicana',
+            title: 'La trama mexicana',
+            description: 'Historias, migraciones y vínculos con México',
+            image: 'img/trama-mexicana.png',
+            url: 'trama-mexicana.html'
+          },
+          {
+            id: 'mapa-clemenzos',
+            title: 'Mapa de Clemenzo\'s',
+            description: 'Lugares, rutas y recorridos de la familia',
+            image: 'img/clemenzo-por-el-mundo.png',
+            url: 'mapa-clemenzos.html'
+          }
+        ];
+        
+        allCards.push(...staticCards);
+        
+        // Agregar tarjeta de contacto al final
+        allCards.push({
+          id: 'contacto',
+          title: 'Contacto',
+          description: 'Haz click para ver mi información',
+          image: 'img/clemenzo-por-el-mundo.png',
+          isContact: true
+        });
+        
+        renderCards(allCards);
+        
+      } catch (error) {
+        console.warn('Error cargando entradas del blog:', error);
+        // Fallback a tarjetas estáticas
+        renderStaticCards();
+      }
+    }
+    
+    function renderCards(cards) {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = '';
+      
+      cards.forEach(card => {
+        if (card.isContact) {
+          // Tarjeta de contacto con flip
+          container.innerHTML += `
+            <div class="card flip-card" tabindex="0" role="button" aria-label="Mostrar información de contacto">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <figure class="card-media">
+                    <img src="${card.image}" alt="${card.title}" width="280" height="380" loading="lazy">
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">${card.title}</h2>
+                    <p class="card-desc">${card.description}</p>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="contact-content">
+                    <h2 class="contact-title">Contacto</h2>
+                    <div class="contact-info">
+                      <a href="mailto:cmzo@proton.me" class="contact-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                          <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        cmzo@proton.me
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        } else {
+          // Tarjeta normal
+          container.innerHTML += `
+            <a href="${card.url}" class="card">
+              <figure class="card-media">
+                <img src="${card.image}" alt="${card.title}" width="280" height="380" loading="lazy">
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">${card.title}</h2>
+                <p class="card-desc">${card.description}</p>
+              </div>
+            </a>
+          `;
+        }
+      });
+    }
+    
+    function renderStaticCards() {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = `
+        <a href="quien-soy.html" class="card">
+          <figure class="card-media">
+            <img src="img/clemenzo-por-el-mundo.png" alt="¿Quién soy?" width="280" height="380" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">¿Quién soy?</h2>
+            <p class="card-desc">Presentación personal y mapa de la memoria</p>
+          </div>
+        </a>
+
+        <a href="arbol.html" class="card">
+          <figure class="card-media">
+            <img src="img/arbol.png" alt="Árbol genealógico" width="280" height="380" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Árbol genealógico</h2>
+            <p class="card-desc">Visualización interactiva de la familia</p>
+          </div>
+        </a>
+
+        <a href="francisco.html" class="card">
+          <figure class="card-media">
+            <img src="img/francisco.png" alt="El misterio de Francisco" width="280" height="380" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">El misterio de Francisco</h2>
+            <p class="card-desc">Investigación histórica y reconstrucción de pistas</p>
+          </div>
+        </a>
+
+        <a href="trama-mexicana.html" class="card">
+          <figure class="card-media">
+            <img src="img/trama-mexicana.png" alt="La trama mexicana" width="280" height="380" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">La trama mexicana</h2>
+            <p class="card-desc">Historias, migraciones y vínculos con México</p>
+          </div>
+        </a>
+
+        <a href="mapa-clemenzos.html" class="card">
+          <figure class="card-media">
+            <img src="img/clemenzo-por-el-mundo.png" alt="Mapa de Clemenzo's" width="280" height="380" loading="lazy">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Mapa de Clemenzo's</h2>
+            <p class="card-desc">Lugares, rutas y recorridos de la familia</p>
+          </div>
+        </a>
+
+        <div class="card flip-card" tabindex="0" role="button" aria-label="Mostrar información de contacto">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <figure class="card-media">
+                <img src="img/clemenzo-por-el-mundo.png" alt="Contacto" width="280" height="380" loading="lazy">
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">Contacto</h2>
+                <p class="card-desc">Haz click para ver mi información</p>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <div class="contact-content">
+                <h2 class="contact-title">Contacto</h2>
+                <div class="contact-info">
+                  <a href="mailto:cmzo@proton.me" class="contact-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    cmzo@proton.me
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Cargar entradas al cargar la página
+    loadBlogEntries();
+  </script>
+</body>
+</html>

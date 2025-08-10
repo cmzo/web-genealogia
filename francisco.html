@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>El misterio de Francisco · Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="article">
+  <main class="article-container">
+    <div class="top-bar">
+      <a class="back-home" href="index.html" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Inicio
+      </a>
+    </div>
+
+    <header class="article-header">
+      <p class="article-kicker">Investigación histórica y reconstrucción de pistas</p>
+      <h1 class="article-title">El misterio de Francisco</h1>
+      <div class="article-meta">
+        <div class="author-avatar" aria-hidden="true"><img src="img/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
+        <div class="meta-text">
+          <div><strong>Por Matías Clemenzo</strong></div>
+          <div id="meta-edition">Publicado — · Última edición —</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="article-grid">
+      <article class="article-content">
+        <p>Francisco fue uno de los primeros nombres que descubrí en mi investigación —junto con Félix—, y por eso tiene para mí una carga especial. Fue el que inauguró este viaje. Gracias a él pude verificar censos y otros registros que encontré después.<br>Sin embargo, hay un problema: no sé de dónde vino.</p>
+        <p>Un día apareció en Argentina, más precisamente en la colonia San José, firmando actas de nacimiento aquí y alguna de defunción allá. Pero no hay registro de su entrada al país, ni de un barco, ni del Hotel de Inmigrantes. Nada.</p>
+        <p>Y para complicar más las cosas, existe una historia que al principio decidí no creer… pero con el tiempo y la falta de datos, empezó a ganar fuerza.</p>
+        <blockquote>
+          <p>La idea que mi abuela le contaba a mi papá era que el antepasado que llegó a Argentina era pariente de Georges Clemenceau, el primer ministro francés. Según su mamá, Francisco era un tiro al aire y lo tuvieron que esconder y casar con Celestina.
+          Durante la guerra, al quedarse en Francia, estuvo 'picoteando' mujeres ajenas. La última fue la esposa joven de un general que, al volver de la guerra, lo retó a duelo con sables. Para evitar el duelo, Francisco huyó escondido a Suiza, donde lo casaron con Celestina. Puede que en ese momento cambiara el apellido.<br>Luego vinieron a Argentina con bastante dinero… pero, según mi abuela, Francisco se patinó todo y quedaron en la lona.<br>Aficionado a las mujeres y al alcohol, contrajo sífilis y contagió a Celestina. En esa época se separaron. Celestina se mudó a Santa Fe para tratarse y, según mi abuela, las enfermeras la trataban como si fuera prostituta, hasta que un médico intervino y aclaró que había sido su marido.<br>Años después, cuando María Luisa ya estaba casada con mi bisabuelo Agustín (el taliano), Celestina encontró a Francisco muy deteriorado y lo llevó a vivir a Santa Fe. Allí, mi bisabuelo Agustín se divertía molestándolo. Francisco adoraba cantar La Marsellesa y, cuando llegaba a 'Aux armes, citoyens! Vos bataillons!', Agustín le respondía: 'bataillons de cochon' (batallón de cerdos). Francisco se enfurecía.</p>
+        </blockquote>
+        <p>Sea cierta o no, esta historia le pone un rostro y un carácter a un hombre del que, oficialmente, no sé casi nada.</p>
+      </article>
+      <aside class="article-aside">
+        <figure class="article-image">
+          <img src="img/FJHC_1859_firma.png" alt="Firma de Francisco José H. Clemenzo de 1859" loading="lazy" class="clickable-image" style="width: 100%; height: auto; border: 1px solid #e5e7eb; background: #f8fafc; cursor: pointer;">
+          <figcaption style="margin-top: 12px; font-size: 13px; color: #6b7280; line-height: 1.4; font-family: 'Inter', sans-serif;">Firma de Francisco José H. Clemenzo, 1859</figcaption>
+        </figure>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Modal para imagen ampliada -->
+  <div id="imageModal" class="image-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(4px);">
+    <div class="modal-content" style="position: relative; margin: 5% auto; padding: 20px; width: 90%; max-width: 800px; text-align: center;">
+      <span class="close-modal" style="position: absolute; top: 10px; right: 25px; color: #f1f1f1; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 1001;">&times;</span>
+      <img id="modalImage" src="" alt="" style="max-width: 100%; max-height: 80vh; border: 1px solid #e5e7eb; background: #fff;">
+      <p id="modalCaption" style="margin-top: 16px; color: #f1f1f1; font-size: 14px; font-family: 'Inter', sans-serif;"></p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const now = new Date();
+      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+      const metaEdition = document.getElementById('meta-edition');
+      if (metaEdition) metaEdition.textContent = `Publicado ${dateStr} · Última edición ${dateStr}`;
+
+      // Modal functionality
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      const closeBtn = document.querySelector('.close-modal');
+      const clickableImage = document.querySelector('.clickable-image');
+
+      clickableImage.addEventListener('click', function() {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
+      });
+
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+          modal.style.display = 'none';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

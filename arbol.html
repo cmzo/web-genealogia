@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Árbol genealógico · Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body class="article">
+  <main class="article-container">
+    <div class="top-bar">
+      <a class="back-home" href="index.html" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Inicio
+      </a>
+    </div>
+
+    <header class="article-header">
+      <p class="article-kicker">Visualización interactiva, minimalista y fácil de mantener</p>
+      <h1 class="article-title">Árbol genealógico</h1>
+      <div class="article-meta">
+        <div class="author-avatar" aria-hidden="true"><img src="img/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
+        <div class="meta-text">
+          <div><strong>Por Matías Clemenzo</strong></div>
+          <div id="meta-edition">Publicado — · Última edición —</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="tree-card" style="position:relative;">
+      <div style="display:flex; justify-content: space-between; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button id="btnCenter" class="back-home" style="padding:6px 10px;">Reencuadrar</button>
+          <button id="btnReset" class="back-home" style="padding:6px 10px;">Expandir todo</button>
+        </div>
+        <label style="display:flex; gap:8px; align-items:center;">
+          <span style="color:#64748b; font-size:14px;">Buscar</span>
+          <input id="searchName" type="search" placeholder="Nombre…" style="border:1px solid #e5e7eb; border-radius:10px; padding:8px 10px; font-family:Inter,system-ui; font-size:14px; min-width:200px;" />
+        </label>
+        <span id="dataSource" style="margin-left:auto; color:#64748b; font-size:12px;">Cargando…</span>
+      </div>
+
+      <!-- Banner de detalles (aparece a la derecha) -->
+      <div class="details-banner" id="infoBanner" style="position:absolute; top:80px; right:16px; z-index:10; display:none; pointer-events:none; width:300px;">
+        <div class="card" style="padding:12px 14px; background:#fff; border-radius:12px;">
+          <div class="details-header" style="display:flex; gap:12px; align-items:flex-start;">
+            <img class="avatar" id="dAvatar" alt="" style="width:44px;height:44px; border-radius:50%; flex-shrink:0; background:#f3f4f6; object-fit:cover;" />
+            <div style="flex:1; min-width:0;">
+              <div class="details-name" id="dName" style="font-size:15px; line-height:1.3; font-weight:600; margin-bottom:2px;"></div>
+              <div class="details-muted" id="dSubtitle" style="font-size:12px; line-height:1.3; margin-bottom:6px; color:#64748b;"></div>
+              <div id="dBody" style="font-size:13px; line-height:1.5; color:#374151;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tree" role="img" aria-label="Visualización de árbol genealógico"></div>
+    </section>
+  </main>
+
+  <script>
+    // Actualizar fechas automáticamente
+    (function() {
+      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const now = new Date();
+      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+      const metaEdition = document.getElementById('meta-edition');
+      if (metaEdition) metaEdition.textContent = `Publicado ${dateStr} · Última edición ${dateStr}`;
+    })();
+
+    const params = new URLSearchParams(window.location.search);
+    const SHEET_ID = params.get('sheet') || '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+    const SHEET_GID = params.get('gid') || '0';
+
+    function loadLocalData(){ return window.FAMILY_TREE || { name: 'Sin datos', children: [] }; }
+
+    async function fetchGoogleSheet(sheetId, gid){
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+      const res = await fetch(url, { cache: 'no-store', mode: 'cors' });
+      if (!res.ok) throw new Error('HTTP '+res.status);
+      const text = await res.text();
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      const cols = json.table.cols.map(c => (c.label || '').trim());
+      return json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; });
+    }
+
+    function fetchGoogleSheetJSONP(sheetId, gid, timeoutMs = 8000){
+      return new Promise((resolve, reject) => {
+        let done = false;
+        const prev = (window.google && window.google.visualization && window.google.visualization.Query && window.google.visualization.Query.setResponse) || null;
+        if (!window.google) window.google = {}; if (!window.google.visualization) window.google.visualization = {}; if (!window.google.visualization.Query) window.google.visualization.Query = {};
+        window.google.visualization.Query.setResponse = (json) => {
+          if (done) return; done = true; cleanup();
+          try { const cols = json.table.cols.map(c => (c.label || '').trim()); const rows = json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; }); resolve(rows); } catch (e){ reject(e); }
+        };
+        const script = document.createElement('script');
+        script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+        script.onerror = () => { if (done) return; done = true; cleanup(); reject(new Error('JSONP load error')); };
+        document.body.appendChild(script);
+        const timer = setTimeout(() => { if (done) return; done = true; cleanup(); reject(new Error('JSONP timeout')); }, timeoutMs);
+        function cleanup(){ clearTimeout(timer); if (prev) window.google.visualization.Query.setResponse = prev; try { document.body.removeChild(script); } catch(e){} }
+      });
+    }
+
+    async function fetchGoogleSheetProxy(sheetId, gid){
+      // A prueba de CORS cuando se sirve como file://
+      const raw = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+      const proxy = `https://r.jina.ai/http://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+      const res = await fetch(proxy, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Proxy HTTP '+res.status);
+      const text = await res.text();
+      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+      const cols = json.table.cols.map(c => (c.label || '').trim());
+      return { rows: json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; }), via: proxy };
+    }
+
+    function rowsToTree(rows){
+      const norm = r => Object.fromEntries(Object.entries(r).map(([k,v]) => [String(k).toLowerCase(), v]));
+      const normalized = rows.map(norm);
+      const byId = new Map();
+      normalized.forEach(r => {
+        const node = {
+          id: String(r.id || '').trim() || crypto.randomUUID(),
+          name: r.name || 'Sin nombre',
+          avatar: r.avatar || '',
+          birth_place: r.birth_place || '',
+          birth_date: r.birth_date || '',
+          death_place: r.death_place || '',
+          death_date: r.death_date || '',
+          spouse: r.spouse_name ? {
+            name: r.spouse_name,
+            avatar: r.spouse_avatar || '',
+            birth_place: r.spouse_birth_place || '',
+            birth_date: r.spouse_birth_date || '',
+            death_place: r.spouse_death_place || '',
+            death_date: r.spouse_death_date || ''
+          } : null,
+          children: [],
+          parent_id: r.parent_id ? String(r.parent_id) : ''
+        };
+        byId.set(node.id, node);
+      });
+      let root = null;
+      byId.forEach(node => { if (node.parent_id && byId.has(node.parent_id)) byId.get(node.parent_id).children.push(node); else if (!root) root = node; });
+      return root || [...byId.values()][0];
+    }
+
+    function getInitials(name){ const parts = String(name || '').trim().split(/\s+/); return parts.length === 1 ? (parts[0][0]||'').toUpperCase() : (parts[0][0] + (parts[1]?parts[1][0]:'' )).toUpperCase(); }
+    function getAvatarBackgroundColor(name){ const colors=['#A7C7E7','#B5EAD7','#FFDAC1','#FFB7B2','#E2F0CB','#C7CEEA','#FFFACD','#FFD6E0']; const hash=String(name||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0); return colors[hash%colors.length]; }
+    function formatLife(bPlace,bDate,dPlace,dDate){ const born=[bPlace,bDate].filter(Boolean).join(', '); let death; if(!dPlace&&!dDate) death='Actualidad'; else if(!dPlace&&dDate) death=`${dDate}`; else if(dPlace&&!dDate) death=`${dPlace}, desconocida`; else death=`${dPlace}, ${dDate}`; return `${born} — ${death}`; }
+
+    async function init(){
+      const sourceEl = document.getElementById('dataSource');
+      let data, used = 'local';
+      try {
+        // 1) fetch normal
+        let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
+        if (!rows || !rows.length) {
+          // 2) JSONP
+          rows = await fetchGoogleSheetJSONP(SHEET_ID, SHEET_GID);
+        }
+        if (!rows || !rows.length) {
+          // 3) proxy
+          const proxyRes = await fetchGoogleSheetProxy(SHEET_ID, SHEET_GID);
+          rows = proxyRes.rows;
+          used = 'sheet-proxy';
+        }
+        if (rows && rows.length && used !== 'sheet-proxy') used = 'sheet';
+        if (rows && rows.length) data = rowsToTree(rows);
+      } catch (e){
+        console.warn('[Sheet] Fallback a datos locales:', e);
+      }
+      if (!data) { data = loadLocalData(); used = 'local'; }
+      if (sourceEl) sourceEl.textContent = used === 'sheet' ? 'Fuente: Google Sheet' : (used === 'sheet-proxy' ? 'Fuente: Google Sheet (proxy)' : 'Fuente: Datos locales');
+
+      const container = document.getElementById('tree');
+      const width = container.clientWidth || 900; const height = container.clientHeight || 620;
+      const svg = d3.select(container).append('svg').attr('viewBox', [0,0,width,height]).attr('preserveAspectRatio','xMidYMid meet');
+      const defs = svg.append('defs');
+      const root = d3.hierarchy(data);
+      const treeLayout = d3.tree().size([width-140, height-160]).separation((a,b)=> (a.parent===b.parent?1.4:1.8)); treeLayout(root);
+      const g = svg.append('g').attr('transform','translate(70,80)');
+      const zoom = d3.zoom().scaleExtent([0.5,2.5]).on('zoom', (ev)=>{ g.attr('transform',`translate(${ev.transform.x},${ev.transform.y}) scale(${ev.transform.k})`); }); svg.call(zoom).on('dblclick.zoom', null);
+      g.selectAll('path.tree-link').data(root.links()).join('path').attr('class','tree-link').attr('d', d3.linkHorizontal().x(d=>d.x).y(d=>d.y));
+      const node = g.selectAll('g.tree-node').data(root.descendants()).join('g').attr('class','tree-node').attr('transform', d=>`translate(${d.x},${d.y})`);
+      function patternId(prefix){ return `${prefix}-${Math.random().toString(36).slice(2,8)}`; }
+      function createPattern(url){ const id=patternId('p'); const p=defs.append('pattern').attr('id',id).attr('patternUnits','objectBoundingBox').attr('width',1).attr('height',1); p.append('image').attr('href',url).attr('width',36).attr('height',36).attr('preserveAspectRatio','xMidYMid slice'); return `url(#${id})`; }
+      node.each(function(d){ const gNode=d3.select(this); const hasSpouse=d.data.spouse&&d.data.spouse.name; gNode.selectAll('*').remove(); gNode.append('text').attr('y',-38).attr('text-anchor','middle').attr('font-size','15px').attr('font-weight',500).attr('fill','#334155').text(hasSpouse?`${d.data.name} • ${d.data.spouse.name}`:d.data.name); function drawPerson(cx, person){ const fill=person.avatar?createPattern(person.avatar):getAvatarBackgroundColor(person.name); gNode.append('circle').attr('class','avatar-circle').attr('r',18).attr('cx',cx).attr('fill',fill).attr('stroke','#334155').attr('stroke-width',1.4); if(!person.avatar){ gNode.append('text').attr('x',cx).attr('y',6).attr('text-anchor','middle').attr('font-size','18px').attr('font-weight',700).attr('fill','#334155').text(getInitials(person.name)); } } if(hasSpouse){ drawPerson(-22,d.data); drawPerson(22,d.data.spouse); } else { drawPerson(0,d.data); } const areas=[]; if(hasSpouse){ areas.push({cx:-22,who:'self'},{cx:22,who:'spouse'});} else { areas.push({cx:0,who:'self'});} areas.forEach(a=>{ gNode.append('circle').attr('r',20).attr('cx',a.cx).attr('fill','transparent').style('cursor','pointer').on('mouseenter', ()=> showInfo(d.data, a.who==='spouse')); }); });
+      const infoBanner=document.getElementById('infoBanner'); const dName=document.getElementById('dName'); const dSubtitle=document.getElementById('dSubtitle'); const dBody=document.getElementById('dBody'); const dAvatar=document.getElementById('dAvatar');
+      function showInfo(person, isSpouse){ const p=isSpouse?person.spouse:person; const spouseName=person.spouse&&person.spouse.name?person.spouse.name:''; dName.textContent=p.name||''; dSubtitle.textContent=isSpouse&&person.name?`Pareja de ${person.name}`:''; if(p.avatar) dAvatar.src=p.avatar; else dAvatar.removeAttribute('src'); const life=formatLife(p.birth_place,p.birth_date,p.death_place,p.death_date); const children=(person.children||[]).map(c=>c.name).filter(Boolean); const html=`<div><strong>Vida</strong>: ${life}</div>${spouseName?`<div><strong>Casado con</strong>: ${spouseName}</div>`:''}${children.length?`<div style=\"margin-top:6px;\"><strong>Hijos</strong>:<ul style=\"margin:6px 0 0 16px; padding:0;\">${children.map(n=>`<li>${n}</li>`).join('')}</ul></div>`:''}`; dBody.innerHTML=html; infoBanner.style.display='block'; }
+      let nodesCache=root.descendants(); function fitToTree(){ const xs=nodesCache.map(n=>n.x), ys=nodesCache.map(n=>n.y); const minX=Math.min(...xs)-60, maxX=Math.max(...xs)+60; const minY=Math.min(...ys)-80, maxY=Math.max(...ys)+80; const treeWidth=maxX-minX, treeHeight=maxY-minY; const scale=Math.min(width/treeWidth, height/treeHeight, 1.2); const tx=(width-treeWidth*scale)/2-minX*scale; const ty=(height-treeHeight*scale)/2-minY*scale; svg.transition().duration(450).call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale)); }
+      document.getElementById('btnCenter').addEventListener('click', fitToTree); document.getElementById('btnReset').addEventListener('click', ()=>{ svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity); });
+      const searchInput=document.getElementById('searchName'); searchInput.addEventListener('input', ()=>{ const q=searchInput.value.trim().toLowerCase(); g.selectAll('g.tree-node').classed('highlight', false); if(!q) return; const matches=nodesCache.filter(n=>`${n.data.name} ${n.data.spouse&&n.data.spouse.name?n.data.spouse.name:''}`.toLowerCase().includes(q)); if(matches.length===0) return; g.selectAll('g.tree-node').filter(d=>matches.includes(d)).classed('highlight', true); const n=matches[0]; const k=1.2; const tx=width/2 - n.x * k; const ty=height/2 - n.y * k; svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k)); });
+      fitToTree();
+    }
+
+    init();
+  </script>
+
+  <script src="data/arbol.js"></script>
+</body>
+</html>
+
+

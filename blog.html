@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog · Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="article">
+  <main class="article-container">
+    <div class="top-bar">
+      <a class="back-home" href="index.html" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        Inicio
+      </a>
+    </div>
+
+    <header class="article-header">
+      <p class="article-kicker">Todas las entradas del blog</p>
+      <h1 class="article-title">Blog</h1>
+      <div class="article-meta">
+        <div class="author-avatar" aria-hidden="true"><img src="img/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
+        <div class="meta-text">
+          <div><strong>Por Matías Clemenzo</strong></div>
+          <div>Investigaciones, historias y memoria familiar</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="blog-controls">
+      <div class="search-filter">
+        <input type="search" id="searchInput" placeholder="Buscar posts..." class="search-input">
+        <select id="categoryFilter" class="category-select">
+          <option value="">Todas las categorías</option>
+        </select>
+      </div>
+      <div class="results-info">
+        <span id="resultsCount">Cargando...</span>
+      </div>
+    </section>
+
+    <section class="blog-grid" id="blogGrid">
+      <div class="loading-cards">
+        <div class="loading-spinner"></div>
+        <p>Cargando posts...</p>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    .blog-controls {
+      margin: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .search-filter {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .search-input, .category-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      background: var(--surface);
+    }
+    
+    .search-input {
+      min-width: 200px;
+    }
+    
+    .results-info {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    
+    .blog-card:hover {
+      border-color: #dfe1e6;
+      transform: translateY(-1px);
+    }
+    
+    .blog-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .blog-card-content {
+      padding: 20px;
+    }
+    
+    .blog-card-category {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    
+    .blog-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 8px 0;
+      color: var(--text);
+    }
+    
+    .blog-card-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0 0 12px 0;
+    }
+    
+    .blog-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    .blog-card-tags {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    
+    .blog-card-tag {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    
+    @media (max-width: 768px) {
+      .blog-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .search-filter {
+        flex-direction: column;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    let allPosts = [];
+    let filteredPosts = [];
+    
+    async function loadBlogPosts() {
+      try {
+        const response = await fetch('data/blog-entries.json');
+        allPosts = await response.json();
+        filteredPosts = [...allPosts];
+        
+        // Cargar categorías
+        const categories = [...new Set(allPosts.map(post => post.category))];
+        const categorySelect = document.getElementById('categoryFilter');
+        
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+          categorySelect.appendChild(option);
+        });
+        
+        renderPosts();
+        updateResultsCount();
+        
+      } catch (error) {
+        console.error('Error cargando posts:', error);
+        document.getElementById('blogGrid').innerHTML = `
+          <div class="no-results">
+            <p>Error cargando los posts. Intenta recargar la página.</p>
+          </div>
+        `;
+      }
+    }
+    
+    function renderPosts() {
+      const grid = document.getElementById('blogGrid');
+      
+      if (filteredPosts.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results">
+            <p>No se encontraron posts que coincidan con tu búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      grid.innerHTML = filteredPosts.map(post => `
+        <a href="${post.url}" class="blog-card">
+          <img src="${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy">
+          <div class="blog-card-content">
+            <div class="blog-card-category">${post.category}</div>
+            <h2 class="blog-card-title">${post.title}</h2>
+            <p class="blog-card-desc">${post.description}</p>
+            <div class="blog-card-meta">
+              <div class="blog-card-tags">
+                ${post.tags.slice(0, 3).map(tag => `<span class="blog-card-tag">${tag}</span>`).join('')}
+              </div>
+              <span>${post.date}</span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+    
+    function updateResultsCount() {
+      const count = document.getElementById('resultsCount');
+      count.textContent = `${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''}`;
+    }
+    
+    function filterPosts() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const categoryFilter = document.getElementById('categoryFilter').value;
+      
+      filteredPosts = allPosts.filter(post => {
+        const matchesSearch = !searchTerm || 
+          post.title.toLowerCase().includes(searchTerm) ||
+          post.description.toLowerCase().includes(searchTerm) ||
+          post.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        
+        const matchesCategory = !categoryFilter || post.category === categoryFilter;
+        
+        return matchesSearch && matchesCategory;
+      });
+      
+      renderPosts();
+      updateResultsCount();
+    }
+    
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', filterPosts);
+    document.getElementById('categoryFilter').addEventListener('change', filterPosts);
+    
+    // Cargar posts al cargar la página
+    loadBlogPosts();
+  </script>
+</body>
+</html>
