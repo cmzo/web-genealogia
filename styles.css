@@ -87,6 +87,7 @@ body {
   text-decoration: none;
   color: inherit;
   aspect-ratio: 3 / 4; /* alto > ancho */
+  min-height: 380px; /* altura mínima para consistencia */
 }
 
 /* Media full-bleed (70%) */
@@ -99,11 +100,39 @@ body {
 .card-media img, .media-placeholder {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
   display: block;
   object-fit: cover;
   object-position: center;
 }
 .media-placeholder { background: linear-gradient(135deg,#f3f4f6 0%,#e5e7eb 100%); }
+
+/* Optimización de imágenes */
+.card-media img {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.card:hover .card-media img {
+  transform: scale(1.02);
+}
+
+/* Fallback para imágenes que fallan */
+.card-media img:not([src]), 
+.card-media img[src=""],
+.card-media img[src*="undefined"] {
+  display: none;
+}
+
+.card-media img:not([src]) + .media-placeholder,
+.card-media img[src=""] + .media-placeholder,
+.card-media img[src*="undefined"] + .media-placeholder {
+  display: block;
+}
 
 /* Text area (30%) */
 .card-body {

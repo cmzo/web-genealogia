@@ -6,10 +6,12 @@
   "scripts": {
     "build": "node scripts/build.js",
     "watch": "nodemon --watch posts --watch templates --ext md,html --exec 'npm run build'",
-    "dev": "npm run build && python3 -m http.server 8000"
+    "dev": "npm run build && python3 -m http.server 8000",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
-    "marked": "^9.1.6"
+    "marked": "^9.1.6",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
