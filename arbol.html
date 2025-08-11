@@ -9,6 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    .search-highlight {
+      fill: #10b981 !important;
+      font-weight: 700 !important;
+      text-shadow: 0 0 3px rgba(16, 185, 129, 0.3) !important;
+    }
+  </style>
 </head>
 <body class="article">
   <main class="article-container">
@@ -44,9 +51,13 @@
         <span id="dataSource" style="margin-left:auto; color:#64748b; font-size:12px;">Cargando…</span>
       </div>
 
+
+
       <!-- Banner de detalles mejorado -->
       <div class="details-banner" id="infoBanner" style="position:absolute; top:120px; right:20px; z-index:10; display:none; pointer-events:none; width:340px; max-height: calc(100vh - 140px); overflow-y: auto;">
-        <div class="card" style="padding:16px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <div class="card" style="padding:16px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative;">
+          <!-- Botón de cerrar -->
+          <button id="closeInfo" style="position: absolute; top: 8px; right: 8px; background: none; border: none; cursor: pointer; padding: 4px; border-radius: 4px; color: #6b7280; font-size: 18px; line-height: 1; pointer-events: auto;" onclick="hideInfo()">×</button>
           <div class="details-header" style="display:flex; gap:12px; align-items:flex-start; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
             <div style="position: relative;">
               <img class="avatar" id="dAvatar" alt="" style="width:48px;height:48px; border-radius:50%; flex-shrink:0; background:#f3f4f6; object-fit:cover; border: 2px solid #e5e7eb;" />
@@ -90,9 +101,35 @@
       const res = await fetch(url, { cache: 'no-store', mode: 'cors' });
       if (!res.ok) throw new Error('HTTP '+res.status);
       const text = await res.text();
-      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      const cols = json.table.cols.map(c => (c.label || '').trim());
-      return json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; });
+      console.log('[Debug] Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
+      
+      // Extraer el JSON del wrapper de Google
+      const jsonStart = text.indexOf('{');
+      const jsonEnd = text.lastIndexOf('}') + 1;
+      const jsonText = text.substring(jsonStart, jsonEnd);
+      
+      try {
+        const json = JSON.parse(jsonText);
+        console.log('[Debug] JSON parseado correctamente');
+        console.log('[Debug] Columnas:', json.table.cols.map(c => c.label));
+        console.log('[Debug] Filas:', json.table.rows.length);
+        
+        const cols = json.table.cols.map(c => (c.label || '').trim());
+        const rows = json.table.rows.map(r => { 
+          const obj = {}; 
+          r.c.forEach((cell, i) => { 
+            obj[cols[i]] = cell ? cell.v : ''; 
+          }); 
+          return obj; 
+        });
+        
+        console.log('[Debug] Primera fila procesada:', rows[0]);
+        return rows;
+      } catch (parseError) {
+        console.error('[Debug] Error parseando JSON:', parseError);
+        console.error('[Debug] JSON text:', jsonText.substring(0, 500));
+        throw parseError;
+      }
     }
 
     function fetchGoogleSheetJSONP(sheetId, gid, timeoutMs = 8000){
@@ -162,6 +199,37 @@
     function getAvatarBackgroundColor(name){ const colors=['#A7C7E7','#B5EAD7','#FFDAC1','#FFB7B2','#E2F0CB','#C7CEEA','#FFFACD','#FFD6E0']; const hash=String(name||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0); return colors[hash%colors.length]; }
     function formatLife(bPlace,bDate,dPlace,dDate){ const born=[bPlace,bDate].filter(Boolean).join(', '); let death; if(!dPlace&&!dDate) death='Actualidad'; else if(!dPlace&&dDate) death=`${dDate}`; else if(dPlace&&!dDate) death=`${dPlace}, desconocida`; else death=`${dPlace}, ${dDate}`; return `${born} — ${death}`; }
 
+    // Función para aplicar layout intercalado automático
+    function applyStaggeredLayout(root) {
+      // Agrupar nodos por generación
+      const generations = {};
+      root.descendants().forEach(node => {
+        const depth = node.depth;
+        if (!generations[depth]) generations[depth] = [];
+        generations[depth].push(node);
+      });
+      
+      // Aplicar intercalado automáticamente a generaciones con 4+ hermanos
+      Object.values(generations).forEach(generation => {
+        if (generation.length >= 4) {
+          console.log(`[Debug] Aplicando escalonado a generación con ${generation.length} hermanos`);
+          
+          // Calcular el espaciado basado en la cantidad de hermanos
+          let staggerDistance = 80; // Distancia base
+          if (generation.length >= 6) staggerDistance = 100;
+          if (generation.length >= 8) staggerDistance = 120;
+          
+          generation.forEach((node, index) => {
+            if (index % 2 === 1) { // Nodos impares se mueven hacia abajo
+              node.y += staggerDistance;
+            }
+          });
+        }
+      });
+      
+      // El intercalado se aplica automáticamente sin mostrar indicador
+    }
+
     async function init(){
       const sourceEl = document.getElementById('dataSource');
       let data, used = 'local';
@@ -169,15 +237,18 @@
       console.log('[Debug] Iniciando carga de datos...');
       console.log('[Debug] SHEET_ID:', SHEET_ID);
       console.log('[Debug] SHEET_GID:', SHEET_GID);
+      console.log('[Debug] Protocolo actual:', window.location.protocol);
       
       try {
         // 1) fetch normal
         console.log('[Debug] Intentando fetch normal...');
         let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
+        console.log('[Debug] Fetch normal resultado:', rows ? rows.length : 'null');
         if (!rows || !rows.length) {
           console.log('[Debug] Fetch normal falló, intentando JSONP...');
           // 2) JSONP
           rows = await fetchGoogleSheetJSONP(SHEET_ID, SHEET_GID);
+          console.log('[Debug] JSONP resultado:', rows ? rows.length : 'null');
         }
         if (!rows || !rows.length) {
           console.log('[Debug] JSONP falló, intentando proxy...');
@@ -185,6 +256,7 @@
           const proxyRes = await fetchGoogleSheetProxy(SHEET_ID, SHEET_GID);
           rows = proxyRes.rows;
           used = 'sheet-proxy';
+          console.log('[Debug] Proxy resultado:', rows ? rows.length : 'null');
         }
         if (rows && rows.length && used !== 'sheet-proxy') used = 'sheet';
         if (rows && rows.length) {
@@ -194,6 +266,7 @@
         }
       } catch (e){
         console.warn('[Sheet] Error cargando datos:', e);
+        console.warn('[Sheet] Error completo:', e.message, e.stack);
         console.warn('[Sheet] Fallback a datos locales');
       }
       
@@ -209,12 +282,66 @@
       const width = container.clientWidth || 900; const height = container.clientHeight || 620;
       const svg = d3.select(container).append('svg').attr('viewBox', [0,0,width,height]).attr('preserveAspectRatio','xMidYMid meet');
       const defs = svg.append('defs');
+      
+      // Gradiente para las tarjetas de nombres
+      const nameCardGradient = defs.append('linearGradient')
+        .attr('id', 'nameCardGradient')
+        .attr('x1', '0%')
+        .attr('y1', '0%')
+        .attr('x2', '0%')
+        .attr('y2', '100%');
+      
+      nameCardGradient.append('stop')
+        .attr('offset', '0%')
+        .attr('stop-color', '#ffffff')
+        .attr('stop-opacity', 0.95);
+      
+      nameCardGradient.append('stop')
+        .attr('offset', '100%')
+        .attr('stop-color', '#f8fafc')
+        .attr('stop-opacity', 0.95);
       const root = d3.hierarchy(data);
-        const treeLayout = d3.tree().size([width-140, height-160]).separation((a,b)=> (a.parent===b.parent?6.0:7.0)); treeLayout(root);
-      const g = svg.append('g').attr('transform','translate(70,80)');
+        const treeLayout = d3.tree().size([width-200, height-160]).separation((a,b)=> (a.parent===b.parent?8.0:9.0)); treeLayout(root);
+      
+      // Aplicar layout intercalado automático
+      applyStaggeredLayout(root);
+      
+      const g = svg.append('g').attr('transform','translate(100,80)');
       const zoom = d3.zoom().scaleExtent([0.5,2.5]).on('zoom', (ev)=>{ g.attr('transform',`translate(${ev.transform.x},${ev.transform.y}) scale(${ev.transform.k})`); }); svg.call(zoom).on('dblclick.zoom', null);
       g.selectAll('path.tree-link').data(root.links()).join('path').attr('class','tree-link').attr('d', d3.linkHorizontal().x(d=>d.x).y(d=>d.y));
       const node = g.selectAll('g.tree-node').data(root.descendants()).join('g').attr('class','tree-node').attr('transform', d=>`translate(${d.x},${d.y})`);
+      
+      // Agregar estilos CSS para forzar colores y estilos
+      const style = document.createElement('style');
+      style.textContent = `
+        .name-card rect:first-child {
+          transition: all 0.2s ease;
+          fill: #ffffff !important;
+          stroke: #e0e7ff !important;
+          stroke-width: 1 !important;
+          rx: 0 !important;
+          ry: 0 !important;
+        }
+        .tree-node:hover .name-card rect:first-child {
+          opacity: 1 !important;
+          stroke-width: 2.5 !important;
+          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .name-card text {
+          font-family: Inter, sans-serif !important;
+          font-weight: 600 !important;
+        }
+        .name-card text[data-role="husband"] {
+          fill: #0ea5e9 !important;
+        }
+        .name-card text[data-role="wife"] {
+          fill: #ec4899 !important;
+        }
+        .name-card text[data-role="single"] {
+          fill: #0ea5e9 !important;
+        }
+      `;
+      document.head.appendChild(style);
       function patternId(prefix){ return `${prefix}-${Math.random().toString(36).slice(2,8)}`; }
       function createPattern(url){ const id=patternId('p'); const p=defs.append('pattern').attr('id',id).attr('patternUnits','objectBoundingBox').attr('width',1).attr('height',1); p.append('image').attr('href',url).attr('width',36).attr('height',36).attr('preserveAspectRatio','xMidYMid slice'); return `url(#${id})`; }
       node.each(function(d){ 
@@ -222,138 +349,139 @@
         const hasSpouse=d.data.spouse&&d.data.spouse.name; 
         gNode.selectAll('*').remove(); 
         
-        // Mejorar el texto con marido arriba y mujer abajo
-        if (hasSpouse) {
-          // Función para dividir nombres largos
-          function splitLongName(name) {
-            const parts = name.split(' ');
-            if (parts.length > 2) {
-              const midPoint = Math.ceil(parts.length / 2);
-              return {
-                first: parts.slice(0, midPoint).join(' '),
-                last: parts.slice(midPoint).join(' ')
-              };
-            }
-            return { first: name, last: null };
+        // Función para dividir nombres largos en dos líneas
+        function splitLongName(name) {
+          const parts = name.split(' ');
+          if (parts.length > 2) {
+            const midPoint = Math.ceil(parts.length / 2);
+            return {
+              first: parts.slice(0, midPoint).join(' '),
+              last: parts.slice(midPoint).join(' ')
+            };
           }
-          
-          const husbandName = splitLongName(d.data.name);
-          const wifeName = splitLongName(d.data.spouse.name);
-          
-          // Marido arriba
-          if (husbandName.last) {
-            // Nombre dividido
-            gNode.append('text')
-              .attr('y',-65)
-              .attr('text-anchor','middle')
-              .attr('font-size','10px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(husbandName.first);
-            
-            gNode.append('text')
-              .attr('y',-55)
-              .attr('text-anchor','middle')
-              .attr('font-size','10px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(husbandName.last);
-          } else {
-            // Nombre corto
-            gNode.append('text')
-              .attr('y',-60)
-              .attr('text-anchor','middle')
-              .attr('font-size','11px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(husbandName.first);
-          }
-          
-          // Separador removido - diseño más limpio
-          
-          // Mujer abajo
-          if (wifeName.last) {
-            // Nombre dividido
-            gNode.append('text')
-              .attr('y',-35)
-              .attr('text-anchor','middle')
-              .attr('font-size','10px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(wifeName.first);
-            
-            gNode.append('text')
-              .attr('y',-25)
-              .attr('text-anchor','middle')
-              .attr('font-size','10px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(wifeName.last);
-          } else {
-            // Nombre corto
-            gNode.append('text')
-              .attr('y',-38)
-              .attr('text-anchor','middle')
-              .attr('font-size','11px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(wifeName.first);
-          }
-        } else {
-          // Persona sola - dividir nombres largos en dos renglones
-          const nameParts = d.data.name.split(' ');
-          if (nameParts.length > 2) {
-            // Dividir en dos partes
-            const midPoint = Math.ceil(nameParts.length / 2);
-            const firstName = nameParts.slice(0, midPoint).join(' ');
-            const lastName = nameParts.slice(midPoint).join(' ');
-            
-            // Primera parte arriba
-            gNode.append('text')
-              .attr('y',-55)
-              .attr('text-anchor','middle')
-              .attr('font-size','11px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(firstName);
-            
-            // Segunda parte abajo
-            gNode.append('text')
-              .attr('y',-42)
-              .attr('text-anchor','middle')
-              .attr('font-size','11px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(lastName);
-          } else {
-            // Nombre corto, una sola línea
-            gNode.append('text')
-              .attr('y',-48)
-              .attr('text-anchor','middle')
-              .attr('font-size','12px')
-              .attr('font-weight',500)
-              .attr('fill','#374151')
-              .style('text-shadow', '0 1px 3px rgba(255,255,255,0.9)')
-              .style('font-family', 'Inter, sans-serif')
-              .text(d.data.name);
-          }
+          return { first: name, last: null };
         }
+        
+        // Función para mostrar nombres simples sin badges
+        function createSimpleNames() {
+          console.log('[Debug] Iniciando createSimpleNames');
+          const nameGroup = gNode.append('g').attr('class', 'name-text');
+          
+          if (hasSpouse) {
+            // Casado: mostrar ambos nombres
+            const husbandName = d.data.name;
+            const wifeName = d.data.spouse.name;
+            const husbandSplit = splitLongName(husbandName);
+            const wifeSplit = splitLongName(wifeName);
+            
+            // Nombre del marido arriba
+            if (husbandSplit.last) {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -35)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '8px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(husbandSplit.first);
+              
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -25)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '8px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(husbandSplit.last);
+            } else {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -32)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '9px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(husbandSplit.first);
+            }
+            
+            // Nombre de la mujer abajo
+            if (wifeSplit.last) {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', 35)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '8px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(wifeSplit.first);
+              
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', 45)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '8px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(wifeSplit.last);
+            } else {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', 38)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '9px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(wifeSplit.first);
+            }
+          } else {
+            // Soltero: mostrar solo un nombre
+            const name = d.data.name;
+            const nameSplit = splitLongName(name);
+            
+            if (nameSplit.last) {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -35)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '9px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(nameSplit.first);
+              
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -25)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '9px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(nameSplit.last);
+            } else {
+              nameGroup.append('text')
+                .attr('x', 0)
+                .attr('y', -32)
+                .attr('text-anchor', 'middle')
+                .attr('font-size', '10px')
+                .attr('font-weight', '600')
+                .attr('fill', '#1f2937')
+                .style('font-family', 'Inter, sans-serif')
+                .text(nameSplit.first);
+            }
+          }
+          console.log('[Debug] Nombres simples creados');
+        }
+        
+        // Crear nombres simples
+        console.log('[Debug] Creando nombres para:', d.data.name, hasSpouse ? 'casado' : 'soltero');
+        createSimpleNames();
         
         function drawPerson(cx, person){ 
           const fill=person.avatar?createPattern(person.avatar):getAvatarBackgroundColor(person.name); 
@@ -376,7 +504,7 @@
         else { 
           areas.push({cx:0,who:'self'});} 
         areas.forEach(a=>{ 
-          gNode.append('circle').attr('r',20).attr('cx',a.cx).attr('fill','transparent').style('cursor','pointer').on('mouseenter', ()=> showInfo(d.data, a.who==='spouse')); 
+          gNode.append('circle').attr('r',20).attr('cx',a.cx).attr('fill','transparent').style('cursor','pointer').on('mouseenter', ()=> showInfo(d.data, a.who==='spouse')).on('mouseleave', ()=> hideInfo()); 
         }); 
       });
       const infoBanner=document.getElementById('infoBanner'); 
@@ -387,6 +515,7 @@
       const dVerified=document.getElementById('dVerified');
       
       function showInfo(person, isSpouse){ 
+        clearTimeout(hideTimeout); // Cancelar el timeout de ocultar
         const p=isSpouse?person.spouse:person; 
         dName.textContent=p.name||''; 
         dSubtitle.textContent=isSpouse&&person.name?`Pareja de ${person.name}`:''; 
@@ -466,16 +595,59 @@
         dBody.innerHTML=html; 
         infoBanner.style.display='block'; 
       }
+      
+      let hideTimeout;
+      function hideInfo() {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          infoBanner.style.display='none';
+        }, 100); // 100ms de delay
+      }
       let nodesCache=root.descendants(); function fitToTree(){ const xs=nodesCache.map(n=>n.x), ys=nodesCache.map(n=>n.y); const minX=Math.min(...xs)-60, maxX=Math.max(...xs)+60; const minY=Math.min(...ys)-80, maxY=Math.max(...ys)+80; const treeWidth=maxX-minX, treeHeight=maxY-minY; const scale=Math.min(width/treeWidth, height/treeHeight, 1.2); const tx=(width-treeWidth*scale)/2-minX*scale; const ty=(height-treeHeight*scale)/2-minY*scale; svg.transition().duration(450).call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale)); }
       document.getElementById('btnCenter').addEventListener('click', fitToTree); document.getElementById('btnReset').addEventListener('click', ()=>{ svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity); });
-      const searchInput=document.getElementById('searchName'); searchInput.addEventListener('input', ()=>{ const q=searchInput.value.trim().toLowerCase(); g.selectAll('g.tree-node').classed('highlight', false); if(!q) return; const matches=nodesCache.filter(n=>`${n.data.name} ${n.data.spouse&&n.data.spouse.name?n.data.spouse.name:''}`.toLowerCase().includes(q)); if(matches.length===0) return; g.selectAll('g.tree-node').filter(d=>matches.includes(d)).classed('highlight', true); const n=matches[0]; const k=1.2; const tx=width/2 - n.x * k; const ty=height/2 - n.y * k; svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k)); });
+      const searchInput=document.getElementById('searchName'); 
+      searchInput.addEventListener('input', ()=>{
+        const q=searchInput.value.trim().toLowerCase(); 
+        
+        // Resetear todos los nodos
+        g.selectAll('g.tree-node').classed('highlight', false);
+        g.selectAll('g.tree-node text').classed('search-highlight', false);
+        
+        if(!q) return; 
+        
+        const matches=nodesCache.filter(n=>`${n.data.name} ${n.data.spouse&&n.data.spouse.name?n.data.spouse.name:''}`.toLowerCase().includes(q)); 
+        
+        if(matches.length===0) return; 
+        
+        // Resaltar nodos coincidentes
+        g.selectAll('g.tree-node').filter(d=>matches.includes(d)).classed('highlight', true);
+        
+        // Resaltar texto de los nombres coincidentes con color acorde
+        g.selectAll('g.tree-node').filter(d=>matches.includes(d)).selectAll('text').classed('search-highlight', true);
+        
+        // Centrar en la primera coincidencia
+        const n=matches[0]; 
+        const k=1.2; 
+        const tx=width/2 - n.x * k; 
+        const ty=height/2 - n.y * k; 
+        svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k)); 
+      });
+      
+      // Ocultar tarjeta de información al hacer clic en cualquier parte
+      document.addEventListener('click', (event) => {
+        // Solo ocultar si el clic no fue en la tarjeta de información
+        if (!event.target.closest('#infoBanner')) {
+          hideInfo();
+        }
+      });
       fitToTree();
     }
-
-    init();
   </script>
 
   <script src="data/arbol.js"></script>
+  <script>
+    init();
+  </script>
 </body>
 </html>
 

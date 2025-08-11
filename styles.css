@@ -88,14 +88,18 @@ body {
   color: inherit;
   aspect-ratio: 3 / 4; /* alto > ancho */
   min-height: 380px; /* altura mínima para consistencia */
+  position: relative; /* Para asegurar que el texto esté por encima */
 }
 
 /* Media full-bleed (70%) */
 .card-media {
   margin: 0;
   padding: 0;
-  flex: 7;
+  flex: 0 0 70%; /* No crecer, no encoger, 70% fijo */
   display: block;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* Asegurar que no se desborde */
 }
 .card-media img, .media-placeholder {
   width: 100%;
@@ -136,11 +140,14 @@ body {
 
 /* Text area (30%) */
 .card-body {
-  flex: 3;
+  flex: 0 0 30%; /* No crecer, no encoger, 30% fijo */
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
+  z-index: 2;
+  background: var(--surface);
 }
 .card-title {
   margin: 0;

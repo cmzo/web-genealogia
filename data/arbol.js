@@ -13,38 +13,101 @@
 // }
 
 window.FAMILY_TREE = {
-  name: "Francisco",
-  birth_place: "Francia",
-  birth_date: "1885",
-  death_place: "Argentina",
-  death_date: "1952",
+  name: "Francisco Clemenzo",
+  birth_place: "Ardon, Suiza",
+  birth_date: "1856",
+  death_place: "Concepción del Uruguay, Argentina",
+  death_date: "1928",
   spouse: {
-    name: "Celestina",
+    name: "Celestina Roch",
     birth_place: "Suiza",
     birth_date: "1887",
-    death_place: "Santa Fe",
+    death_place: "Argentina, Santa Fe",
     death_date: "1968"
   },
   children: [
     {
-      name: "María Luisa",
-      birth_place: "Entre Ríos",
-      birth_date: "1912",
-      spouse: { name: "Agustín" },
+      name: "Maria Luisa Clemenzo",
+      birth_place: "Santa Fe, Argentina",
+      birth_date: "1897",
+      death_place: "Santa Fe, Argentina",
+      death_date: "1972",
+      spouse: { 
+        name: "Agustin Costabile",
+        birth_place: "Argentina",
+        birth_date: "1895",
+        death_place: "Argentina, Santa Fe",
+        death_date: "1971"
+      },
       children: [
-        { name: "Hijo 1", birth_date: "1935" },
-        { name: "Hija 2", birth_date: "1938" }
+        { 
+          name: "Olga Hemilce Clemenzo Queipo",
+          birth_place: "Santa Fe, Argentina",
+          birth_date: "1920"
+        },
+        { 
+          name: "Yolanda Isabel Clemenzo Queipo",
+          birth_place: "Santa Fe, Argentina",
+          birth_date: "1922"
+        }
       ]
     },
     {
-      name: "Félix",
-      birth_place: "Francia",
-      birth_date: "1890",
-      spouse: { name: "Ana" },
+      name: "Felix Clemenzo",
+      birth_place: "Entre Rios, Argentina",
+      birth_date: "1894",
+      death_place: "Entre Rios, Argentina",
+      death_date: "1955",
+      spouse: { 
+        name: "Isabel Maria Queipo",
+        birth_place: "Argentina",
+        birth_date: "1905",
+        death_place: "Argentina",
+        death_date: "1969"
+      },
       children: [
-        { name: "Nieto 1" },
-        { name: "Nieto 2" }
+        { 
+          name: "Felix Ricardo Clemenzo",
+          birth_place: "Entre Rios, Argentina",
+          birth_date: "1925",
+          spouse: {
+            name: "Raquel Noemi Carvallo",
+            birth_place: "Argentina",
+            birth_date: "1928"
+          }
+        }
       ]
+    },
+    {
+      name: "León Francisco Clemenzo",
+      birth_place: "Entre Rios, Argentina",
+      birth_date: "1891",
+      spouse: { 
+        name: "Emiliana Elena Baster",
+        birth_place: "Argentina",
+        birth_date: "1895"
+      },
+      children: [
+        { 
+          name: "Rodolfo Ambrosio Clemenzo",
+          birth_place: "Concepción del Uruguay, Argentina",
+          birth_date: "21/03/1919"
+        }
+      ]
+    },
+    {
+      name: "Pedro Clemenzo",
+      birth_place: "Entre Rios, Argentina",
+      birth_date: "1890",
+      death_place: "Entre Rios, Argentina",
+      death_date: "1950"
+    },
+    {
+      name: "Carlota Julia Clemenzo",
+      birth_place: "Entre Rios, Argentina",
+      birth_date: "1899",
+      death_place: "Argentina",
+      death_date: "1980"
     }
   ]
 };

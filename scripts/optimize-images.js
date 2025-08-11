@@ -7,7 +7,8 @@ const INPUT_DIR = 'img/original';
 const OUTPUT_DIR = 'img';
 const SIZES = {
   card: { width: 600, height: 800 },
-  thumbnail: { width: 300, height: 400 }
+  thumbnail: { width: 300, height: 400 },
+  avatar: { width: 150, height: 150 }
 };
 
 // Crear directorios si no existen
@@ -65,6 +66,12 @@ async function processImages() {
     // Crear versión thumbnail
     const thumbOutput = path.join(OUTPUT_DIR, `${baseName}-thumb.webp`);
     await optimizeImage(inputPath, thumbOutput, SIZES.thumbnail);
+    
+    // Crear versión avatar (si el nombre contiene 'avatar')
+    if (baseName.toLowerCase().includes('avatar')) {
+      const avatarOutput = path.join(OUTPUT_DIR, `${baseName}.webp`);
+      await optimizeImage(inputPath, avatarOutput, SIZES.avatar);
+    }
   }
   
   console.log('\n🎉 ¡Optimización completada!');
