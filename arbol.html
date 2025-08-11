@@ -283,23 +283,7 @@
       const svg = d3.select(container).append('svg').attr('viewBox', [0,0,width,height]).attr('preserveAspectRatio','xMidYMid meet');
       const defs = svg.append('defs');
       
-      // Gradiente para las tarjetas de nombres
-      const nameCardGradient = defs.append('linearGradient')
-        .attr('id', 'nameCardGradient')
-        .attr('x1', '0%')
-        .attr('y1', '0%')
-        .attr('x2', '0%')
-        .attr('y2', '100%');
-      
-      nameCardGradient.append('stop')
-        .attr('offset', '0%')
-        .attr('stop-color', '#ffffff')
-        .attr('stop-opacity', 0.95);
-      
-      nameCardGradient.append('stop')
-        .attr('offset', '100%')
-        .attr('stop-color', '#f8fafc')
-        .attr('stop-opacity', 0.95);
+
       const root = d3.hierarchy(data);
         const treeLayout = d3.tree().size([width-200, height-160]).separation((a,b)=> (a.parent===b.parent?8.0:9.0)); treeLayout(root);
       
@@ -311,37 +295,7 @@
       g.selectAll('path.tree-link').data(root.links()).join('path').attr('class','tree-link').attr('d', d3.linkHorizontal().x(d=>d.x).y(d=>d.y));
       const node = g.selectAll('g.tree-node').data(root.descendants()).join('g').attr('class','tree-node').attr('transform', d=>`translate(${d.x},${d.y})`);
       
-      // Agregar estilos CSS para forzar colores y estilos
-      const style = document.createElement('style');
-      style.textContent = `
-        .name-card rect:first-child {
-          transition: all 0.2s ease;
-          fill: #ffffff !important;
-          stroke: #e0e7ff !important;
-          stroke-width: 1 !important;
-          rx: 0 !important;
-          ry: 0 !important;
-        }
-        .tree-node:hover .name-card rect:first-child {
-          opacity: 1 !important;
-          stroke-width: 2.5 !important;
-          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-        .name-card text {
-          font-family: Inter, sans-serif !important;
-          font-weight: 600 !important;
-        }
-        .name-card text[data-role="husband"] {
-          fill: #0ea5e9 !important;
-        }
-        .name-card text[data-role="wife"] {
-          fill: #ec4899 !important;
-        }
-        .name-card text[data-role="single"] {
-          fill: #0ea5e9 !important;
-        }
-      `;
-      document.head.appendChild(style);
+
       function patternId(prefix){ return `${prefix}-${Math.random().toString(36).slice(2,8)}`; }
       function createPattern(url){ const id=patternId('p'); const p=defs.append('pattern').attr('id',id).attr('patternUnits','objectBoundingBox').attr('width',1).attr('height',1); p.append('image').attr('href',url).attr('width',36).attr('height',36).attr('preserveAspectRatio','xMidYMid slice'); return `url(#${id})`; }
       node.each(function(d){ 
