@@ -313,9 +313,10 @@
         }
         if (rows && rows.length && used !== 'sheet-proxy') used = 'sheet';
         if (rows && rows.length) {
-          console.log('[Debug] Datos cargados exitosamente:', rows.length, 'filas');
-          console.log('[Debug] Primera fila:', rows[0]);
-          data = rowsToTree(rows);
+                  console.log('[Debug] Datos cargados exitosamente:', rows.length, 'filas');
+        console.log('[Debug] Primera fila:', rows[0]);
+        console.log('[Debug] TODAS las filas cargadas:', rows);
+        data = rowsToTree(rows);
         }
       } catch (e){
         console.warn('[Sheet] Error cargando datos:', e);
