@@ -884,3 +884,25 @@ body {
 .tree-node:hover .avatar-circle { transform: scale(1.04); }
 .details-banner .card { border: 1px solid var(--border); background: #fff; }
 .highlight text { fill: #111827 !important; font-weight: 600; }
+
+/* Footer */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.footer-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-text {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
