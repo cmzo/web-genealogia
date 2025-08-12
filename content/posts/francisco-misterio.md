@@ -1,7 +1,7 @@
 ---
 title: "El misterio de Francisco"
 description: "Investigación histórica y reconstrucción de pistas sobre los orígenes de Francisco Clemenzo"
-image: "img/francisco.png"
+image: "assets/images/cards/francisco.webp"
 category: "investigacion"
 date: "2024-01-15"
 tags: "francisco, origenes, argentina, investigacion"
@@ -9,7 +9,7 @@ featured: true
 slug: "francisco-misterio"
 kicker: "Investigación histórica y reconstrucción de pistas"
 aside: |
-  ![Firma de Francisco José H. Clemenzo de 1859](../img/FJHC_1859_firma.png)
+  ![Firma de Francisco José H. Clemenzo de 1859](../../assets/images/posts/FJHC_1859_firma.png)
   
   *Firma de Francisco José H. Clemenzo, 1859*
   

@@ -101,10 +101,10 @@ function markdownToHtml(markdown) {
   html = html.replace(
     /<img src="([^"]+)" alt="([^"]*)"/g,
     (match, src, alt) => {
-      // Corregir rutas relativas para que funcionen desde /blog/
+      // Corregir rutas relativas para que funcionen desde /dist/blog/
       let correctedSrc = src;
       if (src.startsWith('img/')) {
-        correctedSrc = '../' + src;
+        correctedSrc = '../../assets/images/cards/' + src.replace('img/', '');
       }
       return `<img src="${correctedSrc}" alt="${alt}" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;"`;
     }
@@ -113,7 +113,7 @@ function markdownToHtml(markdown) {
   // Corregir rutas en HTML personalizado
   html = html.replace(
     /src="img\//g,
-    'src="../img/'
+    'src="../../assets/images/cards/'
   );
   
   // Envolver imágenes en figure si no están ya envueltas
@@ -172,12 +172,12 @@ function processMarkdownFile(filePath) {
     id: metadata.slug,
     title: metadata.title,
     description: metadata.description || '',
-    image: metadata.image || 'img/clemenzo-por-el-mundo.png',
+    image: metadata.image || 'assets/images/cards/clemenzo-por-el-mundo.webp',
     category: metadata.category || 'general',
     date: metadata.date || '',
     tags: metadata.tags ? metadata.tags.split(',').map(t => t.trim()) : [],
     featured: metadata.featured === 'true',
-    url: `blog/${metadata.slug}.html`
+    url: `dist/blog/${metadata.slug}.html`
   };
 }
 
