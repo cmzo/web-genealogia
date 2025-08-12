@@ -6,7 +6,7 @@ const path = require('path');
 // Configuración
 const POSTS_DIR = './content/posts';
 const BLOG_DIR = './dist/blog';
-const BLOG_ENTRIES_FILE = './content/data/blog-entries.json';
+const BLOG_ENTRIES_FILE = './assets/data/blog-entries.json';
 
 function deletePost(postId) {
   console.log(`🗑️  Borrando post: ${postId}`);

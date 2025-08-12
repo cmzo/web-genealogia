@@ -6,7 +6,7 @@ yarn-error.log*
 
 # Build outputs
 dist/
-content/data/blog-entries.json
+# content/data/blog-entries.json (moved to assets/data/)
 
 # OS generated files
 .DS_Store

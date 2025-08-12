@@ -12,6 +12,7 @@
     assets: isGitHubPages ? `/${repoName}/assets/` : './assets/',
     css: isGitHubPages ? `/${repoName}/assets/css/` : './assets/css/',
     images: isGitHubPages ? `/${repoName}/assets/images/` : './assets/images/',
+    data: isGitHubPages ? `/${repoName}/assets/data/` : './assets/data/',
     content: isGitHubPages ? `/${repoName}/content/` : './content/',
     dist: isGitHubPages ? `/${repoName}/dist/` : './dist/'
   };
@@ -48,6 +49,11 @@
   // Función para obtener rutas de contenido
   window.getContentPath = function(path) {
     return window.PATH_CONFIG.content + path;
+  };
+  
+  // Función para obtener rutas de datos
+  window.getDataPath = function(path) {
+    return window.PATH_CONFIG.data + path;
   };
   
   // Función para obtener rutas de dist

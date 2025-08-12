@@ -231,7 +231,7 @@
     async function loadBlogPosts() {
       try {
         console.log('Cargando posts del blog...');
-        const response = await fetch('./content/data/blog-entries.json');
+        const response = await fetch('./assets/data/blog-entries.json');
         console.log('Response status:', response.status);
         allPosts = await response.json();
         console.log('Posts cargados:', allPosts);

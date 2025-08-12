@@ -47,7 +47,7 @@
       // Cargar entradas del blog dinámicamente
       async function loadBlogEntries() {
       try {
-        const response = await fetch(getContentPath('data/blog-entries.json'));
+        const response = await fetch(getDataPath('blog-entries.json'));
         const blogEntries = await response.json();
         
         // Combinar entradas estáticas y dinámicas
