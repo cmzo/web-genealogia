@@ -177,7 +177,7 @@ function processMarkdownFile(filePath) {
     date: metadata.date || '',
     tags: metadata.tags ? metadata.tags.split(',').map(t => t.trim()) : [],
     featured: metadata.featured === 'true',
-    url: `dist/blog/${metadata.slug}.html`
+    url: `./dist/blog/${metadata.slug}.html`
   };
 }
 
