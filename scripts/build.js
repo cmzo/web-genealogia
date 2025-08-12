@@ -172,7 +172,7 @@ function processMarkdownFile(filePath) {
     id: metadata.slug,
     title: metadata.title,
     description: metadata.description || '',
-    image: metadata.image || 'assets/images/cards/clemenzo-por-el-mundo.webp',
+    image: metadata.image || './assets/images/cards/clemenzo-por-el-mundo.webp',
     category: metadata.category || 'general',
     date: metadata.date || '',
     tags: metadata.tags ? metadata.tags.split(',').map(t => t.trim()) : [],
