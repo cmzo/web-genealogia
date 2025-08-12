@@ -5,8 +5,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build outputs
-blog/
-data/blog-entries.json
+dist/
+content/data/blog-entries.json
 
 # OS generated files
 .DS_Store

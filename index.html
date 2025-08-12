@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="home">
   <header class="site-header">
@@ -46,7 +46,7 @@
       // Cargar entradas del blog dinámicamente
       async function loadBlogEntries() {
       try {
-        const response = await fetch('data/blog-entries.json');
+        const response = await fetch('content/data/blog-entries.json');
         const blogEntries = await response.json();
         
         // Combinar entradas estáticas y dinámicas
@@ -56,7 +56,7 @@
             id: 'quien-soy',
             title: '¿Quién soy?',
             description: 'Presentación personal y mapa de la memoria',
-            image: 'img/quiensoy.webp',
+            image: 'assets/images/cards/quiensoy.webp',
             url: 'quien-soy.html',
             featured: true
           },
@@ -64,7 +64,7 @@
             id: 'arbol',
             title: 'Árbol genealógico',
             description: 'Visualización interactiva de la familia',
-            image: 'img/arbol.webp',
+            image: 'assets/images/cards/arbol.webp',
             url: 'arbol.html',
             featured: true
           },
@@ -78,14 +78,14 @@
             id: 'trama-mexicana',
             title: 'La trama mexicana',
             description: 'Historias, migraciones y vínculos con México',
-            image: 'img/trama-mexicana.webp',
+            image: 'assets/images/cards/trama-mexicana.webp',
             url: 'trama-mexicana.html'
           },
           {
             id: 'mapa-clemenzos',
             title: 'Mapa de Clemenzo\'s',
             description: 'Lugares, rutas y recorridos de la familia',
-            image: 'img/clemenzo-por-el-mundo.webp',
+            image: 'assets/images/cards/clemenzo-por-el-mundo.webp',
             url: 'mapa-clemenzos.html'
           }
         ];
@@ -159,7 +159,7 @@
       container.innerHTML = `
         <a href="quien-soy.html" class="card">
           <figure class="card-media">
-            <img src="img/clemenzo-por-el-mundo.png" alt="¿Quién soy?" width="280" height="380" loading="lazy">
+            <img src="assets/images/cards/quiensoy.webp" alt="¿Quién soy?" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
             <h2 class="card-title">¿Quién soy?</h2>
@@ -169,7 +169,7 @@
 
         <a href="arbol.html" class="card">
           <figure class="card-media">
-            <img src="img/arbol.png" alt="Árbol genealógico" width="280" height="380" loading="lazy">
+            <img src="assets/images/cards/arbol.webp" alt="Árbol genealógico" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
             <h2 class="card-title">Árbol genealógico</h2>
@@ -179,7 +179,7 @@
 
         <a href="francisco.html" class="card">
           <figure class="card-media">
-            <img src="img/francisco.png" alt="El misterio de Francisco" width="280" height="380" loading="lazy">
+            <img src="assets/images/cards/francisco.webp" alt="El misterio de Francisco" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
             <h2 class="card-title">El misterio de Francisco</h2>
@@ -189,7 +189,7 @@
 
         <a href="trama-mexicana.html" class="card">
           <figure class="card-media">
-            <img src="img/trama-mexicana.png" alt="La trama mexicana" width="280" height="380" loading="lazy">
+            <img src="assets/images/cards/trama-mexicana.webp" alt="La trama mexicana" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
             <h2 class="card-title">La trama mexicana</h2>
@@ -199,7 +199,7 @@
 
         <a href="mapa-clemenzos.html" class="card">
           <figure class="card-media">
-            <img src="img/clemenzo-por-el-mundo.png" alt="Mapa de Clemenzo's" width="280" height="380" loading="lazy">
+            <img src="assets/images/cards/clemenzo-por-el-mundo.webp" alt="Mapa de Clemenzo's" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
             <h2 class="card-title">Mapa de Clemenzo's</h2>

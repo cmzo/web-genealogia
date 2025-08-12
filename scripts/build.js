@@ -5,10 +5,10 @@ const path = require('path');
 const { marked } = require('marked');
 
 // Configuración
-const POSTS_DIR = './posts';
-const TEMPLATE_FILE = './templates/post-template.html';
-const OUTPUT_DIR = './blog';
-const BLOG_ENTRIES_FILE = './data/blog-entries.json';
+const POSTS_DIR = './content/posts';
+const TEMPLATE_FILE = './content/templates/post-template.html';
+const OUTPUT_DIR = './dist/blog';
+const BLOG_ENTRIES_FILE = './content/data/blog-entries.json';
 
 // Asegurar que existe el directorio de salida
 if (!fs.existsSync(OUTPUT_DIR)) {

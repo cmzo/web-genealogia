@@ -96,14 +96,26 @@ Algunos hosts (Netlify, Vercel) permiten ejecutar scripts durante el deploy:
 
 ```
 web-genealogia/
-├── posts/           # Archivos Markdown originales
-├── blog/            # Archivos HTML generados
-├── data/
-│   └── blog-entries.json  # Metadata de posts
-├── scripts/
-│   ├── build.js     # Generar posts
-│   └── delete-post.js # Borrar posts
-├── templates/
-│   └── post-template.html # Template para posts
-└── admin.html       # Panel de administración (desarrollo)
+├── assets/                 # Recursos estáticos
+│   ├── images/            # Imágenes organizadas
+│   │   ├── cards/         # Imágenes para tarjetas (.webp)
+│   │   ├── posts/         # Imágenes de artículos
+│   │   ├── avatars/       # Avatares de usuarios
+│   │   ├── icons/         # Iconos y logos
+│   │   └── original/      # Archivos originales (gitignored)
+│   ├── css/               # Estilos
+│   └── js/                # JavaScript
+├── content/               # Contenido dinámico
+│   ├── posts/             # Posts en Markdown
+│   ├── data/              # Datos JSON
+│   └── templates/         # Templates HTML
+├── dist/                  # Archivos generados (gitignored)
+│   ├── blog/              # HTML generado
+│   └── assets/            # Assets optimizados
+├── scripts/               # Scripts de build
+├── docs/                  # Documentación
+├── index.html             # Página principal
+├── blog.html              # Lista de posts
+├── admin.html             # Panel de administración
+└── [otros archivos HTML]
 ```

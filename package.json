@@ -7,7 +7,9 @@
     "delete-post": "node scripts/delete-post.js",
     "list-posts": "node scripts/delete-post.js --list",
     "dev": "node scripts/build.js && python3 -m http.server 8000",
-    "serve": "npx serve ."
+    "serve": "npx serve .",
+    "clean": "rm -rf dist/",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "marked": "^4.0.0"
