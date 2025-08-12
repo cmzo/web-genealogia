@@ -94,7 +94,30 @@
     const SHEET_ID = params.get('sheet') || '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
     const SHEET_GID = params.get('gid') || '0';
 
-    function loadLocalData(){ return window.FAMILY_TREE || { name: 'Sin datos', children: [] }; }
+    function loadLocalData(){ 
+      // Combinar rama paterna y materna si están disponibles
+      const paternalTree = window.FAMILY_TREE || { name: 'Sin datos', children: [] };
+      const maternalTree = window.MATERNAL_FAMILY || null;
+      
+      // Si tenemos ambas ramas, crear un árbol combinado
+      if (maternalTree) {
+        return {
+          name: "Árbol Genealógico Completo",
+          children: [
+            {
+              name: "Rama Paterna (Clemenzo)",
+              children: [paternalTree]
+            },
+            {
+              name: "Rama Materna",
+              children: [maternalTree]
+            }
+          ]
+        };
+      }
+      
+      return paternalTree;
+    }
 
     async function fetchGoogleSheet(sheetId, gid){
       const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
