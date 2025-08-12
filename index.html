@@ -212,35 +212,57 @@
       // Cargar entradas al cargar la página
       loadBlogEntries();
 
-      // Modal de contacto
-      const contactBtn = document.getElementById('contactBtn');
-      const contactModal = document.getElementById('contactModal');
-      const closeContactBtn = document.querySelector('.close-contact');
+      // Modal de contacto - Versión robusta para GitHub Pages
+      function initContactModal() {
+        const contactBtn = document.getElementById('contactBtn');
+        const contactModal = document.getElementById('contactModal');
+        const closeContactBtn = document.querySelector('.close-contact');
 
-      contactBtn.addEventListener('click', () => {
-        contactModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      });
+        if (!contactBtn || !contactModal || !closeContactBtn) {
+          console.warn('Elementos del modal de contacto no encontrados');
+          return;
+        }
 
-      closeContactBtn.addEventListener('click', () => {
-        contactModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      });
+        // Función para abrir modal
+        function openModal() {
+          contactModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+          console.log('Modal de contacto abierto');
+        }
 
-      contactModal.addEventListener('click', (e) => {
-        if (e.target === contactModal) {
+        // Función para cerrar modal
+        function closeModal() {
           contactModal.style.display = 'none';
           document.body.style.overflow = 'auto';
+          console.log('Modal de contacto cerrado');
         }
-      });
 
-      // Cerrar con Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && contactModal.style.display === 'flex') {
-          contactModal.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-      });
+        // Event listeners
+        contactBtn.addEventListener('click', openModal);
+        closeContactBtn.addEventListener('click', closeModal);
+
+        // Cerrar al hacer click fuera del modal
+        contactModal.addEventListener('click', (e) => {
+          if (e.target === contactModal) {
+            closeModal();
+          }
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && contactModal.style.display === 'flex') {
+            closeModal();
+          }
+        });
+
+        console.log('Modal de contacto inicializado correctamente');
+      }
+
+      // Inicializar modal después de que todo esté cargado
+      initContactModal();
+      
+      // Forzar actualización de cache - GitHub Pages
+      console.log('Sitio actualizado:', new Date().toISOString());
     });
   </script>
 
