@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin - Web Genealogía</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    .admin-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0 0 32px 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .posts-list {
+      margin-bottom: 32px;
+    }
+    .post-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #f8fafc;
+    }
+    .post-info h3 {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .post-info p {
+      margin: 0;
+      font-size: 14px;
+      color: #64748b;
+    }
+    .delete-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .delete-btn:hover {
+      background: #dc2626;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .warning {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .warning h3 {
+      margin: 0 0 8px 0;
+      color: #92400e;
+      font-size: 16px;
+    }
+    .warning p {
+      margin: 0;
+      color: #92400e;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <a href="index.html" class="back-link">
+      ← Volver al sitio
+    </a>
+    
+    <h1>Administración de Posts</h1>
+    
+    <div class="warning">
+      <h3>⚠️ Importante</h3>
+      <p>Esta página es solo para desarrollo local. En producción, gestiona los posts desde tu computadora y luego sube los cambios.</p>
+    </div>
+    
+    <div class="posts-list">
+      <h2>Posts actuales</h2>
+      <div id="postsContainer">
+        <p>Cargando posts...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      try {
+        const response = await fetch('data/blog-entries.json');
+        const posts = await response.json();
+        
+        const container = document.getElementById('postsContainer');
+        
+        if (posts.length === 0) {
+          container.innerHTML = '<p>No hay posts disponibles.</p>';
+          return;
+        }
+        
+        container.innerHTML = posts.map(post => `
+          <div class="post-item">
+            <div class="post-info">
+              <h3>${post.title}</h3>
+              <p>ID: ${post.id} | Categoría: ${post.category} | Featured: ${post.featured ? 'Sí' : 'No'}</p>
+            </div>
+            <button class="delete-btn" onclick="deletePost('${post.id}')">
+              Borrar
+            </button>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        document.getElementById('postsContainer').innerHTML = 
+          '<p>Error cargando posts. Asegúrate de estar ejecutando desde un servidor local.</p>';
+      }
+    });
+    
+    async function deletePost(postId) {
+      if (!confirm(`¿Estás seguro de que quieres borrar el post "${postId}"?`)) {
+        return;
+      }
+      
+      try {
+        // En un entorno real, aquí harías una llamada al servidor
+        // Por ahora, solo mostramos un mensaje
+        alert(`Para borrar el post "${postId}", ejecuta en tu terminal:\n\nnode scripts/delete-post.js ${postId}`);
+      } catch (error) {
+        alert('Error al borrar el post. Usa el script desde la terminal.');
+      }
+    }
+  </script>
+</body>
+</html>

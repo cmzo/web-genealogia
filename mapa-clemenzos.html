@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 <body class="article">
   <main class="article-container">
@@ -33,20 +34,244 @@
     <section class="article-grid">
       <article class="article-content">
         <p>Un mapa vivo de las ciudades, pueblos y rutas asociadas a la familia Clemenzo. Un proyecto para georreferenciar relatos, documentos y fotografías en un mismo recorrido.</p>
-        <p>Próximamente se integrarán capas interactivas y visualizaciones para explorar los desplazamientos con más detalle.</p>
+        
+        <div class="map-container">
+          <div id="clemenzoMap" class="interactive-map"></div>
+          <div class="map-legend">
+            <h3>Leyenda</h3>
+            <div class="legend-item">
+              <span class="legend-marker birth"></span>
+              <span>Lugar de nacimiento</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker death"></span>
+              <span>Lugar de fallecimiento</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker residence"></span>
+              <span>Residencia</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-marker migration"></span>
+              <span>Ruta migratoria</span>
+            </div>
+          </div>
+        </div>
+
+        <h2>Lugares destacados</h2>
+        <p>Estos son algunos de los lugares más importantes en la historia de la familia Clemenzo:</p>
+        
+        <div class="places-grid">
+          <div class="place-card">
+            <h3>San José, Entre Ríos</h3>
+            <p>Colonia donde Francisco se estableció al llegar a Argentina. Aquí firmó actas de nacimiento y defunción.</p>
+            <span class="place-type birth">Lugar de residencia</span>
+          </div>
+          
+          <div class="place-card">
+            <h3>Santa Fe</h3>
+            <p>Ciudad donde Celestina se trató de sífilis y donde Francisco vivió sus últimos años.</p>
+            <span class="place-type treatment">Lugar de tratamiento</span>
+          </div>
+          
+          <div class="place-card">
+            <h3>Francia</h3>
+            <p>País de origen según la historia familiar. Posible lugar de nacimiento de Francisco.</p>
+            <span class="place-type origin">Origen familiar</span>
+          </div>
+          
+          <div class="place-card">
+            <h3>Suiza</h3>
+            <p>Según la tradición familiar, lugar donde Francisco se casó con Celestina antes de emigrar.</p>
+            <span class="place-type marriage">Lugar de matrimonio</span>
+          </div>
+        </div>
+
+        <h2>Rutas migratorias</h2>
+        <p>Las rutas que siguieron los Clemenzo a lo largo de su historia, desde Europa hasta Argentina:</p>
+        
+        <div class="migration-timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Siglo XIX - Francia</h4>
+              <p>Origen de la familia según la tradición. Francisco nace en Francia.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>1850s - Suiza</h4>
+              <p>Francisco huye a Suiza y se casa con Celestina.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>1860s - Argentina</h4>
+              <p>Llegada a Argentina, establecimiento en San José, Entre Ríos.</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>1870s - Santa Fe</h4>
+              <p>Traslado a Santa Fe para tratamiento médico de Celestina.</p>
+            </div>
+          </div>
+        </div>
       </article>
-      <aside class="article-aside"></aside>
+      <aside class="article-aside">
+        <div class="map-stats">
+          <h3>Estadísticas del mapa</h3>
+          <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Países</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Ciudades</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Rutas migratorias</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Documentos georreferenciados</span>
+          </div>
+        </div>
+      </aside>
     </section>
   </main>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fecha dinámica
       const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
       const now = new Date();
       const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
       const metaEdition = document.getElementById('meta-edition');
       if (metaEdition) metaEdition.textContent = `Publicado 10 de agosto de 2025 · Última edición ${dateStr}`;
-    })();
+
+      // Inicializar mapa
+      const map = L.map('clemenzoMap').setView([-32.5, -60], 4);
+
+      // Agregar capa de mapa base
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      // Datos de lugares Clemenzo
+      const clemenzoPlaces = [
+        {
+          name: 'San José, Entre Ríos',
+          coords: [-32.2, -58.2],
+          type: 'residence',
+          description: 'Colonia donde Francisco se estableció al llegar a Argentina',
+          year: '1860s'
+        },
+        {
+          name: 'Santa Fe',
+          coords: [-31.6, -60.7],
+          type: 'treatment',
+          description: 'Ciudad donde Celestina se trató y Francisco vivió sus últimos años',
+          year: '1870s'
+        },
+        {
+          name: 'París, Francia',
+          coords: [48.9, 2.3],
+          type: 'origin',
+          description: 'Posible lugar de nacimiento de Francisco',
+          year: '1820s'
+        },
+        {
+          name: 'Ginebra, Suiza',
+          coords: [46.2, 6.1],
+          type: 'marriage',
+          description: 'Lugar donde Francisco se casó con Celestina',
+          year: '1850s'
+        }
+      ];
+
+      // Colores para diferentes tipos de lugares
+      const placeColors = {
+        residence: '#3b82f6',
+        treatment: '#ef4444',
+        origin: '#10b981',
+        marriage: '#f59e0b'
+      };
+
+      // Agregar marcadores al mapa
+      clemenzoPlaces.forEach(place => {
+        const marker = L.circleMarker(place.coords, {
+          radius: 8,
+          fillColor: placeColors[place.type],
+          color: '#fff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).addTo(map);
+
+        const popup = L.popup({
+          maxWidth: 300,
+          className: 'clemenzo-popup'
+        }).setContent(`
+          <div class="popup-content">
+            <h3>${place.name}</h3>
+            <p class="popup-description">${place.description}</p>
+            <span class="popup-year">${place.year}</span>
+          </div>
+        `);
+
+        marker.bindPopup(popup);
+      });
+
+      // Agregar rutas migratorias
+      const migrationRoutes = [
+        {
+          name: 'Ruta Europa-Argentina',
+          coordinates: [
+            [48.9, 2.3], // París
+            [46.2, 6.1], // Ginebra
+            [-32.2, -58.2] // San José
+          ],
+          color: '#8b5cf6'
+        }
+      ];
+
+      migrationRoutes.forEach(route => {
+        const polyline = L.polyline(route.coordinates, {
+          color: route.color,
+          weight: 3,
+          opacity: 0.7,
+          dashArray: '10, 5'
+        }).addTo(map);
+
+        const popup = L.popup({
+          maxWidth: 300,
+          className: 'route-popup'
+        }).setContent(`
+          <div class="popup-content">
+            <h3>${route.name}</h3>
+            <p>Ruta migratoria de la familia Clemenzo</p>
+          </div>
+        `);
+
+        polyline.bindPopup(popup);
+      });
+
+      // Ajustar vista para mostrar todos los marcadores
+      const group = new L.featureGroup(clemenzoPlaces.map(place => 
+        L.marker(place.coords)
+      ));
+      map.fitBounds(group.getBounds().pad(0.1));
+    });
   </script>
 </body>
 </html>
