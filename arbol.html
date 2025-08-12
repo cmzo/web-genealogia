@@ -289,6 +289,8 @@
       console.log('[Debug] SHEET_ID:', SHEET_ID);
       console.log('[Debug] SHEET_GID:', SHEET_GID);
       console.log('[Debug] Protocolo actual:', window.location.protocol);
+      console.log('[Debug] URL completa:', window.location.href);
+      console.log('[Debug] Parámetros URL:', window.location.search);
       
       try {
         // 1) fetch normal
@@ -326,6 +328,10 @@
         data = loadLocalData(); 
         used = 'local'; 
       }
+      
+      console.log('[Debug] Datos finales cargados:', data);
+      console.log('[Debug] Tipo de datos:', typeof data);
+      console.log('[Debug] Tiene children:', data.children ? data.children.length : 'no children');
       
       if (sourceEl) sourceEl.textContent = used === 'sheet' ? 'Fuente: Google Sheet' : (used === 'sheet-proxy' ? 'Fuente: Google Sheet (proxy)' : 'Fuente: Datos locales');
 
