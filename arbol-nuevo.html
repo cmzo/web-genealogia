@@ -1073,36 +1073,50 @@
                 selectNode(d);
             });
             
-            // Calcular bounds para foco inicial (raíz y descendientes cercanos)
+            // Calcular bounds para foco inicial similar al screenshot. Centramos en Francisco/Félix
+            // y evitamos abarcar toda la fila horizontal usando un ancho fijo alrededor del objetivo.
             const allBounds = g.node().getBBox();
             console.log('Bounds del árbol (completo):', allBounds);
 
-            // Foco: raíz + 2 niveles
-            const focusNodes = treeData.descendants().filter(d => d.depth <= 2);
-            if (focusNodes.length > 0) {
-                const minX = d3.min(focusNodes, d => d.x - cardWidth / 2);
-                const maxX = d3.max(focusNodes, d => d.x + cardWidth / 2);
-                const minY = d3.min(focusNodes, d => d.y - cardHeight / 2);
-                const maxY = d3.max(focusNodes, d => d.y + cardHeight / 2);
-                const focusBounds = { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+            const normalizeText = (s) => (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const descendants = treeData.descendants();
+            const target = descendants.find(d => {
+                const n = normalizeText(d.data.name);
+                return n.includes('francisco') && n.includes('clemenzo');
+            }) || descendants.find(d => {
+                const n = normalizeText(d.data.name);
+                return n.includes('felix') && n.includes('clemenzo');
+            });
+
+            let vbX, vbY, vbW, vbH;
+            if (target) {
+                // Banda vertical: desde un poco por encima del objetivo hasta ~2 niveles debajo
+                const bandTopY = target.y - levelSpacing * 0.5;
+                const bandBottomY = target.y + levelSpacing * 2.0;
+                const bandHeight = (bandBottomY - bandTopY) + 220; // padding vertical
+                const centerY = (bandTopY + bandBottomY) / 2;
+
+                // Ancho fijo alrededor del objetivo: cantidad de tarjetas visibles horizontalmente
+                const cardsVisible = 6; // ajustar para más/menos zoom horizontal
+                const stepX = cardWidth + 140; // ancho de tarjeta + separación
+                const bandWidth = cardsVisible * stepX + 200; // padding horizontal
+                const centerX = target.x;
+
+                vbW = Math.max(1, bandWidth);
+                vbH = Math.max(1, bandHeight);
+                vbX = centerX - vbW / 2;
+                vbY = centerY - vbH / 2;
+
+                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`).attr('preserveAspectRatio', 'xMidYMid meet');
+                console.log('viewBox (foco objetivo) aplicado:', { vbX, vbY, vbW, vbH, target: target.data.name });
+            } else {
                 const paddingX = 140;
                 const paddingY = 140;
-                const vbX = focusBounds.x - paddingX;
-                const vbY = focusBounds.y - paddingY;
-                const vbW = Math.max(focusBounds.width + paddingX * 2, 1);
-                const vbH = Math.max(focusBounds.height + paddingY * 2, 1);
-                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
-                   .attr('preserveAspectRatio', 'xMidYMid meet');
-                console.log('viewBox (foco inicial) aplicado:', { vbX, vbY, vbW, vbH });
-            } else {
-                const paddingX = 120;
-                const paddingY = 120;
-                const vbX = allBounds.x - paddingX;
-                const vbY = allBounds.y - paddingY;
-                const vbW = Math.max(allBounds.width + paddingX * 2, 1);
-                const vbH = Math.max(allBounds.height + paddingY * 2, 1);
-                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
-                   .attr('preserveAspectRatio', 'xMidYMid meet');
+                vbX = allBounds.x - paddingX;
+                vbY = allBounds.y - paddingY;
+                vbW = Math.max(allBounds.width + paddingX * 2, 1);
+                vbH = Math.max(allBounds.height + paddingY * 2, 1);
+                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`).attr('preserveAspectRatio', 'xMidYMid meet');
                 console.log('viewBox (completo) aplicado:', { vbX, vbY, vbW, vbH });
             }
             
