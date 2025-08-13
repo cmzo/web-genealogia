@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Genealógico - D3.js Cards</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .tree-container {
+            width: 100%;
+            height: 85vh;
+            background: #f8fafc;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #374151;
+            z-index: 1000;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .key-hint {
+            margin: 4px 0;
+            font-weight: 500;
+        }
+        
+        .focus-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #374151;
+            max-width: 300px;
+            z-index: 1000;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .focus-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .focus-details {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+        
+        .view-toggle {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 12px;
+            font-weight: 500;
+            color: #374151;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .view-toggle:hover {
+            background: #f3f4f6;
+        }
+        
+        .view-toggle.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .stats-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #374151;
+            z-index: 1000;
+            border: 1px solid #e5e7eb;
+            min-width: 120px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 2px 0;
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        /* Estilos para las tarjetas */
+        .person-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 2px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+        
+        .person-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .person-card.selected {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .person-card.direct-line {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        }
+        
+        .person-card.direct-line.selected {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .card-header {
+            padding: 12px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .card-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1f2937;
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .card-body {
+            padding: 12px;
+        }
+        
+        .card-detail {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 4px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-detail strong {
+            color: #374151;
+            margin-right: 6px;
+            min-width: 60px;
+        }
+        
+        .generation-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            margin-top: 8px;
+        }
+        
+        .direct-line-badge {
+            background: #10b981;
+        }
+        
+        .regular-badge {
+            background: #6b7280;
+        }
+        
+        /* Estilos para los enlaces */
+        .tree-link {
+            stroke: #d1d5db;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .tree-link.direct-line {
+            stroke: #10b981;
+            stroke-width: 3;
+        }
+        
+        .tree-link.spouse {
+            stroke: #f59e0b;
+            stroke-width: 1;
+            stroke-dasharray: 5,5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">← Inicio</a>
+            <a href="./arbol.html">Línea Directa</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Árbol Genealógico</h1>
+                <p>Explora tu historia familiar con D3.js y tarjetas</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="tree-container" id="tree">
+                <div class="view-toggle" id="viewToggle">Vista: Completa</div>
+                <div class="stats-panel" id="statsPanel">
+                    <div class="stat-item">
+                        <span>Personas:</span>
+                        <span class="stat-value" id="personCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Generaciones:</span>
+                        <span class="stat-value" id="generationCount">0</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <div class="key-hint">🖱️ Arrastrar para mover</div>
+                    <div class="key-hint">🔍 Rueda para zoom</div>
+                    <div class="key-hint">🎯 Clic para seleccionar</div>
+                    <div class="key-hint">⌨️ Flechas para navegar</div>
+                </div>
+                <div class="focus-info" id="focusInfo">
+                    <div class="focus-name">Selecciona una persona</div>
+                    <div class="focus-details">Haz clic en cualquier tarjeta para ver detalles</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 20px; margin-top: 48px;">
+        <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+            <p class="footer-text" style="margin: 0; font-size: 14px;">Matias Clemenzo 2025</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/path-config.js"></script>
+    <script src="./content/data/arbol.js"></script>
+    <script>
+        // Configuración
+        const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+        const SHEET_GID = '0';
+        
+        // Estado del árbol
+        let currentFocus = null;
+        let isDirectLineView = false;
+        let treeData = null;
+        let collapsedNodes = new Set();
+        
+        // Colores por rama familiar
+        const branchColors = {
+            'clemenzo': '#3b82f6',    // Azul - Rama principal
+            'roch': '#10b981',        // Verde
+            'queipo': '#f59e0b',      // Naranja
+            'carvallo': '#ef4444',    // Rojo
+            'arceo': '#8b5cf6',       // Púrpura
+            'vargas': '#ec4899',      // Rosa
+            'baster': '#06b6d4',      // Cian
+            'costabile': '#84cc16',   // Lima
+            'unknown': '#6b7280'      // Gris para ramas desconocidas
+        };
+        
+        // Dimensiones
+        const cardWidth = 220;
+        const cardHeight = 140;
+        const cardSpacing = 50;
+        const levelSpacing = 220;
+        
+        // Función para obtener datos de Google Sheets
+        async function fetchGoogleSheet(sheetId, gid) {
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonText = text.substring(47).slice(0, -2);
+                const data = JSON.parse(jsonText);
+                
+                if (data.table && data.table.rows) {
+                    return data.table.rows.map(row => {
+                        const obj = {};
+                        data.table.cols.forEach((col, index) => {
+                            if (row.c[index]) {
+                                obj[col.label] = row.c[index].v;
+                            }
+                        });
+                        return obj;
+                    });
+                }
+                return null;
+            } catch (error) {
+                console.warn('[Sheet] Error:', error);
+                return null;
+            }
+        }
+        
+        // Función para formatear fechas
+        function formatDate(dateValue) {
+            if (!dateValue || dateValue === 'undefined') return '';
+            
+            // Si es un número (fecha serial de Google Sheets)
+            if (!isNaN(dateValue)) {
+                const date = new Date((dateValue - 25569) * 86400 * 1000);
+                if (isNaN(date.getTime())) return '';
+                return date.toLocaleDateString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+            
+            // Si ya es una cadena de texto, intentar parsearla
+            const date = new Date(dateValue);
+            if (isNaN(date.getTime())) return dateValue; // Devolver original si no se puede parsear
+            
+            return date.toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+        
+        // Función para determinar la línea directa automáticamente
+        function determineDirectLine(nodes) {
+            // Encontrar el nodo raíz (sin padre)
+            const root = Object.values(nodes).find(node => !node.parentId);
+            if (!root) return new Set();
+            
+            // Encontrar el nodo más joven (sin hijos)
+            const youngest = Object.values(nodes).find(node => node.children.length === 0);
+            if (!youngest) return new Set();
+            
+            // Construir la línea directa desde el más joven hasta el más antiguo
+            const directLineIds = new Set();
+            let current = youngest;
+            
+            while (current) {
+                directLineIds.add(current.id);
+                // Buscar el padre
+                current = Object.values(nodes).find(node => 
+                    node.children.some(child => child.id === current.id)
+                );
+            }
+            
+            console.log('Línea directa determinada:', Array.from(directLineIds));
+            return directLineIds;
+        }
+        
+        // Función para convertir datos a estructura de árbol
+        function rowsToTree(rows) {
+            const nodes = {};
+            
+            // Crear nodos
+            rows.forEach(row => {
+                nodes[row.id] = {
+                    id: row.id,
+                    name: row.name || 'Sin nombre',
+                    birthDate: row.birth_date || '',
+                    deathDate: row.death_date || '',
+                    birthPlace: row.birth_place || '',
+                    generation: parseInt(row.generation) || 0,
+                    isDirectLine: row.is_direct_line === 'true' || row.is_direct_line === '1',
+                    verificado: row.verificado === 'true' || row.verificado === '1',
+                    branch: row.branch || 'unknown',
+                    displayOrder: parseInt(row.display_order) || 0,
+                    parentId: row.parent_id || null,
+                    children: []
+                };
+            });
+            
+            // Establecer relaciones padre-hijo
+            rows.forEach(row => {
+                if (row.parent_id && nodes[row.parent_id]) {
+                    nodes[row.parent_id].children.push(nodes[row.id]);
+                }
+            });
+            
+            // Ordenar hijos por display_order
+            Object.values(nodes).forEach(node => {
+                if (node.children.length > 0) {
+                    node.children.sort((a, b) => a.displayOrder - b.displayOrder);
+                }
+            });
+            
+            // Log de resultados
+            Object.values(nodes).forEach(node => {
+                console.log(`Procesando ${node.name}: isDirectLine = ${node.isDirectLine}, branch = ${node.branch}`);
+            });
+            
+            // Encontrar raíz (sin padre)
+            const rootNode = Object.values(nodes).find(node => !node.parentId);
+            
+            return rootNode || Object.values(nodes)[0];
+        }
+        
+        // Función para cargar datos locales
+        function loadLocalData() {
+            const exampleData = [
+                { id: '1', parent_id: '', name: 'Juan Martin Clemenzo', birth_date: '2020', generation: '0', is_direct_line: 'true' },
+                { id: '2', parent_id: '1', name: 'Matias Damian Clemenzo', birth_date: '1990', generation: '1', is_direct_line: 'true' },
+                { id: '3', parent_id: '2', name: 'Daniel Jorge Clemenzo', birth_date: '1960', generation: '2', is_direct_line: 'true' },
+                { id: '4', parent_id: '3', name: 'Felix Ricardo Clemenzo', birth_date: '1926', generation: '3', is_direct_line: 'true' },
+                { id: '5', parent_id: '4', name: 'Felix Clemenzo', birth_date: '1894', generation: '4', is_direct_line: 'true' },
+                { id: '6', parent_id: '5', name: 'Francisco Clemenzo', birth_date: '1856', generation: '5', is_direct_line: 'true' },
+                { id: '7', parent_id: '2', name: 'Maria Cecilia Vargas', birth_date: '1965', generation: '2', is_direct_line: 'false' },
+                { id: '8', parent_id: '4', name: 'Isabel Maria Queipo', birth_date: '1905', generation: '4', is_direct_line: 'false' },
+                { id: '9', parent_id: '6', name: 'Celestina Roch', birth_date: '1887', generation: '5', is_direct_line: 'false' }
+            ];
+            
+            return exampleData;
+        }
+        
+        // Función para crear el árbol con D3.js
+        function createTree(data) {
+            const container = document.getElementById('tree');
+            if (!container) {
+                console.error('Container not found');
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            // Crear SVG
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Crear grupo principal
+            const g = svg.append('g');
+            
+            // Configurar zoom
+            const zoom = d3.zoom()
+                .scaleExtent([0.1, 3])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            
+            svg.call(zoom);
+            
+            // Configurar layout del árbol
+            const treeLayout = d3.tree()
+                .nodeSize([cardWidth + cardSpacing, levelSpacing])
+                .separation((a, b) => {
+                    // Solo separación vertical, no horizontal entre hermanos
+                    return a.parent === b.parent ? 1.5 : 2.0;
+                });
+            
+            // Aplicar layout
+            const root = d3.hierarchy(data);
+            treeLayout(root);
+            
+            // Función para filtrar nodos colapsados
+            function filterCollapsedNodes(node) {
+                if (collapsedNodes.has(node.id)) {
+                    return false;
+                }
+                if (node.parent && collapsedNodes.has(node.parent.id)) {
+                    return false;
+                }
+                return true;
+            }
+            
+            // Crear una copia del árbol y aplicar colapso
+            function createCollapsedTree(originalRoot) {
+                if (!originalRoot || !originalRoot.data) {
+                    console.error('Árbol original inválido');
+                    return null;
+                }
+                
+                const collapsedRoot = d3.hierarchy(originalRoot.data);
+                
+                // Función recursiva para construir el árbol colapsado
+                function buildCollapsedNode(node, originalNode) {
+                    if (!originalNode || collapsedNodes.has(originalNode.id)) {
+                        // Nodo colapsado o inválido - no agregar hijos
+                        return;
+                    }
+                    
+                    // Verificar que el nodo original tiene hijos
+                    if (!originalNode.children || originalNode.children.length === 0) {
+                        return;
+                    }
+                    
+                    // Agregar hijos visibles
+                    originalNode.children.forEach(child => {
+                        if (child && !collapsedNodes.has(child.id)) {
+                            const collapsedChild = d3.hierarchy(child.data);
+                            collapsedChild.parent = node;
+                            if (!node.children) node.children = [];
+                            node.children.push(collapsedChild);
+                            buildCollapsedNode(collapsedChild, child);
+                        }
+                    });
+                }
+                
+                buildCollapsedNode(collapsedRoot, originalRoot);
+                return collapsedRoot;
+            }
+            
+            // Crear árbol colapsado
+            const collapsedRoot = createCollapsedTree(root);
+            
+            if (!collapsedRoot) {
+                console.error('No se pudo crear el árbol colapsado');
+                return;
+            }
+            
+            // Aplicar layout al árbol colapsado
+            treeLayout(collapsedRoot);
+            
+            // Obtener nodos y enlaces del árbol colapsado
+            const visibleNodes = collapsedRoot.descendants();
+            const visibleLinks = collapsedRoot.links();
+            
+            console.log('Nodos visibles:', visibleNodes.length);
+            console.log('Enlaces visibles:', visibleLinks.length);
+            
+            // Verificar que hay nodos visibles
+            if (visibleNodes.length === 0) {
+                console.warn('No hay nodos visibles después del colapso');
+                return;
+            }
+            
+            // Crear enlaces (solo relaciones padre-hijo)
+            const parentChildLinks = visibleLinks.filter(link => {
+                // Solo mostrar enlaces donde el target es hijo directo del source
+                const isParentChild = link.target.parent && link.target.parent.id === link.source.id;
+                
+                console.log(`Enlace ${link.source.data.name} -> ${link.target.data.name}: parentChild=${isParentChild}`);
+                
+                return isParentChild;
+            });
+            
+            console.log('Enlaces padre-hijo filtrados:', parentChildLinks.length);
+            
+            // Eliminar duplicados basado en IDs únicos
+            const uniqueLinks = parentChildLinks.filter((link, index, self) => {
+                const linkId = `${link.source.id}-${link.target.id}`;
+                return index === self.findIndex(l => `${l.source.id}-${l.target.id}` === linkId);
+            });
+            
+            console.log('Enlaces únicos después de eliminar duplicados:', uniqueLinks.length);
+            
+            const links = g.selectAll('.tree-link')
+                .data(uniqueLinks)
+                .enter()
+                .append('path')
+                .attr('class', 'tree-link')
+                .attr('d', d3.linkVertical()
+                    .x(d => d.x)
+                    .y(d => d.y)
+                )
+                .classed('direct-line', d => {
+                    return d.source.data.isDirectLine && d.target.data.isDirectLine;
+                })
+                .attr('stroke', d => {
+                    if (d.source.data.isDirectLine && d.target.data.isDirectLine) {
+                        return '#059669'; // Verde para línea directa
+                    }
+                    const sourceBranch = d.source.data.branch;
+                    const targetBranch = d.target.data.branch;
+                    // Si ambos son de la misma rama, usar el color de la rama
+                    if (sourceBranch === targetBranch) {
+                        return branchColors[sourceBranch] || branchColors['unknown'];
+                    }
+                    // Si son de ramas diferentes, usar gris
+                    return '#d1d5db';
+                })
+                .attr('stroke-width', d => {
+                    return d.source.data.isDirectLine && d.target.data.isDirectLine ? 3 : 2;
+                });
+            
+            // Crear grupos para las tarjetas (solo las visibles)
+            const nodes = g.selectAll('.node')
+                .data(visibleNodes)
+                .enter()
+                .append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.x},${d.y})`)
+                .style('opacity', d => {
+                    if (isDirectLineView) {
+                        return d.data.isDirectLine ? 1 : 0.3;
+                    }
+                    return 1;
+                });
+            
+            // Crear tarjetas (fondo principal)
+            nodes.append('rect')
+                .attr('class', 'person-card')
+                .attr('width', cardWidth)
+                .attr('height', cardHeight)
+                .attr('x', -cardWidth / 2)
+                .attr('y', -cardHeight / 2)
+                .attr('rx', 0)
+                .attr('ry', 0)
+                .attr('fill', '#ffffff')
+                .attr('stroke', d => {
+                    const branchColor = branchColors[d.data.branch] || branchColors['unknown'];
+                    return d.data.isDirectLine ? '#059669' : branchColor;
+                })
+                .attr('stroke-width', d => d.data.isDirectLine ? 3 : 2)
+                .style('stroke-linejoin', 'round')
+                .style('stroke-linecap', 'round')
+                .on('click', function(event, d) {
+                    setFocus(d);
+                });
+            
+            // Crear contenido de las tarjetas
+            nodes.each(function(d) {
+                const node = d3.select(this);
+                
+                // Header de la tarjeta (integrado con la tarjeta principal)
+                node.append('rect')
+                    .attr('width', cardWidth)
+                    .attr('height', 45)
+                    .attr('x', -cardWidth / 2)
+                    .attr('y', -cardHeight / 2)
+                    .attr('rx', 0)
+                    .attr('ry', 0)
+                    .attr('fill', '#f9fafb')
+                    .attr('stroke', '#e5e7eb')
+                    .attr('stroke-width', 2);
+                
+                // Línea separadora (ya no necesaria)
+                // node.append('line')
+                //     .attr('x1', -cardWidth / 2)
+                //     .attr('y1', -cardHeight / 2 + 45)
+                //     .attr('x2', cardWidth / 2)
+                //     .attr('y2', -cardHeight / 2 + 45)
+                //     .attr('stroke', '#e5e7eb')
+                //     .attr('stroke-width', 1);
+                
+                // Función para dividir nombres largos
+                function splitName(name) {
+                    const words = name.split(' ');
+                    if (words.length <= 2) return [name];
+                    
+                    const mid = Math.ceil(words.length / 2);
+                    return [
+                        words.slice(0, mid).join(' '),
+                        words.slice(mid).join(' ')
+                    ];
+                }
+                
+                // Función para truncar texto
+                function truncateText(text, maxLength) {
+                    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+                }
+                
+                // Nombre (con división automática)
+                const nameLines = splitName(d.data.name);
+                nameLines.forEach((line, i) => {
+                    node.append('text')
+                        .attr('x', -cardWidth / 2 + 12)
+                        .attr('y', -cardHeight / 2 + 18 + (i * 16))
+                        .attr('font-size', '13px')
+                        .attr('font-weight', '600')
+                        .attr('fill', '#1f2937')
+                        .text(line);
+                });
+                
+                // Función para dividir texto de lugar en dos líneas
+                function splitLocationText(text) {
+                    if (!text || text.length <= 20) return [text];
+                    
+                    const words = text.split(', ');
+                    if (words.length <= 1) return [text];
+                    
+                    // Intentar dividir por comas
+                    const mid = Math.ceil(words.length / 2);
+                    return [
+                        words.slice(0, mid).join(', '),
+                        words.slice(mid).join(', ')
+                    ];
+                }
+                
+                // Detalles
+                const details = [];
+                const formattedBirthDate = formatDate(d.data.birthDate);
+                if (formattedBirthDate) {
+                    details.push(`Nac: ${formattedBirthDate}`);
+                }
+                if (d.data.birthPlace && d.data.birthPlace !== 'undefined') {
+                    const locationLines = splitLocationText(d.data.birthPlace);
+                    details.push(`Lugar: ${locationLines[0]}`);
+                    if (locationLines[1]) {
+                        details.push(`      ${locationLines[1]}`);
+                    }
+                }
+                
+                details.forEach((detail, i) => {
+                    node.append('text')
+                        .attr('x', -cardWidth / 2 + 12)
+                        .attr('y', -cardHeight / 2 + 65 + (i * 16))
+                        .attr('font-size', '11px')
+                        .attr('fill', '#6b7280')
+                        .text(detail);
+                });
+                
+                // Indicador de verificado (si existe)
+                if (d.data.verificado === 'true' || d.data.verificado === '1') {
+                    node.append('text')
+                        .attr('x', -cardWidth / 2 + cardWidth - 15)
+                        .attr('y', -cardHeight / 2 + 20)
+                        .attr('font-size', '16px')
+                        .attr('fill', '#059669')
+                        .attr('font-weight', 'bold')
+                        .text('✓');
+                }
+                
+                // Indicador de colapso (si tiene hijos)
+                if (d.children && d.children.length > 0) {
+                    const isCollapsed = collapsedNodes.has(d.id);
+                    const collapseIcon = isCollapsed ? '▶' : '▼';
+                    const iconColor = isCollapsed ? '#6b7280' : '#3b82f6';
+                    
+                    // Círculo de fondo para el icono
+                    node.append('circle')
+                        .attr('cx', -cardWidth / 2 + cardWidth - 20)
+                        .attr('cy', -cardHeight / 2 + 70)
+                        .attr('r', 12)
+                        .attr('fill', '#f3f4f6')
+                        .attr('stroke', iconColor)
+                        .attr('stroke-width', 1)
+                        .style('cursor', 'pointer')
+                        .on('click', function(event) {
+                            event.stopPropagation();
+                            toggleCollapse(d);
+                        });
+                    
+                    // Icono de colapso
+                    node.append('text')
+                        .attr('x', -cardWidth / 2 + cardWidth - 20)
+                        .attr('y', -cardHeight / 2 + 75)
+                        .attr('text-anchor', 'middle')
+                        .attr('font-size', '12px')
+                        .attr('fill', iconColor)
+                        .attr('font-weight', 'bold')
+                        .style('cursor', 'pointer')
+                        .text(collapseIcon)
+                        .on('click', function(event) {
+                            event.stopPropagation();
+                            toggleCollapse(d);
+                        });
+                    
+                    // Texto indicador
+                    node.append('text')
+                        .attr('x', -cardWidth / 2 + cardWidth - 20)
+                        .attr('y', -cardHeight / 2 + 90)
+                        .attr('text-anchor', 'middle')
+                        .attr('font-size', '9px')
+                        .attr('fill', '#6b7280')
+                        .text(isCollapsed ? 'Expandir' : 'Colapsar');
+                }
+            });
+            
+            // Centrar el árbol
+            const bounds = g.node().getBBox();
+            if (bounds.width > 0 && bounds.height > 0) {
+                const scale = Math.min(width / bounds.width, height / bounds.height) * 0.8;
+                const transform = d3.zoomIdentity
+                    .translate(width / 2 - bounds.x * scale - bounds.width * scale / 2,
+                              height / 2 - bounds.y * scale - bounds.height * scale / 2)
+                    .scale(scale);
+                
+                svg.call(zoom.transform, transform);
+            }
+            
+            // Configurar navegación por teclado
+            setupKeyboardNavigation();
+            
+            // Actualizar estadísticas con un pequeño delay
+            setTimeout(() => {
+                updateStats(collapsedRoot);
+            }, 200);
+        }
+        
+        // Función para establecer foco
+        function setFocus(node) {
+            currentFocus = node;
+            
+            // Limpiar selección anterior
+            d3.selectAll('.person-card').attr('stroke', '#e5e7eb').attr('stroke-width', 2);
+            
+            // Seleccionar nueva tarjeta
+            d3.select(node.parent).select('.person-card').attr('stroke', '#3b82f6').attr('stroke-width', 3);
+            
+            // Actualizar información
+            updateFocusInfo(node.data);
+            
+            // Centrar en el nodo
+            const svg = d3.select('#tree svg');
+            if (svg.node()) {
+                const zoom = d3.zoomTransform(svg.node());
+                const scale = zoom.k;
+                
+                svg.transition()
+                    .duration(800)
+                    .call(d3.zoom().transform, d3.zoomIdentity
+                        .translate(svg.node().clientWidth / 2 - node.x * scale,
+                                  svg.node().clientHeight / 2 - node.y * scale)
+                        .scale(scale));
+            }
+        }
+        
+        // Función para actualizar información de foco
+        function updateFocusInfo(data) {
+            const focusInfo = document.getElementById('focusInfo');
+            
+            if (!focusInfo) {
+                console.warn('Focus info element not found');
+                return;
+            }
+            
+            if (!data) {
+                focusInfo.innerHTML = `
+                    <div class="focus-name">Selecciona una persona</div>
+                    <div class="focus-details">Haz clic en cualquier tarjeta para ver detalles</div>
+                `;
+                return;
+            }
+            
+            const name = data.name;
+            const birthDate = data.birthDate || '';
+            const deathDate = data.deathDate || '';
+            const birthPlace = data.birthPlace || '';
+            const generation = data.generation || 0;
+            const isDirect = data.isDirectLine;
+            
+            let details = '';
+            if (birthDate) {
+                details += `Nacimiento: ${birthDate}`;
+                if (deathDate) details += ` - Fallecimiento: ${deathDate}`;
+                details += '<br>';
+            }
+            
+            if (birthPlace) {
+                details += `Lugar: ${birthPlace}<br>`;
+            }
+            
+            details += `Generación: ${generation}`;
+            
+            if (isDirect) {
+                details += ' • Línea Directa';
+            }
+            
+            focusInfo.innerHTML = `
+                <div class="focus-name">${name}</div>
+                <div class="focus-details">${details}</div>
+            `;
+        }
+        
+        // Función para configurar navegación por teclado
+        function setupKeyboardNavigation() {
+            document.addEventListener('keydown', (event) => {
+                if (!currentFocus) return;
+                
+                const svg = d3.select('#tree svg');
+                if (!svg.node()) return;
+                
+                const zoom = d3.zoomTransform(svg.node());
+                const step = 100 / zoom.k;
+                
+                switch (event.key) {
+                    case 'ArrowLeft':
+                        svg.transition()
+                            .duration(300)
+                            .call(d3.zoom().transform, d3.zoomIdentity
+                                .translate(zoom.x + step, zoom.y)
+                                .scale(zoom.k));
+                        break;
+                    case 'ArrowRight':
+                        svg.transition()
+                            .duration(300)
+                            .call(d3.zoom().transform, d3.zoomIdentity
+                                .translate(zoom.x - step, zoom.y)
+                                .scale(zoom.k));
+                        break;
+                    case 'ArrowUp':
+                        svg.transition()
+                            .duration(300)
+                            .call(d3.zoom().transform, d3.zoomIdentity
+                                .translate(zoom.x, zoom.y + step)
+                                .scale(zoom.k));
+                        break;
+                    case 'ArrowDown':
+                        svg.transition()
+                            .duration(300)
+                            .call(d3.zoom().transform, d3.zoomIdentity
+                                .translate(zoom.x, zoom.y - step)
+                                .scale(zoom.k));
+                        break;
+                    case 'Enter':
+                        if (currentFocus) {
+                            setFocus(currentFocus);
+                        }
+                        break;
+                }
+            });
+        }
+        
+        // Función para alternar colapso de nodos
+        function toggleCollapse(node) {
+            if (collapsedNodes.has(node.id)) {
+                // Expandir
+                collapsedNodes.delete(node.id);
+            } else {
+                // Colapsar
+                collapsedNodes.add(node.id);
+            }
+            
+            // Recrear el árbol con el nuevo estado
+            createTree(treeData);
+        }
+        
+        // Función para alternar vista
+        function toggleView() {
+            isDirectLineView = !isDirectLineView;
+            const toggle = document.getElementById('viewToggle');
+            
+            if (!toggle) {
+                console.warn('Toggle element not found');
+                return;
+            }
+            
+            if (isDirectLineView) {
+                toggle.textContent = 'Vista: Línea Directa';
+                toggle.classList.add('active');
+            } else {
+                toggle.textContent = 'Vista: Completa';
+                toggle.classList.remove('active');
+            }
+            
+            // Recrear el árbol con la nueva vista
+            if (treeData) {
+                createTree(treeData);
+            }
+        }
+        
+        // Función para actualizar estadísticas
+        function updateStats(root) {
+            const personCountEl = document.getElementById('personCount');
+            const generationCountEl = document.getElementById('generationCount');
+            
+            if (!personCountEl || !generationCountEl) {
+                console.warn('Stats elements not found');
+                return;
+            }
+            
+            const nodes = root.descendants();
+            const generations = new Set();
+            
+            nodes.forEach(node => {
+                generations.add(node.data.generation);
+            });
+            
+            personCountEl.textContent = nodes.length;
+            generationCountEl.textContent = generations.size;
+        }
+        
+        // Función principal para inicializar
+        async function init() {
+            // Pequeño delay para asegurar que el DOM esté listo
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            try {
+                let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
+                
+                if (!rows || rows.length === 0) {
+                    rows = loadLocalData();
+                }
+                
+                treeData = rowsToTree(rows);
+                createTree(treeData);
+                
+                const toggle = document.getElementById('viewToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', toggleView);
+                }
+                
+            } catch (error) {
+                console.error('Error inicializando árbol:', error);
+                const rows = loadLocalData();
+                treeData = rowsToTree(rows);
+                createTree(treeData);
+            }
+        }
+        
+        // Esperar a que el DOM esté completamente cargado
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            // DOM ya está listo
+            init();
+        }
+        
+        window.addEventListener('resize', () => {
+            if (treeData) {
+                createTree(treeData);
+            }
+        });
+    </script>
+</body>
+</html>

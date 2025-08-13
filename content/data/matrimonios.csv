@@ -1,0 +1,6 @@
+marriage_id,spouse1_id,spouse2_id,marriage_date,marriage_place,notes
+M1,1,2,1885,Ardon,Suiza
+M2,3,4,1924,"Bolívar, Buenos Aires, Argentina",
+M3,5,6,1950,"Ciudad de Buenos Aires, Argentina",
+M4,7,8,1985,"Buenos Aires, Argentina",
+M5,9,10,2015,"Buenos Aires, Argentina",

@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Genealógico - Nueva Versión</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Base: Notion-like minimalist UI */
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --border: #e6e7eb;
+            --text: #0f172a;
+            --muted: #6b7280;
+        }
+        
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 20px 32px;
+            text-align: left;
+        }
+
+        .blog-meta {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .top-nav { margin-bottom: 12px; }
+
+        .header h1 {
+            margin: 0 0 16px 0;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .author-title { display: none; }
+
+        .author-meta {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .controls {
+            padding: 24px 32px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #dfe1e6;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .btn-success {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .view-info {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .tree-container {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .person-card {
+            fill: white;
+            stroke: #e5e7eb;
+            stroke-width: 1.5;
+            rx: 12;
+            ry: 12;
+            /* Sombra más sutil para que no parezca un enlace */
+            filter: drop-shadow(0 3px 8px rgba(15, 23, 42, 0.06));
+        }
+
+        /* Direct line keeps same outline; color lo mostramos solo en conexiones */
+        .person-card.direct-line {
+            stroke: #e5e7eb;
+            stroke-width: 1.5;
+            filter: drop-shadow(0 3px 8px rgba(15, 23, 42, 0.06));
+        }
+
+        .person-card.selected {
+            stroke: #3b82f6;
+            stroke-width: 3;
+            filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
+        }
+
+        .card-header {
+            fill: #f1f5f9;
+            stroke: #e5e7eb;
+            stroke-width: 1.5;
+            rx: 12;
+            ry: 12;
+        }
+
+        /* Tag/píldora de color para agrupar hermanos por parent_id */
+        .sibling-tag {
+            opacity: 1;
+            stroke: #ffffff;
+            stroke-width: 1;
+        }
+
+        .card-name {
+            font-size: 14px;
+            font-weight: 700;
+            fill: #0f172a;
+            text-anchor: middle;
+        }
+
+        .card-detail {
+            font-size: 12px;
+            fill: #475569;
+            text-anchor: start;
+        }
+
+        .verificado {
+            font-size: 14px;
+            font-weight: bold;
+            fill: #059669;
+            text-anchor: middle;
+        }
+
+        .collapse-btn {
+            cursor: pointer;
+            font-size: 12px;
+            fill: #64748b;
+            text-anchor: middle;
+            font-weight: 500;
+        }
+
+        .collapse-btn:hover {
+            fill: #3b82f6;
+        }
+
+        .tree-link {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .tree-link.direct {
+            stroke: #059669;
+            stroke-width: 3;
+        }
+
+        .tree-link.spouse {
+            stroke: #f59e0b;
+            stroke-width: 2;
+            stroke-dasharray: 5,5;
+        }
+
+        .tree-link.other {
+            stroke: #e6e9f2;
+            opacity: 0.7;
+        }
+
+        .tree-link.spouse {
+            stroke: #f59e0b;
+            stroke-width: 2;
+            stroke-dasharray: 5,5;
+        }
+
+        /* Enlace vertical desde nodo de matrimonio hacia hijos */
+        .tree-link.marriage-child {
+            stroke: #cbd5e1;
+            stroke-width: 2;
+        }
+
+        /* Nodo de matrimonio (ícono entre cónyuges) */
+        .marriage-node {
+            fill: #ffffff;
+            stroke: #cbd5e1;
+            stroke-width: 2;
+            rx: 8;
+            ry: 8;
+            filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.12));
+        }
+        .marriage-node-text {
+            font-size: 14px;
+            fill: #334155;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .stats {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.95);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .focus-info {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 320px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .focus-info h3 {
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .focus-info p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .focus-info strong {
+            color: #1e293b;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #dc2626;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .error h3 {
+            margin: 0 0 16px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .error button {
+            margin-top: 16px;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            margin-top: 48px;
+        }
+
+        .footer-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .footer-text {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="top-nav">
+                <a class="btn" href="./index.html">Inicio</a>
+            </div>
+
+            <h1>Árbol Genealógico Clemenzo</h1>
+
+            <div class="article-meta" style="display:flex; align-items:center; gap:12px;">
+                <div class="author-avatar">
+                    <img src="./assets/images/avatars/matias.png" alt="Matías Clemenzo" />
+                </div>
+                <div class="meta-text">
+                    <div><strong>Por Matías Clemenzo</strong></div>
+                    <div id="meta-edition">Publicado — · Última edición —</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls" style="padding: 16px 32px;">
+            <span class="view-info" id="stats">Cargando...</span>
+        </div>
+        
+        <div class="tree-container" id="treeContainer">
+            <div class="loading">Cargando árbol genealógico...</div>
+        </div>
+        
+        <div class="focus-info" id="focusInfo"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-text">Matias Clemenzo 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        (function(){
+          const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+          const now = new Date();
+          const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+          window.addEventListener('load', () => {
+            const metaEdition = document.getElementById('meta-edition');
+            if (metaEdition) metaEdition.textContent = `Publicado 10 de agosto de 2025 · Última edición ${dateStr}`;
+          });
+        })();
+        // Configuración
+        const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+        const SHEET_GID = '0';
+        // Si usas la hoja "Matrimonios", coloca aquí su GID (déjalo vacío para desactivar)
+        const MARRIAGES_SHEET_GID = '637454234';
+        
+        // Estado
+        let treeData = null;
+        let currentView = 'complete'; // 'complete' o 'direct'
+        let selectedNode = null;
+        let collapsedNodes = new Set();
+        
+        // Dimensiones
+        const cardWidth = 220;
+        const cardHeight = 200;
+        const cardSpacing = 160;
+        const levelSpacing = 280;
+        
+        // Colores por rama
+        const branchColors = {
+            'clemenzo': '#3b82f6',
+            'roch': '#10b981',
+            'queipo': '#f59e0b',
+            'carvallo': '#ef4444',
+            'arceo': '#8b5cf6',
+            'vargas': '#ec4899',
+            'baster': '#06b6d4',
+            'costabile': '#84cc16',
+            'unknown': '#6b7280'
+        };
+
+        // Paleta para colorear hijos por parentId (determinista pero limitada)
+        // Paleta más vibrante
+        const parentPalette = ['#93c5fd', '#86efac', '#fda4af', '#c4b5fd', '#fde68a', '#7dd3fc', '#f0abfc', '#94a3b8'];
+        function colorForParentId(pid) {
+            if (!pid) return '#ffffff';
+            const idx = Math.abs(String(pid).split('').reduce((a,c)=>a + c.charCodeAt(0), 0)) % parentPalette.length;
+            return parentPalette[idx];
+        }
+
+        // Función para cargar datos de Google Sheets
+        async function loadData() {
+            try {
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                console.log('Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
+                
+                // Limpiar respuesta de Google Sheets (formato JSONP)
+                let jsonText = text;
+                if (text.startsWith('/*O_o*/')) {
+                    // Remover el prefijo JSONP
+                    jsonText = text.replace(/^\/\*O_o\*\/\s*/, '');
+                }
+                
+                // Buscar el objeto JSON real
+                const match = jsonText.match(/\{.*\}/);
+                if (!match) {
+                    throw new Error('No se encontró JSON válido en la respuesta');
+                }
+                
+                const data = JSON.parse(match[0]);
+                
+                if (!data.table || !data.table.rows) {
+                    throw new Error('Formato de datos inválido');
+                }
+                
+                // Mapear columnas por etiqueta para evitar errores por posición
+                const cols = data.table.cols || [];
+                const colIndex = {};
+                cols.forEach((col, idx) => {
+                    const key = (col.label || col.id || '').toString().trim().toLowerCase();
+                    if (key) colIndex[key] = idx;
+                });
+                const hasSpouseColumn = colIndex['spouse_id'] !== undefined;
+                window.hasSpouseColumn = !!hasSpouseColumn;
+
+                // Convertir a formato simple
+                const rows = data.table.rows.map(row => {
+                    const cells = row.c || [];
+                    console.log('Procesando fila:', cells.map(c => c?.v));
+                    
+                    // Verificar si la posición 6 contiene un nombre (texto con espacios que no es un número)
+                    const pos6Value = cells[6]?.v;
+                    let name = '';
+                    let displayOrder = '';
+                    
+                    if (pos6Value && typeof pos6Value === 'string' && pos6Value.includes(' ') && !isNaN(pos6Value) === false) {
+                        // La posición 6 contiene un nombre
+                        name = pos6Value;
+                        displayOrder = cells[5]?.v || '';
+                    } else {
+                        // La posición 6 no contiene un nombre, buscar en otras posiciones
+                        for (let i = 0; i < cells.length; i++) {
+                            const value = cells[i]?.v;
+                            if (value && typeof value === 'string' && value.includes(' ') && !isNaN(value) === false) {
+                                name = value;
+                            } else if (value && (typeof value === 'number' || (typeof value === 'string' && !isNaN(value))) && value < 100) {
+                                displayOrder = value;
+                            }
+                        }
+                    }
+                    
+                    const safe = (label, fallbackIdx) => {
+                        const idx = colIndex[label] !== undefined ? colIndex[label] : fallbackIdx;
+                        return idx !== undefined ? (cells[idx]?.v ?? '') : '';
+                    };
+                    
+                    return {
+                        id: safe('id', 0),
+                        parent_id: safe('parent_id', 1),
+                        spouse_id: hasSpouseColumn ? safe('spouse_id', 2) : '',
+                        generation: safe('generation', 3),
+                        is_direct_line: safe('is_direct_line', 4),
+                        branch: safe('branch', 5),
+                        display_order: displayOrder,
+                        name: colIndex['name'] !== undefined ? safe('name', 6) : name,
+                        birth_date: safe('birth_date', 7),
+                        birth_place: safe('birth_place', 8),
+                        death_date: safe('death_date', 9),
+                        verificado: safe('verificado', 10)
+                    };
+                });
+                
+                console.log('Datos cargados:', rows.length, 'filas');
+                console.log('Primera fila completa:', rows[0]);
+                console.log('Nombres encontrados:', rows.map(r => r.name).filter(n => n));
+                console.log('IDs encontrados:', rows.map(r => r.id).filter(n => n));
+                return rows;
+                
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                throw error;
+            }
+        }
+
+        // Cargar hoja "Matrimonios" (opcional)
+        async function loadMarriages() {
+            if (!MARRIAGES_SHEET_GID) return [];
+            try {
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${MARRIAGES_SHEET_GID}`;
+                const response = await fetch(url);
+                const text = await response.text();
+                let jsonText = text.startsWith('/*O_o*/') ? text.replace(/^\/\*O_o\*\/\s*/, '') : text;
+                const match = jsonText.match(/\{.*\}/);
+                if (!match) throw new Error('No se encontró JSON válido en Matrimonios');
+                const data = JSON.parse(match[0]);
+                if (!data.table || !data.table.rows) throw new Error('Formato inválido en Matrimonios');
+                const cols = data.table.cols || [];
+                const colIndex = {};
+                cols.forEach((col, idx) => {
+                    const key = (col.label || col.id || '').toString().trim().toLowerCase();
+                    if (key) colIndex[key] = idx;
+                });
+                const safe = (cells, label) => {
+                    const idx = colIndex[label];
+                    return idx !== undefined ? (cells[idx]?.v ?? '') : '';
+                };
+                const rows = data.table.rows.map(row => {
+                    const cells = row.c || [];
+                    return {
+                        marriage_id: String(safe(cells, 'marriage_id') || '').trim(),
+                        spouse1_id: String(safe(cells, 'spouse1_id') || '').trim(),
+                        spouse2_id: String(safe(cells, 'spouse2_id') || '').trim(),
+                        marriage_date: safe(cells, 'marriage_date') || '',
+                        marriage_place: safe(cells, 'marriage_place') || '',
+                        notes: safe(cells, 'notes') || ''
+                    };
+                }).filter(r => r.spouse1_id && r.spouse2_id);
+                console.log('Marriages (raw):', rows);
+                return rows;
+            } catch (e) {
+                console.warn('Error cargando hoja Matrimonios:', e);
+                return [];
+            }
+        }
+
+        // Función para convertir filas a estructura de árbol
+        function buildTree(rows) {
+            console.log('Iniciando buildTree con', rows.length, 'filas');
+            const nodes = {};
+            const rootNodes = [];
+            const spouseLinks = [];
+            
+            // Crear nodos
+            rows.forEach(row => {
+                const id = String(row.id ?? '').trim();
+                const parentId = row.parent_id !== '' && row.parent_id != null ? String(row.parent_id).trim() : null;
+                const spouseId = row.spouse_id !== '' && row.spouse_id != null ? String(row.spouse_id).trim() : null;
+                nodes[id] = {
+                    id,
+                    name: row.name,
+                    birthDate: row.birth_date,
+                    birthPlace: row.birth_place,
+                    deathDate: row.death_date,
+                    generation: parseInt(row.generation) || 0,
+                    isDirectLine: row.is_direct_line === 'true' || row.is_direct_line === '1',
+                    branch: row.branch || 'unknown',
+                    displayOrder: parseInt(row.display_order) || 0,
+                    verificado: row.verificado === 'true' || row.verificado === '1',
+                    parentId,
+                    spouseId,
+                    children: []
+                };
+            });
+            
+            // Establecer relaciones padre-hijo
+            Object.values(nodes).forEach(node => {
+                if (node.parentId && nodes[node.parentId]) {
+                    nodes[node.parentId].children.push(node);
+                } else {
+                    rootNodes.push(node);
+                }
+            });
+            
+            // Crear enlaces de matrimonio (desde hoja Matrimonios si existe; si no, usar spouse_id recíproco)
+            const seenPairs = new Set();
+            if (window.marriages && window.marriages.length > 0) {
+                window.marriages.forEach(m => {
+                    const a = nodes[String(m.spouse1_id)] || nodes[m.spouse1_id];
+                    const b = nodes[String(m.spouse2_id)] || nodes[m.spouse2_id];
+                    if (!a || !b) return;
+                    const key = [a.id, b.id].sort().join('::');
+                    if (seenPairs.has(key)) return;
+                    seenPairs.add(key);
+                    console.log('Marriage link:', m.marriage_id, '=>', `${a.id}:${a.name}`, '<->', `${b.id}:${b.name}`);
+                    spouseLinks.push({ source: a, target: b, type: 'spouse', marriageId: m.marriage_id || '' });
+                });
+            } else if (window.hasSpouseColumn) {
+                Object.values(nodes).forEach(node => {
+                    const partnerId = node.spouseId;
+                    if (!partnerId) return;
+                    const partner = nodes[partnerId] || nodes[String(partnerId)];
+                    if (!partner) return;
+                    if (partner.spouseId !== node.id) return; // requerir simetría
+                    const key = [node.id, partner.id].sort().join('::');
+                    if (seenPairs.has(key)) return;
+                    seenPairs.add(key);
+                    spouseLinks.push({ source: node, target: partner, type: 'spouse' });
+                });
+            }
+            
+            // Ordenar hijos por display_order
+            Object.values(nodes).forEach(node => {
+                node.children.sort((a, b) => a.displayOrder - b.displayOrder);
+            });
+            
+            // IMPORTANTE: No agregar cónyuges como hijos; eso genera ciclos y hace colapsar el layout
+            
+            console.log('Árbol construido:', rootNodes.length, 'raíces');
+            console.log('Primera raíz:', rootNodes[0]?.name);
+            console.log('Nodos con hijos:', Object.values(nodes).filter(n => n.children.length > 0).length);
+            console.log('Enlaces de matrimonio:', spouseLinks.length);
+            
+            // Guardar enlaces de matrimonio globalmente
+            window.spouseLinks = spouseLinks;
+
+            // Si hay múltiples raíces, crear una raíz sintética para incluir todo
+            let result;
+            if (rootNodes.length > 1) {
+                result = {
+                    id: 'super-root',
+                    name: 'super-root',
+                    children: rootNodes,
+                    generation: (d3.max(rootNodes, r => r.generation) || 0) + 1,
+                    isDirectLine: false,
+                };
+            } else {
+                result = rootNodes[0] || Object.values(nodes)[0];
+            }
+            console.log('buildTree completado, retornando:', result?.name);
+            return result;
+        }
+
+        // Función para crear el árbol visual
+        function createTree(root) {
+            console.log('Creando árbol visual con raíz:', root.name);
+            
+            const container = document.getElementById('treeContainer');
+            container.innerHTML = '';
+            
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            console.log('Dimensiones del contenedor:', width, 'x', height);
+            
+            // Crear SVG
+            const svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .style('display', 'block')
+                .style('margin', '0 auto');
+            
+            // Hacer svg global para que esté disponible en toggleCollapse
+            window.currentSvg = svg;
+            
+            // NOTA: ya no usamos zoom para centrar el contenido; el viewBox se encarga
+            
+            const g = svg.append('g');
+
+            // Habilitar zoom/drag para interacción del usuario (no para centrar)
+            const zoom = d3.zoom()
+                .scaleExtent([0.3, 3])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            svg.call(zoom);
+            
+            // Configurar layout
+            const treeLayout = d3.tree()
+                .nodeSize([cardWidth + cardSpacing, levelSpacing])
+                .separation((a, b) => (a.parent === b.parent ? 1.4 : 2.0));
+            
+            // Crear jerarquía
+            const hierarchy = d3.hierarchy(root);
+            const treeData = treeLayout(hierarchy);
+
+            // Generadores de paths curvos para mejorar legibilidad
+            function pathVerticalCurve(x0, y0, x1, y1) {
+                const t = 0.5; // curvatura
+                const c1x = x0;
+                const c1y = y0 + (y1 - y0) * t;
+                const c2x = x1;
+                const c2y = y1 - (y1 - y0) * t;
+                return `M ${x0} ${y0} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${x1} ${y1}`;
+            }
+
+            function pathHorizontalCurve(x0, y0, x1, y1) {
+                const t = 0.5; // curvatura
+                const c1x = x0 + (x1 - x0) * t;
+                const c1y = y0;
+                const c2x = x1 - (x1 - x0) * t;
+                const c2y = y1;
+                return `M ${x0} ${y0} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${x1} ${y1}`;
+            }
+
+            // Alinear cónyuges en la misma línea y lado a lado (mejor legibilidad)
+            (function alignSpouses() {
+                if (!window.spouseLinks || window.spouseLinks.length === 0) return;
+                const nodesById = new Map();
+                treeData.descendants().forEach(n => nodesById.set(n.data.id, n));
+                const gap = cardWidth + 220; // más amplio y uniforme
+                window.spouseLinks.forEach(link => {
+                    const a = nodesById.get(link.source.id);
+                    const b = nodesById.get(link.target.id);
+                    if (!a || !b) return;
+                    const baseY = Math.max(a.y || 0, b.y || 0); // misma profundidad
+                    // Regla: si viene de hoja Matrimonios (marriageId presente), spouse2 (target) va a la izquierda
+                    // Fallback: priorizar línea directa a la izquierda; si no, mantener orden previo
+                    let left, right;
+                    if (link.marriageId) {
+                        left = b; right = a; // spouse2 a la izquierda, spouse1 a la derecha
+                    } else if (a.data.isDirectLine && !b.data.isDirectLine) {
+                        left = a; right = b;
+                    } else if (b.data.isDirectLine && !a.data.isDirectLine) {
+                        left = b; right = a;
+                    } else {
+                        const leftFirst = (a.x || 0) <= (b.x || 0);
+                        left = leftFirst ? a : b;
+                        right = leftFirst ? b : a;
+                    }
+                    const mid = (((a.x || 0) + (b.x || 0)) / 2);
+                    left.x = mid - gap / 2;
+                    right.x = mid + gap / 2;
+                    left.y = baseY;
+                    right.y = baseY;
+                });
+            })();
+            
+            console.log('Jerarquía creada:', treeData.descendants().length, 'nodos');
+            console.log('Enlaces creados:', treeData.links().length, 'enlaces');
+
+            // Calcular hijos por matrimonio y distribuirlos bajo el nodo de matrimonio (evitar apilado)
+            const nodesById = new Map();
+            treeData.descendants().forEach(n => nodesById.set(n.data.id, n));
+            const jointChildIds = new Set();
+            const marriageInfoByKey = new Map(); // key a::b -> {mx,my,children: Node[]}
+            if (window.spouseLinks && window.spouseLinks.length > 0) {
+                window.spouseLinks.forEach(link => {
+                    const a = nodesById.get(link.source.id);
+                    const b = nodesById.get(link.target.id);
+                    if (!a || !b) return;
+                    const mx = ((a.x || 0) + (b.x || 0)) / 2;
+                    const my = ((a.y || 0) + (b.y || 0)) / 2;
+                    const key = [a.data.id, b.data.id].sort().join('::');
+                    // hijos listados en cualquiera de los dos padres
+                    const ids = new Set([...(a.children||[]).map(c=>c.data.id), ...(b.children||[]).map(c=>c.data.id)]);
+                    const children = Array.from(ids).map(id => nodesById.get(id)).filter(Boolean);
+                    children.forEach(ch => jointChildIds.add(ch.data.id));
+                    // Distribuir TODOS los hijos en una sola fila, con gap uniforme
+                    const gapX = cardWidth + 140;
+                    const cols = children.length;
+                    const startX = mx - ((cols - 1) * gapX) / 2;
+                    children.forEach((ch, c) => {
+                        ch.x = startX + c * gapX;
+                    });
+                    // Ubicar cónyuges inmediatamente a la derecha del hijo si existen
+                    if (window.spouseLinks && window.spouseLinks.length) {
+                        const spouseOf = new Map();
+                        window.spouseLinks.forEach(l => { spouseOf.set(l.source.id, l.target.id); spouseOf.set(l.target.id, l.source.id); });
+                        const pairGap = 28;
+                        children.forEach(ch => {
+                            const pid = spouseOf.get(ch.data.id);
+                            const partner = pid ? nodesById.get(pid) : null;
+                            if (partner) {
+                                partner.x = ch.x + cardWidth + pairGap;
+                                partner.y = ch.y; // misma fila
+                            }
+                        });
+                    }
+                    marriageInfoByKey.set(key, {mx, my, children});
+                });
+            }
+            
+            // Ajuste global: espaciar uniformemente por niveles para evitar solapamientos
+            (function enforceUniformRowSpacing(){
+                const levels = new Map();
+                treeData.descendants().forEach(n => {
+                    const key = Math.round(n.y); // agrupar por nivel vertical
+                    if (!levels.has(key)) levels.set(key, []);
+                    levels.get(key).push(n);
+                });
+                const minGap = cardWidth + 140; // separación mínima uniforme
+                levels.forEach(nodesOnLevel => {
+                    nodesOnLevel.sort((a,b) => a.x - b.x);
+                    for (let i=1;i<nodesOnLevel.length;i++) {
+                        if (nodesOnLevel[i].x - nodesOnLevel[i-1].x < minGap) {
+                            nodesOnLevel[i].x = nodesOnLevel[i-1].x + minGap;
+                        }
+                    }
+                });
+            })();
+
+            // Crear enlaces padre-hijo
+            const parentChildLinks = g.selectAll('.tree-link-parent')
+                .data(
+                    treeData
+                      .links()
+                      .filter(l => l.source.data.id !== 'super-root')
+                      // ocultar enlaces padre->hijo si el hijo es de matrimonio
+                      .filter(l => !jointChildIds.has(l.target.data.id))
+                )
+                .enter()
+                .append('path')
+                .attr('class', d => {
+                    const isDirect = d.source.data.isDirectLine && d.target.data.isDirectLine;
+                    return `tree-link ${isDirect ? 'direct' : 'other'}`;
+                })
+                .attr('d', d => pathVerticalCurve(d.source.x, d.source.y, d.target.x, d.target.y));
+            
+            // Crear enlaces y nodos de matrimonio (ícono en el centro) + llevar descendencia desde allí
+            if (window.spouseLinks && window.spouseLinks.length > 0) {
+                // mapear id->posición para trazar enlaces de cónyuge
+                const pos = new Map();
+                const nodeById = new Map();
+                treeData.descendants().forEach(n => {
+                    pos.set(n.data.id, {x: n.x, y: n.y});
+                    nodeById.set(n.data.id, n);
+                });
+
+                const marriages = g.selectAll('.marriage')
+                    .data(window.spouseLinks)
+                    .enter()
+                    .append('g')
+                    .attr('class', 'marriage');
+
+                // Línea cónyuges
+                marriages.append('path')
+                    .attr('class', 'tree-link spouse')
+                    .attr('d', d => {
+                        const a = pos.get(d.source.id) || {x:0,y:0};
+                        const b = pos.get(d.target.id) || {x:0,y:0};
+                        return pathHorizontalCurve(a.x, a.y, b.x, b.y);
+                    });
+
+                // Nodo central de matrimonio (pequeño rectángulo con anillo)
+                marriages.each(function(d){
+                    const a = pos.get(d.source.id) || {x:0,y:0};
+                    const b = pos.get(d.target.id) || {x:0,y:0};
+                    const mx = (a.x + b.x) / 2;
+                    const my = (a.y + b.y) / 2;
+                    const gM = d3.select(this);
+                    const w = 28, h = 22;
+                    gM.append('rect')
+                      .attr('class', 'marriage-node')
+                      .attr('x', mx - w/2)
+                      .attr('y', my - h/2)
+                      .attr('width', w)
+                      .attr('height', h);
+                    gM.append('text')
+                      .attr('class', 'marriage-node-text')
+                      .attr('x', mx)
+                      .attr('y', my)
+                      .text('◦');
+
+                    // Hijos de esta pareja: usar lista ya distribuida para no apilar
+                    const key = [d.source.id, d.target.id].sort().join('::');
+                    const info = marriageInfoByKey.get(key);
+                    if (info && info.children && info.children.length) {
+                        info.children.forEach(child => {
+                            gM.append('path')
+                              .attr('class', 'tree-link marriage-child')
+                              .attr('d', pathVerticalCurve(mx, my + h/2, child.x, child.y - cardHeight/2));
+                        });
+                    }
+                });
+            }
+            
+            // Crear nodos
+            const nodes = g.selectAll('.node')
+                .data(treeData.descendants().filter(d => d.data.id !== 'super-root'))
+                .enter()
+                .append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.x},${d.y})`);
+            
+            // Crear tarjetas
+            nodes.append('rect')
+                .attr('class', d => {
+                    let classes = 'person-card';
+                    if (d.data.isDirectLine) classes += ' direct-line';
+                    return classes;
+                })
+                .attr('width', cardWidth)
+                .attr('height', cardHeight)
+                .attr('x', -cardWidth / 2)
+                .attr('y', -cardHeight / 2);
+            
+            // Crear header
+            nodes.append('rect')
+                .attr('class', 'card-header')
+                .attr('width', cardWidth)
+                .attr('height', 44)
+                .attr('x', -cardWidth / 2)
+                .attr('y', -cardHeight / 2);
+
+            // Píldora de color por parent_id (no colorea toda la tarjeta)
+            nodes.append('rect')
+                .attr('class', 'sibling-tag')
+                .attr('x', -cardWidth / 2 + 10)
+                .attr('y', -cardHeight / 2 + 12)
+                .attr('width', 32)
+                .attr('height', 12)
+                .attr('rx', 6)
+                .attr('ry', 6)
+                .attr('fill', d => colorForParentId(d.data.parentId));
+            
+            // Crear nombre (hasta 2 líneas, centrado)
+            nodes.append('text')
+                .attr('class', 'card-name')
+                .attr('y', -cardHeight / 2 + 18)
+                .each(function(d){
+                    const group = d3.select(this);
+                    const name = (d.data.name || 'Sin nombre').trim();
+                    const maxChars = 16; // un poco menos para evitar desbordes
+                    const words = name.split(/\s+/);
+                    let line1 = '';
+                    let line2 = '';
+                    for (const w of words) {
+                        if ((line1 + ' ' + w).trim().length <= maxChars) {
+                            line1 = (line1 + ' ' + w).trim();
+                        } else if ((line2 + ' ' + w).trim().length <= maxChars) {
+                            line2 = (line2 + ' ' + w).trim();
+                        } else {
+                            line2 += '…';
+                            break;
+                        }
+                    }
+                    group.text(null);
+                    group.append('tspan').attr('x', 0).attr('dy', 0).text(line1);
+                    if (line2) {
+                        group.append('tspan').attr('x', 0).attr('dy', 16).text(line2);
+                    }
+                });
+            
+            // Crear detalles
+            nodes.append('text')
+                .attr('class', 'card-detail')
+                .attr('y', -cardHeight / 2 + 74)
+                .each(function(d){
+                    const group = d3.select(this);
+                    const outLines = [];
+                    // Línea 1: nacimiento
+                    if (d.data.birthDate) outLines.push(`Nac.: ${d.data.birthDate}`);
+                    // Lugar en hasta 2 renglones
+                    if (d.data.birthPlace) {
+                        const label = 'Lugar: ';
+                        const place = String(d.data.birthPlace).trim();
+                        const maxFirst = 26; // caracteres aprox para primera línea (incluye label)
+                        if ((label + place).length <= maxFirst) {
+                            outLines.push(label + place);
+                        } else {
+                            // Buscar un buen corte: coma cerca de la mitad o último espacio antes de maxFirst-label
+                            const half = Math.floor(place.length / 2);
+                            let split = place.indexOf(',', half);
+                            if (split === -1 || split > maxFirst - label.length) {
+                                const limit = Math.min(maxFirst - label.length, place.length - 1);
+                                const cut = place.lastIndexOf(' ', limit);
+                                split = cut > 0 ? cut : limit;
+                            }
+                            const first = place.slice(0, split).trim().replace(/[,;]\s*$/, '');
+                            const rest = place.slice(split + 1).trim();
+                            outLines.push(label + first);
+                            if (rest) outLines.push(rest);
+                        }
+                    }
+                    // Fallecimiento (si existe)
+                    if (d.data.deathDate) outLines.push(`Fallec.: ${d.data.deathDate}`);
+
+                    group.text(null);
+                    // anclar a la izquierda del contenido
+                    const leftX = -cardWidth/2 + 14;
+                    outLines.forEach((line, idx) => {
+                        group.append('tspan')
+                            .attr('x', leftX)
+                            .attr('dy', idx === 0 ? 0 : 16)
+                            .text(line);
+                    });
+                });
+            
+            // Crear checkmark de verificado
+            nodes.filter(d => d.data.verificado)
+                .append('text')
+                .attr('class', 'verificado')
+                .attr('y', -cardHeight / 2 + 112)
+                .text('✓');
+            
+            // Crear botón de colapso/expandir si tiene hijos
+            nodes.filter(d => d.data.children.length > 0 || d.data.originalChildren)
+                .append('text')
+                .attr('class', 'collapse-btn')
+                .attr('y', -cardHeight / 2 + 168)
+                .text(d => {
+                    const hasOriginalChildren = d.data.originalChildren && d.data.originalChildren.length > 0;
+                    const isCollapsed = collapsedNodes.has(d.data.id);
+                    return isCollapsed ? '▶ Expandir' : '▼ Colapsar';
+                })
+                .on('click', function(event, d) {
+                    event.stopPropagation();
+                    toggleCollapse(d.data.id);
+                });
+            
+            // Eventos de nodos
+            nodes.on('click', function(event, d) {
+                selectNode(d);
+            });
+            
+            // Calcular bounds para foco inicial (raíz y descendientes cercanos)
+            const allBounds = g.node().getBBox();
+            console.log('Bounds del árbol (completo):', allBounds);
+
+            // Foco: raíz + 2 niveles
+            const focusNodes = treeData.descendants().filter(d => d.depth <= 2);
+            if (focusNodes.length > 0) {
+                const minX = d3.min(focusNodes, d => d.x - cardWidth / 2);
+                const maxX = d3.max(focusNodes, d => d.x + cardWidth / 2);
+                const minY = d3.min(focusNodes, d => d.y - cardHeight / 2);
+                const maxY = d3.max(focusNodes, d => d.y + cardHeight / 2);
+                const focusBounds = { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+                const paddingX = 140;
+                const paddingY = 140;
+                const vbX = focusBounds.x - paddingX;
+                const vbY = focusBounds.y - paddingY;
+                const vbW = Math.max(focusBounds.width + paddingX * 2, 1);
+                const vbH = Math.max(focusBounds.height + paddingY * 2, 1);
+                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
+                   .attr('preserveAspectRatio', 'xMidYMid meet');
+                console.log('viewBox (foco inicial) aplicado:', { vbX, vbY, vbW, vbH });
+            } else {
+                const paddingX = 120;
+                const paddingY = 120;
+                const vbX = allBounds.x - paddingX;
+                const vbY = allBounds.y - paddingY;
+                const vbW = Math.max(allBounds.width + paddingX * 2, 1);
+                const vbH = Math.max(allBounds.height + paddingY * 2, 1);
+                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
+                   .attr('preserveAspectRatio', 'xMidYMid meet');
+                console.log('viewBox (completo) aplicado:', { vbX, vbY, vbW, vbH });
+            }
+            
+            // Actualizar estadísticas
+            updateStats(treeData.descendants().length);
+        }
+
+        // Función para seleccionar nodo
+        function selectNode(node) {
+            // Limpiar selección anterior
+            d3.selectAll('.person-card').classed('selected', false);
+            
+            // Seleccionar nuevo nodo
+            d3.select(node.parent).select('.person-card').classed('selected', true);
+            
+            selectedNode = node;
+            updateFocusInfo(node.data);
+        }
+
+        // Función para actualizar información de foco
+        function updateFocusInfo(data) {
+            const focusInfo = document.getElementById('focusInfo');
+            focusInfo.style.display = 'block';
+            focusInfo.innerHTML = `
+                <h3>${data.name}</h3>
+                <p><strong>Generación:</strong> ${data.generation}</p>
+                <p><strong>Rama:</strong> ${data.branch}</p>
+                <p><strong>Línea directa:</strong> ${data.isDirectLine ? 'Sí' : 'No'}</p>
+                ${data.birthDate ? `<p><strong>Nacimiento:</strong> ${data.birthDate}</p>` : ''}
+                ${data.birthPlace ? `<p><strong>Lugar:</strong> ${data.birthPlace}</p>` : ''}
+                ${data.deathDate ? `<p><strong>Fallecimiento:</strong> ${data.deathDate}</p>` : ''}
+                ${data.verificado ? '<p><strong>✓ Verificado</strong></p>' : ''}
+            `;
+        }
+
+        // Función para alternar colapso
+        function toggleCollapse(nodeId) {
+            if (collapsedNodes.has(nodeId)) {
+                collapsedNodes.delete(nodeId);
+                console.log('Expandiendo nodo:', nodeId);
+            } else {
+                collapsedNodes.add(nodeId);
+                console.log('Colapsando nodo:', nodeId);
+            }
+            
+            // Recrear árbol con nodos colapsados
+            const filteredRoot = filterCollapsedNodes(treeData);
+            
+            // Guardar la transformación actual
+            const currentTransform = window.currentSvg ? d3.zoomTransform(window.currentSvg.node()) : null;
+            
+            createTree(filteredRoot);
+            
+            // Restaurar la transformación después de recrear el árbol
+            if (currentTransform && window.currentSvg) {
+                setTimeout(() => {
+                    window.currentSvg.call(d3.zoom().transform, currentTransform);
+                }, 100);
+            }
+        }
+
+        // Función para filtrar nodos colapsados
+        function filterCollapsedNodes(root) {
+            function filterNode(node) {
+                if (collapsedNodes.has(node.id)) {
+                    // Si está colapsado, usar los hijos originales si existen
+                    const childrenToUse = node.originalChildren || node.children;
+                    return { 
+                        ...node, 
+                        children: [],
+                        originalChildren: childrenToUse // Preservar hijos originales
+                    };
+                }
+                
+                // Si no está colapsado, procesar normalmente
+                const processedChildren = node.children
+                    .map(filterNode)
+                    .filter(child => child !== null);
+                
+                return {
+                    ...node,
+                    children: processedChildren,
+                    originalChildren: node.originalChildren || node.children // Preservar referencia original
+                };
+            }
+            return filterNode(root);
+        }
+
+        // Función para alternar vista
+        function toggleView() {
+            currentView = currentView === 'complete' ? 'direct' : 'complete';
+            document.getElementById('viewMode').textContent = `Vista: ${currentView === 'complete' ? 'Completa' : 'Línea Directa'}`;
+            
+            if (currentView === 'direct') {
+                const directRoot = filterDirectLine(treeData);
+                if (directRoot) {
+                    createTree(directRoot);
+                } else {
+                    console.warn('No hay línea directa para mostrar');
+                    currentView = 'complete';
+                    document.getElementById('viewMode').textContent = 'Vista: Completa';
+                }
+            } else {
+                createTree(treeData);
+            }
+        }
+
+        // Función para filtrar línea directa
+        function filterDirectLine(root) {
+            function filterNode(node) {
+                if (!node.isDirectLine) {
+                    return null;
+                }
+                const filteredChildren = node.children
+                    .filter(child => child.isDirectLine)
+                    .map(filterNode)
+                    .filter(child => child !== null);
+                
+                return {
+                    ...node,
+                    children: filteredChildren
+                };
+            }
+            const result = filterNode(root);
+            console.log('Línea directa filtrada:', result?.name);
+            return result;
+        }
+
+        // Asegurar que exista una línea directa marcada; si no, calcularla automáticamente
+        function ensureDirectLine(root) {
+            let exists = false;
+            (function scan(node){
+                if (node.isDirectLine) exists = true;
+                node.children.forEach(scan);
+            })(root);
+            if (exists) return true;
+
+            let bestPath = [];
+            function dfs(node, path) {
+                const next = path.concat(node);
+                if (node.generation === 0 || node.children.length === 0) {
+                    if (bestPath.length === 0 || next.length > bestPath.length) bestPath = next;
+                }
+                node.children.forEach(child => dfs(child, next));
+            }
+            dfs(root, []);
+            if (bestPath.length === 0) return false;
+            bestPath.forEach(n => { n.isDirectLine = true; });
+            console.log('Línea directa calculada automáticamente:', bestPath.map(n => n.name).join(' -> '));
+            return true;
+        }
+
+        // Función para resetear vista
+        function resetView() {
+            // Mostrar todo el árbol (viewBox al contenido completo)
+            const container = document.getElementById('treeContainer');
+            const svg = d3.select(container).select('svg');
+            const g = svg.select('g');
+            if (!g.node()) return;
+            const b = g.node().getBBox();
+            const padX = 120, padY = 120;
+            svg.attr('viewBox', `${b.x-padX} ${b.y-padY} ${Math.max(1,b.width+padX*2)} ${Math.max(1,b.height+padY*2)}`)
+               .attr('preserveAspectRatio', 'xMidYMid meet');
+            console.log('Reset view (completo)');
+        }
+
+        function centerOnRoot() {
+            // Enfocar en Francisco (raíz) + 2 niveles
+            const container = document.getElementById('treeContainer');
+            const svg = d3.select(container).select('svg');
+            const g = svg.select('g');
+            if (!g.node()) return;
+            const hierarchy = d3.hierarchy(treeData);
+            const nodes = hierarchy.descendants().filter(d => d.depth <= 2);
+            if (nodes.length === 0) {
+                console.warn('No hay nodos para centrar');
+                return;
+            }
+            const cardW = 220, cardH = 200;
+            const minX = d3.min(nodes, d => (d.x ?? 0) - cardW/2);
+            const maxX = d3.max(nodes, d => (d.x ?? 0) + cardW/2);
+            const minY = d3.min(nodes, d => (d.y ?? 0) - cardH/2);
+            const maxY = d3.max(nodes, d => (d.y ?? 0) + cardH/2);
+            const padX = 160, padY = 160;
+            // Para evitar zoom excesivo, ampliamos el encuadre del foco
+            const focusW = Math.max(1, (maxX - minX) + padX*2);
+            const focusH = Math.max(1, (maxY - minY) + padY*2);
+            const vbW = focusW * 1.5; // ampliar encuadre
+            const vbH = focusH * 1.5;
+            const vbX = (minX - padX) - (vbW - focusW)/2;
+            const vbY = (minY - padY) - (vbH - focusH)/2;
+            svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
+               .attr('preserveAspectRatio', 'xMidYMid meet');
+            console.log('Center on root', {vbX, vbY, vbW, vbH});
+        }
+
+        // Función para actualizar estadísticas
+        function updateStats(count) {
+            document.getElementById('stats').textContent = `${count} personas`;
+        }
+
+        // Función para datos de ejemplo
+        function getExampleData() {
+            return [
+                {id: '1', parent_id: '', generation: '5', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Francisco Clemenzo', birth_date: '1856', birth_place: 'Ardon Suiza', death_date: '1928', verificado: 'true'},
+                {id: '2', parent_id: '', generation: '5', is_direct_line: 'false', branch: 'roch', display_order: '2', name: 'Celestina Roch', birth_date: '1887', birth_place: 'Suiza', death_date: '1968', verificado: 'true'},
+                {id: '3', parent_id: '1', generation: '4', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Felix Clemenzo', birth_date: '1894', birth_place: 'Entre Rios Argentina', death_date: '1955', verificado: 'true'},
+                {id: '4', parent_id: '', generation: '4', is_direct_line: 'false', branch: 'queipo', display_order: '2', name: 'Isabel Maria Queipo', birth_date: '1905', birth_place: 'Argentina', death_date: '1969', verificado: 'true'},
+                {id: '5', parent_id: '3', generation: '3', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Felix Ricardo Clemenzo', birth_date: '1926', birth_place: 'Bolivar Buenos Aires Argentina', death_date: '', verificado: 'true'},
+                {id: '6', parent_id: '', generation: '3', is_direct_line: 'false', branch: 'carvallo', display_order: '2', name: 'Raquel Noemi Carvallo', birth_date: '', birth_place: 'Ciudad de Buenos Aires Argentina', death_date: '', verificado: 'true'},
+                {id: '7', parent_id: '5', generation: '2', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Daniel Jorge Clemenzo', birth_date: '', birth_place: 'Buenos Aires Argentina', death_date: '', verificado: 'true'},
+                {id: '8', parent_id: '', generation: '2', is_direct_line: 'false', branch: 'arceo', display_order: '2', name: 'Cristina Magdalena Arceo', birth_date: '', birth_place: '', death_date: '', verificado: 'true'},
+                {id: '9', parent_id: '7', generation: '1', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Matias Damian Clemenzo', birth_date: '1990', birth_place: '', death_date: '', verificado: 'true'},
+                {id: '10', parent_id: '', generation: '1', is_direct_line: 'false', branch: 'vargas', display_order: '2', name: 'Maria Cecilia Vargas Yegros', birth_date: '', birth_place: '', death_date: '', verificado: 'true'},
+                {id: '11', parent_id: '9', generation: '0', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Juan Martin Clemenzo Vargas Yegros', birth_date: '2020', birth_place: '', death_date: '', verificado: 'true'}
+            ];
+        }
+
+        // Función principal
+        async function init() {
+            try {
+                let rows;
+                try {
+                    rows = await loadData();
+                    console.log('Datos cargados desde Google Sheets');
+                } catch (error) {
+                    console.warn('Error cargando desde Google Sheets, usando datos de ejemplo:', error);
+                    rows = getExampleData();
+                }
+                
+                // Cargar hoja de Matrimonios (si se configuró GID)
+                try {
+                    const marriages = await loadMarriages();
+                    window.marriages = marriages;
+                    console.log('Matrimonios cargados:', marriages.length);
+                } catch (e) {
+                    window.marriages = [];
+                }
+
+                console.log('Construyendo árbol con', rows.length, 'filas');
+                treeData = buildTree(rows);
+                ensureDirectLine(treeData);
+                console.log('Árbol construido, creando visualización');
+                createTree(treeData);
+                
+                // Configurar navegación por teclado
+                document.addEventListener('keydown', (event) => {
+                    if (!selectedNode) return;
+                    
+                    switch(event.key) {
+                        case 'ArrowUp':
+                            // Navegar al padre
+                            if (selectedNode.parent) {
+                                selectNode(selectedNode.parent);
+                            }
+                            break;
+                        case 'ArrowDown':
+                            // Navegar al primer hijo
+                            if (selectedNode.children.length > 0) {
+                                selectNode(selectedNode.children[0]);
+                            }
+                            break;
+                        case 'ArrowLeft':
+                            // Navegar al hermano anterior
+                            if (selectedNode.parent) {
+                                const siblings = selectedNode.parent.children;
+                                const index = siblings.indexOf(selectedNode);
+                                if (index > 0) {
+                                    selectNode(siblings[index - 1]);
+                                }
+                            }
+                            break;
+                        case 'ArrowRight':
+                            // Navegar al hermano siguiente
+                            if (selectedNode.parent) {
+                                const siblings = selectedNode.parent.children;
+                                const index = siblings.indexOf(selectedNode);
+                                if (index < siblings.length - 1) {
+                                    selectNode(siblings[index + 1]);
+                                }
+                            }
+                            break;
+                    }
+                });
+                
+            } catch (error) {
+                document.getElementById('treeContainer').innerHTML = `
+                    <div class="error">
+                        <h3>Error cargando datos</h3>
+                        <p>${error.message}</p>
+                        <button onclick="location.reload()">Reintentar</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Inicializar cuando se carga la página
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

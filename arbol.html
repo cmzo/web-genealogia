@@ -1,672 +1,567 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Árbol genealógico · Matías Clemenzo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./assets/css/styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Genealógico - Matias Clemenzo</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
-    .search-highlight {
-      fill: #10b981 !important;
-      font-weight: 700 !important;
-      text-shadow: 0 0 3px rgba(16, 185, 129, 0.3) !important;
+        .tree-container {
+            width: 100%;
+            height: 80vh;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tree-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tree-node:hover {
+            transform: scale(1.05);
+        }
+        
+        .tree-node.focused {
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+        }
+        
+        .tree-node.unfocused {
+            opacity: 0.2;
+            filter: grayscale(0.8) blur(1px);
+        }
+        
+        .node-circle {
+            stroke: #374151;
+            stroke-width: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .tree-node:hover .node-circle {
+            stroke-width: 3;
+        }
+        
+        .tree-node.focused .node-circle {
+            stroke-width: 4;
+            stroke: #1f2937;
+        }
+        
+        .node-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-anchor: middle;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .tree-link {
+            stroke: #9ca3af;
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+        
+        .tree-link.focused {
+            stroke: #374151;
+            stroke-width: 3;
+        }
+        
+        .tree-link.unfocused {
+            stroke: #d1d5db;
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #374151;
+        }
+        
+        .key-hint {
+            margin: 4px 0;
+            font-weight: 500;
+        }
+        
+        .focus-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #374151;
+            max-width: 300px;
+        }
+        
+        .focus-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+        
+        .focus-details {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .keyboard-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .keyboard-indicator.show {
+            opacity: 1;
     }
   </style>
 </head>
-<body class="article">
-  <main class="article-container">
-    <div class="top-bar">
-      <a class="back-home" href="./index.html" aria-label="Volver al inicio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-        Inicio
-      </a>
-    </div>
-
-    <header class="article-header">
-      <p class="article-kicker">Visualización interactiva, minimalista y fácil de mantener</p>
-      <h1 class="article-title">Árbol genealógico</h1>
-      <div class="article-meta">
-        <div class="author-avatar" aria-hidden="true"><img src="./assets/images/avatars/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
-        <div class="meta-text">
-          <div><strong>Por Matías Clemenzo</strong></div>
-          <div id="meta-edition">Publicado — · Última edición —</div>
-        </div>
-      </div>
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">← Inicio</a>
+        </nav>
     </header>
 
-    <section class="tree-card" style="position:relative;">
-      <div style="display:flex; justify-content: space-between; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
-        <div style="display:flex; gap:8px; align-items:center;">
-          <button id="btnCenter" class="back-home" style="padding:6px 10px;">Reencuadrar</button>
-          <button id="btnReset" class="back-home" style="padding:6px 10px;">Expandir todo</button>
-        </div>
-        <label style="display:flex; gap:8px; align-items:center;">
-          <span style="color:#64748b; font-size:14px;">Buscar</span>
-          <input id="searchName" type="search" placeholder="Nombre…" style="border:1px solid #e5e7eb; border-radius:10px; padding:8px 10px; font-family:Inter,system-ui; font-size:14px; min-width:200px;" />
-        </label>
-        <span id="dataSource" style="margin-left:auto; color:#64748b; font-size:12px;">Cargando…</span>
-      </div>
-
-
-
-      <!-- Banner de detalles mejorado -->
-      <div class="details-banner" id="infoBanner" style="position:absolute; top:120px; right:20px; z-index:10; display:none; pointer-events:none; width:340px; max-height: calc(100vh - 140px); overflow-y: auto;">
-        <div class="card" style="padding:16px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative;">
-          <!-- Botón de cerrar -->
-          <button id="closeInfo" style="position: absolute; top: 8px; right: 8px; background: none; border: none; cursor: pointer; padding: 4px; border-radius: 4px; color: #6b7280; font-size: 18px; line-height: 1; pointer-events: auto;" onclick="hideInfo()">×</button>
-          <div class="details-header" style="display:flex; gap:12px; align-items:flex-start; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
-            <div style="position: relative;">
-              <img class="avatar" id="dAvatar" alt="" style="width:48px;height:48px; border-radius:50%; flex-shrink:0; background:#f3f4f6; object-fit:cover; border: 2px solid #e5e7eb;" />
-              <div id="dVerified" style="position: absolute; bottom: -1px; right: -1px; width: 16px; height: 16px; background: #10b981; border-radius: 50%; display: none; align-items: center; justify-content: center; border: 1px solid white;">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: white;">
-                  <polyline points="20,6 9,17 4,12"></polyline>
-                </svg>
-              </div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Árbol Genealógico</h1>
+                <p>Explora tu historia familiar</p>
             </div>
-            <div style="flex:1; min-width:0;">
-              <div class="details-name" id="dName" style="font-size:16px; line-height:1.3; font-weight:600; margin-bottom:2px; color: #111827;"></div>
-              <div class="details-muted" id="dSubtitle" style="font-size:12px; line-height:1.3; color:#6b7280;"></div>
+        </section>
+
+        <section class="content">
+            <div class="tree-container" id="tree">
+                <div class="keyboard-indicator" id="keyboardIndicator">Navegando...</div>
+                <div class="controls">
+                    <div class="key-hint">🖱️ Mouse: Arrastrar para mover</div>
+                    <div class="key-hint">🔍 Rueda: Zoom</div>
+                    <div class="key-hint">⬅️➡️ Flechas: Navegar</div>
+                    <div class="key-hint">⌨️ Enter: Centrar en foco</div>
             </div>
-          </div>
-          <div id="dBody" style="font-size:13px; line-height:1.5; color:#374151; max-height: 300px; overflow-y: auto;"></div>
+                <div class="focus-info" id="focusInfo">
+                    <div class="focus-name">Francisco Clemenzo</div>
+                    <div class="focus-details">Tatarabuelo • 1856-1928</div>
         </div>
       </div>
-
-      <div id="tree" role="img" aria-label="Visualización de árbol genealógico"></div>
     </section>
   </main>
 
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 20px; margin-top: 48px;">
+        <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+            <p class="footer-text" style="margin: 0; font-size: 14px;">Matias Clemenzo 2025</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/path-config.js"></script>
+    <script src="./content/data/arbol.js"></script>
   <script>
-    // Actualizar fechas automáticamente
-    (function() {
-      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-      const now = new Date();
-      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
-      const metaEdition = document.getElementById('meta-edition');
-      if (metaEdition) metaEdition.textContent = `Publicado 10 de agosto de 2025 · Última edición ${dateStr}`;
-    })();
-
-    const params = new URLSearchParams(window.location.search);
-    const SHEET_ID = params.get('sheet') || '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
-    const SHEET_GID = params.get('gid') || '0';
-
-    function loadLocalData(){ 
-      // Combinar rama paterna y materna si están disponibles
-      const paternalTree = window.FAMILY_TREE || { name: 'Sin datos', children: [] };
-      const maternalTree = window.MATERNAL_FAMILY || null;
-      
-      // Si tenemos ambas ramas, crear un árbol combinado
-      if (maternalTree) {
-        return {
-          name: "Árbol Genealógico Completo",
-          children: [
-            {
-              name: "Rama Paterna (Clemenzo)",
-              children: [paternalTree]
-            },
-            {
-              name: "Rama Materna",
-              children: [maternalTree]
-            }
-          ]
-        };
-      }
-      
-      return paternalTree;
-    }
-
-    async function fetchGoogleSheet(sheetId, gid){
-      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-      const res = await fetch(url, { cache: 'no-store', mode: 'cors' });
-      if (!res.ok) throw new Error('HTTP '+res.status);
-      const text = await res.text();
-      console.log('[Debug] Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
-      
-      // Extraer el JSON del wrapper de Google
-      const jsonStart = text.indexOf('{');
-      const jsonEnd = text.lastIndexOf('}') + 1;
-      const jsonText = text.substring(jsonStart, jsonEnd);
-      
-      try {
-        const json = JSON.parse(jsonText);
-        console.log('[Debug] JSON parseado correctamente');
-        console.log('[Debug] Columnas:', json.table.cols.map(c => c.label));
-        console.log('[Debug] Filas:', json.table.rows.length);
+        // Configuración
+        const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+        const SHEET_GID = '0';
         
-        const cols = json.table.cols.map(c => (c.label || '').trim());
-        const rows = json.table.rows.map(r => { 
+        // Estado del árbol
+        let treeData = null;
+        let currentFocus = null;
+        let svg, g, zoom;
+        
+        // Función para obtener datos de Google Sheets
+        async function fetchGoogleSheet(sheetId, gid) {
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonText = text.substring(47).slice(0, -2);
+                const data = JSON.parse(jsonText);
+                
+                if (data.table && data.table.rows) {
+                    return data.table.rows.map(row => {
           const obj = {}; 
-          r.c.forEach((cell, i) => { 
-            obj[cols[i]] = cell ? cell.v : ''; 
+                        data.table.cols.forEach((col, index) => {
+                            if (row.c[index]) {
+                                obj[col.label] = row.c[index].v;
+                            }
           }); 
           return obj; 
         });
+                }
+                return null;
+            } catch (error) {
+                console.warn('[Sheet] Error:', error);
+                return null;
+            }
+        }
         
-        console.log('[Debug] Primera fila procesada:', rows[0]);
-        return rows;
-      } catch (parseError) {
-        console.error('[Debug] Error parseando JSON:', parseError);
-        console.error('[Debug] JSON text:', jsonText.substring(0, 500));
-        throw parseError;
-      }
-    }
+        // Función para convertir filas a estructura de árbol
+        function rowsToTree(rows) {
+            const nodes = {};
+            
+            // Crear nodos
+            rows.forEach(row => {
+                const id = row.id;
+                const parentId = row.parent_id;
+                
+                nodes[id] = {
+                    id: id,
+                    name: row.name || 'Sin nombre',
+                    birth_date: row.birth_date || '',
+                    death_date: row.death_date || '',
+                    birth_place: row.birth_place || '',
+                    spouse_name: row.spouse_name || '',
+                    spouse_birth_date: row.spouse_birth_date || '',
+                    children: []
+                };
+            });
+            
+            // Establecer relaciones padre-hijo
+            rows.forEach(row => {
+                const id = row.id;
+                const parentId = row.parent_id;
+                
+                if (parentId && parentId !== '' && nodes[parentId]) {
+                    nodes[parentId].children.push(nodes[id]);
+                }
+            });
+            
+            // Encontrar la raíz (nodo sin padre)
+            let root = null;
+            rows.forEach(row => {
+                const id = row.id;
+                const parentId = row.parent_id;
+                
+                if (!parentId || parentId === '') {
+                    root = nodes[id];
+                }
+            });
+            
+            return root || Object.values(nodes)[0];
+        }
+        
+        // Función para cargar datos locales
+        function loadLocalData() {
+            const paternalTree = window.FAMILY_TREE || { name: 'Sin datos', children: [] };
+            return paternalTree;
+        }
+        
+        // Función para crear el árbol visual
+        function createTree(data) {
+            const container = document.getElementById('tree');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            // Limpiar solo el contenido SVG, no todo el contenedor
+            const existingSvg = container.querySelector('svg');
+            if (existingSvg) {
+                existingSvg.remove();
+            }
+            
+            // Crear SVG
+            svg = d3.select(container)
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Crear grupo principal
+            g = svg.append('g');
+            
+            // Configurar zoom
+            zoom = d3.zoom()
+                .scaleExtent([0.3, 3])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            
+            svg.call(zoom);
+            
+            // Crear solo la línea directa
+            const directLineData = createDirectLineData(data);
+            const root = d3.hierarchy(directLineData);
+            
+            // Layout simple vertical
+            const treeLayout = d3.tree()
+                .size([width - 200, height - 200])
+                .separation(() => 1.5);
+            
+            treeLayout(root);
+            
+            // Centrar verticalmente
+            const centerX = width / 2;
+            root.descendants().forEach((node, index) => {
+                node.x = centerX;
+                node.y = 100 + index * 120;
+            });
+            
+            // Crear enlaces (solo línea directa)
+            const links = g.selectAll('.tree-link')
+                .data(root.links())
+                .join('path')
+                .attr('class', 'tree-link')
+                .attr('d', d3.linkVertical()
+                    .x(d => d.x)
+                    .y(d => d.y))
+                .style('stroke', '#1f2937')
+                .style('stroke-width', '3px')
+                .style('fill', 'none');
+            
+            // Crear nodos
+            const nodes = g.selectAll('.tree-node')
+                .data(root.descendants())
+                .join('g')
+                .attr('class', 'tree-node')
+                .attr('transform', d => `translate(${d.x},${d.y})`)
+                .on('click', (event, d) => {
+                    setFocus(d);
+                });
+            
+            // Crear círculos de nodos
+            nodes.append('circle')
+                .attr('class', 'node-circle')
+                .attr('r', 25)
+                .attr('fill', d => getNodeColor(d));
+            
+            // Crear texto de nodos
+            nodes.append('text')
+                .attr('class', 'node-text')
+                .attr('y', -35)
+                .attr('font-size', '14px')
+                .text(d => d.data.name);
+            
+            // Configurar navegación por teclado
+            setupKeyboardNavigation(root);
+            
+            // Establecer foco inicial
+            setFocus(root);
+        }
+        
+        // Función para obtener color del nodo
+        function getNodeColor(d) {
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+            return colors[d.depth % colors.length];
+        }
+        
+        // Función para establecer foco
+        function setFocus(node) {
+            currentFocus = node;
+            
+            // Actualizar información de foco
+            updateFocusInfo(node);
+            
+            // Actualizar clases de nodos
+            g.selectAll('.tree-node')
+                .classed('focused', d => d === node)
+                .classed('unfocused', d => d !== node);
+        }
+        
+        // Función para verificar si un nodo está en la línea directa
+        function isInDirectLine(node, focus) {
+            if (node === focus) return true;
+            
+            // Definir la línea directa por nombres
+            const directLineNames = [
+                'Francisco Clemenzo',
+                'Felix Clemenzo', 
+                'Felix Ricardo Clemenzo',
+                'Daniel Jorge Clemenzo',
+                'Matias Damian Clemenzo'
+            ];
+            
+            // Verificar si el nodo está en la línea directa
+            return directLineNames.includes(node.data.name);
+        }
+        
+        // Función para crear datos de solo la línea directa
+        function createDirectLineData(data) {
+            const directLineNames = [
+                'Francisco Clemenzo',
+                'Felix Clemenzo', 
+                'Felix Ricardo Clemenzo',
+                'Daniel Jorge Clemenzo',
+                'Matias Damian Clemenzo'
+            ];
+            
+            // Buscar Francisco en los datos originales
+            function findPersonByName(name, person) {
+                if (person.name === name) {
+                    return person;
+                }
+                if (person.children) {
+                    for (let child of person.children) {
+                        const found = findPersonByName(name, child);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            }
+            
+            // Construir la línea directa
+            const directLine = [];
+            for (let name of directLineNames) {
+                const person = findPersonByName(name, data);
+                if (person) {
+                    directLine.push({
+                        name: person.name,
+                        birth_date: person.birth_date || '',
+                        death_date: person.death_date || '',
+                        spouse_name: person.spouse_name || '',
+                        children: []
+                    });
+                }
+            }
+            
+            // Establecer relaciones padre-hijo
+            for (let i = 0; i < directLine.length - 1; i++) {
+                directLine[i].children = [directLine[i + 1]];
+            }
+            
+            return directLine[0] || { name: 'Sin datos', children: [] };
+        }
+        
 
-    function fetchGoogleSheetJSONP(sheetId, gid, timeoutMs = 8000){
-      return new Promise((resolve, reject) => {
-        let done = false;
-        const prev = (window.google && window.google.visualization && window.google.visualization.Query && window.google.visualization.Query.setResponse) || null;
-        if (!window.google) window.google = {}; if (!window.google.visualization) window.google.visualization = {}; if (!window.google.visualization.Query) window.google.visualization.Query = {};
-        window.google.visualization.Query.setResponse = (json) => {
-          if (done) return; done = true; cleanup();
-          try { const cols = json.table.cols.map(c => (c.label || '').trim()); const rows = json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; }); resolve(rows); } catch (e){ reject(e); }
-        };
-        const script = document.createElement('script');
-        script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-        script.onerror = () => { if (done) return; done = true; cleanup(); reject(new Error('JSONP load error')); };
-        document.body.appendChild(script);
-        const timer = setTimeout(() => { if (done) return; done = true; cleanup(); reject(new Error('JSONP timeout')); }, timeoutMs);
-        function cleanup(){ clearTimeout(timer); if (prev) window.google.visualization.Query.setResponse = prev; try { document.body.removeChild(script); } catch(e){} }
-      });
-    }
-
-    async function fetchGoogleSheetProxy(sheetId, gid){
-      // A prueba de CORS cuando se sirve como file://
-      const raw = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-      const proxy = `https://r.jina.ai/http://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
-      const res = await fetch(proxy, { cache: 'no-store' });
-      if (!res.ok) throw new Error('Proxy HTTP '+res.status);
-      const text = await res.text();
-      const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
-      const cols = json.table.cols.map(c => (c.label || '').trim());
-      return { rows: json.table.rows.map(r => { const obj = {}; r.c.forEach((cell, i) => { obj[cols[i]] = cell ? cell.v : ''; }); return obj; }), via: proxy };
-    }
-
-    function rowsToTree(rows){
-      const norm = r => Object.fromEntries(Object.entries(r).map(([k,v]) => [String(k).toLowerCase(), v]));
-      const normalized = rows.map(norm);
-      const byId = new Map();
-              normalized.forEach(r => {
-        const node = {
-          id: String(r.id || '').trim() || crypto.randomUUID(),
-          name: r.name || 'Sin nombre',
-          avatar: r.avatar || '',
-          birth_place: r.birth_place || '',
-          birth_date: formatDate(r.birth_date),
-          death_place: r.death_place || '',
-          death_date: formatDate(r.death_date),
-                      verificado: r.verificado === '1' || r.verificado === 'si' || r.verificado === 'true' || r.verificado === 1,
-          spouse: r.spouse_name ? {
-            name: r.spouse_name,
-            avatar: r.spouse_avatar || '',
-            birth_place: r.spouse_birth_place || '',
-            birth_date: formatDate(r.spouse_birth_date),
-            death_place: r.spouse_death_place || '',
-            death_date: formatDate(r.spouse_death_date),
-            verificado: r.spouse_verificado === '1' || r.spouse_verificado === 'si' || r.spouse_verificado === 'true'
-          } : null,
-          children: [],
-          parent_id: r.parent_id ? String(r.parent_id) : ''
-        };
-        byId.set(node.id, node);
-      });
-      let root = null;
-      byId.forEach(node => { if (node.parent_id && byId.has(node.parent_id)) byId.get(node.parent_id).children.push(node); else if (!root) root = node; });
-      return root || [...byId.values()][0];
-    }
-
-    function getInitials(name){ const parts = String(name || '').trim().split(/\s+/); return parts.length === 1 ? (parts[0][0]||'').toUpperCase() : (parts[0][0] + (parts[1]?parts[1][0]:'' )).toUpperCase(); }
-    function getAvatarBackgroundColor(name){ const colors=['#A7C7E7','#B5EAD7','#FFDAC1','#FFB7B2','#E2F0CB','#C7CEEA','#FFFACD','#FFD6E0']; const hash=String(name||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0); return colors[hash%colors.length]; }
-    
-    // Función para convertir fechas de Google Sheets a formato legible
-    function formatDate(dateValue) {
-      if (!dateValue) return '';
-      
-      // Si es un número (fecha serial de Google Sheets)
-      if (typeof dateValue === 'number') {
-        // Google Sheets usa el 1 de enero de 1900 como día 1
-        const date = new Date((dateValue - 25569) * 86400 * 1000);
-        return date.toLocaleDateString('es-ES', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
+        
+        // Función para centrar en un nodo
+        function centerOnNode(node) {
+            const container = document.getElementById('tree');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            const transform = d3.zoomTransform(svg.node());
+            const x = width / 2 - node.x;
+            const y = height / 2 - node.y;
+            
+            // Aplicar transformación directamente sin transición para evitar vibración
+            svg.call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(transform.k));
+        }
+        
+        // Función para actualizar información de foco
+        function updateFocusInfo(node) {
+            const focusInfo = document.getElementById('focusInfo');
+            if (!focusInfo) {
+                console.warn('Elemento focusInfo no encontrado');
+                return;
+            }
+            
+            const name = node.data.name;
+            const birthDate = node.data.birth_date || '';
+            const deathDate = node.data.death_date || '';
+            const spouse = node.data.spouse_name || '';
+            
+            let details = '';
+            if (birthDate) {
+                details += birthDate;
+                if (deathDate) details += ` - ${deathDate}`;
+            }
+            
+            if (spouse) {
+                details += details ? ` • ${spouse}` : spouse;
+            }
+            
+            focusInfo.innerHTML = `
+                <div class="focus-name">${name}</div>
+                <div class="focus-details">${details}</div>
+            `;
+        }
+        
+        // Función para mostrar indicador de teclado
+        function showKeyboardIndicator(message) {
+            const indicator = document.getElementById('keyboardIndicator');
+            if (!indicator) {
+                console.warn('Elemento keyboardIndicator no encontrado');
+                return;
+            }
+            
+            indicator.textContent = message;
+            indicator.classList.add('show');
+            
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 1000);
+        }
+        
+        // Función para configurar navegación por teclado
+        function setupKeyboardNavigation(root) {
+            document.addEventListener('keydown', (event) => {
+                if (!currentFocus) return;
+                
+                console.log('Tecla presionada:', event.key);
+                
+                switch (event.key) {
+                    case 'ArrowUp':
+                        // Subir a la generación anterior
+                        if (currentFocus.parent) {
+                            showKeyboardIndicator('⬆️ ' + currentFocus.parent.data.name);
+                            setFocus(currentFocus.parent);
+                        }
+                        break;
+                    case 'ArrowDown':
+                        // Bajar a la siguiente generación
+                        if (currentFocus.children && currentFocus.children.length > 0) {
+                            showKeyboardIndicator('⬇️ ' + currentFocus.children[0].data.name);
+                            setFocus(currentFocus.children[0]);
+                        }
+                        break;
+                    case 'Enter':
+                        console.log('Centrando en nodo:', currentFocus.data.name);
+                        showKeyboardIndicator('🎯 Centrando en: ' + currentFocus.data.name);
+                        centerOnNode(currentFocus);
+                        break;
+                }
+            });
+        }
+        
+        // Función principal para inicializar
+        async function init() {
+            try {
+                // Intentar cargar desde Google Sheets
+                let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
+                
+                if (rows && rows.length > 0) {
+                    treeData = rowsToTree(rows);
+                } else {
+                    // Fallback a datos locales
+                    treeData = loadLocalData();
+                }
+                
+                // Crear el árbol
+                createTree(treeData);
+                
+            } catch (error) {
+                console.error('Error inicializando árbol:', error);
+                // Fallback a datos locales
+                treeData = loadLocalData();
+                createTree(treeData);
+            }
+        }
+        
+        // Inicializar cuando se carga la página
+        document.addEventListener('DOMContentLoaded', init);
+        
+        // Manejar redimensionamiento de ventana
+        window.addEventListener('resize', () => {
+            if (treeData) {
+                createTree(treeData);
+            }
         });
-      }
-      
-      // Si ya es una cadena de texto, devolverla tal como está
-      return String(dateValue);
-    }
-    
-    function formatLife(bPlace,bDate,dPlace,dDate){ 
-      const born=[bPlace,bDate].filter(Boolean).join(', '); 
-      let death; 
-      if(!dPlace&&!dDate) death='Actualidad'; 
-      else if(!dPlace&&dDate) death=`${dDate}`; 
-      else if(dPlace&&!dDate) death=`${dPlace}, desconocida`; 
-      else death=`${dPlace}, ${dDate}`; 
-      return `${born} — ${death}`; 
-    }
-
-    // Función para aplicar layout intercalado automático
-    function applyStaggeredLayout(root) {
-      // Agrupar nodos por generación
-      const generations = {};
-      root.descendants().forEach(node => {
-        const depth = node.depth;
-        if (!generations[depth]) generations[depth] = [];
-        generations[depth].push(node);
-      });
-      
-      // Aplicar intercalado automáticamente a generaciones con 4+ hermanos
-      Object.values(generations).forEach(generation => {
-        if (generation.length >= 4) {
-          console.log(`[Debug] Aplicando escalonado a generación con ${generation.length} hermanos`);
-          
-          // Calcular el espaciado basado en la cantidad de hermanos
-          let staggerDistance = 80; // Distancia base
-          if (generation.length >= 6) staggerDistance = 100;
-          if (generation.length >= 8) staggerDistance = 120;
-          
-          generation.forEach((node, index) => {
-            if (index % 2 === 1) { // Nodos impares se mueven hacia abajo
-              node.y += staggerDistance;
-            }
-          });
-        }
-      });
-      
-      // El intercalado se aplica automáticamente sin mostrar indicador
-    }
-
-    async function init(){
-      const sourceEl = document.getElementById('dataSource');
-      let data, used = 'local';
-      
-      console.log('[Debug] Iniciando carga de datos...');
-      console.log('[Debug] SHEET_ID:', SHEET_ID);
-      console.log('[Debug] SHEET_GID:', SHEET_GID);
-      console.log('[Debug] Protocolo actual:', window.location.protocol);
-      console.log('[Debug] URL completa:', window.location.href);
-      console.log('[Debug] Parámetros URL:', window.location.search);
-      
-      try {
-        // 1) fetch normal
-        console.log('[Debug] Intentando fetch normal...');
-        let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
-        console.log('[Debug] Fetch normal resultado:', rows ? rows.length : 'null');
-        if (!rows || !rows.length) {
-          console.log('[Debug] Fetch normal falló, intentando JSONP...');
-          // 2) JSONP
-          rows = await fetchGoogleSheetJSONP(SHEET_ID, SHEET_GID);
-          console.log('[Debug] JSONP resultado:', rows ? rows.length : 'null');
-        }
-        if (!rows || !rows.length) {
-          console.log('[Debug] JSONP falló, intentando proxy...');
-          // 3) proxy
-          const proxyRes = await fetchGoogleSheetProxy(SHEET_ID, SHEET_GID);
-          rows = proxyRes.rows;
-          used = 'sheet-proxy';
-          console.log('[Debug] Proxy resultado:', rows ? rows.length : 'null');
-        }
-        if (rows && rows.length && used !== 'sheet-proxy') used = 'sheet';
-        if (rows && rows.length) {
-                  console.log('[Debug] Datos cargados exitosamente:', rows.length, 'filas');
-        console.log('[Debug] Primera fila:', rows[0]);
-        console.log('[Debug] TODAS las filas cargadas:', rows);
-        data = rowsToTree(rows);
-        }
-      } catch (e){
-        console.warn('[Sheet] Error cargando datos:', e);
-        console.warn('[Sheet] Error completo:', e.message, e.stack);
-        console.warn('[Sheet] Fallback a datos locales');
-      }
-      
-      if (!data) { 
-        console.log('[Debug] Usando datos locales');
-        data = loadLocalData(); 
-        used = 'local'; 
-      }
-      
-      console.log('[Debug] Datos finales cargados:', data);
-      console.log('[Debug] Tipo de datos:', typeof data);
-      console.log('[Debug] Tiene children:', data.children ? data.children.length : 'no children');
-      
-      if (sourceEl) sourceEl.textContent = used === 'sheet' ? 'Fuente: Google Sheet' : (used === 'sheet-proxy' ? 'Fuente: Google Sheet (proxy)' : 'Fuente: Datos locales');
-
-      const container = document.getElementById('tree');
-      const width = container.clientWidth || 900; const height = container.clientHeight || 620;
-      const svg = d3.select(container).append('svg').attr('viewBox', [0,0,width,height]).attr('preserveAspectRatio','xMidYMid meet');
-      const defs = svg.append('defs');
-      
-
-      const root = d3.hierarchy(data);
-        const treeLayout = d3.tree().size([width-200, height-160]).separation((a,b)=> (a.parent===b.parent?8.0:9.0)); treeLayout(root);
-      
-      // Aplicar layout intercalado automático
-      applyStaggeredLayout(root);
-      
-      const g = svg.append('g').attr('transform','translate(100,80)');
-      const zoom = d3.zoom().scaleExtent([0.5,2.5]).on('zoom', (ev)=>{ g.attr('transform',`translate(${ev.transform.x},${ev.transform.y}) scale(${ev.transform.k})`); }); svg.call(zoom).on('dblclick.zoom', null);
-      g.selectAll('path.tree-link').data(root.links()).join('path').attr('class','tree-link').attr('d', d3.linkHorizontal().x(d=>d.x).y(d=>d.y));
-      const node = g.selectAll('g.tree-node').data(root.descendants()).join('g').attr('class','tree-node').attr('transform', d=>`translate(${d.x},${d.y})`);
-      
-
-      function patternId(prefix){ return `${prefix}-${Math.random().toString(36).slice(2,8)}`; }
-      function createPattern(url){ const id=patternId('p'); const p=defs.append('pattern').attr('id',id).attr('patternUnits','objectBoundingBox').attr('width',1).attr('height',1); p.append('image').attr('href',url).attr('width',36).attr('height',36).attr('preserveAspectRatio','xMidYMid slice'); return `url(#${id})`; }
-      node.each(function(d){ 
-        const gNode=d3.select(this); 
-        const hasSpouse=d.data.spouse&&d.data.spouse.name; 
-        gNode.selectAll('*').remove(); 
-        
-        // Función para dividir nombres largos en dos líneas
-        function splitLongName(name) {
-          const parts = name.split(' ');
-          if (parts.length > 2) {
-            const midPoint = Math.ceil(parts.length / 2);
-            return {
-              first: parts.slice(0, midPoint).join(' '),
-              last: parts.slice(midPoint).join(' ')
-            };
-          }
-          return { first: name, last: null };
-        }
-        
-        // Función para mostrar nombres simples sin badges
-        function createSimpleNames() {
-          console.log('[Debug] Iniciando createSimpleNames');
-          const nameGroup = gNode.append('g').attr('class', 'name-text');
-          
-          if (hasSpouse) {
-            // Casado: mostrar ambos nombres
-            const husbandName = d.data.name;
-            const wifeName = d.data.spouse.name;
-            const husbandSplit = splitLongName(husbandName);
-            const wifeSplit = splitLongName(wifeName);
-            
-            // Nombre del marido arriba
-            if (husbandSplit.last) {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -35)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '8px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(husbandSplit.first);
-              
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -25)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '8px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(husbandSplit.last);
-            } else {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -32)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '9px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(husbandSplit.first);
-            }
-            
-            // Nombre de la mujer abajo
-            if (wifeSplit.last) {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', 35)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '8px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(wifeSplit.first);
-              
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', 45)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '8px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(wifeSplit.last);
-            } else {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', 38)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '9px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(wifeSplit.first);
-            }
-          } else {
-            // Soltero: mostrar solo un nombre
-            const name = d.data.name;
-            const nameSplit = splitLongName(name);
-            
-            if (nameSplit.last) {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -35)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '9px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(nameSplit.first);
-              
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -25)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '9px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(nameSplit.last);
-            } else {
-              nameGroup.append('text')
-                .attr('x', 0)
-                .attr('y', -32)
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '10px')
-                .attr('font-weight', '600')
-                .attr('fill', '#1f2937')
-                .style('font-family', 'Inter, sans-serif')
-                .text(nameSplit.first);
-            }
-          }
-          console.log('[Debug] Nombres simples creados');
-        }
-        
-        // Crear nombres simples
-        console.log('[Debug] Creando nombres para:', d.data.name, hasSpouse ? 'casado' : 'soltero');
-        createSimpleNames();
-        
-        function drawPerson(cx, person){ 
-          const fill=person.avatar?createPattern(person.avatar):getAvatarBackgroundColor(person.name); 
-          gNode.append('circle').attr('class','avatar-circle').attr('r',18).attr('cx',cx).attr('fill',fill).attr('stroke','#334155').attr('stroke-width',1.4); 
-          if(!person.avatar){ 
-            gNode.append('text').attr('x',cx).attr('y',6).attr('text-anchor','middle').attr('font-size','18px').attr('font-weight',700).attr('fill','#334155').text(getInitials(person.name)); 
-          } 
-        } 
-        
-        if(hasSpouse){ 
-          drawPerson(-22,d.data); 
-          drawPerson(22,d.data.spouse); 
-        } else { 
-          drawPerson(0,d.data); 
-        } 
-        
-        const areas=[]; 
-        if(hasSpouse){ 
-          areas.push({cx:-22,who:'self'},{cx:22,who:'spouse'});} 
-        else { 
-          areas.push({cx:0,who:'self'});} 
-        areas.forEach(a=>{ 
-          gNode.append('circle').attr('r',20).attr('cx',a.cx).attr('fill','transparent').style('cursor','pointer').on('mouseenter', ()=> showInfo(d.data, a.who==='spouse')).on('mouseleave', ()=> hideInfo()); 
-        }); 
-      });
-      const infoBanner=document.getElementById('infoBanner'); 
-      const dName=document.getElementById('dName'); 
-      const dSubtitle=document.getElementById('dSubtitle'); 
-      const dBody=document.getElementById('dBody'); 
-      const dAvatar=document.getElementById('dAvatar');
-      const dVerified=document.getElementById('dVerified');
-      
-      function showInfo(person, isSpouse){ 
-        clearTimeout(hideTimeout); // Cancelar el timeout de ocultar
-        const p=isSpouse?person.spouse:person; 
-        dName.textContent=p.name||''; 
-        dSubtitle.textContent=isSpouse&&person.name?`Pareja de ${person.name}`:''; 
-        if(p.avatar) dAvatar.src=p.avatar; else dAvatar.removeAttribute('src'); 
-        
-        // Mostrar/ocultar badge de verificado
-        if(p.verificado) {
-          dVerified.style.display='flex';
-        } else {
-          dVerified.style.display='none';
-        }
-        
-        const life=formatLife(p.birth_place,p.birth_date,p.death_place,p.death_date); 
-        const children=(person.children||[]).map(c=>c.name).filter(Boolean); 
-        
-        // Crear HTML con iconos y mejor organización
-        let html = '';
-        
-        // Sección de vida con icono
-        html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding: 10px; background: #f8fafc; border-left: 3px solid #3b82f6;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #3b82f6; flex-shrink: 0; margin-top: 1px;">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          <div style="flex: 1;">
-            <div style="font-weight: 600; color: #1e293b; margin-bottom: 2px; font-size: 12px;">Vida</div>
-            <div style="color: #64748b; font-size: 12px;">${life}</div>
-          </div>
-        </div>`;
-        
-        // Sección de pareja - lógica corregida
-        if (isSpouse) {
-          // Si estamos viendo la información del spouse, mostrar que está casado con el marido
-          html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f59e0b; flex-shrink: 0; margin-top: 1px;">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-            <div style="flex: 1;">
-              <div style="font-weight: 600; color: #92400e; margin-bottom: 2px; font-size: 12px;">Casado con</div>
-              <div style="color: #a16207; font-size: 12px;">${person.name}</div>
-            </div>
-          </div>`;
-        } else if (person.spouse && person.spouse.name) {
-          // Si estamos viendo la información del marido, mostrar que está casado con la mujer
-          html += `<div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding: 10px; background: #fef3c7; border-left: 3px solid #f59e0b;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #f59e0b; flex-shrink: 0; margin-top: 1px;">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-            <div style="flex: 1;">
-              <div style="font-weight: 600; color: #92400e; margin-bottom: 2px; font-size: 12px;">Casado con</div>
-              <div style="color: #a16207; font-size: 12px;">${person.spouse.name}</div>
-            </div>
-          </div>`;
-        }
-        
-        // Sección de hijos si existen
-        if(children.length) {
-          html += `<div style="display: flex; align-items: flex-start; gap: 10px; padding: 10px; background: #ecfdf5; border-left: 3px solid #10b981;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #10b981; flex-shrink: 0; margin-top: 1px;">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-            </svg>
-            <div style="flex: 1;">
-              <div style="font-weight: 600; color: #065f46; margin-bottom: 6px; font-size: 12px;">Hijos (${children.length})</div>
-              <div style="display: flex; flex-wrap: wrap; gap: 4px; max-height: 120px; overflow-y: auto;">
-                ${children.map(n => `<span style="background: #d1fae5; color: #065f46; padding: 3px 6px; font-size: 11px; font-weight: 500;">${n}</span>`).join('')}
-              </div>
-            </div>
-          </div>`;
-        }
-        
-        dBody.innerHTML=html; 
-        infoBanner.style.display='block'; 
-      }
-      
-      let hideTimeout;
-      function hideInfo() {
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(() => {
-          infoBanner.style.display='none';
-        }, 100); // 100ms de delay
-      }
-      let nodesCache=root.descendants(); function fitToTree(){ const xs=nodesCache.map(n=>n.x), ys=nodesCache.map(n=>n.y); const minX=Math.min(...xs)-60, maxX=Math.max(...xs)+60; const minY=Math.min(...ys)-80, maxY=Math.max(...ys)+80; const treeWidth=maxX-minX, treeHeight=maxY-minY; const scale=Math.min(width/treeWidth, height/treeHeight, 1.2); const tx=(width-treeWidth*scale)/2-minX*scale; const ty=(height-treeHeight*scale)/2-minY*scale; svg.transition().duration(450).call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale)); }
-      document.getElementById('btnCenter').addEventListener('click', fitToTree); document.getElementById('btnReset').addEventListener('click', ()=>{ svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity); });
-      const searchInput=document.getElementById('searchName'); 
-      searchInput.addEventListener('input', ()=>{
-        const q=searchInput.value.trim().toLowerCase(); 
-        
-        // Resetear todos los nodos
-        g.selectAll('g.tree-node').classed('highlight', false);
-        g.selectAll('g.tree-node text').classed('search-highlight', false);
-        
-        if(!q) return; 
-        
-        const matches=nodesCache.filter(n=>`${n.data.name} ${n.data.spouse&&n.data.spouse.name?n.data.spouse.name:''}`.toLowerCase().includes(q)); 
-        
-        if(matches.length===0) return; 
-        
-        // Resaltar nodos coincidentes
-        g.selectAll('g.tree-node').filter(d=>matches.includes(d)).classed('highlight', true);
-        
-        // Resaltar texto de los nombres coincidentes con color acorde
-        g.selectAll('g.tree-node').filter(d=>matches.includes(d)).selectAll('text').classed('search-highlight', true);
-        
-        // Centrar en la primera coincidencia
-        const n=matches[0]; 
-        const k=1.2; 
-        const tx=width/2 - n.x * k; 
-        const ty=height/2 - n.y * k; 
-        svg.transition().duration(350).call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(k)); 
-      });
-      
-      // Ocultar tarjeta de información al hacer clic en cualquier parte
-      document.addEventListener('click', (event) => {
-        // Solo ocultar si el clic no fue en la tarjeta de información
-        if (!event.target.closest('#infoBanner')) {
-          hideInfo();
-        }
-      });
-      fitToTree();
-    }
   </script>
-
-      <script src="./content/data/arbol.js"></script>
-  <script>
-    init();
-  </script>
-
-  <!-- Footer -->
-  <footer class="site-footer" style="background: #ffffff; border-top: 1px solid #e6e7eb; padding: 24px 0; text-align: center; margin-top: 48px;">
-    <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
-      <p class="footer-text" style="color: #6b7280; font-size: 14px; font-weight: 500; margin: 0;">Matias Clemenzo 2025</p>
-    </div>
-  </footer>
 </body>
 </html>
 

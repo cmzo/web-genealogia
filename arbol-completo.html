@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Genealógico Completo - Matias Clemenzo</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+    <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+    <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+    <style>
+        .tree-container {
+            width: 100%;
+            height: 85vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #374151;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .key-hint {
+            margin: 6px 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .key-hint::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+        
+        .focus-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #374151;
+            max-width: 350px;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .focus-info.hidden {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        
+        .focus-name {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .focus-details {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .focus-details strong {
+            color: #374151;
+        }
+        
+        .keyboard-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            transform: translateY(-10px);
+        }
+        
+        .keyboard-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .view-toggle {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .view-toggle:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .view-toggle.active {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .stats-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: #374151;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 150px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 4px 0;
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="./index.html">← Inicio</a>
+            <a href="./arbol.html">Línea Directa</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Árbol Genealógico Completo</h1>
+                <p>Explora toda tu historia familiar con navegación avanzada</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="tree-container" id="tree">
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                </div>
+                <div class="keyboard-indicator" id="keyboardIndicator">Navegando...</div>
+                <div class="view-toggle" id="viewToggle">Vista: Completa</div>
+                <div class="stats-panel" id="statsPanel">
+                    <div class="stat-item">
+                        <span>Personas:</span>
+                        <span class="stat-value" id="personCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Generaciones:</span>
+                        <span class="stat-value" id="generationCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Línea directa:</span>
+                        <span class="stat-value" id="directLineCount">0</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <div class="key-hint">🖱️ Arrastrar para mover</div>
+                    <div class="key-hint">🔍 Rueda para zoom</div>
+                    <div class="key-hint">⬅️➡️ Navegar horizontal</div>
+                    <div class="key-hint">⬆️⬇️ Navegar vertical</div>
+                    <div class="key-hint">⌨️ Enter para centrar</div>
+                    <div class="key-hint">🎯 Clic para seleccionar</div>
+                </div>
+                <div class="focus-info" id="focusInfo">
+                    <div class="focus-name">Selecciona una persona</div>
+                    <div class="focus-details">Haz clic en cualquier nodo para ver detalles completos</div>
+                </div>
+                <div class="tooltip" id="tooltip"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 20px; margin-top: 48px;">
+        <div class="footer-container" style="max-width: 1200px; margin: 0 auto;">
+            <p class="footer-text" style="margin: 0; font-size: 14px;">Matias Clemenzo 2025</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/path-config.js"></script>
+    <script src="./content/data/arbol.js"></script>
+    <script>
+        // Configuración
+        const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+        const SHEET_GID = '0';
+        
+        // Estado del árbol
+        let cy = null;
+        let currentFocus = null;
+        let isDirectLineView = false;
+        let tooltip = null;
+        
+        // Colores por generación
+        const generationColors = [
+            '#3b82f6', // Azul - Generación 0 (tu hijo)
+            '#10b981', // Verde - Generación 1 (tú)
+            '#f59e0b', // Naranja - Generación 2 (tu padre)
+            '#ef4444', // Rojo - Generación 3 (tu abuelo)
+            '#8b5cf6', // Púrpura - Generación 4 (bisabuelo)
+            '#ec4899', // Rosa - Generación 5 (tatarabuelo)
+            '#06b6d4', // Cian - Generación 6+
+            '#84cc16'  // Lima - Generación 7+
+        ];
+        
+        // Función para obtener datos de Google Sheets
+        async function fetchGoogleSheet(sheetId, gid) {
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonText = text.substring(47).slice(0, -2);
+                const data = JSON.parse(jsonText);
+                
+                if (data.table && data.table.rows) {
+                    return data.table.rows.map(row => {
+                        const obj = {};
+                        data.table.cols.forEach((col, index) => {
+                            if (row.c[index]) {
+                                obj[col.label] = row.c[index].v;
+                            }
+                        });
+                        return obj;
+                    });
+                }
+                return null;
+            } catch (error) {
+                console.warn('[Sheet] Error:', error);
+                return null;
+            }
+        }
+        
+        // Función para obtener iniciales
+        function getInitials(name) {
+            return name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2);
+        }
+        
+        // Función para convertir datos a formato Cytoscape
+        function convertToCytoscapeData(rows) {
+            const nodes = [];
+            const edges = [];
+            
+            // Crear nodos
+            rows.forEach(row => {
+                const generation = parseInt(row.generation) || 0;
+                const node = {
+                    data: {
+                        id: row.id,
+                        name: row.name || 'Sin nombre',
+                        birth_date: row.birth_date || '',
+                        death_date: row.death_date || '',
+                        birth_place: row.birth_place || '',
+                        generation: generation,
+                        branch: row.branch || 'paterna',
+                        is_direct_line: row.is_direct_line === 'true' || row.is_direct_line === '1',
+                        spouse_id: row.spouse_id || null,
+                        initials: getInitials(row.name || ''),
+                        age: calculateAge(row.birth_date, row.death_date)
+                    }
+                };
+                nodes.push(node);
+            });
+            
+            // Crear enlaces padre-hijo
+            rows.forEach(row => {
+                if (row.parent_id && row.parent_id !== '') {
+                    edges.push({
+                        data: {
+                            id: `parent-${row.id}`,
+                            source: row.parent_id,
+                            target: row.id,
+                            type: 'parent-child'
+                        }
+                    });
+                }
+            });
+            
+            // Crear enlaces cónyuges
+            rows.forEach(row => {
+                if (row.spouse_id && row.spouse_id !== '') {
+                    const existingEdge = edges.find(edge => 
+                        (edge.data.source === row.id && edge.data.target === row.spouse_id) ||
+                        (edge.data.source === row.spouse_id && edge.data.target === row.id)
+                    );
+                    
+                    if (!existingEdge) {
+                        edges.push({
+                            data: {
+                                id: `spouse-${row.id}-${row.spouse_id}`,
+                                source: row.id,
+                                target: row.spouse_id,
+                                type: 'spouse'
+                            }
+                        });
+                    }
+                }
+            });
+            
+            return { nodes, edges };
+        }
+        
+        // Función para calcular edad
+        function calculateAge(birthDate, deathDate) {
+            if (!birthDate) return null;
+            
+            const birth = new Date(birthDate);
+            const end = deathDate ? new Date(deathDate) : new Date();
+            
+            if (isNaN(birth.getTime())) return null;
+            
+            const age = end.getFullYear() - birth.getFullYear();
+            const monthDiff = end.getMonth() - birth.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && end.getDate() < birth.getDate())) {
+                return age - 1;
+            }
+            
+            return age;
+        }
+        
+        // Función para cargar datos locales
+        function loadLocalData() {
+            const exampleData = [
+                { id: '1', parent_id: '', name: 'Juan Martin Clemenzo', birth_date: '2020', generation: '0', is_direct_line: 'true' },
+                { id: '2', parent_id: '1', name: 'Matias Damian Clemenzo', birth_date: '1990', generation: '1', is_direct_line: 'true' },
+                { id: '3', parent_id: '2', name: 'Daniel Jorge Clemenzo', birth_date: '1960', generation: '2', is_direct_line: 'true' },
+                { id: '4', parent_id: '3', name: 'Felix Ricardo Clemenzo', birth_date: '1926', generation: '3', is_direct_line: 'true' },
+                { id: '5', parent_id: '4', name: 'Felix Clemenzo', birth_date: '1894', generation: '4', is_direct_line: 'true' },
+                { id: '6', parent_id: '5', name: 'Francisco Clemenzo', birth_date: '1856', generation: '5', is_direct_line: 'true' },
+                { id: '7', parent_id: '2', name: 'Maria Cecilia Vargas', birth_date: '1965', generation: '2', is_direct_line: 'false' },
+                { id: '8', parent_id: '4', name: 'Isabel Maria Queipo', birth_date: '1905', generation: '4', is_direct_line: 'false' },
+                { id: '9', parent_id: '6', name: 'Celestina Roch', birth_date: '1887', generation: '5', is_direct_line: 'false' }
+            ];
+            
+            return exampleData;
+        }
+        
+        // Función para crear el árbol con Cytoscape
+        function createTree(data) {
+            const container = document.getElementById('tree');
+            
+            // Configurar Cytoscape con estilo mejorado
+            cy = cytoscape({
+                container: container,
+                elements: data,
+                style: [
+                    {
+                        selector: 'node',
+                        style: {
+                            'background-color': function(ele) {
+                                const generation = ele.data('generation') || 0;
+                                return generationColors[generation % generationColors.length];
+                            },
+                            'label': function(ele) {
+                                const name = ele.data('name');
+                                const age = ele.data('age');
+                                if (age !== null) {
+                                    return `${name}\n(${age} años)`;
+                                }
+                                return name;
+                            },
+                            'color': '#ffffff',
+                            'font-size': '11px',
+                            'font-weight': '600',
+                            'text-valign': 'center',
+                            'text-halign': 'center',
+                            'text-wrap': 'wrap',
+                            'text-max-width': '80px',
+                            'width': function(ele) {
+                                return ele.data('is_direct_line') ? '50px' : '40px';
+                            },
+                            'height': function(ele) {
+                                return ele.data('is_direct_line') ? '50px' : '40px';
+                            },
+                            'border-width': function(ele) {
+                                return ele.data('is_direct_line') ? '3px' : '2px';
+                            },
+                            'border-color': '#1f2937',
+                            'border-opacity': 0.8,
+                            'shape': 'ellipse',
+                            'text-outline-width': 2,
+                            'text-outline-color': '#1f2937',
+                            'text-outline-opacity': 0.8
+                        }
+                    },
+                    {
+                        selector: 'edge[type = "parent-child"]',
+                        style: {
+                            'width': 4,
+                            'line-color': '#374151',
+                            'curve-style': 'bezier',
+                            'target-arrow-shape': 'triangle',
+                            'target-arrow-color': '#374151',
+                            'target-arrow-width': 8,
+                            'target-arrow-height': 8,
+                            'line-opacity': 0.8,
+                            'arrow-scale': 1.2
+                        }
+                    },
+                    {
+                        selector: 'edge[type = "spouse"]',
+                        style: {
+                            'width': 3,
+                            'line-color': '#f59e0b',
+                            'line-style': 'dashed',
+                            'curve-style': 'bezier',
+                            'line-opacity': 0.6
+                        }
+                    },
+                    {
+                        selector: 'node:selected',
+                        style: {
+                            'background-color': '#ef4444',
+                            'border-width': 4,
+                            'border-color': '#dc2626',
+                            'border-opacity': 1,
+                            'width': function(ele) {
+                                return (ele.data('is_direct_line') ? 50 : 40) + 10;
+                            },
+                            'height': function(ele) {
+                                return (ele.data('is_direct_line') ? 50 : 40) + 10;
+                            }
+                        }
+                    },
+                    {
+                        selector: 'node:hover',
+                        style: {
+                            'background-color': '#fbbf24',
+                            'border-width': 4,
+                            'border-color': '#f59e0b',
+                            'width': function(ele) {
+                                return (ele.data('is_direct_line') ? 50 : 40) + 5;
+                            },
+                            'height': function(ele) {
+                                return (ele.data('is_direct_line') ? 50 : 40) + 5;
+                            }
+                        }
+                    }
+                ],
+                layout: {
+                    name: 'dagre',
+                    rankDir: 'TB',
+                    nodeSep: 100,
+                    rankSep: 150,
+                    padding: 80,
+                    animate: true,
+                    animationDuration: 1000,
+                    animationEasing: 'ease-in-out'
+                },
+                userZoomingEnabled: true,
+                userPanningEnabled: true,
+                boxSelectionEnabled: true,
+                selectionType: 'single',
+                minZoom: 0.3,
+                maxZoom: 3,
+                wheelSensitivity: 0.2
+            });
+            
+            // Eventos mejorados
+            cy.on('tap', 'node', function(evt) {
+                const node = evt.target;
+                setFocus(node);
+            });
+            
+            cy.on('tap', function(evt) {
+                if (evt.target === cy) {
+                    clearFocus();
+                }
+            });
+            
+            // Hover events para tooltip
+            cy.on('mouseover', 'node', function(evt) {
+                const node = evt.target;
+                showTooltip(node, evt.renderedPosition);
+            });
+            
+            cy.on('mouseout', 'node', function(evt) {
+                hideTooltip();
+            });
+            
+            // Configurar navegación por teclado
+            setupKeyboardNavigation();
+            
+            // Actualizar estadísticas
+            updateStats();
+            
+            // Ocultar loading
+            document.getElementById('loadingOverlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }, 300);
+        }
+        
+        // Función para mostrar tooltip
+        function showTooltip(node, position) {
+            const tooltip = document.getElementById('tooltip');
+            const data = node.data();
+            
+            let content = `<strong>${data.name}</strong><br>`;
+            if (data.birth_date) {
+                content += `Nacimiento: ${data.birth_date}<br>`;
+            }
+            if (data.death_date) {
+                content += `Fallecimiento: ${data.death_date}<br>`;
+            }
+            if (data.age !== null) {
+                content += `Edad: ${data.age} años<br>`;
+            }
+            if (data.birth_place) {
+                content += `Lugar: ${data.birth_place}<br>`;
+            }
+            content += `Generación: ${data.generation}`;
+            
+            tooltip.innerHTML = content;
+            tooltip.style.left = position.x + 10 + 'px';
+            tooltip.style.top = position.y - 10 + 'px';
+            tooltip.classList.add('show');
+        }
+        
+        // Función para ocultar tooltip
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.classList.remove('show');
+        }
+        
+        // Función para establecer foco
+        function setFocus(node) {
+            currentFocus = node;
+            
+            // Seleccionar nodo
+            cy.elements().unselect();
+            node.select();
+            
+            // Actualizar información
+            updateFocusInfo(node);
+            
+            // Centrar en el nodo con animación
+            cy.animate({
+                center: {
+                    eles: node
+                },
+                zoom: 1.2,
+                duration: 800,
+                easing: 'ease-in-out'
+            });
+        }
+        
+        // Función para limpiar foco
+        function clearFocus() {
+            currentFocus = null;
+            cy.elements().unselect();
+            updateFocusInfo(null);
+        }
+        
+        // Función para actualizar información de foco
+        function updateFocusInfo(node) {
+            const focusInfo = document.getElementById('focusInfo');
+            
+            if (!node) {
+                focusInfo.innerHTML = `
+                    <div class="focus-name">Selecciona una persona</div>
+                    <div class="focus-details">Haz clic en cualquier nodo para ver detalles completos</div>
+                `;
+                focusInfo.classList.add('hidden');
+                return;
+            }
+            
+            const data = node.data();
+            const name = data.name;
+            const birthDate = data.birth_date || '';
+            const deathDate = data.death_date || '';
+            const birthPlace = data.birth_place || '';
+            const generation = data.generation || 0;
+            const age = data.age;
+            const isDirect = data.is_direct_line;
+            
+            let details = '';
+            if (birthDate) {
+                details += `<strong>Nacimiento:</strong> ${birthDate}`;
+                if (deathDate) details += ` - <strong>Fallecimiento:</strong> ${deathDate}`;
+                details += '<br>';
+            }
+            
+            if (age !== null) {
+                details += `<strong>Edad:</strong> ${age} años<br>`;
+            }
+            
+            if (birthPlace) {
+                details += `<strong>Lugar:</strong> ${birthPlace}<br>`;
+            }
+            
+            details += `<strong>Generación:</strong> ${generation}`;
+            
+            if (isDirect) {
+                details += ' • <strong>Línea Directa</strong>';
+            }
+            
+            focusInfo.innerHTML = `
+                <div class="focus-name">${name}</div>
+                <div class="focus-details">${details}</div>
+            `;
+            focusInfo.classList.remove('hidden');
+        }
+        
+        // Función para mostrar indicador de teclado
+        function showKeyboardIndicator(message) {
+            const indicator = document.getElementById('keyboardIndicator');
+            if (!indicator) return;
+            
+            indicator.textContent = message;
+            indicator.classList.add('show');
+            
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 1500);
+        }
+        
+        // Función para configurar navegación por teclado
+        function setupKeyboardNavigation() {
+            document.addEventListener('keydown', (event) => {
+                if (!currentFocus) return;
+                
+                console.log('Tecla presionada:', event.key);
+                
+                switch (event.key) {
+                    case 'ArrowLeft':
+                        const leftSibling = getSibling(currentFocus, 'left');
+                        if (leftSibling) {
+                            showKeyboardIndicator('⬅️ ' + leftSibling.data('name'));
+                            setFocus(leftSibling);
+                        }
+                        break;
+                    case 'ArrowRight':
+                        const rightSibling = getSibling(currentFocus, 'right');
+                        if (rightSibling) {
+                            showKeyboardIndicator('➡️ ' + rightSibling.data('name'));
+                            setFocus(rightSibling);
+                        }
+                        break;
+                    case 'ArrowUp':
+                        const parent = getParent(currentFocus);
+                        if (parent) {
+                            showKeyboardIndicator('⬆️ ' + parent.data('name'));
+                            setFocus(parent);
+                        }
+                        break;
+                    case 'ArrowDown':
+                        const child = getFirstChild(currentFocus);
+                        if (child) {
+                            showKeyboardIndicator('⬇️ ' + child.data('name'));
+                            setFocus(child);
+                        }
+                        break;
+                    case 'Enter':
+                        showKeyboardIndicator('🎯 Centrando en: ' + currentFocus.data('name'));
+                        cy.animate({
+                            center: {
+                                eles: currentFocus
+                            },
+                            zoom: 1.5,
+                            duration: 800,
+                            easing: 'ease-in-out'
+                        });
+                        break;
+                }
+            });
+        }
+        
+        // Función para obtener hermano
+        function getSibling(node, direction) {
+            const parent = getParent(node);
+            if (!parent) return null;
+            
+            const siblings = getChildren(parent);
+            const currentIndex = siblings.indexOf(node);
+            
+            if (direction === 'left' && currentIndex > 0) {
+                return siblings[currentIndex - 1];
+            } else if (direction === 'right' && currentIndex < siblings.length - 1) {
+                return siblings[currentIndex + 1];
+            }
+            
+            return null;
+        }
+        
+        // Función para obtener padre
+        function getParent(node) {
+            const parentEdges = node.incomers('edge[type = "parent-child"]');
+            return parentEdges.length > 0 ? parentEdges[0] : null;
+        }
+        
+        // Función para obtener hijos
+        function getChildren(node) {
+            const childEdges = node.outgoers('edge[type = "parent-child"]');
+            return childEdges.nodes().sort((a, b) => {
+                return a.position('x') - b.position('x');
+            });
+        }
+        
+        // Función para obtener primer hijo
+        function getFirstChild(node) {
+            const children = getChildren(node);
+            return children.length > 0 ? children[0] : null;
+        }
+        
+        // Función para alternar vista
+        function toggleView() {
+            isDirectLineView = !isDirectLineView;
+            const toggle = document.getElementById('viewToggle');
+            
+            if (isDirectLineView) {
+                toggle.textContent = 'Vista: Línea Directa';
+                toggle.classList.add('active');
+                cy.elements().forEach(ele => {
+                    if (ele.isNode()) {
+                        ele.style('display', ele.data('is_direct_line') ? 'element' : 'none');
+                    }
+                });
+            } else {
+                toggle.textContent = 'Vista: Completa';
+                toggle.classList.remove('active');
+                cy.elements().forEach(ele => {
+                    ele.style('display', 'element');
+                });
+            }
+            
+            cy.layout({ 
+                name: 'dagre',
+                animate: true,
+                animationDuration: 1000
+            }).run();
+            
+            updateStats();
+        }
+        
+        // Función para actualizar estadísticas
+        function updateStats() {
+            const visibleNodes = cy.nodes(':visible');
+            const generations = new Set();
+            const directLineNodes = visibleNodes.filter(node => node.data('is_direct_line'));
+            
+            visibleNodes.forEach(node => {
+                generations.add(node.data('generation'));
+            });
+            
+            document.getElementById('personCount').textContent = visibleNodes.length;
+            document.getElementById('generationCount').textContent = generations.size;
+            document.getElementById('directLineCount').textContent = directLineNodes.length;
+        }
+        
+        // Función principal para inicializar
+        async function init() {
+            try {
+                let rows = await fetchGoogleSheet(SHEET_ID, SHEET_GID);
+                
+                if (!rows || rows.length === 0) {
+                    rows = loadLocalData();
+                }
+                
+                const cytoscapeData = convertToCytoscapeData(rows);
+                createTree(cytoscapeData);
+                
+                document.getElementById('viewToggle').addEventListener('click', toggleView);
+                
+            } catch (error) {
+                console.error('Error inicializando árbol:', error);
+                const rows = loadLocalData();
+                const cytoscapeData = convertToCytoscapeData(rows);
+                createTree(cytoscapeData);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', init);
+        
+        window.addEventListener('resize', () => {
+            if (cy) {
+                cy.resize();
+                cy.layout({ 
+                    name: 'dagre',
+                    animate: true,
+                    animationDuration: 500
+                }).run();
+            }
+        });
+    </script>
+</body>
+</html>

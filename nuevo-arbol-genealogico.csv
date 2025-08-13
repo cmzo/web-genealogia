@@ -1,0 +1,28 @@
+id,parent_id,spouse_id,generation,is_direct_line,branch,display_order,name,birth_date,birth_place,death_date,verificado
+1,,2,5,true,clemenzo,1,Francisco Clemenzo,1856,Ardon Suiza,1928,true
+2,,1,5,false,roch,2,Celestina Roch,1887,Suiza,1968,true
+3,1,4,4,true,clemenzo,1,Felix Clemenzo,1894,Entre Rios Argentina,1955,true
+4,,3,4,false,queipo,2,Isabel Maria Queipo,1905,Argentina,1969,true
+5,3,6,3,true,clemenzo,1,Felix Ricardo Clemenzo,1926,Bolivar Buenos Aires Argentina,,true
+6,,5,3,false,carvallo,2,Raquel Noemi Carvallo,,Ciudad de Buenos Aires Argentina,,true
+7,5,8,2,true,clemenzo,1,Daniel Jorge Clemenzo,,Buenos Aires Argentina,,true
+8,,7,2,false,arceo,2,Cristina Magdalena Arceo,,,true
+9,7,10,1,true,clemenzo,1,Matias Damian Clemenzo,1990,,true
+10,,9,1,false,vargas,2,Maria Cecilia Vargas Yegros,,,true
+11,9,,0,true,clemenzo,1,Juan Martin Clemenzo Vargas Yegros,2020,,true
+12,1,13,4,false,clemenzo,3,Maria Luisa Clemenzo,1897,Santa Fe Argentina,1972,true
+13,,12,4,false,costabile,4,Agustin Costabile,1895,Argentina,1971,true
+14,1,15,4,false,clemenzo,5,León Francisco Clemenzo,1891,Entre Rios Argentina,,true
+15,,14,4,false,baster,6,Emiliana Elena Baster,,,true
+16,1,,4,false,clemenzo,7,Rodolfo Ambrosio Clemenzo,1919,Concepción del Uruguay Argentina,,true
+17,1,,4,false,clemenzo,8,Pedro Clemenzo,1890,Entre Rios Argentina,,true
+18,1,,4,false,clemenzo,9,Carlota Julia Clemenzo,1899,Entre Rios Argentina,1980,true
+19,1,,4,false,clemenzo,10,Celestina Clemenzo,,Entre Rios Argentina,,true
+20,1,,4,false,clemenzo,11,Francisca Clemenzo,,Entre Rios Argentina,,true
+21,3,,3,false,clemenzo,3,Olga Hemilce Clemenzo Queipo,,Buenos Aires Argentina,,true
+22,3,,3,false,clemenzo,4,Yolanda Isabel Clemenzo Queipo,,Buenos Aires Argentina,,true
+23,3,,3,false,clemenzo,5,Eduardo Clemenzo Queipo,,Buenos Aires Argentina,,true
+24,3,,3,false,clemenzo,6,Margot Celestina Clemenzo Queipo,,Buenos Aires Argentina,,true
+25,3,,3,false,clemenzo,7,Ana Mary Clemenzo Queipo,,Buenos Aires Argentina,,true
+26,3,,3,false,clemenzo,8,Jorge Clemenzo,,Buenos Aires Argentina,,true
+27,5,,2,false,clemenzo,3,Guillermo Alejandro Clemenzo,,Buenos Aires Argentina,,true
