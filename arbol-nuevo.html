@@ -173,6 +173,11 @@
             filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
         }
 
+        /* Resaltado de búsqueda */
+        .node.search-hit .person-card { stroke: #2563eb; stroke-width: 3; }
+        .node.search-hit .card-header { stroke: #2563eb; }
+        .node.search-dim { opacity: 0.18; }
+
         .card-header {
             fill: #f1f5f9;
             stroke: #e5e7eb;
@@ -396,8 +401,22 @@
             </div>
         </div>
         
-        <div class="controls" style="padding: 16px 32px;">
+        <div class="controls" style="padding: 16px 32px; gap: 12px;">
+            <input id="searchInput" type="search" placeholder="Buscar nombre…" style="flex:0 1 380px; max-width: 60%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;" />
+            <span id="searchInfo" style="font-size:13px; color: var(--muted);"></span>
             <span class="view-info" id="stats">Cargando...</span>
+            <button id="resetViewBtn" class="btn" title="Reiniciar vista" style="padding: 6px; width: 34px; height: 34px; display:inline-flex; align-items:center; justify-content:center;">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="5,9 5,5 9,5"/>
+                <line x1="5" y1="5" x2="10" y2="10"/>
+                <polyline points="15,5 19,5 19,9"/>
+                <line x1="19" y1="5" x2="14" y2="10"/>
+                <polyline points="19,15 19,19 15,19"/>
+                <line x1="19" y1="19" x2="14" y2="14"/>
+                <polyline points="9,19 5,19 5,15"/>
+                <line x1="5" y1="19" x2="10" y2="14"/>
+              </svg>
+            </button>
         </div>
         
         <div class="tree-container" id="treeContainer">
@@ -418,10 +437,10 @@
         (function(){
           const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
           const now = new Date();
-          const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+          const dateStr = `13 de ${months[now.getMonth()]} de ${now.getFullYear()}`;
           window.addEventListener('load', () => {
             const metaEdition = document.getElementById('meta-edition');
-            if (metaEdition) metaEdition.textContent = `Publicado 10 de agosto de 2025 · Última edición ${dateStr}`;
+            if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición ${dateStr}`;
           });
         })();
         // Configuración
@@ -435,6 +454,8 @@
         let currentView = 'complete'; // 'complete' o 'direct'
         let selectedNode = null;
         let collapsedNodes = new Set();
+        let searchIndex = [];
+        let currentPositions = new Map();
         
         // Dimensiones
         const cardWidth = 220;
@@ -462,6 +483,11 @@
             if (!pid) return '#ffffff';
             const idx = Math.abs(String(pid).split('').reduce((a,c)=>a + c.charCodeAt(0), 0)) % parentPalette.length;
             return parentPalette[idx];
+        }
+
+        // Utilidad: normalizar texto (minúsculas, sin acentos) para búsquedas/comparaciones
+        function normalizeText(s) {
+            return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
 
         // Función para cargar datos de Google Sheets
@@ -733,6 +759,8 @@
                     g.attr('transform', event.transform);
                 });
             svg.call(zoom);
+            // Exponer zoom actual para poder resetearlo al recentrar
+            window.currentZoom = zoom;
             
             // Configurar layout
             const treeLayout = d3.tree()
@@ -801,6 +829,7 @@
             // Calcular hijos por matrimonio y distribuirlos bajo el nodo de matrimonio (evitar apilado)
             const nodesById = new Map();
             treeData.descendants().forEach(n => nodesById.set(n.data.id, n));
+            currentPositions = new Map(Array.from(nodesById.entries()).map(([id, n]) => [id, {x: n.x, y: n.y, data: n.data}]));
             const jointChildIds = new Set();
             const marriageInfoByKey = new Map(); // key a::b -> {mx,my,children: Node[]}
             if (window.spouseLinks && window.spouseLinks.length > 0) {
@@ -858,6 +887,11 @@
                     }
                 });
             })();
+
+            // Actualizar mapa de posiciones después de TODOS los ajustes de layout
+            currentPositions = new Map(
+                treeData.descendants().map(n => [n.data.id, {x: n.x, y: n.y, data: n.data}])
+            );
 
             // Crear enlaces padre-hijo
             const parentChildLinks = g.selectAll('.tree-link-parent')
@@ -1072,13 +1106,17 @@
             nodes.on('click', function(event, d) {
                 selectNode(d);
             });
+
+            // Construir índice de búsqueda por nombre
+            searchIndex = treeData.descendants()
+                .filter(d => d.data && d.data.name && d.data.id !== 'super-root')
+                .map(d => ({ id: d.data.id, name: d.data.name, nameNorm: normalizeText(d.data.name) }));
             
             // Calcular bounds para foco inicial similar al screenshot. Centramos en Francisco/Félix
             // y evitamos abarcar toda la fila horizontal usando un ancho fijo alrededor del objetivo.
             const allBounds = g.node().getBBox();
             console.log('Bounds del árbol (completo):', allBounds);
 
-            const normalizeText = (s) => (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
             const descendants = treeData.descendants();
             const target = descendants.find(d => {
                 const n = normalizeText(d.data.name);
@@ -1122,6 +1160,47 @@
             
             // Actualizar estadísticas
             updateStats(treeData.descendants().length);
+
+            // Utilidades para búsqueda y centrado
+            function focusOnNodeById(personId) {
+                const pos = currentPositions.get(personId);
+                if (!pos || !window.currentSvg || !window.currentZoom) return;
+                const container = document.getElementById('treeContainer');
+                const cw = container.clientWidth;
+                const ch = container.clientHeight;
+                // Enfocar con zoom/translate calculando escala para que la tarjeta ocupe buena parte del viewport
+                const focusW = cardWidth * 1.8;
+                const focusH = cardHeight * 1.8;
+                const k = Math.min(2.4, Math.max(0.35, Math.min(cw / focusW, ch / focusH)));
+                // Usar viewBox para calcular el centro en unidades del SVG (robusto aunque exista un viewBox no 1:1)
+                const vbAttr = window.currentSvg.attr('viewBox');
+                let cx, cy;
+                if (vbAttr) {
+                    const [vbX, vbY, vbW, vbH] = vbAttr.split(/\s+/).map(Number);
+                    cx = vbX + vbW / 2;
+                    cy = vbY + vbH / 2;
+                } else {
+                    // sin viewBox, el centro es en px y coincide con unidades
+                    cx = cw / 2; cy = ch / 2;
+                }
+                // Resolver: k*pos.x + tx = cx  => tx = cx - k*pos.x (idem para y)
+                const tx = cx - k * pos.x;
+                const ty = cy - k * pos.y;
+                const transform = d3.zoomIdentity.translate(tx, ty).scale(k);
+                window.currentSvg.transition().duration(450).call(window.currentZoom.transform, transform);
+                // Resaltar el nodo enfocado
+                d3.select('#treeContainer').selectAll('.person-card').classed('selected', false);
+                d3.select('#treeContainer').selectAll('.node').filter(d => d.data.id === personId)
+                  .select('.person-card').classed('selected', true);
+            }
+
+            window.__focusOnNodeById = focusOnNodeById;
+            window.__applySearchHighlights = function(ids){
+                const idSet = new Set(ids);
+                d3.select(container).selectAll('.node')
+                  .classed('search-hit', d => idSet.has(d.data.id))
+                  .classed('search-dim', d => ids.length>0 && !idSet.has(d.data.id));
+            };
         }
 
         // Función para seleccionar nodo
@@ -1271,11 +1350,14 @@
 
         // Función para resetear vista
         function resetView() {
-            // Mostrar todo el árbol (viewBox al contenido completo)
+            // Mostrar todo el árbol (viewBox al contenido completo) y resetear zoom
             const container = document.getElementById('treeContainer');
             const svg = d3.select(container).select('svg');
             const g = svg.select('g');
             if (!g.node()) return;
+            if (window.currentSvg && window.currentZoom) {
+                window.currentSvg.call(window.currentZoom.transform, d3.zoomIdentity);
+            }
             const b = g.node().getBBox();
             const padX = 120, padY = 120;
             svg.attr('viewBox', `${b.x-padX} ${b.y-padY} ${Math.max(1,b.width+padX*2)} ${Math.max(1,b.height+padY*2)}`)
@@ -1316,6 +1398,41 @@
         // Función para actualizar estadísticas
         function updateStats(count) {
             document.getElementById('stats').textContent = `${count} personas`;
+        }
+
+        // Búsqueda
+        function setupSearch() {
+            const input = document.getElementById('searchInput');
+            if (!input) return;
+            function runSearch() {
+                const term = normalizeText(input.value.trim());
+                if (!term) { window.__applySearchHighlights?.([]); return []; }
+                const matches = searchIndex.filter(e => e.nameNorm.includes(term));
+                window.__applySearchHighlights?.(matches.map(m => m.id));
+                const info = document.getElementById('searchInfo');
+                if (info) {
+                    info.textContent = matches.length > 1 ? `${matches.length} coincidencias` : (matches.length === 1 ? `1 coincidencia` : '');
+                }
+                return matches;
+            }
+            input.addEventListener('input', () => {
+                const matches = runSearch();
+                // Autocentrar si hay un match claro (1 resultado) o si las primeras letras apuntan a un único candidato
+                if (matches.length === 1) {
+                    // Esperar al siguiente frame para asegurar que currentPositions esté actualizado
+                    requestAnimationFrame(() => window.__focusOnNodeById?.(matches[0].id));
+                }
+            });
+            input.addEventListener('keydown', (e)=>{
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const matches = runSearch();
+                    if (matches.length) {
+                        // Centrar automáticamente en la primera coincidencia
+                        requestAnimationFrame(() => window.__focusOnNodeById?.(matches[0].id));
+                    }
+                }
+            });
         }
 
         // Función para datos de ejemplo
@@ -1414,7 +1531,12 @@
         }
 
         // Inicializar cuando se carga la página
-        window.addEventListener('load', init);
+        window.addEventListener('load', () => { 
+            init(); 
+            setupSearch(); 
+            const btn = document.getElementById('resetViewBtn');
+            if (btn) btn.addEventListener('click', resetView);
+        });
     </script>
 </body>
 </html>
