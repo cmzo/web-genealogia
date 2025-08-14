@@ -12,8 +12,9 @@
     body { background: #fafafa; color: #0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
     .site-header { background: #fff; border-bottom: 1px solid #e6e7eb; }
     .header-container { max-width: 1040px; margin: 0 auto; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
-    .site-title { margin: 0; font-weight: 800; letter-spacing: -0.02em; }
+    .site-title { margin: 0; font-weight: 800; letter-spacing: -0.02em; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size: clamp(32px, 6vw, 48px); line-height: 1.05; }
     .toolbar { background: #fff; border-bottom: 1px solid #e6e7eb; }
+    /* Escritorio: mantener diseño original */
     .toolbar-inner { max-width: 1040px; margin: 0 auto; padding: 16px 20px; display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
     .search { flex: 1 1 420px; display: flex; flex-direction: column; gap: 6px; }
     .search input { padding: 10px 12px; border: 1px solid #e6e7eb; border-radius: 8px; font-size: 14px; background: #fff; }
@@ -30,6 +31,8 @@
     .table tbody tr:hover { background: #fafcff; }
     .name-cell a { font-weight: 600; text-decoration: none; color: #0f172a; }
     .tag { display: inline-block; padding: 2px 8px; font-size: 12px; color: #334155; background: #f1f5f9; border: 1px solid #e5e7eb; border-radius: 999px; }
+    /* Espaciado consistente para el back-home sobre el título */
+    .header-brand .top-bar { margin: 0 0 16px 0; }
 
     /* Modal centrado (similar a contacto) */
     .person-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.44); z-index: 1200; }
@@ -62,25 +65,37 @@
       .gallery { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* Mobile centering */
-    @media (max-width: 640px) {
-      .toolbar-inner { flex-direction: column; align-items: center; gap: 10px; width: 100%; max-width: 420px; margin: 0 auto; padding: 16px 12px; }
-      .search { width: 100%; max-width: 360px; align-items: center; }
-      .search input { width: 100%; max-width: 360px; margin: 0 auto; }
-      .stats-card { margin-left: 0; width: 100%; max-width: 360px; justify-content: space-between; }
+    /* Móvil: compacto y centrado */
+    @media (max-width: 768px) {
+      .toolbar-inner { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
+      /* Evitar que el bloque de búsqueda crezca y genere espacio vertical */
+      .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
+      .search input { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
+      .search-meta { min-height: 0; }
+      .toolbar .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
     }
+
+    /* Forzar estilos móviles mediante clase aplicada por JS (para depurar) */
+    body.is-mobile .toolbar-inner { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
+    body.is-mobile .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
+    body.is-mobile .search input { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
+    body.is-mobile .search-meta { min-height: 0; }
+    body.is-mobile .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
       <div class="header-brand">
+        <div class="top-bar">
+          <a class="back-home" href="./index.html" aria-label="Volver al inicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Inicio
+          </a>
+        </div>
         <h1 class="site-title">Archivo familiar</h1>
         <div class="author-meta" id="dataSourceHeader" style="color:#6b7280; font-size:13px;">Carga de datos: —</div>
       </div>
-      <nav class="site-nav">
-        <a href="index.html" class="btn">Inicio</a>
-      </nav>
     </div>
   </header>
 
@@ -388,6 +403,86 @@
           if (e.key === 'ArrowRight') navLightbox(1);
         }
       });
+      // Marcar si el viewport es móvil para depurar estilos
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) {
+        document.body.classList.add('is-mobile');
+      } else {
+        document.body.classList.remove('is-mobile');
+      }
+      // Diagnóstico de estilos aplicados
+      const toolbarInner = document.querySelector('.toolbar-inner');
+      const statsCard = document.querySelector('.stats-card');
+      const searchBox = document.querySelector('.search');
+      if (toolbarInner && statsCard && searchBox) {
+        const csToolbar = getComputedStyle(toolbarInner);
+        const csStats = getComputedStyle(statsCard);
+        console.log('[archivo] styles before', {
+          toolbar: {
+            flexDirection: csToolbar.flexDirection,
+            maxWidth: csToolbar.maxWidth,
+            padding: csToolbar.padding,
+            gap: csToolbar.gap,
+            height: csToolbar.height,
+          },
+          stats: {
+            alignSelf: csStats.alignSelf,
+            marginLeft: csStats.marginLeft,
+            maxWidth: csStats.maxWidth,
+            width: csStats.width,
+            padding: csStats.padding,
+          }
+        });
+        // Fallback: forzar estilos en móvil con inline para asegurar el resultado visual
+        if (isMobile) {
+          toolbarInner.style.flexDirection = 'column';
+          toolbarInner.style.alignItems = 'center';
+          toolbarInner.style.gap = '6px';
+          toolbarInner.style.maxWidth = '420px';
+          toolbarInner.style.padding = '8px 10px';
+          toolbarInner.style.margin = '0 auto';
+
+          searchBox.style.maxWidth = '360px';
+          searchBox.style.width = '100%';
+          const input = searchBox.querySelector('input');
+          if (input) {
+            input.style.maxWidth = '360px';
+            input.style.width = '100%';
+            input.style.padding = '8px 12px';
+          }
+          statsCard.style.marginLeft = '0';
+          statsCard.style.alignSelf = 'center';
+          statsCard.style.maxWidth = '360px';
+          statsCard.style.width = '100%';
+          statsCard.style.padding = '8px 12px';
+
+          // También reducir el alto del bloque de la toolbar explicitamente
+          toolbarInner.style.minHeight = 'unset';
+          toolbarInner.style.rowGap = '6px';
+          // Log final de medidas
+          const csToolbar2 = getComputedStyle(toolbarInner);
+          const csStats2 = getComputedStyle(statsCard);
+          console.log('[archivo] styles after', {
+            toolbar: {
+              flexDirection: csToolbar2.flexDirection,
+              maxWidth: csToolbar2.maxWidth,
+              padding: csToolbar2.padding,
+              gap: csToolbar2.gap,
+              height: csToolbar2.height,
+            },
+            stats: {
+              alignSelf: csStats2.alignSelf,
+              marginLeft: csStats2.marginLeft,
+              maxWidth: csStats2.maxWidth,
+              width: csStats2.width,
+              padding: csStats2.padding,
+            }
+          });
+        }
+      }
+
+      console.log('[archivo] viewportWidth=', window.innerWidth, 'isMobile=', isMobile);
+
       // Router por hash
       initRouter(data);
     })();
