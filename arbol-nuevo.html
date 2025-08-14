@@ -397,26 +397,44 @@
                 <div class="meta-text">
                     <div><strong>Por Matías Clemenzo</strong></div>
                     <div id="meta-edition">Publicado — · Última edición —</div>
+                    <div id="dataSourceHeader" class="author-meta">Carga de datos: —</div>
                 </div>
             </div>
         </div>
         
         <div class="controls" style="padding: 16px 32px; gap: 12px;">
-            <input id="searchInput" type="search" placeholder="Buscar nombre…" style="flex:0 1 380px; max-width: 60%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;" />
-            <span id="searchInfo" style="font-size:13px; color: var(--muted);"></span>
-            <span class="view-info" id="stats">Cargando...</span>
-            <button id="resetViewBtn" class="btn" title="Reiniciar vista" style="padding: 6px; width: 34px; height: 34px; display:inline-flex; align-items:center; justify-content:center;">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="5,9 5,5 9,5"/>
-                <line x1="5" y1="5" x2="10" y2="10"/>
-                <polyline points="15,5 19,5 19,9"/>
-                <line x1="19" y1="5" x2="14" y2="10"/>
-                <polyline points="19,15 19,19 15,19"/>
-                <line x1="19" y1="19" x2="14" y2="14"/>
-                <polyline points="9,19 5,19 5,15"/>
-                <line x1="5" y1="19" x2="10" y2="14"/>
-              </svg>
-            </button>
+            <div style="display:flex; flex-direction:column; gap:6px; flex:0 1 520px; max-width: 70%;">
+                <input id="searchInput" type="search" placeholder="Buscar nombre…" style="padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;" />
+                <div id="searchMeta" style="display:flex; align-items:center; gap:10px; color: var(--muted); font-size:13px; min-height: 22px;">
+                    <span id="searchInfo"></span>
+                    <div id="searchNav" style="display:none; align-items:center; gap:6px;">
+                        <button id="prevMatch" class="btn" title="Anterior" style="padding:4px 8px; height:28px;">‹</button>
+                        <span id="matchCounter"></span>
+                        <button id="nextMatch" class="btn" title="Siguiente" style="padding:4px 8px; height:28px;">›</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left:auto; display:flex; align-items:stretch;">
+                <div style="background: var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; display:flex; gap:16px; align-items:center; box-shadow:0 3px 8px rgba(15,23,42,0.06);">
+                    <div style="display:flex; flex-direction:column; gap:4px; text-align:left; color: var(--muted); font-size:14px; min-width: 220px;">
+                        <div id="stats">Personas en el árbol: —</div>
+                        <div id="generations">Generaciones: —</div>
+                    </div>
+                    <button id="resetViewBtn" class="btn" title="Reiniciar vista" style="padding: 6px; width: 34px; height: 34px; display:inline-flex; align-items:center; justify-content:center;">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="5,9 5,5 9,5"/>
+                        <line x1="5" y1="5" x2="10" y2="10"/>
+                        <polyline points="15,5 19,5 19,9"/>
+                        <line x1="19" y1="5" x2="14" y2="10"/>
+                        <polyline points="19,15 19,19 15,19"/>
+                        <line x1="19" y1="19" x2="14" y2="14"/>
+                        <polyline points="9,19 5,19 5,15"/>
+                        <line x1="5" y1="19" x2="10" y2="14"/>
+                      </svg>
+                    </button>
+                </div>
+            </div>
         </div>
         
         <div class="tree-container" id="treeContainer">
@@ -488,6 +506,55 @@
         // Utilidad: normalizar texto (minúsculas, sin acentos) para búsquedas/comparaciones
         function normalizeText(s) {
             return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // Formatear fecha para tarjetas: si hay día/mes/año -> DD/MM/AAAA, si no, solo año
+        function formatDateForCard(value) {
+            if (value === null || value === undefined) return '';
+            // Si es número: puede ser año (YYYY) o serial de Google Sheets
+            if (typeof value === 'number') {
+                if (value >= 1000 && value <= 2999) {
+                    return String(value);
+                }
+                // Interpretar como serial de Google Sheets (base: 1899-12-30)
+                const base = Date.UTC(1899, 11, 30);
+                const ms = base + Math.round(value) * 86400000;
+                const d = new Date(ms);
+                const dd = String(d.getUTCDate()).padStart(2, '0');
+                const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+                const yyyy = d.getUTCFullYear();
+                return `${dd}/${mm}/${yyyy}`;
+            }
+            const raw = String(value).trim();
+            if (!raw) return '';
+            // YYYY-MM-DD o YYYY/MM/DD
+            let m = raw.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})$/);
+            if (m) {
+                const y = m[1], mm = m[2].padStart(2,'0'), dd = m[3].padStart(2,'0');
+                return `${dd}/${mm}/${y}`;
+            }
+            // DD/MM/YYYY o DD-MM-YYYY
+            m = raw.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/);
+            if (m) {
+                const dd = m[1].padStart(2,'0'), mm = m[2].padStart(2,'0'), y = m[3];
+                return `${dd}/${mm}/${y}`;
+            }
+            // Cadena numérica pura
+            if (/^\d+$/.test(raw)) {
+                const num = parseInt(raw, 10);
+                if (num >= 1000 && num <= 2999) return String(num);
+                const base = Date.UTC(1899, 11, 30);
+                const ms = base + Math.round(num) * 86400000;
+                const d = new Date(ms);
+                const dd = String(d.getUTCDate()).padStart(2, '0');
+                const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+                const yyyy = d.getUTCFullYear();
+                return `${dd}/${mm}/${yyyy}`;
+            }
+            // Buscar año de 4 dígitos
+            const yearMatch = raw.match(/(\d{4})/);
+            if (yearMatch) return yearMatch[1];
+            return raw;
         }
 
         // Función para cargar datos de Google Sheets
@@ -1043,7 +1110,7 @@
                     const group = d3.select(this);
                     const outLines = [];
                     // Línea 1: nacimiento
-                    if (d.data.birthDate) outLines.push(`Nac.: ${d.data.birthDate}`);
+                    if (d.data.birthDate) outLines.push(`Nac.: ${formatDateForCard(d.data.birthDate)}`);
                     // Lugar en hasta 2 renglones
                     if (d.data.birthPlace) {
                         const label = 'Lugar: ';
@@ -1067,7 +1134,7 @@
                         }
                     }
                     // Fallecimiento (si existe)
-                    if (d.data.deathDate) outLines.push(`Fallec.: ${d.data.deathDate}`);
+                    if (d.data.deathDate) outLines.push(`Fallec.: ${formatDateForCard(d.data.deathDate)}`);
 
                     group.text(null);
                     // anclar a la izquierda del contenido
@@ -1397,7 +1464,15 @@
 
         // Función para actualizar estadísticas
         function updateStats(count) {
-            document.getElementById('stats').textContent = `${count} personas`;
+            document.getElementById('stats').textContent = `Personas en el árbol: ${count}`;
+        }
+
+        function updateGenerations(root) {
+            // calcular profundidad máxima desde la raíz excluyendo super-root
+            const descendants = d3.hierarchy(root).descendants().filter(n => n.data.id !== 'super-root');
+            const maxDepth = descendants.reduce((m, n) => Math.max(m, n.depth), 0);
+            // Mostrar generaciones como cuenta basada en 0 → usar maxDepth directamente
+            document.getElementById('generations').textContent = `Generaciones: ${maxDepth}`;
         }
 
         // Búsqueda
@@ -1422,6 +1497,20 @@
                     // Esperar al siguiente frame para asegurar que currentPositions esté actualizado
                     requestAnimationFrame(() => window.__focusOnNodeById?.(matches[0].id));
                 }
+                // Mostrar navegación si hay múltiples
+                const nav = document.getElementById('searchNav');
+                const counter = document.getElementById('matchCounter');
+                if (matches.length > 1) {
+                    nav.style.display = 'inline-flex';
+                    counter.textContent = `1 de ${matches.length}`;
+                    nav.dataset.index = '0';
+                    nav.dataset.ids = JSON.stringify(matches.map(m => m.id));
+                } else {
+                    nav.style.display = 'none';
+                    counter.textContent = '';
+                    nav.dataset.index = '';
+                    nav.dataset.ids = '';
+                }
             });
             input.addEventListener('keydown', (e)=>{
                 if (e.key === 'Enter') {
@@ -1433,6 +1522,23 @@
                     }
                 }
             });
+
+            // Botones de navegación de coincidencias
+            const prevBtn = document.getElementById('prevMatch');
+            const nextBtn = document.getElementById('nextMatch');
+            const nav = document.getElementById('searchNav');
+            const counter = document.getElementById('matchCounter');
+            function goto(offset) {
+                const ids = nav.dataset.ids ? JSON.parse(nav.dataset.ids) : [];
+                if (!ids.length) return;
+                let idx = parseInt(nav.dataset.index || '0', 10);
+                idx = (idx + offset + ids.length) % ids.length;
+                nav.dataset.index = String(idx);
+                counter.textContent = `${idx + 1} de ${ids.length}`;
+                window.__focusOnNodeById?.(ids[idx]);
+            }
+            prevBtn?.addEventListener('click', () => goto(-1));
+            nextBtn?.addEventListener('click', () => goto(1));
         }
 
         // Función para datos de ejemplo
@@ -1459,9 +1565,13 @@
                 try {
                     rows = await loadData();
                     console.log('Datos cargados desde Google Sheets');
+                    const ds = document.getElementById('dataSourceHeader');
+                    if (ds) ds.textContent = 'Carga de datos: desde sheet';
                 } catch (error) {
                     console.warn('Error cargando desde Google Sheets, usando datos de ejemplo:', error);
                     rows = getExampleData();
+                    const ds = document.getElementById('dataSourceHeader');
+                    if (ds) ds.textContent = 'Carga de datos: datos de ejemplo';
                 }
                 
                 // Cargar hoja de Matrimonios (si se configuró GID)
@@ -1475,6 +1585,7 @@
 
                 console.log('Construyendo árbol con', rows.length, 'filas');
                 treeData = buildTree(rows);
+                updateGenerations(treeData);
                 ensureDirectLine(treeData);
                 console.log('Árbol construido, creando visualización');
                 createTree(treeData);
