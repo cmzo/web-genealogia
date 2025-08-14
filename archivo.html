@@ -61,6 +61,14 @@
       .person-card { width: 96vw; height: 92vh; }
       .gallery { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* Mobile centering */
+    @media (max-width: 640px) {
+      .toolbar-inner { flex-direction: column; align-items: center; gap: 12px; }
+      .search { width: 100%; max-width: 560px; align-items: center; }
+      .search input { width: 100%; max-width: 560px; margin: 0 auto; }
+      .stats-card { margin-left: 0; width: 100%; max-width: 560px; justify-content: space-between; }
+    }
   </style>
 </head>
 <body>

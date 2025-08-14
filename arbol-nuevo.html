@@ -149,6 +149,12 @@
             overflow: hidden;
             background: var(--bg);
         }
+        /* Mobile centering for top controls */
+        @media (max-width: 640px) {
+            .controls { flex-direction: column; align-items: center; }
+            .controls input#searchInput { width: 100%; max-width: 560px; }
+            .view-info { margin-left: 0; }
+        }
 
         .person-card {
             fill: white;
