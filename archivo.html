@@ -187,9 +187,10 @@
   </footer>
 
   <script>
-    // Configuración: hoja opcional para futuro
-    const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
-    const ARCHIVE_GID = ''; // si decides usar Sheets, completamos
+    // Configuración: hoja del archivo familiar
+    const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
+    const PEOPLE_GID = '0'; // GID para la hoja de personas
+    const MEDIA_GID = '1629407041'; // GID para la hoja de multimedia
 
     let peopleIndex = [];
     let slugToPerson = new Map();
@@ -207,18 +208,155 @@
       if (el) el.textContent = text;
     }
 
-    async function fetchArchive() {
-      // Primero intentar archivo JSON local generado por script
+    // Función para cargar datos desde Google Sheets
+    async function fetchGoogleSheet(sheetId, gid) {
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
       try {
+        const response = await fetch(url);
+        const text = await response.text();
+        
+        console.log('Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
+        
+        // Limpiar respuesta de Google Sheets (formato JSONP)
+        let jsonText = text;
+        if (text.startsWith('/*O_o*/')) {
+          // Remover el prefijo JSONP
+          jsonText = text.replace(/^\/\*O_o\*\/\s*/, '');
+        }
+        
+        // Buscar el objeto JSON real
+        const match = jsonText.match(/\{.*\}/);
+        if (!match) {
+          throw new Error('No se encontró JSON válido en la respuesta');
+        }
+        
+        const data = JSON.parse(match[0]);
+        
+        if (!data.table || !data.table.rows) {
+          throw new Error('Formato de datos inválido');
+        }
+        
+        // Mapear columnas por etiqueta para evitar errores por posición
+        const cols = data.table.cols || [];
+        const colIndex = {};
+        cols.forEach((col, idx) => {
+          const key = (col.label || col.id || '').toString().trim().toLowerCase();
+          if (key) colIndex[key] = idx;
+        });
+        
+        // Convertir a formato simple
+        const rows = data.table.rows.map(row => {
+          const obj = {};
+          cols.forEach((col, index) => {
+            if (row.c[index]) {
+              const key = (col.label || col.id || '').toString().trim();
+              obj[key] = row.c[index].v;
+            }
+          });
+          return obj;
+        });
+        
+        return rows;
+      } catch (error) {
+        console.warn('[Google Sheets] Error:', error);
+        return null;
+      }
+    }
+
+    async function fetchArchive() {
+      // Primero intentar cargar desde Google Sheets
+      if (SHEET_ID && PEOPLE_GID) {
+        try {
+          console.log('Intentando cargar desde Google Sheets...');
+          
+          // Cargar hoja de personas
+          const peopleData = await fetchGoogleSheet(SHEET_ID, PEOPLE_GID);
+          
+          if (peopleData && peopleData.length > 0) {
+            console.log('Datos de personas cargados:', peopleData.length, 'filas');
+            
+            // Convertir datos de personas
+            const people = peopleData.map(row => ({
+              id: String(row.id || '').trim(),
+              slug: toSlug(row.slug || row.name || row.id),
+              name: String(row.name || '').trim(),
+              years: String(row.years || '').trim(),
+              branch: String(row.branch || '').trim(),
+              generation: Number(row.generation || 0),
+              place: String(row.place || '').trim(),
+              tags: String(row.tags || '').trim(),
+              count_media: Number(row.count_media || 0),
+              bio_short: String(row.bio_short || '').trim(),
+              story_long: String(row.story_long || '').trim(),
+              tree_id: String(row.tree_id || '').trim(),
+              sources: String(row.sources || '').trim()
+            })).filter(p => p.id && p.name); // Filtrar filas vacías
+            
+            // Intentar cargar hoja de multimedia
+            let mediaByPerson = {};
+            try {
+              const mediaData = await fetchGoogleSheet(SHEET_ID, MEDIA_GID);
+              if (mediaData && mediaData.length > 0) {
+                console.log('Datos de multimedia cargados:', mediaData.length, 'ítems');
+                
+                // Agrupar multimedia por person_id
+                mediaData.forEach(row => {
+                  const personId = String(row.person_id || '').trim();
+                  if (personId) {
+                    if (!mediaByPerson[personId]) {
+                      mediaByPerson[personId] = [];
+                    }
+                    
+                    mediaByPerson[personId].push({
+                      type: String(row.type || 'photo').trim(),
+                      date: String(row.date || '').trim(),
+                      place: String(row.place || '').trim(),
+                      caption: String(row.caption || '').trim(),
+                      source: String(row.source || '').trim(),
+                      license: String(row.license || '').trim(),
+                      thumb: String(row.thumb || '').trim(),
+                      full: String(row.full || '').trim(),
+                      url: String(row.url || '').trim(),
+                      title: String(row.title || '').trim(),
+                      filename: String(row.filename || '').trim()
+                    });
+                  }
+                });
+              }
+            } catch (mediaError) {
+              console.warn('Error cargando multimedia (continuando sin multimedia):', mediaError);
+            }
+            
+            setDataSourceLabel('Carga de datos: Google Sheets ✓');
+            return {
+              meta: { source: 'sheet', generatedAt: new Date().toISOString() },
+              people,
+              media: mediaByPerson
+            };
+          }
+        } catch (error) {
+          console.error('Error cargando desde Google Sheets:', error);
+          setDataSourceLabel('Carga de datos: Error en Google Sheets ✗');
+        }
+      }
+      
+      // Fallback: intentar archivo JSON local generado por script
+      try {
+        console.log('Intentando cargar desde archivo local...');
         const res = await fetch('./content/data/archive.json', { cache: 'no-cache' });
         if (res.ok) {
           const json = await res.json();
+          console.log('Datos cargados desde archivo local');
           setDataSourceLabel('Carga de datos: archivo local');
           return json;
         }
-      } catch (e) {}
-      // Fallback a ejemplo mínimo
-      setDataSourceLabel('Carga de datos: ejemplo');
+      } catch (e) {
+        console.warn('Error cargando archivo local:', e);
+      }
+      
+      // Último recurso: datos de ejemplo
+      console.log('Usando datos de ejemplo');
+      setDataSourceLabel('Carga de datos: ejemplo (sin conexión)');
       return {
         people: [
           { id: 'p1', slug: 'francisco-clemenzo', name: 'Francisco Clemenzo', years: '1856–1928', branch: 'clemenzo', generation: 5, count_media: 3, bio_short: 'Artesano suizo, llegó a Entre Ríos a fines del siglo XIX.', story_long: 'Anécdota: …' },
@@ -379,11 +517,15 @@
       peopleIndex = people;
       slugToPerson = new Map(people.map(p => [p.slug, p]));
       renderTable(people);
-      // Origen de datos en stats
-      const origin = data.meta?.source === 'sheet' ? 'desde sheet' : (data.meta?.source || 'ejemplo');
+      // Origen de datos en stats - mejorar la presentación
+      let origin = 'ejemplo';
+      if (data.meta?.source === 'sheet') {
+        origin = 'Google Sheets ✓';
+      } else if (data.meta?.source === 'local' || data.meta?.source) {
+        origin = 'archivo local';
+      }
       const metaStr = `Origen: ${origin}`;
       document.getElementById('statsSource').textContent = metaStr;
-      setDataSourceLabel(`Carga de datos: ${origin}`);
       // Búsqueda
       document.getElementById('searchInput').addEventListener('input', (e)=> applySearch(e.target.value));
       document.getElementById('resetBtn').addEventListener('click', ()=> { document.getElementById('searchInput').value=''; applySearch(''); });
