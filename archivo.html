@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Archivo familiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <style>
+    body { background: #fafafa; color: #0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .site-header { background: #fff; border-bottom: 1px solid #e6e7eb; }
+    .header-container { max-width: 1040px; margin: 0 auto; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+    .site-title { margin: 0; font-weight: 800; letter-spacing: -0.02em; }
+    .toolbar { background: #fff; border-bottom: 1px solid #e6e7eb; }
+    .toolbar-inner { max-width: 1040px; margin: 0 auto; padding: 16px 20px; display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
+    .search { flex: 1 1 420px; display: flex; flex-direction: column; gap: 6px; }
+    .search input { padding: 10px 12px; border: 1px solid #e6e7eb; border-radius: 8px; font-size: 14px; background: #fff; }
+    .search-meta { font-size: 13px; color: #6b7280; min-height: 20px; }
+    .stats-card { margin-left: auto; background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 10px 14px; display: flex; gap: 16px; align-items: center; box-shadow: 0 3px 8px rgba(15,23,42,0.06); align-self: stretch; }
+    .stats-list { list-style: none; margin: 0; padding: 0; font-size: 14px; color: #6b7280; display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 220px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; background: transparent; border: 1px solid #e6e7eb; border-radius: 8px; color: #0f172a; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s ease; cursor: pointer; }
+    .btn:hover { background: #f8fafc; border-color: #dfe1e6; transform: translateY(-1px); }
+
+    .container { max-width: 1040px; margin: 0 auto; padding: 20px; }
+    .table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; overflow: hidden; }
+    .table thead th { text-align: left; font-weight: 600; font-size: 12px; color: #6b7280; background: #f8fafc; padding: 10px 12px; border-bottom: 1px solid #e6e7eb; }
+    .table tbody td { padding: 12px; border-top: 1px solid #f1f5f9; font-size: 14px; }
+    .table tbody tr:hover { background: #fafcff; }
+    .name-cell a { font-weight: 600; text-decoration: none; color: #0f172a; }
+    .tag { display: inline-block; padding: 2px 8px; font-size: 12px; color: #334155; background: #f1f5f9; border: 1px solid #e5e7eb; border-radius: 999px; }
+
+    /* Modal centrado (similar a contacto) */
+    .person-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.44); z-index: 1200; }
+    .person-card { width: min(920px, 92vw); max-height: 88vh; background: #fff; border: 1px solid #e6e7eb; border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.18); display: flex; flex-direction: column; overflow: hidden; }
+    .person-header { padding: 18px 20px; border-bottom: 1px solid #e6e7eb; background: #f8fafc; display: flex; align-items: center; justify-content: space-between; }
+    .person-title { margin: 0; font-size: 20px; font-weight: 700; color: #0f172a; }
+    .person-sub { font-size: 13px; color: #6b7280; }
+    .close-btn { width: 36px; height: 36px; border-radius: 8px; }
+    .person-body { padding: 16px 16px 20px; overflow: auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .section-card { background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 14px 16px; }
+    .section-title { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: #0f172a; }
+    .section-text { margin: 0; color: #475569; line-height: 1.6; font-size: 14px; white-space: pre-wrap; }
+    .doc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
+    .doc-item { border: 1px solid #e6e7eb; border-radius: 10px; padding: 10px; background: #f8fafc; color: #475569; font-size: 13px; }
+    .doc-item a { text-decoration: none; color: #0f172a; font-weight: 600; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .thumb { position: relative; display: block; background: #f1f5f9; border: 1px solid #e6e7eb; border-radius: 10px; overflow: hidden; }
+    .thumb img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .thumb figcaption { padding: 8px 10px; font-size: 12px; color: #475569; }
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,0.86); z-index: 1300; }
+    .lightbox-inner { max-width: 92vw; max-height: 90vh; display: grid; grid-template-rows: 1fr auto; gap: 10px; }
+    .lightbox img { max-width: 92vw; max-height: 82vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); background:#111827; }
+    .lightbox-caption { color: #e5e7eb; font-size: 14px; text-align: center; }
+    .lightbox-nav { position: fixed; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+    .lightbox-btn { pointer-events: auto; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter: blur(6px); }
+    .lightbox-close { position: fixed; top: 16px; right: 16px; }
+    @media (max-width: 720px) {
+      .person-card { width: 96vw; height: 92vh; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <h1 class="site-title">Archivo familiar</h1>
+        <div class="author-meta" id="dataSourceHeader" style="color:#6b7280; font-size:13px;">Carga de datos: —</div>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html" class="btn">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <div class="toolbar-inner">
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Buscar por nombre, rama, tags…" />
+        <div class="search-meta" id="searchMeta"></div>
+      </div>
+
+      <div class="stats-card">
+        <ul class="stats-list">
+          <li id="statsCount">Personas en el archivo: —</li>
+          <li id="statsMedia">Total de ítems: —</li>
+          <li id="statsSource">Origen: —</li>
+        </ul>
+        <button id="resetBtn" class="btn" title="Limpiar búsqueda">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="table-wrap">
+      <table class="table" id="peopleTable" aria-label="Índice de personas">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Años</th>
+            <th>Rama</th>
+            <th>Generación</th>
+            <th>Ítems</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Modal centrado -->
+  <div class="person-modal" id="personModal" aria-hidden="true">
+    <div class="person-card" role="dialog" aria-modal="true" aria-labelledby="personTitle">
+      <div class="person-header">
+        <div>
+          <h2 class="person-title" id="personTitle">—</h2>
+          <div class="person-sub" id="personSub">—</div>
+        </div>
+        <button class="btn close-btn" id="closePerson">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="person-body">
+        <div class="section-card" id="bioSection" style="display:none;">
+          <h3 class="section-title">Resumen</h3>
+          <p class="section-text" id="bioText"></p>
+        </div>
+        <div class="section-card" id="storySection" style="display:none;">
+          <h3 class="section-title">Anécdotas / Historia</h3>
+          <p class="section-text" id="storyText"></p>
+        </div>
+        <div class="section-card" id="docsSection" style="display:none;">
+          <h3 class="section-title">Documentos</h3>
+          <ul class="doc-list" id="docsList"></ul>
+        </div>
+        <div class="section-card" id="gallerySection" style="display:none;">
+          <h3 class="section-title">Galería</h3>
+          <div class="gallery" id="personGallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-nav">
+      <button class="lightbox-btn" id="lbPrev" title="Anterior">‹</button>
+      <button class="lightbox-btn" id="lbNext" title="Siguiente">›</button>
+    </div>
+    <button class="lightbox-btn lightbox-close" id="lbClose" title="Cerrar">✕</button>
+    <div class="lightbox-inner">
+      <img id="lbImg" alt="" />
+      <div class="lightbox-caption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer" style="background:#fff; border-top:1px solid #e6e7eb; padding:24px 0; text-align:center; margin-top: 24px;">
+    <div class="footer-container" style="max-width:1040px; margin:0 auto; padding:0 20px;">
+      <p class="footer-text" style="color:#6b7280; font-size:14px; font-weight:500; margin:0;">Matias Clemenzo 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    // Configuración: hoja opcional para futuro
+    const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
+    const ARCHIVE_GID = ''; // si decides usar Sheets, completamos
+
+    let peopleIndex = [];
+    let slugToPerson = new Map();
+
+    function toSlug(s) {
+      return String(s || '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().trim()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-');
+    }
+
+    function setDataSourceLabel(text) {
+      const el = document.getElementById('dataSourceHeader');
+      if (el) el.textContent = text;
+    }
+
+    async function fetchArchive() {
+      // Primero intentar archivo JSON local generado por script
+      try {
+        const res = await fetch('./content/data/archive.json', { cache: 'no-cache' });
+        if (res.ok) {
+          const json = await res.json();
+          setDataSourceLabel('Carga de datos: archivo local');
+          return json;
+        }
+      } catch (e) {}
+      // Fallback a ejemplo mínimo
+      setDataSourceLabel('Carga de datos: ejemplo');
+      return {
+        people: [
+          { id: 'p1', slug: 'francisco-clemenzo', name: 'Francisco Clemenzo', years: '1856–1928', branch: 'clemenzo', generation: 5, count_media: 3, bio_short: 'Artesano suizo, llegó a Entre Ríos a fines del siglo XIX.', story_long: 'Anécdota: …' },
+          { id: 'p2', slug: 'celestina-roch', name: 'Celestina Roch', years: '1887–1968', branch: 'roch', generation: 5, count_media: 2 },
+          { id: 'p3', slug: 'matias-damian-clemenzo', name: 'Matias Damian Clemenzo', years: '1990–', branch: 'clemenzo', generation: 1, count_media: 4 }
+        ],
+        media: {
+          'p1': [
+            { type:'photo', thumb:'assets/images/cards/arbol.webp', full:'assets/images/cards/arbol.webp', caption:'Retrato', date:'1900' },
+            { type:'doc', url:'assets/images/posts/FJHC_1859_firma.png', caption:'Firma', date:'1859', title:'Firma en documento' }
+          ],
+          'p2': [ { type:'photo', thumb:'assets/images/cards/quiensoy.webp', full:'assets/images/cards/quiensoy.webp', caption:'Foto', date:'1930' } ],
+          'p3': [ { type:'photo', thumb:'assets/images/cards/arbol.webp', full:'assets/images/cards/arbol.webp', caption:'Foto', date:'2000' } ]
+        }
+      };
+    }
+
+    function renderTable(people) {
+      const tbody = document.querySelector('#peopleTable tbody');
+      tbody.innerHTML = '';
+      people.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="name-cell"><a href="#/${p.slug}">${p.name}</a></td>
+          <td>${p.years || ''}</td>
+          <td>${p.branch || ''}</td>
+          <td>${p.generation ?? ''}</td>
+          <td>${p.count_media ?? 0}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('statsCount').textContent = `Personas en el archivo: ${people.length}`;
+      const totalMedia = people.reduce((a,p)=> a + (p.count_media||0), 0);
+      document.getElementById('statsMedia').textContent = `Total de ítems: ${totalMedia}`;
+    }
+
+    function openModal(person, media = []) {
+      const modal = document.getElementById('personModal');
+      document.getElementById('personTitle').textContent = person.name || '—';
+      document.getElementById('personSub').textContent = `${person.years || ''} · ${person.branch || ''}`.replace(/^\s*·\s*$/, '');
+      // Texto
+      const bio = document.getElementById('bioSection');
+      const story = document.getElementById('storySection');
+      document.getElementById('bioText').textContent = person.bio_short || '';
+      document.getElementById('storyText').textContent = person.story_long || '';
+      bio.style.display = person.bio_short ? 'block' : 'none';
+      story.style.display = person.story_long ? 'block' : 'none';
+      // Documentos (no-foto)
+      const docs = document.getElementById('docsList');
+      docs.innerHTML = '';
+      const docItems = media.filter(m => m.type && m.type !== 'photo');
+      if (docItems.length) {
+        document.getElementById('docsSection').style.display = 'block';
+        docItems.forEach(d => {
+          const li = document.createElement('li');
+          li.className = 'doc-item';
+          const href = d.url || d.filename || d.full || d.thumb || '#';
+          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${d.title || d.caption || 'Documento'}</a><div>${d.date||''}</div>`;
+          docs.appendChild(li);
+        });
+      } else {
+        document.getElementById('docsSection').style.display = 'none';
+      }
+      // Galería (solo fotos)
+      const photos = media.filter(m => (m.type||'photo') === 'photo');
+      const gal = document.getElementById('personGallery');
+      gal.innerHTML = '';
+      if (photos.length) {
+        document.getElementById('gallerySection').style.display = 'block';
+        photos.forEach((m, idx) => {
+          const fig = document.createElement('figure');
+          fig.className = 'thumb';
+          const thumb = m.thumb || m.filename || m.full || m.url;
+          const caption = m.caption || '';
+          fig.innerHTML = `
+            <img src="${thumb}" alt="${caption}" loading="lazy" data-index="${idx}">
+            <figcaption>${caption}</figcaption>
+          `;
+          fig.querySelector('img').addEventListener('click', () => openLightbox(photos, idx));
+          gal.appendChild(fig);
+        });
+      } else {
+        document.getElementById('gallerySection').style.display = 'none';
+      }
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('personModal');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = 'auto';
+      if (location.hash.startsWith('#/')) history.pushState('', document.title, location.pathname + location.search);
+    }
+
+    // Lightbox básico
+    let lbState = { items: [], index: 0 };
+    function openLightbox(items, index) {
+      lbState = { items, index };
+      const m = items[index] || {};
+      const src = m.full || m.url || m.filename || m.thumb;
+      const cap = m.caption || '';
+      document.getElementById('lbImg').src = src;
+      document.getElementById('lbCaption').textContent = cap;
+      const lb = document.getElementById('lightbox');
+      lb.style.display = 'flex';
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      const lb = document.getElementById('lightbox');
+      lb.style.display = 'none';
+      lb.setAttribute('aria-hidden','true');
+    }
+    function navLightbox(offset){
+      if (!lbState.items.length) return;
+      lbState.index = (lbState.index + offset + lbState.items.length) % lbState.items.length;
+      openLightbox(lbState.items, lbState.index);
+    }
+
+    function applySearch(term) {
+      const t = term.trim().toLowerCase();
+      let filtered = peopleIndex;
+      if (t) {
+        filtered = peopleIndex.filter(p =>
+          (p.name||'').toLowerCase().includes(t) ||
+          (p.branch||'').toLowerCase().includes(t) ||
+          (p.tags||'').toLowerCase().includes(t)
+        );
+      }
+      document.getElementById('searchMeta').textContent = t ? `${filtered.length} resultados` : '';
+      renderTable(filtered);
+    }
+
+    function initRouter(data) {
+      const { people, media } = data;
+      function route() {
+        const hash = location.hash || '';
+        const m = hash.match(/^#\/(.+)$/);
+        if (m) {
+          const slug = m[1];
+          const person = slugToPerson.get(slug);
+          if (person) {
+            openModal(person, (media && media[person.id]) || []);
+          }
+        } else {
+          closeModal();
+        }
+      }
+      window.addEventListener('hashchange', route);
+      route();
+    }
+
+    (async function main(){
+      const data = await fetchArchive();
+      const people = (data.people || []).map(p => ({ ...p, slug: p.slug || toSlug(p.name || p.id) }));
+      peopleIndex = people;
+      slugToPerson = new Map(people.map(p => [p.slug, p]));
+      renderTable(people);
+      // Origen de datos en stats
+      const origin = data.meta?.source === 'sheet' ? 'desde sheet' : (data.meta?.source || 'ejemplo');
+      const metaStr = `Origen: ${origin}`;
+      document.getElementById('statsSource').textContent = metaStr;
+      setDataSourceLabel(`Carga de datos: ${origin}`);
+      // Búsqueda
+      document.getElementById('searchInput').addEventListener('input', (e)=> applySearch(e.target.value));
+      document.getElementById('resetBtn').addEventListener('click', ()=> { document.getElementById('searchInput').value=''; applySearch(''); });
+      // Modal
+      document.getElementById('closePerson').addEventListener('click', closeModal);
+      document.getElementById('personModal').addEventListener('click', (e)=> { if (e.target.id === 'personModal') closeModal(); });
+      // Lightbox
+      document.getElementById('lbClose').addEventListener('click', closeLightbox);
+      document.getElementById('lightbox').addEventListener('click', (e)=> { if (e.target.id === 'lightbox') closeLightbox(); });
+      document.getElementById('lbPrev').addEventListener('click', ()=> navLightbox(-1));
+      document.getElementById('lbNext').addEventListener('click', ()=> navLightbox(1));
+      document.addEventListener('keydown', (e)=>{
+        const lb = document.getElementById('lightbox');
+        if (lb.style.display === 'flex') {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') navLightbox(-1);
+          if (e.key === 'ArrowRight') navLightbox(1);
+        }
+      });
+      // Router por hash
+      initRouter(data);
+    })();
+  </script>
+</body>
+</html>
+
+

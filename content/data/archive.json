@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "source": "sheet",
+    "generatedAt": "2025-08-14T13:25:07.693Z"
+  },
+  "people": [
+    {
+      "id": "p1",
+      "slug": "francisco-clemenzo",
+      "name": "Francisco Clemenzo",
+      "years": "1856–1928",
+      "branch": "clemenzo",
+      "generation": 5,
+      "place": "Entre Ríos, Argentina",
+      "tags": "suiza;entre-rios",
+      "count_media": 2,
+      "bio_short": "Artesano suizo, llegó a Entre Ríos.",
+      "story_long": "Anécdota: \"La idea que mi abuela le contaba a mi papá era que el antepasado que llegó a Argentina era pariente de Georges Clemenceau, el primer ministro francés. Según su mamá, Francisco era un tiro al aire y lo tuvieron que esconder y casar con Celestina. Durante la guerra, al quedarse en Francia, estuvo 'picoteando' mujeres ajenas. La última fue la esposa joven de un general que, al volver de la guerra, lo retó a duelo con sables. Para evitar el duelo, Francisco huyó escondido a Suiza, donde lo casaron con Celestina. Puede que en ese momento cambiara el apellido.\nLuego vinieron a Argentina con bastante dinero… pero, según mi abuela, Francisco se patinó todo y quedaron en la lona.\nAficionado a las mujeres y al alcohol, contrajo sífilis y contagió a Celestina. En esa época se separaron. Celestina se mudó a Santa Fe para tratarse y, según mi abuela, las enfermeras la trataban como si fuera prostituta, hasta que un médico intervino y aclaró que había sido su marido.\nAños después, cuando María Luisa ya estaba casada con mi bisabuelo Agustín (el taliano), Celestina encontró a Francisco muy deteriorado y lo llevó a vivir a Santa Fe. Allí, mi bisabuelo Agustín se divertía molestándolo. Francisco adoraba cantar La Marsellesa y, cuando llegaba a 'Aux armes, citoyens! Vos bataillons!', Agustín le respondía: 'bataillons de cochon' (batallón de cerdos). Francisco se enfurecía.\"",
+      "tree_id": "1",
+      "sources": "Libro parroquial; Registro civil"
+    },
+    {
+      "id": "p2",
+      "slug": "celestina-roch",
+      "name": "Celestina Roch",
+      "years": "1887–1968",
+      "branch": "roch",
+      "generation": 5,
+      "place": "Suiza",
+      "tags": "suiza",
+      "count_media": 1,
+      "bio_short": "",
+      "story_long": "",
+      "tree_id": "",
+      "sources": ""
+    }
+  ],
+  "media": {
+    "p1": [
+      {
+        "type": "photo",
+        "date": "1900",
+        "place": "",
+        "caption": "Retrato",
+        "source": "",
+        "license": "CC-BY",
+        "thumb": "assets/images/archive/p1/thumbs/retrato.webp",
+        "full": "assets/images/archive/p1/full/retrato.webp",
+        "url": "",
+        "title": ""
+      },
+      {
+        "type": "doc",
+        "date": "1859",
+        "place": "",
+        "caption": "Firma en documento",
+        "source": "Parroquia",
+        "license": "",
+        "thumb": "assets/images/posts/FJHC_1859_firma.png",
+        "full": "assets/images/posts/FJHC_1859_firma.png",
+        "url": "assets/images/posts/FJHC_1859_firma.png",
+        "title": "Firma 1859"
+      }
+    ],
+    "p2": [
+      {
+        "type": "photo",
+        "date": "1930",
+        "place": "",
+        "caption": "Foto",
+        "source": "",
+        "license": "",
+        "thumb": "assets/images/archive/p2/thumbs/foto.webp",
+        "full": "assets/images/archive/p2/full/foto.webp",
+        "url": "",
+        "title": ""
+      }
+    ]
+  }
+}

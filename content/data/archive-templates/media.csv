@@ -1,0 +1,5 @@
+id,person_id,type,date,place,caption,source,license,thumb,full,url,title
+m1,p1,photo,1900,,Retrato,,"CC-BY",assets/images/archive/p1/thumbs/retrato.webp,assets/images/archive/p1/full/retrato.webp,,
+m2,p1,doc,1859,,Firma en documento,Parroquia,, , ,assets/images/posts/FJHC_1859_firma.png,Firma 1859
+m3,p2,photo,1930,,Foto,,"",assets/images/archive/p2/thumbs/foto.webp,assets/images/archive/p2/full/foto.webp,,
+
