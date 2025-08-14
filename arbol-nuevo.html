@@ -95,13 +95,67 @@
         }
 
         .controls {
-            padding: 24px 32px;
+            padding: 16px 32px;
             background: var(--surface);
             border-bottom: 1px solid var(--border);
             display: flex;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
             flex-wrap: wrap;
+        }
+        /* Estructura para buscador y tarjeta de stats */
+        .controls .search { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+            flex: 0 1 520px; 
+            max-width: 70%; 
+        }
+        .controls .search input {
+            padding: 10px 12px; 
+            border: 1px solid var(--border); 
+            border-radius: 8px; 
+            font-size: 14px;
+        }
+        .controls #searchMeta {
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: var(--muted); 
+            font-size: 13px; 
+            min-height: 22px;
+        }
+        .stats-container {
+            margin-left: auto; 
+            display: flex; 
+            align-items: stretch;
+        }
+        .controls .stats-card { 
+            background: var(--surface); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 12px 14px; 
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+            box-shadow: 0 3px 8px rgba(15,23,42,0.06); 
+        }
+        .stats-list {
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+            text-align: left; 
+            color: var(--muted); 
+            font-size: 14px; 
+            min-width: 220px;
+        }
+        .reset-btn {
+            padding: 6px; 
+            width: 34px; 
+            height: 34px; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
         }
 
         .btn {
@@ -149,12 +203,53 @@
             overflow: hidden;
             background: var(--bg);
         }
-        /* Mobile centering for top controls */
-        @media (max-width: 640px) {
-            .controls { flex-direction: column; align-items: center; gap: 10px; width: 100%; max-width: 420px; margin: 0 auto; padding: 16px 12px; }
-            .controls input#searchInput { width: 100%; max-width: 360px; }
-            .view-info { margin-left: 0; }
+        /* Mobile centering and compact spacing for top controls */
+        @media (max-width: 768px) {
+            .controls { 
+                flex-direction: column !important; 
+                align-items: center !important; 
+                gap: 6px !important; 
+                width: 100% !important; 
+                max-width: 420px !important; 
+                margin: 0 auto !important; 
+                padding: 8px 10px !important; 
+            }
+            .controls .search { 
+                flex: 0 0 auto !important; 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                align-items: center !important; 
+                gap: 4px !important; 
+            }
+            .controls input#searchInput { 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                margin: 0 auto !important; 
+                padding: 8px 12px !important; 
+            }
+            .controls #searchMeta { 
+                min-height: 0 !important; 
+            }
+            .stats-container {
+                margin-left: 0 !important; 
+                width: 100% !important; 
+                max-width: 360px !important;
+            }
+            .controls .stats-card { 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                justify-content: space-between !important; 
+                padding: 8px 12px !important; 
+                align-self: center !important; 
+            }
         }
+
+        /* Forzar estilos móviles mediante clase aplicada por JS (para depurar) */
+        body.is-mobile .controls { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
+        body.is-mobile .controls .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
+        body.is-mobile .controls input#searchInput { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
+        body.is-mobile .controls #searchMeta { min-height: 0; }
+        body.is-mobile .controls .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
 
         .person-card {
             fill: white;
@@ -390,7 +485,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="top-nav">
+            <div class="top-nav" style="margin-bottom:16px;">
                 <a class="btn" href="./index.html">Inicio</a>
             </div>
 
@@ -408,10 +503,10 @@
             </div>
         </div>
         
-        <div class="controls" style="padding: 16px 32px; gap: 12px;">
-            <div style="display:flex; flex-direction:column; gap:6px; flex:0 1 520px; max-width: 70%;">
-                <input id="searchInput" type="search" placeholder="Buscar nombre…" style="padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;" />
-                <div id="searchMeta" style="display:flex; align-items:center; gap:10px; color: var(--muted); font-size:13px; min-height: 22px;">
+        <div class="controls">
+            <div class="search">
+                <input id="searchInput" type="search" placeholder="Buscar nombre…" />
+                <div id="searchMeta">
                     <span id="searchInfo"></span>
                     <div id="searchNav" style="display:none; align-items:center; gap:6px;">
                         <button id="prevMatch" class="btn" title="Anterior" style="padding:4px 8px; height:28px;">‹</button>
@@ -421,13 +516,13 @@
                 </div>
             </div>
 
-            <div style="margin-left:auto; display:flex; align-items:stretch;">
-                <div style="background: var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px 14px; display:flex; gap:16px; align-items:center; box-shadow:0 3px 8px rgba(15,23,42,0.06);">
-                    <div style="display:flex; flex-direction:column; gap:4px; text-align:left; color: var(--muted); font-size:14px; min-width: 220px;">
+            <div class="stats-container">
+                <div class="stats-card">
+                    <div class="stats-list">
                         <div id="stats">Personas en el árbol: —</div>
                         <div id="generations">Generaciones: —</div>
                     </div>
-                    <button id="resetViewBtn" class="btn" title="Reiniciar vista" style="padding: 6px; width: 34px; height: 34px; display:inline-flex; align-items:center; justify-content:center;">
+                    <button id="resetViewBtn" class="btn reset-btn" title="Reiniciar vista">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="5,9 5,5 9,5"/>
                         <line x1="5" y1="5" x2="10" y2="10"/>
@@ -1567,6 +1662,51 @@
         // Función principal
         async function init() {
             try {
+                // Marcar si el viewport es móvil para depurar estilos
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                if (isMobile) {
+                    document.body.classList.add('is-mobile');
+                } else {
+                    document.body.classList.remove('is-mobile');
+                }
+                
+                // Diagnóstico de estilos aplicados en móvil
+                if (isMobile) {
+                    const controls = document.querySelector('.controls');
+                    const statsCard = document.querySelector('.stats-card');
+                    const statsContainer = document.querySelector('.stats-container');
+                    const search = document.querySelector('.search');
+                    if (controls && statsCard && search && statsContainer) {
+                        // Forzar estilos inline para móvil
+                        controls.style.flexDirection = 'column';
+                        controls.style.alignItems = 'center';
+                        controls.style.gap = '6px';
+                        controls.style.maxWidth = '420px';
+                        controls.style.padding = '8px 10px';
+                        controls.style.margin = '0 auto';
+
+                        search.style.maxWidth = '360px';
+                        search.style.width = '100%';
+                        const input = search.querySelector('input');
+                        if (input) {
+                            input.style.maxWidth = '360px';
+                            input.style.width = '100%';
+                            input.style.padding = '8px 12px';
+                        }
+                        
+                        statsContainer.style.marginLeft = '0';
+                        statsContainer.style.width = '100%';
+                        statsContainer.style.maxWidth = '360px';
+                        
+                        statsCard.style.alignSelf = 'center';
+                        statsCard.style.maxWidth = '360px';
+                        statsCard.style.width = '100%';
+                        statsCard.style.padding = '8px 12px';
+                    }
+                }
+                
+                console.log('[arbol-nuevo] viewportWidth=', window.innerWidth, 'isMobile=', isMobile);
+                
                 let rows;
                 try {
                     rows = await loadData();
