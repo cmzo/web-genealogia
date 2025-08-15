@@ -40,6 +40,19 @@
     .person-header { padding: 18px 20px; border-bottom: 1px solid #e6e7eb; background: #f8fafc; display: flex; align-items: center; justify-content: space-between; }
     .person-title { margin: 0; font-size: 20px; font-weight: 700; color: #0f172a; }
     .person-sub { font-size: 13px; color: #6b7280; }
+    .person-tags { margin: 8px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .person-tag { display: inline-block; padding: 3px 8px; font-size: 11px; font-weight: 500; color: #fff; background: #3b82f6; border-radius: 12px; }
+    .person-tag.branch-clemenzo { background: #3b82f6; }
+    .person-tag.branch-roch { background: #10b981; }
+    .person-tag.branch-esposos { background: #8b5cf6; }
+    .person-tag.branch-otros { background: #6b7280; }
+    .person-tag.branch-other { background: #6b7280; }
+    .technical-info { background: #f8fafc; border: 1px solid #e6e7eb; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+    .technical-info h4 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: #374151; }
+    .technical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+    .technical-item { font-size: 12px; }
+    .technical-label { font-weight: 600; color: #6b7280; }
+    .technical-value { color: #374151; }
     .close-btn { width: 36px; height: 36px; border-radius: 8px; }
     .person-body { padding: 16px 16px 20px; overflow: auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
     .section-card { background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 14px 16px; }
@@ -141,12 +154,17 @@
         <div>
           <h2 class="person-title" id="personTitle">—</h2>
           <div class="person-sub" id="personSub">—</div>
+          <div class="person-tags" id="personTags"></div>
         </div>
         <button class="btn close-btn" id="closePerson">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
       <div class="person-body">
+        <div class="technical-info" id="technicalInfo" style="display:none;">
+          <h4>Ficha Técnica</h4>
+          <div class="technical-grid" id="technicalGrid"></div>
+        </div>
         <div class="section-card" id="bioSection" style="display:none;">
           <h3 class="section-title">Resumen</h3>
           <p class="section-text" id="bioText"></p>
@@ -193,6 +211,7 @@
     const MEDIA_GID = '1629407041'; // GID para la hoja de multimedia
 
     let peopleIndex = [];
+    let mediaIndex = {};
     let slugToPerson = new Map();
 
     function toSlug(s) {
@@ -210,12 +229,13 @@
 
     // Función para cargar datos desde Google Sheets
     async function fetchGoogleSheet(sheetId, gid) {
-      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+      // Agregar timestamp para evitar cache y headers para incluir todas las filas
+      const timestamp = Date.now();
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}&tq&headers=1&_=${timestamp}`;
+
       try {
         const response = await fetch(url);
         const text = await response.text();
-        
-        console.log('Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
         
         // Limpiar respuesta de Google Sheets (formato JSONP)
         let jsonText = text;
@@ -273,23 +293,30 @@
           const peopleData = await fetchGoogleSheet(SHEET_ID, PEOPLE_GID);
           
           if (peopleData && peopleData.length > 0) {
-            console.log('Datos de personas cargados:', peopleData.length, 'filas');
             
             // Convertir datos de personas
             const people = peopleData.map(row => ({
               id: String(row.id || '').trim(),
               slug: toSlug(row.slug || row.name || row.id),
               name: String(row.name || '').trim(),
-              years: String(row.years || '').trim(),
               branch: String(row.branch || '').trim(),
               generation: Number(row.generation || 0),
-              place: String(row.place || '').trim(),
               tags: String(row.tags || '').trim(),
               count_media: Number(row.count_media || 0),
               bio_short: String(row.bio_short || '').trim(),
               story_long: String(row.story_long || '').trim(),
               tree_id: String(row.tree_id || '').trim(),
-              sources: String(row.sources || '').trim()
+              sources: String(row.sources || '').trim(),
+              // Campos de fechas y lugares específicos
+              birth_date: String(row.birth_date || '').trim(),
+              birth_place: String(row.birth_place || '').trim(),
+              death_date: String(row.death_date || '').trim(),
+              death_place: String(row.death_place || '').trim(),
+              // IDs de relaciones familiares
+              spouse_id: String(row.spouse_id || '').trim(),
+              children_ids: String(row.children_ids || '').trim(),
+              father_id: String(row.father_id || '').trim(),
+              mother_id: String(row.mother_id || '').trim()
             })).filter(p => p.id && p.name); // Filtrar filas vacías
             
             // Intentar cargar hoja de multimedia
@@ -297,29 +324,47 @@
             try {
               const mediaData = await fetchGoogleSheet(SHEET_ID, MEDIA_GID);
               if (mediaData && mediaData.length > 0) {
-                console.log('Datos de multimedia cargados:', mediaData.length, 'ítems');
+                // Agrupar multimedia por person_id usando nombres de columna dinámicos
+                const columns = Object.keys(mediaData[0] || {});
+                // Mapear columnas dinámicamente
+                const personIdCol = columns.find(col => col.toLowerCase().includes('person_id')) || 'B';
+                const typeCol = columns.find(col => col.toLowerCase().includes('type')) || 'C';
+                const dateCol = columns.find(col => col.toLowerCase().includes('date')) || 'D';
+                const captionCol = columns.find(col => col.toLowerCase().includes('caption')) || 'F';
+                const thumbCol = columns.find(col => col.toLowerCase().includes('thumb')) || 'I';
+                const fullCol = columns.find(col => col.toLowerCase().includes('full')) || 'J';
+                const urlCol = columns.find(col => col.toLowerCase().includes('url')) || 'K';
+                const titleCol = columns.find(col => col.toLowerCase().includes('title')) || 'L';
+                const licenseCol = columns.find(col => col.toLowerCase().includes('license')) || 'H';
                 
-                // Agrupar multimedia por person_id
-                mediaData.forEach(row => {
-                  const personId = String(row.person_id || '').trim();
+                mediaData.forEach((row, index) => {
+                  const personId = String(row[personIdCol] || '').trim();
+                  const type = String(row[typeCol] || 'photo').trim();
+                  
+                  // Saltar si no hay person_id válido
+                  if (!personId || personId === 'person_id') {
+                    return;
+                  }
+                  
                   if (personId) {
                     if (!mediaByPerson[personId]) {
                       mediaByPerson[personId] = [];
                     }
                     
-                    mediaByPerson[personId].push({
-                      type: String(row.type || 'photo').trim(),
-                      date: String(row.date || '').trim(),
-                      place: String(row.place || '').trim(),
-                      caption: String(row.caption || '').trim(),
-                      source: String(row.source || '').trim(),
-                      license: String(row.license || '').trim(),
-                      thumb: String(row.thumb || '').trim(),
-                      full: String(row.full || '').trim(),
-                      url: String(row.url || '').trim(),
-                      title: String(row.title || '').trim(),
-                      filename: String(row.filename || '').trim()
-                    });
+                    const mediaItem = {
+                      type: type,
+                      date: String(row[dateCol] || '').trim(),
+                      place: '', // No hay columna place en esta estructura
+                      caption: String(row[captionCol] || '').trim(),
+                      source: '', // No hay columna source en esta estructura
+                      license: String(row[licenseCol] || '').trim(),
+                      thumb: String(row[thumbCol] || '').trim(),
+                      full: type === 'doc' ? String(row[urlCol] || '').trim() : String(row[fullCol] || '').trim(),
+                      url: String(row[urlCol] || '').trim(),
+                      title: String(row[titleCol] || '').trim()
+                    };
+                    
+                    mediaByPerson[personId].push(mediaItem);
                   }
                 });
               }
@@ -374,29 +419,116 @@
       };
     }
 
-    function renderTable(people) {
+    function formatYearsColumn(person) {
+      const birth = person.birth_date;
+      const death = person.death_date;
+      
+      // Si no hay datos de nacimiento ni muerte
+      if (!birth && !death) return 'Desconocido';
+      
+      // Solo fecha de nacimiento
+      if (birth && !death) {
+        return `${birth} - presente`;
+      }
+      
+      // Solo fecha de muerte (raro pero posible)
+      if (!birth && death) {
+        return `? - ${death}`;
+      }
+      
+      // Ambas fechas
+      return `${birth} - ${death}`;
+    }
+
+    function renderTable(people, mediaData = {}) {
       const tbody = document.querySelector('#peopleTable tbody');
       tbody.innerHTML = '';
       people.forEach(p => {
         const tr = document.createElement('tr');
+        const yearsText = formatYearsColumn(p);
+        const mediaCount = (mediaData[p.id] || []).length;
+        
         tr.innerHTML = `
           <td class="name-cell"><a href="#/${p.slug}">${p.name}</a></td>
-          <td>${p.years || ''}</td>
+          <td>${yearsText}</td>
           <td>${p.branch || ''}</td>
           <td>${p.generation ?? ''}</td>
-          <td>${p.count_media ?? 0}</td>
+          <td>${mediaCount}</td>
         `;
         tbody.appendChild(tr);
       });
       document.getElementById('statsCount').textContent = `Personas en el archivo: ${people.length}`;
-      const totalMedia = people.reduce((a,p)=> a + (p.count_media||0), 0);
+      
+      // Calcular total de items multimedia
+      const totalMedia = Object.values(mediaData).reduce((total, personMedia) => {
+        return total + (personMedia ? personMedia.length : 0);
+      }, 0);
       document.getElementById('statsMedia').textContent = `Total de ítems: ${totalMedia}`;
     }
 
-    function openModal(person, media = []) {
+    // Función para resolver ID a nombre de persona
+    function getPersonNameById(id, allPeople) {
+      if (!id) return '';
+      const person = allPeople.find(p => p.id === id);
+      return person ? person.name : id; // Si no encuentra el nombre, devuelve el ID
+    }
+
+    // Función para resolver múltiples IDs a nombres
+    function getPersonNamesByIds(idsString, allPeople) {
+      if (!idsString) return '';
+      const ids = idsString.split(',').map(id => id.trim()).filter(id => id);
+      return ids.map(id => getPersonNameById(id, allPeople)).join(', ');
+    }
+
+    function openModal(person, media = [], allPeople = []) {
       const modal = document.getElementById('personModal');
+      
+      // Crear el subtítulo con fechas usando la misma función que la tabla
+      const yearsText = formatYearsColumn(person);
+      const subtitle = `${yearsText} · ${person.branch || ''}`.replace(/^\s*·\s*/, '').replace(/\s*·\s*$/, '');
+      
       document.getElementById('personTitle').textContent = person.name || '—';
-      document.getElementById('personSub').textContent = `${person.years || ''} · ${person.branch || ''}`.replace(/^\s*·\s*$/, '');
+      document.getElementById('personSub').textContent = subtitle;
+      
+      // Tags
+      const tagsContainer = document.getElementById('personTags');
+      tagsContainer.innerHTML = '';
+      if (person.tags) {
+        const tags = person.tags.split(';').map(t => t.trim()).filter(t => t);
+        tags.forEach(tag => {
+          const tagEl = document.createElement('span');
+          tagEl.className = `person-tag branch-${(person.branch || 'other').toLowerCase()}`;
+          tagEl.textContent = tag;
+          tagsContainer.appendChild(tagEl);
+        });
+      }
+      
+      // Ficha técnica
+      const technicalInfo = document.getElementById('technicalInfo');
+      const technicalGrid = document.getElementById('technicalGrid');
+      technicalGrid.innerHTML = '';
+      
+      const technicalData = [
+        { label: 'Nacimiento', value: person.birth_date && person.birth_place ? `${person.birth_date} en ${person.birth_place}` : person.birth_date || person.birth_place || '' },
+        { label: 'Defunción', value: person.death_date && person.death_place ? `${person.death_date} en ${person.death_place}` : person.death_date || person.death_place || '' },
+        { label: 'Casado con', value: getPersonNameById(person.spouse_id, allPeople) },
+        { label: 'Hijos', value: getPersonNamesByIds(person.children_ids, allPeople) },
+        { label: 'Padre', value: getPersonNameById(person.father_id, allPeople) },
+        { label: 'Madre', value: getPersonNameById(person.mother_id, allPeople) }
+      ].filter(item => item.value);
+      
+      if (technicalData.length > 0) {
+        technicalData.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'technical-item';
+          div.innerHTML = `<div class="technical-label">${item.label}:</div><div class="technical-value">${item.value}</div>`;
+          technicalGrid.appendChild(div);
+        });
+        technicalInfo.style.display = 'block';
+      } else {
+        technicalInfo.style.display = 'none';
+      }
+      
       // Texto
       const bio = document.getElementById('bioSection');
       const story = document.getElementById('storySection');
@@ -413,8 +545,12 @@
         docItems.forEach(d => {
           const li = document.createElement('li');
           li.className = 'doc-item';
-          const href = d.url || d.filename || d.full || d.thumb || '#';
-          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${d.title || d.caption || 'Documento'}</a><div>${d.date||''}</div>`;
+          
+          // Para documentos, usar 'full' como URL principal (que ahora mapea a 'url' desde sheets), fallback a 'url'
+          const href = d.full || d.url || '#';
+          const title = d.caption || d.title || 'Documento';
+          
+          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${title}</a><div>${d.date||''}</div>`;
           docs.appendChild(li);
         });
       } else {
@@ -489,7 +625,7 @@
         );
       }
       document.getElementById('searchMeta').textContent = t ? `${filtered.length} resultados` : '';
-      renderTable(filtered);
+      renderTable(filtered, mediaIndex || {});
     }
 
     function initRouter(data) {
@@ -501,7 +637,7 @@
           const slug = m[1];
           const person = slugToPerson.get(slug);
           if (person) {
-            openModal(person, (media && media[person.id]) || []);
+            openModal(person, (media && media[person.id]) || [], data.people || []);
           }
         } else {
           closeModal();
@@ -514,9 +650,11 @@
     (async function main(){
       const data = await fetchArchive();
       const people = (data.people || []).map(p => ({ ...p, slug: p.slug || toSlug(p.name || p.id) }));
+      const media = data.media || {};
       peopleIndex = people;
+      mediaIndex = media;
       slugToPerson = new Map(people.map(p => [p.slug, p]));
-      renderTable(people);
+      renderTable(people, media);
       // Origen de datos en stats - mejorar la presentación
       let origin = 'ejemplo';
       if (data.meta?.source === 'sheet') {
