@@ -61,6 +61,53 @@
     .doc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
     .doc-item { border: 1px solid #e6e7eb; border-radius: 10px; padding: 10px; background: #f8fafc; color: #475569; font-size: 13px; }
     .doc-item a { text-decoration: none; color: #0f172a; font-weight: 600; }
+    
+    /* Estilos para la sección de fuentes */
+    .sources-list { display: flex; flex-direction: column; gap: 8px; }
+    .source-item { 
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      padding: 10px 12px; 
+      background: #f8fafc; 
+      border-radius: 8px; 
+      border-left: 3px solid #3b82f6; /* Color por defecto, se sobrescribe dinámicamente */
+      transition: all 0.2s ease;
+    }
+    .source-item:hover { 
+      background: #f1f5f9; 
+      transform: translateX(2px);
+    }
+    .source-icon {
+      width: 20px;
+      height: 20px;
+      color: #3b82f6;
+      flex-shrink: 0;
+    }
+    .source-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .source-title {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 14px;
+    }
+    .source-description {
+      font-size: 12px;
+      color: #6b7280;
+    }
+    .source-link {
+      color: #3b82f6;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .source-link:hover {
+      text-decoration: underline;
+    }
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
     .thumb { position: relative; display: block; background: #f1f5f9; border: 1px solid #e6e7eb; border-radius: 10px; overflow: hidden; }
     .thumb img { width: 100%; height: 140px; object-fit: cover; display: block; }
@@ -180,6 +227,10 @@
         <div class="section-card" id="gallerySection" style="display:none;">
           <h3 class="section-title">Galería</h3>
           <div class="gallery" id="personGallery"></div>
+        </div>
+        <div class="section-card" id="sourcesSection" style="display:none;">
+          <h3 class="section-title">Fuentes y Menciones</h3>
+          <div class="sources-list" id="sourcesList"></div>
         </div>
       </div>
     </div>
@@ -310,6 +361,11 @@
               story_long: String(row.story_long || '').trim(),
               tree_id: String(row.tree_id || '').trim(),
               sources: String(row.sources || '').trim(),
+              // Campos de fuentes detalladas
+              source_type: String(row.source_type || '').trim(),
+              source_person_id: String(row.source_person_id || '').trim(),
+              source_year: String(row.source_year || '').trim(),
+              source_description: String(row.source_description || '').trim(),
               // Campos de fechas y lugares específicos
               birth_date: String(row.birth_date || '').trim(),
               birth_place: String(row.birth_place || '').trim(),
@@ -422,25 +478,90 @@
       };
     }
 
+    // Función global para formatear fechas
+    function formatDateGlobal(dateStr) {
+      if (!dateStr || dateStr.trim() === '') return '';
+      
+      const trimmed = dateStr.trim();
+      
+      // Si es solo un año (4 dígitos)
+      if (/^\d{4}$/.test(trimmed)) {
+        return trimmed;
+      }
+      
+      // Si es una fecha con formato DD/MM/YYYY
+      if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(trimmed)) {
+        const [day, month, year] = trimmed.split('/');
+        return `${day}/${month}/${year}`;
+      }
+      
+      // Si es una fecha con formato YYYY-MM-DD
+      if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(trimmed)) {
+        const [year, month, day] = trimmed.split('-');
+        return `${day}/${month}/${year}`;
+      }
+      
+      // Si es una fecha de Google Sheets en formato Date(year,month,day)
+      const dateMatch = trimmed.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})\)$/);
+      if (dateMatch) {
+        const [, year, month, day] = dateMatch;
+        // Google Sheets usa meses base 0 (enero=0, febrero=1, etc.)
+        const monthNum = parseInt(month) + 1;
+        return `${day}/${monthNum.toString().padStart(2, '0')}/${year}`;
+      }
+      
+      // Si es una fecha de Google Sheets (número de serie)
+      const dateNum = parseFloat(trimmed);
+      
+      // Manejar números negativos o muy pequeños (probablemente errores de formato)
+      if (!isNaN(dateNum) && dateNum < 0) {
+        console.warn('⚠️ Negative date number detected:', dateNum, 'for input:', trimmed);
+        return ''; // Retornar vacío para fechas inválidas
+      }
+      
+      if (!isNaN(dateNum) && dateNum > 0) {
+        try {
+          // Google Sheets usa días desde 1900-01-01
+          const date = new Date((dateNum - 25569) * 86400 * 1000);
+          if (!isNaN(date.getTime()) && date.getFullYear() > 1800 && date.getFullYear() < 2100) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+          } else {
+            console.warn('⚠️ Invalid year range:', date.getFullYear(), 'for date:', date);
+          }
+        } catch (e) {
+          console.warn('Error parsing date:', trimmed, e);
+        }
+      }
+      
+      // Si no coincide con ningún formato, devolver como está
+      return trimmed;
+    }
+
     function formatYearsColumn(person) {
       const birth = person.birth_date;
       const death = person.death_date;
       
+      const formattedBirth = formatDateGlobal(birth);
+      const formattedDeath = formatDateGlobal(death);
+      
       // Si no hay datos de nacimiento ni muerte
-      if (!birth && !death) return 'Desconocido';
+      if (!formattedBirth && !formattedDeath) return 'Desconocido';
       
       // Solo fecha de nacimiento
-      if (birth && !death) {
-        return `${birth} - presente`;
+      if (formattedBirth && !formattedDeath) {
+        return `${formattedBirth} - presente`;
       }
       
       // Solo fecha de muerte (raro pero posible)
-      if (!birth && death) {
-        return `? - ${death}`;
+      if (!formattedBirth && formattedDeath) {
+        return `? - ${formattedDeath}`;
       }
       
       // Ambas fechas
-      return `${birth} - ${death}`;
+      return `${formattedBirth} - ${formattedDeath}`;
     }
 
     function renderTable(people, mediaData = {}) {
@@ -511,9 +632,12 @@
       const technicalGrid = document.getElementById('technicalGrid');
       technicalGrid.innerHTML = '';
       
+      const formattedBirthDate = formatDateGlobal(person.birth_date);
+      const formattedDeathDate = formatDateGlobal(person.death_date);
+      
       const technicalData = [
-        { label: 'Nacimiento', value: person.birth_date && person.birth_place ? `${person.birth_date} en ${person.birth_place}` : person.birth_date || person.birth_place || '' },
-        { label: 'Defunción', value: person.death_date && person.death_place ? `${person.death_date} en ${person.death_place}` : person.death_date || person.death_place || '' },
+        { label: 'Nacimiento', value: formattedBirthDate && person.birth_place ? `${formattedBirthDate} en ${person.birth_place}` : formattedBirthDate || person.birth_place || '' },
+        { label: 'Defunción', value: formattedDeathDate && person.death_place ? `${formattedDeathDate} en ${person.death_place}` : formattedDeathDate || person.death_place || '' },
         { label: 'Casado con', value: getPersonNameById(person.spouse_id, allPeople) },
         { label: 'Hijos', value: getPersonNamesByIds(person.children_ids, allPeople) },
         { label: 'Padre', value: getPersonNameById(person.father_id, allPeople) },
@@ -580,6 +704,131 @@
       } else {
         document.getElementById('gallerySection').style.display = 'none';
       }
+      
+      // Fuentes y menciones
+      const sources = document.getElementById('sourcesList');
+      sources.innerHTML = '';
+      
+      // Función para obtener icono según tipo de fuente
+      function getSourceIcon(sourceType) {
+        const iconMap = {
+          'birth': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+          </svg>`,
+          'marriage': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>`,
+          'death': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>`,
+          'census': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          </svg>`,
+          'baptism': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>`,
+          'immigration': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12h18"/>
+            <path d="M3 6h18"/>
+            <path d="M3 18h18"/>
+          </svg>`,
+          'default': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          </svg>`
+        };
+        return iconMap[sourceType] || iconMap['default'];
+      }
+      
+      // Función para obtener color según tipo de fuente
+      function getSourceColor(sourceType) {
+        const colorMap = {
+          'birth': '#10b981',      // Verde
+          'marriage': '#f59e0b',   // Amarillo
+          'death': '#ef4444',      // Rojo
+          'census': '#3b82f6',     // Azul
+          'baptism': '#8b5cf6',    // Púrpura
+          'immigration': '#06b6d4', // Cyan
+          'default': '#6b7280'     // Gris
+        };
+        return colorMap[sourceType] || colorMap['default'];
+      }
+      
+      // Procesar fuentes usando las múltiples columnas
+      if (person.source_person_id && person.source_person_id.trim()) {
+        const sourceIds = person.source_person_id.split(',').map(s => s.trim()).filter(s => s);
+        const sourceTypes = person.source_type ? person.source_type.split(',').map(s => s.trim()) : [];
+        const sourceYears = person.source_year ? person.source_year.split(',').map(s => s.trim()) : [];
+        const sourceDescriptions = person.source_description ? person.source_description.split(',').map(s => s.trim()) : [];
+        
+        if (sourceIds.length > 0) {
+          document.getElementById('sourcesSection').style.display = 'block';
+          
+          sourceIds.forEach((sourceId, index) => {
+            const sourcePerson = allPeople.find(p => p.id === sourceId);
+            
+            if (sourcePerson) {
+              const sourceItem = document.createElement('div');
+              sourceItem.className = 'source-item';
+              
+              const sourceType = sourceTypes[index] || 'default';
+              const sourceYear = sourceYears[index] || '';
+              const sourceDescription = sourceDescriptions[index] || 'Registro familiar';
+              const sourceColor = getSourceColor(sourceType);
+              const sourceIcon = getSourceIcon(sourceType);
+              
+              // Aplicar color específico al borde izquierdo
+              sourceItem.style.borderLeftColor = sourceColor;
+              
+              // Mejorar formato de fecha - mostrar fecha completa si está disponible
+              let dateText = '';
+              if (sourceYear) {
+                // Si es solo año, mostrar como año
+                if (/^\d{4}$/.test(sourceYear)) {
+                  dateText = ` (${sourceYear})`;
+                } else {
+                  // Si es fecha completa, formatear
+                  try {
+                    const date = new Date(sourceYear);
+                    if (!isNaN(date.getTime())) {
+                      const options = { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      };
+                      dateText = ` (${date.toLocaleDateString('es-ES', options)})`;
+                    } else {
+                      dateText = ` (${sourceYear})`;
+                    }
+                  } catch (e) {
+                    dateText = ` (${sourceYear})`;
+                  }
+                }
+              }
+              
+              sourceItem.innerHTML = `
+                <div class="source-icon" style="color: ${sourceColor}">${sourceIcon}</div>
+                <div class="source-content">
+                  <div class="source-title">${sourceDescription}${dateText}</div>
+                  <div class="source-description">Mencionado en el registro de ${sourcePerson.name}</div>
+                  <a href="#/${sourcePerson.slug}" class="source-link">Ver registro de ${sourcePerson.name}</a>
+                </div>
+              `;
+              
+              sources.appendChild(sourceItem);
+            }
+          });
+        } else {
+          document.getElementById('sourcesSection').style.display = 'none';
+        }
+      } else {
+        document.getElementById('sourcesSection').style.display = 'none';
+      }
+      
       modal.style.display = 'flex';
       modal.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
