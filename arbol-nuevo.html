@@ -158,6 +158,34 @@
             justify-content: center;
         }
 
+        .zoom-controls {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .zoom-btn {
+            padding: 6px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .zoom-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        .zoom-btn:active {
+            transform: translateY(0);
+            background: #e2e8f0;
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -241,6 +269,14 @@
                 justify-content: space-between !important; 
                 padding: 8px 12px !important; 
                 align-self: center !important; 
+            }
+            .zoom-controls {
+                gap: 2px !important;
+            }
+            .zoom-btn {
+                width: 26px !important;
+                height: 26px !important;
+                padding: 4px !important;
             }
         }
 
@@ -521,6 +557,14 @@
                     <div class="stats-list">
                         <div id="stats">Personas en el árbol: —</div>
                         <div id="generations">Generaciones: —</div>
+                    </div>
+                    <div class="zoom-controls">
+                        <button id="zoomOutBtn" class="btn zoom-btn" title="Alejar (-)">
+                            <span style="font-weight: bold; font-size: 14px;">−</span>
+                        </button>
+                        <button id="zoomInBtn" class="btn zoom-btn" title="Acercar (+)">
+                            <span style="font-weight: bold; font-size: 14px;">+</span>
+                        </button>
                     </div>
                     <button id="resetViewBtn" class="btn reset-btn" title="Reiniciar vista">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1738,6 +1782,21 @@
                 
                 // Configurar navegación por teclado
                 document.addEventListener('keydown', (event) => {
+                    // Controles de zoom (funcionan siempre)
+                    switch(event.key) {
+                        case '+':
+                        case '=':
+                            event.preventDefault();
+                            zoomIn();
+                            return;
+                        case '-':
+                        case '_':
+                            event.preventDefault();
+                            zoomOut();
+                            return;
+                    }
+                    
+                    // Navegación por nodos (solo si hay nodo seleccionado)
                     if (!selectedNode) return;
                     
                     switch(event.key) {
@@ -1787,12 +1846,41 @@
             }
         }
 
+        // Funciones de zoom
+        function zoomIn() {
+            if (window.currentSvg && window.currentZoom) {
+                const currentTransform = d3.zoomTransform(window.currentSvg.node());
+                const newScale = Math.min(currentTransform.k * 1.2, 3);
+                const transform = d3.zoomIdentity
+                    .translate(currentTransform.x, currentTransform.y)
+                    .scale(newScale);
+                window.currentSvg.transition().duration(200).call(window.currentZoom.transform, transform);
+            }
+        }
+
+        function zoomOut() {
+            if (window.currentSvg && window.currentZoom) {
+                const currentTransform = d3.zoomTransform(window.currentSvg.node());
+                const newScale = Math.max(currentTransform.k / 1.2, 0.3);
+                const transform = d3.zoomIdentity
+                    .translate(currentTransform.x, currentTransform.y)
+                    .scale(newScale);
+                window.currentSvg.transition().duration(200).call(window.currentZoom.transform, transform);
+            }
+        }
+
         // Inicializar cuando se carga la página
         window.addEventListener('load', () => { 
             init(); 
             setupSearch(); 
             const btn = document.getElementById('resetViewBtn');
             if (btn) btn.addEventListener('click', resetView);
+            
+            // Configurar controles de zoom
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
+            if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
         });
     </script>
 </body>
