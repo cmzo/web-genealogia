@@ -43,79 +43,95 @@
   </main>
 
   <script>
+    /**
+     * Página principal - Gestión de tarjetas y contenido dinámico
+     * 
+     * Este script maneja:
+     * - Carga de tarjetas estáticas y dinámicas
+     * - Renderizado de tarjetas con diferentes tipos (normal, contacto)
+     * - Fallback en caso de error
+     * - Modal de contacto
+     */
     document.addEventListener('DOMContentLoaded', function() {
-      // Cargar entradas del blog dinámicamente
+      
+      /**
+       * Carga las entradas del blog y configura las tarjetas principales
+       * Actualmente solo carga tarjetas estáticas (las entradas del blog están en blog.html)
+       */
       async function loadBlogEntries() {
-      try {
-        const response = await fetch(getDataPath('blog-entries.json'));
-        const blogEntries = await response.json();
-        
-        // Combinar entradas estáticas y dinámicas
-        const allCards = [
-          // Entradas estáticas (siempre presentes)
-          {
-            id: 'quien-soy',
-            title: '¿Quién soy?',
-            description: 'Presentación personal y mapa de la memoria',
-            image: getImagePath('cards/quiensoy.webp'),
-            url: 'quien-soy.html',
-            featured: true
-          },
-          {
-            id: 'arbol',
-            title: 'Árbol genealógico',
-            description: 'Visualización interactiva de la familia',
-            image: './assets/images/cards/arbol.webp',
-            url: 'arbol-nuevo.html',
-            featured: true
-          },
-          // Entradas dinámicas del blog
-          ...blogEntries.filter(entry => entry.featured).slice(0, 2)
-        ];
-        
-        // Agregar entradas estáticas restantes
-        const staticCards = [
-          {
-            id: 'archivo',
-            title: 'Archivo',
-            description: 'Fotos, documentos y materiales por persona',
-            image: './assets/images/cards/contacto.webp',
-            url: 'archivo.html'
-          },
-          {
-            id: 'trama-mexicana',
-            title: 'La trama mexicana',
-            description: 'Historias, migraciones y vínculos con México',
-            image: './assets/images/cards/trama-mexicana.webp',
-            url: 'trama-mexicana.html'
-          },
-          {
-            id: 'mapa-clemenzos',
-            title: 'Mapa de Clemenzo\'s',
-            description: 'Lugares, rutas y recorridos de la familia',
-            image: './assets/images/cards/clemenzo-por-el-mundo.webp',
-            url: 'mapa-clemenzos.html'
-          }
-        ];
-        
-        allCards.push(...staticCards);
-        
-        renderCards(allCards);
-        
-      } catch (error) {
-        console.warn('Error cargando entradas del blog:', error);
-        // Fallback a tarjetas estáticas
-        renderStaticCards();
+        try {
+          // Intentar cargar entradas del blog (aunque no las usamos en la home)
+          const response = await fetch(getDataPath('blog-entries.json'));
+          const blogEntries = await response.json();
+          
+          // Configuración de tarjetas principales (siempre visibles)
+          const mainCards = [
+            {
+              id: 'quien-soy',
+              title: '¿Quién soy?',
+              description: 'Presentación personal y mapa de la memoria',
+              image: getImagePath('cards/quiensoy.webp'),
+              url: 'quien-soy.html',
+              featured: true
+            },
+            {
+              id: 'arbol',
+              title: 'Árbol genealógico',
+              description: 'Visualización interactiva de la familia',
+              image: './assets/images/cards/arbol.webp',
+              url: 'arbol-nuevo.html',
+              featured: true
+            }
+          ];
+          
+          // Tarjetas secundarias
+          const secondaryCards = [
+            {
+              id: 'archivo',
+              title: 'Archivo',
+              description: 'Fotos, documentos y materiales por persona',
+              image: './assets/images/cards/contacto.webp',
+              url: 'archivo.html'
+            },
+            {
+              id: 'mapa-clemenzos',
+              title: 'Familia por el mundo',
+              description: 'Lugares, rutas y recorridos de la familia',
+              image: './assets/images/cards/clemenzo-por-el-mundo.webp',
+              url: 'mapa-clemenzos.html'
+            }
+          ];
+          
+          // Combinar todas las tarjetas
+          const allCards = [...mainCards, ...secondaryCards];
+          
+          renderCards(allCards);
+          
+        } catch (error) {
+          console.warn('Error cargando configuración de tarjetas:', error);
+          // Fallback a tarjetas estáticas hardcodeadas
+          renderStaticCards();
+        }
       }
-    }
     
+    /**
+     * Renderiza las tarjetas en el contenedor principal
+     * @param {Array} cards - Array de objetos con información de las tarjetas
+     */
     function renderCards(cards) {
       const container = document.getElementById('cards-container');
+      if (!container) {
+        console.error('Contenedor de tarjetas no encontrado');
+        return;
+      }
+      
+      // Limpiar contenedor
       container.innerHTML = '';
       
+      // Renderizar cada tarjeta
       cards.forEach(card => {
         if (card.isContact) {
-          // Tarjeta de contacto con flip
+          // Tarjeta de contacto con efecto flip (no se usa actualmente)
           container.innerHTML += `
             <div class="card flip-card" tabindex="0" role="button" aria-label="Mostrar información de contacto">
               <div class="flip-card-inner">
@@ -146,7 +162,7 @@
             </div>
           `;
         } else {
-          // Tarjeta normal
+          // Tarjeta normal (enlace a página)
           container.innerHTML += `
             <a href="${card.url}" class="card">
               <figure class="card-media">
@@ -162,8 +178,17 @@
       });
     }
     
+    /**
+     * Función de fallback: renderiza tarjetas estáticas hardcodeadas
+     * Se usa cuando hay errores al cargar la configuración dinámica
+     */
     function renderStaticCards() {
       const container = document.getElementById('cards-container');
+      if (!container) {
+        console.error('Contenedor de tarjetas no encontrado');
+        return;
+      }
+      
       container.innerHTML = `
         <a href="quien-soy.html" class="card">
           <figure class="card-media">
@@ -177,115 +202,82 @@
 
         <a href="arbol-nuevo.html" class="card">
           <figure class="card-media">
-            <img src="./assets/images/cards/arbol.webp" alt="Línea Directa" width="280" height="380" loading="lazy">
+            <img src="./assets/images/cards/arbol.webp" alt="Árbol Genealógico" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
-            <h2 class="card-title">Línea Directa</h2>
-            <p class="card-desc">Tu línea genealógica directa desde Francisco hasta tu hijo</p>
-          </div>
-        </a>
-
-        <a href="arbol-completo.html" class="card">
-          <figure class="card-media">
-            <img src="./assets/images/cards/arbol.webp" alt="Árbol Completo" width="280" height="380" loading="lazy">
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">Árbol Completo</h2>
+            <h2 class="card-title">Árbol Genealógico</h2>
             <p class="card-desc">Explora toda tu familia con navegación completa e interactiva</p>
           </div>
         </a>
 
-        <a href="arbol-visjs.html" class="card">
+        <a href="archivo.html" class="card">
           <figure class="card-media">
-            <img src="./assets/images/cards/arbol.webp" alt="Árbol Vis.js" width="280" height="380" loading="lazy">
+            <img src="./assets/images/cards/contacto.webp" alt="Archivo" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
-            <h2 class="card-title">Árbol Vis.js</h2>
-            <p class="card-desc">Versión simple y elegante con Vis.js Network</p>
-          </div>
-        </a>
-
-                        <a href="arbol-d3-cards.html" class="card">
-                  <figure class="card-media">
-                    <img src="./assets/images/cards/arbol.webp" alt="Árbol D3 Cards" width="280" height="380" loading="lazy">
-                  </figure>
-                  <div class="card-body">
-                    <h2 class="card-title">Árbol D3 Cards</h2>
-                    <p class="card-desc">Versión con tarjetas organizadas usando D3.js</p>
-                  </div>
-                </a>
-                
-                <a href="arbol-nuevo.html" class="card">
-                  <figure class="card-media">
-                    <img src="./assets/images/cards/arbol.webp" alt="Árbol Nuevo" width="280" height="380" loading="lazy">
-                  </figure>
-                  <div class="card-body">
-                    <h2 class="card-title">Árbol Nuevo</h2>
-                    <p class="card-desc">Versión completamente nueva y simplificada</p>
-                  </div>
-                </a>
-
-        <a href="francisco.html" class="card">
-          <figure class="card-media">
-            <img src="./assets/images/cards/francisco.webp" alt="El misterio de Francisco" width="280" height="380" loading="lazy">
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">El misterio de Francisco</h2>
-            <p class="card-desc">Investigación histórica y reconstrucción de pistas</p>
-          </div>
-        </a>
-
-        <a href="trama-mexicana.html" class="card">
-          <figure class="card-media">
-            <img src="./assets/images/cards/trama-mexicana.webp" alt="La trama mexicana" width="280" height="380" loading="lazy">
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">La trama mexicana</h2>
-            <p class="card-desc">Historias, migraciones y vínculos con México</p>
+            <h2 class="card-title">Archivo</h2>
+            <p class="card-desc">Fotos, documentos y materiales por persona</p>
           </div>
         </a>
 
         <a href="mapa-clemenzos.html" class="card">
           <figure class="card-media">
-            <img src="./assets/images/cards/clemenzo-por-el-mundo.webp" alt="Mapa de Clemenzo's" width="280" height="380" loading="lazy">
+            <img src="./assets/images/cards/clemenzo-por-el-mundo.webp" alt="Familia por el mundo" width="280" height="380" loading="lazy">
           </figure>
           <div class="card-body">
-            <h2 class="card-title">Mapa de Clemenzo's</h2>
+            <h2 class="card-title">Familia por el mundo</h2>
             <p class="card-desc">Lugares, rutas y recorridos de la familia</p>
           </div>
         </a>
       `;
     }
     
-      // Cargar entradas al cargar la página
+      // Inicializar la página
       loadBlogEntries();
 
-      // Modal de contacto - Versión robusta para GitHub Pages
+      /**
+       * Modal de contacto - Gestión completa del modal
+       * 
+       * Funcionalidades:
+       * - Abrir/cerrar modal
+       * - Cerrar con Escape
+       * - Cerrar haciendo click fuera
+       * - Bloquear scroll del body cuando está abierto
+       */
       function initContactModal() {
         const contactBtn = document.getElementById('contactBtn');
         const contactModal = document.getElementById('contactModal');
         const closeContactBtn = document.querySelector('.close-contact');
 
+        // Verificar que todos los elementos existan
         if (!contactBtn || !contactModal || !closeContactBtn) {
           console.warn('Elementos del modal de contacto no encontrados');
           return;
         }
 
-        // Función para abrir modal
+        /**
+         * Abre el modal de contacto
+         * - Muestra el modal
+         * - Bloquea el scroll del body
+         */
         function openModal() {
           contactModal.style.display = 'flex';
           document.body.style.overflow = 'hidden';
           console.log('Modal de contacto abierto');
         }
 
-        // Función para cerrar modal
+        /**
+         * Cierra el modal de contacto
+         * - Oculta el modal
+         * - Restaura el scroll del body
+         */
         function closeModal() {
           contactModal.style.display = 'none';
           document.body.style.overflow = 'auto';
           console.log('Modal de contacto cerrado');
         }
 
-        // Event listeners
+        // Event listeners para abrir y cerrar
         contactBtn.addEventListener('click', openModal);
         closeContactBtn.addEventListener('click', closeModal);
 
@@ -296,7 +288,7 @@
           }
         });
 
-        // Cerrar con Escape
+        // Cerrar con tecla Escape
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && contactModal.style.display === 'flex') {
             closeModal();
@@ -327,6 +319,15 @@
         </button>
       </div>
       <div class="contact-body">
+        <div class="contact-intro" style="margin-bottom: 24px; text-align: center;">
+          <p style="font-size: 16px; line-height: 1.6; color: #374151; margin-bottom: 12px;">
+            ¿Te gusta esta página? Yo puedo ayudarte a preservar tu historia familiar y organizar tus archivos genealógicos.
+          </p>
+          <p style="font-size: 18px; font-weight: 600; color: #1f2937; margin: 0;">
+            ✨ Digitalización y organización de archivos familiares
+          </p>
+        </div>
+        
         <div class="contact-item">
           <div class="contact-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -340,7 +341,7 @@
           </div>
         </div>
         
-        <!-- Aquí puedes agregar más opciones de contacto -->
+        <!-- Opciones de contacto comentadas
         <div class="contact-item">
           <div class="contact-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -376,14 +377,18 @@
             <a href="https://twitter.com/matiasclemenzo" target="_blank" rel="noopener">@matiasclemenzo</a>
           </div>
         </div>
+        -->
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="site-footer" style="background: #ffffff; border-top: 1px solid #e6e7eb; padding: 24px 0; text-align: center; margin-top: 48px;">
+  <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
     <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
-      <p class="footer-text" style="color: #6b7280; font-size: 14px; font-weight: 500; margin: 0;">Matias Clemenzo 2025</p>
+      <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
+        <div>Matias Clemenzo</div>
+        <div>2025</div>
+      </div>
     </div>
   </footer>
 </body>

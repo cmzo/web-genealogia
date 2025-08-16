@@ -14,5 +14,21 @@
     ],
     "featured": true,
     "url": "francisco.html"
+  },
+  {
+    "id": "trama-mexicana",
+    "title": "La trama mexicana",
+    "description": "Historias, migraciones y vínculos con México",
+    "image": "./assets/images/cards/trama-mexicana.webp",
+    "category": "historias",
+    "date": "2024-01-20",
+    "tags": [
+      "mexico",
+      "migracion",
+      "historias",
+      "familia"
+    ],
+    "featured": true,
+    "url": "trama-mexicana.html"
   }
 ]

@@ -1,10 +1,15 @@
-/* Base: Notion-like minimalist UI */
+/**
+ * Variables CSS - Sistema de diseño
+ * 
+ * Define los colores y valores base para mantener consistencia
+ * en todo el sitio. Inspirado en el diseño minimalista de Notion.
+ */
 :root {
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --border: #e6e7eb;
-  --text: #0f172a;
-  --muted: #6b7280;
+  --bg: #fafafa;        /* Color de fondo principal (gris muy claro) */
+  --surface: #ffffff;   /* Color de superficies (blanco) */
+  --border: #e6e7eb;    /* Color de bordes (gris claro) */
+  --text: #0f172a;      /* Color de texto principal (gris muy oscuro) */
+  --muted: #6b7280;     /* Color de texto secundario (gris medio) */
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -17,7 +22,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Site Header */
+/**
+ * Header del sitio - Navegación principal
+ * 
+ * Características:
+ * - Sticky (se mantiene fijo al hacer scroll)
+ * - Fondo con blur para efecto moderno
+ * - Z-index alto para estar por encima del contenido
+ */
 .site-header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -177,7 +189,7 @@ body {
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   padding: 16px 0;
   border-bottom: 1px solid #f1f5f9;
@@ -197,10 +209,11 @@ body {
 }
 
 .contact-info h3 {
-  margin: 0 0 4px 0;
+  margin: 0 8px 0 0;
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
+  display: inline;
 }
 
 .contact-info a,
@@ -209,6 +222,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   transition: color 0.2s ease;
+  display: inline;
 }
 
 .contact-info a:hover {
@@ -482,33 +496,58 @@ body {
   }
 }
 
-/* Grid */
+/**
+ * Grid de tarjetas - Layout principal
+ * 
+ * Características:
+ * - Cuadrícula 2x2 para las 4 tarjetas principales
+ * - Centrado con max-width para mejor legibilidad
+ * - Gap de 24px para espaciado consistente
+ */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Card */
+/**
+ * Tarjeta individual - Componente principal
+ * 
+ * Características:
+ * - Formato cuadrado (aspect-ratio: 1/1)
+ * - Flexbox vertical para organizar imagen y texto
+ * - Bordes redondeados y transiciones suaves
+ * - Hover con elevación y sombra
+ */
 .card {
   display: flex;
   flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  aspect-ratio: 3 / 4; /* alto > ancho */
-  min-height: 432px; /* altura mínima aumentada para más imagen */
-  position: relative; /* Para asegurar que el texto esté por encima */
+  aspect-ratio: 1 / 1; /* Cuadrada */
+  min-height: 320px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-/* Media full-bleed (70%) */
+/**
+ * Área de imagen de la tarjeta (75% del espacio)
+ * 
+ * Características:
+ * - Ocupa 75% de la altura de la tarjeta
+ * - Overflow hidden para bordes redondeados
+ * - Z-index para estar por debajo del texto
+ */
 .card-media {
   margin: 0;
   padding: 0;
-  flex: 0 0 70%; /* No crecer, no encoger, 70% fijo */
+  flex: 0 0 75%; /* No crecer, no encoger, 75% fijo */
   display: block;
   position: relative;
   z-index: 1;
@@ -551,13 +590,21 @@ body {
   display: block;
 }
 
-/* Text area (30%) */
+/**
+ * Área de texto de la tarjeta (25% del espacio)
+ * 
+ * Características:
+ * - Ocupa 25% de la altura de la tarjeta
+ * - Flexbox vertical para título y descripción
+ * - Z-index alto para estar por encima de la imagen
+ * - Padding generoso para mejor legibilidad
+ */
 .card-body {
-  flex: 0 0 30%; /* No crecer, no encoger, 30% fijo */
-  padding: 12px 14px;
+  flex: 0 0 25%; /* No crecer, no encoger, 25% fijo */
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   position: relative;
   z-index: 2;
   background: var(--surface);
@@ -583,9 +630,24 @@ body {
   overflow: hidden;
 }
 
-/* States (flat, no shadows) */
-.card:hover { background: #fff; border-color: #dfe1e6; }
-.card:active { transform: translateY(0.5px); }
+/**
+ * Estados de interacción de las tarjetas
+ * 
+ * Hover:
+ * - Elevación sutil (-2px)
+ * - Sombra elegante
+ * - Cambio de color de borde
+ * 
+ * Active:
+ * - Vuelve a posición normal
+ */
+.card:hover { 
+  background: #fff; 
+  border-color: #dfe1e6; 
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.card:active { transform: translateY(0px); }
 
 /* Flip Card for Contact */
 .flip-card {
@@ -701,10 +763,20 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive tweaks */
+/**
+ * Media queries - Diseño responsivo
+ * 
+ * Breakpoints:
+ * - 900px: Tablets y pantallas medianas
+ * - 768px: Tablets pequeñas
+ * - 640px: Móviles
+ * - 400px: Móviles pequeños
+ */
+
+/* Tablets y pantallas medianas */
 @media (max-width: 900px) {
   .home { padding: 20px 12px 40px; }
-  .cards { gap: 20px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .cards { gap: 20px; grid-template-columns: repeat(2, 1fr); }
   .header-container { padding: 14px 16px; }
 }
 
@@ -729,10 +801,12 @@ body {
   .cards { 
     gap: 16px; 
     grid-template-columns: 1fr; 
+    max-width: 100%;
   }
   
   .card {
     max-width: 100%;
+    min-height: 280px;
   }
   
   .home {
@@ -896,10 +970,17 @@ body {
 .details-banner .card { border: 1px solid var(--border); background: #fff; }
 .highlight text { fill: #111827 !important; font-weight: 600; }
 
-/* Footer */
+/**
+ * Footer del sitio
+ * 
+ * Características:
+ * - Fondo blanco para consistencia
+ * - Centrado horizontal
+ * - Margen superior para separación
+ * - Sin línea divisoria (diseño limpio)
+ */
 .site-footer {
   background: var(--surface);
-  border-top: 1px solid var(--border);
   padding: 24px 0;
   text-align: center;
   margin-top: 48px;
@@ -913,7 +994,8 @@ body {
 
 .footer-text {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   margin: 0;
+  line-height: 1.4;
 }
