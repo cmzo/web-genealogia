@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruta de Francisco Clemenzo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .map-container {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 1rem 0;
+    }
+    
+    .interactive-map {
+      height: 400px;
+      width: 100%;
+    }
+    
+    .map-legend {
+      background: #f8fafc;
+      padding: 1rem;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.75rem;
+    }
+    
+    .map-legend h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+    
+    .legend-item span:last-child {
+      flex: 1;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .legend-marker {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+    
+    .legend-marker.switzerland { background: #10b981; }
+    .legend-marker.colonia-san-jose { background: #3b82f6; }
+    .legend-marker.colonia-yerua { background: #f59e0b; }
+    .legend-marker.concepcion { background: #ef4444; }
+    
+    .clemenzo-popup .popup-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .clemenzo-popup .popup-content .popup-description {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.75rem;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+    
+    .clemenzo-popup .popup-content .popup-year {
+      display: inline-block;
+      background: #f3f4f6;
+      color: #374151;
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+      font-size: 0.625rem;
+      font-weight: 500;
+    }
+    
+    .route-popup .popup-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .route-popup .popup-content p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="map-container">
+    <div id="franciscoMap" class="interactive-map"></div>
+    <div class="map-legend">
+      <h3>Ruta de Francisco Clemenzo</h3>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-marker switzerland"></span>
+          <span>Ardon, Valais, Suiza (1870)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-marker colonia-san-jose"></span>
+          <span>Colonia San José, Entre Ríos (1892)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-marker colonia-yerua"></span>
+          <span>Colonia Yeruá, Entre Ríos (1899)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-marker concepcion"></span>
+          <span>Concepción del Uruguay, Entre Ríos (1928)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Inicializar mapa centrado en Argentina
+      const map = L.map('franciscoMap').setView([-32.5, -60], 4);
+
+      // Agregar capa de mapa base
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18
+      }).addTo(map);
+
+      // Datos de lugares de Francisco
+      const franciscoPlaces = [
+        {
+          name: 'Ardon, Valais, Suiza',
+          coords: [46.2833, 7.2667],
+          type: 'switzerland',
+          description: 'Lugar de origen de Francisco Clemenzo en el cantón de Valais',
+          year: '1870'
+        },
+        {
+          name: 'Colonia San José, Entre Ríos',
+          coords: [-32.2, -58.2],
+          type: 'colonia-san-jose',
+          description: 'Primera colonia donde Francisco se estableció al llegar a Argentina',
+          year: '1892'
+        },
+        {
+          name: 'Colonia Yeruá, Entre Ríos',
+          coords: [-31.5, -58.0],
+          type: 'colonia-yerua',
+          description: 'Segunda colonia donde Francisco vivió y trabajó',
+          year: '1899'
+        },
+        {
+          name: 'Concepción del Uruguay, Entre Ríos',
+          coords: [-32.4833, -58.2333],
+          type: 'concepcion',
+          description: 'Ciudad donde Francisco pasó sus últimos años',
+          year: '1928'
+        }
+      ];
+
+      // Colores para diferentes tipos de lugares
+      const placeColors = {
+        switzerland: '#10b981',
+        'colonia-san-jose': '#3b82f6',
+        'colonia-yerua': '#f59e0b',
+        concepcion: '#ef4444'
+      };
+
+      // Agregar marcadores al mapa
+      franciscoPlaces.forEach(place => {
+        const marker = L.circleMarker(place.coords, {
+          radius: 8,
+          fillColor: placeColors[place.type],
+          color: '#fff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.8
+        }).addTo(map);
+
+        const popup = L.popup({
+          maxWidth: 250,
+          className: 'clemenzo-popup'
+        }).setContent(`
+          <div class="popup-content">
+            <h3>${place.name}</h3>
+            <p class="popup-description">${place.description}</p>
+            <span class="popup-year">${place.year}</span>
+          </div>
+        `);
+
+        marker.bindPopup(popup);
+      });
+
+      // Agregar ruta migratoria
+      const migrationRoutes = [
+        {
+          name: 'Ruta Francisco Clemenzo',
+          coordinates: [
+            [46.2833, 7.2667], // Ardon, Suiza
+            [-32.2, -58.2], // Colonia San José
+            [-31.5, -58.0], // Colonia Yeruá
+            [-32.4833, -58.2333] // Concepción del Uruguay
+          ],
+          color: '#8b5cf6'
+        }
+      ];
+
+      migrationRoutes.forEach(route => {
+        const polyline = L.polyline(route.coordinates, {
+          color: route.color,
+          weight: 3,
+          opacity: 0.7,
+          dashArray: '10, 5'
+        }).addTo(map);
+
+        const popup = L.popup({
+          maxWidth: 250,
+          className: 'route-popup'
+        }).setContent(`
+          <div class="popup-content">
+            <h3>${route.name}</h3>
+            <p>Ruta migratoria de Francisco Clemenzo desde Suiza hasta Entre Ríos</p>
+          </div>
+        `);
+
+        polyline.bindPopup(popup);
+      });
+
+      // Ajustar vista para mostrar todos los marcadores
+      const group = new L.featureGroup(franciscoPlaces.map(place => 
+        L.marker(place.coords)
+      ));
+      map.fitBounds(group.getBounds().pad(0.1));
+    });
+  </script>
+</body>
+</html>

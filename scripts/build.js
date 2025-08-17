@@ -88,10 +88,30 @@ function markdownToHtml(markdown) {
   // Configurar marked para que sea compatible con nuestro CSS
   marked.setOptions({
     breaks: true,
-    gfm: true
+    gfm: true,
+    headerIds: false,
+    mangle: false
+  });
+  
+  // Preservar HTML personalizado antes de procesar con marked
+  const htmlPlaceholders = [];
+  let htmlIndex = 0;
+  
+  // Reemplazar HTML personalizado con placeholders
+  markdown = markdown.replace(/<iframe[^>]*>.*?<\/iframe>/gs, (match) => {
+    const placeholder = `<!-- HTML_PLACEHOLDER_${htmlIndex} -->`;
+    htmlPlaceholders[htmlIndex] = match;
+    htmlIndex++;
+    return placeholder;
   });
   
   let html = marked(markdown);
+  
+  // Convertir callouts [!NOTE] a formato más legible (antes de procesar blockquotes)
+  html = html.replace(/\[!NOTE\]/g, '<strong>Nota:</strong>');
+  html = html.replace(/\[!WARNING\]/g, '<strong>Advertencia:</strong>');
+  html = html.replace(/\[!TIP\]/g, '<strong>Consejo:</strong>');
+  html = html.replace(/\[!IMPORTANT\]/g, '<strong>Importante:</strong>');
   
   // Convertir blockquotes para que usen nuestro estilo
   html = html.replace(/<blockquote>/g, '<blockquote><p>');
@@ -123,6 +143,17 @@ function markdownToHtml(markdown) {
       if (imgTag.includes('figure')) return match;
       return `<figure class="article-image">${imgTag}</figure>`;
     }
+  );
+  
+  // Restaurar HTML personalizado
+  htmlPlaceholders.forEach((placeholder, index) => {
+    html = html.replace(`<!-- HTML_PLACEHOLDER_${index} -->`, placeholder);
+  });
+  
+  // Corregir rutas de iframes para mapas (después de restaurar HTML personalizado)
+  html = html.replace(
+    /src="mapa-francisco-embed\.html"/g,
+    'src="../../mapa-francisco-embed.html"'
   );
   
   return html;
@@ -177,7 +208,7 @@ function processMarkdownFile(filePath) {
     date: metadata.date || '',
     tags: metadata.tags ? metadata.tags.split(',').map(t => t.trim()) : [],
     featured: metadata.featured === 'true',
-    url: `/dist/blog/${metadata.slug}.html`
+    url: `dist/blog/${metadata.slug}.html`
   };
 }
 
@@ -198,11 +229,17 @@ function build() {
         return fs.statSync(bPath).mtime - fs.statSync(aPath).mtime;
       });
     
+    console.log(`📁 Archivos Markdown encontrados: ${files.length}`);
+    files.forEach(file => {
+      console.log(`  - ${file}`);
+    });
+    
     files.forEach(file => {
       const filePath = path.join(POSTS_DIR, file);
       const entry = processMarkdownFile(filePath);
       if (entry) {
         blogEntries.push(entry);
+        console.log(`  ✅ Procesado: ${entry.title}`);
       }
     });
   }

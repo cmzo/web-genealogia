@@ -841,15 +841,68 @@ body {
 .meta-text { line-height: 1.35; font-size: 14px; }
 .meta-text strong { color: #111827; font-weight: 600; }
 
-.article-content { margin-top: 28px; }
-.article-content p { margin: 0 0 22px 0; font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(18px, 2.3vw, 22px); line-height: 1.68; color: #111827; }
-.article-content h2 { margin: 48px 0 24px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size: clamp(24px, 3vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: #111827; }
+.article-content { margin-top: 32px; }
+.article-content p { margin: 0 0 24px 0; font-family: 'Source Serif 4', Georgia, serif; font-size: clamp(18px, 2.3vw, 22px); line-height: 1.68; color: #111827; }
+.article-content h2 { margin: 40px 0 20px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size: clamp(24px, 3vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; color: #111827; }
 .article-content h3 { margin: 32px 0 16px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size: clamp(20px, 2.5vw, 24px); font-weight: 600; line-height: 1.3; color: #111827; }
+
+/* Listas - mantener consistencia con el resto del texto */
+.article-content ul, .article-content ol {
+  margin: 20px 0 24px 0;
+  padding-left: 24px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(18px, 2.3vw, 22px);
+  line-height: 1.68;
+  color: #111827;
+}
+
+.article-content li {
+  margin: 8px 0;
+  line-height: 1.68;
+}
+
+.article-content ul li {
+  list-style-type: disc;
+}
+
+.article-content ol li {
+  list-style-type: decimal;
+}
+
+/* Imágenes en artículos - espaciados coherentes */
+.article-content figure {
+  margin: 24px 0;
+  text-align: center;
+}
+
+/* Iframes en artículos - espaciados coherentes */
+.article-content iframe {
+  margin: 32px 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.article-content figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.article-content figure figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+}
 
 /* Blockquote style */
 .article-content blockquote {
-  margin: 20px 0 24px 0;
-  padding: 14px 18px;
+  margin: 24px 0;
+  padding: 16px 20px;
   border-left: 3px solid var(--border);
   background: #f8fafc;
   border-radius: 8px;

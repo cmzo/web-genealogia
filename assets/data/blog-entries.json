@@ -1,34 +1,21 @@
 [
   {
-    "id": "francisco-misterio",
-    "title": "El misterio de Francisco",
-    "description": "Investigación histórica y reconstrucción de pistas sobre los orígenes de Francisco Clemenzo",
-    "image": "./assets/images/cards/francisco.webp",
-    "category": "investigacion",
-    "date": "2024-01-15",
+    "id": "investigando-francisco",
+    "title": "Investigando a Francisco Clemenzo",
+    "description": "Un análisis completo del material que tengo sobre Francisco",
+    "image": "/assets/images/cards/investigando_francisco.webp",
+    "category": "investigación",
+    "date": "17-08-2025",
     "tags": [
-      "francisco",
-      "origenes",
+      "genealogia",
+      "investigacion",
+      "documentos",
+      "registros",
+      "suiza",
       "argentina",
-      "investigacion"
+      "francia"
     ],
     "featured": true,
-    "url": "francisco.html"
-  },
-  {
-    "id": "trama-mexicana",
-    "title": "La trama mexicana",
-    "description": "Historias, migraciones y vínculos con México",
-    "image": "./assets/images/cards/trama-mexicana.webp",
-    "category": "historias",
-    "date": "2024-01-20",
-    "tags": [
-      "mexico",
-      "migracion",
-      "historias",
-      "familia"
-    ],
-    "featured": true,
-    "url": "trama-mexicana.html"
+    "url": "dist/blog/investigando-francisco.html"
   }
 ]
