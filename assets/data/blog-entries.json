@@ -3,7 +3,7 @@
     "id": "investigando-francisco",
     "title": "Investigando a Francisco Clemenzo",
     "description": "Un análisis completo del material que tengo sobre Francisco",
-    "image": "/assets/images/cards/investigando_francisco.webp",
+    "image": "https://cmzo.github.io/web-genealogia/assets/images/cards/investigando_francisco.webp",
     "category": "investigación",
     "date": "17-08-2025",
     "tags": [
@@ -16,6 +16,6 @@
       "francia"
     ],
     "featured": true,
-    "url": "/dist/blog/investigando-francisco.html"
+    "url": "https://cmzo.github.io/web-genealogia/dist/blog/investigando-francisco.html"
   }
 ]
