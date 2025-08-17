@@ -278,7 +278,7 @@
         console.log('Generando URL para post:', post.title, 'URL:', post.url);
         return `
         <a href="${post.url}" class="blog-card">
-          <img src="${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy" onerror="this.style.display='none'" onload="console.log('Imagen cargada:', '${post.image}')" onerror="console.log('Error cargando imagen:', '${post.image}')">
+          <img src="${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy" onload="console.log('Imagen cargada:', '${post.image}')" onerror="console.log('Error cargando imagen:', '${post.image}'); this.style.display='none'">
           <div class="blog-card-content">
             <div class="blog-card-category">${post.category}</div>
             <h2 class="blog-card-title">${post.title}</h2>
