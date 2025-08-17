@@ -56,8 +56,93 @@
     .close-btn { width: 36px; height: 36px; border-radius: 8px; }
     .person-body { padding: 16px 16px 20px; overflow: auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
     .section-card { background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 14px 16px; }
-    .section-title { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: #0f172a; }
+    .section-title { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: #0f172a; }
     .section-text { margin: 0; color: #475569; line-height: 1.6; font-size: 14px; white-space: pre-wrap; }
+    
+    /* Estilos mejorados para el contenido de la sección */
+    .section-content { 
+      margin: 0; 
+      color: #475569; 
+      line-height: 1.7; 
+      font-size: 14px; 
+    }
+    
+    /* Estilos para listas con viñetas */
+    .section-content ul {
+      margin: 8px 0 12px 0;
+      padding-left: 20px;
+      list-style-type: disc;
+      list-style-position: outside;
+    }
+    
+    .section-content li {
+      margin: 6px 0;
+      color: #374151;
+      line-height: 1.5;
+      font-weight: normal !important;
+    }
+    
+    .section-content li strong {
+      font-weight: normal !important;
+    }
+    
+    /* Asegurar que las viñetas se muestren correctamente */
+    .section-content ul li::marker {
+      color: #6b7280;
+      font-weight: normal;
+    }
+    
+    /* Forzar que no haya negrita en listas */
+    .section-content ul li * {
+      font-weight: normal !important;
+    }
+    
+    /* Estilos para citas */
+    .section-content blockquote {
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border-left: 4px solid #3b82f6;
+      border-radius: 6px;
+      font-style: italic;
+      color: #1f2937;
+    }
+    
+    /* Estilos para títulos de sección dentro del contenido */
+    .section-content h4 {
+      margin: 16px 0 4px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f2937;
+      padding-bottom: 2px;
+    }
+    
+    .section-content h4:first-child {
+      margin-top: 0;
+    }
+    
+    /* Estilos para párrafos */
+    .section-content p {
+      margin: 12px 0;
+      color: #374151;
+    }
+    
+    /* Estilos para texto destacado */
+    .section-content strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+    
+    /* Estilos para enlaces */
+    .section-content a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .section-content a:hover {
+      text-decoration: underline;
+    }
     .doc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
     .doc-item { border: 1px solid #e6e7eb; border-radius: 10px; padding: 10px; background: #f8fafc; color: #475569; font-size: 13px; }
     .doc-item a { text-decoration: none; color: #0f172a; font-weight: 600; }
@@ -113,10 +198,35 @@
     .thumb img { width: 100%; height: 140px; object-fit: cover; display: block; }
     .thumb figcaption { padding: 8px 10px; font-size: 12px; color: #475569; }
     /* Lightbox */
-    .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,0.86); z-index: 1300; }
-    .lightbox-inner { max-width: 92vw; max-height: 90vh; display: grid; grid-template-rows: 1fr auto; gap: 10px; }
-    .lightbox img { max-width: 92vw; max-height: 82vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); background:#111827; }
-    .lightbox-caption { color: #e5e7eb; font-size: 14px; text-align: center; }
+    .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,0.95); z-index: 1300; }
+    .lightbox-inner { max-width: 95vw; max-height: 95vh; display: grid; grid-template-rows: 1fr auto; gap: 10px; }
+    .lightbox img { 
+      max-width: 95vw; 
+      max-height: 90vh; 
+      object-fit: contain; 
+      border-radius: 8px; 
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35); 
+      background: #111827;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+    .lightbox img:hover {
+      transform: scale(1.02);
+    }
+    .lightbox img[style*="scale(1)"]:hover::after {
+      content: "Doble click para zoom";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    .lightbox-caption { color: #e5e7eb; font-size: 14px; text-align: center; padding: 8px 16px; background: rgba(0,0,0,0.7); border-radius: 6px; }
     .lightbox-nav { position: fixed; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
     .lightbox-btn { pointer-events: auto; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter: blur(6px); }
     .lightbox-close { position: fixed; top: 16px; right: 16px; }
@@ -169,7 +279,7 @@
       <div class="stats-card">
         <ul class="stats-list">
           <li id="statsCount">Personas en el archivo: —</li>
-          <li id="statsMedia">Total de ítems: —</li>
+          <li id="statsMedia">Total de documentos: —</li>
           <li id="statsSource">Origen: —</li>
         </ul>
         <button id="resetBtn" class="btn" title="Limpiar búsqueda">Reset</button>
@@ -217,8 +327,8 @@
           <p class="section-text" id="bioText"></p>
         </div>
         <div class="section-card" id="storySection" style="display:none;">
-          <h3 class="section-title">Anécdotas / Historia</h3>
-          <p class="section-text" id="storyText"></p>
+          <h3 class="section-title">Datos, curiosidades y anécdotas</h3>
+          <div class="section-content" id="storyText"></div>
         </div>
         <div class="section-card" id="docsSection" style="display:none;">
           <h3 class="section-title">Documentos</h3>
@@ -587,7 +697,7 @@
       const totalMedia = Object.values(mediaData).reduce((total, personMedia) => {
         return total + (personMedia ? personMedia.length : 0);
       }, 0);
-      document.getElementById('statsMedia').textContent = `Total de ítems: ${totalMedia}`;
+      document.getElementById('statsMedia').textContent = `Total de documentos: ${totalMedia}`;
     }
 
     // Función para resolver ID a nombre de persona
@@ -656,11 +766,79 @@
         technicalInfo.style.display = 'none';
       }
       
+      // Función para procesar texto y convertirlo en HTML con formato
+      function formatTextContent(text) {
+        if (!text) return '';
+        
+        let html = text;
+        
+        // Procesar listas PRIMERO (antes que cualquier otra cosa)
+        const lines = html.split('\n');
+        let inList = false;
+        let processedLines = [];
+        
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const trimmedLine = line.trim();
+          
+          // Detectar inicio de lista (guión o asterisco seguido de espacio)
+          if (trimmedLine.match(/^[*-]\s+/)) {
+            if (!inList) {
+              processedLines.push('<ul>');
+              inList = true;
+            }
+            const listItem = trimmedLine.replace(/^[*-]\s+/, '');
+            processedLines.push(`<li>${listItem}</li>`);
+          } else {
+            // Si estábamos en una lista y ahora no, cerrar la lista
+            if (inList) {
+              processedLines.push('</ul>');
+              inList = false;
+            }
+            processedLines.push(line);
+          }
+        }
+        
+        // Cerrar lista si quedó abierta
+        if (inList) {
+          processedLines.push('</ul>');
+        }
+        
+        html = processedLines.join('\n');
+        
+        // Convertir títulos de sección (líneas que terminan con :) - SOLO si NO están dentro de listas
+        html = html.replace(/^([^:]+):$/gm, '<h4>$1:</h4>');
+        
+        // Convertir citas (texto entre comillas dobles)
+        html = html.replace(/"([^"]+)"/g, '<blockquote>$1</blockquote>');
+        
+        // Convertir enlaces [texto](url)
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+        
+        // Convertir saltos de línea dobles en párrafos
+        html = html.replace(/\n\n+/g, '</p><p>');
+        html = html.replace(/^(.+)$/gm, '<p>$1</p>');
+        
+        // Limpiar párrafos vacíos y párrafos que solo contienen HTML
+        html = html.replace(/<p><\/p>/g, '');
+        html = html.replace(/<p>(<[^>]+>.*<\/[^>]+>)<\/p>/g, '$1');
+        
+        // Convertir texto en negrita SOLO en títulos de sección
+        html = html.replace(/<h4>([^<]+):<\/h4>/g, '<h4><strong>$1:</strong></h4>');
+        
+        // LIMPIEZA FINAL: Asegurar que el contenido de las listas NO esté en negrita
+        html = html.replace(/<li><strong>/g, '<li>');
+        html = html.replace(/<\/strong><\/li>/g, '</li>');
+        html = html.replace(/<li>(.*?)<strong>(.*?)<\/strong>(.*?)<\/li>/g, '<li>$1$2$3</li>');
+        
+        return html;
+      }
+      
       // Texto
       const bio = document.getElementById('bioSection');
       const story = document.getElementById('storySection');
       document.getElementById('bioText').textContent = person.bio_short || '';
-      document.getElementById('storyText').textContent = person.story_long || '';
+      document.getElementById('storyText').innerHTML = formatTextContent(person.story_long || '');
       bio.style.display = person.bio_short ? 'block' : 'none';
       story.style.display = person.story_long ? 'block' : 'none';
       // Documentos (no-foto)
@@ -695,7 +873,7 @@
           const thumb = m.thumb || m.filename || m.full || m.url;
           const caption = m.caption || '';
           fig.innerHTML = `
-            <img src="${thumb}" alt="${caption}" loading="lazy" data-index="${idx}">
+            <img src="${thumb}" alt="${caption}" loading="lazy" data-index="${idx}" title="Click para ver en tamaño completo">
             <figcaption>${caption}</figcaption>
           `;
           fig.querySelector('img').addEventListener('click', () => openLightbox(photos, idx));
@@ -711,6 +889,9 @@
       
       // Función para obtener icono según tipo de fuente
       function getSourceIcon(sourceType) {
+        // Normalizar el tipo de fuente para evitar inconsistencias
+        const normalizedType = sourceType.toLowerCase().trim();
+        
         const iconMap = {
           'birth': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 12l2 2 4-4"/>
@@ -741,11 +922,27 @@
             <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
           </svg>`
         };
-        return iconMap[sourceType] || iconMap['default'];
+        
+        // Buscar coincidencia exacta o parcial
+        if (iconMap[normalizedType]) {
+          return iconMap[normalizedType];
+        }
+        
+        // Si no hay coincidencia exacta, buscar coincidencias parciales
+        for (const [key, icon] of Object.entries(iconMap)) {
+          if (normalizedType.includes(key) || key.includes(normalizedType)) {
+            return icon;
+          }
+        }
+        
+        return iconMap['default'];
       }
       
       // Función para obtener color según tipo de fuente
       function getSourceColor(sourceType) {
+        // Normalizar el tipo de fuente para evitar inconsistencias
+        const normalizedType = sourceType.toLowerCase().trim();
+        
         const colorMap = {
           'birth': '#10b981',      // Verde
           'marriage': '#f59e0b',   // Amarillo
@@ -755,72 +952,120 @@
           'immigration': '#06b6d4', // Cyan
           'default': '#6b7280'     // Gris
         };
-        return colorMap[sourceType] || colorMap['default'];
+        
+        // Buscar coincidencia exacta o parcial
+        if (colorMap[normalizedType]) {
+          return colorMap[normalizedType];
+        }
+        
+        // Si no hay coincidencia exacta, buscar coincidencias parciales
+        for (const [key, color] of Object.entries(colorMap)) {
+          if (normalizedType.includes(key) || key.includes(normalizedType)) {
+            return color;
+          }
+        }
+        
+        return colorMap['default'];
       }
       
       // Procesar fuentes usando las múltiples columnas
       if (person.source_person_id && person.source_person_id.trim()) {
         const sourceIds = person.source_person_id.split(',').map(s => s.trim()).filter(s => s);
         const sourceTypes = person.source_type ? person.source_type.split(',').map(s => s.trim()) : [];
-        const sourceYears = person.source_year ? person.source_year.split(',').map(s => s.trim()) : [];
+        
+        // Manejar fechas separadas por coma o punto
+        let sourceYears = [];
+        if (person.source_year) {
+          // Primero intentar con coma, luego con punto
+          const commaSplit = person.source_year.split(',').map(s => s.trim());
+          if (commaSplit.length > 1) {
+            sourceYears = commaSplit;
+          } else {
+            // Si solo hay un elemento, intentar con punto
+            sourceYears = person.source_year.split('.').map(s => s.trim());
+          }
+        }
+        
         const sourceDescriptions = person.source_description ? person.source_description.split(',').map(s => s.trim()) : [];
+        
+
         
         if (sourceIds.length > 0) {
           document.getElementById('sourcesSection').style.display = 'block';
           
-          sourceIds.forEach((sourceId, index) => {
+          // Crear array de fuentes con toda la información
+          const sourcesArray = sourceIds.map((sourceId, index) => {
             const sourcePerson = allPeople.find(p => p.id === sourceId);
+            if (!sourcePerson) return null;
             
-            if (sourcePerson) {
-              const sourceItem = document.createElement('div');
-              sourceItem.className = 'source-item';
-              
-              const sourceType = sourceTypes[index] || 'default';
-              const sourceYear = sourceYears[index] || '';
-              const sourceDescription = sourceDescriptions[index] || 'Registro familiar';
-              const sourceColor = getSourceColor(sourceType);
-              const sourceIcon = getSourceIcon(sourceType);
-              
-              // Aplicar color específico al borde izquierdo
-              sourceItem.style.borderLeftColor = sourceColor;
-              
-              // Mejorar formato de fecha - mostrar fecha completa si está disponible
-              let dateText = '';
-              if (sourceYear) {
-                // Si es solo año, mostrar como año
-                if (/^\d{4}$/.test(sourceYear)) {
-                  dateText = ` (${sourceYear})`;
-                } else {
-                  // Si es fecha completa, formatear
-                  try {
-                    const date = new Date(sourceYear);
-                    if (!isNaN(date.getTime())) {
-                      const options = { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      };
-                      dateText = ` (${date.toLocaleDateString('es-ES', options)})`;
-                    } else {
-                      dateText = ` (${sourceYear})`;
-                    }
-                  } catch (e) {
-                    dateText = ` (${sourceYear})`;
+            const sourceType = sourceTypes[index] || 'default';
+            const sourceYear = sourceYears[index] || '';
+            const sourceDescription = sourceDescriptions[index] || 'Registro familiar';
+            
+            return {
+              sourceId,
+              sourcePerson,
+              sourceType,
+              sourceYear,
+              sourceDescription,
+              index
+            };
+          }).filter(source => source !== null);
+          
+          // Ordenar por año (más antiguo primero)
+          sourcesArray.sort((a, b) => {
+            const yearA = parseInt(a.sourceYear) || 9999;
+            const yearB = parseInt(b.sourceYear) || 9999;
+            return yearA - yearB;
+          });
+          
+          // Crear elementos HTML ordenados
+          sourcesArray.forEach((source) => {
+            const sourceItem = document.createElement('div');
+            sourceItem.className = 'source-item';
+            
+            const sourceColor = getSourceColor(source.sourceType);
+            const sourceIcon = getSourceIcon(source.sourceType);
+            
+            // Aplicar color específico al borde izquierdo
+            sourceItem.style.borderLeftColor = sourceColor;
+            
+            // Mejorar formato de fecha - mostrar fecha completa si está disponible
+            let dateText = '';
+            if (source.sourceYear) {
+              // Si es solo año, mostrar como año
+              if (/^\d{4}$/.test(source.sourceYear)) {
+                dateText = ` (${source.sourceYear})`;
+              } else {
+                // Si es fecha completa, formatear
+                try {
+                  const date = new Date(source.sourceYear);
+                  if (!isNaN(date.getTime())) {
+                    const options = { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    };
+                    dateText = ` (${date.toLocaleDateString('es-ES', options)})`;
+                  } else {
+                    dateText = ` (${source.sourceYear})`;
                   }
+                } catch (e) {
+                  dateText = ` (${source.sourceYear})`;
                 }
               }
-              
-              sourceItem.innerHTML = `
-                <div class="source-icon" style="color: ${sourceColor}">${sourceIcon}</div>
-                <div class="source-content">
-                  <div class="source-title">${sourceDescription}${dateText}</div>
-                  <div class="source-description">Mencionado en el registro de ${sourcePerson.name}</div>
-                  <a href="#/${sourcePerson.slug}" class="source-link">Ver registro de ${sourcePerson.name}</a>
-                </div>
-              `;
-              
-              sources.appendChild(sourceItem);
             }
+            
+            sourceItem.innerHTML = `
+              <div class="source-icon" style="color: ${sourceColor}">${sourceIcon}</div>
+              <div class="source-content">
+                <div class="source-title">${source.sourceDescription}${dateText}</div>
+                <div class="source-description">Mencionado en el registro de ${source.sourcePerson.name}</div>
+                <a href="#/${source.sourcePerson.slug}" class="source-link">Ver registro de ${source.sourcePerson.name}</a>
+              </div>
+            `;
+            
+            sources.appendChild(sourceItem);
           });
         } else {
           document.getElementById('sourcesSection').style.display = 'none';
@@ -842,15 +1087,25 @@
       if (location.hash.startsWith('#/')) history.pushState('', document.title, location.pathname + location.search);
     }
 
-    // Lightbox básico
-    let lbState = { items: [], index: 0 };
+    // Lightbox mejorado con zoom y pan
+    let lbState = { items: [], index: 0, isZoomed: false, isPanning: false, panStart: { x: 0, y: 0 } };
     function openLightbox(items, index) {
-      lbState = { items, index };
+      lbState = { items, index, isZoomed: false };
       const m = items[index] || {};
+      
+      // Priorizar imagen de tamaño completo para mejor zoom
       const src = m.full || m.url || m.filename || m.thumb;
       const cap = m.caption || '';
-      document.getElementById('lbImg').src = src;
+      
+      const lbImg = document.getElementById('lbImg');
+      lbImg.src = src;
+      lbImg.style.transform = 'scale(1) translate(0px, 0px)';
+      lbImg.style.cursor = 'zoom-in';
+      lbState.isZoomed = false;
+      lbState.isPanning = false;
+      
       document.getElementById('lbCaption').textContent = cap;
+      
       const lb = document.getElementById('lightbox');
       lb.style.display = 'flex';
       lb.setAttribute('aria-hidden','false');
@@ -927,12 +1182,119 @@
       document.getElementById('lightbox').addEventListener('click', (e)=> { if (e.target.id === 'lightbox') closeLightbox(); });
       document.getElementById('lbPrev').addEventListener('click', ()=> navLightbox(-1));
       document.getElementById('lbNext').addEventListener('click', ()=> navLightbox(1));
+      
+      // Zoom con doble click en la imagen
+      document.getElementById('lbImg').addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        const lbImg = e.target;
+        
+        if (lbState.isZoomed) {
+          // Zoom out
+          lbImg.style.transform = 'scale(1) translate(0px, 0px)';
+          lbImg.style.cursor = 'zoom-in';
+          lbState.isZoomed = false;
+        } else {
+          // Zoom in
+          lbImg.style.transform = 'scale(2) translate(0px, 0px)';
+          lbImg.style.cursor = 'grab';
+          lbState.isZoomed = true;
+        }
+      });
+      
+      // Pan con mouse cuando está zoomado
+      document.getElementById('lbImg').addEventListener('mousedown', (e) => {
+        if (lbState.isZoomed) {
+          e.preventDefault();
+          lbState.isPanning = true;
+          lbState.panStart = { x: e.clientX, y: e.clientY };
+          e.target.style.cursor = 'grabbing';
+        }
+      });
+      
+      document.addEventListener('mousemove', (e) => {
+        if (lbState.isPanning && lbState.isZoomed) {
+          e.preventDefault();
+          const lbImg = document.getElementById('lbImg');
+          const deltaX = e.clientX - lbState.panStart.x;
+          const deltaY = e.clientY - lbState.panStart.y;
+          
+          lbState.panStart = { x: e.clientX, y: e.clientY };
+          
+          const currentTransform = lbImg.style.transform;
+          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+          let currentX = 0, currentY = 0;
+          
+          if (translateMatch) {
+            const [x, y] = translateMatch[1].split(',').map(v => parseFloat(v));
+            currentX = x || 0;
+            currentY = y || 0;
+          }
+          
+          const newX = currentX + deltaX;
+          const newY = currentY + deltaY;
+          
+          lbImg.style.transform = `scale(2) translate(${newX}px, ${newY}px)`;
+        }
+      });
+      
+      document.addEventListener('mouseup', () => {
+        if (lbState.isPanning) {
+          lbState.isPanning = false;
+          const lbImg = document.getElementById('lbImg');
+          if (lbState.isZoomed) {
+            lbImg.style.cursor = 'grab';
+          }
+        }
+      });
       document.addEventListener('keydown', (e)=>{
         const lb = document.getElementById('lightbox');
         if (lb.style.display === 'flex') {
           if (e.key === 'Escape') closeLightbox();
           if (e.key === 'ArrowLeft') navLightbox(-1);
           if (e.key === 'ArrowRight') navLightbox(1);
+          if (e.key === 'z' || e.key === 'Z') {
+            // Toggle zoom con tecla Z
+            const lbImg = document.getElementById('lbImg');
+            if (lbState.isZoomed) {
+              lbImg.style.transform = 'scale(1) translate(0px, 0px)';
+              lbImg.style.cursor = 'zoom-in';
+              lbState.isZoomed = false;
+            } else {
+              lbImg.style.transform = 'scale(2) translate(0px, 0px)';
+              lbImg.style.cursor = 'grab';
+              lbState.isZoomed = true;
+            }
+          }
+          
+          // Navegación con teclado cuando está zoomado
+          if (lbState.isZoomed) {
+            const lbImg = document.getElementById('lbImg');
+            const currentTransform = lbImg.style.transform;
+            const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+            let currentX = 0, currentY = 0;
+            
+            if (translateMatch) {
+              const [x, y] = translateMatch[1].split(',').map(v => parseFloat(v));
+              currentX = x || 0;
+              currentY = y || 0;
+            }
+            
+            const step = 50; // Píxeles por tecla
+            
+            if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              lbImg.style.transform = `scale(2) translate(${currentX}px, ${currentY - step}px)`;
+            } else if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              lbImg.style.transform = `scale(2) translate(${currentX}px, ${currentY + step}px)`;
+            } else if (e.key === 'ArrowLeft') {
+              e.preventDefault();
+              lbImg.style.transform = `scale(2) translate(${currentX - step}px, ${currentY}px)`;
+            } else if (e.key === 'ArrowRight') {
+              e.preventDefault();
+              lbImg.style.transform = `scale(2) translate(${currentX + step}px, ${currentY}px)`;
+            }
+          }
         }
       });
       // Marcar si el viewport es móvil para depurar estilos
