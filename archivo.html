@@ -31,6 +31,32 @@
     .table tbody tr:hover { background: #fafcff; }
     .name-cell a { font-weight: 600; text-decoration: none; color: #0f172a; }
     .tag { display: inline-block; padding: 2px 8px; font-size: 12px; color: #334155; background: #f1f5f9; border: 1px solid #e5e7eb; border-radius: 999px; }
+    
+    /* Estilos para las píldoras de color */
+    .pill {
+      background-color: #f1f5f9;
+      color: #374151;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Mejorar el espaciado de las celdas con píldoras */
+    .table tbody td {
+      padding: 12px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 14px;
+      vertical-align: middle;
+    }
     /* Espaciado consistente para el back-home sobre el título */
     .header-brand .top-bar { margin: 0 0 16px 0; }
 
@@ -674,19 +700,83 @@
       return `${formattedBirth} - ${formattedDeath}`;
     }
 
+    // Función para obtener color de píldora basado en el valor
+    function getPillColor(value, type) {
+      if (!value || value === '') return '';
+      
+      const colors = {
+        generation: {
+          '0': '#fef3c7', // Amarillo claro
+          '1': '#dbeafe', // Azul claro
+          '2': '#d1fae5', // Verde claro
+          '3': '#fce7f3', // Rosa claro
+          '4': '#e0e7ff', // Índigo claro
+          '5': '#fef2f2', // Rojo claro
+          '6': '#f3e8ff', // Púrpura claro
+          '7': '#ecfdf5', // Verde esmeralda claro
+          '8': '#fffbeb', // Ámbar claro
+          '9': '#f0f9ff'  // Cian claro
+        },
+        branch: {
+          'clemenzo': '#dbeafe', // Azul
+          'fernandez': '#d1fae5', // Verde
+          'vargas yegros': '#fce7f3', // Rosa
+          'arceo': '#e0e7ff', // Índigo
+          'roch': '#fef3c7', // Amarillo
+          'esposos': '#f3e8ff', // Púrpura
+          'otros': '#fef2f2', // Rojo
+          'other': '#f1f5f9' // Gris
+        },
+        date: {
+          'presente': '#d1fae5', // Verde para "presente"
+          'desconocido': '#f1f5f9', // Gris para "desconocido"
+          'default': '#f0f9ff' // Azul claro para fechas normales
+        }
+      };
+      
+      const valueLower = value.toString().toLowerCase();
+      
+      if (type === 'generation') {
+        return colors.generation[value] || colors.generation['0'];
+      } else if (type === 'branch') {
+        return colors.branch[valueLower] || colors.branch['other'];
+      } else if (type === 'date') {
+        if (valueLower.includes('presente')) return colors.date['presente'];
+        if (valueLower.includes('desconocido')) return colors.date['desconocido'];
+        return colors.date['default'];
+      }
+      
+      return colors.branch['other'];
+    }
+
+    // Función para crear píldora con color
+    function createPill(text, type) {
+      if (!text || text === '') return '';
+      const color = getPillColor(text, type);
+      return `<span class="pill" style="background-color: ${color}; color: #374151; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; display: inline-block;">${text}</span>`;
+    }
+
     function renderTable(people, mediaData = {}) {
       const tbody = document.querySelector('#peopleTable tbody');
       tbody.innerHTML = '';
-      people.forEach(p => {
+      
+      // Ordenar por generación (descendente - generaciones más antiguas primero)
+      const sortedPeople = [...people].sort((a, b) => {
+        const genA = parseInt(a.generation) || 0;
+        const genB = parseInt(b.generation) || 0;
+        return genB - genA; // Cambiado para orden descendente
+      });
+      
+      sortedPeople.forEach(p => {
         const tr = document.createElement('tr');
         const yearsText = formatYearsColumn(p);
         const mediaCount = (mediaData[p.id] || []).length;
         
         tr.innerHTML = `
           <td class="name-cell"><a href="#/${p.slug}">${p.name}</a></td>
-          <td>${yearsText}</td>
-          <td>${p.branch || ''}</td>
-          <td>${p.generation ?? ''}</td>
+          <td>${createPill(yearsText, 'date')}</td>
+          <td>${createPill(p.branch || '', 'branch')}</td>
+          <td>${createPill(p.generation ?? '', 'generation')}</td>
           <td>${mediaCount}</td>
         `;
         tbody.appendChild(tr);
