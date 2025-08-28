@@ -1,4 +1,4 @@
-# Web Genealogía - Matías Clemenzo
+# Genealogía Clemenzo - Sitio Web Personal
 
 Sitio web personal para genealogía, historias y memoria familiar. Sistema de blog estático con Markdown, optimización de imágenes y gestión automatizada de contenido.
 

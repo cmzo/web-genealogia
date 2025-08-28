@@ -105,16 +105,25 @@ function markdownToHtml(markdown) {
     return placeholder;
   });
   
-  let html = marked(markdown);
+  // Convertir sintaxis de Obsidian ![[imagen.jpg]] a Markdown estándar ANTES de procesar
+  markdown = markdown.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
+    // Extraer solo el nombre del archivo sin extensión para el alt text
+    const altText = filename.replace(/\.[^/.]+$/, "").replace(/[_-]/g, ' ');
+    console.log(`🔄 Convirtiendo Obsidian: ${match} → ![${altText}](../../assets/images/posts/${filename})`);
+    return `![${altText}](../../assets/images/posts/${filename})`;
+  });
   
-  // Convertir callouts [!NOTE] a formato más legible (antes de procesar blockquotes)
+  // Procesar el markdown actualizado
+  let html = marked(markdown);
+
+  // Convertir callouts [!NOTE] a formato más legible
   html = html.replace(/\[!NOTE\]/g, '<strong>Nota:</strong>');
   html = html.replace(/\[!WARNING\]/g, '<strong>Advertencia:</strong>');
   html = html.replace(/\[!TIP\]/g, '<strong>Consejo:</strong>');
   html = html.replace(/\[!IMPORTANT\]/g, '<strong>Importante:</strong>');
   
-  // Convertir blockquotes para que usen nuestro estilo
-  html = html.replace(/<blockquote>/g, '<blockquote><p>');
+  // Convertir blockquotes para que usen nuestro estilo con más espaciado
+  html = html.replace(/<blockquote>/g, '<blockquote style="margin: 48px 0 32px 0; padding: 24px; background: rgba(248, 250, 252, 0.8); border-left: 4px solid #3b82f6; border-radius: 8px;"><p>');
   html = html.replace(/<\/blockquote>/g, '</p></blockquote>');
   
   // Mejorar el estilo de las imágenes y corregir rutas
@@ -136,14 +145,179 @@ function markdownToHtml(markdown) {
     'src="../../assets/images/cards/'
   );
   
-  // Envolver imágenes en figure si no están ya envueltas
+  // Detectar galerías: múltiples imágenes consecutivas (más flexible)
+  html = html.replace(
+    /(<p><img[^>]+><\/p>\s*){2,}/gs,
+    (match) => {
+      console.log(`🔍 Posible galería encontrada: ${match.substring(0, 100)}...`);
+      
+      // Extraer todas las imágenes del grupo
+      const images = match.match(/<img[^>]+>/gs) || [];
+      
+      if (images.length >= 2) {
+        console.log(`📸 Galería detectada con ${images.length} imágenes`);
+        
+        // Envolver cada imagen en figure y crear grid con funcionalidad clickable
+        const galleryItems = images.map(img => {
+          // Extraer src para el lightbox
+          const srcMatch = img.match(/src="([^"]+)"/);
+          const src = srcMatch ? srcMatch[1] : '';
+          
+          return `<div class="gallery-item">
+            <figure class="article-image">
+              <div class="image-clickable" onclick="openLightbox('${src}')" style="cursor: pointer; position: relative; transition: transform 0.2s;">
+                ${img}
+                <div style="
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  background: rgba(0,0,0,0.6);
+                  color: white;
+                  padding: 4px 8px;
+                  border-radius: 4px;
+                  font-size: 12px;
+                  opacity: 0;
+                  transition: opacity 0.2s;
+                  pointer-events: none;
+                " class="zoom-hint">🔍 Click para ampliar</div>
+              </div>
+            </figure>
+          </div>`;
+        }).join('');
+        
+        return `<div class="image-gallery" style="
+          display: grid; 
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+          gap: 12px; 
+          margin: 32px 0; 
+          padding: 20px; 
+          background: rgba(248, 250, 252, 0.6); 
+          border-radius: 12px; 
+          border: 1px solid #e5e7eb;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        ">
+          ${galleryItems}
+        </div>`;
+      }
+      
+      return match;
+    }
+  );
+
+  // Método directo: aplicar estilos a todos los em después de figure para que se vean súper pegados
+  html = html.replace(
+    /<br><em>([^<]+)<\/em>/g,
+    '<figcaption style="display: block; text-align: center; font-style: italic; margin: -28px 0 12px 0; padding: 2px 8px; font-size: 0.75em; color: #666; line-height: 1.1; background: rgba(255, 255, 255, 0.95);">$1</figcaption>'
+  );
+  
+  // También detectar patrones separados en párrafos diferentes
+  html = html.replace(
+    /(<p><figure class="article-image"><img[^>]+><\/figure><\/p>)\s*<p><em>([^<]+)<\/em><\/p>/g,
+    (match, imgHtml, caption) => {
+      // Extraer el img tag del figure
+      const imgMatch = imgHtml.match(/<img[^>]+>/);
+      if (imgMatch) {
+        return `<figure class="article-image">
+          ${imgMatch[0]}
+          <figcaption style="text-align: center; font-style: italic; margin-top: 8px; font-size: 0.9em; color: #666;">${caption}</figcaption>
+        </figure>`;
+      }
+      return match;
+    }
+  );
+  
+  // Envolver imágenes en figure si no están ya envueltas Y agregar funcionalidad de lightbox
   html = html.replace(
     /(<img[^>]+>)/g,
     (match, imgTag) => {
       if (imgTag.includes('figure')) return match;
-      return `<figure class="article-image">${imgTag}</figure>`;
+      
+      // Extraer src para el lightbox
+      const srcMatch = imgTag.match(/src="([^"]+)"/);
+      const src = srcMatch ? srcMatch[1] : '';
+      
+      return `<figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('${src}')" style="cursor: pointer;">
+          ${imgTag}
+        </div>
+      </figure>`;
     }
   );
+
+  // Agregar lightbox HTML, CSS y scripts al final
+  html += `
+  <style>
+    .image-clickable:hover {
+      transform: scale(1.02);
+    }
+    .image-clickable:hover .zoom-hint {
+      opacity: 1 !important;
+    }
+    .gallery-item .image-clickable img {
+      transition: all 0.2s ease;
+    }
+    .gallery-item .image-clickable:hover img {
+      filter: brightness(1.1);
+    }
+  </style>
+  
+  <!-- Lightbox Modal -->
+  <div id="lightbox" style="
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    cursor: pointer;
+  " onclick="closeLightbox()">
+    <div style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 95%;
+      max-height: 95%;
+      text-align: center;
+    ">
+      <img id="lightbox-img" style="
+        max-width: 100%;
+        max-height: 100vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      ">
+      <div style="
+        color: white;
+        margin-top: 15px;
+        font-size: 14px;
+        opacity: 0.8;
+      ">Click para cerrar</div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+  </script>
+  `;
   
   // Restaurar HTML personalizado
   htmlPlaceholders.forEach((placeholder, index) => {

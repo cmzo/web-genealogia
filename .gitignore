@@ -5,7 +5,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build outputs
-dist/
+# dist/ (removed to allow GitHub Pages deployment)
 # content/data/blog-entries.json (moved to assets/data/)
 
 # OS generated files

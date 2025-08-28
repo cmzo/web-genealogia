@@ -10,7 +10,9 @@
     "serve": "npx serve .",
     "clean": "rm -rf dist/",
     "optimize-images": "node scripts/optimize-images.js",
-    "build-archive": "node scripts/build-archive.js --out content/data/archive.json"
+    "build-archive": "node scripts/build-archive.js --out content/data/archive.json",
+    "deploy": "node scripts/update-and-deploy.js",
+    "update": "node scripts/update-and-deploy.js"
   },
   "dependencies": {
     "marked": "^4.0.0"
