@@ -609,11 +609,11 @@
             if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición ${dateStr}`;
           });
         })();
-        // Configuración
-        const SHEET_ID = '1sFJMyqqEBkDPuGaX3kXANqppTfWijo__kGjRYY8hDEI';
-        const SHEET_GID = '0';
+        // Configuración - Migrado para usar el mismo sheet que el archivo
+        const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
+        const SHEET_GID = '0'; // GID para la hoja de personas del archivo
         // Si usas la hoja "Matrimonios", coloca aquí su GID (déjalo vacío para desactivar)
-        const MARRIAGES_SHEET_GID = '637454234';
+        const MARRIAGES_SHEET_GID = ''; // Desactivado por ahora, usaremos datos del sheet principal
         
         // Estado
         let treeData = null;
@@ -743,50 +743,62 @@
                 const hasSpouseColumn = colIndex['spouse_id'] !== undefined;
                 window.hasSpouseColumn = !!hasSpouseColumn;
 
-                // Convertir a formato simple
+                // Convertir a formato simple - ADAPTADO para el formato del archivo
                 const rows = data.table.rows.map(row => {
                     const cells = row.c || [];
-                    console.log('Procesando fila:', cells.map(c => c?.v));
-                    
-                    // Verificar si la posición 6 contiene un nombre (texto con espacios que no es un número)
-                    const pos6Value = cells[6]?.v;
-                    let name = '';
-                    let displayOrder = '';
-                    
-                    if (pos6Value && typeof pos6Value === 'string' && pos6Value.includes(' ') && !isNaN(pos6Value) === false) {
-                        // La posición 6 contiene un nombre
-                        name = pos6Value;
-                        displayOrder = cells[5]?.v || '';
-                    } else {
-                        // La posición 6 no contiene un nombre, buscar en otras posiciones
-                        for (let i = 0; i < cells.length; i++) {
-                            const value = cells[i]?.v;
-                            if (value && typeof value === 'string' && value.includes(' ') && !isNaN(value) === false) {
-                                name = value;
-                            } else if (value && (typeof value === 'number' || (typeof value === 'string' && !isNaN(value))) && value < 100) {
-                                displayOrder = value;
-                            }
-                        }
-                    }
+                    console.log('Procesando fila desde archivo:', cells.slice(0, 5).map(c => c?.v));
                     
                     const safe = (label, fallbackIdx) => {
                         const idx = colIndex[label] !== undefined ? colIndex[label] : fallbackIdx;
                         return idx !== undefined ? (cells[idx]?.v ?? '') : '';
                     };
                     
-                    return {
+                    // Mapeo desde la estructura del archivo al formato esperado por el árbol
+                    const archiveRow = {
+                        // Campos básicos del archivo
                         id: safe('id', 0),
-                        parent_id: safe('parent_id', 1),
-                        spouse_id: hasSpouseColumn ? safe('spouse_id', 2) : '',
-                        generation: safe('generation', 3),
-                        is_direct_line: safe('is_direct_line', 4),
-                        branch: safe('branch', 5),
-                        display_order: displayOrder,
-                        name: colIndex['name'] !== undefined ? safe('name', 6) : name,
-                        birth_date: safe('birth_date', 7),
-                        birth_place: safe('birth_place', 8),
-                        death_date: safe('death_date', 9),
-                        verificado: safe('verificado', 10)
+                        slug: safe('slug', 1), 
+                        name: safe('name', 2),
+                        birth_date: safe('birth_date', 3),
+                        birth_place: safe('birth_place', 4),
+                        death_date: safe('death_date', 5),
+                        death_place: safe('death_place', 6),
+                        spouse_id: safe('spouse_id', 7),
+                        children_ids: safe('children_ids', 8),
+                        father_id: safe('father_id', 9),
+                        mother_id: safe('mother_id', 10),
+                        branch: safe('branch', 11),
+                        generation: safe('generation', 12)
+                    };
+                    
+                    // Calcular parent_id basado en father_id/mother_id para compatibilidad
+                    let parent_id = '';
+                    if (archiveRow.father_id && archiveRow.father_id !== '') {
+                        parent_id = archiveRow.father_id;
+                    } else if (archiveRow.mother_id && archiveRow.mother_id !== '') {
+                        parent_id = archiveRow.mother_id;
+                    }
+                    
+                    // Determinar si es línea directa (simplificado por ahora)
+                    const is_direct_line = archiveRow.branch === 'clemenzo' ? '1' : '0';
+                    
+                    return {
+                        id: archiveRow.id,
+                        parent_id: parent_id,
+                        spouse_id: archiveRow.spouse_id,
+                        generation: archiveRow.generation || '0',
+                        is_direct_line: is_direct_line,
+                        branch: archiveRow.branch || '',
+                        display_order: archiveRow.generation || '0',
+                        name: archiveRow.name,
+                        birth_date: archiveRow.birth_date,
+                        birth_place: archiveRow.birth_place,
+                        death_date: archiveRow.death_date,
+                        verificado: '1', // Asumimos que los datos del archivo están verificados
+                        // Campos adicionales útiles del archivo
+                        father_id: archiveRow.father_id,
+                        mother_id: archiveRow.mother_id,
+                        children_ids: archiveRow.children_ids
                     };
                 });
                 
@@ -850,11 +862,16 @@
             const rootNodes = [];
             const spouseLinks = [];
             
-            // Crear nodos
+            // Crear nodos - MEJORADO para el archivo con father_id/mother_id
             rows.forEach(row => {
                 const id = String(row.id ?? '').trim();
+                if (!id || !row.name) return; // Saltar filas vacías
+                
                 const parentId = row.parent_id !== '' && row.parent_id != null ? String(row.parent_id).trim() : null;
+                const fatherId = row.father_id !== '' && row.father_id != null ? String(row.father_id).trim() : null;
+                const motherId = row.mother_id !== '' && row.mother_id != null ? String(row.mother_id).trim() : null;
                 const spouseId = row.spouse_id !== '' && row.spouse_id != null ? String(row.spouse_id).trim() : null;
+                
                 nodes[id] = {
                     id,
                     name: row.name,
@@ -866,18 +883,47 @@
                     branch: row.branch || 'unknown',
                     displayOrder: parseInt(row.display_order) || 0,
                     verificado: row.verificado === 'true' || row.verificado === '1',
+                    // Compatibilidad con formato anterior
                     parentId,
                     spouseId,
+                    // Nuevos campos del archivo
+                    fatherId,
+                    motherId,
                     children: []
                 };
+                
+                console.log(`Nodo creado: ${id} (${row.name}) - Padre: ${fatherId}, Madre: ${motherId}, Cónyuge: ${spouseId}`);
             });
             
-            // Establecer relaciones padre-hijo
+            // Establecer relaciones padre-hijo - MEJORADO para usar father_id/mother_id
             Object.values(nodes).forEach(node => {
-                if (node.parentId && nodes[node.parentId]) {
+                let hasParent = false;
+                
+                // Conectar con el padre si existe
+                if (node.fatherId && nodes[node.fatherId]) {
+                    nodes[node.fatherId].children.push(node);
+                    hasParent = true;
+                    console.log(`${node.name} conectado como hijo de ${nodes[node.fatherId].name} (padre)`);
+                }
+                
+                // Conectar con la madre si existe (para casos donde solo tenemos madre)
+                if (node.motherId && nodes[node.motherId] && !hasParent) {
+                    nodes[node.motherId].children.push(node);
+                    hasParent = true;
+                    console.log(`${node.name} conectado como hijo de ${nodes[node.motherId].name} (madre)`);
+                }
+                
+                // Fallback al sistema anterior si no tiene father_id/mother_id
+                if (!hasParent && node.parentId && nodes[node.parentId]) {
                     nodes[node.parentId].children.push(node);
-                } else {
+                    hasParent = true;
+                    console.log(`${node.name} conectado como hijo de ${nodes[node.parentId].name} (parentId)`);
+                }
+                
+                // Si no tiene padres, es un nodo raíz
+                if (!hasParent) {
                     rootNodes.push(node);
+                    console.log(`${node.name} agregado como nodo raíz`);
                 }
             });
             
