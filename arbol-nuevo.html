@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Árbol Genealógico - Nueva Versión</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Árbol Genealógico - Matrimonios</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <style>
         /* Base: Notion-like minimalist UI */
         :root {
@@ -103,6 +103,7 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        
         /* Estructura para buscador y tarjeta de stats */
         .controls .search { 
             display: flex; 
@@ -228,9 +229,50 @@
         .tree-container {
             position: relative;
             height: 600px;
-            overflow: hidden;
+            overflow: auto;
             background: var(--bg);
         }
+        
+        .zoom-controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            pointer-events: auto;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .zoom-btn:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+        
+        .zoom-btn:active {
+            transform: scale(0.95);
+        }
+        
+
+        
         /* Mobile centering and compact spacing for top controls */
         @media (max-width: 768px) {
             .controls { 
@@ -280,227 +322,72 @@
             }
         }
 
-        /* Forzar estilos móviles mediante clase aplicada por JS (para depurar) */
-        body.is-mobile .controls { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
-        body.is-mobile .controls .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
-        body.is-mobile .controls input#searchInput { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
-        body.is-mobile .controls #searchMeta { min-height: 0; }
-        body.is-mobile .controls .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
+        /* Estilos específicos del árbol */
+        #tree-container {
+            width: 100%;
+            height: 1200px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px; 
+            background: white;
+            overflow: auto;
+        }
+        
+        .marriage-unit {
+            cursor: pointer;
+        }
 
         .person-card {
             fill: white;
-            stroke: #e5e7eb;
-            stroke-width: 1.5;
+            stroke: #d1d5db;
+            stroke-width: 2;
             rx: 12;
-            ry: 12;
-            /* Sombra más sutil para que no parezca un enlace */
-            filter: drop-shadow(0 3px 8px rgba(15, 23, 42, 0.06));
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
         }
-
-        /* Direct line keeps same outline; color lo mostramos solo en conexiones */
-        .person-card.direct-line {
-            stroke: #e5e7eb;
-            stroke-width: 1.5;
-            filter: drop-shadow(0 3px 8px rgba(15, 23, 42, 0.06));
+        
+        svg {
+            z-index: 1;
         }
-
-        .person-card.selected {
-            stroke: #3b82f6;
+        
+        .person-text {
+            font-size: 14px;
+            fill: #374151;
+            text-anchor: middle;
+            font-weight: 500;
+        }
+        
+        .person-text.name {
+            font-size: 14px;
+            font-weight: 600;
+            fill: #111827;
+        }
+        
+        .person-text.dates {
+            font-size: 11px;
+            fill: #6b7280;
+        }
+        
+        .marriage-link {
+            stroke: #f59e0b;
             stroke-width: 3;
-            filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3));
         }
 
-        /* Resaltado de búsqueda */
-        .node.search-hit .person-card { stroke: #2563eb; stroke-width: 3; }
-        .node.search-hit .card-header { stroke: #2563eb; }
-        .node.search-dim { opacity: 0.18; }
-
-        .card-header {
-            fill: #f1f5f9;
-            stroke: #e5e7eb;
-            stroke-width: 1.5;
-            rx: 12;
-            ry: 12;
+        .parent-child-link {
+            stroke: #6b7280;
+            stroke-width: 2;
+            fill: none;
         }
-
-        /* Tag/píldora de color para agrupar hermanos por parent_id */
-        .sibling-tag {
-            opacity: 1;
-            stroke: #ffffff;
+        
+        .connection-point {
+            fill: #6b7280;
+            stroke: white;
             stroke-width: 1;
         }
-
-        .card-name {
-            font-size: 14px;
-            font-weight: 700;
-            fill: #0f172a;
-            text-anchor: middle;
+        
+        .collapsed {
+            opacity: 0.6;
         }
+        
 
-        .card-detail {
-            font-size: 12px;
-            fill: #475569;
-            text-anchor: start;
-        }
-
-
-
-
-
-        .tree-link {
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-        }
-
-        .tree-link.direct {
-            stroke: #059669;
-            stroke-width: 3;
-        }
-
-        .tree-link.spouse {
-            stroke: #f59e0b;
-            stroke-width: 2;
-            stroke-dasharray: 5,5;
-        }
-
-        .tree-link.other {
-            stroke: #e6e9f2;
-            opacity: 0.7;
-        }
-
-        .tree-link.spouse {
-            stroke: #f59e0b;
-            stroke-width: 2;
-            stroke-dasharray: 5,5;
-        }
-
-        /* Enlace vertical desde nodo de matrimonio hacia hijos */
-        .tree-link.marriage-child {
-            stroke: #cbd5e1;
-            stroke-width: 2;
-        }
-
-        /* Nodo de matrimonio (ícono entre cónyuges) */
-        .marriage-node {
-            fill: #ffffff;
-            stroke: #cbd5e1;
-            stroke-width: 2;
-            rx: 8;
-            ry: 8;
-            filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.12));
-        }
-        .marriage-node-text {
-            font-size: 14px;
-            fill: #334155;
-            text-anchor: middle;
-            dominant-baseline: middle;
-        }
-
-        .stats {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: rgba(255,255,255,0.95);
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 13px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .focus-info {
-            position: absolute;
-            bottom: 16px;
-            left: 16px;
-            background: rgba(255,255,255,0.95);
-            padding: 20px;
-            border-radius: 12px;
-            max-width: 320px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            display: none;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .focus-info h3 {
-            margin: 0 0 12px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .focus-info p {
-            margin: 8px 0;
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .focus-info strong {
-            color: #1e293b;
-        }
-
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 18px;
-            color: #64748b;
-            font-weight: 500;
-        }
-
-        .error {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #dc2626;
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-
-        .error h3 {
-            margin: 0 0 16px 0;
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .error button {
-            margin-top: 16px;
-            padding: 12px 24px;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        /* Footer */
-        .site-footer {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            padding: 24px 0;
-            margin-top: 48px;
-        }
-
-        .footer-container {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .footer-text {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -524,1390 +411,1190 @@
             </div>
         </div>
         
-        <div class="controls">
-            <div class="search">
-                <input id="searchInput" type="search" placeholder="Buscar nombre…" />
-                <div id="searchMeta">
-                    <span id="searchInfo"></span>
-                    <div id="searchNav" style="display:none; align-items:center; gap:6px;">
-                        <button id="prevMatch" class="btn" title="Anterior" style="padding:4px 8px; height:28px;">‹</button>
-                        <span id="matchCounter"></span>
-                        <button id="nextMatch" class="btn" title="Siguiente" style="padding:4px 8px; height:28px;">›</button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="stats-container">
-                <div class="stats-card">
-                    <div class="stats-list">
-                        <div id="stats">Personas en el árbol: —</div>
-                        <div id="generations">Generaciones: —</div>
-                    </div>
-                    <div class="zoom-controls">
-                        <button id="zoomOutBtn" class="btn zoom-btn" title="Alejar (-)">
-                            <span style="font-weight: bold; font-size: 14px;">−</span>
-                        </button>
-                        <button id="zoomInBtn" class="btn zoom-btn" title="Acercar (+)">
-                            <span style="font-weight: bold; font-size: 14px;">+</span>
-                        </button>
-                    </div>
-                    <button id="resetViewBtn" class="btn reset-btn" title="Reiniciar vista">
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <polyline points="5,9 5,5 9,5"/>
-                        <line x1="5" y1="5" x2="10" y2="10"/>
-                        <polyline points="15,5 19,5 19,9"/>
-                        <line x1="19" y1="5" x2="14" y2="10"/>
-                        <polyline points="19,15 19,19 15,19"/>
-                        <line x1="19" y1="19" x2="14" y2="14"/>
-                        <polyline points="9,19 5,19 5,15"/>
-                        <line x1="5" y1="19" x2="10" y2="14"/>
-                      </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
         
-        <div class="tree-container" id="treeContainer">
+        <div class="tree-container" id="tree-container">
             <div class="loading">Cargando árbol genealógico...</div>
+        </div>
+        <div class="zoom-controls">
+            <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
+            <button id="zoomInBtn" class="zoom-btn" title="Acercar (+)">+</button>
         </div>
         
         <div class="focus-info" id="focusInfo"></div>
     </div>
 
-      <!-- Footer -->
-  <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
-    <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
-      <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
-        <div>Matias Clemenzo</div>
-        <div>2025</div>
-      </div>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
+        <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
+            <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
+                <div>Matias Clemenzo</div>
+                <div>2025</div>
+            </div>
+        </div>
+    </footer>
+
+        </div>
 
     <script>
-        (function(){
-          const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-          const now = new Date();
-          const dateStr = `13 de ${months[now.getMonth()]} de ${now.getFullYear()}`;
-          window.addEventListener('load', () => {
-            const metaEdition = document.getElementById('meta-edition');
-            if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición ${dateStr}`;
-          });
-        })();
-        // Configuración - Migrado para usar el mismo sheet que el archivo
+        // Configuración del Google Sheet (mantenemos la misma)
         const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
-        const SHEET_GID = '0'; // GID para la hoja de personas del archivo
-        // Si usas la hoja "Matrimonios", coloca aquí su GID (déjalo vacío para desactivar)
-        const MARRIAGES_SHEET_GID = ''; // Desactivado por ahora, usaremos datos del sheet principal
         
-        // Estado
-        let treeData = null;
-        let currentView = 'complete'; // 'complete' o 'direct'
-        let selectedNode = null;
-
-        let searchIndex = [];
-        let currentPositions = new Map();
+        // Variables globales
+        let familyData = null;
+        let svg = null;
+        let currentZoom = null;
+        let marriages = new Map();
+        let individuals = {};
+        let currentUnits = []; // Estado actual de todas las unidades
         
-        // Dimensiones
-        const cardWidth = 220;
-        const cardHeight = 200;
-        const cardSpacing = 160;
-        const levelSpacing = 280;
-        
-        // Colores por rama
-        const branchColors = {
-            'clemenzo': '#3b82f6',
-            'roch': '#10b981',
-            'queipo': '#f59e0b',
-            'carvallo': '#ef4444',
-            'arceo': '#8b5cf6',
-            'vargas': '#ec4899',
-            'baster': '#06b6d4',
-            'costabile': '#84cc16',
-            'unknown': '#6b7280'
+        // Colores globales para las tarjetas
+        const cardColors = {
+            background: '#f3f4f6', // Gris claro
+            border: '#9ca3af',     // Gris medio
+            text: '#374151',       // Gris oscuro para texto
+            secondary: '#6b7280',  // Gris medio para texto secundario
+            accent: '#4b5563',     // Gris para acentos
+            divider: '#d1d5db'     // Gris claro para líneas divisorias
         };
-
-        // Paleta para colorear hijos por parentId (determinista pero limitada)
-        // Paleta más vibrante
-        const parentPalette = ['#93c5fd', '#86efac', '#fda4af', '#c4b5fd', '#fde68a', '#7dd3fc', '#f0abfc', '#94a3b8'];
-        function colorForParentId(pid) {
-            if (!pid) return '#ffffff';
-            const idx = Math.abs(String(pid).split('').reduce((a,c)=>a + c.charCodeAt(0), 0)) % parentPalette.length;
-            return parentPalette[idx];
+        
+        // Configuración del SVG - Espaciado mejorado para conexiones
+        const width = 2400; // Aumentado para más matrimonios horizontalmente
+        const height = 1800; // Aumentado para más generaciones
+        const cardWidth = 140; // Tarjetas más estrechas 
+        const cardHeight = 180; // Mucho más altas que anchas
+        const marriageSpacing = 500; // Aumentado para evitar superposición
+        const generationSpacing = 400; // Aumentado para más espacio vertical
+        const spouseGap = 25; // Gap más grande entre cónyuges
+        
+        function updateStatus(message) {
+            // Función vacía ya que eliminamos el elemento status
+            console.log('Status:', message);
         }
-
-        // Utilidad: normalizar texto (minúsculas, sin acentos) para búsquedas/comparaciones
-        function normalizeText(s) {
-            return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        }
-
-        // Formatear fecha para tarjetas: si hay día/mes/año -> DD/MM/AAAA, si no, solo año
-        function formatDateForCard(value) {
-            if (value === null || value === undefined) return '';
-            // Si es número: puede ser año (YYYY) o serial de Google Sheets
-            if (typeof value === 'number') {
-                if (value >= 1000 && value <= 2999) {
-                    return String(value);
-                }
-                // Interpretar como serial de Google Sheets (base: 1899-12-30)
-                const base = Date.UTC(1899, 11, 30);
-                const ms = base + Math.round(value) * 86400000;
-                const d = new Date(ms);
-                const dd = String(d.getUTCDate()).padStart(2, '0');
-                const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
-                const yyyy = d.getUTCFullYear();
-                return `${dd}/${mm}/${yyyy}`;
-            }
-            const raw = String(value).trim();
-            if (!raw) return '';
-            // YYYY-MM-DD o YYYY/MM/DD
-            let m = raw.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})$/);
-            if (m) {
-                const y = m[1], mm = m[2].padStart(2,'0'), dd = m[3].padStart(2,'0');
-                return `${dd}/${mm}/${y}`;
-            }
-            // DD/MM/YYYY o DD-MM-YYYY
-            m = raw.match(/^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/);
-            if (m) {
-                const dd = m[1].padStart(2,'0'), mm = m[2].padStart(2,'0'), y = m[3];
-                return `${dd}/${mm}/${y}`;
-            }
-            // Cadena numérica pura
-            if (/^\d+$/.test(raw)) {
-                const num = parseInt(raw, 10);
-                if (num >= 1000 && num <= 2999) return String(num);
-                const base = Date.UTC(1899, 11, 30);
-                const ms = base + Math.round(num) * 86400000;
-                const d = new Date(ms);
-                const dd = String(d.getUTCDate()).padStart(2, '0');
-                const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
-                const yyyy = d.getUTCFullYear();
-                return `${dd}/${mm}/${yyyy}`;
-            }
-            // Buscar año de 4 dígitos
-            const yearMatch = raw.match(/(\d{4})/);
-            if (yearMatch) return yearMatch[1];
-            return raw;
-        }
-
-        // Función para cargar datos de Google Sheets
+        
+        // Función principal para cargar datos del Google Sheet
         async function loadData() {
             try {
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+                updateStatus('Cargando datos...');
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
                 const response = await fetch(url);
                 const text = await response.text();
                 
-                console.log('Respuesta raw de Google Sheets:', text.substring(0, 200) + '...');
+                const match = text.match(/google\.visualization\.Query\.setResponse\((.+)\);?$/);
+                if (!match) throw new Error('No se encontró JSON válido');
                 
-                // Limpiar respuesta de Google Sheets (formato JSONP)
-                let jsonText = text;
-                if (text.startsWith('/*O_o*/')) {
-                    // Remover el prefijo JSONP
-                    jsonText = text.replace(/^\/\*O_o\*\/\s*/, '');
-                }
+                const data = JSON.parse(match[1]);
+                if (!data.table || !data.table.rows) throw new Error('Formato inválido');
                 
-                // Buscar el objeto JSON real
-                const match = jsonText.match(/\{.*\}/);
-                if (!match) {
-                    throw new Error('No se encontró JSON válido en la respuesta');
-                }
-                
-                const data = JSON.parse(match[0]);
-                
-                if (!data.table || !data.table.rows) {
-                    throw new Error('Formato de datos inválido');
-                }
-                
-                // Mapear columnas por etiqueta para evitar errores por posición
-                const cols = data.table.cols || [];
-                const colIndex = {};
-                cols.forEach((col, idx) => {
-                    const key = (col.label || col.id || '').toString().trim().toLowerCase();
-                    if (key) colIndex[key] = idx;
-                });
-                const hasSpouseColumn = colIndex['spouse_id'] !== undefined;
-                window.hasSpouseColumn = !!hasSpouseColumn;
-
-                // Convertir a formato simple - ADAPTADO para el formato del archivo
+                // Procesar filas
                 const rows = data.table.rows.map(row => {
                     const cells = row.c || [];
-                    console.log('Procesando fila desde archivo:', cells.slice(0, 5).map(c => c?.v));
-                    
-                    const safe = (label, fallbackIdx) => {
-                        const idx = colIndex[label] !== undefined ? colIndex[label] : fallbackIdx;
-                        return idx !== undefined ? (cells[idx]?.v ?? '') : '';
-                    };
-                    
-                    // Mapeo desde la estructura del archivo al formato esperado por el árbol
-                    const archiveRow = {
-                        // Campos básicos del archivo
-                        id: safe('id', 0),
-                        slug: safe('slug', 1), 
-                        name: safe('name', 2),
-                        birth_date: safe('birth_date', 3),
-                        birth_place: safe('birth_place', 4),
-                        death_date: safe('death_date', 5),
-                        death_place: safe('death_place', 6),
-                        spouse_id: safe('spouse_id', 7),
-                        children_ids: safe('children_ids', 8),
-                        father_id: safe('father_id', 9),
-                        mother_id: safe('mother_id', 10),
-                        branch: safe('branch', 11),
-                        generation: safe('generation', 12)
-                    };
-                    
-                    // Calcular parent_id basado en father_id/mother_id para compatibilidad
-                    let parent_id = '';
-                    if (archiveRow.father_id && archiveRow.father_id !== '') {
-                        parent_id = archiveRow.father_id;
-                    } else if (archiveRow.mother_id && archiveRow.mother_id !== '') {
-                        parent_id = archiveRow.mother_id;
-                    }
-                    
-                    // Determinar si es línea directa (simplificado por ahora)
-                    const is_direct_line = archiveRow.branch === 'clemenzo' ? '1' : '0';
                     
                     return {
-                        id: archiveRow.id,
-                        parent_id: parent_id,
-                        spouse_id: archiveRow.spouse_id,
-                        generation: archiveRow.generation || '0',
-                        is_direct_line: is_direct_line,
-                        branch: archiveRow.branch || '',
-                        display_order: archiveRow.generation || '0',
-                        name: archiveRow.name,
-                        birth_date: archiveRow.birth_date,
-                        birth_place: archiveRow.birth_place,
-                        death_date: archiveRow.death_date,
-                        verificado: '1',
-                        // Campos adicionales útiles del archivo
-                        father_id: archiveRow.father_id,
-                        mother_id: archiveRow.mother_id,
-                        children_ids: archiveRow.children_ids
+                        id: String(cells[0]?.v || '').trim(),
+                        name: String(cells[2]?.v || '').trim(),
+                        birth_date: cells[3]?.v || '',
+                        birth_place: String(cells[4]?.v || '').trim(),
+                        death_date: cells[5]?.v || '',
+                        death_place: String(cells[6]?.v || '').trim(),
+                        spouseId: String(cells[7]?.v || '').trim(),
+                        childrenIds: String(cells[8]?.v || '').trim(),
+                        fatherId: String(cells[9]?.v || '').trim(),
+                        motherId: String(cells[10]?.v || '').trim(),
+                        branch: String(cells[11]?.v || '').trim(),
+                        generation: parseInt(cells[12]?.v) || 0
                     };
-                });
+                }).filter(row => row.id && row.name);
                 
-                console.log('Datos cargados:', rows.length, 'filas');
-                console.log('Primera fila completa:', rows[0]);
-                console.log('Nombres encontrados:', rows.map(r => r.name).filter(n => n));
-                console.log('IDs encontrados:', rows.map(r => r.id).filter(n => n));
+                console.log('📊 Datos cargados:', rows.length, 'personas');
+        
+
                 return rows;
                 
             } catch (error) {
                 console.error('Error cargando datos:', error);
-                throw error;
-            }
-        }
-
-        // Cargar hoja "Matrimonios" (opcional)
-        async function loadMarriages() {
-            if (!MARRIAGES_SHEET_GID) return [];
-            try {
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${MARRIAGES_SHEET_GID}`;
-                const response = await fetch(url);
-                const text = await response.text();
-                let jsonText = text.startsWith('/*O_o*/') ? text.replace(/^\/\*O_o\*\/\s*/, '') : text;
-                const match = jsonText.match(/\{.*\}/);
-                if (!match) throw new Error('No se encontró JSON válido en Matrimonios');
-                const data = JSON.parse(match[0]);
-                if (!data.table || !data.table.rows) throw new Error('Formato inválido en Matrimonios');
-                const cols = data.table.cols || [];
-                const colIndex = {};
-                cols.forEach((col, idx) => {
-                    const key = (col.label || col.id || '').toString().trim().toLowerCase();
-                    if (key) colIndex[key] = idx;
-                });
-                const safe = (cells, label) => {
-                    const idx = colIndex[label];
-                    return idx !== undefined ? (cells[idx]?.v ?? '') : '';
-                };
-                const rows = data.table.rows.map(row => {
-                    const cells = row.c || [];
-                    return {
-                        marriage_id: String(safe(cells, 'marriage_id') || '').trim(),
-                        spouse1_id: String(safe(cells, 'spouse1_id') || '').trim(),
-                        spouse2_id: String(safe(cells, 'spouse2_id') || '').trim(),
-                        marriage_date: safe(cells, 'marriage_date') || '',
-                        marriage_place: safe(cells, 'marriage_place') || '',
-                        notes: safe(cells, 'notes') || ''
-                    };
-                }).filter(r => r.spouse1_id && r.spouse2_id);
-                console.log('Marriages (raw):', rows);
-                return rows;
-            } catch (e) {
-                console.warn('Error cargando hoja Matrimonios:', e);
+                updateStatus('Error cargando datos: ' + error.message);
                 return [];
             }
         }
 
-        // Función para convertir filas a estructura de árbol
-        function buildTree(rows) {
-            console.log('Iniciando buildTree con', rows.length, 'filas');
-            const nodes = {};
-            const rootNodes = [];
-            const spouseLinks = [];
+        // Construir estructura centrada en matrimonios
+        function buildMarriageStructure(rows) {
+            updateStatus('Procesando matrimonios...');
             
-            // Crear nodos - MEJORADO para el archivo con father_id/mother_id
+            // PASO 1: Crear individuos
+            individuals = {};
             rows.forEach(row => {
-                const id = String(row.id ?? '').trim();
-                if (!id || !row.name) return; // Saltar filas vacías
+                if (!row.id || !row.name) return;
                 
-                const parentId = row.parent_id !== '' && row.parent_id != null ? String(row.parent_id).trim() : null;
-                const fatherId = row.father_id !== '' && row.father_id != null ? String(row.father_id).trim() : null;
-                const motherId = row.mother_id !== '' && row.mother_id != null ? String(row.mother_id).trim() : null;
-                const spouseId = row.spouse_id !== '' && row.spouse_id != null ? String(row.spouse_id).trim() : null;
-                
-                nodes[id] = {
-                    id,
+                individuals[row.id] = {
+                    id: row.id,
                     name: row.name,
                     birthDate: row.birth_date,
                     birthPlace: row.birth_place,
                     deathDate: row.death_date,
-                    generation: parseInt(row.generation) || 0,
-                    isDirectLine: row.is_direct_line === 'true' || row.is_direct_line === '1',
-                    branch: row.branch || 'unknown',
-                    displayOrder: parseInt(row.display_order) || 0,
-                    verificado: row.verificado === 'true' || row.verificado === '1',
-                    // Compatibilidad con formato anterior
-                    parentId,
-                    spouseId,
-                    // Nuevos campos del archivo
-                    fatherId,
-                    motherId,
-                    children: []
+                    deathPlace: row.death_place,
+                    generation: row.generation,
+                    branch: row.branch,
+                    spouseId: row.spouseId || null,
+                    fatherId: row.fatherId || null,
+                    motherId: row.motherId || null,
+                    childrenIds: row.childrenIds ? row.childrenIds.split(',').map(s => s.trim()).filter(s => s) : []
+                };
+            });
+            
+            console.log('👥 Individuos creados:', Object.keys(individuals).length);
+            
+            // PASO 2: Crear matrimonios Y personas solteras
+            marriages = new Map();
+            const singlePeople = new Map();
+            const processedPairs = new Set();
+            const processedIndividuals = new Set();
+            
+            // Crear matrimonios
+            Object.values(individuals).forEach(person => {
+                if (!person.spouseId || !individuals[person.spouseId]) return;
+                
+                const key = [person.id, person.spouseId].sort().join('::');
+                if (processedPairs.has(key)) return;
+                processedPairs.add(key);
+                
+                const spouse = individuals[person.spouseId];
+                if (spouse.spouseId !== person.id) return; // Verificar simetría
+                
+                const marriage = {
+                    id: key,
+                    spouse1: person,
+                    spouse2: spouse,
+                    children: [],
+                    generation: Math.max(person.generation, spouse.generation),
+                    collapsed: false,
+                    hidden: false,
+                    x: 0,
+                    y: 0,
+                    type: 'marriage'
                 };
                 
-                if (id === 'p2' || id === 'p5' || id === 'p6') {
-                    console.log(`🔍 [DEBUG] Nodo creado: ${id} (${row.name}) - Padre: ${fatherId}, Madre: ${motherId}, Generation: ${row.generation}, ParentId: ${parentId}`);
+                marriages.set(key, marriage);
+                processedIndividuals.add(person.id);
+                processedIndividuals.add(spouse.id);
+                console.log(`💍 Matrimonio: ${person.name} ←→ ${spouse.name}`);
+                
+                // Debug específico para matrimonios importantes
+                if (person.name.includes('Tomas') || spouse.name.includes('Francisca') || 
+                    person.name.includes('Jose Roh') || spouse.name.includes('Maria Putallaz')) {
+                    console.log(`  🔍 MATRIMONIO CLAVE: ${key} = ${person.name} (${person.id}) + ${spouse.name} (${spouse.id})`);
+                }
+                
+                // Debug específico para Tomas + Francisca
+                if ((person.id === 'p31' && spouse.id === 'p32') || (person.id === 'p32' && spouse.id === 'p31')) {
+                    console.log(`🎯 MATRIMONIO TOMAS+FRANCISCA CREADO: ${person.name} ←→ ${spouse.name}`);
                 }
             });
             
-            // Establecer relaciones padre-hijo - MEJORADO para usar father_id/mother_id
-            Object.values(nodes).forEach(node => {
-                let hasParent = false;
+            // Crear entradas para personas solteras (niños, solteros, etc.)
+            Object.values(individuals).forEach(person => {
+                if (processedIndividuals.has(person.id)) return; // Ya procesado en matrimonio
                 
-                // PRIORIDAD 1: Si tiene padre Y madre, conectar al padre (más común en árboles genealógicos)
-                if (node.fatherId && node.motherId && nodes[node.fatherId] && nodes[node.motherId]) {
-                    // Conectar al padre como principal, pero guardar referencia a la madre
-                    nodes[node.fatherId].children.push(node);
-                    hasParent = true;
-                    console.log(`🔗 ${node.name} conectado como hijo de ${nodes[node.fatherId].name} (padre) y ${nodes[node.motherId].name} (madre)`);
-                }
-                // PRIORIDAD 2: Solo padre
-                else if (node.fatherId && nodes[node.fatherId] && !hasParent) {
-                    nodes[node.fatherId].children.push(node);
-                    hasParent = true;
-                    console.log(`👨 ${node.name} conectado como hijo de ${nodes[node.fatherId].name} (solo padre)`);
-                }
-                // PRIORIDAD 3: Solo madre
-                else if (node.motherId && nodes[node.motherId] && !hasParent) {
-                    nodes[node.motherId].children.push(node);
-                    hasParent = true;
-                    console.log(`👩 ${node.name} conectado como hijo de ${nodes[node.motherId].name} (solo madre)`);
-                }
+                const singleUnit = {
+                    id: person.id,
+                    person: person,
+                    children: [],
+                    generation: person.generation,
+                    collapsed: false,
+                    hidden: false,
+                    x: 0,
+                    y: 0,
+                    type: 'single'
+                };
                 
-                // FALLBACK: sistema anterior con parent_id
-                if (!hasParent && node.parentId && nodes[node.parentId]) {
-                    nodes[node.parentId].children.push(node);
-                    hasParent = true;
-                    console.log(`📎 ${node.name} conectado como hijo de ${nodes[node.parentId].name} (parentId legacy)`);
+                singlePeople.set(person.id, singleUnit);
+                console.log(`👤 Persona soltera: ${person.name}`);
+            });
+            
+            // PASO 3: Asignar hijos a matrimonios o padres solteros
+            Object.values(individuals).forEach(person => {
+                if (!person.fatherId && !person.motherId) return;
+                
+                // Debug para entender qué está pasando con los matrimonios
+                if (person.name.includes('Celestina Roh')) {
+                    console.log(`🔍 PROCESANDO CELESTINA: ${person.name} busca padres ${person.fatherId} + ${person.motherId}`);
                 }
                 
-                // Si no tiene padres, es un nodo raíz
-                if (!hasParent) {
-                    rootNodes.push(node);
-                    if (node.id === 'p2') {
-                        console.log(`❌ ERROR: ${node.name} agregado como nodo raíz cuando debería ser hijo!`);
-                        console.log(`   - FatherId: ${node.fatherId}, existe: ${!!nodes[node.fatherId]}`);
-                        console.log(`   - MotherId: ${node.motherId}, existe: ${!!nodes[node.motherId]}`);
-                        console.log(`   - ParentId: ${node.parentId}, existe: ${!!nodes[node.parentId]}`);
-                    } else {
-                        console.log(`🌱 ${node.name} agregado como nodo raíz (generación: ${node.generation})`);
+                // Buscar si los padres forman un matrimonio
+                if (person.fatherId && person.motherId) {
+                    const marriageKey = [person.fatherId, person.motherId].sort().join('::');
+                    const marriage = marriages.get(marriageKey);
+                    
+                    if (person.name.includes('Celestina Roh')) {
+                        console.log(`🔍 CELESTINA marriageKey: ${marriageKey}, marriage found:`, marriage ? `${marriage.spouse1.name}+${marriage.spouse2.name}` : 'NO');
+                    }
+                    
+                    if (marriage) {
+                        // IMPORTANTE: No agregar a alguien como hijo de su propio matrimonio
+                        if (marriage.spouse1.id === person.id || marriage.spouse2.id === person.id) {
+                            console.log(`⚠️ AUTOCONEXIÓN EVITADA: ${person.name} no se agrega como hijo de su propio matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                            return;
+                        }
+                        
+                        // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
+                        // if (person.spouseId && individuals[person.spouseId]) {
+                        //     console.log(`💒👶 PERSONA CASADA: ${person.name} (casado/a con ${individuals[person.spouseId].name}) se agrega SOLO como matrimonio hijo de ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                        //     
+                        //     // Encontrar el matrimonio de esta persona
+                        //     const childMarriageKey = [person.id, person.spouseId].sort().join('::');
+                        //     const childMarriage = marriages.get(childMarriageKey);
+                        //     
+                        //     if (childMarriage) {
+                        //         // Crear relación padre-matrimonio → hijo-matrimonio
+                        //         if (!marriage.childMarriages) marriage.childMarriages = [];
+                        //         marriage.childMarriages.push(childMarriage);
+                        //         childMarriage.parentMarriage = marriage;
+                        //         console.log(`💒➡️💒 CONEXIÓN MATRIMONIO: ${marriage.spouse1.name}+${marriage.spouse2.name} → ${childMarriage.spouse1.name}+${childMarriage.spouse2.name}`);
+                        //     }
+                        //     return; // NO agregar como hijo individual - solo como matrimonio
+                        // }
+                        
+                        marriage.children.push(person);
+                        console.log(`👶 ${person.name} → ${marriage.spouse1.name} & ${marriage.spouse2.name}`);
+                        
+                        // Debug específico para problemas
+                        if (person.name.includes('Celestina Roh') || person.name.includes('Emiliana')) {
+                            console.log(`  🔍 DEBUG: ${person.name} asignado a matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                            console.log(`  🔍 Datos: padre=${person.fatherId}, madre=${person.motherId}, marriageKey=${marriageKey}`);
+                        }
+                        return;
                     }
                 }
+                
+                // Si no hay matrimonio, asignar al padre o madre soltera
+                const parentId = person.fatherId || person.motherId;
+                const parentSingle = singlePeople.get(parentId);
+                if (parentSingle) {
+                    parentSingle.children.push(person);
+                    console.log(`👶 ${person.name} → ${parentSingle.person.name} (padre/madre soltera)`);
+                }
             });
             
-            // Crear enlaces de matrimonio (desde hoja Matrimonios si existe; si no, usar spouse_id recíproco)
-            const seenPairs = new Set();
-            if (window.marriages && window.marriages.length > 0) {
-                window.marriages.forEach(m => {
-                    const a = nodes[String(m.spouse1_id)] || nodes[m.spouse1_id];
-                    const b = nodes[String(m.spouse2_id)] || nodes[m.spouse2_id];
-                    if (!a || !b) return;
-                    const key = [a.id, b.id].sort().join('::');
-                    if (seenPairs.has(key)) return;
-                    seenPairs.add(key);
-                    console.log('Marriage link:', m.marriage_id, '=>', `${a.id}:${a.name}`, '<->', `${b.id}:${b.name}`);
-                    spouseLinks.push({ source: a, target: b, type: 'spouse', marriageId: m.marriage_id || '' });
-                });
-            } else if (window.hasSpouseColumn) {
-                Object.values(nodes).forEach(node => {
-                    const partnerId = node.spouseId;
-                    if (!partnerId) return;
-                    const partner = nodes[partnerId] || nodes[String(partnerId)];
-                    if (!partner) return;
-                    if (partner.spouseId !== node.id) return; // requerir simetría
-                    const key = [node.id, partner.id].sort().join('::');
-                    if (seenPairs.has(key)) return;
-                    seenPairs.add(key);
-                    spouseLinks.push({ source: node, target: partner, type: 'spouse' });
-                });
-            }
+            // PASO 4: Combinar matrimonios y personas solteras
+            const allUnits = [];
+            marriages.forEach(marriage => allUnits.push(marriage));
+            singlePeople.forEach(single => allUnits.push(single));
             
-            // Ordenar hijos por display_order
-            Object.values(nodes).forEach(node => {
-                node.children.sort((a, b) => a.displayOrder - b.displayOrder);
-            });
+            console.log('💒 Matrimonios procesados:', marriages.size);
+            console.log('👤 Personas solteras procesadas:', singlePeople.size);
+            console.log('🏗️ Total unidades:', allUnits.length);
             
-            // IMPORTANTE: No agregar cónyuges como hijos; eso genera ciclos
-            
-            console.log('Árbol construido:', rootNodes.length, 'raíces');
-            console.log('Primera raíz:', rootNodes[0]?.name);
-            console.log('Nodos con hijos:', Object.values(nodes).filter(n => n.children.length > 0).length);
-            console.log('Enlaces de matrimonio:', spouseLinks.length);
-            
-            // Guardar enlaces de matrimonio globalmente
-            window.spouseLinks = spouseLinks;
-
-            // Si hay múltiples raíces, crear una raíz sintética para incluir todo
-            let result;
-            if (rootNodes.length > 1) {
-                result = {
-                    id: 'super-root',
-                    name: 'super-root',
-                    children: rootNodes,
-                    generation: (d3.max(rootNodes, r => r.generation) || 0) + 1,
-                    isDirectLine: false,
-                };
-            } else {
-                result = rootNodes[0] || Object.values(nodes)[0];
-            }
-            console.log('buildTree completado, retornando:', result?.name);
-            return result;
+            return allUnits;
         }
+        
+        // Calcular layout simétrico con posicionamiento inteligente de hijos
+        function calculateMarriageLayout(marriageArray) {
+            updateStatus('Calculando posiciones...');
+            
+            // NUEVO: Agrupar unidades por generación del Google Sheet
+            const unitsByGeneration = new Map();
+            
+            marriageArray.forEach(unit => {
+                let generation;
+                if (unit.type === 'marriage') {
+                    // Para matrimonios, usar la generación mayor (más antigua) de los cónyuges
+                    generation = Math.max(unit.spouse1.generation, unit.spouse2.generation);
+                } else if (unit.type === 'single') {
+                    generation = unit.person.generation;
+                }
+                
+                if (!unitsByGeneration.has(generation)) {
+                    unitsByGeneration.set(generation, []);
+                }
+                unitsByGeneration.get(generation).push(unit);
+                
 
-        // Función para crear el árbol visual
-        function createTree(root) {
-            console.log('Creando árbol visual con raíz:', root.name);
+            });
             
-            const container = document.getElementById('treeContainer');
-            container.innerHTML = '';
+            // Ordenar generaciones de mayor a menor (6, 5, 4, 3, 2, 1)
+            const sortedGenerations = Array.from(unitsByGeneration.keys()).sort((a, b) => b - a);
             
-            const width = container.clientWidth;
-            const height = container.clientHeight;
+            console.log(`🌳 Generaciones: ${sortedGenerations.join(', ')}`);
             
-            console.log('Dimensiones del contenedor:', width, 'x', height);
+            // Posicionar generación por generación
+            let currentY = 100;
+            const positionedUnits = new Set();
+            
+            function positionLevel(units, y) {
+                if (units.length === 0) return;
+                
+                // Calcular ancho total necesario para esta generación
+                const totalWidth = units.length * marriageSpacing;
+                const startX = (width - totalWidth) / 2;
+                
+                units.forEach((unit, index) => {
+                    if (!positionedUnits.has(unit.id)) {
+                        unit.x = startX + index * marriageSpacing + marriageSpacing / 2;
+                        unit.y = y;
+                        
+                        if (unit.type === 'marriage') {
+                            // Posicionar cónyuges lado a lado
+                            unit.spouse1.x = unit.x - cardWidth / 2 - spouseGap / 2;
+                            unit.spouse1.y = unit.y;
+                            unit.spouse2.x = unit.x + cardWidth / 2 + spouseGap / 2;
+                            unit.spouse2.y = unit.y;
+                        } else if (unit.type === 'single') {
+                            // Posicionar persona soltera en el centro
+                            unit.person.x = unit.x;
+                            unit.person.y = unit.y;
+                        }
+                        
+                        positionedUnits.add(unit.id);
+                    }
+                });
+                
+                // ELIMINADO: Posicionamiento de hijos (ahora se hace por generaciones)
+                // Los hijos se posicionarán automáticamente en sus respectivas generaciones
+            }
+            
+            // Posicionar cada generación secuencialmente
+            sortedGenerations.forEach((generation, genIndex) => {
+                const generationUnits = unitsByGeneration.get(generation);
+                const y = 100 + (genIndex * generationSpacing);
+                
+                console.log(`🎯 POSICIONANDO GENERACIÓN ${generation} en Y=${y}`);
+                positionLevel(generationUnits, y);
+                currentY = y + generationSpacing;
+            });
+            
+            return marriageArray;
+        }
+        
+        // Renderizar el árbol
+        function renderTree(marriageArray) {
+            updateStatus('Renderizando árbol...');
+            
+            // Limpiar contenedor
+            d3.select('#tree-container').selectAll('*').remove();
             
             // Crear SVG
-            const svg = d3.select(container)
+            svg = d3.select('#tree-container')
                 .append('svg')
                 .attr('width', width)
-                .attr('height', height)
-                .style('display', 'block')
-                .style('margin', '0 auto');
+                .attr('height', height);
             
-            // Hacer svg global para zoom
-            window.currentSvg = svg;
-            
-            // NOTA: ya no usamos zoom para centrar el contenido; el viewBox se encarga
-            
-            const g = svg.append('g');
-
-            // Habilitar zoom/drag para interacción del usuario (no para centrar)
-            const zoom = d3.zoom()
+            // Configurar zoom y pan
+            currentZoom = d3.zoom()
                 .scaleExtent([0.3, 3])
-                .on('zoom', (event) => {
+                .on('zoom', function(event) {
                     g.attr('transform', event.transform);
                 });
-            svg.call(zoom);
-            // Exponer zoom actual para poder resetearlo al recentrar
-            window.currentZoom = zoom;
             
-            // Configurar layout
-            const treeLayout = d3.tree()
-                .nodeSize([cardWidth + cardSpacing, levelSpacing])
-                .separation((a, b) => (a.parent === b.parent ? 1.4 : 2.0));
+            svg.call(currentZoom);
             
-            // Crear jerarquía
-            const hierarchy = d3.hierarchy(root);
-            const treeData = treeLayout(hierarchy);
+            const g = svg.append('g');
             
-            // CORREGIR posiciones Y basándose en la generación genealógica
-            // (independiente de la jerarquía D3, usar datos originales)
-            treeData.descendants().forEach(d => {
-                if (d.data.id !== 'super-root') {
-                    // Usar la generación como coordenada Y (generación alta = arriba)
-                    // Invertir para que generación 0 esté abajo y generación 6 esté arriba
-                    const maxGeneration = 6; // Máxima generación en los datos
-                    d.y = (maxGeneration - d.data.generation) * levelSpacing;
+            // Renderizar cada unidad (matrimonio o persona soltera)
+            marriageArray.forEach(unit => {
+                if (unit.type === 'marriage') {
+                    renderMarriage(g, unit, marriageArray);
+                } else if (unit.type === 'single') {
+                    renderSinglePerson(g, unit, marriageArray);
                 }
             });
-
-            // Generadores de paths curvos para mejorar legibilidad
-            function pathVerticalCurve(x0, y0, x1, y1) {
-                const t = 0.5; // curvatura
-                const c1x = x0;
-                const c1y = y0 + (y1 - y0) * t;
-                const c2x = x1;
-                const c2y = y1 - (y1 - y0) * t;
-                return `M ${x0} ${y0} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${x1} ${y1}`;
-            }
-
-            function pathHorizontalCurve(x0, y0, x1, y1) {
-                const t = 0.5; // curvatura
-                const c1x = x0 + (x1 - x0) * t;
-                const c1y = y0;
-                const c2x = x1 - (x1 - x0) * t;
-                const c2y = y1;
-                return `M ${x0} ${y0} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${x1} ${y1}`;
-            }
-
-            // Alinear cónyuges en la misma línea y lado a lado (mejor legibilidad)
-            (function alignSpouses() {
-                if (!window.spouseLinks || window.spouseLinks.length === 0) return;
-                const nodesById = new Map();
-                treeData.descendants().forEach(n => nodesById.set(n.data.id, n));
-                const gap = cardWidth + 220; // más amplio y uniforme
-                window.spouseLinks.forEach(link => {
-                    const a = nodesById.get(link.source.id);
-                    const b = nodesById.get(link.target.id);
-                    if (!a || !b) return;
-                    const baseY = Math.max(a.y || 0, b.y || 0); // misma profundidad
-                    // Regla: si viene de hoja Matrimonios (marriageId presente), spouse2 (target) va a la izquierda
-                    // Fallback: priorizar línea directa a la izquierda; si no, mantener orden previo
-                    let left, right;
-                    if (link.marriageId) {
-                        left = b; right = a; // spouse2 a la izquierda, spouse1 a la derecha
-                    } else if (a.data.isDirectLine && !b.data.isDirectLine) {
-                        left = a; right = b;
-                    } else if (b.data.isDirectLine && !a.data.isDirectLine) {
-                        left = b; right = a;
-                    } else {
-                        const leftFirst = (a.x || 0) <= (b.x || 0);
-                        left = leftFirst ? a : b;
-                        right = leftFirst ? b : a;
-                    }
-                    const mid = (((a.x || 0) + (b.x || 0)) / 2);
-                    left.x = mid - gap / 2;
-                    right.x = mid + gap / 2;
-                    left.y = baseY;
-                    right.y = baseY;
-                });
-            })();
             
-            console.log('Jerarquía creada:', treeData.descendants().length, 'nodos');
-            console.log('Enlaces creados:', treeData.links().length, 'enlaces');
-            
-            // Debug específico para Manuel y sus padres
-            const manuelNode = treeData.descendants().find(d => d.data.id === 'p2');
-            const gustavoNode = treeData.descendants().find(d => d.data.id === 'p6');
-            const micaelaNode = treeData.descendants().find(d => d.data.id === 'p5');
-            
-            if (manuelNode) {
-                console.log(`🔍 Manuel en árbol D3:`, {
-                    id: manuelNode.data.id,
-                    name: manuelNode.data.name,
-                    x: manuelNode.x,
-                    y: manuelNode.y,
-                    depth: manuelNode.depth,
-                    parent: manuelNode.parent?.data?.name || 'sin padre'
-                });
-            }
-            
-            if (gustavoNode) {
-                console.log(`🔍 Gustavo en árbol D3:`, {
-                    id: gustavoNode.data.id,
-                    name: gustavoNode.data.name,
-                    x: gustavoNode.x,
-                    y: gustavoNode.y,
-                    depth: gustavoNode.depth,
-                    children: gustavoNode.children?.map(c => c.data.name) || []
-                });
-            }
-            
-            if (micaelaNode) {
-                console.log(`🔍 Micaela en árbol D3:`, {
-                    id: micaelaNode.data.id,
-                    name: micaelaNode.data.name,
-                    x: micaelaNode.x,
-                    y: micaelaNode.y,
-                    depth: micaelaNode.depth,
-                    children: micaelaNode.children?.map(c => c.data.name) || []
-                });
-            }
-
-            // Calcular hijos por matrimonio y distribuirlos bajo el nodo de matrimonio (evitar apilado)
-            const nodesById = new Map();
-            treeData.descendants().forEach(n => nodesById.set(n.data.id, n));
-            currentPositions = new Map(Array.from(nodesById.entries()).map(([id, n]) => [id, {x: n.x, y: n.y, data: n.data}]));
-            const jointChildIds = new Set();
-            const marriageInfoByKey = new Map(); // key a::b -> {mx,my,children: Node[]}
-            if (window.spouseLinks && window.spouseLinks.length > 0) {
-                window.spouseLinks.forEach(link => {
-                    const a = nodesById.get(link.source.id);
-                    const b = nodesById.get(link.target.id);
-                    if (!a || !b) return;
-                    const mx = ((a.x || 0) + (b.x || 0)) / 2;
-                    const my = ((a.y || 0) + (b.y || 0)) / 2;
-                    const key = [a.data.id, b.data.id].sort().join('::');
-                    // hijos listados en cualquiera de los dos padres
-                    const ids = new Set([...(a.children||[]).map(c=>c.data.id), ...(b.children||[]).map(c=>c.data.id)]);
-                    const children = Array.from(ids).map(id => nodesById.get(id)).filter(Boolean);
-                    children.forEach(ch => jointChildIds.add(ch.data.id));
-                    // Distribuir TODOS los hijos en una sola fila, con gap uniforme
-                    const gapX = cardWidth + 140;
-                    const cols = children.length;
-                    const startX = mx - ((cols - 1) * gapX) / 2;
-                    children.forEach((ch, c) => {
-                        ch.x = startX + c * gapX;
-                    });
-                    // Ubicar cónyuges inmediatamente a la derecha del hijo si existen
-                    if (window.spouseLinks && window.spouseLinks.length) {
-                        const spouseOf = new Map();
-                        window.spouseLinks.forEach(l => { spouseOf.set(l.source.id, l.target.id); spouseOf.set(l.target.id, l.source.id); });
-                        const pairGap = 28;
-                        children.forEach(ch => {
-                            const pid = spouseOf.get(ch.data.id);
-                            const partner = pid ? nodesById.get(pid) : null;
-                            if (partner) {
-                                partner.x = ch.x + cardWidth + pairGap;
-                                partner.y = ch.y; // misma fila
-                            }
-                        });
-                    }
-                    marriageInfoByKey.set(key, {mx, my, children});
-                });
-            }
-            
-            // Ajuste global: espaciar uniformemente por niveles para evitar solapamientos
-            (function enforceUniformRowSpacing(){
-                const levels = new Map();
-                treeData.descendants().forEach(n => {
-                    const key = Math.round(n.y); // agrupar por nivel vertical
-                    if (!levels.has(key)) levels.set(key, []);
-                    levels.get(key).push(n);
-                });
-                const minGap = cardWidth + 140; // separación mínima uniforme
-                levels.forEach(nodesOnLevel => {
-                    nodesOnLevel.sort((a,b) => a.x - b.x);
-                    for (let i=1;i<nodesOnLevel.length;i++) {
-                        if (nodesOnLevel[i].x - nodesOnLevel[i-1].x < minGap) {
-                            nodesOnLevel[i].x = nodesOnLevel[i-1].x + minGap;
-                        }
-                    }
-                });
-            })();
-
-            // Actualizar mapa de posiciones después de TODOS los ajustes de layout
-            currentPositions = new Map(
-                treeData.descendants().map(n => [n.data.id, {x: n.x, y: n.y, data: n.data}])
-            );
-
-            // Crear enlaces padre-hijo
-            const parentChildLinks = g.selectAll('.tree-link-parent')
-                .data(
-                    treeData
-                      .links()
-                      .filter(l => l.source.data.id !== 'super-root')
-                      // ocultar enlaces padre->hijo si el hijo es de matrimonio
-                      .filter(l => !jointChildIds.has(l.target.data.id))
-                )
-                .enter()
-                .append('path')
-                .attr('class', d => {
-                    const isDirect = d.source.data.isDirectLine && d.target.data.isDirectLine;
-                    return `tree-link ${isDirect ? 'direct' : 'other'}`;
-                })
-                .attr('d', d => pathVerticalCurve(d.source.x, d.source.y, d.target.x, d.target.y));
-            
-            // Crear enlaces y nodos de matrimonio (ícono en el centro) + llevar descendencia desde allí
-            if (window.spouseLinks && window.spouseLinks.length > 0) {
-                // mapear id->posición para trazar enlaces de cónyuge
-                const pos = new Map();
-                const nodeById = new Map();
-                treeData.descendants().forEach(n => {
-                    pos.set(n.data.id, {x: n.x, y: n.y});
-                    nodeById.set(n.data.id, n);
-                });
-
-                const marriages = g.selectAll('.marriage')
-                    .data(window.spouseLinks)
-                    .enter()
-                    .append('g')
-                    .attr('class', 'marriage');
-
-                // Línea cónyuges
-                marriages.append('path')
-                    .attr('class', 'tree-link spouse')
-                    .attr('d', d => {
-                        const a = pos.get(d.source.id) || {x:0,y:0};
-                        const b = pos.get(d.target.id) || {x:0,y:0};
-                        return pathHorizontalCurve(a.x, a.y, b.x, b.y);
-                    });
-
-                // Nodo central de matrimonio (pequeño rectángulo con anillo)
-                marriages.each(function(d){
-                    const a = pos.get(d.source.id) || {x:0,y:0};
-                    const b = pos.get(d.target.id) || {x:0,y:0};
-                    const mx = (a.x + b.x) / 2;
-                    const my = (a.y + b.y) / 2;
-                    const gM = d3.select(this);
-                    const w = 28, h = 22;
-                    gM.append('rect')
-                      .attr('class', 'marriage-node')
-                      .attr('x', mx - w/2)
-                      .attr('y', my - h/2)
-                      .attr('width', w)
-                      .attr('height', h);
-                    gM.append('text')
-                      .attr('class', 'marriage-node-text')
-                      .attr('x', mx)
-                      .attr('y', my)
-                      .text('◦');
-
-                    // Hijos de esta pareja: usar lista ya distribuida para no apilar
-                    const key = [d.source.id, d.target.id].sort().join('::');
-                    const info = marriageInfoByKey.get(key);
-                    if (info && info.children && info.children.length) {
-                        info.children.forEach(child => {
-                            gM.append('path')
-                              .attr('class', 'tree-link marriage-child')
-                              .attr('d', pathVerticalCurve(mx, my + h/2, child.x, child.y - cardHeight/2));
-                        });
-                    }
-                });
-            }
-            
-            // Crear nodos
-            const nodes = g.selectAll('.node')
-                .data(treeData.descendants().filter(d => d.data.id !== 'super-root'))
-                .enter()
-                .append('g')
-                .attr('class', 'node')
-                .attr('transform', d => `translate(${d.x},${d.y})`);
-            
-            // Crear tarjetas
-            nodes.append('rect')
-                .attr('class', d => {
-                    let classes = 'person-card';
-                    if (d.data.isDirectLine) classes += ' direct-line';
-                    return classes;
-                })
-                .attr('width', cardWidth)
-                .attr('height', cardHeight)
-                .attr('x', -cardWidth / 2)
-                .attr('y', -cardHeight / 2);
-            
-            // Crear header
-            nodes.append('rect')
-                .attr('class', 'card-header')
-                .attr('width', cardWidth)
-                .attr('height', 44)
-                .attr('x', -cardWidth / 2)
-                .attr('y', -cardHeight / 2);
-
-            // Píldora de color por parent_id (no colorea toda la tarjeta)
-            nodes.append('rect')
-                .attr('class', 'sibling-tag')
-                .attr('x', -cardWidth / 2 + 10)
-                .attr('y', -cardHeight / 2 + 12)
-                .attr('width', 32)
-                .attr('height', 12)
-                .attr('rx', 6)
-                .attr('ry', 6)
-                .attr('fill', d => colorForParentId(d.data.parentId));
-            
-            // Crear nombre (hasta 2 líneas, centrado)
-            nodes.append('text')
-                .attr('class', 'card-name')
-                .attr('y', -cardHeight / 2 + 18)
-                .each(function(d){
-                    const group = d3.select(this);
-                    const name = (d.data.name || 'Sin nombre').trim();
-                    const maxChars = 16; // un poco menos para evitar desbordes
-                    const words = name.split(/\s+/);
-                    let line1 = '';
-                    let line2 = '';
-                    for (const w of words) {
-                        if ((line1 + ' ' + w).trim().length <= maxChars) {
-                            line1 = (line1 + ' ' + w).trim();
-                        } else if ((line2 + ' ' + w).trim().length <= maxChars) {
-                            line2 = (line2 + ' ' + w).trim();
-                        } else {
-                            line2 += '…';
-                            break;
-                        }
-                    }
-                    group.text(null);
-                    group.append('tspan').attr('x', 0).attr('dy', 0).text(line1);
-                    if (line2) {
-                        group.append('tspan').attr('x', 0).attr('dy', 16).text(line2);
-                    }
-                });
-            
-            // Crear detalles
-            nodes.append('text')
-                .attr('class', 'card-detail')
-                .attr('y', -cardHeight / 2 + 74)
-                .each(function(d){
-                    const group = d3.select(this);
-                    const outLines = [];
-                    // Línea 1: nacimiento
-                    if (d.data.birthDate) outLines.push(`Nac.: ${formatDateForCard(d.data.birthDate)}`);
-                    // Lugar en hasta 2 renglones
-                    if (d.data.birthPlace) {
-                        const label = 'Lugar: ';
-                        const place = String(d.data.birthPlace).trim();
-                        const maxFirst = 26; // caracteres aprox para primera línea (incluye label)
-                        if ((label + place).length <= maxFirst) {
-                            outLines.push(label + place);
-                        } else {
-                            // Buscar un buen corte: coma cerca de la mitad o último espacio antes de maxFirst-label
-                            const half = Math.floor(place.length / 2);
-                            let split = place.indexOf(',', half);
-                            if (split === -1 || split > maxFirst - label.length) {
-                                const limit = Math.min(maxFirst - label.length, place.length - 1);
-                                const cut = place.lastIndexOf(' ', limit);
-                                split = cut > 0 ? cut : limit;
-                            }
-                            const first = place.slice(0, split).trim().replace(/[,;]\s*$/, '');
-                            const rest = place.slice(split + 1).trim();
-                            outLines.push(label + first);
-                            if (rest) outLines.push(rest);
-                        }
-                    }
-                    // Fallecimiento (si existe)
-                    if (d.data.deathDate) outLines.push(`Fallec.: ${formatDateForCard(d.data.deathDate)}`);
-
-                    group.text(null);
-                    // anclar a la izquierda del contenido
-                    const leftX = -cardWidth/2 + 14;
-                    outLines.forEach((line, idx) => {
-                        group.append('tspan')
-                            .attr('x', leftX)
-                            .attr('dy', idx === 0 ? 0 : 16)
-                            .text(line);
-                    });
-                });
-            
-
-            
-            // Eventos de nodos
-            nodes.on('click', function(event, d) {
-                selectNode(d);
-            });
-
-            // Construir índice de búsqueda por nombre
-            searchIndex = treeData.descendants()
-                .filter(d => d.data && d.data.name && d.data.id !== 'super-root')
-                .map(d => ({ id: d.data.id, name: d.data.name, nameNorm: normalizeText(d.data.name) }));
-            
-            // Calcular bounds para foco inicial similar al screenshot. Centramos en Francisco/Félix
-            // y evitamos abarcar toda la fila horizontal usando un ancho fijo alrededor del objetivo.
-            const allBounds = g.node().getBBox();
-            console.log('Bounds del árbol (completo):', allBounds);
-
-            const descendants = treeData.descendants();
-            const target = descendants.find(d => {
-                const n = normalizeText(d.data.name);
-                return n.includes('francisco') && n.includes('clemenzo');
-            }) || descendants.find(d => {
-                const n = normalizeText(d.data.name);
-                return n.includes('felix') && n.includes('clemenzo');
-            });
-
-            let vbX, vbY, vbW, vbH;
-            if (target) {
-                // Banda vertical: desde un poco por encima del objetivo hasta ~2 niveles debajo
-                const bandTopY = target.y - levelSpacing * 0.5;
-                const bandBottomY = target.y + levelSpacing * 2.0;
-                const bandHeight = (bandBottomY - bandTopY) + 220; // padding vertical
-                const centerY = (bandTopY + bandBottomY) / 2;
-
-                // Ancho fijo alrededor del objetivo: cantidad de tarjetas visibles horizontalmente
-                const cardsVisible = 6; // ajustar para más/menos zoom horizontal
-                const stepX = cardWidth + 140; // ancho de tarjeta + separación
-                const bandWidth = cardsVisible * stepX + 200; // padding horizontal
-                const centerX = target.x;
-
-                vbW = Math.max(1, bandWidth);
-                vbH = Math.max(1, bandHeight);
-                vbX = centerX - vbW / 2;
-                vbY = centerY - vbH / 2;
-
-                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`).attr('preserveAspectRatio', 'xMidYMid meet');
-                console.log('viewBox (foco objetivo) aplicado:', { vbX, vbY, vbW, vbH, target: target.data.name });
-            } else {
-                const paddingX = 140;
-                const paddingY = 140;
-                vbX = allBounds.x - paddingX;
-                vbY = allBounds.y - paddingY;
-                vbW = Math.max(allBounds.width + paddingX * 2, 1);
-                vbH = Math.max(allBounds.height + paddingY * 2, 1);
-                svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`).attr('preserveAspectRatio', 'xMidYMid meet');
-                console.log('viewBox (completo) aplicado:', { vbX, vbY, vbW, vbH });
-            }
+            // Agregar líneas de conexión padre-hijo
+            renderParentChildConnections(g, marriageArray);
             
             // Actualizar estadísticas
-            updateStats(treeData.descendants().length);
 
-            // Utilidades para búsqueda y centrado
-            function focusOnNodeById(personId) {
-                const pos = currentPositions.get(personId);
-                if (!pos || !window.currentSvg || !window.currentZoom) return;
-                const container = document.getElementById('treeContainer');
-                const cw = container.clientWidth;
-                const ch = container.clientHeight;
-                // Enfocar con zoom/translate calculando escala para que la tarjeta ocupe buena parte del viewport
-                const focusW = cardWidth * 1.8;
-                const focusH = cardHeight * 1.8;
-                const k = Math.min(2.4, Math.max(0.35, Math.min(cw / focusW, ch / focusH)));
-                // Usar viewBox para calcular el centro en unidades del SVG (robusto aunque exista un viewBox no 1:1)
-                const vbAttr = window.currentSvg.attr('viewBox');
-                let cx, cy;
-                if (vbAttr) {
-                    const [vbX, vbY, vbW, vbH] = vbAttr.split(/\s+/).map(Number);
-                    cx = vbX + vbW / 2;
-                    cy = vbY + vbH / 2;
-                } else {
-                    // sin viewBox, el centro es en px y coincide con unidades
-                    cx = cw / 2; cy = ch / 2;
-                }
-                // Resolver: k*pos.x + tx = cx  => tx = cx - k*pos.x (idem para y)
-                const tx = cx - k * pos.x;
-                const ty = cy - k * pos.y;
-                const transform = d3.zoomIdentity.translate(tx, ty).scale(k);
-                window.currentSvg.transition().duration(450).call(window.currentZoom.transform, transform);
-                // Resaltar el nodo enfocado
-                d3.select('#treeContainer').selectAll('.person-card').classed('selected', false);
-                d3.select('#treeContainer').selectAll('.node').filter(d => d.data.id === personId)
-                  .select('.person-card').classed('selected', true);
-            }
-
-            window.__focusOnNodeById = focusOnNodeById;
-            window.__applySearchHighlights = function(ids){
-                const idSet = new Set(ids);
-                d3.select(container).selectAll('.node')
-                  .classed('search-hit', d => idSet.has(d.data.id))
-                  .classed('search-dim', d => ids.length>0 && !idSet.has(d.data.id));
-            };
-        }
-
-        // Función para seleccionar nodo
-        function selectNode(node) {
-            // Limpiar selección anterior
-            d3.selectAll('.person-card').classed('selected', false);
             
-            // Seleccionar nuevo nodo
-            d3.select(node.parent).select('.person-card').classed('selected', true);
+            updateStatus(`✅ Árbol renderizado: ${marriageArray.length} unidades`);
+        }
+        
+        // Función para renderizar matrimonios
+        function renderMarriage(container, marriage, allUnits) {
+            const marriageGroup = container.append('g')
+                .attr('class', 'marriage-unit')
+                .attr('transform', `translate(${marriage.x}, ${marriage.y})`)
+                .style('cursor', 'pointer')
+                .on('click', function() {
+                    toggleMarriageCollapse(marriage);
+                });
             
-            selectedNode = node;
-            updateFocusInfo(node.data);
-        }
-
-        // Función para actualizar información de foco
-        function updateFocusInfo(data) {
-            const focusInfo = document.getElementById('focusInfo');
-            focusInfo.style.display = 'block';
-            focusInfo.innerHTML = `
-                <h3>${data.name}</h3>
-                <p><strong>Generación:</strong> ${data.generation}</p>
-                <p><strong>Rama:</strong> ${data.branch}</p>
-                <p><strong>Línea directa:</strong> ${data.isDirectLine ? 'Sí' : 'No'}</p>
-                ${data.birthDate ? `<p><strong>Nacimiento:</strong> ${data.birthDate}</p>` : ''}
-                ${data.birthPlace ? `<p><strong>Lugar:</strong> ${data.birthPlace}</p>` : ''}
-                ${data.deathDate ? `<p><strong>Fallecimiento:</strong> ${data.deathDate}</p>` : ''}
-
-            `;
-        }
-
-
-
-        // Función para alternar vista
-        function toggleView() {
-            currentView = currentView === 'complete' ? 'direct' : 'complete';
-            document.getElementById('viewMode').textContent = `Vista: ${currentView === 'complete' ? 'Completa' : 'Línea Directa'}`;
+            // Línea de matrimonio recta
+            marriageGroup.append('line')
+                .attr('class', 'marriage-link')
+                .attr('x1', -cardWidth/2 - 10)
+                .attr('y1', 0)
+                .attr('x2', cardWidth/2 + 10)
+                .attr('y2', 0)
+                .style('stroke', '#8b5cf6')
+                .style('stroke-width', '4')
+                .style('stroke-linecap', 'round')
+                .style('opacity', '0.9');
             
-            if (currentView === 'direct') {
-                const directRoot = filterDirectLine(treeData);
-                if (directRoot) {
-                    createTree(directRoot);
-                } else {
-                    console.warn('No hay línea directa para mostrar');
-                    currentView = 'complete';
-                    document.getElementById('viewMode').textContent = 'Vista: Completa';
-                }
-            } else {
-                createTree(treeData);
-            }
-        }
-
-        // Función para filtrar línea directa
-        function filterDirectLine(root) {
-            function filterNode(node) {
-                if (!node.isDirectLine) {
-                    return null;
-                }
-                const filteredChildren = node.children
-                    .filter(child => child.isDirectLine)
-                    .map(filterNode)
-                    .filter(child => child !== null);
-                
-                return {
-                    ...node,
-                    children: filteredChildren
-                };
-            }
-            const result = filterNode(root);
-            console.log('Línea directa filtrada:', result?.name);
-            return result;
-        }
-
-        // Asegurar que exista una línea directa marcada; si no, calcularla automáticamente
-        function ensureDirectLine(root) {
-            let exists = false;
-            (function scan(node){
-                if (node.isDirectLine) exists = true;
-                node.children.forEach(scan);
-            })(root);
-            if (exists) return true;
-
-            let bestPath = [];
-            function dfs(node, path) {
-                const next = path.concat(node);
-                if (node.generation === 0 || node.children.length === 0) {
-                    if (bestPath.length === 0 || next.length > bestPath.length) bestPath = next;
-                }
-                node.children.forEach(child => dfs(child, next));
-            }
-            dfs(root, []);
-            if (bestPath.length === 0) return false;
-            bestPath.forEach(n => { n.isDirectLine = true; });
-            console.log('Línea directa calculada automáticamente:', bestPath.map(n => n.name).join(' -> '));
-            return true;
-        }
-
-        // Función para resetear vista
-        function resetView() {
-            // Mostrar todo el árbol (viewBox al contenido completo) y resetear zoom
-            const container = document.getElementById('treeContainer');
-            const svg = d3.select(container).select('svg');
-            const g = svg.select('g');
-            if (!g.node()) return;
-            if (window.currentSvg && window.currentZoom) {
-                window.currentSvg.call(window.currentZoom.transform, d3.zoomIdentity);
-            }
-            const b = g.node().getBBox();
-            const padX = 120, padY = 120;
-            svg.attr('viewBox', `${b.x-padX} ${b.y-padY} ${Math.max(1,b.width+padX*2)} ${Math.max(1,b.height+padY*2)}`)
-               .attr('preserveAspectRatio', 'xMidYMid meet');
-            console.log('Reset view (completo)');
-        }
-
-        function centerOnRoot() {
-            // Enfocar en Francisco (raíz) + 2 niveles
-            const container = document.getElementById('treeContainer');
-            const svg = d3.select(container).select('svg');
-            const g = svg.select('g');
-            if (!g.node()) return;
-            const hierarchy = d3.hierarchy(treeData);
-            const nodes = hierarchy.descendants().filter(d => d.depth <= 2);
-            if (nodes.length === 0) {
-                console.warn('No hay nodos para centrar');
-                return;
-            }
-            const cardW = 220, cardH = 200;
-            const minX = d3.min(nodes, d => (d.x ?? 0) - cardW/2);
-            const maxX = d3.max(nodes, d => (d.x ?? 0) + cardW/2);
-            const minY = d3.min(nodes, d => (d.y ?? 0) - cardH/2);
-            const maxY = d3.max(nodes, d => (d.y ?? 0) + cardH/2);
-            const padX = 160, padY = 160;
-            // Para evitar zoom excesivo, ampliamos el encuadre del foco
-            const focusW = Math.max(1, (maxX - minX) + padX*2);
-            const focusH = Math.max(1, (maxY - minY) + padY*2);
-            const vbW = focusW * 1.5; // ampliar encuadre
-            const vbH = focusH * 1.5;
-            const vbX = (minX - padX) - (vbW - focusW)/2;
-            const vbY = (minY - padY) - (vbH - focusH)/2;
-            svg.attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`)
-               .attr('preserveAspectRatio', 'xMidYMid meet');
-            console.log('Center on root', {vbX, vbY, vbW, vbH});
-        }
-
-        // Función para actualizar estadísticas
-        function updateStats(count) {
-            document.getElementById('stats').textContent = `Personas en el árbol: ${count}`;
-        }
-
-        function updateGenerations(root) {
-            // calcular profundidad máxima desde la raíz excluyendo super-root
-            const descendants = d3.hierarchy(root).descendants().filter(n => n.data.id !== 'super-root');
-            const maxDepth = descendants.reduce((m, n) => Math.max(m, n.depth), 0);
-            // Mostrar generaciones como cuenta basada en 0 → usar maxDepth directamente
-            document.getElementById('generations').textContent = `Generaciones: ${maxDepth}`;
-        }
-
-        // Búsqueda
-        function setupSearch() {
-            const input = document.getElementById('searchInput');
-            if (!input) return;
-            function runSearch() {
-                const term = normalizeText(input.value.trim());
-                if (!term) { window.__applySearchHighlights?.([]); return []; }
-                const matches = searchIndex.filter(e => e.nameNorm.includes(term));
-                window.__applySearchHighlights?.(matches.map(m => m.id));
-                const info = document.getElementById('searchInfo');
-                if (info) {
-                    info.textContent = matches.length > 1 ? `${matches.length} coincidencias` : (matches.length === 1 ? `1 coincidencia` : '');
-                }
-                return matches;
-            }
-            input.addEventListener('input', () => {
-                const matches = runSearch();
-                // Autocentrar si hay un match claro (1 resultado) o si las primeras letras apuntan a un único candidato
-                if (matches.length === 1) {
-                    // Esperar al siguiente frame para asegurar que currentPositions esté actualizado
-                    requestAnimationFrame(() => window.__focusOnNodeById?.(matches[0].id));
-                }
-                // Mostrar navegación si hay múltiples
-                const nav = document.getElementById('searchNav');
-                const counter = document.getElementById('matchCounter');
-                if (matches.length > 1) {
-                    nav.style.display = 'inline-flex';
-                    counter.textContent = `1 de ${matches.length}`;
-                    nav.dataset.index = '0';
-                    nav.dataset.ids = JSON.stringify(matches.map(m => m.id));
-                } else {
-                    nav.style.display = 'none';
-                    counter.textContent = '';
-                    nav.dataset.index = '';
-                    nav.dataset.ids = '';
-                }
+            // Tarjetas de los cónyuges
+            [marriage.spouse1, marriage.spouse2].forEach((spouse, index) => {
+                renderPersonCard(marriageGroup, spouse, marriage.x, marriage.y);
             });
-            input.addEventListener('keydown', (e)=>{
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const matches = runSearch();
-                    if (matches.length) {
-                        // Centrar automáticamente en la primera coincidencia
-                        requestAnimationFrame(() => window.__focusOnNodeById?.(matches[0].id));
+            
+            // Información del matrimonio e indicador de collapse/expand
+            const totalChildren = marriage.children.length + (marriage.childMarriages ? marriage.childMarriages.length : 0);
+            if (totalChildren > 0) {
+                marriageGroup.append('text')
+                    .attr('class', 'person-text')
+                    .attr('y', 50)
+                    .style('font-size', '10px')
+                    .style('fill', '#6b7280')
+                    .text(`${totalChildren} hijo${totalChildren > 1 ? 's' : ''}`);
+                
+                // Indicador de estado collapse/expand con sombra
+                marriageGroup.append('circle')
+                    .attr('cx', 2)
+                    .attr('cy', 72)
+                    .attr('r', 8)
+                    .style('fill', '#000000')
+                    .style('opacity', '0.2');
+                
+                marriageGroup.append('circle')
+                    .attr('cx', 0)
+                    .attr('cy', 70)
+                    .attr('r', 8)
+                    .style('fill', marriage.collapsed ? '#ef4444' : '#10b981')
+                    .style('stroke', 'white')
+                    .style('stroke-width', '2.5')
+                    .style('filter', 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))');
+                
+                marriageGroup.append('text')
+                    .attr('y', 75)
+                    .style('font-size', '14px')
+                    .style('fill', 'white')
+                    .style('text-anchor', 'middle')
+                    .style('font-weight', 'bold')
+                    .text(marriage.collapsed ? '+' : '−');
+            }
+        }
+        
+        // Función para renderizar personas solteras
+        function renderSinglePerson(container, singleUnit, allUnits) {
+            const personGroup = container.append('g')
+                .attr('class', 'single-unit')
+                .attr('transform', `translate(${singleUnit.x}, ${singleUnit.y})`)
+                .style('cursor', 'pointer')
+                .on('click', function() {
+                    if (singleUnit.children.length > 0) {
+                        toggleMarriageCollapse(singleUnit);
+                    }
+                });
+            
+            // Renderizar tarjeta de la persona
+            renderPersonCard(personGroup, singleUnit.person, singleUnit.x, singleUnit.y);
+            
+            // Información de hijos e indicador de collapse/expand
+            if (singleUnit.children.length > 0) {
+                personGroup.append('text')
+                    .attr('class', 'person-text')
+                    .attr('y', 50)
+                    .style('font-size', '10px')
+                    .style('fill', '#6b7280')
+                    .text(`${singleUnit.children.length} hijo${singleUnit.children.length > 1 ? 's' : ''}`);
+                
+                // Indicador de estado collapse/expand con sombra
+                personGroup.append('circle')
+                    .attr('cx', 2)
+                    .attr('cy', 72)
+                    .attr('r', 8)
+                    .style('fill', '#000000')
+                    .style('opacity', '0.2');
+                
+                personGroup.append('circle')
+                    .attr('cx', 0)
+                    .attr('cy', 70)
+                    .attr('r', 8)
+                    .style('fill', singleUnit.collapsed ? '#ef4444' : '#10b981')
+                    .style('stroke', 'white')
+                    .style('stroke-width', '2.5')
+                    .style('filter', 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))');
+                
+                personGroup.append('text')
+                    .attr('y', 75)
+                    .style('font-size', '14px')
+                    .style('fill', 'white')
+                    .style('text-anchor', 'middle')
+                    .style('font-weight', 'bold')
+                    .text(singleUnit.collapsed ? '+' : '−');
+            }
+        }
+        
+        // Función auxiliar para renderizar tarjeta de persona con diseño moderno tipo perfil
+        function renderPersonCard(container, person, baseX, baseY) {
+            const personGroup = container.append('g')
+                .attr('data-person-id', person.id)
+                .attr('transform', `translate(${person.x - baseX}, ${person.y - baseY})`);
+            
+            // Usar colores globales definidos arriba
+            
+            // ELIMINADO: Sombra de la tarjeta para un diseño más limpio
+            
+            // Tarjeta principal
+            personGroup.append('rect')
+                .attr('class', 'person-card')
+                .attr('x', -cardWidth/2)
+                .attr('y', -cardHeight/2)
+                .attr('width', cardWidth)
+                .attr('height', cardHeight)
+                .attr('rx', 20)
+                .style('fill', cardColors.background)
+                .style('stroke', cardColors.border)
+                .style('stroke-width', '2');
+            
+            // Avatar placeholder (círculo violeta claro)
+            personGroup.append('circle')
+                .attr('cx', 0)
+                .attr('cy', -cardHeight/2 + 35)
+                .attr('r', 25)
+                .style('fill', '#f3e8ff')
+                .style('opacity', '0.8')
+                .style('stroke', cardColors.border)
+                .style('stroke-width', '1');
+            
+            // Nombre principal con tamaño de fuente variable
+            const calculateNameLayout = (name) => {
+                const maxWidth = cardWidth - 30; // Margen de 15px a cada lado
+                const maxLines = 3; // Máximo 3 líneas
+                
+                // Función para medir el ancho del texto
+                const measureText = (text, fontSize) => {
+                    const tempText = personGroup.append('text')
+                        .style('font-size', fontSize + 'px')
+                        .style('font-weight', '600')
+                        .text(text);
+                    const bbox = tempText.node().getBBox();
+                    tempText.remove();
+                    return bbox.width;
+                };
+                
+                // Determinar el tamaño de fuente óptimo
+                let fontSize = 14;
+                let nameLines = [];
+                
+                // Probar con diferentes tamaños de fuente
+                for (let size = 14; size >= 8; size--) {
+                    const words = name.split(' ');
+                    nameLines = [];
+                    let currentLine = '';
+                    
+                    for (let word of words) {
+                        const testLine = currentLine ? currentLine + ' ' + word : word;
+                        if (measureText(testLine, size) <= maxWidth) {
+                            currentLine = testLine;
+                        } else {
+                            if (currentLine) {
+                                nameLines.push(currentLine);
+                                currentLine = word;
+                            } else {
+                                // Si una palabra sola es muy larga, la cortamos
+                                nameLines.push(word.substring(0, Math.floor(maxWidth / (size * 0.6))));
+                                currentLine = '';
+                            }
+                        }
+                    }
+                    
+                    if (currentLine) {
+                        nameLines.push(currentLine);
+                    }
+                    
+                    // Si cabe en el número máximo de líneas, usar este tamaño
+                    if (nameLines.length <= maxLines) {
+                        fontSize = size;
+                        break;
                     }
                 }
+                
+                return { nameLines, fontSize };
+            };
+            
+            const { nameLines, fontSize } = calculateNameLayout(person.name);
+            const lineHeight = fontSize * 1.2; // Espaciado entre líneas
+            
+            nameLines.forEach((line, i) => {
+                personGroup.append('text')
+                    .attr('class', 'person-text name')
+                    .attr('y', -cardHeight/2 + 75 + (i * lineHeight))
+                    .style('font-size', fontSize + 'px')
+                    .style('font-weight', '600')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'middle')
+                    .text(line);
             });
-
-            // Botones de navegación de coincidencias
-            const prevBtn = document.getElementById('prevMatch');
-            const nextBtn = document.getElementById('nextMatch');
-            const nav = document.getElementById('searchNav');
-            const counter = document.getElementById('matchCounter');
-            function goto(offset) {
-                const ids = nav.dataset.ids ? JSON.parse(nav.dataset.ids) : [];
-                if (!ids.length) return;
-                let idx = parseInt(nav.dataset.index || '0', 10);
-                idx = (idx + offset + ids.length) % ids.length;
-                nav.dataset.index = String(idx);
-                counter.textContent = `${idx + 1} de ${ids.length}`;
-                window.__focusOnNodeById?.(ids[idx]);
+            
+            // Calcular la posición Y del lugar de nacimiento basada en el número de líneas del nombre
+            const nameHeight = nameLines.length * lineHeight;
+            const locationY = -cardHeight/2 + 75 + nameHeight + 15; // 15px de espacio después del nombre
+            
+            // Línea divisoria (solo separa el nombre)
+            personGroup.append('line')
+                .attr('x1', -cardWidth/2 + 15)
+                .attr('y1', locationY - 12) // 12px antes del lugar para más espacio
+                .attr('x2', cardWidth/2 - 15)
+                .attr('y2', locationY - 12)
+                .style('stroke', cardColors.divider)
+                .style('stroke-width', '1');
+            
+            // Lugar de nacimiento con pin de ubicación (optimizado)
+            if (person.birthPlace) {
+                const placeText = person.birthPlace.length > 18 ? 
+                    person.birthPlace.substring(0, 16) + '...' : person.birthPlace;
+                
+                // Pin de ubicación 📍
+                personGroup.append('text')
+                    .attr('class', 'person-text location-icon')
+                    .attr('x', -cardWidth/2 + 15)
+                    .attr('y', locationY + 2)
+                    .style('font-size', '10px')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'start')
+                    .text('📍');
+                
+                personGroup.append('text')
+                    .attr('class', 'person-text location')
+                    .attr('x', -cardWidth/2 + 25)
+                    .attr('y', locationY + 2)
+                    .style('font-size', '9px')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'start')
+                    .text(placeText.toUpperCase());
             }
-            prevBtn?.addEventListener('click', () => goto(-1));
-            nextBtn?.addEventListener('click', () => goto(1));
+            
+            // DEBUG: Log de fechas para entender qué datos llegan
+            console.log(`🔍 DEBUG FECHAS para ${person.name}:`, {
+                birthDate: person.birthDate,
+                deathDate: person.deathDate,
+                birthDateType: typeof person.birthDate,
+                deathDateType: typeof person.deathDate
+            });
+            
+            // Fechas de nacimiento y defunción (optimizado)
+            const getYear = (dateStr) => {
+                if (!dateStr || dateStr === 'NaN') return '?';
+                
+                try {
+                    let date;
+                    
+                    // Si es formato "Date(year,month,day)"
+                    if (dateStr.includes('Date(')) {
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        if (match) {
+                            const [, year, month, day] = match;
+                            date = new Date(parseInt(year), parseInt(month), parseInt(day));
+                        } else {
+                            return '?';
+                        }
+                    } else {
+                        date = new Date(dateStr);
+                    }
+                    
+                    return isNaN(date.getTime()) ? '?' : date.getFullYear();
+                } catch (e) {
+                    return '?';
+                }
+            };
+            
+            const birthYear = getYear(person.birthDate);
+            const deathYear = getYear(person.deathDate);
+            
+            console.log(`📅 AÑOS CALCULADOS para ${person.name}:`, { birthYear, deathYear });
+            
+            // ELIMINADO: Años principales que se superponen con la ciudad
+            // Los años ya se muestran en la sección "FECHAS" abajo
+            
+            // ELIMINADO: Línea divisoria antigua y sección "FECHAS"
+            // Ahora la línea solo separa el nombre, y las fechas van directamente
+            
+            // Fechas detalladas (formato corregido)
+            const formatDate = (dateStr) => {
+                console.log(`🔧 formatDate recibió: "${dateStr}" (tipo: ${typeof dateStr})`);
+                
+                if (!dateStr || dateStr === 'NaN') {
+                    console.log(`❌ Fecha vacía o NaN: ${dateStr}`);
+                    return '?';
+                }
+                
+                try {
+                    let date;
+                    
+                    // Si es formato "Date(year,month,day)"
+                    if (dateStr.includes('Date(')) {
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        if (match) {
+                            const [, year, month, day] = match;
+                            // Los meses en JavaScript van de 0-11, así que restamos 1
+                            date = new Date(parseInt(year), parseInt(month), parseInt(day));
+                            console.log(`📅 Date parseado de Date():`, date);
+                        } else {
+                            console.log(`❌ Formato Date() inválido: ${dateStr}`);
+                            return '?';
+                        }
+                    } else {
+                        // Fecha normal
+                        date = new Date(dateStr);
+                        console.log(`📅 Date creado:`, date);
+                    }
+                    
+                    if (isNaN(date.getTime())) {
+                        console.log(`❌ Fecha inválida: ${dateStr}`);
+                        return '?';
+                    }
+                    
+                    const formatted = date.toLocaleDateString('es-ES', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric' 
+                    });
+                    console.log(`✅ Fecha formateada: ${formatted}`);
+                    return formatted;
+                } catch (e) {
+                    console.log(`❌ Error formateando fecha:`, e);
+                    return '?';
+                }
+            };
+            
+            const birthDate = formatDate(person.birthDate);
+            const deathDate = formatDate(person.deathDate);
+            
+            console.log(`📋 FECHAS FINALES para ${person.name}:`, { birthDate, deathDate });
+            
+            // Calcular posición Y de las fechas después del lugar
+            const datesY = locationY + 20; // 20px después del lugar
+            
+            personGroup.append('text')
+                .attr('class', 'person-text birth-date')
+                .attr('x', -cardWidth/2 + 15)
+                .attr('y', datesY)
+                .style('font-size', '9px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'start')
+                .text(`Nac: ${birthDate}`);
+            
+            personGroup.append('text')
+                .attr('class', 'person-text death-date')
+                .attr('x', -cardWidth/2 + 15)
+                .attr('y', datesY + 15)
+                .style('font-size', '9px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'start')
+                .text(`Def: ${deathDate}`);
+            
+            // Lugar de defunción (si es diferente al de nacimiento)
+            if (person.deathPlace && person.deathPlace !== person.birthPlace) {
+                const deathPlaceText = person.deathPlace.length > 18 ? 
+                    person.deathPlace.substring(0, 16) + '...' : person.deathPlace;
+                
+                personGroup.append('text')
+                    .attr('class', 'person-text death-place')
+                    .attr('x', -cardWidth/2 + 15)
+                    .attr('y', datesY + 30)
+                    .style('font-size', '8px')
+                    .style('fill', cardColors.secondary)
+                    .style('text-anchor', 'start')
+                    .text(deathPlaceText);
+            }
+            
+            // ID en la esquina inferior derecha
+            personGroup.append('text')
+                .attr('class', 'person-text id')
+                .attr('x', cardWidth/2 - 10)
+                .attr('y', cardHeight/2 - 8)
+                .style('font-size', '8px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'end')
+                .text(person.id);
+            
+            // Indicador de estado (vivo/fallecido) con color
+            const isDeceased = person.deathDate && person.deathDate !== 'NaN';
+            personGroup.append('circle')
+                .attr('cx', -cardWidth/2 + 10)
+                .attr('cy', cardHeight/2 - 10)
+                .attr('r', 4)
+                .style('fill', isDeceased ? '#ef4444' : cardColors.accent);
         }
-
-        // Función para datos de ejemplo
-        function getExampleData() {
-            return [
-                {id: '1', parent_id: '', generation: '5', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Francisco Clemenzo', birth_date: '1856', birth_place: 'Ardon Suiza', death_date: '1928', verificado: 'true'},
-                {id: '2', parent_id: '', generation: '5', is_direct_line: 'false', branch: 'roch', display_order: '2', name: 'Celestina Roch', birth_date: '1887', birth_place: 'Suiza', death_date: '1968', verificado: 'true'},
-                {id: '3', parent_id: '1', generation: '4', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Felix Clemenzo', birth_date: '1894', birth_place: 'Entre Rios Argentina', death_date: '1955', verificado: 'true'},
-                {id: '4', parent_id: '', generation: '4', is_direct_line: 'false', branch: 'queipo', display_order: '2', name: 'Isabel Maria Queipo', birth_date: '1905', birth_place: 'Argentina', death_date: '1969', verificado: 'true'},
-                {id: '5', parent_id: '3', generation: '3', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Felix Ricardo Clemenzo', birth_date: '1926', birth_place: 'Bolivar Buenos Aires Argentina', death_date: '', verificado: 'true'},
-                {id: '6', parent_id: '', generation: '3', is_direct_line: 'false', branch: 'carvallo', display_order: '2', name: 'Raquel Noemi Carvallo', birth_date: '', birth_place: 'Ciudad de Buenos Aires Argentina', death_date: '', verificado: 'true'},
-                {id: '7', parent_id: '5', generation: '2', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Daniel Jorge Clemenzo', birth_date: '', birth_place: 'Buenos Aires Argentina', death_date: '', verificado: 'true'},
-                {id: '8', parent_id: '', generation: '2', is_direct_line: 'false', branch: 'arceo', display_order: '2', name: 'Cristina Magdalena Arceo', birth_date: '', birth_place: '', death_date: '', verificado: 'true'},
-                {id: '9', parent_id: '7', generation: '1', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Matias Damian Clemenzo', birth_date: '1990', birth_place: '', death_date: '', verificado: 'true'},
-                {id: '10', parent_id: '', generation: '1', is_direct_line: 'false', branch: 'vargas', display_order: '2', name: 'Maria Cecilia Vargas Yegros', birth_date: '', birth_place: '', death_date: '', verificado: 'true'},
-                {id: '11', parent_id: '9', generation: '0', is_direct_line: 'true', branch: 'clemenzo', display_order: '1', name: 'Juan Martin Clemenzo Vargas Yegros', birth_date: '2020', birth_place: '', death_date: '', verificado: 'true'}
-            ];
+        
+        // Función para renderizar conexiones padre-hijo (estilo árbol genealógico)
+        function renderParentChildConnections(container, allUnits) {
+            
+            allUnits.forEach(unit => {
+                const hasChildren = (unit.children && unit.children.length > 0);
+                const hasChildMarriages = (unit.childMarriages && unit.childMarriages.length > 0);
+                
+                if (unit.collapsed || (!hasChildren && !hasChildMarriages)) return;
+                
+                // Buscar las posiciones de los hijos individuales
+                const childPositions = (unit.children || []).map(child => {
+                    // IMPORTANTE: No conectar a una persona consigo misma si es parte del matrimonio actual
+                    if (unit.type === 'marriage') {
+                        if (unit.spouse1.id === child.id || unit.spouse2.id === child.id) {
+                            return null; // No conectar a sí mismo
+                        }
+                    }
+                    
+                    // Buscar la unidad del hijo
+                    const childUnit = allUnits.find(u => {
+                        if (u.type === 'marriage') {
+                            return u.spouse1.id === child.id || u.spouse2.id === child.id;
+                        } else if (u.type === 'single') {
+                            return u.person.id === child.id;
+                        }
+                        return false;
+                    });
+                    
+                    if (childUnit) {
+                        let childX, childY;
+                        
+                        if (childUnit.type === 'marriage') {
+                            // Para matrimonios, usar la posición X de la tarjeta específica del hijo
+                            if (childUnit.spouse1.id === child.id) {
+                                childX = childUnit.spouse1.x;
+                                childY = childUnit.spouse1.y;
+                            } else {
+                                childX = childUnit.spouse2.x;
+                                childY = childUnit.spouse2.y;
+                            }
+                        } else {
+                            // Para solteros, usar la posición de la persona
+                            childX = childUnit.person.x;
+                            childY = childUnit.person.y;
+                        }
+                        
+                        return { x: childX, y: childY, name: child.name };
+                    }
+                    
+                    return null;
+                }).filter(Boolean);
+                
+                // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
+                const childMarriagePositions = [];
+                // (unit.childMarriages || []).forEach(childMarriage => {
+                //     console.log(`🔍 Matrimonio hijo encontrado: ${childMarriage.spouse1.name}+${childMarriage.spouse2.name} en (${childMarriage.x}, ${childMarriage.y})`);
+                //     
+                //     // Crear conexión individual a cada cónyuge
+                //     childMarriagePositions.push({ 
+                //         x: childMarriage.spouse1.x, 
+                //         y: childMarriage.spouse1.y, 
+                //         name: childMarriage.spouse1.name,
+                //         isSpouse: true,
+                //         spouseIndex: 1
+                //     });
+                //     childMarriagePositions.push({ 
+                //         x: childMarriage.spouse2.x, 
+                //         y: childMarriage.spouse2.y, 
+                //         name: childMarriage.spouse2.name,
+                //         isSpouse: true,
+                //         spouseIndex: 2
+                //     });
+                // });
+                
+                // Combinar todas las posiciones de hijos
+                const allChildPositions = [...childPositions, ...childMarriagePositions];
+                
+                if (allChildPositions.length === 0) return;
+                
+                // Líneas salen desde el círculo de colapso/expand (rojo/verde)
+                const collapseCircleY = unit.y + 70; // Posición Y del círculo de colapso
+                // Línea vertical desde el círculo hacia abajo - longitud fija
+                const standardVerticalLength = 60; // Longitud estándar desde el círculo
+                const horizontalLineY = collapseCircleY + standardVerticalLength;
+                
+                // Verificar que estamos conectando hacia hijos que están más abajo Y eliminar autoconexiones
+                let validChildren = allChildPositions.filter(child => child && child.y > unit.y);
+                
+                // IMPORTANTE: Eliminar autoconexiones también en el renderizado
+                if (unit.type === 'marriage') {
+                    validChildren = validChildren.filter(child => {
+                        // No conectar a los cónyuges del matrimonio actual (solo si NO es un matrimonio hijo)
+                        const isSpouse = (child.name === unit.spouse1.name) || (child.name === unit.spouse2.name);
+                        const isFromChildMarriage = child.isSpouse; // Es un cónyuge de un matrimonio hijo
+                        
+                        // Debug específico para Emiliana
+                        if (child.name.includes('Emiliana') || unit.spouse1.name.includes('Emiliana') || unit.spouse2.name.includes('Emiliana')) {
+                            console.log(`🔍 VERIFICANDO AUTOCONEXIÓN: child="${child.name}", spouse1="${unit.spouse1.name}", spouse2="${unit.spouse2.name}", isSpouse=${isSpouse}, isFromChildMarriage=${isFromChildMarriage}`);
+                        }
+                        
+                        if (isSpouse && !isFromChildMarriage) {
+                            console.log(`⚠️ AUTOCONEXIÓN EVITADA EN RENDERIZADO: ${child.name} es parte del matrimonio ${unit.spouse1.name}+${unit.spouse2.name}`);
+                            return false;
+                        }
+                        return true;
+                    });
+                }
+                
+                if (validChildren.length === 0) {
+                    console.log(`⚠️ ${unit.type === 'marriage' ? unit.spouse1.name : unit.person.name}: No hay hijos válidos debajo`);
+                    return;
+                }
+                console.log(`🔍 Conectando desde Y=${unit.y} hacia hijos en Y=${validChildren.map(c => c.y).join(',')}`);
+                const childPositionsFiltered = validChildren;
+                
+                // Debug: mostrar información detallada de la unidad padre y sus hijos
+                const parentName = unit.type === 'marriage' ? `${unit.spouse1.name}+${unit.spouse2.name}` : unit.person.name;
+                console.log(`🌳 Padre: ${parentName} tiene ${childPositionsFiltered.length} hijos:`);
+                childPositionsFiltered.forEach((child, i) => {
+                    console.log(`  ${i+1}. ${child.name} en (${child.x}, ${child.y})`);
+                });
+                
+                // Conexiones directas e individuales desde el círculo de colapso hasta cada hijo
+                const standardChildConnectionLength = 60;
+                
+                childPositionsFiltered.forEach(child => {
+                    // Línea vertical corta desde el círculo de colapso
+                    const shortVerticalLength = 30;
+                    const branchPointY = collapseCircleY + shortVerticalLength;
+                    
+                    container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', unit.x)
+                        .attr('y1', collapseCircleY)
+                        .attr('x2', unit.x)
+                        .attr('y2', branchPointY)
+                        .style('stroke', '#b8a9d9')
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                    
+                    // Línea diagonal recta hasta el punto arriba del hijo
+                    const childTopY = child.y - cardHeight/2 - standardChildConnectionLength;
+                    
+                    container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', unit.x)
+                        .attr('y1', branchPointY)
+                        .attr('x2', child.x)
+                        .attr('y2', childTopY)
+                        .style('stroke', '#b8a9d9')
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                    
+                    // Línea vertical final hacia el hijo
+                    container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', child.x)
+                        .attr('y1', childTopY)
+                        .attr('x2', child.x)
+                        .attr('y2', child.y - cardHeight/2)
+                        .style('stroke', '#b8a9d9')
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                });
+                
+                // Log apropiado según el tipo de unidad
+                if (unit.type === 'marriage') {
+                    console.log(`🌳 Conexiones desde ${unit.spouse1.name}+${unit.spouse2.name} a ${childPositionsFiltered.length} hijos válidos`);
+                } else {
+                    console.log(`🌳 Conexiones desde ${unit.person.name} (soltero/a) a ${childPositionsFiltered.length} hijos válidos`);
+                }
+            });
         }
-
+        
+        // Función para toggle collapse/expand de matrimonios y personas solteras
+        function toggleMarriageCollapse(unit) {
+            // Buscar la unidad correspondiente en currentUnits para asegurar que trabajamos con la referencia correcta
+            const targetUnit = currentUnits.find(u => {
+                if (u.type === 'marriage' && unit.type === 'marriage') {
+                    return u.spouse1.id === unit.spouse1.id && u.spouse2.id === unit.spouse2.id;
+                } else if (u.type === 'single' && unit.type === 'single') {
+                    return u.person.id === unit.person.id;
+                }
+                return false;
+            });
+            
+            if (!targetUnit) {
+                console.error('❌ No se encontró la unidad en currentUnits');
+                return;
+            }
+            
+            targetUnit.collapsed = !targetUnit.collapsed;
+            
+            // Log apropiado según el tipo de unidad
+            if (targetUnit.type === 'marriage') {
+                console.log(`${targetUnit.collapsed ? '📁' : '📂'} ${targetUnit.spouse1.name} ←→ ${targetUnit.spouse2.name} (collapsed: ${targetUnit.collapsed})`);
+            } else if (targetUnit.type === 'single') {
+                console.log(`${targetUnit.collapsed ? '📁' : '📂'} ${targetUnit.person.name} (soltero/a) (collapsed: ${targetUnit.collapsed})`);
+            }
+            
+            // Marcar descendientes como ocultos/visibles recursivamente
+            toggleDescendantsVisibility(targetUnit, targetUnit.collapsed, currentUnits);
+            
+            // Debug: mostrar estado antes del filtrado
+            console.log('🔍 Estado de todas las unidades antes del filtrado:');
+            currentUnits.forEach(u => {
+                const name = u.type === 'marriage' ? `${u.spouse1.name}+${u.spouse2.name}` : u.person.name;
+                console.log(`  ${name}: hidden=${u.hidden}, collapsed=${u.collapsed}`);
+            });
+            
+            // Re-calcular layout solo con unidades visibles
+            const visibleUnits = currentUnits.filter(u => !u.hidden);
+            console.log(`🎯 Unidades visibles: ${visibleUnits.length}/${currentUnits.length}`);
+            
+            const positioned = calculateMarriageLayout(visibleUnits);
+            renderTree(positioned);
+        }
+        
+        // Función auxiliar para ocultar/mostrar descendientes recursivamente
+        function toggleDescendantsVisibility(unit, shouldHide, allUnits) {
+            unit.children.forEach(child => {
+                // Buscar la unidad del hijo (matrimonio o soltera)
+                const childUnit = allUnits.find(u => {
+                    if (u.type === 'marriage') {
+                        return u.spouse1.id === child.id || u.spouse2.id === child.id;
+                    } else if (u.type === 'single') {
+                        return u.person.id === child.id;
+                    }
+                    return false;
+                });
+                
+                if (childUnit) {
+                    childUnit.hidden = shouldHide;
+                    
+                    if (childUnit.type === 'marriage') {
+                        console.log(`${shouldHide ? '🙈' : '👁️'} ${childUnit.spouse1.name} ←→ ${childUnit.spouse2.name} → hidden=${childUnit.hidden}`);
+                } else {
+                        console.log(`${shouldHide ? '🙈' : '👁️'} ${childUnit.person.name} (soltero/a) → hidden=${childUnit.hidden}`);
+                    }
+                    
+                    // Recursivamente ocultar/mostrar sus descendientes
+                    // Solo si estamos ocultando O si la unidad hijo no está colapsada
+                    if (shouldHide) {
+                        // Si estamos ocultando, ocultar todos los descendientes
+                        toggleDescendantsVisibility(childUnit, true, allUnits);
+                    } else if (!childUnit.collapsed) {
+                        // Si estamos mostrando y la unidad hijo no está colapsada, mostrar sus descendientes
+                        toggleDescendantsVisibility(childUnit, false, allUnits);
+                    }
+                    // Si estamos mostrando pero la unidad hijo está colapsada, no mostrar sus descendientes
+                }
+            });
+        }
+        
+        // Funciones de control de interfaz
+        function resetZoom() {
+            if (svg) {
+                svg.transition().duration(750).call(
+                    d3.zoom().transform,
+                    d3.zoomIdentity
+                );
+            }
+        }
+        
+        function expandAll() {
+            if (currentUnits.length === 0) return;
+            
+            console.log('📂 Expandiendo todas las unidades...');
+            
+            // Expandir y mostrar todas las unidades
+            currentUnits.forEach(unit => {
+                unit.collapsed = false;
+                unit.hidden = false;
+            });
+            
+            // Re-calcular y renderizar
+            const positioned = calculateMarriageLayout(currentUnits);
+            renderTree(positioned);
+        }
+        
+        function collapseAll() {
+            if (currentUnits.length === 0) return;
+            
+            console.log('📁 Colapsando todas las unidades...');
+            
+            // Encontrar unidades raíz (sin padres)
+            const rootUnits = currentUnits.filter(unit => {
+                let unitPersonIds = [];
+                if (unit.type === 'marriage') {
+                    unitPersonIds = [unit.spouse1.id, unit.spouse2.id];
+                } else if (unit.type === 'single') {
+                    unitPersonIds = [unit.person.id];
+                }
+                
+                // Verificar si alguna persona de esta unidad es hijo de otra unidad
+                const hasParents = currentUnits.some(parentUnit => 
+                    parentUnit.children.some(child => unitPersonIds.includes(child.id))
+                );
+                
+                return !hasParents; // Es raíz si no tiene padres
+            });
+            
+            // Colapsar desde las raíces
+            rootUnits.forEach(root => {
+                root.collapsed = true;
+                toggleDescendantsVisibility(root, true, currentUnits);
+            });
+            
+            // Re-renderizar solo unidades visibles
+            const visibleUnits = currentUnits.filter(u => !u.hidden);
+            const positioned = calculateMarriageLayout(visibleUnits);
+            renderTree(positioned);
+        }
+        
         // Función principal
         async function init() {
             try {
-                // Marcar si el viewport es móvil para depurar estilos
-                const isMobile = window.matchMedia('(max-width: 768px)').matches;
-                if (isMobile) {
-                    document.body.classList.add('is-mobile');
-                } else {
-                    document.body.classList.remove('is-mobile');
-                }
+                const rawData = await loadData();
+                if (rawData.length === 0) return;
                 
-                // Diagnóstico de estilos aplicados en móvil
-                if (isMobile) {
-                    const controls = document.querySelector('.controls');
-                    const statsCard = document.querySelector('.stats-card');
-                    const statsContainer = document.querySelector('.stats-container');
-                    const search = document.querySelector('.search');
-                    if (controls && statsCard && search && statsContainer) {
-                        // Forzar estilos inline para móvil
-                        controls.style.flexDirection = 'column';
-                        controls.style.alignItems = 'center';
-                        controls.style.gap = '6px';
-                        controls.style.maxWidth = '420px';
-                        controls.style.padding = '8px 10px';
-                        controls.style.margin = '0 auto';
-
-                        search.style.maxWidth = '360px';
-                        search.style.width = '100%';
-                        const input = search.querySelector('input');
-                        if (input) {
-                            input.style.maxWidth = '360px';
-                            input.style.width = '100%';
-                            input.style.padding = '8px 12px';
-                        }
-                        
-                        statsContainer.style.marginLeft = '0';
-                        statsContainer.style.width = '100%';
-                        statsContainer.style.maxWidth = '360px';
-                        
-                        statsCard.style.alignSelf = 'center';
-                        statsCard.style.maxWidth = '360px';
-                        statsCard.style.width = '100%';
-                        statsCard.style.padding = '8px 12px';
-                    }
-                }
-                
-                console.log('[arbol-nuevo] viewportWidth=', window.innerWidth, 'isMobile=', isMobile);
-                
-                let rows;
-                try {
-                    rows = await loadData();
-                    console.log('Datos cargados desde Google Sheets');
-                    const ds = document.getElementById('dataSourceHeader');
-                    if (ds) ds.textContent = 'Carga de datos: desde sheet';
-                } catch (error) {
-                    console.warn('Error cargando desde Google Sheets, usando datos de ejemplo:', error);
-                    rows = getExampleData();
-                    const ds = document.getElementById('dataSourceHeader');
-                    if (ds) ds.textContent = 'Carga de datos: datos de ejemplo';
-                }
-                
-                // Cargar hoja de Matrimonios (si se configuró GID)
-                try {
-                    const marriages = await loadMarriages();
-                    window.marriages = marriages;
-                    console.log('Matrimonios cargados:', marriages.length);
-                } catch (e) {
-                    window.marriages = [];
-                }
-
-                console.log('Construyendo árbol con', rows.length, 'filas');
-                treeData = buildTree(rows);
-                updateGenerations(treeData);
-                ensureDirectLine(treeData);
-                console.log('Árbol construido, creando visualización');
-                createTree(treeData);
-                
-                // Configurar navegación por teclado
-                document.addEventListener('keydown', (event) => {
-                    // Controles de zoom (funcionan siempre)
-                    switch(event.key) {
-                        case '+':
-                        case '=':
-                            event.preventDefault();
-                            zoomIn();
-                            return;
-                        case '-':
-                        case '_':
-                            event.preventDefault();
-                            zoomOut();
-                            return;
-                    }
-                    
-                    // Navegación por nodos (solo si hay nodo seleccionado)
-                    if (!selectedNode) return;
-                    
-                    switch(event.key) {
-                        case 'ArrowUp':
-                            // Navegar al padre
-                            if (selectedNode.parent) {
-                                selectNode(selectedNode.parent);
-                            }
-                            break;
-                        case 'ArrowDown':
-                            // Navegar al primer hijo
-                            if (selectedNode.children.length > 0) {
-                                selectNode(selectedNode.children[0]);
-                            }
-                            break;
-                        case 'ArrowLeft':
-                            // Navegar al hermano anterior
-                            if (selectedNode.parent) {
-                                const siblings = selectedNode.parent.children;
-                                const index = siblings.indexOf(selectedNode);
-                                if (index > 0) {
-                                    selectNode(siblings[index - 1]);
-                                }
-                            }
-                            break;
-                        case 'ArrowRight':
-                            // Navegar al hermano siguiente
-                            if (selectedNode.parent) {
-                                const siblings = selectedNode.parent.children;
-                                const index = siblings.indexOf(selectedNode);
-                                if (index < siblings.length - 1) {
-                                    selectNode(siblings[index + 1]);
-                                }
-                            }
-                            break;
-                    }
-                });
+                currentUnits = buildMarriageStructure(rawData);
+                const positionedMarriages = calculateMarriageLayout(currentUnits);
+                renderTree(positionedMarriages);
                 
             } catch (error) {
-                document.getElementById('treeContainer').innerHTML = `
-                    <div class="error">
-                        <h3>Error cargando datos</h3>
-                        <p>${error.message}</p>
-                        <button onclick="location.reload()">Reintentar</button>
-                    </div>
-                `;
+                console.error('Error inicializando:', error);
+                updateStatus('Error: ' + error.message);
             }
         }
-
+        
+        // Función vacía para evitar errores
+        function setupSearch() {
+            // Búsqueda deshabilitada
+        }
+        
         // Funciones de zoom
         function zoomIn() {
-            if (window.currentSvg && window.currentZoom) {
-                const currentTransform = d3.zoomTransform(window.currentSvg.node());
+            if (svg && currentZoom) {
+                const currentTransform = d3.zoomTransform(svg.node());
                 const newScale = Math.min(currentTransform.k * 1.2, 3);
                 const transform = d3.zoomIdentity
                     .translate(currentTransform.x, currentTransform.y)
                     .scale(newScale);
-                window.currentSvg.transition().duration(200).call(window.currentZoom.transform, transform);
+                svg.transition().duration(200).call(currentZoom.transform, transform);
             }
         }
 
         function zoomOut() {
-            if (window.currentSvg && window.currentZoom) {
-                const currentTransform = d3.zoomTransform(window.currentSvg.node());
+            if (svg && currentZoom) {
+                const currentTransform = d3.zoomTransform(svg.node());
                 const newScale = Math.max(currentTransform.k / 1.2, 0.3);
                 const transform = d3.zoomIdentity
                     .translate(currentTransform.x, currentTransform.y)
                     .scale(newScale);
-                window.currentSvg.transition().duration(200).call(window.currentZoom.transform, transform);
+                svg.transition().duration(200).call(currentZoom.transform, transform);
             }
         }
 
-        // Inicializar cuando se carga la página
-        window.addEventListener('load', () => { 
-            init(); 
-            setupSearch(); 
-            const btn = document.getElementById('resetViewBtn');
-            if (btn) btn.addEventListener('click', resetView);
+        // Inicializar cuando la página carga
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
             
             // Configurar controles de zoom
             const zoomInBtn = document.getElementById('zoomInBtn');
             const zoomOutBtn = document.getElementById('zoomOutBtn');
+            
             if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
             if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
+            
+            // Actualizar fecha de edición
+            const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+            const now = new Date();
+            const dateStr = `13 de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+            const metaEdition = document.getElementById('meta-edition');
+            if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición 13 de enero de 2025`;
+            
+            // Actualizar fuente de datos
+            const dataSourceHeader = document.getElementById('dataSourceHeader');
+            if (dataSourceHeader) dataSourceHeader.textContent = 'Carga de datos: desde Google Sheets';
         });
     </script>
 </body>
