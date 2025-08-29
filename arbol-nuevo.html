@@ -343,24 +343,9 @@
             text-anchor: start;
         }
 
-        .verificado {
-            font-size: 14px;
-            font-weight: bold;
-            fill: #059669;
-            text-anchor: middle;
-        }
 
-        .collapse-btn {
-            cursor: pointer;
-            font-size: 12px;
-            fill: #64748b;
-            text-anchor: middle;
-            font-weight: 500;
-        }
 
-        .collapse-btn:hover {
-            fill: #3b82f6;
-        }
+
 
         .tree-link {
             fill: none;
@@ -619,7 +604,7 @@
         let treeData = null;
         let currentView = 'complete'; // 'complete' o 'direct'
         let selectedNode = null;
-        let collapsedNodes = new Set();
+
         let searchIndex = [];
         let currentPositions = new Map();
         
@@ -794,7 +779,7 @@
                         birth_date: archiveRow.birth_date,
                         birth_place: archiveRow.birth_place,
                         death_date: archiveRow.death_date,
-                        verificado: '1', // Asumimos que los datos del archivo están verificados
+                        verificado: '1',
                         // Campos adicionales útiles del archivo
                         father_id: archiveRow.father_id,
                         mother_id: archiveRow.mother_id,
@@ -892,38 +877,53 @@
                     children: []
                 };
                 
-                console.log(`Nodo creado: ${id} (${row.name}) - Padre: ${fatherId}, Madre: ${motherId}, Cónyuge: ${spouseId}`);
+                if (id === 'p2' || id === 'p5' || id === 'p6') {
+                    console.log(`🔍 [DEBUG] Nodo creado: ${id} (${row.name}) - Padre: ${fatherId}, Madre: ${motherId}, Generation: ${row.generation}, ParentId: ${parentId}`);
+                }
             });
             
             // Establecer relaciones padre-hijo - MEJORADO para usar father_id/mother_id
             Object.values(nodes).forEach(node => {
                 let hasParent = false;
                 
-                // Conectar con el padre si existe
-                if (node.fatherId && nodes[node.fatherId]) {
+                // PRIORIDAD 1: Si tiene padre Y madre, conectar al padre (más común en árboles genealógicos)
+                if (node.fatherId && node.motherId && nodes[node.fatherId] && nodes[node.motherId]) {
+                    // Conectar al padre como principal, pero guardar referencia a la madre
                     nodes[node.fatherId].children.push(node);
                     hasParent = true;
-                    console.log(`${node.name} conectado como hijo de ${nodes[node.fatherId].name} (padre)`);
+                    console.log(`🔗 ${node.name} conectado como hijo de ${nodes[node.fatherId].name} (padre) y ${nodes[node.motherId].name} (madre)`);
                 }
-                
-                // Conectar con la madre si existe (para casos donde solo tenemos madre)
-                if (node.motherId && nodes[node.motherId] && !hasParent) {
+                // PRIORIDAD 2: Solo padre
+                else if (node.fatherId && nodes[node.fatherId] && !hasParent) {
+                    nodes[node.fatherId].children.push(node);
+                    hasParent = true;
+                    console.log(`👨 ${node.name} conectado como hijo de ${nodes[node.fatherId].name} (solo padre)`);
+                }
+                // PRIORIDAD 3: Solo madre
+                else if (node.motherId && nodes[node.motherId] && !hasParent) {
                     nodes[node.motherId].children.push(node);
                     hasParent = true;
-                    console.log(`${node.name} conectado como hijo de ${nodes[node.motherId].name} (madre)`);
+                    console.log(`👩 ${node.name} conectado como hijo de ${nodes[node.motherId].name} (solo madre)`);
                 }
                 
-                // Fallback al sistema anterior si no tiene father_id/mother_id
+                // FALLBACK: sistema anterior con parent_id
                 if (!hasParent && node.parentId && nodes[node.parentId]) {
                     nodes[node.parentId].children.push(node);
                     hasParent = true;
-                    console.log(`${node.name} conectado como hijo de ${nodes[node.parentId].name} (parentId)`);
+                    console.log(`📎 ${node.name} conectado como hijo de ${nodes[node.parentId].name} (parentId legacy)`);
                 }
                 
                 // Si no tiene padres, es un nodo raíz
                 if (!hasParent) {
                     rootNodes.push(node);
-                    console.log(`${node.name} agregado como nodo raíz`);
+                    if (node.id === 'p2') {
+                        console.log(`❌ ERROR: ${node.name} agregado como nodo raíz cuando debería ser hijo!`);
+                        console.log(`   - FatherId: ${node.fatherId}, existe: ${!!nodes[node.fatherId]}`);
+                        console.log(`   - MotherId: ${node.motherId}, existe: ${!!nodes[node.motherId]}`);
+                        console.log(`   - ParentId: ${node.parentId}, existe: ${!!nodes[node.parentId]}`);
+                    } else {
+                        console.log(`🌱 ${node.name} agregado como nodo raíz (generación: ${node.generation})`);
+                    }
                 }
             });
             
@@ -959,7 +959,7 @@
                 node.children.sort((a, b) => a.displayOrder - b.displayOrder);
             });
             
-            // IMPORTANTE: No agregar cónyuges como hijos; eso genera ciclos y hace colapsar el layout
+            // IMPORTANTE: No agregar cónyuges como hijos; eso genera ciclos
             
             console.log('Árbol construido:', rootNodes.length, 'raíces');
             console.log('Primera raíz:', rootNodes[0]?.name);
@@ -1006,7 +1006,7 @@
                 .style('display', 'block')
                 .style('margin', '0 auto');
             
-            // Hacer svg global para que esté disponible en toggleCollapse
+            // Hacer svg global para zoom
             window.currentSvg = svg;
             
             // NOTA: ya no usamos zoom para centrar el contenido; el viewBox se encarga
@@ -1031,6 +1031,17 @@
             // Crear jerarquía
             const hierarchy = d3.hierarchy(root);
             const treeData = treeLayout(hierarchy);
+            
+            // CORREGIR posiciones Y basándose en la generación genealógica
+            // (independiente de la jerarquía D3, usar datos originales)
+            treeData.descendants().forEach(d => {
+                if (d.data.id !== 'super-root') {
+                    // Usar la generación como coordenada Y (generación alta = arriba)
+                    // Invertir para que generación 0 esté abajo y generación 6 esté arriba
+                    const maxGeneration = 6; // Máxima generación en los datos
+                    d.y = (maxGeneration - d.data.generation) * levelSpacing;
+                }
+            });
 
             // Generadores de paths curvos para mejorar legibilidad
             function pathVerticalCurve(x0, y0, x1, y1) {
@@ -1086,6 +1097,44 @@
             
             console.log('Jerarquía creada:', treeData.descendants().length, 'nodos');
             console.log('Enlaces creados:', treeData.links().length, 'enlaces');
+            
+            // Debug específico para Manuel y sus padres
+            const manuelNode = treeData.descendants().find(d => d.data.id === 'p2');
+            const gustavoNode = treeData.descendants().find(d => d.data.id === 'p6');
+            const micaelaNode = treeData.descendants().find(d => d.data.id === 'p5');
+            
+            if (manuelNode) {
+                console.log(`🔍 Manuel en árbol D3:`, {
+                    id: manuelNode.data.id,
+                    name: manuelNode.data.name,
+                    x: manuelNode.x,
+                    y: manuelNode.y,
+                    depth: manuelNode.depth,
+                    parent: manuelNode.parent?.data?.name || 'sin padre'
+                });
+            }
+            
+            if (gustavoNode) {
+                console.log(`🔍 Gustavo en árbol D3:`, {
+                    id: gustavoNode.data.id,
+                    name: gustavoNode.data.name,
+                    x: gustavoNode.x,
+                    y: gustavoNode.y,
+                    depth: gustavoNode.depth,
+                    children: gustavoNode.children?.map(c => c.data.name) || []
+                });
+            }
+            
+            if (micaelaNode) {
+                console.log(`🔍 Micaela en árbol D3:`, {
+                    id: micaelaNode.data.id,
+                    name: micaelaNode.data.name,
+                    x: micaelaNode.x,
+                    y: micaelaNode.y,
+                    depth: micaelaNode.depth,
+                    children: micaelaNode.children?.map(c => c.data.name) || []
+                });
+            }
 
             // Calcular hijos por matrimonio y distribuirlos bajo el nodo de matrimonio (evitar apilado)
             const nodesById = new Map();
@@ -1341,27 +1390,7 @@
                     });
                 });
             
-            // Crear checkmark de verificado
-            nodes.filter(d => d.data.verificado)
-                .append('text')
-                .attr('class', 'verificado')
-                .attr('y', -cardHeight / 2 + 112)
-                .text('✓');
-            
-            // Crear botón de colapso/expandir si tiene hijos
-            nodes.filter(d => d.data.children.length > 0 || d.data.originalChildren)
-                .append('text')
-                .attr('class', 'collapse-btn')
-                .attr('y', -cardHeight / 2 + 168)
-                .text(d => {
-                    const hasOriginalChildren = d.data.originalChildren && d.data.originalChildren.length > 0;
-                    const isCollapsed = collapsedNodes.has(d.data.id);
-                    return isCollapsed ? '▶ Expandir' : '▼ Colapsar';
-                })
-                .on('click', function(event, d) {
-                    event.stopPropagation();
-                    toggleCollapse(d.data.id);
-                });
+
             
             // Eventos de nodos
             nodes.on('click', function(event, d) {
@@ -1488,62 +1517,11 @@
                 ${data.birthDate ? `<p><strong>Nacimiento:</strong> ${data.birthDate}</p>` : ''}
                 ${data.birthPlace ? `<p><strong>Lugar:</strong> ${data.birthPlace}</p>` : ''}
                 ${data.deathDate ? `<p><strong>Fallecimiento:</strong> ${data.deathDate}</p>` : ''}
-                ${data.verificado ? '<p><strong>✓ Verificado</strong></p>' : ''}
+
             `;
         }
 
-        // Función para alternar colapso
-        function toggleCollapse(nodeId) {
-            if (collapsedNodes.has(nodeId)) {
-                collapsedNodes.delete(nodeId);
-                console.log('Expandiendo nodo:', nodeId);
-            } else {
-                collapsedNodes.add(nodeId);
-                console.log('Colapsando nodo:', nodeId);
-            }
-            
-            // Recrear árbol con nodos colapsados
-            const filteredRoot = filterCollapsedNodes(treeData);
-            
-            // Guardar la transformación actual
-            const currentTransform = window.currentSvg ? d3.zoomTransform(window.currentSvg.node()) : null;
-            
-            createTree(filteredRoot);
-            
-            // Restaurar la transformación después de recrear el árbol
-            if (currentTransform && window.currentSvg) {
-                setTimeout(() => {
-                    window.currentSvg.call(d3.zoom().transform, currentTransform);
-                }, 100);
-            }
-        }
 
-        // Función para filtrar nodos colapsados
-        function filterCollapsedNodes(root) {
-            function filterNode(node) {
-                if (collapsedNodes.has(node.id)) {
-                    // Si está colapsado, usar los hijos originales si existen
-                    const childrenToUse = node.originalChildren || node.children;
-                    return { 
-                        ...node, 
-                        children: [],
-                        originalChildren: childrenToUse // Preservar hijos originales
-                    };
-                }
-                
-                // Si no está colapsado, procesar normalmente
-                const processedChildren = node.children
-                    .map(filterNode)
-                    .filter(child => child !== null);
-                
-                return {
-                    ...node,
-                    children: processedChildren,
-                    originalChildren: node.originalChildren || node.children // Preservar referencia original
-                };
-            }
-            return filterNode(root);
-        }
 
         // Función para alternar vista
         function toggleView() {
