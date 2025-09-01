@@ -2,4 +2,4 @@
 
 # Script simple para deploy rápido
 echo "🚀 Iniciando deploy inteligente..."
-node scripts/update-and-deploy.cjs
+node scripts/update-and-deploy.js
