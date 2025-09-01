@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol Genealógico - Matrimonios</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+        /* Base: Notion-like minimalist UI */
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --border: #e6e7eb;
+            --text: #0f172a;
+            --muted: #6b7280;
+        }
+        
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0;
+            background: var(--bg);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 20px 32px;
+            text-align: left;
+        }
+
+        .blog-meta {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .top-nav { margin-bottom: 12px; }
+
+        .header h1 {
+            margin: 0 0 16px 0;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .author-title { display: none; }
+
+        .author-meta {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .controls {
+            padding: 16px 32px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Estructura para buscador y tarjeta de stats */
+        .controls .search { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+            flex: 0 1 520px; 
+            max-width: 70%; 
+        }
+        .controls .search input {
+            padding: 10px 12px; 
+            border: 1px solid var(--border); 
+            border-radius: 8px; 
+            font-size: 14px;
+        }
+        .controls #searchMeta {
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: var(--muted); 
+            font-size: 13px; 
+            min-height: 22px;
+        }
+        .stats-container {
+            margin-left: auto; 
+            display: flex; 
+            align-items: stretch;
+        }
+        .controls .stats-card { 
+            background: var(--surface); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 12px 14px; 
+            display: flex; 
+            gap: 16px; 
+            align-items: center; 
+            box-shadow: 0 3px 8px rgba(15,23,42,0.06); 
+        }
+        .stats-list {
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+            text-align: left; 
+            color: var(--muted); 
+            font-size: 14px; 
+            min-width: 220px;
+        }
+        .reset-btn {
+            padding: 6px; 
+            width: 34px; 
+            height: 34px; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        .zoom-controls {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .zoom-btn {
+            padding: 6px;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .zoom-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        .zoom-btn:active {
+            transform: translateY(0);
+            background: #e2e8f0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #dfe1e6;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .btn-success {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .view-info {
+            margin-left: auto;
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .tree-container {
+            position: relative;
+            height: 600px;
+            overflow: auto;
+            background: var(--bg);
+        }
+        
+        .zoom-controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            pointer-events: auto;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .zoom-btn:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+        
+        .zoom-btn:active {
+            transform: scale(0.95);
+        }
+        
+
+        
+        /* Mobile centering and compact spacing for top controls */
+        @media (max-width: 768px) {
+            .controls { 
+                flex-direction: column !important; 
+                align-items: center !important; 
+                gap: 6px !important; 
+                width: 100% !important; 
+                max-width: 420px !important; 
+                margin: 0 auto !important; 
+                padding: 8px 10px !important; 
+            }
+            .controls .search { 
+                flex: 0 0 auto !important; 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                align-items: center !important; 
+                gap: 4px !important; 
+            }
+            .controls input#searchInput { 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                margin: 0 auto !important; 
+                padding: 8px 12px !important; 
+            }
+            .controls #searchMeta { 
+                min-height: 0 !important; 
+            }
+            .stats-container {
+                margin-left: 0 !important; 
+                width: 100% !important; 
+                max-width: 360px !important;
+            }
+            .controls .stats-card { 
+                width: 100% !important; 
+                max-width: 360px !important; 
+                justify-content: space-between !important; 
+                padding: 8px 12px !important; 
+                align-self: center !important; 
+            }
+            .zoom-controls {
+                gap: 2px !important;
+            }
+            .zoom-btn {
+                width: 26px !important;
+                height: 26px !important;
+                padding: 4px !important;
+            }
+        }
+
+        /* Estilos específicos del árbol */
+        #tree-container {
+            width: 100%;
+            height: 1200px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px; 
+            background: white;
+            overflow: auto;
+        }
+        
+        .marriage-unit {
+            cursor: pointer;
+        }
+
+        .person-card {
+            fill: white;
+            stroke: #d1d5db;
+            stroke-width: 2;
+            rx: 12;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+        }
+        
+        svg {
+            z-index: 1;
+        }
+        
+        .person-text {
+            font-size: 14px;
+            fill: #374151;
+            text-anchor: middle;
+            font-weight: 500;
+        }
+        
+        .person-text.name {
+            font-size: 14px;
+            font-weight: 600;
+            fill: #111827;
+        }
+        
+        .person-text.dates {
+            font-size: 11px;
+            fill: #6b7280;
+        }
+        
+        .marriage-link {
+            stroke: #f59e0b;
+            stroke-width: 3;
+        }
+
+        .parent-child-link {
+            /* Los colores se establecen dinámicamente en JavaScript */
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .connection-point {
+            fill: #6b7280;
+            stroke: white;
+            stroke-width: 1;
+        }
+        
+        .collapsed {
+            opacity: 0.6;
+        }
+        
+        .branch-legend {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10000;
+            max-width: 300px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #374151;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            border: 1px solid #d1d5db;
+        }
+        
+        .legend-item input[type="checkbox"] {
+            accent-color: #3b82f6;
+            transform: scale(0.9);
+        }
+        
+        .legend-item:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+            border-radius: 4px;
+            padding: 2px 4px;
+            margin: -2px -4px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="top-nav" style="margin-bottom:16px;">
+                <a class="btn" href="./index.html">Inicio</a>
+            </div>
+
+            <h1>Árbol Genealógico Clemenzo</h1>
+
+            <div class="article-meta" style="display:flex; align-items:center; gap:12px;">
+                <div class="author-avatar">
+                    <img src="./assets/images/avatars/matias.png" alt="Matías Clemenzo" />
+                </div>
+                <div class="meta-text">
+                    <div><strong>Por Matías Clemenzo</strong></div>
+                    <div id="meta-edition">Publicado — · Última edición —</div>
+                    <div id="dataSourceHeader" class="author-meta">Carga de datos: —</div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="tree-container" id="tree-container">
+            <div id="branch-legend" class="branch-legend" style="display: none;">
+                <h4 style="margin: 0 0 10px 0; font-size: 14px; color: #374151;">Filtro de Familias:</h4>
+                <div style="margin-bottom: 8px; display: flex; gap: 4px;">
+                    <button id="show-all-btn" class="filter-btn" style="font-size: 10px; padding: 2px 6px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer;">Mostrar Todo</button>
+                    <button id="hide-all-btn" class="filter-btn" style="font-size: 10px; padding: 2px 6px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Ocultar Todo</button>
+                </div>
+                <div id="legend-items" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+            </div>
+        </div>
+        <div class="zoom-controls">
+            <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
+            <button id="zoomInBtn" class="zoom-btn" title="Acercar (+)">+</button>
+        </div>
+        
+        <div class="focus-info" id="focusInfo"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
+        <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
+            <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
+                <div>Matias Clemenzo</div>
+                <div>2025</div>
+            </div>
+        </div>
+    </footer>
+
+        </div>
+
+    <script>
+        // Configuración del Google Sheet (mantenemos la misma)
+        const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
+        
+        // Variables globales
+        let familyData = null;
+        let svg = null;
+        let currentZoom = null;
+        let marriages = new Map();
+        let individuals = {};
+        let currentUnits = []; // Estado actual de todas las unidades
+        let branchFilters = new Map(); // Estado de los filtros por branch
+        let filteredUnits = []; // Unidades filtradas actualmente visibles
+        
+        // Colores globales para las tarjetas
+        const cardColors = {
+            background: '#f3f4f6', // Gris claro
+            border: '#9ca3af',     // Gris medio
+            text: '#374151',       // Gris oscuro para texto
+            secondary: '#6b7280',  // Gris medio para texto secundario
+            accent: '#4b5563',     // Gris para acentos
+            divider: '#d1d5db'     // Gris claro para líneas divisorias
+        };
+        
+        // Mapa de colores por branch para las líneas de conexión
+        const branchColors = {
+            'clemenzo': '#3b82f6',      // Azul para rama Clemenzo
+            'roch': '#ef4444',          // Rojo para rama Roch
+            'putallaz': '#10b981',      // Verde para rama Putallaz
+            'roh': '#f59e0b',           // Naranja para rama Roh
+            'carvallo': '#8b5cf6',      // Violeta para rama Carvallo
+            'arceo': '#06b6d4',         // Cyan para rama Arceo
+            'vargas': '#84cc16',        // Verde lima para rama Vargas
+            'baster': '#ec4899',        // Rosa para rama Baster
+            'costabile': '#6366f1',     // Índigo para rama Costabile
+            'queipo': '#f97316',        // Naranja oscuro para rama Queipo
+            'default': '#6b7280'        // Gris por defecto
+        };
+        
+        // Función para obtener el color de una branch
+        function getBranchColor(branch) {
+            if (!branch || branch.trim() === '') {
+                console.log(`🔍 getBranchColor: branch vacío → usando default: ${branchColors.default}`);
+                return branchColors.default;
+            }
+            const normalizedBranch = branch.toLowerCase().trim();
+            const color = branchColors[normalizedBranch] || branchColors.default;
+            console.log(`🔍 getBranchColor: "${branch}" → "${normalizedBranch}" → ${color}`);
+            return color;
+        }
+        
+        // Función para crear la leyenda de branches con filtros
+        function createBranchLegend(allUnits) {
+            console.log('🔍 createBranchLegend llamada con', allUnits.length, 'unidades');
+            
+            const legendContainer = document.getElementById('branch-legend');
+            const legendItems = document.getElementById('legend-items');
+            
+            console.log('🔍 Elementos encontrados:', {
+                legendContainer: !!legendContainer,
+                legendItems: !!legendItems
+            });
+            
+            if (!legendContainer || !legendItems) {
+                console.error('❌ No se encontraron elementos de leyenda');
+                return;
+            }
+            
+            // Obtener todas las branches únicas
+            const uniqueBranches = new Set();
+            allUnits.forEach(unit => {
+                if (unit.type === 'marriage') {
+                    if (unit.spouse1.branch) uniqueBranches.add(unit.spouse1.branch);
+                    if (unit.spouse2.branch) uniqueBranches.add(unit.spouse2.branch);
+                } else if (unit.type === 'single') {
+                    if (unit.person.branch) uniqueBranches.add(unit.person.branch);
+                }
+            });
+            
+            console.log('🔍 Branches únicas encontradas:', Array.from(uniqueBranches));
+            
+            // Limpiar leyenda anterior
+            legendItems.innerHTML = '';
+            
+            // Crear elementos de leyenda con checkboxes
+            Array.from(uniqueBranches).sort().forEach(branch => {
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                
+                // Checkbox
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `filter-${branch}`;
+                checkbox.checked = branchFilters.get(branch) !== false; // Por defecto activado
+                checkbox.style.marginRight = '6px';
+                checkbox.style.cursor = 'pointer';
+                
+                // Color box
+                const colorBox = document.createElement('div');
+                colorBox.className = 'legend-color';
+                colorBox.style.backgroundColor = getBranchColor(branch);
+                
+                // Label
+                const label = document.createElement('label');
+                label.htmlFor = `filter-${branch}`;
+                label.textContent = branch.charAt(0).toUpperCase() + branch.slice(1);
+                label.style.cursor = 'pointer';
+                label.style.fontSize = '12px';
+                label.style.color = '#374151';
+                
+                // Event listener para el checkbox
+                checkbox.addEventListener('change', function() {
+                    branchFilters.set(branch, this.checked);
+                    console.log(`🔍 FILTRO ${branch}: ${this.checked ? 'ACTIVADO' : 'DESACTIVADO'}`);
+                    applyBranchFilters();
+                });
+                
+                // Inicializar el filtro
+                branchFilters.set(branch, checkbox.checked);
+                
+                legendItem.appendChild(checkbox);
+                legendItem.appendChild(colorBox);
+                legendItem.appendChild(label);
+                legendItems.appendChild(legendItem);
+                
+                console.log(`✅ Elemento de leyenda creado para ${branch}:`, legendItem);
+            });
+            
+            // Mostrar leyenda si hay branches
+            console.log('🔍 Branches encontradas:', uniqueBranches.size);
+            if (uniqueBranches.size > 0) {
+                legendContainer.style.display = 'block';
+                console.log('✅ Leyenda mostrada');
+                console.log('🔍 Estado de la leyenda:', {
+                    display: legendContainer.style.display,
+                    visibility: legendContainer.style.visibility,
+                    opacity: legendContainer.style.opacity,
+                    zIndex: legendContainer.style.zIndex,
+                    position: legendContainer.style.position
+                });
+                
+                // Verificar que la leyenda esté realmente en el DOM
+                setTimeout(() => {
+                    const legendInDOM = document.getElementById('branch-legend');
+                    console.log('🔍 Leyenda en DOM después de 100ms:', {
+                        exists: !!legendInDOM,
+                        display: legendInDOM?.style.display,
+                        visibility: legendInDOM?.style.visibility,
+                        opacity: legendInDOM?.style.opacity,
+                        zIndex: legendInDOM?.style.zIndex,
+                        position: legendInDOM?.style.position,
+                        children: legendInDOM?.children?.length,
+                        computedStyle: legendInDOM ? window.getComputedStyle(legendInDOM) : null
+                    });
+                    
+                    // Verificar si hay algún elemento que esté cubriendo la leyenda
+                    if (legendInDOM) {
+                        const rect = legendInDOM.getBoundingClientRect();
+                        console.log('🔍 Posición de la leyenda:', {
+                            top: rect.top,
+                            left: rect.left,
+                            width: rect.width,
+                            height: rect.height,
+                            visible: rect.width > 0 && rect.height > 0
+                        });
+                    }
+                }, 100);
+            } else {
+                console.log('⚠️ No hay branches para mostrar en la leyenda');
+            }
+        }
+        
+        // Función para aplicar filtros de branches
+        function applyBranchFilters() {
+            console.log('🔍 Aplicando filtros de branches...');
+            
+            // Filtrar unidades basado en los filtros activos
+            filteredUnits = currentUnits.filter(unit => {
+                if (unit.type === 'marriage') {
+                    const spouse1Branch = unit.spouse1.branch;
+                    const spouse2Branch = unit.spouse2.branch;
+                    
+                    // Mostrar si al menos uno de los cónyuges tiene una branch activa
+                    const spouse1Visible = !spouse1Branch || branchFilters.get(spouse1Branch) !== false;
+                    const spouse2Visible = !spouse2Branch || branchFilters.get(spouse2Branch) !== false;
+                    
+                    return spouse1Visible || spouse2Visible;
+                } else if (unit.type === 'single') {
+                    const personBranch = unit.person.branch;
+                    return !personBranch || branchFilters.get(personBranch) !== false;
+                }
+                return true;
+            });
+            
+            console.log(`📊 Filtros aplicados: ${filteredUnits.length}/${currentUnits.length} unidades visibles`);
+            
+            // Re-renderizar el árbol con las unidades filtradas
+            const positioned = calculateMarriageLayout(filteredUnits);
+            renderTree(positioned);
+        }
+        
+        // Función para mostrar todas las branches
+        function showAllBranches() {
+            console.log('🔍 Mostrando todas las branches...');
+            branchFilters.forEach((value, branch) => {
+                branchFilters.set(branch, true);
+                const checkbox = document.getElementById(`filter-${branch}`);
+                if (checkbox) checkbox.checked = true;
+            });
+            applyBranchFilters();
+        }
+        
+        // Función para ocultar todas las branches
+        function hideAllBranches() {
+            console.log('🔍 Ocultando todas las branches...');
+            branchFilters.forEach((value, branch) => {
+                branchFilters.set(branch, false);
+                const checkbox = document.getElementById(`filter-${branch}`);
+                if (checkbox) checkbox.checked = false;
+            });
+            applyBranchFilters();
+        }
+        
+        // Configuración del SVG - Espaciado mejorado para conexiones
+        const width = 2400; // Aumentado para más matrimonios horizontalmente
+        const height = 1800; // Aumentado para más generaciones
+        const cardWidth = 140; // Tarjetas más estrechas 
+        const cardHeight = 180; // Mucho más altas que anchas
+        const marriageSpacing = 500; // Aumentado para evitar superposición
+        const generationSpacing = 400; // Aumentado para más espacio vertical
+        const spouseGap = 25; // Gap más grande entre cónyuges
+        
+        function updateStatus(message) {
+            // Función vacía ya que eliminamos el elemento status
+            console.log('Status:', message);
+        }
+        
+        // Función principal para cargar datos del Google Sheet
+        async function loadData() {
+            try {
+                updateStatus('Cargando datos...');
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                const match = text.match(/google\.visualization\.Query\.setResponse\((.+)\);?$/);
+                if (!match) throw new Error('No se encontró JSON válido');
+                
+                const data = JSON.parse(match[1]);
+                if (!data.table || !data.table.rows) throw new Error('Formato inválido');
+                
+                // Procesar filas
+                const rows = data.table.rows.map(row => {
+                    const cells = row.c || [];
+                    
+                    return {
+                        id: String(cells[0]?.v || '').trim(),
+                        name: String(cells[2]?.v || '').trim(),
+                        birth_date: cells[3]?.v || '',
+                        birth_place: String(cells[4]?.v || '').trim(),
+                        death_date: cells[5]?.v || '',
+                        death_place: String(cells[6]?.v || '').trim(),
+                        spouseId: String(cells[7]?.v || '').trim(),
+                        childrenIds: String(cells[8]?.v || '').trim(),
+                        fatherId: String(cells[9]?.v || '').trim(),
+                        motherId: String(cells[10]?.v || '').trim(),
+                        branch: String(cells[11]?.v || '').trim(),
+                        generation: parseInt(cells[12]?.v) || 0
+                    };
+                }).filter(row => row.id && row.name);
+                
+                console.log('📊 Datos cargados:', rows.length, 'personas');
+        
+
+                return rows;
+                
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                updateStatus('Error cargando datos: ' + error.message);
+                return [];
+            }
+        }
+
+        // Construir estructura centrada en matrimonios
+        function buildMarriageStructure(rows) {
+            updateStatus('Procesando matrimonios...');
+            
+            // PASO 1: Crear individuos
+            individuals = {};
+            rows.forEach(row => {
+                if (!row.id || !row.name) return;
+                
+                individuals[row.id] = {
+                    id: row.id,
+                    name: row.name,
+                    birthDate: row.birth_date,
+                    birthPlace: row.birth_place,
+                    deathDate: row.death_date,
+                    deathPlace: row.death_place,
+                    generation: row.generation,
+                    branch: row.branch,
+                    spouseId: row.spouseId || null,
+                    fatherId: row.fatherId || null,
+                    motherId: row.motherId || null,
+                    childrenIds: row.childrenIds ? row.childrenIds.split(',').map(s => s.trim()).filter(s => s) : []
+                };
+            });
+            
+            console.log('👥 Individuos creados:', Object.keys(individuals).length);
+            
+            // PASO 2: Crear matrimonios Y personas solteras
+            marriages = new Map();
+            const singlePeople = new Map();
+            const processedPairs = new Set();
+            const processedIndividuals = new Set();
+            
+            // Crear matrimonios
+            Object.values(individuals).forEach(person => {
+                if (!person.spouseId || !individuals[person.spouseId]) return;
+                
+                const key = [person.id, person.spouseId].sort().join('::');
+                if (processedPairs.has(key)) return;
+                processedPairs.add(key);
+                
+                const spouse = individuals[person.spouseId];
+                if (spouse.spouseId !== person.id) return; // Verificar simetría
+                
+                const marriage = {
+                    id: key,
+                    spouse1: person,
+                    spouse2: spouse,
+                    children: [],
+                    generation: Math.max(person.generation, spouse.generation),
+                    collapsed: false,
+                    hidden: false,
+                    x: 0,
+                    y: 0,
+                    type: 'marriage'
+                };
+                
+                marriages.set(key, marriage);
+                processedIndividuals.add(person.id);
+                processedIndividuals.add(spouse.id);
+                console.log(`💍 Matrimonio: ${person.name} ←→ ${spouse.name}`);
+                
+                // Debug específico para matrimonios importantes
+                if (person.name.includes('Tomas') || spouse.name.includes('Francisca') || 
+                    person.name.includes('Jose Roh') || spouse.name.includes('Maria Putallaz')) {
+                    console.log(`  🔍 MATRIMONIO CLAVE: ${key} = ${person.name} (${person.id}) + ${spouse.name} (${spouse.id})`);
+                }
+                
+                // Debug específico para Tomas + Francisca
+                if ((person.id === 'p31' && spouse.id === 'p32') || (person.id === 'p32' && spouse.id === 'p31')) {
+                    console.log(`🎯 MATRIMONIO TOMAS+FRANCISCA CREADO: ${person.name} ←→ ${spouse.name}`);
+                }
+            });
+            
+            // Crear entradas para personas solteras (niños, solteros, etc.)
+            Object.values(individuals).forEach(person => {
+                if (processedIndividuals.has(person.id)) return; // Ya procesado en matrimonio
+                
+                const singleUnit = {
+                    id: person.id,
+                    person: person,
+                    children: [],
+                    generation: person.generation,
+                    collapsed: false,
+                    hidden: false,
+                    x: 0,
+                    y: 0,
+                    type: 'single'
+                };
+                
+                singlePeople.set(person.id, singleUnit);
+                console.log(`👤 Persona soltera: ${person.name}`);
+            });
+            
+            // PASO 3: Asignar hijos a matrimonios o padres solteros
+            Object.values(individuals).forEach(person => {
+                if (!person.fatherId && !person.motherId) return;
+                
+                // Debug para entender qué está pasando con los matrimonios
+                if (person.name.includes('Celestina Roh')) {
+                    console.log(`🔍 PROCESANDO CELESTINA: ${person.name} busca padres ${person.fatherId} + ${person.motherId}`);
+                }
+                
+                // Buscar si los padres forman un matrimonio
+                if (person.fatherId && person.motherId) {
+                    const marriageKey = [person.fatherId, person.motherId].sort().join('::');
+                    const marriage = marriages.get(marriageKey);
+                    
+                    if (person.name.includes('Celestina Roh')) {
+                        console.log(`🔍 CELESTINA marriageKey: ${marriageKey}, marriage found:`, marriage ? `${marriage.spouse1.name}+${marriage.spouse2.name}` : 'NO');
+                    }
+                    
+                    if (marriage) {
+                        // IMPORTANTE: No agregar a alguien como hijo de su propio matrimonio
+                        if (marriage.spouse1.id === person.id || marriage.spouse2.id === person.id) {
+                            console.log(`⚠️ AUTOCONEXIÓN EVITADA: ${person.name} no se agrega como hijo de su propio matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                            return;
+                        }
+                        
+                        // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
+                        // if (person.spouseId && individuals[person.spouseId]) {
+                        //     console.log(`💒👶 PERSONA CASADA: ${person.name} (casado/a con ${individuals[person.spouseId].name}) se agrega SOLO como matrimonio hijo de ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                        //     
+                        //     // Encontrar el matrimonio de esta persona
+                        //     const childMarriageKey = [person.id, person.spouseId].sort().join('::');
+                        //     const childMarriage = marriages.get(childMarriageKey);
+                        //     
+                        //     if (childMarriage) {
+                        //         // Crear relación padre-matrimonio → hijo-matrimonio
+                        //         if (!marriage.childMarriages) marriage.childMarriages = [];
+                        //         marriage.childMarriages.push(childMarriage);
+                        //         childMarriage.parentMarriage = marriage;
+                        //         console.log(`💒➡️💒 CONEXIÓN MATRIMONIO: ${marriage.spouse1.name}+${marriage.spouse2.name} → ${childMarriage.spouse1.name}+${childMarriage.spouse2.name}`);
+                        //     }
+                        //     return; // NO agregar como hijo individual - solo como matrimonio
+                        // }
+                        
+                        marriage.children.push(person);
+                        console.log(`👶 ${person.name} → ${marriage.spouse1.name} & ${marriage.spouse2.name}`);
+                        
+                        // Debug específico para problemas
+                        if (person.name.includes('Celestina Roh') || person.name.includes('Emiliana')) {
+                            console.log(`  🔍 DEBUG: ${person.name} asignado a matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
+                            console.log(`  🔍 Datos: padre=${person.fatherId}, madre=${person.motherId}, marriageKey=${marriageKey}`);
+                        }
+                        return;
+                    }
+                }
+                
+                // Si no hay matrimonio, asignar al padre o madre soltera
+                const parentId = person.fatherId || person.motherId;
+                const parentSingle = singlePeople.get(parentId);
+                if (parentSingle) {
+                    parentSingle.children.push(person);
+                    console.log(`👶 ${person.name} → ${parentSingle.person.name} (padre/madre soltera)`);
+                }
+            });
+            
+            // PASO 4: Combinar matrimonios y personas solteras
+            const allUnits = [];
+            marriages.forEach(marriage => allUnits.push(marriage));
+            singlePeople.forEach(single => allUnits.push(single));
+            
+            console.log('💒 Matrimonios procesados:', marriages.size);
+            console.log('👤 Personas solteras procesadas:', singlePeople.size);
+            console.log('🏗️ Total unidades:', allUnits.length);
+            
+            return allUnits;
+        }
+        
+        // Calcular layout simétrico con posicionamiento inteligente de hijos
+        function calculateMarriageLayout(marriageArray) {
+            updateStatus('Calculando posiciones...');
+            
+            // NUEVO: Agrupar unidades por generación del Google Sheet
+            const unitsByGeneration = new Map();
+            
+            marriageArray.forEach(unit => {
+                let generation;
+                if (unit.type === 'marriage') {
+                    // Para matrimonios, usar la generación mayor (más antigua) de los cónyuges
+                    generation = Math.max(unit.spouse1.generation, unit.spouse2.generation);
+                } else if (unit.type === 'single') {
+                    generation = unit.person.generation;
+                }
+                
+                if (!unitsByGeneration.has(generation)) {
+                    unitsByGeneration.set(generation, []);
+                }
+                unitsByGeneration.get(generation).push(unit);
+                
+
+            });
+            
+            // Ordenar generaciones de mayor a menor (6, 5, 4, 3, 2, 1)
+            const sortedGenerations = Array.from(unitsByGeneration.keys()).sort((a, b) => b - a);
+            
+            console.log(`🌳 Generaciones: ${sortedGenerations.join(', ')}`);
+            
+            // Posicionar generación por generación
+            let currentY = 100;
+            const positionedUnits = new Set();
+            
+            function positionLevel(units, y) {
+                if (units.length === 0) return;
+                
+                // Calcular ancho total necesario para esta generación
+                const totalWidth = units.length * marriageSpacing;
+                const startX = (width - totalWidth) / 2;
+                
+                units.forEach((unit, index) => {
+                    if (!positionedUnits.has(unit.id)) {
+                        unit.x = startX + index * marriageSpacing + marriageSpacing / 2;
+                        unit.y = y;
+                        
+                        if (unit.type === 'marriage') {
+                            // Posicionar cónyuges lado a lado
+                            unit.spouse1.x = unit.x - cardWidth / 2 - spouseGap / 2;
+                            unit.spouse1.y = unit.y;
+                            unit.spouse2.x = unit.x + cardWidth / 2 + spouseGap / 2;
+                            unit.spouse2.y = unit.y;
+                        } else if (unit.type === 'single') {
+                            // Posicionar persona soltera en el centro
+                            unit.person.x = unit.x;
+                            unit.person.y = unit.y;
+                        }
+                        
+                        positionedUnits.add(unit.id);
+                    }
+                });
+                
+                // ELIMINADO: Posicionamiento de hijos (ahora se hace por generaciones)
+                // Los hijos se posicionarán automáticamente en sus respectivas generaciones
+            }
+            
+            // Posicionar cada generación secuencialmente
+            sortedGenerations.forEach((generation, genIndex) => {
+                const generationUnits = unitsByGeneration.get(generation);
+                const y = 100 + (genIndex * generationSpacing);
+                
+                console.log(`🎯 POSICIONANDO GENERACIÓN ${generation} en Y=${y}`);
+                positionLevel(generationUnits, y);
+                currentY = y + generationSpacing;
+            });
+            
+            return marriageArray;
+        }
+        
+        // Renderizar el árbol
+        function renderTree(marriageArray) {
+            updateStatus('Renderizando árbol...');
+            
+            // Limpiar solo elementos SVG, preservar la leyenda y otros elementos
+            d3.select('#tree-container').selectAll('svg').remove();
+            
+            // Crear SVG
+            svg = d3.select('#tree-container')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Configurar zoom y pan
+            currentZoom = d3.zoom()
+                .scaleExtent([0.3, 3])
+                .on('zoom', function(event) {
+                    g.attr('transform', event.transform);
+                });
+            
+            svg.call(currentZoom);
+            
+            const g = svg.append('g');
+            
+            // Renderizar cada unidad (matrimonio o persona soltera)
+            marriageArray.forEach(unit => {
+                if (unit.type === 'marriage') {
+                    renderMarriage(g, unit, marriageArray);
+                } else if (unit.type === 'single') {
+                    renderSinglePerson(g, unit, marriageArray);
+                }
+            });
+            
+            // Agregar líneas de conexión padre-hijo
+            renderParentChildConnections(g, marriageArray);
+            
+            // La leyenda se crea en init(), no aquí
+            console.log('🔍 RenderTree: branchFilters.size:', branchFilters.size);
+            
+            // Debug: mostrar todas las branches disponibles
+            console.log('🔍 BRANCHES DISPONIBLES:');
+            const allBranches = new Set();
+            marriageArray.forEach(unit => {
+                if (unit.type === 'marriage') {
+                    if (unit.spouse1.branch) allBranches.add(unit.spouse1.branch);
+                    if (unit.spouse2.branch) allBranches.add(unit.spouse2.branch);
+                } else if (unit.type === 'single') {
+                    if (unit.person.branch) allBranches.add(unit.person.branch);
+                }
+            });
+            console.log('📋 Branches encontradas:', Array.from(allBranches).sort());
+            
+            // Actualizar estadísticas
+
+            
+            updateStatus(`✅ Árbol renderizado: ${marriageArray.length} unidades`);
+        }
+        
+        // Función para renderizar matrimonios
+        function renderMarriage(container, marriage, allUnits) {
+            const marriageGroup = container.append('g')
+                .attr('class', 'marriage-unit')
+                .attr('transform', `translate(${marriage.x}, ${marriage.y})`);
+            
+            // Línea de matrimonio recta
+            marriageGroup.append('line')
+                .attr('class', 'marriage-link')
+                .attr('x1', -cardWidth/2 - 10)
+                .attr('y1', 0)
+                .attr('x2', cardWidth/2 + 10)
+                .attr('y2', 0)
+                .style('stroke', '#8b5cf6')
+                .style('stroke-width', '4')
+                .style('stroke-linecap', 'round')
+                .style('opacity', '0.9');
+            
+            // Tarjetas de los cónyuges
+            [marriage.spouse1, marriage.spouse2].forEach((spouse, index) => {
+                renderPersonCard(marriageGroup, spouse, marriage.x, marriage.y);
+            });
+            
+
+        }
+        
+        // Función para renderizar personas solteras
+        function renderSinglePerson(container, singleUnit, allUnits) {
+            const personGroup = container.append('g')
+                .attr('class', 'single-unit')
+                .attr('transform', `translate(${singleUnit.x}, ${singleUnit.y})`);
+            
+            // Renderizar tarjeta de la persona
+            renderPersonCard(personGroup, singleUnit.person, singleUnit.x, singleUnit.y);
+            
+
+        }
+        
+        // Función auxiliar para renderizar tarjeta de persona con diseño moderno tipo perfil
+        function renderPersonCard(container, person, baseX, baseY) {
+            const personGroup = container.append('g')
+                .attr('data-person-id', person.id)
+                .attr('transform', `translate(${person.x - baseX}, ${person.y - baseY})`);
+            
+            // Usar colores globales definidos arriba
+            
+            // ELIMINADO: Sombra de la tarjeta para un diseño más limpio
+            
+            // Tarjeta principal
+            personGroup.append('rect')
+                .attr('class', 'person-card')
+                .attr('x', -cardWidth/2)
+                .attr('y', -cardHeight/2)
+                .attr('width', cardWidth)
+                .attr('height', cardHeight)
+                .attr('rx', 20)
+                .style('fill', cardColors.background)
+                .style('stroke', cardColors.border)
+                .style('stroke-width', '2');
+            
+            // Avatar placeholder (círculo violeta claro)
+            personGroup.append('circle')
+                .attr('cx', 0)
+                .attr('cy', -cardHeight/2 + 35)
+                .attr('r', 25)
+                .style('fill', '#f3e8ff')
+                .style('opacity', '0.8')
+                .style('stroke', cardColors.border)
+                .style('stroke-width', '1');
+            
+            // Nombre principal con tamaño de fuente variable
+            const calculateNameLayout = (name) => {
+                const maxWidth = cardWidth - 30; // Margen de 15px a cada lado
+                const maxLines = 3; // Máximo 3 líneas
+                
+                // Función para medir el ancho del texto
+                const measureText = (text, fontSize) => {
+                    const tempText = personGroup.append('text')
+                        .style('font-size', fontSize + 'px')
+                        .style('font-weight', '600')
+                        .text(text);
+                    const bbox = tempText.node().getBBox();
+                    tempText.remove();
+                    return bbox.width;
+                };
+                
+                // Determinar el tamaño de fuente óptimo
+                let fontSize = 14;
+                let nameLines = [];
+                
+                // Probar con diferentes tamaños de fuente
+                for (let size = 14; size >= 8; size--) {
+                    const words = name.split(' ');
+                    nameLines = [];
+                    let currentLine = '';
+                    
+                    for (let word of words) {
+                        const testLine = currentLine ? currentLine + ' ' + word : word;
+                        if (measureText(testLine, size) <= maxWidth) {
+                            currentLine = testLine;
+                        } else {
+                            if (currentLine) {
+                                nameLines.push(currentLine);
+                                currentLine = word;
+                            } else {
+                                // Si una palabra sola es muy larga, la cortamos
+                                nameLines.push(word.substring(0, Math.floor(maxWidth / (size * 0.6))));
+                                currentLine = '';
+                            }
+                        }
+                    }
+                    
+                    if (currentLine) {
+                        nameLines.push(currentLine);
+                    }
+                    
+                    // Si cabe en el número máximo de líneas, usar este tamaño
+                    if (nameLines.length <= maxLines) {
+                        fontSize = size;
+                        break;
+                    }
+                }
+                
+                return { nameLines, fontSize };
+            };
+            
+            const { nameLines, fontSize } = calculateNameLayout(person.name);
+            const lineHeight = fontSize * 1.2; // Espaciado entre líneas
+            
+            nameLines.forEach((line, i) => {
+                personGroup.append('text')
+                    .attr('class', 'person-text name')
+                    .attr('y', -cardHeight/2 + 75 + (i * lineHeight))
+                    .style('font-size', fontSize + 'px')
+                    .style('font-weight', '600')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'middle')
+                    .text(line);
+            });
+            
+            // Calcular la posición Y del lugar de nacimiento basada en el número de líneas del nombre
+            const nameHeight = nameLines.length * lineHeight;
+            const locationY = -cardHeight/2 + 75 + nameHeight + 15; // 15px de espacio después del nombre
+            
+            // Línea divisoria (solo separa el nombre)
+            personGroup.append('line')
+                .attr('x1', -cardWidth/2 + 15)
+                .attr('y1', locationY - 12) // 12px antes del lugar para más espacio
+                .attr('x2', cardWidth/2 - 15)
+                .attr('y2', locationY - 12)
+                .style('stroke', cardColors.divider)
+                .style('stroke-width', '1');
+            
+            // Lugar de nacimiento con pin de ubicación (optimizado)
+            if (person.birthPlace) {
+                const placeText = person.birthPlace.length > 18 ? 
+                    person.birthPlace.substring(0, 16) + '...' : person.birthPlace;
+                
+                // Pin de ubicación 📍
+                personGroup.append('text')
+                    .attr('class', 'person-text location-icon')
+                    .attr('x', -cardWidth/2 + 15)
+                    .attr('y', locationY + 2)
+                    .style('font-size', '10px')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'start')
+                    .text('📍');
+                
+                personGroup.append('text')
+                    .attr('class', 'person-text location')
+                    .attr('x', -cardWidth/2 + 25)
+                    .attr('y', locationY + 2)
+                    .style('font-size', '9px')
+                    .style('fill', cardColors.text)
+                    .style('text-anchor', 'start')
+                    .text(placeText.toUpperCase());
+            }
+            
+            // DEBUG: Log de fechas para entender qué datos llegan
+            console.log(`🔍 DEBUG FECHAS para ${person.name}:`, {
+                birthDate: person.birthDate,
+                deathDate: person.deathDate,
+                birthDateType: typeof person.birthDate,
+                deathDateType: typeof person.deathDate
+            });
+            
+            // Fechas de nacimiento y defunción (optimizado)
+            const getYear = (dateStr) => {
+                if (!dateStr || dateStr === 'NaN') return '?';
+                
+                try {
+                    let date;
+                    
+                    // Si es formato "Date(year,month,day)"
+                    if (dateStr.includes('Date(')) {
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        if (match) {
+                            const [, year, month, day] = match;
+                            date = new Date(parseInt(year), parseInt(month), parseInt(day));
+                        } else {
+                            return '?';
+                        }
+                    } else {
+                        date = new Date(dateStr);
+                    }
+                    
+                    return isNaN(date.getTime()) ? '?' : date.getFullYear();
+                } catch (e) {
+                    return '?';
+                }
+            };
+            
+            const birthYear = getYear(person.birthDate);
+            const deathYear = getYear(person.deathDate);
+            
+            console.log(`📅 AÑOS CALCULADOS para ${person.name}:`, { birthYear, deathYear });
+            
+            // ELIMINADO: Años principales que se superponen con la ciudad
+            // Los años ya se muestran en la sección "FECHAS" abajo
+            
+            // ELIMINADO: Línea divisoria antigua y sección "FECHAS"
+            // Ahora la línea solo separa el nombre, y las fechas van directamente
+            
+            // Fechas detalladas (formato corregido)
+            const formatDate = (dateStr) => {
+                console.log(`🔧 formatDate recibió: "${dateStr}" (tipo: ${typeof dateStr})`);
+                
+                if (!dateStr || dateStr === 'NaN') {
+                    console.log(`❌ Fecha vacía o NaN: ${dateStr}`);
+                    return '?';
+                }
+                
+                try {
+                    let date;
+                    
+                    // Si es formato "Date(year,month,day)"
+                    if (dateStr.includes('Date(')) {
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        if (match) {
+                            const [, year, month, day] = match;
+                            // Los meses en JavaScript van de 0-11, así que restamos 1
+                            date = new Date(parseInt(year), parseInt(month), parseInt(day));
+                            console.log(`📅 Date parseado de Date():`, date);
+                        } else {
+                            console.log(`❌ Formato Date() inválido: ${dateStr}`);
+                            return '?';
+                        }
+                    } else {
+                        // Fecha normal
+                        date = new Date(dateStr);
+                        console.log(`📅 Date creado:`, date);
+                    }
+                    
+                    if (isNaN(date.getTime())) {
+                        console.log(`❌ Fecha inválida: ${dateStr}`);
+                        return '?';
+                    }
+                    
+                    const formatted = date.toLocaleDateString('es-ES', { 
+                        day: '2-digit', 
+                        month: '2-digit', 
+                        year: 'numeric' 
+                    });
+                    console.log(`✅ Fecha formateada: ${formatted}`);
+                    return formatted;
+                } catch (e) {
+                    console.log(`❌ Error formateando fecha:`, e);
+                    return '?';
+                }
+            };
+            
+            const birthDate = formatDate(person.birthDate);
+            const deathDate = formatDate(person.deathDate);
+            
+            console.log(`📋 FECHAS FINALES para ${person.name}:`, { birthDate, deathDate });
+            
+            // Calcular posición Y de las fechas después del lugar
+            const datesY = locationY + 20; // 20px después del lugar
+            
+            personGroup.append('text')
+                .attr('class', 'person-text birth-date')
+                .attr('x', -cardWidth/2 + 15)
+                .attr('y', datesY)
+                .style('font-size', '9px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'start')
+                .text(`Nac: ${birthDate}`);
+            
+            personGroup.append('text')
+                .attr('class', 'person-text death-date')
+                .attr('x', -cardWidth/2 + 15)
+                .attr('y', datesY + 15)
+                .style('font-size', '9px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'start')
+                .text(`Def: ${deathDate}`);
+            
+            // Lugar de defunción (si es diferente al de nacimiento)
+            if (person.deathPlace && person.deathPlace !== person.birthPlace) {
+                const deathPlaceText = person.deathPlace.length > 18 ? 
+                    person.deathPlace.substring(0, 16) + '...' : person.deathPlace;
+                
+                personGroup.append('text')
+                    .attr('class', 'person-text death-place')
+                    .attr('x', -cardWidth/2 + 15)
+                    .attr('y', datesY + 30)
+                    .style('font-size', '8px')
+                    .style('fill', cardColors.secondary)
+                    .style('text-anchor', 'start')
+                    .text(deathPlaceText);
+            }
+            
+            // ID en la esquina inferior derecha
+            personGroup.append('text')
+                .attr('class', 'person-text id')
+                .attr('x', cardWidth/2 - 10)
+                .attr('y', cardHeight/2 - 8)
+                .style('font-size', '8px')
+                .style('fill', cardColors.secondary)
+                .style('text-anchor', 'end')
+                .text(person.id);
+            
+            // Indicador de estado (vivo/fallecido) con color
+            const isDeceased = person.deathDate && person.deathDate !== 'NaN';
+            personGroup.append('circle')
+                .attr('cx', -cardWidth/2 + 10)
+                .attr('cy', cardHeight/2 - 10)
+                .attr('r', 4)
+                .style('fill', isDeceased ? '#ef4444' : cardColors.accent);
+        }
+        
+        // Función para renderizar conexiones padre-hijo (estilo árbol genealógico)
+        function renderParentChildConnections(container, allUnits) {
+            console.log(`🔍 renderParentChildConnections: procesando ${allUnits.length} unidades`);
+            
+            allUnits.forEach(unit => {
+                const hasChildren = (unit.children && unit.children.length > 0);
+                const hasChildMarriages = (unit.childMarriages && unit.childMarriages.length > 0);
+                
+                if (unit.collapsed || (!hasChildren && !hasChildMarriages)) return;
+                
+                // Buscar las posiciones de los hijos individuales
+                const childPositions = (unit.children || []).map(child => {
+                    // IMPORTANTE: No conectar a una persona consigo misma si es parte del matrimonio actual
+                    if (unit.type === 'marriage') {
+                        if (unit.spouse1.id === child.id || unit.spouse2.id === child.id) {
+                            return null; // No conectar a sí mismo
+                        }
+                    }
+                    
+                    // Buscar la unidad del hijo
+                    const childUnit = allUnits.find(u => {
+                        if (u.type === 'marriage') {
+                            return u.spouse1.id === child.id || u.spouse2.id === child.id;
+                        } else if (u.type === 'single') {
+                            return u.person.id === child.id;
+                        }
+                        return false;
+                    });
+                    
+                    if (childUnit) {
+                        let childX, childY;
+                        let childBranch = '';
+                        
+                        if (childUnit.type === 'marriage') {
+                            // Para matrimonios, usar la posición X de la tarjeta específica del hijo
+                            if (childUnit.spouse1.id === child.id) {
+                                childX = childUnit.spouse1.x;
+                                childY = childUnit.spouse1.y;
+                                childBranch = childUnit.spouse1.branch;
+                            } else {
+                                childX = childUnit.spouse2.x;
+                                childY = childUnit.spouse2.y;
+                                childBranch = childUnit.spouse2.branch;
+                            }
+                        } else {
+                            // Para solteros, usar la posición de la persona
+                            childX = childUnit.person.x;
+                            childY = childUnit.person.y;
+                            childBranch = childUnit.person.branch;
+                        }
+                        
+                        return { x: childX, y: childY, name: child.name, branch: childBranch };
+                    }
+                    
+                    return null;
+                }).filter(Boolean);
+                
+                // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
+                const childMarriagePositions = [];
+                // (unit.childMarriages || []).forEach(childMarriage => {
+                //     console.log(`🔍 Matrimonio hijo encontrado: ${childMarriage.spouse1.name}+${childMarriage.spouse2.name} en (${childMarriage.x}, ${childMarriage.y})`);
+                //     
+                //     // Crear conexión individual a cada cónyuge
+                //     childMarriagePositions.push({ 
+                //         x: childMarriage.spouse1.x, 
+                //         y: childMarriage.spouse1.y, 
+                //         name: childMarriage.spouse1.name,
+                //         isSpouse: true,
+                //         spouseIndex: 1
+                //     });
+                //     childMarriagePositions.push({ 
+                //         x: childMarriage.spouse2.x, 
+                //         y: childMarriage.spouse2.y, 
+                //         name: childMarriage.spouse2.name,
+                //         isSpouse: true,
+                //         spouseIndex: 2
+                //     });
+                // });
+                
+                // Combinar todas las posiciones de hijos
+                const allChildPositions = [...childPositions, ...childMarriagePositions];
+                
+                if (allChildPositions.length === 0) return;
+                
+                // Líneas salen desde el círculo de colapso/expand (rojo/verde)
+                const collapseCircleY = unit.y + 70; // Posición Y del círculo de colapso
+                // Línea vertical desde el círculo hacia abajo - longitud fija
+                const standardVerticalLength = 60; // Longitud estándar desde el círculo
+                const horizontalLineY = collapseCircleY + standardVerticalLength;
+                
+                // Verificar que estamos conectando hacia hijos que están más abajo Y eliminar autoconexiones
+                let validChildren = allChildPositions.filter(child => child && child.y > unit.y);
+                
+                // IMPORTANTE: Eliminar autoconexiones también en el renderizado
+                if (unit.type === 'marriage') {
+                    validChildren = validChildren.filter(child => {
+                        // No conectar a los cónyuges del matrimonio actual (solo si NO es un matrimonio hijo)
+                        const isSpouse = (child.name === unit.spouse1.name) || (child.name === unit.spouse2.name);
+                        const isFromChildMarriage = child.isSpouse; // Es un cónyuge de un matrimonio hijo
+                        
+                        // Debug específico para Emiliana
+                        if (child.name.includes('Emiliana') || unit.spouse1.name.includes('Emiliana') || unit.spouse2.name.includes('Emiliana')) {
+                            console.log(`🔍 VERIFICANDO AUTOCONEXIÓN: child="${child.name}", spouse1="${unit.spouse1.name}", spouse2="${unit.spouse2.name}", isSpouse=${isSpouse}, isFromChildMarriage=${isFromChildMarriage}`);
+                        }
+                        
+                        if (isSpouse && !isFromChildMarriage) {
+                            console.log(`⚠️ AUTOCONEXIÓN EVITADA EN RENDERIZADO: ${child.name} es parte del matrimonio ${unit.spouse1.name}+${unit.spouse2.name}`);
+                            return false;
+                        }
+                        return true;
+                    });
+                }
+                
+                if (validChildren.length === 0) {
+                    console.log(`⚠️ ${unit.type === 'marriage' ? unit.spouse1.name : unit.person.name}: No hay hijos válidos debajo`);
+                    return;
+                }
+                console.log(`🔍 Conectando desde Y=${unit.y} hacia hijos en Y=${validChildren.map(c => c.y).join(',')}`);
+                const childPositionsFiltered = validChildren;
+                
+                // Debug: mostrar información detallada de la unidad padre y sus hijos
+                const parentName = unit.type === 'marriage' ? `${unit.spouse1.name}+${unit.spouse2.name}` : unit.person.name;
+                console.log(`🌳 Padre: ${parentName} tiene ${childPositionsFiltered.length} hijos:`);
+                childPositionsFiltered.forEach((child, i) => {
+                    console.log(`  ${i+1}. ${child.name} en (${child.x}, ${child.y}) - Branch: ${child.branch}`);
+                });
+                
+                // Conexiones directas e individuales desde el círculo de colapso hasta cada hijo
+                const standardChildConnectionLength = 60;
+                
+                childPositionsFiltered.forEach(child => {
+                    // Determinar el color de la línea basado en la branch del hijo
+                    const lineColor = getBranchColor(child.branch);
+                    
+                    // Debug: mostrar información de la línea que se está dibujando
+                    console.log(`🎨 DIBUJANDO LÍNEA: ${child.name} (branch: "${child.branch}") → color: ${lineColor}`);
+                    
+                    // Línea vertical corta desde el círculo de colapso
+                    const shortVerticalLength = 30;
+                    const branchPointY = collapseCircleY + shortVerticalLength;
+                    
+                    const line1 = container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', unit.x)
+                        .attr('y1', collapseCircleY)
+                        .attr('x2', unit.x)
+                        .attr('y2', branchPointY)
+                        .style('stroke', lineColor)
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                    
+                    console.log(`✅ LÍNEA 1 CREADA: ${child.name} - color: ${lineColor} - desde (${unit.x}, ${collapseCircleY}) hasta (${unit.x}, ${branchPointY})`);
+                    
+                    // Línea diagonal recta hasta el punto arriba del hijo
+                    const childTopY = child.y - cardHeight/2 - standardChildConnectionLength;
+                    
+                    container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', unit.x)
+                        .attr('y1', branchPointY)
+                        .attr('x2', child.x)
+                        .attr('y2', childTopY)
+                        .style('stroke', lineColor)
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                    
+                    // Línea vertical final hacia el hijo
+                    container.append('line')
+                        .attr('class', 'parent-child-link')
+                        .attr('x1', child.x)
+                        .attr('y1', childTopY)
+                        .attr('x2', child.x)
+                        .attr('y2', child.y - cardHeight/2)
+                        .style('stroke', lineColor)
+                        .style('stroke-width', '2.5')
+                        .style('stroke-linecap', 'round');
+                });
+                
+                // Log apropiado según el tipo de unidad
+                if (unit.type === 'marriage') {
+                    console.log(`🌳 Conexiones desde ${unit.spouse1.name}+${unit.spouse2.name} a ${childPositionsFiltered.length} hijos válidos`);
+                } else {
+                    console.log(`🌳 Conexiones desde ${unit.person.name} (soltero/a) a ${childPositionsFiltered.length} hijos válidos`);
+                }
+            });
+        }
+        
+
+        
+
+        
+        // Funciones de control de interfaz
+        function resetZoom() {
+            if (svg) {
+                svg.transition().duration(750).call(
+                    d3.zoom().transform,
+                    d3.zoomIdentity
+                );
+            }
+        }
+        
+
+        
+        // Función principal
+        async function init() {
+            try {
+                const rawData = await loadData();
+                if (rawData.length === 0) return;
+                
+                currentUnits = buildMarriageStructure(rawData);
+                
+                // Debug: verificar que las unidades tengan branches
+                console.log('🔍 Verificando branches en currentUnits...');
+                currentUnits.forEach((unit, index) => {
+                    if (unit.type === 'marriage') {
+                        console.log(`  ${index}: Matrimonio ${unit.spouse1.name} (${unit.spouse1.branch}) + ${unit.spouse2.name} (${unit.spouse2.branch})`);
+                    } else if (unit.type === 'single') {
+                        console.log(`  ${index}: Soltero ${unit.person.name} (${unit.person.branch})`);
+                    }
+                });
+                
+                // Inicializar filtros (todas las branches activadas por defecto)
+                filteredUnits = [...currentUnits];
+                
+                // Crear la leyenda ANTES de renderizar el árbol
+                console.log('🔍 Creando leyenda en init()...');
+                createBranchLegend(currentUnits);
+                
+                const positionedMarriages = calculateMarriageLayout(currentUnits);
+                renderTree(positionedMarriages);
+                
+            } catch (error) {
+                console.error('Error inicializando:', error);
+                updateStatus('Error: ' + error.message);
+            }
+        }
+        
+        // Función vacía para evitar errores
+        function setupSearch() {
+            // Búsqueda deshabilitada
+        }
+        
+        // Funciones de zoom
+        function zoomIn() {
+            if (svg && currentZoom) {
+                const currentTransform = d3.zoomTransform(svg.node());
+                const newScale = Math.min(currentTransform.k * 1.2, 3);
+                const transform = d3.zoomIdentity
+                    .translate(currentTransform.x, currentTransform.y)
+                    .scale(newScale);
+                svg.transition().duration(200).call(currentZoom.transform, transform);
+            }
+        }
+
+        function zoomOut() {
+            if (svg && currentZoom) {
+                const currentTransform = d3.zoomTransform(svg.node());
+                const newScale = Math.max(currentTransform.k / 1.2, 0.3);
+                const transform = d3.zoomIdentity
+                    .translate(currentTransform.x, currentTransform.y)
+                    .scale(newScale);
+                svg.transition().duration(200).call(currentZoom.transform, transform);
+            }
+        }
+
+        // Inicializar cuando la página carga
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            
+            // Configurar controles de zoom
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            
+            if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
+            if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
+            
+            // Configurar botones de filtro (se configurarán después de que se carguen los datos)
+            setTimeout(() => {
+                const showAllBtn = document.getElementById('show-all-btn');
+                const hideAllBtn = document.getElementById('hide-all-btn');
+                
+                        if (showAllBtn) showAllBtn.addEventListener('click', showAllBranches);
+        if (hideAllBtn) hideAllBtn.addEventListener('click', hideAllBranches);
+            }, 1000);
+            
+            // Actualizar fecha de edición
+            const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+            const now = new Date();
+            const dateStr = `13 de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+            const metaEdition = document.getElementById('meta-edition');
+            if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición ${dateStr}`;
+            
+            // Actualizar fuente de datos
+            const dataSourceHeader = document.getElementById('dataSourceHeader');
+            if (dataSourceHeader) dataSourceHeader.textContent = 'Carga de datos: desde Google Sheets';
+        });
+    </script>
+</body>
+</html>
