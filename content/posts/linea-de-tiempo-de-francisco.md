@@ -180,7 +180,8 @@ Todos los documentos se pueden consultar en detalle haciendo click [acá](https:
 
 
 >  Gracias
-> Hace unos años solo conocía el nombre de mi abuelo; hoy puedo llegar hasta mi tatarabuelo. Todo sirvió: las charlas, los viajes con mi papá, y todas aquellas personas que me tuvieron que aguantar hablando de genealogía, registros y documentos.
-> Sin la colaboración de **Gustavo Clemenzo** no hubiese podido confirmar muchas cosas que hoy sé con certeza; me compartió documentos clave.  
->También me sirvieron mucho todas las conversaciones con **Lucia Magallanes**, quien me hizo notar detalles que había pasado por alto.  
->Y a **Hernán**, que ayudó con la edición de muchísimas imágenes.
+>Hace unos años solo conocía el nombre de mi abuelo; hoy puedo llegar hasta mi tatarabuelo. Todo ayudó: las charlas, los viajes con mi papá y todas aquellas personas que me tuvieron que aguantar hablando de genealogía, registros y documentos.
+>Sin la colaboración de Gustavo Clemenzo no hubiese podido confirmar muchas de las cosas que hoy sé con certeza; él me compartió documentos clave.
+>Un agradecimiento muy especial a Jean-Yves, por la enorme amabilidad de dedicar su tiempo a buscar un registro para mí en Sion, simplemente con la intención de ayudarme.
+>También fueron muy valiosas todas las conversaciones con Lucía Magallanes, quien me hizo notar detalles que había pasado por alto.
+>Y a Hernán, que me ayudó con la edición de muchísimas imágenes.
