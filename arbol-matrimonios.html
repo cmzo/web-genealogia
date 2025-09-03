@@ -781,6 +781,7 @@
                         cells.forEach((cell, index) => {
                             console.log(`  Columna ${index}: "${cell?.v}"`);
                         });
+                        console.log('🔍 TOTAL DE COLUMNAS:', cells.length);
                     }
                     
                     // Debug: mostrar valores de order para cada fila
@@ -803,7 +804,8 @@
                         motherId: String(cells[10]?.v || '').trim(),
                         branch: String(cells[11]?.v || '').trim(),
                         generation: parseInt(cells[12]?.v) || 0,
-                        order: parseInt(cells[13]?.v) || 0
+                        order: parseInt(cells[13]?.v) || 0,
+                        vivo: String(cells[15]?.v || '').trim() // Nueva columna 'vivo' (después de tags)
                     };
                 }).filter(row => row.id && row.name);
                 
@@ -838,6 +840,7 @@
                     generation: row.generation,
                     order: row.order, // Agregar campo order
                     branch: row.branch,
+                    vivo: row.vivo, // Agregar campo vivo
                     spouseId: row.spouseId || null,
                     fatherId: row.fatherId || null,
                     motherId: row.motherId || null,
@@ -1293,18 +1296,12 @@
                     .text(line);
             });
             
-            // Calcular la posición Y del lugar de nacimiento basada en el número de líneas del nombre
+            // Calcular la posición Y del lugar de nacimiento basada en la altura real del nombre
             const nameHeight = nameLines.length * lineHeight;
-            const locationY = -cardHeight/2 + 75 + nameHeight + 15; // 15px de espacio después del nombre
+            const nameBottomY = -cardHeight/2 + 75 + nameHeight; // Posición final del nombre
             
-            // Línea divisoria (solo separa el nombre)
-            personGroup.append('line')
-                .attr('x1', -cardWidth/2 + 15)
-                .attr('y1', locationY - 12) // 12px antes del lugar para más espacio
-                .attr('x2', cardWidth/2 - 15)
-                .attr('y2', locationY - 12)
-                .style('stroke', cardColors.divider)
-                .style('stroke-width', '1');
+            // Ubicación: 12px después del nombre (espacio más compacto)
+            const locationY = nameBottomY + 12;
             
             // Lugar de nacimiento con pin de ubicación (optimizado)
             if (person.birthPlace) {
@@ -1430,7 +1427,7 @@
             console.log(`📋 FECHAS FINALES para ${person.name}:`, { birthDate, deathDate });
             
             // Calcular posición Y de las fechas después del lugar
-            const datesY = locationY + 20; // 20px después del lugar
+            const datesY = locationY + 18; // 18px después del lugar (menos espacio)
             
             personGroup.append('text')
                 .attr('class', 'person-text birth-date')
@@ -1444,7 +1441,7 @@
             personGroup.append('text')
                 .attr('class', 'person-text death-date')
                 .attr('x', -cardWidth/2 + 15)
-                .attr('y', datesY + 15)
+                .attr('y', datesY + 14)
                 .style('font-size', '9px')
                 .style('fill', cardColors.secondary)
                 .style('text-anchor', 'start')
@@ -1466,22 +1463,16 @@
             }
             
             // ID en la esquina inferior derecha
-            personGroup.append('text')
-                .attr('class', 'person-text id')
-                .attr('x', cardWidth/2 - 10)
-                .attr('y', cardHeight/2 - 8)
-                .style('font-size', '8px')
-                .style('fill', cardColors.secondary)
-                .style('text-anchor', 'end')
-                .text(person.id);
+            // ID de la persona eliminado (no se muestra)
             
-            // Indicador de estado (vivo/fallecido) con color
-            const isDeceased = person.deathDate && person.deathDate !== 'NaN';
+            // Indicador de estado (vivo/fallecido) con color basado en columna 'vivo'
+            console.log(`🔍 ${person.name}: vivo="${person.vivo}" (tipo: ${typeof person.vivo})`);
+            const isAlive = person.vivo === 'si';
             personGroup.append('circle')
-                .attr('cx', -cardWidth/2 + 10)
-                .attr('cy', cardHeight/2 - 10)
+                .attr('cx', -cardWidth/2 + 12)
+                .attr('cy', -cardHeight/2 + 12)
                 .attr('r', 4)
-                .style('fill', isDeceased ? '#ef4444' : cardColors.accent);
+                .style('fill', isAlive ? '#10b981' : '#ef4444'); // Verde si vivo, rojo si no
         }
         
         // Función para renderizar conexiones padre-hijo (estilo árbol genealógico)
