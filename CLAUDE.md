@@ -93,4 +93,5 @@ The site is hosted on GitHub Pages. `dist/` is **not** gitignored — generated 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
+at `specs/006-site-shell/plan.md`.
 <!-- SPECKIT END -->
