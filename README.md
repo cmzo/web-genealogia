@@ -1,268 +1,150 @@
-# Genealogía Clemenzo - Sitio Web Personal
+# Genealogía Clemenzo
 
-Sitio web personal para genealogía, historias y memoria familiar. Sistema de blog estático con Markdown, optimización de imágenes y gestión automatizada de contenido.
+Sitio web personal de investigación genealógica — historias, documentos y árbol familiar.
 
-## 🚀 Scripts y comandos
+**→ [cmzo.github.io/web-genealogia](https://cmzo.github.io/web-genealogia/index.html)**
 
-### 📝 **Gestión de contenido**
+---
+
+## Tecnologías
+
+| Capa | Herramienta |
+|---|---|
+| Estructura | HTML5 semántico |
+| Estilos | CSS3 (Grid, Flexbox, custom properties) |
+| Scripts | Vanilla JavaScript |
+| Build | Node.js |
+| Contenido | Markdown con front matter |
+| Árbol genealógico | D3.js v7 |
+| Hosting | GitHub Pages |
+| Imágenes | WebP (optimizadas con sharp) |
+
+---
+
+## Frontend
+
+### Dirección visual
+
+**Editorial + Documental mínimo.** Tipografía con carácter, paleta cálida, sin elementos decorativos. El contenido al centro.
+
+### Paleta de colores
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--bg` | `#f5f2ec` | Fondo general |
+| `--surface` | `#fdfcf9` | Superficie de contenido (site-main) |
+| `--border` | `#e2dbd0` | Bordes y separadores |
+| `--text` | `#1c1814` | Texto principal |
+| `--muted` | `#7a7060` | Texto secundario, metadatos |
+| `--accent` | `#5c4a2a` | Énfasis, hover, detalles |
+
+### Tipografía
+
+| Fuente | Peso | Uso |
+|---|---|---|
+| **Source Serif 4** | 400, 600, 700 | Nav brand, títulos de artículos, cuerpo editorial |
+| **Inter** | 400, 500, 600, 700 | UI, navegación, metadatos, changelog |
+| **JetBrains Mono** | 400, 500 | Bloques de código |
+
+### Layout
+
+- Nav fija: `height: 52px`, `position: sticky`
+- Sidebar: `width: 160px`, `position: sticky`
+- Dos columnas: sidebar + contenido (`grid-template-columns: 160px 1fr`)
+- Article grid: una columna por defecto, dos columnas cuando hay contenido en el aside
+
+---
+
+## Comandos
 
 ```bash
-# Generar posts desde Markdown
+# Build: compila Markdown → HTML y regenera blog-entries.json
 npm run build
 
-# Listar posts disponibles
-npm run list-posts
-
-# Borrar un post completamente
-npm run delete-post nombre-del-post
-
-# Limpiar archivos generados
-npm run clean
-
-# Optimizar imágenes
-npm run optimize-images
-```
-
-### 🌐 **Servidores de desarrollo**
-
-```bash
-# Servidor de desarrollo (build + servidor)
+# Dev: build + servidor en http://localhost:8000
 npm run dev
 
-# Servidor estático
-npm run serve
-```
-
-## 📋 **Explicación detallada de scripts**
-
-### **`scripts/build.js` - Conversión Markdown a HTML**
-
-**Función:** Convierte archivos Markdown en `content/posts/` a HTML en `dist/blog/`
-
-**Proceso:**
-1. **Lee archivos Markdown** con front matter
-2. **Extrae metadatos:** título, descripción, imagen, categoría, tags, etc.
-3. **Convierte Markdown a HTML** usando `marked.js`
-4. **Aplica template** (`content/templates/post-template.html`)
-5. **Genera archivo HTML** en `dist/blog/`
-6. **Actualiza** `content/data/blog-entries.json`
-
-**Características:**
-- ✅ **Front matter parsing** para metadatos
-- ✅ **Conversión Markdown** con soporte para GFM
-- ✅ **Rutas automáticas** para imágenes y assets
-- ✅ **Template personalizable** con variables
-- ✅ **Aside content** para contenido lateral
-- ✅ **Code blocks** con estilos CSS
-
-**Ejemplo de uso:**
-```bash
-node scripts/build.js
-# Genera: dist/blog/mi-post.html
-# Actualiza: content/data/blog-entries.json
-```
-
----
-
-### **`scripts/delete-post.js` - Borrado completo de posts**
-
-**Función:** Elimina completamente un post del sistema
-
-**Proceso:**
-1. **Valida** que el post existe
-2. **Elimina** archivo Markdown de `content/posts/`
-3. **Elimina** HTML generado de `dist/blog/`
-4. **Remueve** entrada de `content/data/blog-entries.json`
-5. **Regenera** JSON sin el post eliminado
-
-**Opciones:**
-```bash
-# Listar posts disponibles
-node scripts/delete-post.js --list
-
-# Borrar post específico
-node scripts/delete-post.js nombre-del-post
-```
-
-**Características:**
-- ✅ **Borrado completo** (Markdown + HTML + JSON)
-- ✅ **Validación** de existencia
-- ✅ **Listado** de posts disponibles
-- ✅ **Confirmación** antes de borrar
-- ✅ **Manejo de errores** robusto
-
----
-
-### **`scripts/optimize-images.js` - Optimización de imágenes**
-
-**Función:** Convierte y optimiza imágenes para web
-
-**Proceso:**
-1. **Lee imágenes** de `assets/images/original/`
-2. **Convierte a WebP** para mejor compresión
-3. **Genera múltiples tamaños:**
-   - `cards/` - Para tarjetas (280x380)
-   - `posts/` - Para artículos (ancho completo)
-   - `avatars/` - Para avatares (40x40)
-4. **Optimiza calidad** y tamaño de archivo
-
-**Características:**
-- ✅ **Conversión automática** a WebP
-- ✅ **Múltiples tamaños** según uso
-- ✅ **Optimización** de calidad/tamaño
-- ✅ **Preservación** de originales
-- ✅ **Lazy loading** compatible
-
-**Ejemplo de uso:**
-```bash
-node scripts/optimize-images.js
-# Lee: assets/images/original/
-# Genera: assets/images/cards/, posts/, avatars/
-```
-
----
-
-## 📝 **Gestión de posts**
-
-### **Crear un nuevo post**
-
-1. **Crear archivo** `content/posts/mi-post.md`:
-```markdown
----
-title: "Mi título"
-description: "Descripción del post"
-image: "assets/images/cards/mi-imagen.webp"
-category: "categoria"
-date: "2024-01-15"
-tags: "tag1, tag2, tag3"
-featured: true
-slug: "mi-post"
-kicker: "Subtítulo o descripción corta"
-aside: |
-  Contenido adicional para el sidebar
-  ![Imagen](../../assets/images/posts/mi-imagen.png)
----
-
-# Contenido del post
-
-Texto en Markdown...
-```
-
-2. **Generar HTML:**
-```bash
-npm run build
-```
-
-3. **Verificar resultado:**
-- HTML generado en `dist/blog/mi-post.html`
-- Entrada agregada a `content/data/blog-entries.json`
-
-### **Borrar un post**
-
-```bash
-# Ver posts disponibles
+# Gestión de posts
 npm run list-posts
+npm run delete-post <slug>
 
-# Borrar post específico
-npm run delete-post nombre-del-post
+# Optimización de imágenes (requiere sharp)
+npm run optimize-images
+
+# Deploy a GitHub Pages
+npm run deploy
 ```
-
-**⚠️ Importante:** El borrado es **completo e irreversible** - elimina:
-- Archivo Markdown original
-- HTML generado
-- Entrada en el JSON de metadatos
-
-### **¿Por qué el proceso completo es necesario?**
-
-- **`content/posts/`**: Contiene los archivos Markdown originales
-- **`dist/blog/`**: Contiene los archivos HTML generados
-- **`content/data/blog-entries.json`**: Contiene la metadata que aparece en la home
-- **Home**: Lee desde `blog-entries.json`, no desde los archivos HTML
-
-Si solo borras el archivo HTML, la tarjeta seguirá apareciendo en la home porque la información está en el JSON.
 
 ---
 
-## 🌐 **Despliegue en producción**
+## Pipeline del blog
 
-### **Gestión de posts en el servidor**
+1. Escribir post en `content/posts/<slug>.md` con front matter YAML
+2. `npm run build` → genera `dist/blog/<slug>.html` usando `content/templates/post-template.html`
+3. El build regenera `assets/data/blog-entries.json` (índice que lee `blog.html` en runtime)
+4. Commitear `dist/` — GitHub Pages lo sirve directamente
 
-**Opción 1: Gestión local + Deploy (Recomendada)**
-```bash
-# En tu computadora
-npm run delete-post ejemplo-post
-npm run build
-git add .
-git commit -m "Borrar post ejemplo-post"
-git push
+### Front matter disponible
+
+```yaml
+title: "..."
+kicker: "..."          # subtítulo visible sobre el título
+description: "..."
+image: "assets/images/cards/foo.webp"
+category: "investigación"
+date: "2024-08-17"
+tags: "tag1, tag2"
+featured: true
+slug: "mi-slug"        # por defecto: nombre del archivo sin .md
+aside: |               # opcional — contenido lateral (soporta Markdown)
+  Texto o imagen en el sidebar
 ```
-
-**Opción 2: Scripts de build automático**
-Algunos hosts (Netlify, Vercel) permiten ejecutar scripts durante el deploy:
-```json
-// package.json
-{
-  "scripts": {
-    "build": "node scripts/build.js"
-  }
-}
-```
-
-**Opción 3: Panel de administración**
-- Abrir `admin.html` en desarrollo local
-- Ver lista de posts actuales
-- Obtener comandos para borrar
-
-### **Hosts recomendados**
-- **GitHub Pages**: Subir archivos estáticos
-- **Netlify**: Deploy automático desde Git
-- **Vercel**: Deploy automático desde Git
-- **Cualquier servidor web**: Solo archivos estáticos
 
 ---
 
-## 📁 **Estructura del proyecto**
+## Estructura
 
 ```
 web-genealogia/
-├── assets/                 # Recursos estáticos
-│   ├── images/            # Imágenes organizadas
-│   │   ├── cards/         # Imágenes para tarjetas (.webp)
-│   │   ├── posts/         # Imágenes de artículos
-│   │   ├── avatars/       # Avatares de usuarios
-│   │   ├── icons/         # Iconos y logos
-│   │   └── original/      # Archivos originales (gitignored)
-│   ├── css/               # Estilos
-│   └── js/                # JavaScript
-├── content/               # Contenido dinámico
-│   ├── posts/             # Posts en Markdown
-│   ├── data/              # Datos JSON
-│   └── templates/         # Templates HTML
-├── dist/                  # Archivos generados (gitignored)
-│   ├── blog/              # HTML generado
-│   └── assets/            # Assets optimizados
-├── scripts/               # Scripts de build
-├── docs/                  # Documentación
-├── index.html             # Página principal
-├── blog.html              # Lista de posts
-├── admin.html             # Panel de administración
-└── [otros archivos HTML]
+├── assets/
+│   ├── css/styles.css          # Sistema de diseño completo
+│   ├── data/blog-entries.json  # Índice de posts (generado por build)
+│   └── images/
+│       ├── cards/              # Imágenes de tarjetas (.webp)
+│       ├── posts/              # Imágenes de artículos
+│       ├── avatars/
+│       └── original/           # Originales (gitignored)
+├── content/
+│   ├── posts/                  # Fuentes Markdown
+│   └── templates/post-template.html
+├── dist/blog/                  # HTML generado (commitear)
+├── scripts/                    # build.js, delete-post.js, optimize-images.js
+├── docs/                       # REDESIGN.md y documentación interna
+├── frontend-design/SKILL.md    # Guía de diseño frontend
+├── index.html
+├── blog.html
+├── archivo.html                # Archivo familiar (Google Sheets)
+├── arbol-matrimonios.html      # Árbol genealógico (D3.js)
+├── francisco.html
+├── quien-soy.html
+└── changelog.html
 ```
 
 ---
 
-## 🛠️ **Tecnologías utilizadas**
+## Despliegue
 
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos modernos con Flexbox/Grid
-- **JavaScript** - Funcionalidad interactiva
-- **Node.js** - Scripts de build y automatización
-- **Markdown** - Contenido de posts
-- **WebP** - Optimización de imágenes
-- **GitHub Pages** - Hosting estático
+El sitio está desplegado en GitHub Pages desde la rama `main`. Para actualizar producción:
 
----
+```bash
+npm run build        # regenerar posts si hubo cambios en Markdown
+git add .
+git commit -m "..."
+git push origin main
+```
 
-## 📄 **Licencia**
+O directamente con el script de deploy:
 
-Este proyecto es personal y privado. Todos los derechos reservados.
+```bash
+npm run deploy
+```
