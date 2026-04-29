@@ -19,16 +19,20 @@ Dirección: **Editorial + Documental mínimo**
 - `content/templates/post-template.html` — todos los posts del blog usan el nuevo template
 - Footer: rediseñado con descripción y changelog
 - Páginas eliminadas (no estaban en uso): `clemenzo-por-el-mundo.html`, `trama-mexicana.html`, `mapa-clemenzos.html`
+- Sidebar: indicador visual de sección activa (`border-left` con color de acento, `font-weight: 700`)
+- Sidebar fijo: layout refactorizado a flex column en `body` + `overflow: hidden` en `.site-body` + scroll en `.site-main` — funciona en todas las páginas
+- Home: imagen reemplazada por `Vallée du Rhône` (optimizada a WebP, 246KB), filtro B&W con `grayscale(100%) contrast(140%)`
+- Nav: "Clemenzo" agrandado de 22px a 26px
+- Build: posts ahora se ordenan por campo `date` del front matter (antes por mtime del archivo)
+- Deploy: `scripts/update-and-deploy.js` reescrito — hace build + commit + push automático
+
+- `changelog.html` — completado con historial real y detallado
+- Contenido de la columna derecha en Inicio — definido (imagen Vallée du Rhône)
+- `object-position` de imagen home — evaluado y confirmado con center
 
 ---
 
 ## ⏳ Pendiente
-
-### Funcionalidad
-- [ ] `changelog.html` — completar con historial real y detallado
-
-### Por definir
-- [ ] Contenido de la columna derecha en Inicio (¿agregar algo debajo de la imagen?)
 
 ### Feature futura
 - [ ] `arbol-matrimonios.html` — revisión completa del árbol genealógico como feature independiente

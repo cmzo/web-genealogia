@@ -383,46 +383,6 @@
             opacity: 0.6;
         }
         
-        .branch-legend {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            z-index: 50;
-            max-width: 300px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #374151;
-        }
-        
-        .legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 2px;
-            border: 1px solid #d1d5db;
-        }
-        
-        .legend-item input[type="checkbox"] {
-            accent-color: #3b82f6;
-            transform: scale(0.9);
-        }
-        
-        .legend-item:hover {
-            background-color: rgba(59, 130, 246, 0.05);
-            border-radius: 4px;
-            padding: 2px 4px;
-            margin: -2px -4px;
-        }
-        
 
     </style>
 </head>
@@ -452,14 +412,6 @@
     <main class="site-main" style="padding: 0 0 80px;">
     <div class="container">
         <div class="tree-container" id="tree-container">
-            <div id="branch-legend" class="branch-legend" style="display: none;">
-                <h4 style="margin: 0 0 10px 0; font-size: 14px; color: #374151;">Filtro de Familias:</h4>
-                <div style="margin-bottom: 8px; display: flex; gap: 4px;">
-                    <button id="show-all-btn" class="filter-btn" style="font-size: 10px; padding: 2px 6px; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer;">Mostrar Todo</button>
-                    <button id="hide-all-btn" class="filter-btn" style="font-size: 10px; padding: 2px 6px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Ocultar Todo</button>
-                </div>
-                <div id="legend-items" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
-            </div>
         </div>
         <div class="zoom-controls">
             <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
@@ -478,7 +430,6 @@
 
     <script>
         // Configuración del Google Sheet (mantenemos la misma)
-        const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
         
         // Variables globales
         let familyData = null;
@@ -487,8 +438,6 @@
         let marriages = new Map();
         let individuals = {};
         let currentUnits = []; // Estado actual de todas las unidades
-        let branchFilters = new Map(); // Estado de los filtros por branch
-        let filteredUnits = []; // Unidades filtradas actualmente visibles
         
         // Colores globales para las tarjetas
         const cardColors = {
@@ -529,213 +478,13 @@
         // Función para obtener el color de una branch
         function getBranchColor(branch) {
             if (!branch || branch.trim() === '') {
-                console.log(`🔍 getBranchColor: branch vacío → usando default: ${branchColors.default}`);
                 return branchColors.default;
             }
             const normalizedBranch = branch.toLowerCase().trim();
             const color = branchColors[normalizedBranch] || branchColors.default;
-            console.log(`🔍 getBranchColor: "${branch}" → "${normalizedBranch}" → ${color}`);
             return color;
         }
-        
-        // Función para crear la leyenda de branches con filtros
-        function createBranchLegend(allUnits) {
-            console.log('🔍 createBranchLegend llamada con', allUnits.length, 'unidades');
-            
-            const legendContainer = document.getElementById('branch-legend');
-            const legendItems = document.getElementById('legend-items');
-            
-            console.log('🔍 Elementos encontrados:', {
-                legendContainer: !!legendContainer,
-                legendItems: !!legendItems
-            });
-            
-            if (!legendContainer || !legendItems) {
-                console.error('❌ No se encontraron elementos de leyenda');
-                return;
-            }
-            
-            // Obtener branches únicas SOLO de unidades que SÍ tienen ascendencia (tienen padres)
-            const uniqueBranches = new Set();
-            allUnits.forEach(unit => {
-                if (unit.type === 'marriage') {
-                    // Solo incluir la rama del cónyuge que REALMENTE tiene ascendencia
-                    if (unit.spouse1.fatherId || unit.spouse1.motherId) {
-                        if (unit.spouse1.branch) uniqueBranches.add(unit.spouse1.branch);
-                    }
-                    if (unit.spouse2.fatherId || unit.spouse2.motherId) {
-                        if (unit.spouse2.branch) uniqueBranches.add(unit.spouse2.branch);
-                    }
-                } else if (unit.type === 'single') {
-                    // Solo incluir la rama si la persona soltera SÍ tiene ascendencia
-                    if (unit.person.fatherId || unit.person.motherId) {
-                        if (unit.person.branch) uniqueBranches.add(unit.person.branch);
-                    }
-                }
-            });
-            
-            // Debug: mostrar qué unidades SÍ tienen ascendencia
-            console.log('🔍 UNIDADES CON ASCENDENCIA (tienen padres):');
-            allUnits.forEach(unit => {
-                if (unit.type === 'marriage') {
-                    const spouse1HasAncestry = unit.spouse1.fatherId || unit.spouse1.motherId;
-                    const spouse2HasAncestry = unit.spouse2.fatherId || unit.spouse2.motherId;
-                    if (spouse1HasAncestry || spouse2HasAncestry) {
-                        console.log(`  💍 ${unit.spouse1.name} (${unit.spouse1.branch}) - Con ascendencia: ${spouse1HasAncestry}`);
-                        console.log(`  💍 ${unit.spouse2.name} (${unit.spouse2.branch}) - Con ascendencia: ${spouse2HasAncestry}`);
-                    }
-                } else if (unit.type === 'single') {
-                    const hasAncestry = unit.person.fatherId || unit.person.motherId;
-                    if (hasAncestry) {
-                        console.log(`  👤 ${unit.person.name} (${unit.person.branch}) - Con ascendencia: ${hasAncestry}`);
-                    }
-                }
-            });
-            
-            console.log('🔍 Branches únicas CON ASCENDENCIA (tienen padres):', Array.from(uniqueBranches));
-            
-            // Limpiar leyenda anterior
-            legendItems.innerHTML = '';
-            
-            // Crear elementos de leyenda con checkboxes
-            Array.from(uniqueBranches).sort().forEach(branch => {
-                const legendItem = document.createElement('div');
-                legendItem.className = 'legend-item';
-                
-                // Checkbox
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = `filter-${branch}`;
-                checkbox.checked = branchFilters.get(branch) !== false; // Por defecto activado
-                checkbox.style.marginRight = '6px';
-                checkbox.style.cursor = 'pointer';
-                
-                // Color box
-                const colorBox = document.createElement('div');
-                colorBox.className = 'legend-color';
-                colorBox.style.backgroundColor = getBranchColor(branch);
-                
-                // Label
-                const label = document.createElement('label');
-                label.htmlFor = `filter-${branch}`;
-                label.textContent = branch.charAt(0).toUpperCase() + branch.slice(1);
-                label.style.cursor = 'pointer';
-                label.style.fontSize = '12px';
-                label.style.color = '#374151';
-                
-                // Event listener para el checkbox
-                checkbox.addEventListener('change', function() {
-                    branchFilters.set(branch, this.checked);
-                    console.log(`🔍 FILTRO ${branch}: ${this.checked ? 'ACTIVADO' : 'DESACTIVADO'}`);
-                    applyBranchFilters();
-                });
-                
-                // Inicializar el filtro
-                branchFilters.set(branch, checkbox.checked);
-                
-                legendItem.appendChild(checkbox);
-                legendItem.appendChild(colorBox);
-                legendItem.appendChild(label);
-                legendItems.appendChild(legendItem);
-                
-                console.log(`✅ Elemento de leyenda creado para ${branch}:`, legendItem);
-            });
-            
-            // Mostrar leyenda si hay branches
-            console.log('🔍 Branches encontradas:', uniqueBranches.size);
-            if (uniqueBranches.size > 0) {
-                legendContainer.style.display = 'block';
-                console.log('✅ Leyenda mostrada');
-                console.log('🔍 Estado de la leyenda:', {
-                    display: legendContainer.style.display,
-                    visibility: legendContainer.style.visibility,
-                    opacity: legendContainer.style.opacity,
-                    zIndex: legendContainer.style.zIndex,
-                    position: legendContainer.style.position
-                });
-                
-                // Verificar que la leyenda esté realmente en el DOM
-                setTimeout(() => {
-                    const legendInDOM = document.getElementById('branch-legend');
-                    console.log('🔍 Leyenda en DOM después de 100ms:', {
-                        exists: !!legendInDOM,
-                        display: legendInDOM?.style.display,
-                        visibility: legendInDOM?.style.visibility,
-                        opacity: legendInDOM?.style.opacity,
-                        zIndex: legendInDOM?.style.zIndex,
-                        position: legendInDOM?.style.position,
-                        children: legendInDOM?.children?.length,
-                        computedStyle: legendInDOM ? window.getComputedStyle(legendInDOM) : null
-                    });
-                    
-                    // Verificar si hay algún elemento que esté cubriendo la leyenda
-                    if (legendInDOM) {
-                        const rect = legendInDOM.getBoundingClientRect();
-                        console.log('🔍 Posición de la leyenda:', {
-                            top: rect.top,
-                            left: rect.left,
-                            width: rect.width,
-                            height: rect.height,
-                            visible: rect.width > 0 && rect.height > 0
-                        });
-                    }
-                }, 100);
-            } else {
-                console.log('⚠️ No hay branches para mostrar en la leyenda');
-            }
-        }
-        
-        // Función para aplicar filtros de branches
-        function applyBranchFilters() {
-            console.log('🔍 Aplicando filtros de branches...');
-            
-            // Filtrar unidades basado en los filtros activos
-            filteredUnits = currentUnits.filter(unit => {
-                if (unit.type === 'marriage') {
-                    const spouse1Branch = unit.spouse1.branch;
-                    const spouse2Branch = unit.spouse2.branch;
-                    
-                    // Mostrar si al menos uno de los cónyuges tiene una branch activa
-                    const spouse1Visible = !spouse1Branch || branchFilters.get(spouse1Branch) !== false;
-                    const spouse2Visible = !spouse2Branch || branchFilters.get(spouse2Branch) !== false;
-                    
-                    return spouse1Visible || spouse2Visible;
-                } else if (unit.type === 'single') {
-                    const personBranch = unit.person.branch;
-                    return !personBranch || branchFilters.get(personBranch) !== false;
-                }
-                return true;
-            });
-            
-            console.log(`📊 Filtros aplicados: ${filteredUnits.length}/${currentUnits.length} unidades visibles`);
-            
-            // Re-renderizar el árbol con las unidades filtradas y posicionadas
-            const positioned = calculateMarriageLayout(filteredUnits);
-            renderTree(positioned);
-        }
-        
-        // Función para mostrar todas las branches
-        function showAllBranches() {
-            console.log('🔍 Mostrando todas las branches...');
-            branchFilters.forEach((value, branch) => {
-                branchFilters.set(branch, true);
-                const checkbox = document.getElementById(`filter-${branch}`);
-                if (checkbox) checkbox.checked = true;
-            });
-            applyBranchFilters();
-        }
-        
-        // Función para ocultar todas las branches
-        function hideAllBranches() {
-            console.log('🔍 Ocultando todas las branches...');
-            branchFilters.forEach((value, branch) => {
-                branchFilters.set(branch, false);
-                const checkbox = document.getElementById(`filter-${branch}`);
-                if (checkbox) checkbox.checked = false;
-            });
-            applyBranchFilters();
-        }
-        
+
         // Configuración del SVG - Espaciado mejorado para conexiones
         const width = 2400; // Aumentado para más matrimonios horizontalmente
         const height = 1800; // Aumentado para más generaciones
@@ -747,71 +496,13 @@
         
         function updateStatus(message) {
             // Función vacía ya que eliminamos el elemento status
-            console.log('Status:', message);
         }
         
-        // Función principal para cargar datos del Google Sheet
+        // Cargar datos desde JSON estático generado en el build
         async function loadData() {
-            try {
-                updateStatus('Cargando datos...');
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
-                const response = await fetch(url);
-                const text = await response.text();
-                
-                const match = text.match(/google\.visualization\.Query\.setResponse\((.+)\);?$/);
-                if (!match) throw new Error('No se encontró JSON válido');
-                
-                const data = JSON.parse(match[1]);
-                if (!data.table || !data.table.rows) throw new Error('Formato inválido');
-                
-                // Procesar filas
-                const rows = data.table.rows.map(row => {
-                    const cells = row.c || [];
-                    
-                    // Debug: mostrar todas las columnas disponibles
-                    if (row === data.table.rows[0]) {
-                        console.log('🔍 COLUMNAS DISPONIBLES en Google Sheet:');
-                        cells.forEach((cell, index) => {
-                            console.log(`  Columna ${index}: "${cell?.v}"`);
-                        });
-                        console.log('🔍 TOTAL DE COLUMNAS:', cells.length);
-                    }
-                    
-                    // Debug: mostrar valores de order para cada fila
-                    const orderValue = cells[13]?.v;
-                    const parsedOrder = parseInt(orderValue) || 0;
-                    if (orderValue !== undefined) {
-                        console.log(`🔍 ROW ${cells[0]?.v}: order raw="${orderValue}" → parsed=${parsedOrder}`);
-                    }
-                    
-                    return {
-                        id: String(cells[0]?.v || '').trim(),
-                        name: String(cells[2]?.v || '').trim(),
-                        birth_date: cells[3]?.v || '',
-                        birth_place: String(cells[4]?.v || '').trim(),
-                        death_date: cells[5]?.v || '',
-                        death_place: String(cells[6]?.v || '').trim(),
-                        spouseId: String(cells[7]?.v || '').trim(),
-                        childrenIds: String(cells[8]?.v || '').trim(),
-                        fatherId: String(cells[9]?.v || '').trim(),
-                        motherId: String(cells[10]?.v || '').trim(),
-                        branch: String(cells[11]?.v || '').trim(),
-                        generation: parseInt(cells[12]?.v) || 0,
-                        order: parseInt(cells[13]?.v) || 0,
-                        vivo: String(cells[15]?.v || '').trim() // Nueva columna 'vivo' (después de tags)
-                    };
-                }).filter(row => row.id && row.name);
-                
-                console.log('📊 Datos cargados:', rows.length, 'personas');
-        
-
-                return rows;
-                
-            } catch (error) {
-                console.error('Error cargando datos:', error);
-                updateStatus('Error cargando datos: ' + error.message);
-                return [];
-            }
+            const response = await fetch('./assets/data/arbol.json');
+            if (!response.ok) throw new Error(`No se pudo cargar arbol.json (${response.status})`);
+            return response.json();
         }
 
         // Construir estructura centrada en matrimonios
@@ -841,7 +532,6 @@
                 };
             });
             
-            console.log('👥 Individuos creados:', Object.keys(individuals).length);
             
             // PASO 2: Crear matrimonios Y personas solteras
             marriages = new Map();
@@ -877,17 +567,14 @@
                 marriages.set(key, marriage);
                 processedIndividuals.add(person.id);
                 processedIndividuals.add(spouse.id);
-                console.log(`💍 Matrimonio: ${person.name} ←→ ${spouse.name}`);
                 
                 // Debug específico para matrimonios importantes
                 if (person.name.includes('Tomas') || spouse.name.includes('Francisca') || 
                     person.name.includes('Jose Roh') || spouse.name.includes('Maria Putallaz')) {
-                    console.log(`  🔍 MATRIMONIO CLAVE: ${key} = ${person.name} (${person.id}) + ${spouse.name} (${spouse.id})`);
                 }
                 
                 // Debug específico para Tomas + Francisca
                 if ((person.id === 'p31' && spouse.id === 'p32') || (person.id === 'p32' && spouse.id === 'p31')) {
-                    console.log(`🎯 MATRIMONIO TOMAS+FRANCISCA CREADO: ${person.name} ←→ ${spouse.name}`);
                 }
             });
             
@@ -909,7 +596,6 @@
                 };
                 
                 singlePeople.set(person.id, singleUnit);
-                console.log(`👤 Persona soltera: ${person.name}`);
             });
             
             // PASO 3: Asignar hijos a matrimonios o padres solteros
@@ -918,7 +604,6 @@
                 
                 // Debug para entender qué está pasando con los matrimonios
                 if (person.name.includes('Celestina Roh')) {
-                    console.log(`🔍 PROCESANDO CELESTINA: ${person.name} busca padres ${person.fatherId} + ${person.motherId}`);
                 }
                 
                 // Buscar si los padres forman un matrimonio
@@ -927,41 +612,19 @@
                     const marriage = marriages.get(marriageKey);
                     
                     if (person.name.includes('Celestina Roh')) {
-                        console.log(`🔍 CELESTINA marriageKey: ${marriageKey}, marriage found:`, marriage ? `${marriage.spouse1.name}+${marriage.spouse2.name}` : 'NO');
                     }
                     
                     if (marriage) {
                         // IMPORTANTE: No agregar a alguien como hijo de su propio matrimonio
                         if (marriage.spouse1.id === person.id || marriage.spouse2.id === person.id) {
-                            console.log(`⚠️ AUTOCONEXIÓN EVITADA: ${person.name} no se agrega como hijo de su propio matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
                             return;
                         }
                         
-                        // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
-                        // if (person.spouseId && individuals[person.spouseId]) {
-                        //     console.log(`💒👶 PERSONA CASADA: ${person.name} (casado/a con ${individuals[person.spouseId].name}) se agrega SOLO como matrimonio hijo de ${marriage.spouse1.name}+${marriage.spouse2.name}`);
-                        //     
-                        //     // Encontrar el matrimonio de esta persona
-                        //     const childMarriageKey = [person.id, person.spouseId].sort().join('::');
-                        //     const childMarriage = marriages.get(childMarriageKey);
-                        //     
-                        //     if (childMarriage) {
-                        //         // Crear relación padre-matrimonio → hijo-matrimonio
-                        //         if (!marriage.childMarriages) marriage.childMarriages = [];
-                        //         marriage.childMarriages.push(childMarriage);
-                        //         childMarriage.parentMarriage = marriage;
-                        //         console.log(`💒➡️💒 CONEXIÓN MATRIMONIO: ${marriage.spouse1.name}+${marriage.spouse2.name} → ${childMarriage.spouse1.name}+${childMarriage.spouse2.name}`);
-                        //     }
-                        //     return; // NO agregar como hijo individual - solo como matrimonio
-                        // }
                         
                         marriage.children.push(person);
-                        console.log(`👶 ${person.name} → ${marriage.spouse1.name} & ${marriage.spouse2.name}`);
                         
                         // Debug específico para problemas
                         if (person.name.includes('Celestina Roh') || person.name.includes('Emiliana')) {
-                            console.log(`  🔍 DEBUG: ${person.name} asignado a matrimonio ${marriage.spouse1.name}+${marriage.spouse2.name}`);
-                            console.log(`  🔍 Datos: padre=${person.fatherId}, madre=${person.motherId}, marriageKey=${marriageKey}`);
                         }
                         return;
                     }
@@ -972,7 +635,6 @@
                 const parentSingle = singlePeople.get(parentId);
                 if (parentSingle) {
                     parentSingle.children.push(person);
-                    console.log(`👶 ${person.name} → ${parentSingle.person.name} (padre/madre soltera)`);
                 }
             });
             
@@ -981,16 +643,12 @@
             marriages.forEach(marriage => allUnits.push(marriage));
             singlePeople.forEach(single => allUnits.push(single));
             
-            console.log('💒 Matrimonios procesados:', marriages.size);
-            console.log('👤 Personas solteras procesadas:', singlePeople.size);
-            console.log('🏗️ Total unidades:', allUnits.length);
             
             return allUnits;
         }
         
         // Calcular layout simétrico con posicionamiento inteligente de hijos
         function calculateMarriageLayout(marriageArray) {
-            console.log('🎯 INICIO calculateMarriageLayout para', marriageArray.length, 'unidades');
             updateStatus('Calculando posiciones...');
             
             // NUEVO: Agrupar unidades por generación del Google Sheet
@@ -1004,12 +662,10 @@
                     // Para matrimonios, usar el order del primer cónyuge (o el mayor si son diferentes)
                     order = Math.max(unit.spouse1.order || 0, unit.spouse2.order || 0);
                     
-                    console.log(`🔍 MATRIMONIO ${unit.spouse1.name}+${unit.spouse2.name} - Order: ${order}, Gen: ${generation}`);
                 } else if (unit.type === 'single') {
                     generation = unit.person.generation;
                     order = unit.person.order || 0;
                     
-                    console.log(`🔍 SOLTERO ${unit.person.name} - Order: ${order}, Gen: ${generation}`);
                 }
                 
                 if (!unitsByGeneration.has(generation)) {
@@ -1021,7 +677,6 @@
             // Ordenar generaciones de mayor a menor (6, 5, 4, 3, 2, 1)
             const sortedGenerations = Array.from(unitsByGeneration.keys()).sort((a, b) => b - a);
             
-            console.log(`🌳 Generaciones: ${sortedGenerations.join(', ')}`);
             
             // Posicionar generación por generación
             let currentY = 100;
@@ -1031,19 +686,9 @@
                 if (unitsWithOrder.length === 0) return;
                 
                 // Ordenar unidades por 'order' dentro de esta generación
-                console.log(`🔍 ANTES del ordenamiento - Generación Y=${y}:`, unitsWithOrder.map(u => ({
-                    name: u.unit.type === 'marriage' ? `${u.unit.spouse1.name}+${u.unit.spouse2.name}` : u.unit.person.name,
-                    order: u.order,
-                    orderType: typeof u.order
-                })));
                 
                 unitsWithOrder.sort((a, b) => a.order - b.order);
                 
-                console.log(`🔍 DESPUÉS del ordenamiento - Generación Y=${y}:`, unitsWithOrder.map(u => ({
-                    name: u.unit.type === 'marriage' ? `${u.unit.spouse1.name}+${u.unit.spouse2.name}` : u.unit.person.name,
-                    order: u.order,
-                    orderType: typeof u.order
-                })));
                 
                 // Calcular ancho total necesario para esta generación
                 const totalWidth = unitsWithOrder.length * marriageSpacing;
@@ -1070,7 +715,6 @@
                     }
                 });
                 
-                // ELIMINADO: Posicionamiento de hijos (ahora se hace por generaciones)
                 // Los hijos se posicionarán automáticamente en sus respectivas generaciones
             }
             
@@ -1079,11 +723,6 @@
                 const generationUnits = unitsByGeneration.get(generation);
                 const y = 100 + (genIndex * generationSpacing);
                 
-                console.log(`🎯 POSICIONANDO GENERACIÓN ${generation} en Y=${y}`);
-                console.log(`📊 Unidades en generación ${generation}:`, generationUnits.map(u => ({
-                    name: u.unit.type === 'marriage' ? `${u.unit.spouse1.name}+${u.unit.spouse2.name}` : u.unit.person.name,
-                    order: u.order
-                })));
                 positionLevel(generationUnits, y);
                 currentY = y + generationSpacing;
             });
@@ -1129,10 +768,8 @@
             renderParentChildConnections(g, marriageArray);
             
             // La leyenda se crea en init(), no aquí
-            console.log('🔍 RenderTree: branchFilters.size:', branchFilters.size);
             
             // Debug: mostrar todas las branches disponibles
-            console.log('🔍 BRANCHES DISPONIBLES:');
             const allBranches = new Set();
             marriageArray.forEach(unit => {
                 if (unit.type === 'marriage') {
@@ -1142,7 +779,6 @@
                     if (unit.person.branch) allBranches.add(unit.person.branch);
                 }
             });
-            console.log('📋 Branches encontradas:', Array.from(allBranches).sort());
             
             // Actualizar estadísticas
 
@@ -1196,7 +832,6 @@
             
             // Usar colores globales definidos arriba
             
-            // ELIMINADO: Sombra de la tarjeta para un diseño más limpio
             
             // Tarjeta principal
             personGroup.append('rect')
@@ -1323,12 +958,6 @@
             }
             
             // DEBUG: Log de fechas para entender qué datos llegan
-            console.log(`🔍 DEBUG FECHAS para ${person.name}:`, {
-                birthDate: person.birthDate,
-                deathDate: person.deathDate,
-                birthDateType: typeof person.birthDate,
-                deathDateType: typeof person.deathDate
-            });
             
             // Fechas de nacimiento y defunción (optimizado)
             const getYear = (dateStr) => {
@@ -1339,7 +968,7 @@
                     
                     // Si es formato "Date(year,month,day)"
                     if (dateStr.includes('Date(')) {
-                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
                         if (match) {
                             const [, year, month, day] = match;
                             date = new Date(parseInt(year), parseInt(month), parseInt(day));
@@ -1359,20 +988,15 @@
             const birthYear = getYear(person.birthDate);
             const deathYear = getYear(person.deathDate);
             
-            console.log(`📅 AÑOS CALCULADOS para ${person.name}:`, { birthYear, deathYear });
             
-            // ELIMINADO: Años principales que se superponen con la ciudad
             // Los años ya se muestran en la sección "FECHAS" abajo
             
-            // ELIMINADO: Línea divisoria antigua y sección "FECHAS"
             // Ahora la línea solo separa el nombre, y las fechas van directamente
             
             // Fechas detalladas (formato corregido)
             const formatDate = (dateStr) => {
-                console.log(`🔧 formatDate recibió: "${dateStr}" (tipo: ${typeof dateStr})`);
                 
                 if (!dateStr || dateStr === 'NaN') {
-                    console.log(`❌ Fecha vacía o NaN: ${dateStr}`);
                     return '?';
                 }
                 
@@ -1381,24 +1005,20 @@
                     
                     // Si es formato "Date(year,month,day)"
                     if (dateStr.includes('Date(')) {
-                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)\)/);
+                        const match = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
                         if (match) {
                             const [, year, month, day] = match;
                             // Los meses en JavaScript van de 0-11, así que restamos 1
                             date = new Date(parseInt(year), parseInt(month), parseInt(day));
-                            console.log(`📅 Date parseado de Date():`, date);
                         } else {
-                            console.log(`❌ Formato Date() inválido: ${dateStr}`);
                             return '?';
                         }
                     } else {
                         // Fecha normal
                         date = new Date(dateStr);
-                        console.log(`📅 Date creado:`, date);
                     }
                     
                     if (isNaN(date.getTime())) {
-                        console.log(`❌ Fecha inválida: ${dateStr}`);
                         return '?';
                     }
                     
@@ -1407,10 +1027,8 @@
                         month: '2-digit', 
                         year: 'numeric' 
                     });
-                    console.log(`✅ Fecha formateada: ${formatted}`);
                     return formatted;
                 } catch (e) {
-                    console.log(`❌ Error formateando fecha:`, e);
                     return '?';
                 }
             };
@@ -1418,7 +1036,6 @@
             const birthDate = formatDate(person.birthDate);
             const deathDate = formatDate(person.deathDate);
             
-            console.log(`📋 FECHAS FINALES para ${person.name}:`, { birthDate, deathDate });
             
             // Calcular posición Y de las fechas después del lugar
             const datesY = locationY + 18; // 18px después del lugar (menos espacio)
@@ -1460,7 +1077,6 @@
             // ID de la persona eliminado (no se muestra)
             
             // Indicador de estado (vivo/fallecido) con color basado en columna 'vivo'
-            console.log(`🔍 ${person.name}: vivo="${person.vivo}" (tipo: ${typeof person.vivo})`);
             const isAlive = person.vivo === 'si';
             personGroup.append('circle')
                 .attr('cx', -cardWidth/2 + 12)
@@ -1471,7 +1087,6 @@
         
         // Función para renderizar conexiones padre-hijo (estilo árbol genealógico)
         function renderParentChildConnections(container, allUnits) {
-            console.log(`🔍 renderParentChildConnections: procesando ${allUnits.length} unidades`);
             
             allUnits.forEach(unit => {
                 const hasChildren = (unit.children && unit.children.length > 0);
@@ -1526,27 +1141,7 @@
                     return null;
                 }).filter(Boolean);
                 
-                // ELIMINADO: Lógica de matrimonios hijos - solo usar conexiones padre-hijo individuales
                 const childMarriagePositions = [];
-                // (unit.childMarriages || []).forEach(childMarriage => {
-                //     console.log(`🔍 Matrimonio hijo encontrado: ${childMarriage.spouse1.name}+${childMarriage.spouse2.name} en (${childMarriage.x}, ${childMarriage.y})`);
-                //     
-                //     // Crear conexión individual a cada cónyuge
-                //     childMarriagePositions.push({ 
-                //         x: childMarriage.spouse1.x, 
-                //         y: childMarriage.spouse1.y, 
-                //         name: childMarriage.spouse1.name,
-                //         isSpouse: true,
-                //         spouseIndex: 1
-                //     });
-                //     childMarriagePositions.push({ 
-                //         x: childMarriage.spouse2.x, 
-                //         y: childMarriage.spouse2.y, 
-                //         name: childMarriage.spouse2.name,
-                //         isSpouse: true,
-                //         spouseIndex: 2
-                //     });
-                // });
                 
                 // Combinar todas las posiciones de hijos
                 const allChildPositions = [...childPositions, ...childMarriagePositions];
@@ -1571,11 +1166,9 @@
                         
                         // Debug específico para Emiliana
                         if (child.name.includes('Emiliana') || unit.spouse1.name.includes('Emiliana') || unit.spouse2.name.includes('Emiliana')) {
-                            console.log(`🔍 VERIFICANDO AUTOCONEXIÓN: child="${child.name}", spouse1="${unit.spouse1.name}", spouse2="${unit.spouse2.name}", isSpouse=${isSpouse}, isFromChildMarriage=${isFromChildMarriage}`);
                         }
                         
                         if (isSpouse && !isFromChildMarriage) {
-                            console.log(`⚠️ AUTOCONEXIÓN EVITADA EN RENDERIZADO: ${child.name} es parte del matrimonio ${unit.spouse1.name}+${unit.spouse2.name}`);
                             return false;
                         }
                         return true;
@@ -1583,17 +1176,13 @@
                 }
                 
                 if (validChildren.length === 0) {
-                    console.log(`⚠️ ${unit.type === 'marriage' ? unit.spouse1.name : unit.person.name}: No hay hijos válidos debajo`);
                     return;
                 }
-                console.log(`🔍 Conectando desde Y=${unit.y} hacia hijos en Y=${validChildren.map(c => c.y).join(',')}`);
                 const childPositionsFiltered = validChildren;
                 
                 // Debug: mostrar información detallada de la unidad padre y sus hijos
                 const parentName = unit.type === 'marriage' ? `${unit.spouse1.name}+${unit.spouse2.name}` : unit.person.name;
-                console.log(`🌳 Padre: ${parentName} tiene ${childPositionsFiltered.length} hijos:`);
                 childPositionsFiltered.forEach((child, i) => {
-                    console.log(`  ${i+1}. ${child.name} en (${child.x}, ${child.y}) - Branch: ${child.branch}`);
                 });
                 
                 // Conexiones directas e individuales desde el círculo de colapso hasta cada hijo
@@ -1604,7 +1193,6 @@
                     const lineColor = getBranchColor(child.branch);
                     
                     // Debug: mostrar información de la línea que se está dibujando
-                    console.log(`🎨 DIBUJANDO LÍNEA: ${child.name} (branch: "${child.branch}") → color: ${lineColor}`);
                     
                     // Línea vertical corta desde el círculo de colapso
                     const shortVerticalLength = 30;
@@ -1620,7 +1208,6 @@
                         .style('stroke-width', '2.5')
                         .style('stroke-linecap', 'round');
                     
-                    console.log(`✅ LÍNEA 1 CREADA: ${child.name} - color: ${lineColor} - desde (${unit.x}, ${collapseCircleY}) hasta (${unit.x}, ${branchPointY})`);
                     
                     // Línea diagonal recta hasta el punto arriba del hijo
                     const childTopY = child.y - cardHeight/2 - standardChildConnectionLength;
@@ -1649,9 +1236,7 @@
                 
                 // Log apropiado según el tipo de unidad
                 if (unit.type === 'marriage') {
-                    console.log(`🌳 Conexiones desde ${unit.spouse1.name}+${unit.spouse2.name} a ${childPositionsFiltered.length} hijos válidos`);
                 } else {
-                    console.log(`🌳 Conexiones desde ${unit.person.name} (soltero/a) a ${childPositionsFiltered.length} hijos válidos`);
                 }
             });
         }
@@ -1679,23 +1264,6 @@
                 if (rawData.length === 0) return;
                 
                 currentUnits = buildMarriageStructure(rawData);
-                
-                // Debug: verificar que las unidades tengan branches
-                console.log('🔍 Verificando branches en currentUnits...');
-                currentUnits.forEach((unit, index) => {
-                    if (unit.type === 'marriage') {
-                        console.log(`  ${index}: Matrimonio ${unit.spouse1.name} (${unit.spouse1.branch}) + ${unit.spouse2.name} (${unit.spouse2.branch})`);
-                    } else if (unit.type === 'single') {
-                        console.log(`  ${index}: Soltero ${unit.person.name} (${unit.person.branch})`);
-                    }
-                });
-                
-                // Inicializar filtros (todas las branches activadas por defecto)
-                filteredUnits = [...currentUnits];
-                
-                // Crear la leyenda ANTES de renderizar el árbol
-                console.log('🔍 Creando leyenda en init()...');
-                createBranchLegend(currentUnits);
                 
                 const positionedMarriages = calculateMarriageLayout(currentUnits);
                 renderTree(positionedMarriages);
@@ -1745,25 +1313,12 @@
             if (zoomInBtn) zoomInBtn.addEventListener('click', zoomIn);
             if (zoomOutBtn) zoomOutBtn.addEventListener('click', zoomOut);
             
-            // Configurar botones de filtro (se configurarán después de que se carguen los datos)
-            setTimeout(() => {
-                const showAllBtn = document.getElementById('show-all-btn');
-                const hideAllBtn = document.getElementById('hide-all-btn');
-                
-                        if (showAllBtn) showAllBtn.addEventListener('click', showAllBranches);
-        if (hideAllBtn) hideAllBtn.addEventListener('click', hideAllBranches);
-            }, 1000);
-            
             // Actualizar fecha de edición
             const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
             const now = new Date();
             const dateStr = `13 de ${months[now.getMonth()]} de ${now.getFullYear()}`;
-            const metaEdition = document.getElementById('meta-edition');
-            if (metaEdition) metaEdition.textContent = `Publicado 13 de agosto de 2025 · Última edición ${dateStr}`;
             
             // Actualizar fuente de datos
-            const dataSourceHeader = document.getElementById('dataSourceHeader');
-            if (dataSourceHeader) dataSourceHeader.textContent = 'Carga de datos: desde Google Sheets';
         });
     </script>
 </body>
