@@ -1,5 +1,5 @@
 ---
-title: "Agenda de investigación genealógica"
+title: "Agenda de investigación genealógica con Claude AI"
 kicker: "Vacíos, errores y próximos pasos"
 description: "Estado actual de la investigación: qué falta, qué parece irrecuperable, y qué líneas concretas quedan por explorar en Suiza y Argentina."
 image: ""
@@ -21,6 +21,75 @@ aside: |
 ---
 
 ![Claude AI](../../assets/images/posts/Claude.webp)
+
+Estos últimos días estuve estudiando distintos temas relacionados on IA y machine learning y, como no podía ser de otra manera, terminé aplicando/probando cosas que vi en mi página web.  Así que usé Claude, el agente de Anthropic, para rediseñar el front end y también para limpiar, depurar y rediseñar el código usando un patrón de diseño.
+Para todo esto la IA demuestra una y otra vez que es una herramienta de lo más potente... y para la genealogía?
+No es la primera vez que uso IA para asistirme con mi investigación, de hecho, usé mucho ChatGPT la IA de OpenAI. Me impresionó como paleólogo (con un prompt específico) traduciendo a la perfección una carta manuscrita que tengo (se puede ver en [esta](https://cmzo.github.io/web-genealogia/dist/blog/linea-de-tiempo-de-francisco.html) entrada), de hecho, la traducción de esa carta me destrabó la investigación completamente. Tal vez podría haber llegado al mismo resultado sin IA, pero me hubiese costado tiempo o dinero.
+También hizo de asistente, para redactar cosas, hacer checklist, para darme ideas o aclararme algunas cosas. Y decidí hacer lo mismo con Claude, más abajo está el resultado
+
+
+> [!WARNING] Alucinaciones
+> Claude te lo dice apenas lo abris: no me creas todo
+> Y tiene razón, a continuación  una lista de sus alucinaciones (mentiras e inventos) o puntos donde hizo lo que quiso, a pesar de tener datos concretos.
+>
+
+## Alucinaciones
+
+> **Généalogies vaudoises et valaisannes** — algunas bases de datos de aficionados locales indexan apellidos vallesanos raros. Los Clemenzoz/Clemenzo son lo suficientemente poco comunes como para que alguien los haya trabajado antes.
+
+Al pedirle algún link, Claude me dijo: No, no tengo un link verificado para eso. Lo escribí como una categoría de recursos ("bases de datos de aficionados") sin tener una URL concreta en mente. Es el mismo problema que HISREG y el registro de colonos — lo presenté con más certeza de la que tenía.
+
+> **HISREG** — registro histórico suizo de communes, útil para entender migraciones internas (de Ardon a Riddes, que parece haber ocurrido entre generaciones).
+
+No existe el HISREG ni ningún registro historico de communes (?). Cuando increpé a Claude me dijo: "Me lo inventé todito"
+
+> **Portal de la Colonia San José** — el Museo Histórico de la Colonia tiene un registro de colonos digitalizado parcialmente. Dado el contexto (libros sobre la colonia ya consultados), es probable que esto ya se revisó, pero los registros de tierras asignadas pueden dar fechas de llegada.
+
+Otro invento absoluto, el Museo Histórico de la Colonia San José existe pero no tiene ningún portal ni registro digitalizado de los colonos.
+Cuando le pregunté a Claude me dijo con cara de piedra: Si, me lo inventé.
+Lo que si tiene el Museo son redes sociales:
+- [Facebook](https://www.facebook.com/museohistorico.sanjose/?locale=es_ES)
+- [Instagram](https://www.instagram.com/museohist.sanjose/)
+
+Puedo decir con certeza que se inventó todos los, según sus palabras: **recursos online específicos**
+
+> **José Clemenzo** (p28) — 1856, Riddes → 1899, Colonia Yerúa.
+Hermano de François, murió joven (~43 años). No hay esposa ni hijos registrados. Las causas de muerte en Colonia Yerúa a fines del siglo XIX incluyen frecuentemente fiebre tifoidea o accidentes rurales. El acta de defunción en el Registro Civil de Concordia (1899) debería existir.
+
+Fiebre tifoidea o accidentes rurales: a saber de donde sacó esta información.
+
+Las que siguen no se si son alucinaciones pero es Claude siendo vago y rebelde:
+
+> **José Clemenzo** (p28) — 1856, Riddes → 1899, Colonia Yerúa.
+Hermano de François, murió joven (~43 años). No hay esposa ni hijos registrados. Las causas de muerte en Colonia Yerúa a fines del siglo XIX incluyen frecuentemente fiebre tifoidea o accidentes rurales. El acta de defunción en el Registro Civil de Concordia (1899) debería existir.
+
+En este caso, Claude con acceso a una base de datos con fecha exacta de nacimiento y defunción decidió que la edad es aproximada (~43 años) y que el acta debería existir.
+
+> **Pedro** (p22), **Francisca** (p23), **Celestina** (p25), **María Luisa** (p29), **Carlota Julia** (p30) — hijos de François y Celestina.
+Todos nacidos en Entre Ríos, con lugar de nacimiento vago o sin fecha. Las actas de nacimiento del Registro Civil de Concordia y Concepción del Uruguay para el período 1880–1900 deberían cubrir varios de estos casos.
+
+Acá un caso parecido, si bien tiene razón en los 3 primeros decidió meter a Maria Luisa y Carlota en la misma bolsa y las dos tienen actas de nacimiento y de defunción.
+
+## Hizo todo mal Claude?
+
+- No, al principio del archivo encontró dos inconsistencias que yo no había notado.
+- Me hizo ver que no cargué los hijos de Etienne
+
+## Para probar próximamente
+
+> **Contexto histórico.** La emigración vallesana a Argentina se intensificó entre 1850 y 1890, impulsada por crisis agrícolas y el proyecto de colonización de Entre Ríos. Un prompt bien armado sobre el contexto específico del Bas-Valais en 1855–1875 puede ayudar a entender qué documentos esperarías encontrar y cuáles probablemente no sobrevivieron.
+
+Así que le pedí un ejemplo de prompt bien armado y me dió esto:
+
+>   Estoy investigando la emigración de una familia del cantón Valais (Suiza) a la provincia de Entre Ríos, Argentina, entre aproximadamente 1870 y 1885. La familia
+  proviene de las communes de Riddes y Ardon, en el Bas-Valais romand. Tengo los nombres y fechas de nacimiento de tres hermanos varones nacidos entre 1856 y 1862.
+  >Necesito entender:
+  1. Qué documentos administrativos generaba una emigración desde Valais en ese período — permisos, pasaportes internos, registros de salida — y dónde se conservan hoy.
+  2. . El registro civil suizo comienza en 1876. Para nacimientos anteriores a esa fecha en parroquias rurales del Bas-Valais, ¿qué tan completos suelen ser los registros parroquiales que sobrevivieron? ¿Hay pérdidas documentales conocidas en Riddes o Ardon en el siglo XIX?
+3. ¿Qué crisis económicas o agrícolas específicas del Valais en las décadas de 1860–1880 podrían haber motivado la emigración de familias campesinas de esa zona?
+4. ¿Existían redes o cadenas migratorias conocidas entre el Bas-Valais y las colonias suizas de Entre Ríos (Colonia San José, fundada 1857)?
+
+--- De aquí para abajo es obra de la IA ---
 
 
 ## Errores de datos a corregir
