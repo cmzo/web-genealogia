@@ -1,5 +1,22 @@
 [
   {
+    "id": "agenda-investigacion",
+    "title": "Agenda de investigación genealógica",
+    "description": "Estado actual de la investigación: qué falta, qué parece irrecuperable, y qué líneas concretas quedan por explorar en Suiza y Argentina.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "investigación",
+    "date": "2026-04-29",
+    "tags": [
+      "Clemenzo",
+      "Valais",
+      "Entre Ríos",
+      "metodología",
+      "fuentes"
+    ],
+    "featured": false,
+    "url": "dist/blog/agenda-investigacion.html"
+  },
+  {
     "id": "documentar-fuentes",
     "title": "Ideas para documentar bien las fuentes",
     "description": "Un vistazo al método con el que registro las fuentes, registros y documentos hoy en día”",
