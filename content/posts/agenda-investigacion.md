@@ -81,15 +81,15 @@ Acá un caso parecido, si bien tiene razón en los 3 primeros decidió meter a M
 
 Así que le pedí un ejemplo de prompt bien armado y me dió esto:
 
->   Estoy investigando la emigración de una familia del cantón Valais (Suiza) a la provincia de Entre Ríos, Argentina, entre aproximadamente 1870 y 1885. La familia
+  Estoy investigando la emigración de una familia del cantón Valais (Suiza) a la provincia de Entre Ríos, Argentina, entre aproximadamente 1870 y 1885. La familia
   proviene de las communes de Riddes y Ardon, en el Bas-Valais romand. Tengo los nombres y fechas de nacimiento de tres hermanos varones nacidos entre 1856 y 1862.
-  >Necesito entender:
+  Necesito entender:
   1. Qué documentos administrativos generaba una emigración desde Valais en ese período — permisos, pasaportes internos, registros de salida — y dónde se conservan hoy.
   2. . El registro civil suizo comienza en 1876. Para nacimientos anteriores a esa fecha en parroquias rurales del Bas-Valais, ¿qué tan completos suelen ser los registros parroquiales que sobrevivieron? ¿Hay pérdidas documentales conocidas en Riddes o Ardon en el siglo XIX?
-3. ¿Qué crisis económicas o agrícolas específicas del Valais en las décadas de 1860–1880 podrían haber motivado la emigración de familias campesinas de esa zona?
-4. ¿Existían redes o cadenas migratorias conocidas entre el Bas-Valais y las colonias suizas de Entre Ríos (Colonia San José, fundada 1857)?
+  3. ¿Qué crisis económicas o agrícolas específicas del Valais en las décadas de 1860–1880 podrían haber motivado la emigración de familias campesinas de esa zona?
+  4. ¿Existían redes o cadenas migratorias conocidas entre el Bas-Valais y las colonias suizas de Entre Ríos (Colonia San José, fundada 1857)?
 
---- De aquí para abajo es obra de la IA ---
+--- **De aquí para abajo es obra de la IA** ---
 
 
 ## Errores de datos a corregir
