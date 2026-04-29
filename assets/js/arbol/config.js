@@ -6,6 +6,8 @@ export const CONFIG = {
   marriageSpacing: 500,
   generationSpacing: 400,
   spouseGap: 25,
+  curvedConnections: true, // false = 3 líneas rectas (comportamiento anterior)
+  modernCards: true,       // false = tarjetas originales con rx:20 y avatar
 };
 
 export const cardColors = {

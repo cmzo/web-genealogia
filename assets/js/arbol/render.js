@@ -70,7 +70,9 @@ function renderMarriage(container, marriage) {
     .style('opacity', '0.9');
 
   [marriage.spouse1, marriage.spouse2].forEach(spouse =>
-    renderPersonCard(g, spouse, marriage.x, marriage.y)
+    CONFIG.modernCards
+      ? renderPersonCardModern(g, spouse, marriage.x, marriage.y)
+      : renderPersonCard(g, spouse, marriage.x, marriage.y)
   );
 }
 
@@ -78,7 +80,9 @@ function renderSinglePerson(container, singleUnit) {
   const g = container.append('g')
     .attr('class', 'single-unit')
     .attr('transform', `translate(${singleUnit.x}, ${singleUnit.y})`);
-  renderPersonCard(g, singleUnit.person, singleUnit.x, singleUnit.y);
+  CONFIG.modernCards
+    ? renderPersonCardModern(g, singleUnit.person, singleUnit.x, singleUnit.y)
+    : renderPersonCard(g, singleUnit.person, singleUnit.x, singleUnit.y);
 }
 
 function renderPersonCard(container, person, baseX, baseY) {
@@ -162,6 +166,109 @@ function renderPersonCard(container, person, baseX, baseY) {
   g.append('circle')
     .attr('cx', -cardWidth / 2 + 12).attr('cy', -cardHeight / 2 + 12).attr('r', 4)
     .style('fill', person.vivo === 'si' ? '#10b981' : '#ef4444');
+}
+
+function renderPersonCardModern(container, person, baseX, baseY) {
+  const { cardWidth, cardHeight } = CONFIG;
+  const branchColor = getBranchColor(person.branch);
+
+  const g = container.append('g')
+    .attr('data-person-id', person.id)
+    .attr('transform', `translate(${person.x - baseX}, ${person.y - baseY})`);
+
+  // Fondo blanco, sin bordes redondeados
+  g.append('rect')
+    .attr('x', -cardWidth / 2).attr('y', -cardHeight / 2)
+    .attr('width', cardWidth).attr('height', cardHeight)
+    .attr('rx', 0)
+    .style('fill', 'white')
+    .style('stroke', '#e5e7eb')
+    .style('stroke-width', '1.5')
+    .style('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.07))');
+
+  // Franja de color de rama
+  g.append('rect')
+    .attr('x', -cardWidth / 2).attr('y', -cardHeight / 2)
+    .attr('width', cardWidth).attr('height', 6)
+    .style('fill', branchColor);
+
+  // Nombre: 11px fijo, máximo 2 líneas, sin medición DOM
+  const nameLines = wrapNameSimple(person.name, cardWidth - 20, 2);
+  const nameStartY = -cardHeight / 2 + 28;
+  nameLines.forEach((line, i) => {
+    g.append('text')
+      .attr('x', 0).attr('y', nameStartY + i * 14)
+      .style('font-size', '11px').style('font-weight', '600')
+      .style('fill', '#111827').style('text-anchor', 'middle')
+      .text(line);
+  });
+
+  // Separador
+  const dividerY = -cardHeight / 2 + 56;
+  g.append('line')
+    .attr('x1', -cardWidth / 2 + 10).attr('y1', dividerY)
+    .attr('x2',  cardWidth / 2 - 10).attr('y2', dividerY)
+    .style('stroke', '#f3f4f6').style('stroke-width', '1');
+
+  // Info: lugar, fechas
+  let infoY = dividerY + 14;
+
+  if (person.birthPlace) {
+    const place = person.birthPlace.length > 17
+      ? person.birthPlace.substring(0, 15) + '…'
+      : person.birthPlace;
+    g.append('text')
+      .attr('x', 0).attr('y', infoY)
+      .style('font-size', '9px').style('fill', '#6b7280')
+      .style('text-anchor', 'middle')
+      .text('📍 ' + place.toUpperCase());
+    infoY += 16;
+  }
+
+  g.append('text')
+    .attr('x', 0).attr('y', infoY)
+    .style('font-size', '9px').style('fill', '#9ca3af')
+    .style('text-anchor', 'middle')
+    .text('🌱 ' + formatDate(person.birthDate));
+
+  g.append('text')
+    .attr('x', 0).attr('y', infoY + 16)
+    .style('font-size', '9px').style('fill', '#9ca3af')
+    .style('text-anchor', 'middle')
+    .text('🕊 ' + formatDate(person.deathDate));
+
+  // Indicador vivo/fallecido — esquina inferior derecha
+  g.append('circle')
+    .attr('cx', cardWidth / 2 - 10).attr('cy', cardHeight / 2 - 10).attr('r', 4)
+    .style('fill', person.vivo === 'si' ? '#10b981' : '#ef4444');
+}
+
+// Estimación de ancho sin DOM: Inter 11px ≈ 6.2px por caracter
+function wrapNameSimple(name, maxPx, maxLines) {
+  const charsPerLine = Math.floor(maxPx / 6.2);
+  const words = name.split(' ');
+  const lines = [];
+  let current = '';
+
+  for (const word of words) {
+    const test = current ? current + ' ' + word : word;
+    if (test.length <= charsPerLine) {
+      current = test;
+    } else {
+      if (current) lines.push(current);
+      if (lines.length >= maxLines) { current = ''; break; }
+      current = word;
+    }
+  }
+  if (current && lines.length < maxLines) lines.push(current);
+
+  // Truncar última línea si excede
+  const last = lines[lines.length - 1];
+  if (last && last.length > charsPerLine) {
+    lines[lines.length - 1] = last.substring(0, charsPerLine - 1) + '…';
+  }
+
+  return lines;
 }
 
 function fitName(container, name, cardWidth) {
@@ -249,27 +356,44 @@ function renderParentChildConnections(container, allUnits) {
     const collapseCircleY = unit.y + 70;
     const branchPointY = collapseCircleY + 30;
 
-    validChildren.forEach(child => {
-      const color = getBranchColor(child.branch);
-      const childTopY = child.y - cardHeight / 2 - 60;
+    if (CONFIG.curvedConnections) {
+      const curve = d3.linkVertical().x(d => d.x).y(d => d.y);
+      validChildren.forEach(child => {
+        container.append('path')
+          .attr('class', 'parent-child-link')
+          .attr('d', curve({
+            source: { x: unit.x, y: collapseCircleY },
+            target: { x: child.x, y: child.y - cardHeight / 2 },
+          }))
+          .style('stroke', getBranchColor(child.branch))
+          .style('stroke-width', '2.5')
+          .style('fill', 'none')
+          .style('stroke-linecap', 'round');
+      });
+    } else {
+      // Fallback: 3 líneas rectas (vertical → diagonal → vertical)
+      validChildren.forEach(child => {
+        const color = getBranchColor(child.branch);
+        const childTopY = child.y - cardHeight / 2 - 60;
 
-      container.append('line')
-        .attr('class', 'parent-child-link')
-        .attr('x1', unit.x).attr('y1', collapseCircleY)
-        .attr('x2', unit.x).attr('y2', branchPointY)
-        .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
+        container.append('line')
+          .attr('class', 'parent-child-link')
+          .attr('x1', unit.x).attr('y1', collapseCircleY)
+          .attr('x2', unit.x).attr('y2', branchPointY)
+          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
 
-      container.append('line')
-        .attr('class', 'parent-child-link')
-        .attr('x1', unit.x).attr('y1', branchPointY)
-        .attr('x2', child.x).attr('y2', childTopY)
-        .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
+        container.append('line')
+          .attr('class', 'parent-child-link')
+          .attr('x1', unit.x).attr('y1', branchPointY)
+          .attr('x2', child.x).attr('y2', childTopY)
+          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
 
-      container.append('line')
-        .attr('class', 'parent-child-link')
-        .attr('x1', child.x).attr('y1', childTopY)
-        .attr('x2', child.x).attr('y2', child.y - cardHeight / 2)
-        .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
-    });
+        container.append('line')
+          .attr('class', 'parent-child-link')
+          .attr('x1', child.x).attr('y1', childTopY)
+          .attr('x2', child.x).attr('y2', child.y - cardHeight / 2)
+          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
+      });
+    }
   });
 }
