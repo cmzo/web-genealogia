@@ -120,7 +120,11 @@ body {
 
 .sidebar-link.is-active {
   color: var(--text);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15px;
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+  border-radius: 0;
 }
 
 /* ─── MAIN CONTENT ────────────────────────────────────── */
@@ -183,8 +187,6 @@ body {
   object-fit: cover;
   object-position: center;
   display: block;
-  border-radius: 2px;
-  border: 1px solid var(--border);
 }
 
 .home-figure-placeholder {
