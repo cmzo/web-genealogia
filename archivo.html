@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Archivo familiar</title>
+  <title>Archivo · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <style>
     body { background: #fafafa; color: #0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
@@ -280,20 +280,33 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-container">
-      <div class="header-brand">
-        <div class="top-bar">
-          <a class="back-home" href="./index.html" aria-label="Volver al inicio">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-            Inicio
-          </a>
-        </div>
-        <h1 class="site-title">Archivo familiar</h1>
-        <div class="author-meta" id="dataSourceHeader" style="color:#6b7280; font-size:13px;">Carga de datos: —</div>
-      </div>
-    </div>
+
+  <header class="site-nav">
+    <a href="index.html" class="nav-brand">Clemenzo</a>
+    <nav class="nav-actions">
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </nav>
   </header>
+
+  <div class="site-body">
+    <aside class="site-sidebar">
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">Inicio</a>
+        <a href="arbol-matrimonios.html" class="sidebar-link">Árbol</a>
+        <a href="archivo.html" class="sidebar-link is-active">Archivo</a>
+      </nav>
+    </aside>
+
+    <main class="site-main" style="padding: 0 0 80px;">
+      <div style="padding: 28px 28px 0;">
+        <h2 class="article-title" style="margin: 0 0 4px;">Archivo familiar</h2>
+        <div id="dataSourceHeader" style="color: var(--muted); font-size: 13px; margin-bottom: 20px;">Carga de datos: —</div>
+      </div>
 
   <section class="toolbar">
     <div class="toolbar-inner">
@@ -313,7 +326,7 @@
     </div>
   </section>
 
-  <main class="container">
+  <div class="container">
     <div class="table-wrap">
       <table class="table" id="peopleTable" aria-label="Índice de personas">
         <thead>
@@ -328,7 +341,9 @@
         <tbody></tbody>
       </table>
     </div>
-  </main>
+  </div>
+    </main>
+  </div>
 
   <!-- Modal centrado -->
   <div class="person-modal" id="personModal" aria-hidden="true">
@@ -385,14 +400,10 @@
     </div>
   </div>
 
-  <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
-  <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
-    <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
-      <div>Matias Clemenzo</div>
-      <div>2025</div>
-    </div>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <a href="changelog.html" class="footer-changelog-link">Cambios</a>
+  </footer>
 
   <script>
     // Configuración: hoja del archivo familiar

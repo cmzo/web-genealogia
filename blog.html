@@ -6,332 +6,85 @@
   <title>Blog · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
-<body class="article">
-  <main class="article-container">
-    <div class="top-bar">
-      <a class="back-home" href="./index.html" aria-label="Volver al inicio">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-        Inicio
+<body>
+
+  <header class="site-nav">
+    <a href="index.html" class="nav-brand">Clemenzo</a>
+    <nav class="nav-actions">
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
       </a>
-    </div>
+    </nav>
+  </header>
 
-    <header class="article-header">
-      <p class="article-kicker">Todas las entradas del blog</p>
-      <h1 class="article-title">Blog</h1>
-      <div class="article-meta">
-        <div class="author-avatar" aria-hidden="true"><img src="./assets/images/avatars/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
-        <div class="meta-text">
-          <div><strong>Por Matías Clemenzo</strong></div>
-          <div>Investigaciones, historias y memoria familiar</div>
+  <div class="site-body">
+    <aside class="site-sidebar">
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">Inicio</a>
+        <a href="arbol-matrimonios.html" class="sidebar-link">Árbol</a>
+        <a href="archivo.html" class="sidebar-link">Archivo</a>
+      </nav>
+    </aside>
+
+    <main class="site-main">
+      <header class="blog-header">
+        <h1 class="blog-header-title">Blog</h1>
+        <p class="blog-header-subtitle">Investigaciones, historias y memoria familiar</p>
+      </header>
+
+      <section class="blog-grid" id="blogGrid">
+        <div class="loading-cards">
+          <div class="loading-spinner"></div>
+          <p>Cargando posts…</p>
         </div>
-      </div>
-    </header>
+      </section>
+    </main>
+  </div>
 
-    <section class="blog-controls">
-      <div class="search-filter">
-        <input type="search" id="searchInput" placeholder="Buscar posts..." class="search-input">
-        <select id="categoryFilter" class="category-select">
-          <option value="">Todas las categorías</option>
-        </select>
-      </div>
-      <div class="results-info">
-        <span id="resultsCount">Cargando...</span>
-      </div>
-    </section>
-
-    <section class="blog-grid" id="blogGrid">
-      <div class="loading-cards">
-        <div class="loading-spinner"></div>
-        <p>Cargando posts...</p>
-      </div>
-    </section>
-  </main>
-
-  <style>
-    .blog-controls {
-      margin: 32px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    
-    .search-filter {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    
-    .search-input, .category-select {
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      background: var(--surface);
-    }
-    
-    .search-input {
-      min-width: 200px;
-    }
-    
-    .results-info {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-    }
-    
-    .blog-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden; /* Volver a hidden para el contenedor principal */
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-      display: flex !important;
-      flex-direction: column;
-      aspect-ratio: 3 / 4; /* alto > ancho, igual que home */
-      min-height: 432px; /* altura mínima aumentada */
-      position: relative;
-    }
-    
-    .blog-card:hover {
-      border-color: #dfe1e6;
-      transform: translateY(-1px);
-    }
-    
-    .blog-card-image {
-      width: 100%;
-      height: 70%; /* Forzar altura fija del 70% */
-      flex: 0 0 70%; /* 70% imagen, igual que home */
-      object-fit: cover;
-      display: block;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .blog-card-content {
-      padding: 12px 16px;
-      height: 30%; /* Forzar altura fija del 30% */
-      flex: 0 0 30%; /* 30% fijo para el contenido, igual que home */
-      display: flex !important;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      z-index: 2;
-      background: var(--surface);
-      min-height: 0;
-      overflow: hidden; /* Cambiar a hidden para el contenido */
-    }
-    
-    .blog-card-category {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-      flex-shrink: 0;
-    }
-    
-    .blog-card-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      margin: 0 0 4px 0;
-      color: var(--text);
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .blog-card-desc {
-      font-size: 13px;
-      line-height: 1.4;
-      color: var(--muted);
-      margin: 0 0 8px 0;
-      font-family: 'Source Serif 4', Georgia, serif;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      visibility: visible !important;
-      opacity: 1 !important;
-      flex: 1; /* Tomar el espacio disponible */
-    }
-    
-    .blog-card-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: auto;
-      margin-bottom: 0;
-      flex-shrink: 0; /* No encoger */
-    }
-    
-    .blog-card-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      max-width: 60%; /* Limita el ancho para dejar espacio a la fecha */
-    }
-    
-    .blog-card-tag {
-      background: #f3f4f6;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 10px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-    }
-    
-    .no-results {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-    }
-    
-    @media (max-width: 768px) {
-      .blog-controls {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .search-filter {
-        flex-direction: column;
-      }
-      
-      .blog-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <footer class="site-footer">
+    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <a href="changelog.html" class="footer-changelog-link">Cambios</a>
+  </footer>
 
   <script>
-    let allPosts = [];
-    let filteredPosts = [];
-    
     async function loadBlogPosts() {
       try {
-        console.log('Cargando posts del blog...');
         const response = await fetch('./assets/data/blog-entries.json');
-        console.log('Response status:', response.status);
-        allPosts = await response.json();
-        console.log('Posts cargados:', allPosts);
-        filteredPosts = [...allPosts];
-        
-        // Cargar categorías
-        const categories = [...new Set(allPosts.map(post => post.category))];
-        const categorySelect = document.getElementById('categoryFilter');
-        
-        categories.forEach(category => {
-          const option = document.createElement('option');
-          option.value = category;
-          option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-          categorySelect.appendChild(option);
-        });
-        
-        console.log('Renderizando posts...');
-        renderPosts();
-        updateResultsCount();
-        
+        const posts = await response.json();
+        renderPosts(posts);
       } catch (error) {
-        console.error('Error cargando posts:', error);
-        document.getElementById('blogGrid').innerHTML = `
-          <div class="no-results">
-            <p>Error cargando los posts. Intenta recargar la página.</p>
-          </div>
-        `;
+        document.getElementById('blogGrid').innerHTML =
+          '<p class="no-results">Error cargando los posts. Intentá recargar la página.</p>';
       }
     }
-    
-    function renderPosts() {
+
+    function renderPosts(posts) {
       const grid = document.getElementById('blogGrid');
-      
-      if (filteredPosts.length === 0) {
-        grid.innerHTML = `
-          <div class="no-results">
-            <p>No se encontraron posts que coincidan con tu búsqueda.</p>
-          </div>
-        `;
+      if (!posts.length) {
+        grid.innerHTML = '<p class="no-results">No hay posts disponibles.</p>';
         return;
       }
-      
-      grid.innerHTML = filteredPosts.map(post => `
+      grid.innerHTML = posts.map(post => `
         <a href="${post.url}" class="blog-card">
           <img src="${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy" onerror="this.style.display='none'">
           <div class="blog-card-content">
             <div class="blog-card-category">${post.category}</div>
             <h2 class="blog-card-title">${post.title}</h2>
             <p class="blog-card-desc">${post.description}</p>
-            <div class="blog-card-meta">
-              <div class="blog-card-tags">
-                ${post.tags.slice(0, 3).map(tag => `<span class="blog-card-tag">${tag}</span>`).join('')}
-              </div>
-              <span>${post.date}</span>
-            </div>
+            <div class="blog-card-meta">${post.date}</div>
           </div>
         </a>
       `).join('');
     }
-    
-    function updateResultsCount() {
-      const count = document.getElementById('resultsCount');
-      count.textContent = `${filteredPosts.length} post${filteredPosts.length !== 1 ? 's' : ''}`;
-    }
-    
-    function filterPosts() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const categoryFilter = document.getElementById('categoryFilter').value;
-      
-      filteredPosts = allPosts.filter(post => {
-        const matchesSearch = !searchTerm || 
-          post.title.toLowerCase().includes(searchTerm) ||
-          post.description.toLowerCase().includes(searchTerm) ||
-          post.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-        
-        const matchesCategory = !categoryFilter || post.category === categoryFilter;
-        
-        return matchesSearch && matchesCategory;
-      });
-      
-      renderPosts();
-      updateResultsCount();
-    }
-    
-    // Event listeners
-    document.getElementById('searchInput').addEventListener('input', filterPosts);
-    document.getElementById('categoryFilter').addEventListener('change', filterPosts);
-    
-    // Cargar posts al cargar la página
+
     loadBlogPosts();
   </script>
 
-  <!-- Footer -->
-  <footer class="site-footer" style="background: #ffffff; padding: 24px 0; text-align: center; margin-top: 48px;">
-    <div class="footer-container" style="max-width: 1040px; margin: 0 auto; padding: 0 20px;">
-      <div class="footer-text" style="color: #6b7280; font-size: 12px; font-weight: 500; margin: 0; line-height: 1.4;">
-        <div>Matias Clemenzo</div>
-        <div>2025</div>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>
