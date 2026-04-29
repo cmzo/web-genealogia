@@ -395,19 +395,13 @@ function build() {
   // Leer archivos Markdown
   if (fs.existsSync(POSTS_DIR)) {
     const files = fs.readdirSync(POSTS_DIR)
-      .filter(file => file.endsWith('.md'))
-      .sort((a, b) => {
-        // Ordenar por fecha (más reciente primero)
-        const aPath = path.join(POSTS_DIR, a);
-        const bPath = path.join(POSTS_DIR, b);
-        return fs.statSync(bPath).mtime - fs.statSync(aPath).mtime;
-      });
-    
+      .filter(file => file.endsWith('.md'));
+
     console.log(`📁 Archivos Markdown encontrados: ${files.length}`);
     files.forEach(file => {
       console.log(`  - ${file}`);
     });
-    
+
     files.forEach(file => {
       const filePath = path.join(POSTS_DIR, file);
       const entry = processMarkdownFile(filePath);
@@ -415,6 +409,13 @@ function build() {
         blogEntries.push(entry);
         console.log(`  ✅ Procesado: ${entry.title}`);
       }
+    });
+
+    // Ordenar por fecha del front matter (más reciente primero)
+    blogEntries.sort((a, b) => {
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      return new Date(b.date) - new Date(a.date);
     });
   }
   
