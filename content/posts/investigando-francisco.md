@@ -2,8 +2,8 @@
 title: "Investigando a Francisco Clemenzo"
 description: "Un análisis completo del material que tengo sobre Francisco"
 image: "/assets/images/cards/investigando_francisco.webp"
-category: "investigación"
-date: "17-08-2024"
+category: "investigacion"
+date: "2025-08-10"
 tags: "genealogia, investigacion, documentos, registros, suiza, argentina, francia"
 featured: true
 slug: "investigando-francisco"
