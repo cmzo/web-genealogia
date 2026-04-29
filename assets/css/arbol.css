@@ -1,0 +1,111 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+    background: var(--bg);
+    min-height: 100vh;
+}
+
+.tree-container {
+    position: relative;
+    height: 600px;
+    overflow: auto;
+    background: var(--bg);
+}
+
+.zoom-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    pointer-events: auto;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.zoom-btn {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.zoom-btn:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.zoom-btn:active {
+    transform: scale(0.95);
+}
+
+/* SVG tree */
+#tree-container {
+    width: 100%;
+    height: 1200px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    overflow: auto;
+}
+
+svg { z-index: 1; }
+
+.marriage-unit { cursor: pointer; }
+
+.person-card {
+    fill: white;
+    stroke: #d1d5db;
+    stroke-width: 2;
+    rx: 12;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+}
+
+.person-text {
+    font-size: 14px;
+    fill: #374151;
+    text-anchor: middle;
+    font-weight: 500;
+}
+
+.person-text.name {
+    font-size: 14px;
+    font-weight: 600;
+    fill: #111827;
+}
+
+.marriage-link {
+    stroke: #f59e0b;
+    stroke-width: 3;
+}
+
+.parent-child-link {
+    stroke-width: 2;
+    fill: none;
+}
+
+.collapsed { opacity: 0.6; }

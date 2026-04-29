@@ -43,6 +43,12 @@
 
           <div class="changelog-entry">
             <p class="changelog-date">Abril 2026</p>
+            <h2 class="changelog-title">Árbol genealógico: modularización del código</h2>
+            <p class="changelog-desc">El código JavaScript del árbol genealógico fue dividido en cinco módulos ES independientes: config.js (constantes y colores), data.js (carga de datos), structure.js (construcción de matrimonios y vínculos), layout.js (posicionamiento por generación) y render.js (renderizado D3). El CSS específico del árbol fue extraído a su propio archivo. El HTML del árbol quedó en 81 líneas sin código inline.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">Abril 2026</p>
             <h2 class="changelog-title">Árbol genealógico: datos estáticos y limpieza de código</h2>
             <p class="changelog-desc">El árbol genealógico dejó de depender de Google Sheets en tiempo de ejecución. Los datos ahora se generan durante el build y se sirven como un archivo JSON estático, lo que elimina la dependencia de una API no oficial y mejora la velocidad de carga. Se eliminó el panel "Filtro de Familias", el código de debug (83 console.log), los bloques de código muerto y las versiones históricas del árbol. El script de deploy fue reescrito para hacer build + commit + push de forma automática. Los posts del blog ahora se ordenan por fecha del front matter en lugar de fecha de modificación del archivo.</p>
           </div>

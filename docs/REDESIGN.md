@@ -27,6 +27,7 @@ Dirección: **Editorial + Documental mínimo**
 - Deploy: `scripts/update-and-deploy.js` reescrito — hace build + commit + push automático
 
 - `changelog.html` — completado con historial real y detallado
+- `arbol-matrimonios.html` — modularización completa: JS dividido en 5 módulos ES (`assets/js/arbol/`), CSS extraído a `assets/css/arbol.css`, HTML reducido a 81 líneas sin código inline
 - Contenido de la columna derecha en Inicio — definido (imagen Vallée du Rhône)
 - `object-position` de imagen home — evaluado y confirmado con center
 
@@ -35,4 +36,4 @@ Dirección: **Editorial + Documental mínimo**
 ## ⏳ Pendiente
 
 ### Feature futura
-- [ ] `arbol-matrimonios.html` — revisión completa del árbol genealógico como feature independiente
+- [ ] Migración de la capa de datos a Python (base de datos como fuente en lugar de Google Sheets, reemplaza `data.js` y `buildArbolData()` en el build)
