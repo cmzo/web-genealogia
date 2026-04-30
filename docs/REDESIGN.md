@@ -7,10 +7,10 @@ Dirección: **Editorial + Documental mínimo**
 ## ✅ Hecho
 
 - Sistema de diseño nuevo: paleta cálida, Source Serif 4 como tipografía dominante
-- Nav: nombre del sitio (serif) a la izquierda, Blog + ícono GitHub a la derecha
-- Layout dos columnas en todas las páginas: sidebar (Inicio, Árbol, Archivo) + área de contenido
+- Nav: nombre del sitio (serif) a la izquierda, solo ícono GitHub a la derecha (en desktop); en mobile aparecen Inicio, Árbol, Archivo, Blog
+- Layout dos columnas en todas las páginas: sidebar (Inicio, Árbol, Archivo, Blog) + área de contenido
 - Sidebar sticky con indicador de página activa
-- `index.html` — tarjetas eliminadas, imagen histórica de Valais 1890 con pie de foto (ratio 2:1, pie de foto centrado)
+- `index.html` — texto introductorio centrado (epígrafe editorial), panorámica Valle del Ródano, escudos heráldicos de Clemenzo y Ardon, sección "Última entrada" dinámica (fetch de blog-entries.json)
 - `blog.html` — búsqueda y filtro eliminados, cards rediseñadas con nuevo sistema
 - `quien-soy.html` — nuevo layout
 - `francisco.html` — nuevo layout
@@ -29,8 +29,7 @@ Dirección: **Editorial + Documental mínimo**
 - `changelog.html` — completado con historial real y detallado
 - `arbol-matrimonios.html` — modularización completa: JS dividido en 5 módulos ES (`assets/js/arbol/`), CSS extraído a `assets/css/arbol.css`, HTML reducido a 81 líneas sin código inline
 - `blog.html` — tarjetas sin imagen (diseño puramente tipográfico); corregido JSON roto por comillas tipográficas que impedía cargar los posts
-- Contenido de la columna derecha en Inicio — definido (imagen Vallée du Rhône)
-- `object-position` de imagen home — evaluado y confirmado con center
+- Mobile: sidebar oculta en ≤960px, links de navegación integrados al nav superior; footer apilado y centrado en ≤640px
 
 ---
 
