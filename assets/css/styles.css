@@ -985,9 +985,10 @@ body {
 
 @media (max-width: 640px) {
   .site-nav { padding: 0 16px; }
-  .nav-brand { font-size: 15px; }
+  .nav-brand { font-size: 18px; }
   .nav-actions { gap: 16px; }
   .site-main { padding: 24px 16px 48px; }
+  .home-intro { font-size: 13px; line-height: 1.8; }
   .site-footer {
     flex-direction: column;
     align-items: center;
