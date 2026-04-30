@@ -1,7 +1,7 @@
 ---
 title: "Ideas para documentar bien las fuentes"
 description: "Un vistazo al método con el que registro las fuentes, registros y documentos hoy en día”
-image: "/assets/images/cards/a”rchivo_portada.jpg
+image: “assets/images/cards/archivo_portada.jpg”
 category: "investigación"
 date: "2026-01-29"
 tags: "genealogia, investigacion, documentos, registros, archivo"

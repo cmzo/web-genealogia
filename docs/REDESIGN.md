@@ -28,6 +28,7 @@ Dirección: **Editorial + Documental mínimo**
 
 - `changelog.html` — completado con historial real y detallado
 - `arbol-matrimonios.html` — modularización completa: JS dividido en 5 módulos ES (`assets/js/arbol/`), CSS extraído a `assets/css/arbol.css`, HTML reducido a 81 líneas sin código inline
+- `blog.html` — tarjetas sin imagen (diseño puramente tipográfico); corregido JSON roto por comillas tipográficas que impedía cargar los posts
 - Contenido de la columna derecha en Inicio — definido (imagen Vallée du Rhône)
 - `object-position` de imagen home — evaluado y confirmado con center
 
