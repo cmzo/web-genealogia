@@ -46,6 +46,30 @@
 
           <div class="changelog-entry">
             <p class="changelog-date">1 de mayo de 2026</p>
+            <h2 class="changelog-title">Árbol genealógico: nuevo motor de visualización</h2>
+            <p class="changelog-desc">El árbol genealógico ahora usa un motor completamente nuevo basado en <code>d3.hierarchy()</code> y <code>d3.tree()</code>. El pedigree se centra en una persona y muestra tres generaciones hacia arriba y una hacia abajo. Las tarjetas (160×80px) tienen una franja de color por rama familiar, nombre en dos líneas y años de vida. Los conectores entre generaciones son curvas cúbicas de Bezier. Al hacer click en cualquier persona el árbol se recentra con una transición de 600ms. Zoom con Ctrl+scroll y botones +/−.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">1 de mayo de 2026</p>
+            <h2 class="changelog-title">Escudo de Valais agregado al inicio</h2>
+            <p class="changelog-desc">La página de inicio muestra ahora tres escudos heráldicos en orden: Valais, Clemenzo y Ardon.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">1 de mayo de 2026</p>
+            <h2 class="changelog-title">Árbol genealógico: rediseño desde cero (en progreso)</h2>
+            <p class="changelog-desc">El árbol genealógico está siendo reescrito completamente para alcanzar un nivel comparable a plataformas como FamilySearch. El objetivo es un pedigree navegable centrado en una persona, con panel lateral de información, búsqueda por nombre y dos vistas (pedigree y árbol completo). El trabajo se divide en siete fases: las tres primeras están terminadas y las cuatro restantes están en curso.</p>
+            <ul class="changelog-list">
+              <li><strong>Fase 1 — Base de datos local:</strong> la fuente de verdad migró de Google Sheets a SQLite (<code>data/arbol.db</code>). El nuevo schema incluye tablas separadas para personas, matrimonios y archivos multimedia. Se eliminaron los campos redundantes <code>spouse_id</code> y <code>children_ids</code>, cuyo contenido es ahora derivado.</li>
+              <li><strong>Fase 2 — Scripts Python:</strong> <code>export_arbol.py</code> genera el JSON estático con la estructura <code>{ personas[], matrimonios[] }</code> en cada build. <code>gestionar_arbol.py</code> permite agregar, editar y consultar personas, matrimonios y archivos desde la terminal sin abrir ninguna planilla externa.</li>
+              <li><strong>Fase 3 — Arquitectura de módulos JS:</strong> los nuevos módulos <code>config.js</code>, <code>data.js</code>, <code>store.js</code> y <code>graph.js</code> reemplazan la implementación anterior. El estado global usa pub/sub (<code>focusChange</code>, <code>selectionChange</code>). Los árboles ancestral y descendente se construyen como jerarquías compatibles con <code>d3.hierarchy()</code>.</li>
+              <li><strong>Fases 4–7 (pendientes):</strong> renderizado D3 con tarjetas y conectores de Bezier, panel lateral con toda la información de cada persona, CSS coherente con el diseño editorial del sitio, y wiring final con limpieza del código viejo.</li>
+            </ul>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">1 de mayo de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: migración a base de datos local</h2>
             <p class="changelog-desc">Los datos del árbol dejaron de depender de Google Sheets como fuente de escritura. La fuente de verdad es ahora una base de datos SQLite local (<code>data/arbol.db</code>), con un script Python que genera el JSON estático en cada build. Agregar o editar personas se hace desde la terminal con <code>gestionar_arbol.py</code>, sin necesidad de abrir ninguna planilla externa.</p>
           </div>

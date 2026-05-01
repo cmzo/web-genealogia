@@ -1,399 +1,257 @@
-import { CONFIG, cardColors, getBranchColor } from './config.js';
+/**
+ * render.js — renderizado del árbol genealógico con D3.
+ *
+ * Expone:
+ *   initTree(containerId)          → crea el SVG y el comportamiento zoom/pan
+ *   render(layout)                 → dibuja nodos y aristas
+ *   recenterOn(duration?)          → recentra la vista en el foco actual (y=0)
+ *   zoomIn() / zoomOut()           → botones de zoom
+ */
 
-let svg = null;
-let currentZoom = null;
+import { CARD, MARRIAGE_NODE, TRANSITION_MS, getBranchColor } from './config.js';
+import { setFocus } from './store.js';
+import { VGAP } from './layout.js';
 
-export function renderTree(marriageArray) {
-  const { width, height } = CONFIG;
-  d3.select('#tree-container').selectAll('svg').remove();
+let _svg   = null;
+let _g     = null;
+let _zoom  = null;
 
-  svg = d3.select('#tree-container')
+// ── Inicialización ────────────────────────────────────────────────────────────
+
+export function initTree(containerId) {
+  const container = document.getElementById(containerId);
+  d3.select(container).selectAll('svg').remove();
+
+  _svg = d3.select(container)
     .append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .attr('width',  '100%')
+    .attr('height', '100%');
 
-  const g = svg.append('g');
+  _g = _svg.append('g').attr('class', 'tree-root');
 
-  currentZoom = d3.zoom()
-    .scaleExtent([0.3, 3])
-    .filter(event => event.type !== 'wheel' || event.ctrlKey)
-    .on('zoom', event => g.attr('transform', event.transform));
+  _zoom = d3.zoom()
+    .scaleExtent([0.1, 4])
+    .filter(e => e.type !== 'wheel' || e.ctrlKey)
+    .on('zoom', e => _g.attr('transform', e.transform));
 
-  svg.call(currentZoom);
+  _svg.call(_zoom);
 
-  marriageArray.forEach(unit => {
-    if (unit.type === 'marriage') renderMarriage(g, unit);
-    else if (unit.type === 'single') renderSinglePerson(g, unit);
+  // Posición inicial: foco en el centro-superior del viewport
+  const W = container.clientWidth  || 800;
+  const H = container.clientHeight || 600;
+  // Posición inicial equivalente a recenterOn(): foco ligeramente bajo centro
+  _svg.call(_zoom.transform,
+    d3.zoomIdentity.translate(W / 2, H / 2 + VGAP / 2));
+
+}
+
+// ── Renderizado principal ─────────────────────────────────────────────────────
+
+export function render(layout) {
+  if (!_g || !layout) return;
+  _g.selectAll('*').remove();
+
+  const { nodes, edges } = layout;
+
+  // Aristas primero (quedan detrás de los nodos)
+  const linksLayer = _g.append('g').attr('class', 'links');
+  edges.forEach(e => _drawEdge(linksLayer, e, nodes));
+
+  // Nodos encima
+  const nodesLayer = _g.append('g').attr('class', 'nodes');
+  nodes.forEach(node => {
+    if (node.type === 'persona')  _drawCard(nodesLayer, node, layout.focusId);
+    if (node.type === 'marriage') _drawMarriage(nodesLayer, node);
   });
+}
 
-  renderParentChildConnections(g, marriageArray);
+// ── Navegación y zoom ─────────────────────────────────────────────────────────
+
+export function recenterOn(duration = TRANSITION_MS) {
+  if (!_svg || !_zoom) return;
+  // El foco siempre está en (0, 0). Centramos la vista en y = -VGAP/2
+  // para que el foco quede ligeramente bajo el centro y sean visibles
+  // tanto los ancestros arriba como los descendientes abajo.
+  _svg.transition().duration(duration)
+    .call(_zoom.translateTo, 0, -VGAP / 2);
 }
 
 export function zoomIn() {
-  if (!svg || !currentZoom) return;
-  const t = d3.zoomTransform(svg.node());
-  const newScale = Math.min(t.k * 1.2, 3);
-  svg.transition().duration(200).call(
-    currentZoom.transform,
-    d3.zoomIdentity.translate(t.x, t.y).scale(newScale)
-  );
+  if (!_svg || !_zoom) return;
+  _svg.transition().duration(220).call(_zoom.scaleBy, 1.3);
 }
 
 export function zoomOut() {
-  if (!svg || !currentZoom) return;
-  const t = d3.zoomTransform(svg.node());
-  const newScale = Math.max(t.k / 1.2, 0.3);
-  svg.transition().duration(200).call(
-    currentZoom.transform,
-    d3.zoomIdentity.translate(t.x, t.y).scale(newScale)
-  );
+  if (!_svg || !_zoom) return;
+  _svg.transition().duration(220).call(_zoom.scaleBy, 0.77);
 }
 
-export function resetZoom() {
-  if (!svg) return;
-  svg.transition().duration(750).call(d3.zoom().transform, d3.zoomIdentity);
+// ── Dibujo de aristas ─────────────────────────────────────────────────────────
+
+const _link = d3.linkVertical().x(d => d.x).y(d => d.y);
+
+function _drawEdge(layer, edge, nodes) {
+  const src = nodes.get(edge.source);
+  const tgt = nodes.get(edge.target);
+  if (!src || !tgt) return;
+
+  const color = _edgeColor(edge, src, tgt);
+
+  if (edge.kind === 'spouse') {
+    // Cónyuge → círculo de matrimonio (desde el borde inferior de la tarjeta)
+    layer.append('path')
+      .attr('d', _link({
+        source: { x: src.x, y: src.y + CARD.height / 2 },
+        target: { x: tgt.x, y: tgt.y },
+      }))
+      .attr('fill', 'none')
+      .attr('stroke', color)
+      .attr('stroke-width', 1.8)
+      .attr('stroke-opacity', 0.55);
+
+  } else if (edge.kind === 'marriage-child') {
+    // Círculo de matrimonio → hijo. En el árbol ancestral el matrimonio está
+    // entre el hijo (más cerca del foco) y los padres (más lejos del foco).
+    layer.append('path')
+      .attr('d', _link({
+        source: { x: src.x, y: src.y + (src.type === 'marriage' ? MARRIAGE_NODE.r : CARD.height / 2) },
+        target: { x: tgt.x, y: tgt.y - (tgt.type === 'marriage' ? MARRIAGE_NODE.r : CARD.height / 2) },
+      }))
+      .attr('fill', 'none')
+      .attr('stroke', color)
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.75);
+
+  } else if (edge.kind === 'focus-marriage' || edge.kind === 'direct') {
+    // Foco → círculo de matrimonio / hijo directo (descendentes)
+    layer.append('path')
+      .attr('d', _link({
+        source: { x: src.x, y: src.y + CARD.height / 2 },
+        target: { x: tgt.x, y: tgt.y - (tgt.type === 'marriage' ? MARRIAGE_NODE.r : CARD.height / 2) },
+      }))
+      .attr('fill', 'none')
+      .attr('stroke', color)
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.75);
+  }
 }
 
-function renderMarriage(container, marriage) {
-  const { cardWidth } = CONFIG;
-  const g = container.append('g')
-    .attr('class', 'marriage-unit')
-    .attr('transform', `translate(${marriage.x}, ${marriage.y})`);
-
-  g.append('line')
-    .attr('class', 'marriage-link')
-    .attr('x1', -cardWidth / 2 - 10).attr('y1', 0)
-    .attr('x2',  cardWidth / 2 + 10).attr('y2', 0)
-    .style('stroke', '#8b5cf6')
-    .style('stroke-width', '4')
-    .style('stroke-linecap', 'round')
-    .style('opacity', '0.9');
-
-  [marriage.spouse1, marriage.spouse2].forEach(spouse =>
-    CONFIG.modernCards
-      ? renderPersonCardModern(g, spouse, marriage.x, marriage.y)
-      : renderPersonCard(g, spouse, marriage.x, marriage.y)
-  );
+function _edgeColor(edge, src, tgt) {
+  // Usa la rama del nodo persona más relevante para el color
+  const persona = tgt.type === 'persona' ? tgt.data : (src.type === 'persona' ? src.data : null);
+  return persona ? getBranchColor(persona.branch) : '#c4bdb0';
 }
 
-function renderSinglePerson(container, singleUnit) {
-  const g = container.append('g')
-    .attr('class', 'single-unit')
-    .attr('transform', `translate(${singleUnit.x}, ${singleUnit.y})`);
-  CONFIG.modernCards
-    ? renderPersonCardModern(g, singleUnit.person, singleUnit.x, singleUnit.y)
-    : renderPersonCard(g, singleUnit.person, singleUnit.x, singleUnit.y);
-}
+// ── Dibujo de tarjetas de persona ─────────────────────────────────────────────
 
-function renderPersonCard(container, person, baseX, baseY) {
-  const { cardWidth, cardHeight } = CONFIG;
-  const g = container.append('g')
-    .attr('data-person-id', person.id)
-    .attr('transform', `translate(${person.x - baseX}, ${person.y - baseY})`);
+function _drawCard(layer, node, focusId) {
+  const { x, y, data: p } = node;
+  const isFocus     = p.id === focusId;
+  const branchColor = getBranchColor(p.branch);
+  const W = CARD.width, H = CARD.height, R = CARD.borderRadius;
 
-  // Tarjeta de fondo
+  const g = layer.append('g')
+    .attr('class', 'person-card-group')
+    .attr('transform', `translate(${x},${y})`)
+    .attr('data-id', p.id)
+    .style('cursor', 'pointer')
+    .on('click', () => setFocus(p.id));
+
+  // Fondo de la tarjeta
   g.append('rect')
-    .attr('class', 'person-card')
-    .attr('x', -cardWidth / 2).attr('y', -cardHeight / 2)
-    .attr('width', cardWidth).attr('height', cardHeight)
-    .attr('rx', 20)
-    .style('fill', cardColors.background)
-    .style('stroke', cardColors.border)
-    .style('stroke-width', '2');
+    .attr('x', -W / 2).attr('y', -H / 2)
+    .attr('width', W).attr('height', H)
+    .attr('rx', R)
+    .attr('fill', 'var(--surface, #fdfcf9)')
+    .attr('stroke', isFocus ? branchColor : 'var(--border, #e2dbd0)')
+    .attr('stroke-width', isFocus ? 2 : 1)
+    .attr('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.09))');
 
-  // Avatar placeholder
-  g.append('circle')
-    .attr('cx', 0).attr('cy', -cardHeight / 2 + 35).attr('r', 25)
-    .style('fill', '#f3e8ff').style('opacity', '0.8')
-    .style('stroke', cardColors.border).style('stroke-width', '1');
+  // Franja de color de rama (arriba)
+  g.append('rect')
+    .attr('x', -W / 2).attr('y', -H / 2)
+    .attr('width', W).attr('height', CARD.borderTop)
+    .attr('rx', R)
+    .attr('fill', branchColor);
+  // Cubre las esquinas redondeadas inferiores de la franja
+  g.append('rect')
+    .attr('x', -W / 2).attr('y', -H / 2 + R)
+    .attr('width', W).attr('height', CARD.borderTop - R)
+    .attr('fill', branchColor);
 
-  // Layout del nombre con ajuste de tamaño de fuente
-  const { nameLines, fontSize } = fitName(g, person.name, cardWidth);
-  const lineHeight = fontSize * 1.2;
-  nameLines.forEach((line, i) => {
+  // Nombre (máx 2 líneas)
+  const lines   = _wrapName(p.name, 22);
+  const nameTopY = -H / 2 + CARD.borderTop + 10;
+  lines.forEach((line, i) => {
     g.append('text')
-      .attr('class', 'person-text name')
-      .attr('y', -cardHeight / 2 + 75 + i * lineHeight)
-      .style('font-size', fontSize + 'px').style('font-weight', '600')
-      .style('fill', cardColors.text).style('text-anchor', 'middle')
+      .attr('x', 0).attr('y', nameTopY + i * 14)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'hanging')
+      .attr('font-family', 'Inter, sans-serif')
+      .attr('font-size', '11px')
+      .attr('font-weight', '600')
+      .attr('fill', 'var(--text, #1c1814)')
       .text(line);
   });
 
-  const nameBottomY = -cardHeight / 2 + 75 + nameLines.length * lineHeight;
-  const locationY = nameBottomY + 12;
-
-  // Lugar de nacimiento
-  if (person.birthPlace) {
-    const placeText = person.birthPlace.length > 18
-      ? person.birthPlace.substring(0, 16) + '...'
-      : person.birthPlace;
+  // Años de vida
+  const birthY = _year(p.birth_date);
+  const deathY = _year(p.death_date);
+  if (birthY || deathY) {
+    const suffix = !deathY && p.vivo === 'si' ? '' : (deathY || '?');
+    const yearsStr = `${birthY || '?'} – ${suffix}`;
     g.append('text')
-      .attr('x', -cardWidth / 2 + 15).attr('y', locationY + 2)
-      .style('font-size', '10px').style('fill', cardColors.text)
-      .style('text-anchor', 'start').text('📍');
-    g.append('text')
-      .attr('class', 'person-text location')
-      .attr('x', -cardWidth / 2 + 25).attr('y', locationY + 2)
-      .style('font-size', '9px').style('fill', cardColors.text)
-      .style('text-anchor', 'start').text(placeText.toUpperCase());
+      .attr('x', 0).attr('y', H / 2 - 9)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'auto')
+      .attr('font-family', 'Inter, sans-serif')
+      .attr('font-size', '10px')
+      .attr('fill', 'var(--muted, #7a7060)')
+      .text(yearsStr);
   }
 
-  // Fechas
-  const datesY = locationY + 18;
-  g.append('text')
-    .attr('class', 'person-text birth-date')
-    .attr('x', -cardWidth / 2 + 15).attr('y', datesY)
-    .style('font-size', '9px').style('fill', cardColors.secondary)
-    .style('text-anchor', 'start').text(`Nac: ${formatDate(person.birthDate)}`);
-  g.append('text')
-    .attr('class', 'person-text death-date')
-    .attr('x', -cardWidth / 2 + 15).attr('y', datesY + 14)
-    .style('font-size', '9px').style('fill', cardColors.secondary)
-    .style('text-anchor', 'start').text(`Def: ${formatDate(person.deathDate)}`);
-
-  if (person.deathPlace && person.deathPlace !== person.birthPlace) {
-    const text = person.deathPlace.length > 18
-      ? person.deathPlace.substring(0, 16) + '...'
-      : person.deathPlace;
-    g.append('text')
-      .attr('class', 'person-text death-place')
-      .attr('x', -cardWidth / 2 + 15).attr('y', datesY + 30)
-      .style('font-size', '8px').style('fill', cardColors.secondary)
-      .style('text-anchor', 'start').text(text);
-  }
-
-  // Indicador vivo/fallecido
-  g.append('circle')
-    .attr('cx', -cardWidth / 2 + 12).attr('cy', -cardHeight / 2 + 12).attr('r', 4)
-    .style('fill', person.vivo === 'si' ? '#10b981' : '#ef4444');
-}
-
-function renderPersonCardModern(container, person, baseX, baseY) {
-  const { cardWidth, cardHeight } = CONFIG;
-  const branchColor = getBranchColor(person.branch);
-
-  const g = container.append('g')
-    .attr('data-person-id', person.id)
-    .attr('transform', `translate(${person.x - baseX}, ${person.y - baseY})`);
-
-  // Fondo blanco, sin bordes redondeados
-  g.append('rect')
-    .attr('x', -cardWidth / 2).attr('y', -cardHeight / 2)
-    .attr('width', cardWidth).attr('height', cardHeight)
-    .attr('rx', 0)
-    .style('fill', 'white')
-    .style('stroke', '#e5e7eb')
-    .style('stroke-width', '1.5')
-    .style('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.07))');
-
-  // Franja de color de rama
-  g.append('rect')
-    .attr('x', -cardWidth / 2).attr('y', -cardHeight / 2)
-    .attr('width', cardWidth).attr('height', 6)
-    .style('fill', branchColor);
-
-  // Nombre: 11px fijo, máximo 2 líneas, sin medición DOM
-  const nameLines = wrapNameSimple(person.name, cardWidth - 20, 2);
-  const nameStartY = -cardHeight / 2 + 28;
-  nameLines.forEach((line, i) => {
-    g.append('text')
-      .attr('x', 0).attr('y', nameStartY + i * 14)
-      .style('font-size', '11px').style('font-weight', '600')
-      .style('fill', '#111827').style('text-anchor', 'middle')
-      .text(line);
+  // Hover: borde levemente iluminado
+  g.on('mouseenter', function () {
+    d3.select(this).select('rect:first-child')
+      .attr('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.16))');
+  }).on('mouseleave', function () {
+    d3.select(this).select('rect:first-child')
+      .attr('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.09))');
   });
-
-  // Separador
-  const dividerY = -cardHeight / 2 + 56;
-  g.append('line')
-    .attr('x1', -cardWidth / 2 + 10).attr('y1', dividerY)
-    .attr('x2',  cardWidth / 2 - 10).attr('y2', dividerY)
-    .style('stroke', '#f3f4f6').style('stroke-width', '1');
-
-  // Info: lugar, fechas
-  let infoY = dividerY + 14;
-
-  if (person.birthPlace) {
-    const place = person.birthPlace.length > 17
-      ? person.birthPlace.substring(0, 15) + '…'
-      : person.birthPlace;
-    g.append('text')
-      .attr('x', 0).attr('y', infoY)
-      .style('font-size', '9px').style('fill', '#6b7280')
-      .style('text-anchor', 'middle')
-      .text('📍 ' + place.toUpperCase());
-    infoY += 16;
-  }
-
-  g.append('text')
-    .attr('x', 0).attr('y', infoY)
-    .style('font-size', '9px').style('fill', '#9ca3af')
-    .style('text-anchor', 'middle')
-    .text('🌱 ' + formatDate(person.birthDate));
-
-  g.append('text')
-    .attr('x', 0).attr('y', infoY + 16)
-    .style('font-size', '9px').style('fill', '#9ca3af')
-    .style('text-anchor', 'middle')
-    .text('🕊 ' + formatDate(person.deathDate));
-
-  // Indicador vivo/fallecido — esquina inferior derecha
-  g.append('circle')
-    .attr('cx', cardWidth / 2 - 10).attr('cy', cardHeight / 2 - 10).attr('r', 4)
-    .style('fill', person.vivo === 'si' ? '#10b981' : '#ef4444');
 }
 
-// Estimación de ancho sin DOM: Inter 11px ≈ 6.2px por caracter
-function wrapNameSimple(name, maxPx, maxLines) {
-  const charsPerLine = Math.floor(maxPx / 6.2);
+// ── Dibujo del círculo de matrimonio ─────────────────────────────────────────
+
+function _drawMarriage(layer, node) {
+  layer.append('circle')
+    .attr('cx', node.x).attr('cy', node.y)
+    .attr('r',  MARRIAGE_NODE.r)
+    .attr('fill',         'var(--surface, #fdfcf9)')
+    .attr('stroke',       'var(--border, #c4bdb0)')
+    .attr('stroke-width', 1.5);
+}
+
+// ── Utilidades ────────────────────────────────────────────────────────────────
+
+function _wrapName(name, maxChars) {
   const words = name.split(' ');
   const lines = [];
-  let current = '';
-
-  for (const word of words) {
-    const test = current ? current + ' ' + word : word;
-    if (test.length <= charsPerLine) {
-      current = test;
-    } else {
-      if (current) lines.push(current);
-      if (lines.length >= maxLines) { current = ''; break; }
-      current = word;
+  let cur = '';
+  for (const w of words) {
+    const test = cur ? `${cur} ${w}` : w;
+    if (test.length <= maxChars) { cur = test; }
+    else {
+      if (cur) lines.push(cur);
+      if (lines.length >= 2) break;
+      cur = w;
     }
   }
-  if (current && lines.length < maxLines) lines.push(current);
-
-  // Truncar última línea si excede
-  const last = lines[lines.length - 1];
-  if (last && last.length > charsPerLine) {
-    lines[lines.length - 1] = last.substring(0, charsPerLine - 1) + '…';
-  }
-
-  return lines;
+  if (cur && lines.length < 2) lines.push(cur);
+  return lines.slice(0, 2);
 }
 
-function fitName(container, name, cardWidth) {
-  const maxWidth = cardWidth - 30;
-  const maxLines = 3;
-  const measure = (text, size) => {
-    const t = container.append('text')
-      .style('font-size', size + 'px').style('font-weight', '600').text(text);
-    const w = t.node().getBBox().width;
-    t.remove();
-    return w;
-  };
-  let fontSize = 14;
-  let nameLines = [];
-  for (let size = 14; size >= 8; size--) {
-    const words = name.split(' ');
-    nameLines = [];
-    let current = '';
-    for (const word of words) {
-      const test = current ? current + ' ' + word : word;
-      if (measure(test, size) <= maxWidth) {
-        current = test;
-      } else {
-        if (current) { nameLines.push(current); current = word; }
-        else { nameLines.push(word.substring(0, Math.floor(maxWidth / (size * 0.6)))); current = ''; }
-      }
-    }
-    if (current) nameLines.push(current);
-    if (nameLines.length <= maxLines) { fontSize = size; break; }
-  }
-  return { nameLines, fontSize };
-}
-
-function parseDate(dateStr) {
-  if (!dateStr || dateStr === 'NaN') return null;
-  try {
-    if (dateStr.includes('Date(')) {
-      const m = dateStr.match(/Date\((\d+),(\d+),(\d+)/);
-      if (!m) return null;
-      const d = new Date(parseInt(m[1]), parseInt(m[2]), parseInt(m[3]));
-      return isNaN(d.getTime()) ? null : d;
-    }
-    const d = new Date(dateStr);
-    return isNaN(d.getTime()) ? null : d;
-  } catch { return null; }
-}
-
-function formatDate(dateStr) {
-  const d = parseDate(dateStr);
-  if (!d) return '?';
-  return d.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
-}
-
-function renderParentChildConnections(container, allUnits) {
-  const { cardHeight } = CONFIG;
-
-  allUnits.forEach(unit => {
-    if (unit.collapsed || !unit.children || unit.children.length === 0) return;
-
-    const childPositions = unit.children.map(child => {
-      if (unit.type === 'marriage') {
-        if (unit.spouse1.id === child.id || unit.spouse2.id === child.id) return null;
-      }
-      const childUnit = allUnits.find(u =>
-        u.type === 'marriage'
-          ? u.spouse1.id === child.id || u.spouse2.id === child.id
-          : u.type === 'single' && u.person.id === child.id
-      );
-      if (!childUnit) return null;
-      if (childUnit.type === 'marriage') {
-        const s = childUnit.spouse1.id === child.id ? childUnit.spouse1 : childUnit.spouse2;
-        return { x: s.x, y: s.y, name: child.name, branch: s.branch };
-      }
-      return { x: childUnit.person.x, y: childUnit.person.y, name: child.name, branch: childUnit.person.branch };
-    }).filter(Boolean);
-
-    let validChildren = childPositions.filter(c => c.y > unit.y);
-    if (unit.type === 'marriage') {
-      validChildren = validChildren.filter(
-        c => c.name !== unit.spouse1.name && c.name !== unit.spouse2.name
-      );
-    }
-    if (validChildren.length === 0) return;
-
-    const collapseCircleY = unit.y + 70;
-    const branchPointY = collapseCircleY + 30;
-
-    if (CONFIG.curvedConnections) {
-      const curve = d3.linkVertical().x(d => d.x).y(d => d.y);
-      validChildren.forEach(child => {
-        container.append('path')
-          .attr('class', 'parent-child-link')
-          .attr('d', curve({
-            source: { x: unit.x, y: collapseCircleY },
-            target: { x: child.x, y: child.y - cardHeight / 2 },
-          }))
-          .style('stroke', getBranchColor(child.branch))
-          .style('stroke-width', '2.5')
-          .style('fill', 'none')
-          .style('stroke-linecap', 'round');
-      });
-    } else {
-      // Fallback: 3 líneas rectas (vertical → diagonal → vertical)
-      validChildren.forEach(child => {
-        const color = getBranchColor(child.branch);
-        const childTopY = child.y - cardHeight / 2 - 60;
-
-        container.append('line')
-          .attr('class', 'parent-child-link')
-          .attr('x1', unit.x).attr('y1', collapseCircleY)
-          .attr('x2', unit.x).attr('y2', branchPointY)
-          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
-
-        container.append('line')
-          .attr('class', 'parent-child-link')
-          .attr('x1', unit.x).attr('y1', branchPointY)
-          .attr('x2', child.x).attr('y2', childTopY)
-          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
-
-        container.append('line')
-          .attr('class', 'parent-child-link')
-          .attr('x1', child.x).attr('y1', childTopY)
-          .attr('x2', child.x).attr('y2', child.y - cardHeight / 2)
-          .style('stroke', color).style('stroke-width', '2.5').style('stroke-linecap', 'round');
-      });
-    }
-  });
+function _year(dateStr) {
+  if (!dateStr) return '';
+  const m = String(dateStr).match(/^(\d{4})/);
+  return m ? m[1] : '';
 }

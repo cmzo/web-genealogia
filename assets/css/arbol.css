@@ -10,19 +10,20 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
+.tree-wrapper {
     position: relative;
-    max-width: 100%;
-    margin: 0;
-    background: var(--bg);
-    min-height: 100vh;
+    flex: 1;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
 }
 
 .tree-container {
     position: relative;
-    height: 600px;
-    overflow: auto;
-    background: var(--bg);
+    flex: 1;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--surface, #fdfcf9);
 }
 
 .zoom-controls {
@@ -65,12 +66,13 @@ body {
 
 /* SVG tree */
 #tree-container {
-    width: 100%;
-    height: 1200px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    background: white;
-    overflow: auto;
+    border: 1px solid var(--border, #e2dbd0);
+    border-radius: 4px;
+}
+
+/* Hover en tarjetas de persona */
+.person-card-group:hover rect:first-child {
+    stroke-opacity: 0.9;
 }
 
 svg { z-index: 1; }

@@ -14,23 +14,33 @@ assets/data/arbol.json
 arbol-matrimonios.html
 ```
 
-## Gestión de personas
+## Gestión de datos
 
 ```bash
-# Listar todas las personas
+# Personas
 python3 scripts/gestionar_arbol.py list
-
-# Ver detalle de una persona
 python3 scripts/gestionar_arbol.py show p26
-
-# Agregar nueva persona (modo interactivo)
 python3 scripts/gestionar_arbol.py add
-
-# Editar persona existente
 python3 scripts/gestionar_arbol.py edit p26
+
+# Matrimonios
+python3 scripts/gestionar_arbol.py list-marriages
+python3 scripts/gestionar_arbol.py add-marriage
+python3 scripts/gestionar_arbol.py edit-marriage m1
+
+# Media (fotos y documentos)
+python3 scripts/gestionar_arbol.py list-media p26
+python3 scripts/gestionar_arbol.py add-media p26
 ```
 
-Después de `add` o `edit`, el script ofrece regenerar `arbol.json` en el momento.
+Después de cada operación de escritura, el script ofrece regenerar `arbol.json` en el momento.
+
+## Archivos de media
+
+- Fotos de personas: `assets/images/personas/` — nombrar como `p26-francisco.webp`
+- Documentos: `assets/docs/personas/` — nombrar como `p26-acta-nacimiento.pdf`
+
+Optimizar imágenes a WebP antes de commitear. Los PDF se sirven directamente desde GitHub Pages.
 
 Para publicar los cambios: `npm run deploy`
 
@@ -46,18 +56,32 @@ python3 scripts/export_arbol.py
 |---|---|---|
 | `id` | TEXT PK | Formato `p<número>` (ej: `p26`) |
 | `name` | TEXT | Nombre completo |
+| `gender` | TEXT | `"M"` / `"F"` / `""` |
 | `birth_date` | TEXT | ISO parcial: `YYYY-MM-DD`, o `""` |
 | `birth_place` | TEXT | |
 | `death_date` | TEXT | ISO parcial: `YYYY-MM-DD`, o `""` |
 | `death_place` | TEXT | |
-| `spouse_id` | TEXT | ID del cónyuge, o `""` |
-| `children_ids` | TEXT | IDs separados por coma, o `""` |
 | `father_id` | TEXT | |
 | `mother_id` | TEXT | |
 | `branch` | TEXT | Rama familiar (ej: `clemenzo`, `roh`) |
 | `generation` | INTEGER | 0 = generación actual |
 | `sort_order` | INTEGER | Posición dentro de la generación |
 | `vivo` | TEXT | `"si"` / `"no"` / `""` |
+| `photo_url` | TEXT | Ruta relativa a `assets/images/avatars/`, o `""` |
+| `notes` | TEXT | Texto libre: hipótesis, contexto histórico |
+| `sources` | TEXT | Citas de documentos (actas, censos, etc.) |
+
+## Schema de la tabla `matrimonios`
+
+| Columna | Tipo | Notas |
+|---|---|---|
+| `id` | TEXT PK | Formato `m<número>` (ej: `m1`) |
+| `spouse1_id` | TEXT | ID del primer cónyuge (menor numéricamente) |
+| `spouse2_id` | TEXT | ID del segundo cónyuge |
+| `marriage_date` | TEXT | ISO: `YYYY-MM-DD`, o `""` |
+| `marriage_place` | TEXT | |
+| `divorce_date` | TEXT | ISO: `YYYY-MM-DD`, o `""` — solo si aplica |
+| `notes` | TEXT | Texto libre |
 
 ## Formato de fechas
 
