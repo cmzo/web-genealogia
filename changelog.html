@@ -45,79 +45,68 @@
         <div class="changelog-content">
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
-            <h2 class="changelog-title">Inicio: rediseño editorial</h2>
-            <p class="changelog-desc">La página de inicio fue rediseñada con un texto introductorio centrado en Source Serif 4, la foto panorámica del Valle del Ródano, los escudos heráldicos de la familia Clemenzo y Ardon, y una sección de última entrada que se actualiza automáticamente con cada nuevo post del blog. El link al blog fue movido de la barra de navegación superior a la sidebar, dejando el nav con solo el nombre del sitio y el ícono de GitHub.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
-            <h2 class="changelog-title">Navegación mobile</h2>
-            <p class="changelog-desc">En pantallas menores a 960px la sidebar desaparece y los links de navegación (Inicio, Árbol, Archivo, Blog) pasan al nav superior. El footer en mobile queda centrado y apilado verticalmente.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">Mayo 2026</p>
+            <p class="changelog-date">1 de mayo de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: migración a base de datos local</h2>
             <p class="changelog-desc">Los datos del árbol dejaron de depender de Google Sheets como fuente de escritura. La fuente de verdad es ahora una base de datos SQLite local (<code>data/arbol.db</code>), con un script Python que genera el JSON estático en cada build. Agregar o editar personas se hace desde la terminal con <code>gestionar_arbol.py</code>, sin necesidad de abrir ninguna planilla externa.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
+            <h2 class="changelog-title">Inicio: rediseño editorial</h2>
+            <p class="changelog-desc">La página de inicio fue rediseñada con un texto introductorio centrado en Source Serif 4, la foto panorámica del Valle del Ródano, los escudos heráldicos de la familia Clemenzo y Ardon, y una sección de última entrada que se actualiza automáticamente con cada nuevo post del blog. El link al blog fue movido de la barra de navegación superior a la sidebar, dejando el nav con solo el nombre del sitio y el ícono de GitHub.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">29 de abril de 2026</p>
+            <h2 class="changelog-title">Navegación mobile</h2>
+            <p class="changelog-desc">En pantallas menores a 960px la sidebar desaparece y los links de navegación (Inicio, Árbol, Archivo, Blog) pasan al nav superior. El footer en mobile queda centrado y apilado verticalmente.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Blog: tarjetas sin imagen</h2>
             <p class="changelog-desc">Las tarjetas del blog dejaron de mostrar imágenes. El diseño es ahora puramente tipográfico: categoría, título, descripción y fecha. Se eliminó también el glitch visual donde las tarjetas aparecían grandes y se achicaban al cargar, causado por imágenes que fallaban silenciosamente en producción.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: rediseño visual</h2>
             <p class="changelog-desc">Las conexiones entre generaciones pasaron de tres líneas rectas a curvas cúbicas de Bezier, usando d3.linkVertical(). Las tarjetas de personas fueron rediseñadas: fondo blanco, sin bordes redondeados, franja de color superior por rama familiar, nombre en zona fija de dos líneas, y fechas centradas con emojis (🌱 nacimiento, 🕊 defunción).</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: modularización del código</h2>
             <p class="changelog-desc">El código JavaScript del árbol genealógico fue dividido en cinco módulos ES independientes: config.js (constantes y colores), data.js (carga de datos), structure.js (construcción de matrimonios y vínculos), layout.js (posicionamiento por generación) y render.js (renderizado D3). El CSS específico del árbol fue extraído a su propio archivo. El HTML del árbol quedó en 81 líneas sin código inline.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: datos estáticos y limpieza de código</h2>
             <p class="changelog-desc">El árbol genealógico dejó de depender de Google Sheets en tiempo de ejecución. Los datos ahora se generan durante el build y se sirven como un archivo JSON estático, lo que elimina la dependencia de una API no oficial y mejora la velocidad de carga. Se eliminó el panel "Filtro de Familias", el código de debug (83 console.log), los bloques de código muerto y las versiones históricas del árbol. El script de deploy fue reescrito para hacer build + commit + push de forma automática. Los posts del blog ahora se ordenan por fecha del front matter en lugar de fecha de modificación del archivo.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Ajustes de diseño: sidebar, imagen home y tipografía</h2>
             <p class="changelog-desc">El sidebar de navegación ahora queda fijo al hacer scroll en todas las páginas. Se añadió un indicador visual de sección activa con barra lateral y peso tipográfico mayor. La imagen del inicio fue reemplazada por una fotografía del Valle del Ródano en blanco y negro con contraste aumentado. El título "Clemenzo" en la barra de navegación fue agrandado. Las imágenes del home se optimizan como WebP durante el build.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Abril 2026</p>
+            <p class="changelog-date">29 de abril de 2026</p>
             <h2 class="changelog-title">Rediseño editorial del sitio</h2>
             <p class="changelog-desc">Rediseño completo del frontend. Se reemplazó la grilla de tarjetas de inicio por un layout de dos columnas con sidebar de navegación persistente. Nueva paleta de colores cálidos, tipografía editorial basada en Source Serif 4, y footer simplificado. Se eliminó la búsqueda del blog (no funcional) y se limpió el código de la navegación.</p>
           </div>
 
-          <div class="changelog-entry">
-            <p class="changelog-date">Enero 2026</p>
-            <h2 class="changelog-title">Nuevo post: Documentar fuentes genealógicas</h2>
-            <p class="changelog-desc">Publicación sobre el método de registro de fuentes, documentos y registros. Incluye reflexiones sobre el archivo y cómo organizar la evidencia genealógica.</p>
-          </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">Agosto 2024</p>
-            <h2 class="changelog-title">Nuevo post: Investigando a Francisco Clemenzo</h2>
-            <p class="changelog-desc">Análisis completo del material disponible sobre Francisco Clemenzo: su aparición en el acta de nacimiento de su nieto Félix Ricardo, el censo de 1895 en Entre Ríos, documentos militares suizos, y la reconstrucción de su recorrido desde Valais hasta Argentina.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">2024</p>
+            <p class="changelog-date">29 de agosto de 2025</p>
             <h2 class="changelog-title">Árbol genealógico interactivo</h2>
             <p class="changelog-desc">Primera versión del árbol genealógico con visualización interactiva. Permite navegar por las ramas familiares y explorar los vínculos entre generaciones.</p>
           </div>
 
           <div class="changelog-entry">
-            <p class="changelog-date">2024</p>
+            <p class="changelog-date">10 de agosto de 2025</p>
             <h2 class="changelog-title">Lanzamiento del sitio</h2>
             <p class="changelog-desc">Primera versión pública del sitio. Incluye presentación personal, archivo de documentos y fotografías, y el inicio del blog de investigación genealógica.</p>
           </div>
