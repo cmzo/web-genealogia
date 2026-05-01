@@ -46,6 +46,12 @@
 
           <div class="changelog-entry">
             <p class="changelog-date">1 de mayo de 2026</p>
+            <h2 class="changelog-title">Archivo: rediseño y migración a base de datos local</h2>
+            <p class="changelog-desc">La página de archivo fue reescrita completamente. Los datos ya no provienen de Google Sheets: la fuente es ahora <code>arbol.json</code>, el mismo archivo generado a partir de la base de datos SQLite que usa el árbol genealógico. El código anterior (~1400 líneas con estilos inline, lógica de Google Sheets y múltiples fallbacks) fue reemplazado por una implementación de ~200 líneas en HTML y ~70 líneas en JS, más una hoja de estilos separada que sigue el sistema de diseño del sitio. La tabla muestra las 55 personas ordenadas de generación más antigua a más reciente, con búsqueda por nombre y rama. El modal de detalle muestra fechas, lugares, padres y, cuando existan, notas, fuentes, fotos y documentos vinculados desde la base de datos.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">1 de mayo de 2026</p>
             <h2 class="changelog-title">Árbol genealógico: panel lateral y búsqueda</h2>
             <p class="changelog-desc">Al hacer click en cualquier tarjeta se abre un panel lateral (288px, deslizamiento desde la derecha) con la información completa de la persona: nombre, fechas y lugares de nacimiento y fallecimiento, padres, matrimonios con cónyuge y lista de hijos, notas, fuentes y archivos multimedia. Cada nombre en el panel es un link de navegación que recentra el árbol. Click en el fondo del árbol o en ✕ cierra el panel. La barra de herramientas incluye un buscador por nombre con autocompletado propio: filtra mientras se escribe, navega con ↑↓ y confirma con Enter, estilizado con el sistema de diseño del sitio.</p>
           </div>

@@ -6,278 +6,9 @@
   <title>Archivo · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
-  <style>
-    body { background: #fafafa; color: #0f172a; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-    .site-header { background: #fff; border-bottom: 1px solid #e6e7eb; }
-    .header-container { max-width: 1040px; margin: 0 auto; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
-    .site-title { margin: 0; font-weight: 800; letter-spacing: -0.02em; font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; font-size: clamp(32px, 6vw, 48px); line-height: 1.05; }
-    .toolbar { background: #fff; border-bottom: 1px solid #e6e7eb; }
-    /* Escritorio: mantener diseño original */
-    .toolbar-inner { max-width: 1040px; margin: 0 auto; padding: 16px 20px; display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
-    .search { flex: 1 1 420px; display: flex; flex-direction: column; gap: 6px; }
-    .search input { padding: 10px 12px; border: 1px solid #e6e7eb; border-radius: 8px; font-size: 14px; background: #fff; }
-    .search-meta { font-size: 13px; color: #6b7280; min-height: 20px; }
-    .stats-card { margin-left: auto; background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 10px 14px; display: flex; gap: 16px; align-items: center; box-shadow: 0 3px 8px rgba(15,23,42,0.06); align-self: stretch; }
-    .stats-list { list-style: none; margin: 0; padding: 0; font-size: 14px; color: #6b7280; display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 220px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; background: transparent; border: 1px solid #e6e7eb; border-radius: 8px; color: #0f172a; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s ease; cursor: pointer; }
-    .btn:hover { background: #f8fafc; border-color: #dfe1e6; transform: translateY(-1px); }
-
-    .container { max-width: 1040px; margin: 0 auto; padding: 20px; }
-    .table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; overflow: hidden; }
-    .table thead th { text-align: left; font-weight: 600; font-size: 12px; color: #6b7280; background: #f8fafc; padding: 10px 12px; border-bottom: 1px solid #e6e7eb; }
-    .table tbody td { padding: 12px; border-top: 1px solid #f1f5f9; font-size: 14px; }
-    .table tbody tr:hover { background: #fafcff; }
-    .name-cell a { font-weight: 600; text-decoration: none; color: #0f172a; }
-    .tag { display: inline-block; padding: 2px 8px; font-size: 12px; color: #334155; background: #f1f5f9; border: 1px solid #e5e7eb; border-radius: 999px; }
-    
-    /* Estilos para las píldoras de color */
-    .pill {
-      background-color: #f1f5f9;
-      color: #374151;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 500;
-      display: inline-block;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-    
-    .pill:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    /* Mejorar el espaciado de las celdas con píldoras */
-    .table tbody td {
-      padding: 12px;
-      border-top: 1px solid #f1f5f9;
-      font-size: 14px;
-      vertical-align: middle;
-    }
-    /* Espaciado consistente para el back-home sobre el título */
-    .header-brand .top-bar { margin: 0 0 16px 0; }
-
-    /* Modal centrado (similar a contacto) */
-    .person-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.44); z-index: 1200; }
-    .person-card { width: min(920px, 92vw); max-height: 88vh; background: #fff; border: 1px solid #e6e7eb; border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.18); display: flex; flex-direction: column; overflow: hidden; }
-    .person-header { padding: 18px 20px; border-bottom: 1px solid #e6e7eb; background: #f8fafc; display: flex; align-items: center; justify-content: space-between; }
-    .person-title { margin: 0; font-size: 20px; font-weight: 700; color: #0f172a; }
-    .person-sub { font-size: 13px; color: #6b7280; }
-    .person-tags { margin: 8px 0; display: flex; flex-wrap: wrap; gap: 6px; }
-    .person-tag { display: inline-block; padding: 3px 8px; font-size: 11px; font-weight: 500; color: #fff; background: #3b82f6; border-radius: 12px; }
-    .person-tag.branch-clemenzo { background: #3b82f6; }
-    .person-tag.branch-roch { background: #10b981; }
-    .person-tag.branch-esposos { background: #8b5cf6; }
-    .person-tag.branch-otros { background: #6b7280; }
-    .person-tag.branch-other { background: #6b7280; }
-    .technical-info { background: #f8fafc; border: 1px solid #e6e7eb; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
-    .technical-info h4 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: #374151; }
-    .technical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
-    .technical-item { font-size: 12px; }
-    .technical-label { font-weight: 600; color: #6b7280; }
-    .technical-value { color: #374151; }
-    .close-btn { width: 36px; height: 36px; border-radius: 8px; }
-    .person-body { padding: 16px 16px 20px; overflow: auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
-    .section-card { background: #fff; border: 1px solid #e6e7eb; border-radius: 12px; padding: 14px 16px; }
-    .section-title { margin: 0 0 12px; font-size: 16px; font-weight: 700; color: #0f172a; }
-    .section-text { margin: 0; color: #475569; line-height: 1.6; font-size: 14px; white-space: pre-wrap; }
-    
-    /* Estilos mejorados para el contenido de la sección */
-    .section-content { 
-      margin: 0; 
-      color: #475569; 
-      line-height: 1.7; 
-      font-size: 14px; 
-    }
-    
-    /* Estilos para listas con viñetas */
-    .section-content ul {
-      margin: 8px 0 12px 0;
-      padding-left: 20px;
-      list-style-type: disc;
-      list-style-position: outside;
-    }
-    
-    .section-content li {
-      margin: 6px 0;
-      color: #374151;
-      line-height: 1.5;
-      font-weight: normal !important;
-    }
-    
-    .section-content li strong {
-      font-weight: normal !important;
-    }
-    
-    /* Asegurar que las viñetas se muestren correctamente */
-    .section-content ul li::marker {
-      color: #6b7280;
-      font-weight: normal;
-    }
-    
-    /* Forzar que no haya negrita en listas */
-    .section-content ul li * {
-      font-weight: normal !important;
-    }
-    
-    /* Estilos para citas */
-    .section-content blockquote {
-      margin: 16px 0;
-      padding: 12px 16px;
-      background: #f8fafc;
-      border-left: 4px solid #3b82f6;
-      border-radius: 6px;
-      font-style: italic;
-      color: #1f2937;
-    }
-    
-    /* Estilos para títulos de sección dentro del contenido */
-    .section-content h4 {
-      margin: 16px 0 4px 0;
-      font-size: 15px;
-      font-weight: 600;
-      color: #1f2937;
-      padding-bottom: 2px;
-    }
-    
-    .section-content h4:first-child {
-      margin-top: 0;
-    }
-    
-    /* Estilos para párrafos */
-    .section-content p {
-      margin: 12px 0;
-      color: #374151;
-    }
-    
-    /* Estilos para texto destacado */
-    .section-content strong {
-      color: #1f2937;
-      font-weight: 600;
-    }
-    
-    /* Estilos para enlaces */
-    .section-content a {
-      color: #3b82f6;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    
-    .section-content a:hover {
-      text-decoration: underline;
-    }
-    .doc-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 10px; }
-    .doc-item { border: 1px solid #e6e7eb; border-radius: 10px; padding: 10px; background: #f8fafc; color: #475569; font-size: 13px; }
-    .doc-item a { text-decoration: none; color: #0f172a; font-weight: 600; }
-    
-    /* Estilos para la sección de fuentes */
-    .sources-list { display: flex; flex-direction: column; gap: 8px; }
-    .source-item { 
-      display: flex; 
-      align-items: center; 
-      gap: 12px; 
-      padding: 10px 12px; 
-      background: #f8fafc; 
-      border-radius: 8px; 
-      border-left: 3px solid #3b82f6; /* Color por defecto, se sobrescribe dinámicamente */
-      transition: all 0.2s ease;
-    }
-    .source-item:hover { 
-      background: #f1f5f9; 
-      transform: translateX(2px);
-    }
-    .source-icon {
-      width: 20px;
-      height: 20px;
-      color: #3b82f6;
-      flex-shrink: 0;
-    }
-    .source-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .source-title {
-      font-weight: 600;
-      color: #1f2937;
-      font-size: 14px;
-    }
-    .source-description {
-      font-size: 12px;
-      color: #6b7280;
-    }
-    .source-link {
-      color: #3b82f6;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 500;
-    }
-    .source-link:hover {
-      text-decoration: underline;
-    }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-    .thumb { position: relative; display: block; background: #f1f5f9; border: 1px solid #e6e7eb; border-radius: 10px; overflow: hidden; }
-    .thumb img { width: 100%; height: 140px; object-fit: cover; display: block; }
-    .thumb figcaption { padding: 8px 10px; font-size: 12px; color: #475569; }
-    /* Lightbox */
-    .lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(15,23,42,0.95); z-index: 1300; }
-    .lightbox-inner { max-width: 95vw; max-height: 95vh; display: grid; grid-template-rows: 1fr auto; gap: 10px; }
-    .lightbox img { 
-      max-width: 95vw; 
-      max-height: 90vh; 
-      object-fit: contain; 
-      border-radius: 8px; 
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35); 
-      background: #111827;
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
-    .lightbox img:hover {
-      transform: scale(1.02);
-    }
-    .lightbox img[style*="scale(1)"]:hover::after {
-      content: "Doble click para zoom";
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      pointer-events: none;
-    }
-    .lightbox-caption { color: #e5e7eb; font-size: 14px; text-align: center; padding: 8px 16px; background: rgba(0,0,0,0.7); border-radius: 6px; }
-    .lightbox-nav { position: fixed; inset: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
-    .lightbox-btn { pointer-events: auto; width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter: blur(6px); }
-    .lightbox-close { position: fixed; top: 16px; right: 16px; }
-    @media (max-width: 720px) {
-      .person-card { width: 96vw; height: 92vh; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Móvil: compacto y centrado */
-    @media (max-width: 768px) {
-      .toolbar-inner { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
-      /* Evitar que el bloque de búsqueda crezca y genere espacio vertical */
-      .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
-      .search input { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
-      .search-meta { min-height: 0; }
-      .toolbar .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
-    }
-
-    /* Forzar estilos móviles mediante clase aplicada por JS (para depurar) */
-    body.is-mobile .toolbar-inner { flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 420px; margin: 0 auto; padding: 8px 10px; }
-    body.is-mobile .search { flex: 0 0 auto; width: 100%; max-width: 360px; align-items: center; gap: 4px; }
-    body.is-mobile .search input { width: 100%; max-width: 360px; margin: 0 auto; padding: 8px 12px; }
-    body.is-mobile .search-meta { min-height: 0; }
-    body.is-mobile .stats-card { margin-left: 0 !important; width: 100%; max-width: 360px; justify-content: space-between; padding: 8px 12px; align-self: center !important; }
-  </style>
+  <link rel="stylesheet" href="./assets/css/archivo.css" />
 </head>
 <body>
 
@@ -305,101 +36,58 @@
       </nav>
     </aside>
 
-    <main class="site-main" style="padding: 0 0 80px;">
-      <div style="padding: 28px 28px 0;">
-        <h2 class="article-title" style="margin: 0 0 4px;">Archivo familiar</h2>
-        <div id="dataSourceHeader" style="color: var(--muted); font-size: 13px; margin-bottom: 20px;">Carga de datos: —</div>
+    <main class="site-main" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+      <div class="archivo-toolbar">
+        <input
+          type="search"
+          id="archivoSearch"
+          placeholder="Buscar por nombre o rama…"
+          class="archivo-search"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span class="archivo-count" id="archivoCount"></span>
       </div>
 
-  <section class="toolbar">
-    <div class="toolbar-inner">
-      <div class="search">
-        <input id="searchInput" type="search" placeholder="Buscar por nombre, rama, tags…" />
-        <div class="search-meta" id="searchMeta"></div>
+      <div class="archivo-table-wrap">
+        <table class="archivo-table" id="archivoTable" aria-label="Índice de personas">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Años</th>
+              <th>Rama</th>
+              <th>Gen.</th>
+              <th>Ítems</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
-
-      <div class="stats-card">
-        <ul class="stats-list">
-          <li id="statsCount">Personas en el archivo: —</li>
-          <li id="statsMedia">Total de documentos: —</li>
-          <li id="statsSource">Origen: —</li>
-        </ul>
-        <button id="resetBtn" class="btn" title="Limpiar búsqueda">Reset</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="container">
-    <div class="table-wrap">
-      <table class="table" id="peopleTable" aria-label="Índice de personas">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Años</th>
-            <th>Rama</th>
-            <th>Generación</th>
-            <th>Ítems</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
     </main>
   </div>
 
-  <!-- Modal centrado -->
-  <div class="person-modal" id="personModal" aria-hidden="true">
-    <div class="person-card" role="dialog" aria-modal="true" aria-labelledby="personTitle">
-      <div class="person-header">
+  <!-- Modal de persona -->
+  <div class="archivo-modal-overlay" id="archivoOverlay" aria-hidden="true">
+    <div class="archivo-modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <div class="archivo-modal-header">
         <div>
-          <h2 class="person-title" id="personTitle">—</h2>
-          <div class="person-sub" id="personSub">—</div>
-          <div class="person-tags" id="personTags"></div>
+          <h2 class="archivo-modal-name" id="modalName">—</h2>
+          <p class="archivo-modal-sub" id="modalSub"></p>
         </div>
-        <button class="btn close-btn" id="closePerson">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+        <button class="archivo-modal-close" id="modalClose" title="Cerrar">✕</button>
       </div>
-      <div class="person-body">
-        <div class="technical-info" id="technicalInfo" style="display:none;">
-          <h4>Ficha Técnica</h4>
-          <div class="technical-grid" id="technicalGrid"></div>
-        </div>
-        <div class="section-card" id="bioSection" style="display:none;">
-          <h3 class="section-title">Resumen</h3>
-          <p class="section-text" id="bioText"></p>
-        </div>
-        <div class="section-card" id="storySection" style="display:none;">
-          <h3 class="section-title">Datos, curiosidades y anécdotas</h3>
-          <div class="section-content" id="storyText"></div>
-        </div>
-        <div class="section-card" id="docsSection" style="display:none;">
-          <h3 class="section-title">Documentos</h3>
-          <ul class="doc-list" id="docsList"></ul>
-        </div>
-        <div class="section-card" id="gallerySection" style="display:none;">
-          <h3 class="section-title">Galería</h3>
-          <div class="gallery" id="personGallery"></div>
-        </div>
-        <div class="section-card" id="sourcesSection" style="display:none;">
-          <h3 class="section-title">Fuentes y Menciones</h3>
-          <div class="sources-list" id="sourcesList"></div>
-        </div>
-      </div>
+      <div class="archivo-modal-body" id="modalBody"></div>
     </div>
   </div>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-nav">
-      <button class="lightbox-btn" id="lbPrev" title="Anterior">‹</button>
-      <button class="lightbox-btn" id="lbNext" title="Siguiente">›</button>
-    </div>
-    <button class="lightbox-btn lightbox-close" id="lbClose" title="Cerrar">✕</button>
-    <div class="lightbox-inner">
+  <div class="archivo-lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" title="Cerrar">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" title="Anterior">‹</button>
+    <button class="lb-nav lb-next" id="lbNext" title="Siguiente">›</button>
+    <div class="lb-inner">
       <img id="lbImg" alt="" />
-      <div class="lightbox-caption" id="lbCaption"></div>
+      <p class="lb-caption" id="lbCaption"></p>
     </div>
   </div>
 
@@ -408,1084 +96,253 @@
     <a href="changelog.html" class="footer-changelog-link">Cambios</a>
   </footer>
 
+  <script src="./assets/js/path-config.js"></script>
   <script>
-    // Configuración: hoja del archivo familiar
-    const SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
-    const PEOPLE_GID = '0'; // GID para la hoja de personas
-    const MEDIA_GID = '1629407041'; // GID para la hoja de multimedia
+    let allPersonas = [];
+    let personasMap  = new Map();
 
-    let peopleIndex = [];
-    let mediaIndex = {};
-    let slugToPerson = new Map();
+    // ── Utilidades de fecha ──────────────────────────────
 
-    function toSlug(s) {
-      return String(s || '')
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase().trim()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-');
+    function yearOf(dateStr) {
+      if (!dateStr) return '';
+      const m = String(dateStr).match(/^(\d{4})/);
+      return m ? m[1] : '';
     }
 
-    function setDataSourceLabel(text) {
-      const el = document.getElementById('dataSourceHeader');
-      if (el) el.textContent = text;
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const m = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})/);
+      return m ? `${m[3]}/${m[2]}/${m[1]}` : dateStr;
     }
 
-    // Función para cargar datos desde Google Sheets
-    async function fetchGoogleSheet(sheetId, gid) {
-      // Agregar timestamp para evitar cache y headers para incluir todas las filas
-      const timestamp = Date.now();
-      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}&tq&headers=1&_=${timestamp}`;
-
-      try {
-        const response = await fetch(url);
-        const text = await response.text();
-        
-        // Limpiar respuesta de Google Sheets (formato JSONP)
-        let jsonText = text;
-        if (text.startsWith('/*O_o*/')) {
-          // Remover el prefijo JSONP
-          jsonText = text.replace(/^\/\*O_o\*\/\s*/, '');
-        }
-        
-        // Buscar el objeto JSON real
-        const match = jsonText.match(/\{.*\}/);
-        if (!match) {
-          throw new Error('No se encontró JSON válido en la respuesta');
-        }
-        
-        const data = JSON.parse(match[0]);
-        
-        if (!data.table || !data.table.rows) {
-          throw new Error('Formato de datos inválido');
-        }
-        
-        // Mapear columnas por etiqueta para evitar errores por posición
-        const cols = data.table.cols || [];
-        const colIndex = {};
-        cols.forEach((col, idx) => {
-          const key = (col.label || col.id || '').toString().trim().toLowerCase();
-          if (key) colIndex[key] = idx;
-        });
-        
-        // Convertir a formato simple
-        const rows = data.table.rows.map(row => {
-          const obj = {};
-          cols.forEach((col, index) => {
-            if (row.c[index]) {
-              const key = (col.label || col.id || '').toString().trim();
-              obj[key] = row.c[index].v;
-            }
-          });
-          return obj;
-        });
-        
-        return rows;
-      } catch (error) {
-        console.warn('[Google Sheets] Error:', error);
-        return null;
-      }
+    function yearsText(p) {
+      const b = yearOf(p.birth_date);
+      const d = yearOf(p.death_date);
+      if (!b && !d) return '';
+      if (b && !d) return p.vivo === 'si' ? `${b} –` : `${b} – ?`;
+      if (!b && d) return `? – ${d}`;
+      return `${b} – ${d}`;
     }
 
-    async function fetchArchive() {
-      // Primero intentar cargar desde Google Sheets
-      if (SHEET_ID && PEOPLE_GID) {
-        try {
-          console.log('Intentando cargar desde Google Sheets...');
-          
-          // Cargar hoja de personas
-          const peopleData = await fetchGoogleSheet(SHEET_ID, PEOPLE_GID);
-          
-          if (peopleData && peopleData.length > 0) {
-            
-            // Convertir datos de personas
-            const people = peopleData.map(row => ({
-              id: String(row.id || '').trim(),
-              slug: toSlug(row.slug || row.name || row.id),
-              name: String(row.name || '').trim(),
-              branch: String(row.branch || '').trim(),
-              generation: Number(row.generation || 0),
-              tags: String(row.tags || '').trim(),
-              count_media: Number(row.count_media || 0),
-              bio_short: String(row.bio_short || '').trim(),
-              story_long: String(row.story_long || '').trim(),
-              tree_id: String(row.tree_id || '').trim(),
-              sources: String(row.sources || '').trim(),
-              // Campos de fuentes detalladas
-              source_type: String(row.source_type || '').trim(),
-              source_person_id: String(row.source_person_id || '').trim(),
-              source_year: String(row.source_year || '').trim(),
-              source_description: String(row.source_description || '').trim(),
-              // Campos de fechas y lugares específicos
-              birth_date: String(row.birth_date || '').trim(),
-              birth_place: String(row.birth_place || '').trim(),
-              death_date: String(row.death_date || '').trim(),
-              death_place: String(row.death_place || '').trim(),
-              // IDs de relaciones familiares
-              spouse_id: String(row.spouse_id || '').trim(),
-              children_ids: String(row.children_ids || '').trim(),
-              father_id: String(row.father_id || '').trim(),
-              mother_id: String(row.mother_id || '').trim()
-            })).filter(p => p.id && p.name); // Filtrar filas vacías
-            
-            // Intentar cargar hoja de multimedia
-            let mediaByPerson = {};
-            try {
-              const mediaData = await fetchGoogleSheet(SHEET_ID, MEDIA_GID);
-              if (mediaData && mediaData.length > 0) {
-                // Agrupar multimedia por person_id usando nombres de columna dinámicos
-                const columns = Object.keys(mediaData[0] || {});
-                // Mapear columnas dinámicamente
-                const personIdCol = columns.find(col => col.toLowerCase().includes('person_id')) || 'B';
-                const typeCol = columns.find(col => col.toLowerCase().includes('type')) || 'C';
-                const dateCol = columns.find(col => col.toLowerCase().includes('date')) || 'D';
-                const captionCol = columns.find(col => col.toLowerCase().includes('caption')) || 'F';
-                const thumbCol = columns.find(col => col.toLowerCase().includes('thumb')) || 'I';
-                const fullCol = columns.find(col => col.toLowerCase().includes('full')) || 'J';
-                const urlCol = columns.find(col => col.toLowerCase().includes('url')) || 'K';
-                const titleCol = columns.find(col => col.toLowerCase().includes('title')) || 'L';
-                const licenseCol = columns.find(col => col.toLowerCase().includes('license')) || 'H';
-                
-                mediaData.forEach((row, index) => {
-                  const personId = String(row[personIdCol] || '').trim();
-                  const type = String(row[typeCol] || 'photo').trim();
-                  
-                  // Saltar si no hay person_id válido
-                  if (!personId || personId === 'person_id') {
-                    return;
-                  }
-                  
-                  if (personId) {
-                    if (!mediaByPerson[personId]) {
-                      mediaByPerson[personId] = [];
-                    }
-                    
-                    const mediaItem = {
-                      type: type,
-                      date: String(row[dateCol] || '').trim(),
-                      place: '', // No hay columna place en esta estructura
-                      caption: String(row[captionCol] || '').trim(),
-                      source: '', // No hay columna source en esta estructura
-                      license: String(row[licenseCol] || '').trim(),
-                      thumb: String(row[thumbCol] || '').trim(),
-                      full: type === 'doc' ? String(row[urlCol] || '').trim() : String(row[fullCol] || '').trim(),
-                      url: String(row[urlCol] || '').trim(),
-                      title: String(row[titleCol] || '').trim()
-                    };
-                    
-                    mediaByPerson[personId].push(mediaItem);
-                  }
-                });
-              }
-            } catch (mediaError) {
-              console.warn('Error cargando multimedia (continuando sin multimedia):', mediaError);
-            }
-            
-            setDataSourceLabel('Carga de datos: Google Sheets ✓');
-            return {
-              meta: { source: 'sheet', generatedAt: new Date().toISOString() },
-              people,
-              media: mediaByPerson
-            };
-          }
-        } catch (error) {
-          console.error('Error cargando desde Google Sheets:', error);
-          setDataSourceLabel('Carga de datos: Error en Google Sheets ✗');
-        }
-      }
-      
-      // Fallback: intentar archivo JSON local generado por script
-      try {
-        console.log('Intentando cargar desde archivo local...');
-        const res = await fetch('./content/data/archive.json', { cache: 'no-cache' });
-        if (res.ok) {
-          const json = await res.json();
-          console.log('Datos cargados desde archivo local');
-          setDataSourceLabel('Carga de datos: archivo local');
-          return json;
-        }
-      } catch (e) {
-        console.warn('Error cargando archivo local:', e);
-      }
-      
-      // Último recurso: datos de ejemplo
-      console.log('Usando datos de ejemplo');
-      setDataSourceLabel('Carga de datos: ejemplo (sin conexión)');
-      return {
-        people: [
-          { id: 'p1', slug: 'francisco-clemenzo', name: 'Francisco Clemenzo', years: '1856–1928', branch: 'clemenzo', generation: 5, count_media: 3, bio_short: 'Artesano suizo, llegó a Entre Ríos a fines del siglo XIX.', story_long: 'Anécdota: …' },
-          { id: 'p2', slug: 'celestina-roch', name: 'Celestina Roch', years: '1887–1968', branch: 'roch', generation: 5, count_media: 2 },
-          { id: 'p3', slug: 'matias-damian-clemenzo', name: 'Matias Damian Clemenzo', years: '1990–', branch: 'clemenzo', generation: 1, count_media: 4 }
-        ],
-        media: {
-          'p1': [
-            { type:'photo', thumb:'assets/images/cards/arbol.webp', full:'assets/images/cards/arbol.webp', caption:'Retrato', date:'1900' },
-            { type:'doc', url:'assets/images/posts/FJHC_1859_firma.png', caption:'Firma', date:'1859', title:'Firma en documento' }
-          ],
-          'p2': [ { type:'photo', thumb:'assets/images/cards/quiensoy.webp', full:'assets/images/cards/quiensoy.webp', caption:'Foto', date:'1930' } ],
-          'p3': [ { type:'photo', thumb:'assets/images/cards/arbol.webp', full:'assets/images/cards/arbol.webp', caption:'Foto', date:'2000' } ]
-        }
-      };
-    }
+    // ── Tabla ──────────────────────────────────────────
 
-    // Función global para formatear fechas
-    function formatDateGlobal(dateStr) {
-      if (!dateStr || dateStr.trim() === '') return '';
-      
-      const trimmed = dateStr.trim();
-      
-      // Si es solo un año (4 dígitos)
-      if (/^\d{4}$/.test(trimmed)) {
-        return trimmed;
-      }
-      
-      // Si es una fecha con formato DD/MM/YYYY
-      if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(trimmed)) {
-        const [day, month, year] = trimmed.split('/');
-        return `${day}/${month}/${year}`;
-      }
-      
-      // Si es una fecha con formato YYYY-MM-DD
-      if (/^\d{4}-\d{1,2}-\d{1,2}$/.test(trimmed)) {
-        const [year, month, day] = trimmed.split('-');
-        return `${day}/${month}/${year}`;
-      }
-      
-      // Si es una fecha de Google Sheets en formato Date(year,month,day)
-      const dateMatch = trimmed.match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})\)$/);
-      if (dateMatch) {
-        const [, year, month, day] = dateMatch;
-        // Google Sheets usa meses base 0 (enero=0, febrero=1, etc.)
-        const monthNum = parseInt(month) + 1;
-        return `${day}/${monthNum.toString().padStart(2, '0')}/${year}`;
-      }
-      
-      // Si es una fecha de Google Sheets (número de serie)
-      const dateNum = parseFloat(trimmed);
-      
-      // Manejar números negativos o muy pequeños (probablemente errores de formato)
-      if (!isNaN(dateNum) && dateNum < 0) {
-        console.warn('⚠️ Negative date number detected:', dateNum, 'for input:', trimmed);
-        return ''; // Retornar vacío para fechas inválidas
-      }
-      
-      if (!isNaN(dateNum) && dateNum > 0) {
-        try {
-          // Google Sheets usa días desde 1900-01-01
-          const date = new Date((dateNum - 25569) * 86400 * 1000);
-          if (!isNaN(date.getTime()) && date.getFullYear() > 1800 && date.getFullYear() < 2100) {
-            const day = date.getDate().toString().padStart(2, '0');
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}/${month}/${year}`;
-          } else {
-            console.warn('⚠️ Invalid year range:', date.getFullYear(), 'for date:', date);
-          }
-        } catch (e) {
-          console.warn('Error parsing date:', trimmed, e);
-        }
-      }
-      
-      // Si no coincide con ningún formato, devolver como está
-      return trimmed;
-    }
-
-    function formatYearsColumn(person) {
-      const birth = person.birth_date;
-      const death = person.death_date;
-      
-      const formattedBirth = formatDateGlobal(birth);
-      const formattedDeath = formatDateGlobal(death);
-      
-      // Si no hay datos de nacimiento ni muerte
-      if (!formattedBirth && !formattedDeath) return 'Desconocido';
-      
-      // Solo fecha de nacimiento
-      if (formattedBirth && !formattedDeath) {
-        return `${formattedBirth} - presente`;
-      }
-      
-      // Solo fecha de muerte (raro pero posible)
-      if (!formattedBirth && formattedDeath) {
-        return `? - ${formattedDeath}`;
-      }
-      
-      // Ambas fechas
-      return `${formattedBirth} - ${formattedDeath}`;
-    }
-
-    // Función para obtener color de píldora basado en el valor
-    function getPillColor(value, type) {
-      if (!value || value === '') return '';
-      
-      const colors = {
-        generation: {
-          '0': '#fef3c7', // Amarillo claro
-          '1': '#dbeafe', // Azul claro
-          '2': '#d1fae5', // Verde claro
-          '3': '#fce7f3', // Rosa claro
-          '4': '#e0e7ff', // Índigo claro
-          '5': '#fef2f2', // Rojo claro
-          '6': '#f3e8ff', // Púrpura claro
-          '7': '#ecfdf5', // Verde esmeralda claro
-          '8': '#fffbeb', // Ámbar claro
-          '9': '#f0f9ff'  // Cian claro
-        },
-        branch: {
-          'clemenzo': '#dbeafe', // Azul
-          'fernandez': '#d1fae5', // Verde
-          'vargas yegros': '#fce7f3', // Rosa
-          'arceo': '#e0e7ff', // Índigo
-          'roch': '#fef3c7', // Amarillo
-          'esposos': '#f3e8ff', // Púrpura
-          'otros': '#fef2f2', // Rojo
-          'other': '#f1f5f9' // Gris
-        },
-        date: {
-          'presente': '#d1fae5', // Verde para "presente"
-          'desconocido': '#f1f5f9', // Gris para "desconocido"
-          'default': '#f0f9ff' // Azul claro para fechas normales
-        }
-      };
-      
-      const valueLower = value.toString().toLowerCase();
-      
-      if (type === 'generation') {
-        return colors.generation[value] || colors.generation['0'];
-      } else if (type === 'branch') {
-        return colors.branch[valueLower] || colors.branch['other'];
-      } else if (type === 'date') {
-        if (valueLower.includes('presente')) return colors.date['presente'];
-        if (valueLower.includes('desconocido')) return colors.date['desconocido'];
-        return colors.date['default'];
-      }
-      
-      return colors.branch['other'];
-    }
-
-    // Función para crear píldora con color
-    function createPill(text, type) {
-      if (!text || text === '') return '';
-      const color = getPillColor(text, type);
-      return `<span class="pill" style="background-color: ${color}; color: #374151; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; display: inline-block;">${text}</span>`;
-    }
-
-    function renderTable(people, mediaData = {}) {
-      const tbody = document.querySelector('#peopleTable tbody');
+    function renderTable(personas) {
+      const tbody = document.querySelector('#archivoTable tbody');
       tbody.innerHTML = '';
-      
-      // Ordenar por generación (descendente - generaciones más antiguas primero)
-      const sortedPeople = [...people].sort((a, b) => {
-        const genA = parseInt(a.generation) || 0;
-        const genB = parseInt(b.generation) || 0;
-        return genB - genA; // Cambiado para orden descendente
-      });
-      
-      sortedPeople.forEach(p => {
+      personas.forEach(p => {
         const tr = document.createElement('tr');
-        const yearsText = formatYearsColumn(p);
-        const mediaCount = (mediaData[p.id] || []).length;
-        
+        const items = (p.media || []).length;
         tr.innerHTML = `
-          <td class="name-cell"><a href="#/${p.slug}">${p.name}</a></td>
-          <td>${createPill(yearsText, 'date')}</td>
-          <td>${createPill(p.branch || '', 'branch')}</td>
-          <td>${createPill(p.generation ?? '', 'generation')}</td>
-          <td>${mediaCount}</td>
+          <td class="archivo-name">${p.name}</td>
+          <td class="archivo-years">${yearsText(p)}</td>
+          <td class="archivo-branch">${p.branch || ''}</td>
+          <td class="archivo-gen">${p.generation ?? ''}</td>
+          <td class="archivo-items">${items || ''}</td>
         `;
+        tr.addEventListener('click', () => openModal(p));
         tbody.appendChild(tr);
       });
-      document.getElementById('statsCount').textContent = `Personas en el archivo: ${people.length}`;
-      
-      // Calcular total de items multimedia
-      const totalMedia = Object.values(mediaData).reduce((total, personMedia) => {
-        return total + (personMedia ? personMedia.length : 0);
-      }, 0);
-      document.getElementById('statsMedia').textContent = `Total de documentos: ${totalMedia}`;
+      document.getElementById('archivoCount').textContent = `${personas.length} personas`;
     }
 
-    // Función para resolver ID a nombre de persona
-    function getPersonNameById(id, allPeople) {
-      if (!id) return '';
-      const person = allPeople.find(p => p.id === id);
-      return person ? person.name : id; // Si no encuentra el nombre, devuelve el ID
-    }
+    // ── Modal ──────────────────────────────────────────
 
-    // Función para resolver múltiples IDs a nombres
-    function getPersonNamesByIds(idsString, allPeople) {
-      if (!idsString) return '';
-      const ids = idsString.split(',').map(id => id.trim()).filter(id => id);
-      return ids.map(id => getPersonNameById(id, allPeople)).join(', ');
-    }
+    function openModal(p) {
+      document.getElementById('modalName').textContent = p.name;
+      document.getElementById('modalSub').textContent =
+        [yearsText(p), p.branch].filter(Boolean).join(' · ');
 
-    function openModal(person, media = [], allPeople = []) {
-      const modal = document.getElementById('personModal');
-      
-      // Crear el subtítulo con fechas usando la misma función que la tabla
-      const yearsText = formatYearsColumn(person);
-      const subtitle = `${yearsText} · ${person.branch || ''}`.replace(/^\s*·\s*/, '').replace(/\s*·\s*$/, '');
-      
-      document.getElementById('personTitle').textContent = person.name || '—';
-      document.getElementById('personSub').textContent = subtitle;
-      
-      // Tags
-      const tagsContainer = document.getElementById('personTags');
-      tagsContainer.innerHTML = '';
-      if (person.tags) {
-        const tags = person.tags.split(';').map(t => t.trim()).filter(t => t);
-        tags.forEach(tag => {
-          const tagEl = document.createElement('span');
-          tagEl.className = `person-tag branch-${(person.branch || 'other').toLowerCase()}`;
-          tagEl.textContent = tag;
-          tagsContainer.appendChild(tagEl);
-        });
+      const body = document.getElementById('modalBody');
+      body.innerHTML = '';
+
+      // Fechas y lugares
+      if (p.birth_date || p.birth_place || p.death_date || p.death_place) {
+        const s = makeSection('Fechas y lugares');
+        if (p.birth_date || p.birth_place)
+          s.appendChild(makeRow('Nacimiento',
+            [formatDate(p.birth_date), p.birth_place].filter(Boolean).join(', ')));
+        if (p.death_date || p.death_place)
+          s.appendChild(makeRow('Defunción',
+            [formatDate(p.death_date), p.death_place].filter(Boolean).join(', ')));
+        body.appendChild(s);
       }
-      
-      // Ficha técnica
-      const technicalInfo = document.getElementById('technicalInfo');
-      const technicalGrid = document.getElementById('technicalGrid');
-      technicalGrid.innerHTML = '';
-      
-      const formattedBirthDate = formatDateGlobal(person.birth_date);
-      const formattedDeathDate = formatDateGlobal(person.death_date);
-      
-      const technicalData = [
-        { label: 'Nacimiento', value: formattedBirthDate && person.birth_place ? `${formattedBirthDate} en ${person.birth_place}` : formattedBirthDate || person.birth_place || '' },
-        { label: 'Defunción', value: formattedDeathDate && person.death_place ? `${formattedDeathDate} en ${person.death_place}` : formattedDeathDate || person.death_place || '' },
-        { label: 'Casado con', value: getPersonNameById(person.spouse_id, allPeople) },
-        { label: 'Hijos', value: getPersonNamesByIds(person.children_ids, allPeople) },
-        { label: 'Padre', value: getPersonNameById(person.father_id, allPeople) },
-        { label: 'Madre', value: getPersonNameById(person.mother_id, allPeople) }
-      ].filter(item => item.value);
-      
-      if (technicalData.length > 0) {
-        technicalData.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'technical-item';
-          div.innerHTML = `<div class="technical-label">${item.label}:</div><div class="technical-value">${item.value}</div>`;
-          technicalGrid.appendChild(div);
-        });
-        technicalInfo.style.display = 'block';
-      } else {
-        technicalInfo.style.display = 'none';
+
+      // Familia
+      const father = p.father_id ? personasMap.get(p.father_id) : null;
+      const mother = p.mother_id ? personasMap.get(p.mother_id) : null;
+      if (father || mother) {
+        const s = makeSection('Familia');
+        if (father) s.appendChild(makeRow('Padre', father.name));
+        if (mother) s.appendChild(makeRow('Madre', mother.name));
+        body.appendChild(s);
       }
-      
-      // Función para procesar texto y convertirlo en HTML con formato
-      function formatTextContent(text) {
-        if (!text) return '';
-        
-        let html = text;
-        
-        // Procesar listas PRIMERO (antes que cualquier otra cosa)
-        const lines = html.split('\n');
-        let inList = false;
-        let processedLines = [];
-        
-        for (let i = 0; i < lines.length; i++) {
-          const line = lines[i];
-          const trimmedLine = line.trim();
-          
-          // Detectar inicio de lista (guión o asterisco seguido de espacio)
-          if (trimmedLine.match(/^[*-]\s+/)) {
-            if (!inList) {
-              processedLines.push('<ul>');
-              inList = true;
-            }
-            const listItem = trimmedLine.replace(/^[*-]\s+/, '');
-            processedLines.push(`<li>${listItem}</li>`);
-          } else {
-            // Si estábamos en una lista y ahora no, cerrar la lista
-            if (inList) {
-              processedLines.push('</ul>');
-              inList = false;
-            }
-            processedLines.push(line);
-          }
-        }
-        
-        // Cerrar lista si quedó abierta
-        if (inList) {
-          processedLines.push('</ul>');
-        }
-        
-        html = processedLines.join('\n');
-        
-        // Convertir títulos de sección (líneas que terminan con :) - SOLO si NO están dentro de listas
-        html = html.replace(/^([^:]+):$/gm, '<h4>$1:</h4>');
-        
-        // Convertir citas (texto entre comillas dobles)
-        html = html.replace(/"([^"]+)"/g, '<blockquote>$1</blockquote>');
-        
-        // Convertir enlaces [texto](url)
-        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-        
-        // Convertir saltos de línea dobles en párrafos
-        html = html.replace(/\n\n+/g, '</p><p>');
-        html = html.replace(/^(.+)$/gm, '<p>$1</p>');
-        
-        // Limpiar párrafos vacíos y párrafos que solo contienen HTML
-        html = html.replace(/<p><\/p>/g, '');
-        html = html.replace(/<p>(<[^>]+>.*<\/[^>]+>)<\/p>/g, '$1');
-        
-        // Convertir texto en negrita SOLO en títulos de sección
-        html = html.replace(/<h4>([^<]+):<\/h4>/g, '<h4><strong>$1:</strong></h4>');
-        
-        // LIMPIEZA FINAL: Asegurar que el contenido de las listas NO esté en negrita
-        html = html.replace(/<li><strong>/g, '<li>');
-        html = html.replace(/<\/strong><\/li>/g, '</li>');
-        html = html.replace(/<li>(.*?)<strong>(.*?)<\/strong>(.*?)<\/li>/g, '<li>$1$2$3</li>');
-        
-        return html;
+
+      // Notas
+      if (p.notes) {
+        const s = makeSection('Notas');
+        const t = document.createElement('p');
+        t.className = 'modal-text';
+        t.textContent = p.notes;
+        s.appendChild(t);
+        body.appendChild(s);
       }
-      
-      // Texto
-      const bio = document.getElementById('bioSection');
-      const story = document.getElementById('storySection');
-      document.getElementById('bioText').textContent = person.bio_short || '';
-      document.getElementById('storyText').innerHTML = formatTextContent(person.story_long || '');
-      bio.style.display = person.bio_short ? 'block' : 'none';
-      story.style.display = person.story_long ? 'block' : 'none';
-      // Documentos (no-foto)
-      const docs = document.getElementById('docsList');
-      docs.innerHTML = '';
-      const docItems = media.filter(m => m.type && m.type !== 'photo');
-      if (docItems.length) {
-        document.getElementById('docsSection').style.display = 'block';
-        docItems.forEach(d => {
-          const li = document.createElement('li');
-          li.className = 'doc-item';
-          
-          // Para documentos, usar 'full' como URL principal (que ahora mapea a 'url' desde sheets), fallback a 'url'
-          const href = d.full || d.url || '#';
-          const title = d.caption || d.title || 'Documento';
-          
-          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${title}</a><div>${d.date||''}</div>`;
-          docs.appendChild(li);
-        });
-      } else {
-        document.getElementById('docsSection').style.display = 'none';
+
+      // Fuentes
+      if (p.sources) {
+        const s = makeSection('Fuentes');
+        const t = document.createElement('p');
+        t.className = 'modal-text';
+        t.textContent = p.sources;
+        s.appendChild(t);
+        body.appendChild(s);
       }
-      // Galería (solo fotos)
-      const photos = media.filter(m => (m.type||'photo') === 'photo');
-      const gal = document.getElementById('personGallery');
-      gal.innerHTML = '';
+
+      // Fotos
+      const photos = (p.media || []).filter(m => !m.type || m.type === 'photo');
       if (photos.length) {
-        document.getElementById('gallerySection').style.display = 'block';
-        photos.forEach((m, idx) => {
+        const s = makeSection('Fotos');
+        const grid = document.createElement('div');
+        grid.className = 'modal-gallery';
+        photos.forEach((m, i) => {
           const fig = document.createElement('figure');
-          fig.className = 'thumb';
-          const thumb = m.thumb || m.filename || m.full || m.url;
-          const caption = m.caption || '';
-          fig.innerHTML = `
-            <img src="${thumb}" alt="${caption}" loading="lazy" data-index="${idx}" title="Click para ver en tamaño completo">
-            <figcaption>${caption}</figcaption>
-          `;
-          fig.querySelector('img').addEventListener('click', () => openLightbox(photos, idx));
-          gal.appendChild(fig);
+          fig.className = 'modal-thumb';
+          const img = document.createElement('img');
+          img.src = m.thumb || m.filename || m.url || '';
+          img.alt = m.caption || '';
+          img.loading = 'lazy';
+          const cap = document.createElement('figcaption');
+          cap.textContent = m.caption || '';
+          fig.appendChild(img);
+          fig.appendChild(cap);
+          fig.addEventListener('click', () => openLightbox(photos, i));
+          grid.appendChild(fig);
         });
-      } else {
-        document.getElementById('gallerySection').style.display = 'none';
+        s.appendChild(grid);
+        body.appendChild(s);
       }
-      
-      // Fuentes y menciones
-      const sources = document.getElementById('sourcesList');
-      sources.innerHTML = '';
-      
-      // Función para obtener icono según tipo de fuente
-      function getSourceIcon(sourceType) {
-        // Normalizar el tipo de fuente para evitar inconsistencias
-        const normalizedType = sourceType.toLowerCase().trim();
-        
-        const iconMap = {
-          'birth': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 12l2 2 4-4"/>
-            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
-          </svg>`,
-          'marriage': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>`,
-          'death': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-            <line x1="12" y1="9" x2="12" y2="13"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>`,
-          'census': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-          </svg>`,
-          'baptism': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>`,
-          'immigration': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12h18"/>
-            <path d="M3 6h18"/>
-            <path d="M3 18h18"/>
-          </svg>`,
-          'default': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-          </svg>`
-        };
-        
-        // Buscar coincidencia exacta o parcial
-        if (iconMap[normalizedType]) {
-          return iconMap[normalizedType];
-        }
-        
-        // Si no hay coincidencia exacta, buscar coincidencias parciales
-        for (const [key, icon] of Object.entries(iconMap)) {
-          if (normalizedType.includes(key) || key.includes(normalizedType)) {
-            return icon;
-          }
-        }
-        
-        return iconMap['default'];
-      }
-      
-      // Función para obtener color según tipo de fuente
-      function getSourceColor(sourceType) {
-        // Normalizar el tipo de fuente para evitar inconsistencias
-        const normalizedType = sourceType.toLowerCase().trim();
-        
-        const colorMap = {
-          'birth': '#10b981',      // Verde
-          'marriage': '#f59e0b',   // Amarillo
-          'death': '#ef4444',      // Rojo
-          'census': '#3b82f6',     // Azul
-          'baptism': '#8b5cf6',    // Púrpura
-          'immigration': '#06b6d4', // Cyan
-          'default': '#6b7280'     // Gris
-        };
-        
-        // Buscar coincidencia exacta o parcial
-        if (colorMap[normalizedType]) {
-          return colorMap[normalizedType];
-        }
-        
-        // Si no hay coincidencia exacta, buscar coincidencias parciales
-        for (const [key, color] of Object.entries(colorMap)) {
-          if (normalizedType.includes(key) || key.includes(normalizedType)) {
-            return color;
-          }
-        }
-        
-        return colorMap['default'];
-      }
-      
-      // Procesar fuentes usando las múltiples columnas
-      if (person.source_person_id && person.source_person_id.trim()) {
-        const sourceIds = person.source_person_id.split(',').map(s => s.trim()).filter(s => s);
-        const sourceTypes = person.source_type ? person.source_type.split(',').map(s => s.trim()) : [];
-        
-        // Manejar fechas separadas por coma o punto
-        let sourceYears = [];
-        if (person.source_year) {
-          // Primero intentar con coma, luego con punto
-          const commaSplit = person.source_year.split(',').map(s => s.trim());
-          if (commaSplit.length > 1) {
-            sourceYears = commaSplit;
-          } else {
-            // Si solo hay un elemento, intentar con punto
-            sourceYears = person.source_year.split('.').map(s => s.trim());
-          }
-        }
-        
-        const sourceDescriptions = person.source_description ? person.source_description.split(',').map(s => s.trim()) : [];
-        
 
-        
-        if (sourceIds.length > 0) {
-          document.getElementById('sourcesSection').style.display = 'block';
-          
-          // Crear array de fuentes con toda la información
-          const sourcesArray = sourceIds.map((sourceId, index) => {
-            const sourcePerson = allPeople.find(p => p.id === sourceId);
-            if (!sourcePerson) return null;
-            
-            const sourceType = sourceTypes[index] || 'default';
-            const sourceYear = sourceYears[index] || '';
-            const sourceDescription = sourceDescriptions[index] || 'Registro familiar';
-            
-            return {
-              sourceId,
-              sourcePerson,
-              sourceType,
-              sourceYear,
-              sourceDescription,
-              index
-            };
-          }).filter(source => source !== null);
-          
-          // Ordenar por año (más antiguo primero)
-          sourcesArray.sort((a, b) => {
-            const yearA = parseInt(a.sourceYear) || 9999;
-            const yearB = parseInt(b.sourceYear) || 9999;
-            return yearA - yearB;
-          });
-          
-          // Crear elementos HTML ordenados
-          sourcesArray.forEach((source) => {
-            const sourceItem = document.createElement('div');
-            sourceItem.className = 'source-item';
-            
-            const sourceColor = getSourceColor(source.sourceType);
-            const sourceIcon = getSourceIcon(source.sourceType);
-            
-            // Aplicar color específico al borde izquierdo
-            sourceItem.style.borderLeftColor = sourceColor;
-            
-            // Mejorar formato de fecha - mostrar fecha completa si está disponible
-            let dateText = '';
-            if (source.sourceYear) {
-              // Si es solo año, mostrar como año
-              if (/^\d{4}$/.test(source.sourceYear)) {
-                dateText = ` (${source.sourceYear})`;
-              } else {
-                // Si es fecha completa, formatear
-                try {
-                  const date = new Date(source.sourceYear);
-                  if (!isNaN(date.getTime())) {
-                    const options = { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    };
-                    dateText = ` (${date.toLocaleDateString('es-ES', options)})`;
-                  } else {
-                    dateText = ` (${source.sourceYear})`;
-                  }
-                } catch (e) {
-                  dateText = ` (${source.sourceYear})`;
-                }
-              }
-            }
-            
-            sourceItem.innerHTML = `
-              <div class="source-icon" style="color: ${sourceColor}">${sourceIcon}</div>
-              <div class="source-content">
-                <div class="source-title">${source.sourceDescription}${dateText}</div>
-                <div class="source-description">Mencionado en el registro de ${source.sourcePerson.name}</div>
-                <a href="#/${source.sourcePerson.slug}" class="source-link">Ver registro de ${source.sourcePerson.name}</a>
-              </div>
-            `;
-            
-            sources.appendChild(sourceItem);
-          });
-        } else {
-          document.getElementById('sourcesSection').style.display = 'none';
-        }
-      } else {
-        document.getElementById('sourcesSection').style.display = 'none';
+      // Documentos
+      const docs = (p.media || []).filter(m => m.type && m.type !== 'photo');
+      if (docs.length) {
+        const s = makeSection('Documentos');
+        const ul = document.createElement('ul');
+        ul.className = 'modal-docs';
+        docs.forEach(d => {
+          const li = document.createElement('li');
+          const href = d.url || d.filename || '#';
+          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${d.caption || d.title || 'Documento'}</a>`
+            + (d.date ? `<span class="modal-doc-date">${d.date}</span>` : '');
+          ul.appendChild(li);
+        });
+        s.appendChild(ul);
+        body.appendChild(s);
       }
-      
-      modal.style.display = 'flex';
-      modal.setAttribute('aria-hidden','false');
+
+      document.getElementById('archivoOverlay').classList.add('is-open');
+      document.getElementById('archivoOverlay').setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-      const modal = document.getElementById('personModal');
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = 'auto';
-      if (location.hash.startsWith('#/')) history.pushState('', document.title, location.pathname + location.search);
+      document.getElementById('archivoOverlay').classList.remove('is-open');
+      document.getElementById('archivoOverlay').setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     }
 
-    // Lightbox mejorado con zoom y pan
-    let lbState = { items: [], index: 0, isZoomed: false, isPanning: false, panStart: { x: 0, y: 0 } };
+    function makeSection(title) {
+      const div = document.createElement('div');
+      div.className = 'modal-section';
+      const h = document.createElement('p');
+      h.className = 'modal-section-title';
+      h.textContent = title;
+      div.appendChild(h);
+      return div;
+    }
+
+    function makeRow(label, value) {
+      const p = document.createElement('p');
+      p.className = 'modal-row';
+      p.innerHTML = `<span class="modal-label">${label}</span>${value}`;
+      return p;
+    }
+
+    // ── Lightbox ───────────────────────────────────────
+
+    let lbState = { items: [], index: 0 };
+
     function openLightbox(items, index) {
-      lbState = { items, index, isZoomed: false };
-      const m = items[index] || {};
-      
-      // Priorizar imagen de tamaño completo para mejor zoom
-      const src = m.full || m.url || m.filename || m.thumb;
-      const cap = m.caption || '';
-      
-      const lbImg = document.getElementById('lbImg');
-      lbImg.src = src;
-      lbImg.style.transform = 'scale(1) translate(0px, 0px)';
-      lbImg.style.cursor = 'zoom-in';
-      lbState.isZoomed = false;
-      lbState.isPanning = false;
-      
-      document.getElementById('lbCaption').textContent = cap;
-      
-      const lb = document.getElementById('lightbox');
-      lb.style.display = 'flex';
-      lb.setAttribute('aria-hidden','false');
+      lbState = { items, index };
+      const m = items[index];
+      document.getElementById('lbImg').src = m.full || m.url || m.filename || m.thumb || '';
+      document.getElementById('lbCaption').textContent = m.caption || '';
+      document.getElementById('lightbox').classList.add('is-open');
+      document.getElementById('lightbox').setAttribute('aria-hidden', 'false');
     }
-    function closeLightbox(){
-      const lb = document.getElementById('lightbox');
-      lb.style.display = 'none';
-      lb.setAttribute('aria-hidden','true');
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('is-open');
+      document.getElementById('lightbox').setAttribute('aria-hidden', 'true');
     }
-    function navLightbox(offset){
+
+    function navLightbox(offset) {
       if (!lbState.items.length) return;
       lbState.index = (lbState.index + offset + lbState.items.length) % lbState.items.length;
-      openLightbox(lbState.items, lbState.index);
+      const m = lbState.items[lbState.index];
+      document.getElementById('lbImg').src = m.full || m.url || m.filename || m.thumb || '';
+      document.getElementById('lbCaption').textContent = m.caption || '';
     }
 
-    function applySearch(term) {
-      const t = term.trim().toLowerCase();
-      let filtered = peopleIndex;
-      if (t) {
-        filtered = peopleIndex.filter(p =>
-          (p.name||'').toLowerCase().includes(t) ||
-          (p.branch||'').toLowerCase().includes(t) ||
-          (p.tags||'').toLowerCase().includes(t)
-        );
-      }
-      document.getElementById('searchMeta').textContent = t ? `${filtered.length} resultados` : '';
-      renderTable(filtered, mediaIndex || {});
-    }
+    // ── Inicio ─────────────────────────────────────────
 
-    function initRouter(data) {
-      const { people, media } = data;
-      function route() {
-        const hash = location.hash || '';
-        const m = hash.match(/^#\/(.+)$/);
-        if (m) {
-          const slug = m[1];
-          const person = slugToPerson.get(slug);
-          if (person) {
-            openModal(person, (media && media[person.id]) || [], data.people || []);
-          }
-        } else {
-          closeModal();
-        }
-      }
-      window.addEventListener('hashchange', route);
-      route();
-    }
+    (async function main() {
+      const url = window.getDataPath?.('arbol.json') ?? './assets/data/arbol.json';
+      const res  = await fetch(url);
+      const json = await res.json();
+      allPersonas  = json.personas || [];
+      personasMap  = new Map(allPersonas.map(p => [p.id, p]));
 
-    (async function main(){
-      const data = await fetchArchive();
-      const people = (data.people || []).map(p => ({ ...p, slug: p.slug || toSlug(p.name || p.id) }));
-      const media = data.media || {};
-      peopleIndex = people;
-      mediaIndex = media;
-      slugToPerson = new Map(people.map(p => [p.slug, p]));
-      renderTable(people, media);
-      // Origen de datos en stats - mejorar la presentación
-      let origin = 'ejemplo';
-      if (data.meta?.source === 'sheet') {
-        origin = 'Google Sheets ✓';
-      } else if (data.meta?.source === 'local' || data.meta?.source) {
-        origin = 'archivo local';
-      }
-      const metaStr = `Origen: ${origin}`;
-      document.getElementById('statsSource').textContent = metaStr;
+      const sorted = [...allPersonas].sort((a, b) => {
+        const gd = (b.generation ?? 0) - (a.generation ?? 0);
+        return gd !== 0 ? gd : (a.sort_order ?? 0) - (b.sort_order ?? 0);
+      });
+
+      renderTable(sorted);
+
       // Búsqueda
-      document.getElementById('searchInput').addEventListener('input', (e)=> applySearch(e.target.value));
-      document.getElementById('resetBtn').addEventListener('click', ()=> { document.getElementById('searchInput').value=''; applySearch(''); });
+      document.getElementById('archivoSearch').addEventListener('input', function () {
+        const q = this.value.trim().toLowerCase();
+        const filtered = q
+          ? sorted.filter(p =>
+              p.name.toLowerCase().includes(q) ||
+              (p.branch || '').toLowerCase().includes(q))
+          : sorted;
+        renderTable(filtered);
+      });
+
       // Modal
-      document.getElementById('closePerson').addEventListener('click', closeModal);
-      document.getElementById('personModal').addEventListener('click', (e)=> { if (e.target.id === 'personModal') closeModal(); });
+      document.getElementById('modalClose').addEventListener('click', closeModal);
+      document.getElementById('archivoOverlay').addEventListener('click', e => {
+        if (e.target.id === 'archivoOverlay') closeModal();
+      });
+
       // Lightbox
       document.getElementById('lbClose').addEventListener('click', closeLightbox);
-      document.getElementById('lightbox').addEventListener('click', (e)=> { if (e.target.id === 'lightbox') closeLightbox(); });
-      document.getElementById('lbPrev').addEventListener('click', ()=> navLightbox(-1));
-      document.getElementById('lbNext').addEventListener('click', ()=> navLightbox(1));
-      
-      // Zoom con doble click en la imagen
-      document.getElementById('lbImg').addEventListener('dblclick', (e) => {
-        e.preventDefault();
-        const lbImg = e.target;
-        
-        if (lbState.isZoomed) {
-          // Zoom out
-          lbImg.style.transform = 'scale(1) translate(0px, 0px)';
-          lbImg.style.cursor = 'zoom-in';
-          lbState.isZoomed = false;
-        } else {
-          // Zoom in
-          lbImg.style.transform = 'scale(2) translate(0px, 0px)';
-          lbImg.style.cursor = 'grab';
-          lbState.isZoomed = true;
-        }
+      document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
+      document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
+      document.getElementById('lightbox').addEventListener('click', e => {
+        if (e.target.id === 'lightbox') closeLightbox();
       });
-      
-      // Pan con mouse cuando está zoomado
-      document.getElementById('lbImg').addEventListener('mousedown', (e) => {
-        if (lbState.isZoomed) {
-          e.preventDefault();
-          lbState.isPanning = true;
-          lbState.panStart = { x: e.clientX, y: e.clientY };
-          e.target.style.cursor = 'grabbing';
-        }
-      });
-      
-      document.addEventListener('mousemove', (e) => {
-        if (lbState.isPanning && lbState.isZoomed) {
-          e.preventDefault();
-          const lbImg = document.getElementById('lbImg');
-          const deltaX = e.clientX - lbState.panStart.x;
-          const deltaY = e.clientY - lbState.panStart.y;
-          
-          lbState.panStart = { x: e.clientX, y: e.clientY };
-          
-          const currentTransform = lbImg.style.transform;
-          const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
-          let currentX = 0, currentY = 0;
-          
-          if (translateMatch) {
-            const [x, y] = translateMatch[1].split(',').map(v => parseFloat(v));
-            currentX = x || 0;
-            currentY = y || 0;
-          }
-          
-          const newX = currentX + deltaX;
-          const newY = currentY + deltaY;
-          
-          lbImg.style.transform = `scale(2) translate(${newX}px, ${newY}px)`;
-        }
-      });
-      
-      document.addEventListener('mouseup', () => {
-        if (lbState.isPanning) {
-          lbState.isPanning = false;
-          const lbImg = document.getElementById('lbImg');
-          if (lbState.isZoomed) {
-            lbImg.style.cursor = 'grab';
-          }
-        }
-      });
-      document.addEventListener('keydown', (e)=>{
-        const lb = document.getElementById('lightbox');
-        if (lb.style.display === 'flex') {
-          if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') navLightbox(-1);
+
+      document.addEventListener('keydown', e => {
+        if (document.getElementById('lightbox').classList.contains('is-open')) {
+          if (e.key === 'Escape')     closeLightbox();
+          if (e.key === 'ArrowLeft')  navLightbox(-1);
           if (e.key === 'ArrowRight') navLightbox(1);
-          if (e.key === 'z' || e.key === 'Z') {
-            // Toggle zoom con tecla Z
-            const lbImg = document.getElementById('lbImg');
-            if (lbState.isZoomed) {
-              lbImg.style.transform = 'scale(1) translate(0px, 0px)';
-              lbImg.style.cursor = 'zoom-in';
-              lbState.isZoomed = false;
-            } else {
-              lbImg.style.transform = 'scale(2) translate(0px, 0px)';
-              lbImg.style.cursor = 'grab';
-              lbState.isZoomed = true;
-            }
-          }
-          
-          // Navegación con teclado cuando está zoomado
-          if (lbState.isZoomed) {
-            const lbImg = document.getElementById('lbImg');
-            const currentTransform = lbImg.style.transform;
-            const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
-            let currentX = 0, currentY = 0;
-            
-            if (translateMatch) {
-              const [x, y] = translateMatch[1].split(',').map(v => parseFloat(v));
-              currentX = x || 0;
-              currentY = y || 0;
-            }
-            
-            const step = 50; // Píxeles por tecla
-            
-            if (e.key === 'ArrowUp') {
-              e.preventDefault();
-              lbImg.style.transform = `scale(2) translate(${currentX}px, ${currentY - step}px)`;
-            } else if (e.key === 'ArrowDown') {
-              e.preventDefault();
-              lbImg.style.transform = `scale(2) translate(${currentX}px, ${currentY + step}px)`;
-            } else if (e.key === 'ArrowLeft') {
-              e.preventDefault();
-              lbImg.style.transform = `scale(2) translate(${currentX - step}px, ${currentY}px)`;
-            } else if (e.key === 'ArrowRight') {
-              e.preventDefault();
-              lbImg.style.transform = `scale(2) translate(${currentX + step}px, ${currentY}px)`;
-            }
-          }
+        } else if (document.getElementById('archivoOverlay').classList.contains('is-open')) {
+          if (e.key === 'Escape') closeModal();
         }
       });
-      // Marcar si el viewport es móvil para depurar estilos
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      if (isMobile) {
-        document.body.classList.add('is-mobile');
-      } else {
-        document.body.classList.remove('is-mobile');
-      }
-      // Diagnóstico de estilos aplicados
-      const toolbarInner = document.querySelector('.toolbar-inner');
-      const statsCard = document.querySelector('.stats-card');
-      const searchBox = document.querySelector('.search');
-      if (toolbarInner && statsCard && searchBox) {
-        const csToolbar = getComputedStyle(toolbarInner);
-        const csStats = getComputedStyle(statsCard);
-        console.log('[archivo] styles before', {
-          toolbar: {
-            flexDirection: csToolbar.flexDirection,
-            maxWidth: csToolbar.maxWidth,
-            padding: csToolbar.padding,
-            gap: csToolbar.gap,
-            height: csToolbar.height,
-          },
-          stats: {
-            alignSelf: csStats.alignSelf,
-            marginLeft: csStats.marginLeft,
-            maxWidth: csStats.maxWidth,
-            width: csStats.width,
-            padding: csStats.padding,
-          }
-        });
-        // Fallback: forzar estilos en móvil con inline para asegurar el resultado visual
-        if (isMobile) {
-          toolbarInner.style.flexDirection = 'column';
-          toolbarInner.style.alignItems = 'center';
-          toolbarInner.style.gap = '6px';
-          toolbarInner.style.maxWidth = '420px';
-          toolbarInner.style.padding = '8px 10px';
-          toolbarInner.style.margin = '0 auto';
-
-          searchBox.style.maxWidth = '360px';
-          searchBox.style.width = '100%';
-          const input = searchBox.querySelector('input');
-          if (input) {
-            input.style.maxWidth = '360px';
-            input.style.width = '100%';
-            input.style.padding = '8px 12px';
-          }
-          statsCard.style.marginLeft = '0';
-          statsCard.style.alignSelf = 'center';
-          statsCard.style.maxWidth = '360px';
-          statsCard.style.width = '100%';
-          statsCard.style.padding = '8px 12px';
-
-          // También reducir el alto del bloque de la toolbar explicitamente
-          toolbarInner.style.minHeight = 'unset';
-          toolbarInner.style.rowGap = '6px';
-          // Log final de medidas
-          const csToolbar2 = getComputedStyle(toolbarInner);
-          const csStats2 = getComputedStyle(statsCard);
-          console.log('[archivo] styles after', {
-            toolbar: {
-              flexDirection: csToolbar2.flexDirection,
-              maxWidth: csToolbar2.maxWidth,
-              padding: csToolbar2.padding,
-              gap: csToolbar2.gap,
-              height: csToolbar2.height,
-            },
-            stats: {
-              alignSelf: csStats2.alignSelf,
-              marginLeft: csStats2.marginLeft,
-              maxWidth: csStats2.maxWidth,
-              width: csStats2.width,
-              padding: csStats2.padding,
-            }
-          });
-        }
-      }
-
-      console.log('[archivo] viewportWidth=', window.innerWidth, 'isMobile=', isMobile);
-
-      // Router por hash
-      initRouter(data);
     })();
   </script>
 </body>
 </html>
-
-
