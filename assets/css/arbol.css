@@ -1,14 +1,93 @@
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+/* ─────────────────────────────────────────────────────────
+   ÁRBOL GENEALÓGICO — estilos específicos
+   Complementa styles.css. Hereda todos los tokens CSS.
+   ───────────────────────────────────────────────────────── */
 
-body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+* { box-sizing: border-box; }
+
+/* ── Toolbar de búsqueda ─────────────────────────────────────────────────────── */
+
+.tree-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex-shrink: 0;
+    gap: 8px;
 }
+
+.tree-search {
+    width: 220px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.tree-search:focus {
+    border-color: var(--accent);
+    background: white;
+}
+
+.tree-search::placeholder {
+    color: var(--muted);
+}
+
+/* Wrapper relativo para posicionar el dropdown */
+.tree-search-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown de sugerencias */
+.search-suggestions {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 220px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    z-index: 200;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.search-suggestions.is-open {
+    display: block;
+}
+
+.search-suggestion-item {
+    padding: 7px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.1s;
+}
+
+.search-suggestion-item:hover,
+.search-suggestion-item.is-active {
+    background: var(--border);
+    color: var(--text);
+}
+
+/* ── Canvas del árbol ────────────────────────────────────────────────────────── */
 
 .tree-wrapper {
     position: relative;
@@ -23,91 +102,247 @@ body {
     flex: 1;
     min-height: 520px;
     overflow: hidden;
-    background: var(--surface, #fdfcf9);
+    /* Fondo de puntos: da sensación de canvas sin competir con el árbol */
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, #c9c0b4 1px, transparent 1px);
+    background-size: 22px 22px;
 }
+
+/* ── Controles de zoom ───────────────────────────────────────────────────────── */
 
 .zoom-controls {
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 16px;
+    left: 16px;
     z-index: 50;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    pointer-events: auto;
-    margin-top: 10px;
-    margin-right: 10px;
+    gap: 4px;
 }
 
 .zoom-btn {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: bold;
+    width: 32px;
+    height: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    line-height: 1;
+    padding: 0;
 }
 
 .zoom-btn:hover {
-    background: #f3f4f6;
-    border-color: #9ca3af;
+    color: var(--text);
+    border-color: var(--accent);
+    background: white;
 }
 
 .zoom-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
 }
 
-/* SVG tree */
-#tree-container {
-    border: 1px solid var(--border, #e2dbd0);
-    border-radius: 4px;
+/* ── Tarjetas de persona (clases CSS para hover — el render lo maneja en JS) ── */
+
+.person-card-group {
+    cursor: pointer;
 }
 
-/* Hover en tarjetas de persona */
-.person-card-group:hover rect:first-child {
-    stroke-opacity: 0.9;
+/* ── Panel lateral ───────────────────────────────────────────────────────────── */
+
+.tree-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 288px;
+    height: 100%;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 60;
+    transform: translateX(100%);
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    /* Sombra hacia la izquierda — diferencia el panel del canvas */
+    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
 }
 
-svg { z-index: 1; }
-
-.marriage-unit { cursor: pointer; }
-
-.person-card {
-    fill: white;
-    stroke: #d1d5db;
-    stroke-width: 2;
-    rx: 12;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+.tree-panel.is-open {
+    transform: translateX(0);
 }
 
-.person-text {
-    font-size: 14px;
-    fill: #374151;
-    text-anchor: middle;
+.tree-panel-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 12px 0;
+    flex-shrink: 0;
+}
+
+.tree-panel-close {
+    background: none;
+    border: none;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 5px 7px;
+    border-radius: 3px;
+    line-height: 1;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tree-panel-close:hover {
+    background: var(--border);
+    color: var(--text);
+}
+
+.tree-panel-body {
+    overflow-y: auto;
+    flex: 1;
+    padding: 2px 18px 24px;
+    /* Scrollbar sutil */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.tree-panel-body::-webkit-scrollbar { width: 4px; }
+.tree-panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.tree-panel-body::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Contenido del panel ─────────────────────────────────────────────────────── */
+
+.panel-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 10px 0 2px;
+    line-height: 1.25;
+}
+
+.panel-section {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.panel-section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 7px;
+}
+
+.panel-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.panel-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    margin: 3px 0;
+    line-height: 1.45;
+}
+
+.panel-meta--indent {
+    padding-left: 10px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.panel-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 3px 0;
+    cursor: pointer;
+    line-height: 1.4;
+    display: block;
+    padding: 2px 4px;
+    margin-left: -4px;
+    border-radius: 2px;
+    transition: background 0.12s;
+}
+
+.panel-link:hover {
+    background: var(--border);
+}
+
+.panel-marriage {
+    margin: 6px 0 10px;
+}
+
+.panel-children {
+    padding-left: 10px;
+    margin-top: 3px;
+}
+
+.panel-child {
+    font-size: 12px;
+}
+
+.panel-spouse {
+    font-size: 13px;
     font-weight: 500;
 }
 
-.person-text.name {
-    font-size: 14px;
-    font-weight: 600;
-    fill: #111827;
+.panel-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+    white-space: pre-line;
 }
 
-.marriage-link {
-    stroke: #f59e0b;
-    stroke-width: 3;
+.panel-media {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
 }
 
-.parent-child-link {
-    stroke-width: 2;
-    fill: none;
+.panel-media-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
 }
 
-.collapsed { opacity: 0.6; }
+.panel-media-photo img {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    display: block;
+}
+
+.panel-media-doc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.panel-media-doc:hover { text-decoration: underline; }

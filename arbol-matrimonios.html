@@ -38,13 +38,35 @@
     </aside>
 
     <main class="site-main" style="padding: 0; display: flex; flex-direction: column;">
-    <div class="tree-wrapper">
-        <div class="tree-container" id="tree-container"></div>
-        <div class="zoom-controls">
-            <button id="zoomInBtn"  class="zoom-btn" title="Acercar (+)">+</button>
-            <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
+      <div class="tree-toolbar">
+        <div class="tree-search-wrap">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Buscar persona…"
+            class="tree-search"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <ul class="search-suggestions" id="searchSuggestions"></ul>
         </div>
-    </div>
+      </div>
+
+      <div class="tree-wrapper">
+        <div class="tree-container" id="tree-container"></div>
+
+        <div class="zoom-controls">
+          <button id="zoomInBtn"  class="zoom-btn" title="Acercar (+)">+</button>
+          <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
+        </div>
+
+        <div class="tree-panel" id="treePanel">
+          <div class="tree-panel-header">
+            <button class="tree-panel-close" id="treePanelClose" title="Cerrar">✕</button>
+          </div>
+          <div class="tree-panel-body" id="treePanelBody"></div>
+        </div>
+      </div>
     </main>
   </div>
 
@@ -55,17 +77,20 @@
 
     <script src="./assets/js/path-config.js"></script>
     <script type="module">
-        import { loadData, getAllPersonas }                    from './assets/js/arbol/data.js';
-        import { setFocus, on }                               from './assets/js/arbol/store.js';
-        import { computeLayout }                              from './assets/js/arbol/layout.js';
-        import { initTree, render, recenterOn, zoomIn, zoomOut } from './assets/js/arbol/render.js';
+        import { loadData, getAllPersonas }                        from './assets/js/arbol/data.js';
+        import { setFocus, on }                                   from './assets/js/arbol/store.js';
+        import { computeLayout }                                  from './assets/js/arbol/layout.js';
+        import { initTree, render, recenterOn, zoomIn, zoomOut }  from './assets/js/arbol/render.js';
+        import { initPanel }                                      from './assets/js/arbol/panel.js';
+        import { initSearch }                                     from './assets/js/arbol/search.js';
 
         async function init() {
             await loadData();
 
             initTree('tree-container');
+            initPanel();
+            initSearch();
 
-            // Registrar listener antes de setFocus para que el árbol inicial renderice
             on('focusChange', id => {
                 const layout = computeLayout(id);
                 render(layout);
@@ -75,7 +100,6 @@
             document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);
             document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
 
-            // Foco inicial: persona de generación 1, o la primera disponible
             const personas = getAllPersonas();
             const initial  = [...personas.values()].find(p => p.generation === 1)
                           ?? [...personas.values()][0];

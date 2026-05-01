@@ -9,7 +9,7 @@
  */
 
 import { CARD, MARRIAGE_NODE, TRANSITION_MS, getBranchColor } from './config.js';
-import { setFocus } from './store.js';
+import { setFocus, setSelected } from './store.js';
 import { VGAP } from './layout.js';
 
 let _svg   = null;
@@ -35,6 +35,9 @@ export function initTree(containerId) {
     .on('zoom', e => _g.attr('transform', e.transform));
 
   _svg.call(_zoom);
+
+  // Click en fondo del SVG → cierra el panel
+  _svg.on('click', () => setSelected(null));
 
   // Posición inicial: foco en el centro-superior del viewport
   const W = container.clientWidth  || 800;
@@ -106,8 +109,8 @@ function _drawEdge(layer, edge, nodes) {
       }))
       .attr('fill', 'none')
       .attr('stroke', color)
-      .attr('stroke-width', 1.8)
-      .attr('stroke-opacity', 0.55);
+      .attr('stroke-width', 1.5)
+      .attr('stroke-opacity', 0.45);
 
   } else if (edge.kind === 'marriage-child') {
     // Círculo de matrimonio → hijo. En el árbol ancestral el matrimonio está
@@ -119,8 +122,8 @@ function _drawEdge(layer, edge, nodes) {
       }))
       .attr('fill', 'none')
       .attr('stroke', color)
-      .attr('stroke-width', 2)
-      .attr('stroke-opacity', 0.75);
+      .attr('stroke-width', 1.8)
+      .attr('stroke-opacity', 0.7);
 
   } else if (edge.kind === 'focus-marriage' || edge.kind === 'direct') {
     // Foco → círculo de matrimonio / hijo directo (descendentes)
@@ -131,8 +134,8 @@ function _drawEdge(layer, edge, nodes) {
       }))
       .attr('fill', 'none')
       .attr('stroke', color)
-      .attr('stroke-width', 2)
-      .attr('stroke-opacity', 0.75);
+      .attr('stroke-width', 1.8)
+      .attr('stroke-opacity', 0.7);
   }
 }
 
@@ -155,7 +158,7 @@ function _drawCard(layer, node, focusId) {
     .attr('transform', `translate(${x},${y})`)
     .attr('data-id', p.id)
     .style('cursor', 'pointer')
-    .on('click', () => setFocus(p.id));
+    .on('click', (e) => { e.stopPropagation(); setFocus(p.id); setSelected(p.id); });
 
   // Fondo de la tarjeta
   g.append('rect')
@@ -165,7 +168,7 @@ function _drawCard(layer, node, focusId) {
     .attr('fill', 'var(--surface, #fdfcf9)')
     .attr('stroke', isFocus ? branchColor : 'var(--border, #e2dbd0)')
     .attr('stroke-width', isFocus ? 2 : 1)
-    .attr('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.09))');
+    .attr('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.07))');
 
   // Franja de color de rama (arriba)
   g.append('rect')
@@ -188,7 +191,7 @@ function _drawCard(layer, node, focusId) {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'hanging')
       .attr('font-family', 'Inter, sans-serif')
-      .attr('font-size', '11px')
+      .attr('font-size', '12px')
       .attr('font-weight', '600')
       .attr('fill', 'var(--text, #1c1814)')
       .text(line);
@@ -201,7 +204,7 @@ function _drawCard(layer, node, focusId) {
     const suffix = !deathY && p.vivo === 'si' ? '' : (deathY || '?');
     const yearsStr = `${birthY || '?'} – ${suffix}`;
     g.append('text')
-      .attr('x', 0).attr('y', H / 2 - 9)
+      .attr('x', 0).attr('y', H / 2 - 14)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'auto')
       .attr('font-family', 'Inter, sans-serif')
@@ -213,10 +216,10 @@ function _drawCard(layer, node, focusId) {
   // Hover: borde levemente iluminado
   g.on('mouseenter', function () {
     d3.select(this).select('rect:first-child')
-      .attr('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.16))');
+      .attr('filter', 'drop-shadow(0 3px 10px rgba(0,0,0,0.13))');
   }).on('mouseleave', function () {
     d3.select(this).select('rect:first-child')
-      .attr('filter', 'drop-shadow(0 1px 4px rgba(0,0,0,0.09))');
+      .attr('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.07))');
   });
 }
 

@@ -83,7 +83,7 @@ El renderizado dibuja:
 
 ---
 
-### Fase 5 — Panel lateral y navegación
+### ✅ Fase 5 — Panel lateral y navegación
 **Trabajo:** Crear `panel.js` y `search.js`, actualizar `arbol-matrimonios.html`.
 
 El panel lateral (300px, superpuesto al árbol) se abre al hacer click en una persona y muestra:
@@ -97,11 +97,18 @@ La barra de herramientas encima del árbol incluye:
 - Selector de vista: Pedigree / Árbol completo
 - Buscador por nombre (datalist HTML) que hace `store.setFocus(id)` al seleccionar
 
-**Al terminar:** la experiencia es comparable a FamilySearch en interactividad. Click en persona → panel lateral con toda la información disponible. Búsqueda por nombre funcional. Cambio entre vista pedigree y vista completa.
+**Implementación:**
+- `panel.js`: `initPanel()` escucha `selectionChange`; `_renderContent()` genera HTML para nombre, fechas/lugares, padres con links, matrimonios con hijos, notas, fuentes, media. Slide-in desde la derecha con CSS transform.
+- `search.js`: `initSearch()` puebla un `<datalist>` con todos los nombres; al seleccionar → `setFocus(id) + setSelected(id)`.
+- `render.js` actualizado: click en tarjeta llama `setFocus(id) + setSelected(id)`.
+- `arbol-matrimonios.html` actualizado: toolbar con `#searchInput`, panel `#treePanel` con `#treePanelBody` y `#treePanelClose`.
+- `arbol.css` actualizado: estilos de toolbar, panel (translate transition 300ms), zoom-controls movido a esquina inferior izquierda.
+
+**Al terminar:** la experiencia es comparable a FamilySearch en interactividad. Click en persona → panel lateral con toda la información disponible. Búsqueda por nombre funcional.
 
 ---
 
-### Fase 6 — CSS del árbol
+### ✅ Fase 6 — CSS del árbol
 **Trabajo:** Reescribir `assets/css/arbol.css` desde cero.
 
 Dirección: **documental mínimo con densidad controlada**. El árbol es una canvas interactiva, no una página editorial, pero debe ser coherente con el sistema de diseño del sitio.
@@ -111,6 +118,8 @@ Dirección: **documental mínimo con densidad controlada**. El árbol es una can
 - Conectores: coloreados por rama, opacidad 0.7 en reposo → 1 al hover
 - Panel lateral: transición `translateX` desde fuera del viewport
 - La única animación notable es el recentrado de 600ms — tiene dirección narrativa
+
+**Implementación:** `arbol.css` reescrito desde cero (dead code eliminado). Fondo de puntos radiales sobre `--bg` para la canvas. Zoom buttons con tokens del sistema de diseño (32px, `var(--border)`, `var(--surface)`). Panel con `cubic-bezier` suave y sombra lateral. Scrollbar sutil (4px). `render.js`: conectores más finos (1.5–1.8px, opacidad reducida), nombre 12px, sombras de tarjeta más suaves.
 
 **Al terminar:** el árbol se ve como un proyecto serio. La estética es coherente con el resto del sitio.
 
