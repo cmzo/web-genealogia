@@ -57,6 +57,12 @@
           </div>
 
           <div class="changelog-entry">
+            <p class="changelog-date">Mayo 2026</p>
+            <h2 class="changelog-title">Árbol genealógico: migración a base de datos local</h2>
+            <p class="changelog-desc">Los datos del árbol dejaron de depender de Google Sheets como fuente de escritura. La fuente de verdad es ahora una base de datos SQLite local (<code>data/arbol.db</code>), con un script Python que genera el JSON estático en cada build. Agregar o editar personas se hace desde la terminal con <code>gestionar_arbol.py</code>, sin necesidad de abrir ninguna planilla externa.</p>
+          </div>
+
+          <div class="changelog-entry">
             <p class="changelog-date">Abril 2026</p>
             <h2 class="changelog-title">Blog: tarjetas sin imagen</h2>
             <p class="changelog-desc">Las tarjetas del blog dejaron de mostrar imágenes. El diseño es ahora puramente tipográfico: categoría, título, descripción y fecha. Se eliminó también el glitch visual donde las tarjetas aparecían grandes y se achicaban al cargar, causado por imágenes que fallaban silenciosamente en producción.</p>
