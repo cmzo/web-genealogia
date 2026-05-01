@@ -815,7 +815,24 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "media": []
+      "media": [
+        {
+          "id": "med1",
+          "type": "photo",
+          "url": "assets/images/personas/p26-carta-conthey-1.webp",
+          "caption": "Carta de Conthey a Francisco Clemenzo",
+          "date": "1905-02-04",
+          "source_label": "Carta del tribunal de Conthey"
+        },
+        {
+          "id": "med2",
+          "type": "photo",
+          "url": "assets/images/personas/p26-carta-conthey-2.webp",
+          "caption": "Carta de Conthey a Francisco Clemenzo",
+          "date": "1905-02-04",
+          "source_label": "Carta del tribunal de Conthey"
+        }
+      ]
     },
     {
       "id": "p27",
