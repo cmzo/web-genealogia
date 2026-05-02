@@ -644,7 +644,7 @@
       "id": "p59",
       "name": "Maria Luisa Perceveranda Clemenzoz",
       "gender": "F",
-      "birth_date": "1887-01-01",
+      "birth_date": "1887-06-26",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -657,7 +657,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -684,7 +684,7 @@
       "id": "p60",
       "name": "Fortunato Abelardo Clemenzoz",
       "gender": "M",
-      "birth_date": "1889-01-01",
+      "birth_date": "1889-06-23",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -697,7 +697,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -724,7 +724,7 @@
       "id": "p61",
       "name": "Juan Francisco Clemenzoz",
       "gender": "M",
-      "birth_date": "1891-01-01",
+      "birth_date": "1891-08-29",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -737,7 +737,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -784,8 +784,8 @@
       "id": "p62",
       "name": "German Cipriano Clemenzoz",
       "gender": "M",
-      "birth_date": "1893-01-01",
-      "birth_place": "Ciudad de Buenos Aires",
+      "birth_date": "1893-11-13",
+      "birth_place": "Partido de San Nicolas",
       "death_date": "",
       "death_place": null,
       "father_id": "p40",
@@ -797,7 +797,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -824,7 +824,7 @@
       "id": "p63",
       "name": "Angela Clemenzoz",
       "gender": "F",
-      "birth_date": "1895-01-01",
+      "birth_date": "1895-09-29",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -837,7 +837,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -864,7 +864,7 @@
       "id": "p64",
       "name": "Petrona Estefania Clemenzoz",
       "gender": "F",
-      "birth_date": "1902-01-01",
+      "birth_date": "1897-10-28",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -877,7 +877,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -904,7 +904,7 @@
       "id": "p65",
       "name": "Modesta Damiana Clemencia Clemenzoz",
       "gender": "F",
-      "birth_date": "1902-01-01",
+      "birth_date": "1902-02-13",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -917,14 +917,14 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
       "id": "p66",
       "name": "Felisa Clemenzoz",
       "gender": "F",
-      "birth_date": "1904-01-01",
+      "birth_date": "1904-07-11",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -937,14 +937,14 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
       "id": "p67",
       "name": "Esteban Clemenzoz",
       "gender": "M",
-      "birth_date": "1906-01-01",
+      "birth_date": "1906-09-28",
       "birth_place": "Ciudad de Buenos Aires",
       "death_date": "",
       "death_place": null,
@@ -957,7 +957,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
