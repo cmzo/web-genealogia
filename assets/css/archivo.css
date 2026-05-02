@@ -165,7 +165,7 @@
 .archivo-modal-body {
   overflow-y: auto;
   flex: 1;
-  padding: 16px 20px 24px;
+  padding: 20px 20px 28px;
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
 }
@@ -177,8 +177,8 @@
 /* ── Secciones del modal ──────────────────────────────── */
 
 .modal-section {
-  margin-top: 14px;
-  padding-top: 12px;
+  margin-top: 22px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 

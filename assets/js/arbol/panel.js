@@ -12,6 +12,7 @@ import {
   getHijosSinMatrimonio,
 } from './data.js';
 import { setFocus, setSelected, on } from './store.js';
+import { recenterOn } from './render.js';
 
 let _panel = null;
 let _body  = null;
@@ -28,6 +29,7 @@ export function initPanel() {
   on('selectionChange', id => {
     if (!id) {
       _panel.classList.remove('is-open');
+      requestAnimationFrame(() => recenterOn());
       return;
     }
     _renderContent(id);

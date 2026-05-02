@@ -94,7 +94,8 @@
             on('focusChange', id => {
                 const layout = computeLayout(id);
                 render(layout);
-                recenterOn();
+                // Diferir un frame para que setSelected ya haya abierto/cerrado el panel
+                requestAnimationFrame(() => recenterOn());
             });
 
             document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);

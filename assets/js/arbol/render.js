@@ -72,11 +72,18 @@ export function render(layout) {
 
 export function recenterOn(duration = TRANSITION_MS) {
   if (!_svg || !_zoom) return;
-  // El foco siempre está en (0, 0). Centramos la vista en y = -VGAP/2
-  // para que el foco quede ligeramente bajo el centro y sean visibles
-  // tanto los ancestros arriba como los descendientes abajo.
+  const container = _svg.node().parentElement;
+  const W = container.clientWidth  || 800;
+  const H = container.clientHeight || 600;
+
+  // Si el panel está abierto, centrar en el espacio libre que queda a su izquierda
+  const panel  = document.getElementById('treePanel');
+  const panelW = panel?.classList.contains('is-open') ? (panel.offsetWidth || 0) : 0;
+  const cx = (W - panelW) / 2;
+
+  // translateTo con punto [cx, H/2] pone el foco en el centro del área visible
   _svg.transition().duration(duration)
-    .call(_zoom.translateTo, 0, -VGAP / 2);
+    .call(_zoom.translateTo, 0, -VGAP / 2, [cx, H / 2]);
 }
 
 export function zoomIn() {
