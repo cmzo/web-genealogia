@@ -258,8 +258,10 @@ body {
 .home-herald-item img {
   height: 280px;
   width: auto;
+  max-width: 100%;
   display: block;
   filter: grayscale(30%) contrast(110%);
+  background: var(--bg);
 }
 
 .home-herald-item figcaption {
@@ -271,10 +273,15 @@ body {
   margin-top: 8px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .home-herald-row {
     flex-direction: column;
-    gap: 32px;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .home-herald-item img {
+    height: 200px;
   }
 }
 

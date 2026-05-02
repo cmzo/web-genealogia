@@ -366,3 +366,43 @@
 .lb-nav:hover { background: rgba(255, 255, 255, 0.22); }
 .lb-prev { left: 16px; }
 .lb-next { right: 16px; }
+
+/* ── Mobile ──────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  /* El site-main ya no tiene padding lateral propio (lo controla el inline style),
+     pero la toolbar y tabla sí necesitan ajustes */
+  .archivo-toolbar {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .archivo-search {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Ocultar columnas menos importantes para que la tabla quepa */
+  .archivo-table thead th:nth-child(4),
+  .archivo-table thead th:nth-child(5),
+  .archivo-table tbody td:nth-child(4),
+  .archivo-table tbody td:nth-child(5) {
+    display: none;
+  }
+
+  .archivo-modal {
+    max-height: 95vh;
+    width: 100vw;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    align-self: flex-end;
+  }
+
+  .archivo-modal-overlay {
+    align-items: flex-end;
+  }
+}

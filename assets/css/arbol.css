@@ -162,7 +162,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 288px;
+    width: 400px;
     height: 100%;
     background: var(--surface);
     border-left: 1px solid var(--border);
@@ -346,3 +346,37 @@
 }
 
 .panel-media-doc:hover { text-decoration: underline; }
+
+/* ── Mobile ──────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  /* El árbol ocupa el ancho completo (sin sidebar) */
+  .tree-toolbar {
+    padding: 8px 12px;
+  }
+
+  .tree-search-wrap {
+    flex: 1;
+  }
+
+  .tree-search {
+    width: 100%;
+  }
+
+  /* El panel ocupa todo el ancho disponible en pantallas pequeñas */
+  .tree-panel {
+    width: min(400px, 100vw);
+  }
+}
+
+@media (max-width: 480px) {
+  /* En pantallas muy pequeñas el panel es full-screen */
+  .tree-panel {
+    width: 100vw;
+  }
+
+  .zoom-controls {
+    bottom: 12px;
+    left: 12px;
+  }
+}
