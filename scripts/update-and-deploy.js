@@ -20,7 +20,7 @@ if (!hasChanges()) {
 }
 
 const date = new Date().toISOString().slice(0, 10);
-run('git add dist/ assets/data/blog-entries.json');
+run('git add dist/ assets/data/ assets/css/ assets/js/ assets/images/ *.html docs/ content/ data/ scripts/ CLAUDE.md README.md package.json');
 run(`git commit -m "build: actualizar posts y dist (${date})"`);
 run('git push');
 

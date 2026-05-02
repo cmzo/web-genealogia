@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const { execFileSync } = require('child_process');
 
 // Configuración
 const POSTS_DIR = './content/posts';
@@ -386,60 +387,16 @@ function processMarkdownFile(filePath) {
   };
 }
 
-const ARBOL_SHEET_ID = '1NQh95vcu2G3fQSkcihojAF9CfXvaQHBmDeol1EM-gn8';
-const ARBOL_OUTPUT_FILE = './assets/data/arbol.json';
-
-async function buildArbolData() {
-  const url = `https://docs.google.com/spreadsheets/d/${ARBOL_SHEET_ID}/gviz/tq?tqx=out:json&gid=0`;
-
-  let text;
+function buildArbolData() {
   try {
-    const response = await fetch(url);
-    text = await response.text();
+    execFileSync('python3', [path.join(__dirname, 'export_arbol.py')], { stdio: 'inherit' });
   } catch (e) {
-    console.warn(`⚠️  No se pudo conectar a Google Sheets para el árbol: ${e.message}`);
-    console.warn('   Saltando actualización de arbol.json (se usará el archivo existente)');
-    return;
+    console.warn('⚠️  export_arbol.py falló — se usará el arbol.json existente');
   }
-
-  const match = text.match(/google\.visualization\.Query\.setResponse\((.+)\);?$/);
-  if (!match) {
-    console.warn('⚠️  Respuesta de Google Sheets inválida — saltando actualización de arbol.json');
-    return;
-  }
-
-  const data = JSON.parse(match[1]);
-  if (!data.table || !data.table.rows) {
-    console.warn('⚠️  Formato de tabla inválido — saltando actualización de arbol.json');
-    return;
-  }
-
-  const rows = data.table.rows.map(row => {
-    const cells = row.c || [];
-    return {
-      id:          String(cells[0]?.v || '').trim(),
-      name:        String(cells[2]?.v || '').trim(),
-      birth_date:  cells[3]?.v || '',
-      birth_place: String(cells[4]?.v || '').trim(),
-      death_date:  cells[5]?.v || '',
-      death_place: String(cells[6]?.v || '').trim(),
-      spouseId:    String(cells[7]?.v || '').trim(),
-      childrenIds: String(cells[8]?.v || '').trim(),
-      fatherId:    String(cells[9]?.v || '').trim(),
-      motherId:    String(cells[10]?.v || '').trim(),
-      branch:      String(cells[11]?.v || '').trim(),
-      generation:  parseInt(cells[12]?.v) || 0,
-      order:       parseInt(cells[13]?.v) || 0,
-      vivo:        String(cells[15]?.v || '').trim()
-    };
-  }).filter(row => row.id && row.name);
-
-  fs.writeFileSync(ARBOL_OUTPUT_FILE, JSON.stringify(rows, null, 2));
-  console.log(`✅ Generado: ${ARBOL_OUTPUT_FILE} (${rows.length} personas)`);
 }
 
 // Función principal
-async function build() {
+function build() {
   console.log('🚀 Iniciando build del blog...');
   
   const blogEntries = [];
@@ -475,8 +432,8 @@ async function build() {
   fs.writeFileSync(BLOG_ENTRIES_FILE, JSON.stringify(blogEntries, null, 2));
   console.log(`✅ Generado: ${BLOG_ENTRIES_FILE} (${blogEntries.length} entradas)`);
 
-  // Actualizar datos del árbol genealógico desde Google Sheets
-  await buildArbolData();
+  // Generar arbol.json desde data/arbol.db
+  buildArbolData();
 
   console.log('🎉 Build completado!');
 }

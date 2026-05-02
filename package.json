@@ -9,8 +9,7 @@
     "dev": "node scripts/build.js && python3 -m http.server 8000",
     "serve": "npx serve .",
     "clean": "rm -rf dist/",
-    "optimize-images": "node scripts/optimize-images.js",
-    "build-archive": "node scripts/build-archive.js --out content/data/archive.json",
+    "optimize-personas": "node scripts/optimize-personas.js",
     "deploy": "node scripts/update-and-deploy.js",
     "update": "node scripts/update-and-deploy.js"
   },
