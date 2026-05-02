@@ -822,7 +822,9 @@
           "url": "assets/images/personas/p26-carta-conthey-1.webp",
           "caption": "Carta de Conthey a Francisco Clemenzo",
           "date": "1905-02-04",
-          "source_label": "Carta del tribunal de Conthey"
+          "source_label": "Carta del tribunal de Conthey",
+          "group_label": "Carta de Conthey, 1905",
+          "group_order": 1
         },
         {
           "id": "med2",
@@ -830,7 +832,9 @@
           "url": "assets/images/personas/p26-carta-conthey-2.webp",
           "caption": "Carta de Conthey a Francisco Clemenzo",
           "date": "1905-02-04",
-          "source_label": "Carta del tribunal de Conthey"
+          "source_label": "Carta del tribunal de Conthey",
+          "group_label": "Carta de Conthey, 1905",
+          "group_order": 2
         }
       ]
     },

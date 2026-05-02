@@ -197,44 +197,11 @@
         body.appendChild(s);
       }
 
-      // Fotos
-      const photos = (p.media || []).filter(m => !m.type || m.type === 'photo');
-      if (photos.length) {
-        const s = makeSection('Fotos');
-        const grid = document.createElement('div');
-        grid.className = 'modal-gallery';
-        photos.forEach((m, i) => {
-          const fig = document.createElement('figure');
-          fig.className = 'modal-thumb';
-          const img = document.createElement('img');
-          img.src = m.thumb || m.filename || m.url || '';
-          img.alt = m.caption || '';
-          img.loading = 'lazy';
-          const cap = document.createElement('figcaption');
-          cap.textContent = m.caption || '';
-          fig.appendChild(img);
-          fig.appendChild(cap);
-          fig.addEventListener('click', () => openLightbox(photos, i));
-          grid.appendChild(fig);
-        });
-        s.appendChild(grid);
-        body.appendChild(s);
-      }
-
-      // Documentos
-      const docs = (p.media || []).filter(m => m.type && m.type !== 'photo');
-      if (docs.length) {
-        const s = makeSection('Documentos');
-        const ul = document.createElement('ul');
-        ul.className = 'modal-docs';
-        docs.forEach(d => {
-          const li = document.createElement('li');
-          const href = d.url || d.filename || '#';
-          li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${d.caption || d.title || 'Documento'}</a>`
-            + (d.date ? `<span class="modal-doc-date">${d.date}</span>` : '');
-          ul.appendChild(li);
-        });
-        s.appendChild(ul);
+      // Media (fotos y documentos, agrupados si comparten group_label)
+      if ((p.media || []).length) {
+        const allPhotos = p.media.filter(m => !m.type || m.type === 'photo');
+        const s = makeSection('Archivos');
+        renderMediaUnits(p.media, s, allPhotos);
         body.appendChild(s);
       }
 
@@ -247,6 +214,63 @@
       document.getElementById('archivoOverlay').classList.remove('is-open');
       document.getElementById('archivoOverlay').setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+    }
+
+    function renderMediaUnits(media, container, allPhotos) {
+      const seen  = new Set();
+      const units = [];
+      for (const m of media) {
+        if (!m.group_label) {
+          units.push({ type: 'single', item: m });
+        } else if (!seen.has(m.group_label)) {
+          seen.add(m.group_label);
+          units.push({ type: 'group', label: m.group_label,
+            items: media.filter(x => x.group_label === m.group_label) });
+        }
+      }
+
+      units.forEach(u => {
+        if (u.type === 'single') {
+          appendMediaItem(u.item, container, allPhotos);
+        } else {
+          const wrap = document.createElement('div');
+          wrap.className = 'modal-media-group';
+          const lbl = document.createElement('p');
+          lbl.className = 'modal-media-group-label';
+          lbl.textContent = u.label;
+          wrap.appendChild(lbl);
+          const grid = document.createElement('div');
+          grid.className = 'modal-gallery';
+          wrap.appendChild(grid);
+          u.items.forEach(m => appendMediaItem(m, grid, allPhotos));
+          container.appendChild(wrap);
+        }
+      });
+    }
+
+    function appendMediaItem(m, container, allPhotos) {
+      if (!m.type || m.type === 'photo') {
+        const photoIdx = allPhotos.indexOf(m);
+        const fig = document.createElement('figure');
+        fig.className = 'modal-thumb';
+        const img = document.createElement('img');
+        img.src = m.url || '';
+        img.alt = m.caption || '';
+        img.loading = 'lazy';
+        const cap = document.createElement('figcaption');
+        cap.textContent = m.caption || '';
+        fig.appendChild(img);
+        fig.appendChild(cap);
+        fig.addEventListener('click', () => openLightbox(allPhotos, photoIdx));
+        container.appendChild(fig);
+      } else {
+        const li = document.createElement('p');
+        li.className = 'modal-doc-item';
+        const href = m.url || '#';
+        li.innerHTML = `<a href="${href}" target="_blank" rel="noopener">${m.caption || 'Documento'}</a>`
+          + (m.date ? `<span class="modal-doc-date">${m.date}</span>` : '');
+        container.appendChild(li);
+      }
     }
 
     function makeSection(title) {

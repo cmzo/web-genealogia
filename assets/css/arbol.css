@@ -347,6 +347,28 @@
 
 .panel-media-doc:hover { text-decoration: underline; }
 
+.panel-media-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.panel-media-group-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+}
+
+.panel-media-group-photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 4px;
+}
+
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
 @media (max-width: 960px) {

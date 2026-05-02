@@ -290,6 +290,35 @@
   margin-left: 6px;
 }
 
+.modal-media-group {
+  margin-top: 10px;
+}
+
+.modal-media-group:first-child { margin-top: 0; }
+
+.modal-media-group-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.modal-doc-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.modal-doc-item a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.modal-doc-item a:hover { text-decoration: underline; }
+
 /* ── Lightbox ────────────────────────────────────────── */
 
 .archivo-lightbox {

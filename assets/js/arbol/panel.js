@@ -125,18 +125,7 @@ function _renderContent(personaId) {
   // Archivos multimedia
   if (p.media?.length > 0) {
     html += `<section class="panel-section"><h3 class="panel-section-title">Archivos</h3><div class="panel-media">`;
-    p.media.forEach(item => {
-      if (item.type === 'photo') {
-        html += `<a href="${item.url}" target="_blank" class="panel-media-photo">
-          <img src="${item.url}" alt="${item.caption || ''}">
-          ${item.caption ? `<span>${item.caption}</span>` : ''}
-        </a>`;
-      } else {
-        html += `<a href="${item.url}" target="_blank" class="panel-media-doc">
-          📄 ${item.caption || item.url}
-        </a>`;
-      }
-    });
+    html += _renderMedia(p.media);
     html += `</div></section>`;
   }
 
@@ -170,4 +159,46 @@ function _formatDate(dateStr) {
 function _datePlace(date, place) {
   const parts = [_formatDate(date), place].filter(Boolean);
   return parts.join(' · ');
+}
+
+function _renderMedia(media) {
+  // Separa ítems sueltos de grupos, preservando el orden de aparición
+  const seen  = new Set();
+  const units = []; // { type: 'single', item } | { type: 'group', label, items[] }
+
+  for (const m of media) {
+    if (!m.group_label) {
+      units.push({ type: 'single', item: m });
+    } else if (!seen.has(m.group_label)) {
+      seen.add(m.group_label);
+      units.push({
+        type:  'group',
+        label: m.group_label,
+        items: media.filter(x => x.group_label === m.group_label),
+      });
+    }
+  }
+
+  return units.map(u => {
+    if (u.type === 'single') return _mediaItem(u.item);
+    return `
+      <div class="panel-media-group">
+        <p class="panel-media-group-label">${u.label}</p>
+        <div class="panel-media-group-photos">
+          ${u.items.map(m => _mediaItem(m)).join('')}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function _mediaItem(item) {
+  if (item.type !== 'document') {
+    return `<a href="${item.url}" target="_blank" class="panel-media-photo">
+      <img src="${item.url}" alt="${item.caption || ''}">
+      ${item.caption ? `<span>${item.caption}</span>` : ''}
+    </a>`;
+  }
+  return `<a href="${item.url}" target="_blank" class="panel-media-doc">
+    📄 ${item.caption || item.url}
+  </a>`;
 }
