@@ -101,7 +101,7 @@
 .tree-container {
     position: relative;
     flex: 1;
-    min-width: 400px;
+    min-width: 576px;
     min-height: 520px;
     overflow: hidden;
     /* Fondo de puntos: da sensación de canvas sin competir con el árbol */
@@ -113,13 +113,11 @@
 /* ── Controles de zoom ───────────────────────────────────────────────────────── */
 
 .zoom-controls {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    z-index: 50;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
 }
 
 .zoom-btn {
@@ -175,7 +173,7 @@
 }
 
 .tree-panel.is-open {
-    width: calc(100% - 400px);
+    width: calc(100% - 576px);
     border-left-color: var(--border);
     box-shadow: -6px 0 32px rgba(0,0,0,0.09);
 }
@@ -764,8 +762,4 @@
     width: 100vw;
   }
 
-  .zoom-controls {
-    bottom: 12px;
-    left: 12px;
-  }
 }

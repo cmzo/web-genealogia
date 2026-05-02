@@ -51,15 +51,14 @@
           />
           <ul class="search-suggestions" id="searchSuggestions"></ul>
         </div>
-      </div>
-
-      <div class="tree-wrapper">
-        <div class="tree-container" id="tree-container"></div>
-
         <div class="zoom-controls">
           <button id="zoomInBtn"  class="zoom-btn" title="Acercar (+)">+</button>
           <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
         </div>
+      </div>
+
+      <div class="tree-wrapper">
+        <div class="tree-container" id="tree-container"></div>
 
         <div class="tree-panel" id="treePanel">
           <button class="tree-panel-close" id="treePanelClose" title="Cerrar">✕</button>
@@ -88,6 +87,7 @@
         import { initTree, render, recenterOn, zoomIn, zoomOut }  from './assets/js/arbol/render.js';
         import { initPanel }                                      from './assets/js/arbol/panel.js';
         import { initSearch }                                     from './assets/js/arbol/search.js';
+        import { initKeyboard }                                   from './assets/js/arbol/keyboard.js';
 
         async function init() {
             await loadData();
@@ -95,6 +95,7 @@
             initTree('tree-container');
             initPanel();
             initSearch();
+            initKeyboard();
 
             on('focusChange', id => {
                 const layout = computeLayout(id);
