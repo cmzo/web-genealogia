@@ -164,7 +164,7 @@
     position: relative;
     flex-shrink: 0;
     width: 0;
-    background: var(--surface);
+    background: #f4f5f7;
     border-left: 1px solid transparent;
     display: flex;
     flex-direction: column;
@@ -177,22 +177,25 @@
 .tree-panel.is-open {
     width: calc(100% - 400px);
     border-left-color: var(--border);
-    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
+    box-shadow: -6px 0 32px rgba(0,0,0,0.09);
 }
 
+/* Close button — glass sobre el hero de color */
 .tree-panel-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    right: 14px;
     z-index: 10;
-    background: rgba(253, 252, 249, 0.85);
-    border: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--muted);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.30);
+    font-size: 11px;
+    color: rgba(255,255,255,0.90);
     cursor: pointer;
-    width: 26px;
-    height: 26px;
-    border-radius: 3px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
     line-height: 1;
     display: flex;
     align-items: center;
@@ -201,46 +204,54 @@
 }
 
 .tree-panel-close:hover {
-    background: var(--border);
-    color: var(--text);
+    background: rgba(255,255,255,0.30);
+    color: #fff;
 }
 
-/* ── Hero del panel ──────────────────────────────────────────────────────────── */
+/* ── Hero del panel — fondo de color sólido ──────────────────────────────────── */
 
 .panel-hero {
     flex-shrink: 0;
-    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    padding: 28px 20px 22px;
+    background-color: #ffffff; /* base blanca — el gradiente con alpha se mezcla sobre esta */
 }
 
-.panel-hero-stripe {
-    height: 8px;
-    width: 100%;
+/* Círculos decorativos para profundidad glassmorphism */
+.panel-hero::before {
+    content: '';
+    position: absolute;
+    top: -44px; right: -44px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.10);
+    pointer-events: none;
+}
+
+.panel-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -28px; left: 16px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    pointer-events: none;
 }
 
 .panel-hero-content {
-    padding: 14px 18px 16px;
+    position: relative;
+    z-index: 1;
 }
 
-.tree-panel-body {
-    overflow-y: auto;
-    flex: 1;
-    padding: 6px 18px 28px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-}
-
-.tree-panel-body::-webkit-scrollbar { width: 4px; }
-.tree-panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-.tree-panel-body::-webkit-scrollbar-track { background: transparent; }
-
-/* ── Tabs del panel ──────────────────────────────────────────────────────────── */
+/* ── Tabs del panel — flat underline ─────────────────────────────────────────── */
 
 .panel-tabs {
     display: flex;
     flex-shrink: 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    padding: 0 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    background: #ffffff;
+    padding: 0 16px;
     gap: 0;
 }
 
@@ -248,11 +259,11 @@
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
-    padding: 9px 12px;
+    padding: 10px 14px;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 500;
-    color: var(--muted);
+    color: #8a8f98;
     cursor: pointer;
     margin-bottom: -1px;
     transition: color 0.15s, border-color 0.15s;
@@ -260,7 +271,7 @@
 }
 
 .panel-tab:hover {
-    color: var(--text);
+    color: #3a3d42;
 }
 
 .panel-tab.is-active {
@@ -269,36 +280,54 @@
     font-weight: 600;
 }
 
+/* ── Cuerpo scrollable ───────────────────────────────────────────────────────── */
+
+.tree-panel-body {
+    overflow-y: auto;
+    flex: 1;
+    padding: 12px 12px 32px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.tree-panel-body::-webkit-scrollbar { width: 4px; }
+.tree-panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.tree-panel-body::-webkit-scrollbar-track { background: transparent; }
+
 /* ── Contenido del panel ─────────────────────────────────────────────────────── */
 
+/* Hero: nombre en blanco sobre fondo de color */
 .panel-name {
     font-family: 'Source Serif 4', serif;
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 600;
-    color: var(--text);
-    margin: 0 0 4px;
+    color: #fff;
+    margin: 0 0 6px;
     line-height: 1.2;
-    padding-right: 32px;
+    padding-right: 36px;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.18);
 }
 
 .panel-years {
     font-family: 'Inter', sans-serif;
     font-size: 13px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.78);
     margin: 0;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
 }
 
+/* Secciones como cards */
 .panel-section {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .panel-section:first-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 12px;
+    margin-top: 0;
 }
 
 .panel-section-title {
@@ -308,7 +337,7 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--accent);
-    margin: 0 0 7px;
+    margin: 0 0 9px;
 }
 
 .panel-label {
@@ -319,7 +348,7 @@
     text-transform: uppercase;
     color: var(--muted);
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .panel-meta {
@@ -336,22 +365,23 @@
     font-size: 12px;
 }
 
+/* Links de navegación — hover pill */
 .panel-link {
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: var(--accent);
-    margin: 3px 0;
+    margin: 2px 0;
     cursor: pointer;
     line-height: 1.4;
     display: block;
-    padding: 2px 4px;
-    margin-left: -4px;
-    border-radius: 2px;
-    transition: background 0.12s;
+    padding: 4px 8px;
+    margin-left: -8px;
+    border-radius: 6px;
+    transition: background 0.12s, color 0.12s;
 }
 
 .panel-link:hover {
-    background: var(--border);
+    background: rgba(0,0,0,0.05);
 }
 
 .panel-marriage {
@@ -381,48 +411,56 @@
     white-space: pre-line;
 }
 
-/* ── Hero top row (nombre + badge) ───────────────────────────────────────────── */
+/* ── Hero: nombre + badge ────────────────────────────────────────────────────── */
 
 .panel-hero-top {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
-/* ── Status badge ────────────────────────────────────────────────────────────── */
+/* ── Status badge — glass sobre hero de color ────────────────────────────────── */
 
 .panel-status {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     font-family: 'Inter', sans-serif;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 2px;
+    padding: 3px 9px;
+    border-radius: 20px;
     flex-shrink: 0;
-    margin-top: 3px;
+    margin-top: 4px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
-.panel-status--verificado  { background: #d4edda; color: #2a6e3a; }
-.panel-status--incompleto  { background: #fde8cd; color: #8a4a10; }
-.panel-status--en_proceso  { background: #d9edf7; color: #2a5a7a; }
-.panel-status--sin_datos   { background: var(--border); color: var(--muted); }
+.panel-status--verificado { background: rgba(255,255,255,0.25); color: #fff; border: 1px solid rgba(255,255,255,0.40); }
+.panel-status--incompleto { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.90); border: 1px solid rgba(255,255,255,0.25); }
+.panel-status--en_proceso { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.90); border: 1px solid rgba(255,255,255,0.25); }
+.panel-status--sin_datos  { background: rgba(0,0,0,0.18); color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.15); }
 
-/* ── Vita grid ────────────────────────────────────────────────────────────────── */
+/* ── Vita grid — mini cards ──────────────────────────────────────────────────── */
 
 .panel-vita-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px 16px;
+    gap: 8px;
     margin-top: 4px;
 }
 
 .panel-vita-item {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
+    background: #f8f9fb;
+    border-radius: 7px;
+    padding: 10px 12px;
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .panel-vita-val {
@@ -452,7 +490,7 @@
 .panel-empty code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    background: var(--border);
+    background: rgba(0,0,0,0.07);
     padding: 1px 5px;
     border-radius: 2px;
     color: var(--text);
@@ -464,61 +502,100 @@
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: var(--text);
-    line-height: 1.65;
-    padding-top: 4px;
+    line-height: 1.7;
+    padding-top: 2px;
 }
 
-.panel-markdown h1,
+/* H1 — título de sección principal */
+.panel-markdown h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 14px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(0,0,0,0.08);
+}
+
+/* H2 — subsección con acento izquierdo */
 .panel-markdown h2 {
     font-family: 'Source Serif 4', serif;
+    font-size: 15px;
     font-weight: 600;
     color: var(--text);
-    margin: 22px 0 6px;
+    margin: 22px 0 8px;
     line-height: 1.25;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--border);
+    padding-left: 10px;
+    border-left: 3px solid var(--accent);
+    margin-left: -13px;
 }
 
-.panel-markdown h1 { font-size: 17px; }
-.panel-markdown h2 { font-size: 15px; }
-
+/* H3 — etiqueta de categoría */
 .panel-markdown h3 {
     font-family: 'Inter', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
-    margin: 18px 0 5px;
+    margin: 18px 0 6px;
+    opacity: 0.75;
 }
 
 .panel-markdown p {
     margin: 0 0 10px;
 }
 
-.panel-markdown ul,
-.panel-markdown ol {
+/* Lista sin punto — dash de acento */
+.panel-markdown ul {
+    list-style: none;
+    padding-left: 14px;
     margin: 0 0 10px;
-    padding-left: 18px;
 }
 
-.panel-markdown li {
-    margin-bottom: 3px;
+.panel-markdown ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 5px;
+}
+
+.panel-markdown ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+/* Lista numerada */
+.panel-markdown ol {
+    padding-left: 20px;
+    margin: 0 0 10px;
+}
+
+.panel-markdown ol li {
+    margin-bottom: 5px;
 }
 
 .panel-markdown a {
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 2px;
+    text-decoration-color: rgba(92,74,42,0.4);
+    transition: text-decoration-color 0.15s;
 }
 
 .panel-markdown a:hover {
-    color: var(--text);
+    text-decoration-color: var(--accent);
 }
 
+/* Strong — acento de color en lugar de solo negrita */
 .panel-markdown strong {
     font-weight: 600;
-    color: var(--text);
+    color: var(--accent);
 }
 
 .panel-markdown em {
@@ -529,18 +606,21 @@
 .panel-markdown code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    background: var(--border);
-    padding: 1px 5px;
-    border-radius: 2px;
+    background: rgba(0,0,0,0.06);
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: var(--text);
 }
 
+/* Blockquote — prominente con tinte cálido */
 .panel-markdown blockquote {
-    margin: 10px 0;
-    padding: 8px 12px;
+    margin: 14px 0;
+    padding: 10px 14px;
     border-left: 3px solid var(--accent);
-    background: var(--bg);
+    background: rgba(92,74,42,0.05);
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
     color: var(--muted);
-    border-radius: 0 2px 2px 0;
 }
 
 .panel-markdown blockquote p {
@@ -549,30 +629,42 @@
 
 .panel-markdown hr {
     border: none;
-    border-top: 1px solid var(--border);
-    margin: 18px 0;
+    border-top: 1px solid rgba(0,0,0,0.09);
+    margin: 20px 0;
 }
 
+/* Tabla con header diferenciado */
 .panel-markdown table {
     width: 100%;
     border-collapse: collapse;
     font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.panel-markdown th,
-.panel-markdown td {
-    text-align: left;
-    padding: 5px 8px;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.07);
 }
 
 .panel-markdown th {
+    text-align: left;
+    padding: 7px 10px;
+    background: rgba(0,0,0,0.04);
     font-weight: 600;
-    color: var(--muted);
     font-size: 10px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.panel-markdown td {
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    color: var(--text);
+}
+
+.panel-markdown tr:last-child td {
+    border-bottom: none;
 }
 
 .panel-media {
@@ -655,14 +747,14 @@
     border-left: 1px solid var(--border);
     transform: translateX(100%);
     transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
+    box-shadow: -6px 0 32px rgba(0,0,0,0.12);
   }
 
   .tree-panel.is-open {
     width: min(420px, 100vw);
     transform: translateX(0);
     border-left-color: var(--border);
-    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
+    box-shadow: -6px 0 32px rgba(0,0,0,0.12);
   }
 }
 

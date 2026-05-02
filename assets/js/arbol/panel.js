@@ -81,8 +81,8 @@ function _renderHero(personaId) {
 
   const statusBadge = _statusBadge(p.status);
 
+  _hero.style.background = `linear-gradient(160deg, ${color}dd 0%, ${color}aa 100%)`;
   _hero.innerHTML = `
-    <div class="panel-hero-stripe" style="background:${color}"></div>
     <div class="panel-hero-content">
       <div class="panel-hero-top">
         <p class="panel-name">${p.name}</p>
@@ -207,7 +207,7 @@ async function _tabInvestigacion(personaId) {
     if (res.ok) {
       const md = await res.text();
       if (_currentId !== personaId) return;
-      _body.innerHTML = `<div class="panel-markdown">${window.marked.parse(md)}</div>`;
+      _body.innerHTML = `<div class="panel-section"><div class="panel-markdown">${window.marked.parse(md)}</div></div>`;
       return;
     }
   } catch { /* sin archivo — continúa al fallback */ }
