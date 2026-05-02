@@ -56,14 +56,11 @@ Puedo decir con certeza que se inventó todos los, según sus palabras: **recurs
 > **José Clemenzo** (p28) — 1856, Riddes → 1899, Colonia Yerúa.
 Hermano de François, murió joven (~43 años). No hay esposa ni hijos registrados. Las causas de muerte en Colonia Yerúa a fines del siglo XIX incluyen frecuentemente fiebre tifoidea o accidentes rurales. El acta de defunción en el Registro Civil de Concordia (1899) debería existir.
 
-Fiebre tifoidea o accidentes rurales: a saber de donde sacó esta información.
+Fiebre tifoidea o accidentes rurales: no se de donde sacó esta información.
+
+Otra cosa es que Claude, con acceso a una base de datos con fecha exacta de nacimiento y defunción decidió que la edad es aproximada (~43 años) y que el acta debería existir.
 
 Las que siguen no se si son alucinaciones pero es Claude siendo vago y rebelde:
-
-> **José Clemenzo** (p28) — 1856, Riddes → 1899, Colonia Yerúa.
-Hermano de François, murió joven (~43 años). No hay esposa ni hijos registrados. Las causas de muerte en Colonia Yerúa a fines del siglo XIX incluyen frecuentemente fiebre tifoidea o accidentes rurales. El acta de defunción en el Registro Civil de Concordia (1899) debería existir.
-
-En este caso, Claude con acceso a una base de datos con fecha exacta de nacimiento y defunción decidió que la edad es aproximada (~43 años) y que el acta debería existir.
 
 > **Pedro** (p22), **Francisca** (p23), **Celestina** (p25), **María Luisa** (p29), **Carlota Julia** (p30) — hijos de François y Celestina.
 Todos nacidos en Entre Ríos, con lugar de nacimiento vago o sin fecha. Las actas de nacimiento del Registro Civil de Concordia y Concepción del Uruguay para el período 1880–1900 deberían cubrir varios de estos casos.
