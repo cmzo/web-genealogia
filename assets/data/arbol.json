@@ -817,6 +817,26 @@
       "sources": "",
       "media": [
         {
+          "id": "med3",
+          "type": "photo",
+          "url": "assets/images/personas/p26-censo-1895.webp",
+          "caption": "Censo de 1895 de Colon, Entre Ríos",
+          "date": "1895-01-01",
+          "source_label": "Censo Provincial",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med4",
+          "type": "photo",
+          "url": "assets/images/personas/p26-defuncion.webp",
+          "caption": "Acta de  defunción",
+          "date": "1928-04-17",
+          "source_label": "Registro civil de Entre Ríos",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
           "id": "med1",
           "type": "photo",
           "url": "assets/images/personas/p26-carta-conthey-1.webp",
