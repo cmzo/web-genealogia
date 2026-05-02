@@ -13,12 +13,15 @@ import {
 } from './data.js';
 import { setFocus, setSelected, on } from './store.js';
 import { recenterOn } from './render.js';
+import { getBranchColor } from './config.js';
 
 let _panel = null;
+let _hero  = null;
 let _body  = null;
 
 export function initPanel() {
   _panel = document.getElementById('treePanel');
+  _hero  = document.getElementById('treePanelHero');
   _body  = document.getElementById('treePanelBody');
   const closeBtn = document.getElementById('treePanelClose');
 
@@ -29,6 +32,7 @@ export function initPanel() {
   on('selectionChange', id => {
     if (!id) {
       _panel.classList.remove('is-open');
+      if (_hero) _hero.innerHTML = '';
       requestAnimationFrame(() => recenterOn());
       return;
     }
@@ -43,19 +47,37 @@ function _renderContent(personaId) {
   const p = getPersona(personaId);
   if (!p || !_body) return;
 
+  // Hero: franja de color de rama + nombre + años
+  if (_hero) {
+    const color   = getBranchColor(p.branch);
+    const birthY  = _year(p.birth_date);
+    const deathY  = _year(p.death_date);
+    let yearsStr  = '';
+    if (birthY || deathY) {
+      const end  = deathY || (p.vivo === 'si' ? '' : '?');
+      yearsStr   = end ? `${birthY || '?'} – ${end}` : birthY;
+    }
+    _hero.innerHTML = `
+      <div class="panel-hero-stripe" style="background:${color}"></div>
+      <div class="panel-hero-content">
+        <p class="panel-name">${p.name}</p>
+        ${yearsStr ? `<p class="panel-years">${yearsStr}</p>` : ''}
+      </div>`;
+  }
+
   const father = p.father_id ? getPersona(p.father_id) : null;
   const mother = p.mother_id ? getPersona(p.mother_id) : null;
   const marriages = getMatrimoniosByPersona(personaId);
   const orphans = getHijosSinMatrimonio(personaId);
 
-  let html = `<h2 class="panel-name">${p.name}</h2>`;
+  let html = '';
 
   // Datos vitales
   const birthStr = _datePlace(p.birth_date, p.birth_place);
   const deathStr = _datePlace(p.death_date, p.death_place);
 
   if (birthStr || deathStr) {
-    html += `<section class="panel-section">`;
+    html += `<section class="panel-section"><h3 class="panel-section-title">Fechas y lugares</h3>`;
     if (birthStr) html += `<p class="panel-meta"><span class="panel-label">Nacimiento</span>${birthStr}</p>`;
     if (deathStr) html += `<p class="panel-meta"><span class="panel-label">Fallecimiento</span>${deathStr}</p>`;
     html += `</section>`;
@@ -80,7 +102,7 @@ function _renderContent(personaId) {
 
       html += `<div class="panel-marriage">`;
       if (conyuge) {
-        html += `<p class="panel-link panel-spouse" data-focus="${conyuge.id}">♦ ${conyuge.name}</p>`;
+        html += `<p class="panel-link panel-spouse" data-focus="${conyuge.id}">${conyuge.name}</p>`;
       }
       if (mStr) {
         html += `<p class="panel-meta panel-meta--indent">${mStr}</p>`;
@@ -144,6 +166,12 @@ function _renderContent(personaId) {
 }
 
 // ── Utilidades ────────────────────────────────────────────────────────────────
+
+function _year(dateStr) {
+  if (!dateStr) return '';
+  const m = String(dateStr).match(/^(\d{4})/);
+  return m ? m[1] : '';
+}
 
 function _formatDate(dateStr) {
   if (!dateStr) return null;
