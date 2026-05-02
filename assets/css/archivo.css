@@ -263,27 +263,6 @@
 
 /* ── Documentos ─────────────────────────────────────── */
 
-.modal-docs {
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.modal-docs li {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-}
-
-.modal-docs a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.modal-docs a:hover { text-decoration: underline; }
-
 .modal-doc-date {
   color: var(--muted);
   font-size: 12px;
