@@ -783,6 +783,29 @@ def _submenu_media():
         {'list': cmd_list_media, 'add': cmd_add_media, 'delete': cmd_delete_media}[choice]()
 
 
+OPTIMIZE_SCRIPT = os.path.join(ROOT, 'scripts', 'optimize-personas.js')
+
+
+def cmd_optimize(_args=None):
+    img_dir = os.path.join(ROOT, 'assets', 'images', 'personas')
+    if not os.path.exists(img_dir):
+        console.print('[yellow]⚠[/yellow]  No existe assets/images/personas/')
+        return
+    pending = [f for f in os.listdir(img_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+    if not pending:
+        console.print('[dim]No hay JPG/PNG para optimizar en assets/images/personas/[/dim]')
+        return
+    console.print(f'\n  {len(pending)} archivo(s) sin optimizar: ' + ', '.join(pending[:5]) +
+                  ('...' if len(pending) > 5 else ''))
+    if not qconfirm('¿Convertir a WebP ahora?', default=True):
+        console.print('Cancelado.')
+        return
+    result = subprocess.run(['node', OPTIMIZE_SCRIPT], capture_output=False)
+    if result.returncode != 0:
+        console.print('[red]✗[/red] El optimizador terminó con error.')
+    console.print()
+
+
 def interactive():
     console.print(Panel(
         '[bold]Árbol Genealógico[/bold]\n[dim]Gestor de personas, matrimonios y media[/dim]',
@@ -791,15 +814,16 @@ def interactive():
     console.print()
     while True:
         choice = _ask(questionary.select('¿Qué querés gestionar?', style=STYLE, choices=[
-            questionary.Choice('Personas',      'personas'),
-            questionary.Choice('Matrimonios',   'matrimonios'),
-            questionary.Choice('Media',         'media'),
+            questionary.Choice('Personas',             'personas'),
+            questionary.Choice('Matrimonios',          'matrimonios'),
+            questionary.Choice('Media',                'media'),
+            questionary.Choice('Optimizar imágenes',   'optimize'),
             SEP,
-            questionary.Choice('Salir',         'salir'),
+            questionary.Choice('Salir',                'salir'),
         ]))
         if not choice or choice == 'salir': break
         {'personas': _submenu_personas, 'matrimonios': _submenu_matrimonios,
-         'media': _submenu_media}[choice]()
+         'media': _submenu_media, 'optimize': cmd_optimize}[choice]()
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
@@ -817,6 +841,7 @@ COMMANDS = {
     'list-media':       cmd_list_media,
     'add-media':        cmd_add_media,
     'delete-media':     cmd_delete_media,
+    'optimize':         cmd_optimize,
 }
 
 

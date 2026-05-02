@@ -14,7 +14,7 @@
 
 const fs   = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 const DIR       = path.join(__dirname, '../assets/images/personas');
 const QUALITY   = 85;
@@ -52,10 +52,8 @@ function run() {
 
     try {
       // -resize NNNx>  → reduce a MAX_WIDTH si es más ancha, preserva aspecto, nunca amplía
-      execSync(
-        `magick "${srcPath}" -resize ${MAX_WIDTH}x> -quality ${QUALITY} "${dstPath}"`,
-        { stdio: 'pipe' }
-      );
+      // Usar execFileSync (sin shell) para que el > no sea interpretado como redirección
+      execFileSync('magick', [srcPath, '-resize', `${MAX_WIDTH}x>`, '-quality', String(QUALITY), dstPath]);
       fs.unlinkSync(srcPath);
       const sizeKB = Math.round(fs.statSync(dstPath).size / 1024);
       console.log(`✅ ${file} → ${base}.webp  (${sizeKB} KB)`);
