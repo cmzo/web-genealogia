@@ -34,14 +34,14 @@ except ImportError:
 console = Console()
 
 STYLE = questionary.Style([
-    ('qmark',       'fg:#5c4a2a bold'),
-    ('question',    'fg:#1c1814 bold'),
-    ('answer',      'fg:#5c4a2a bold'),
-    ('pointer',     'fg:#5c4a2a bold'),
-    ('highlighted', 'fg:#5c4a2a bold'),
-    ('selected',    'fg:#5c4a2a'),
-    ('separator',   'fg:#b0a090'),
-    ('instruction', 'fg:#7a7060 italic'),
+    ('qmark',       'fg:#f5a623 bold'),
+    ('question',    'fg:#e8e8e8 bold'),
+    ('answer',      'fg:#4ec9b0 bold'),
+    ('pointer',     'fg:#4ec9b0 bold'),
+    ('highlighted', 'fg:#ffffff bold'),
+    ('selected',    'fg:#4ec9b0'),
+    ('separator',   'fg:#555555'),
+    ('instruction', 'fg:#888888 italic'),
 ])
 
 BACK = '← Volver'
@@ -131,11 +131,7 @@ _VIVO_CHOICES = [
 # ── prompt helpers ────────────────────────────────────────────────────────────
 
 def _ask(q):
-    """Run a questionary prompt; return None if ctrl-C."""
-    try:
-        return q.ask()
-    except KeyboardInterrupt:
-        return None
+    return q.unsafe_ask()
 
 
 def qtext(label, default=''):
@@ -820,4 +816,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        console.print('\n[dim]Saliendo...[/dim]')
+        sys.exit(0)
