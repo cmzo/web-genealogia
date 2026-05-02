@@ -317,8 +317,8 @@
 .panel-media {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 6px;
+    gap: 16px;
+    margin-top: 8px;
 }
 
 .panel-media-photo {
@@ -350,7 +350,7 @@
 .panel-media-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .panel-media-group-label {
@@ -366,7 +366,7 @@
 .panel-media-group-photos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 4px;
+    gap: 8px;
 }
 
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */

@@ -229,8 +229,8 @@
 .modal-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .modal-thumb {
@@ -291,7 +291,7 @@
 }
 
 .modal-media-group {
-  margin-top: 10px;
+  margin-top: 18px;
 }
 
 .modal-media-group:first-child { margin-top: 0; }

@@ -125,12 +125,45 @@ Dirección: **documental mínimo con densidad controlada**. El árbol es una can
 
 ---
 
-### Fase 7 — Wiring final, limpieza y documentación
-**Trabajo:** Conectar todo, eliminar código viejo, actualizar docs.
+### ✅ Fase 7 — Wiring final, limpieza y documentación
 
 - `arbol-matrimonios.html` reescrito con el HTML completo (toolbar, panel lateral, SVG container)
 - Módulos viejos eliminados: `structure.js`, y las versiones anteriores de `layout.js` y `render.js`
 - `CLAUDE.md` actualizado con el nuevo schema, módulos y flujo de datos
 - `data/README.md` actualizado
 
-**Al terminar (feature completo):** el árbol genealógico es un proyecto serio y mantenible. La fuente de verdad es una base de datos local. El frontend es navegable, tiene panel lateral con toda la información disponible por persona (incluyendo fotos y documentos), búsqueda, y dos vistas. El código es limpio y modular. No queda deuda técnica del código construido a prueba y error.
+---
+
+## Mejoras post-redesign
+
+### ✅ Panel: ancho 400px y recentrado automático
+
+- Panel ampliado de 288px a 400px para mostrar fotos con más espacio
+- Al hacer click en una persona el árbol se recentra en el espacio disponible excluyendo el panel: `d3.zoom().translateTo(selection, x, y, [cx, H/2])` donde `cx = (W - panel.offsetWidth) / 2`
+- `requestAnimationFrame()` difiere el recentrado un frame para que `is-open` ya esté en el DOM al leerlo
+- Al cerrar el panel el árbol también se recentra al ancho completo
+- Mobile: panel `min(400px, 100vw)` en ≤960px, `100vw` en ≤480px
+
+### ✅ Media: agrupación de documentos multi-página
+
+- Nueva tabla: `group_label TEXT DEFAULT ''` y `group_order INTEGER DEFAULT 0` en `media`
+- Items con el mismo `group_label` se renderizan juntos bajo un encabezado en el panel y en el modal de archivo
+- `gestionar_arbol.py add-media` sugiere automáticamente el próximo `group_order` dentro del grupo
+- `export_arbol.py` exporta `group_label` y `group_order`; ordena por `group_label, group_order, id`
+
+### ✅ Script optimize-personas
+
+- `npm run optimize-personas` convierte JPG/JPEG/PNG en `assets/images/personas/` a WebP
+- Usa ImageMagick (`magick`), ancho máximo 2400px (`-resize 2400x>`), calidad 85
+- Idempotente: saltea si ya existe `.webp` con el mismo nombre base; elimina el original tras convertir
+
+### ✅ Gestión de media mejorada
+
+- `gestionar_arbol.py list-media` funciona sin argumentos (muestra todos los registros agrupados por persona)
+- `gestionar_arbol.py delete-media <id>` muestra el registro, pide confirmación y opcionalmente elimina el archivo de disco
+- `add-media` auto-antepone la ruta de directorio si la entrada no contiene `/`
+
+### ✅ Espaciado del panel y modal
+
+- `arbol.css`: `.tree-panel-body` padding-top 2px → 10px; `.panel-section` margin/padding-top 14/12px → 20/16px; `.panel-media` gap 8px → 16px; `.panel-media-group-photos` gap 4px → 8px
+- `archivo.css`: `.archivo-modal-body` padding-top 16px → 20px; `.modal-section` margin/padding-top 14/12px → 22/16px; `.modal-gallery` gap 10px → 14px; `.modal-media-group` margin-top 10px → 18px

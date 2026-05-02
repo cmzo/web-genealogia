@@ -45,6 +45,30 @@
         <div class="changelog-content">
 
           <div class="changelog-entry">
+            <p class="changelog-date">2 de mayo de 2026</p>
+            <h2 class="changelog-title">Árbol: recentrado automático al abrir y cerrar el panel</h2>
+            <p class="changelog-desc">Al hacer click en una persona del árbol, la vista se recentra automáticamente teniendo en cuenta el espacio que ocupa el panel lateral, de modo que la persona seleccionada queda centrada en el área visible restante. Al cerrar el panel, el árbol se recentra de nuevo al ancho completo. Ambas transiciones usan la misma animación de 600ms que el resto de la navegación.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">2 de mayo de 2026</p>
+            <h2 class="changelog-title">Panel de detalle y modal de archivo: más espacio y fotos agrupadas</h2>
+            <p class="changelog-desc">El panel lateral del árbol fue ampliado de 288px a 400px. Se aumentó el espaciado entre secciones y entre archivos multimedia, tanto en el panel del árbol como en el modal de archivo. Los documentos o fotos que forman parte de un mismo conjunto (por ejemplo, las páginas de una carta) se muestran ahora agrupados bajo un encabezado común en lugar de como ítems individuales sueltos.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">2 de mayo de 2026</p>
+            <h2 class="changelog-title">Optimización de imágenes de personas desde la terminal</h2>
+            <p class="changelog-desc">Nuevo comando <code>npm run optimize-personas</code> que convierte automáticamente cualquier JPG, JPEG o PNG en <code>assets/images/personas/</code> a WebP usando ImageMagick. El ancho máximo es 2400px y la calidad 85. El original se elimina tras una conversión exitosa. El comando es idempotente: si ya existe un <code>.webp</code> con el mismo nombre base, el archivo se saltea.</p>
+          </div>
+
+          <div class="changelog-entry">
+            <p class="changelog-date">2 de mayo de 2026</p>
+            <h2 class="changelog-title">Gestión de archivos multimedia: nuevo comando delete-media</h2>
+            <p class="changelog-desc">El script <code>gestionar_arbol.py</code> incorpora un nuevo comando <code>delete-media &lt;id&gt;</code> que muestra el registro a eliminar, pide confirmación y opcionalmente borra también el archivo del disco. El comando <code>list-media</code> ahora funciona sin argumentos y muestra todos los archivos registrados agrupados por persona. Al registrar un nuevo archivo con <code>add-media</code>, si se ingresa solo el nombre sin ruta el script antepone el directorio correspondiente automáticamente.</p>
+          </div>
+
+          <div class="changelog-entry">
             <p class="changelog-date">1 de mayo de 2026</p>
             <h2 class="changelog-title">Archivo: rediseño y migración a base de datos local</h2>
             <p class="changelog-desc">La página de archivo fue reescrita completamente. Los datos ya no provienen de Google Sheets: la fuente es ahora <code>arbol.json</code>, el mismo archivo generado a partir de la base de datos SQLite que usa el árbol genealógico. El código anterior (~1400 líneas con estilos inline, lógica de Google Sheets y múltiples fallbacks) fue reemplazado por una implementación de ~200 líneas en HTML y ~70 líneas en JS, más una hoja de estilos separada que sigue el sistema de diseño del sitio. La tabla muestra las 55 personas ordenadas de generación más antigua a más reciente, con búsqueda por nombre y rama. El modal de detalle muestra fechas, lugares, padres y, cuando existan, notas, fuentes, fotos y documentos vinculados desde la base de datos.</p>
