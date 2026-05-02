@@ -6,8 +6,69 @@
   <title>Cambios · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
+  <style>
+    .changelog-content h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      margin: 36px 0 4px;
+      letter-spacing: 0.02em;
+    }
+    .changelog-content h3:first-child { margin-top: 0; }
+
+    .changelog-content h4 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    .changelog-content p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+
+    .changelog-content ul {
+      margin: 4px 0 8px 18px;
+      padding: 0;
+    }
+
+    .changelog-content li {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .changelog-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0 0;
+    }
+
+    .changelog-content code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--bg);
+      padding: 1px 5px;
+      border-radius: 2px;
+    }
+
+    .changelog-loading {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+  </style>
 </head>
 <body>
 
@@ -43,134 +104,7 @@
         </header>
 
         <div class="changelog-content">
-
-          <div class="changelog-entry">
-            <p class="changelog-date">2 de mayo de 2026</p>
-            <h2 class="changelog-title">Árbol: recentrado automático al abrir y cerrar el panel</h2>
-            <p class="changelog-desc">Al hacer click en una persona del árbol, la vista se recentra automáticamente teniendo en cuenta el espacio que ocupa el panel lateral, de modo que la persona seleccionada queda centrada en el área visible restante. Al cerrar el panel, el árbol se recentra de nuevo al ancho completo. Ambas transiciones usan la misma animación de 600ms que el resto de la navegación.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">2 de mayo de 2026</p>
-            <h2 class="changelog-title">Panel de detalle y modal de archivo: más espacio y fotos agrupadas</h2>
-            <p class="changelog-desc">El panel lateral del árbol fue ampliado de 288px a 400px. Se aumentó el espaciado entre secciones y entre archivos multimedia, tanto en el panel del árbol como en el modal de archivo. Los documentos o fotos que forman parte de un mismo conjunto (por ejemplo, las páginas de una carta) se muestran ahora agrupados bajo un encabezado común en lugar de como ítems individuales sueltos.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">2 de mayo de 2026</p>
-            <h2 class="changelog-title">Optimización de imágenes de personas desde la terminal</h2>
-            <p class="changelog-desc">Nuevo comando <code>npm run optimize-personas</code> que convierte automáticamente cualquier JPG, JPEG o PNG en <code>assets/images/personas/</code> a WebP usando ImageMagick. El ancho máximo es 2400px y la calidad 85. El original se elimina tras una conversión exitosa. El comando es idempotente: si ya existe un <code>.webp</code> con el mismo nombre base, el archivo se saltea.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">2 de mayo de 2026</p>
-            <h2 class="changelog-title">Gestión de archivos multimedia: nuevo comando delete-media</h2>
-            <p class="changelog-desc">El script <code>gestionar_arbol.py</code> incorpora un nuevo comando <code>delete-media &lt;id&gt;</code> que muestra el registro a eliminar, pide confirmación y opcionalmente borra también el archivo del disco. El comando <code>list-media</code> ahora funciona sin argumentos y muestra todos los archivos registrados agrupados por persona. Al registrar un nuevo archivo con <code>add-media</code>, si se ingresa solo el nombre sin ruta el script antepone el directorio correspondiente automáticamente.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Archivo: rediseño y migración a base de datos local</h2>
-            <p class="changelog-desc">La página de archivo fue reescrita completamente. Los datos ya no provienen de Google Sheets: la fuente es ahora <code>arbol.json</code>, el mismo archivo generado a partir de la base de datos SQLite que usa el árbol genealógico. El código anterior (~1400 líneas con estilos inline, lógica de Google Sheets y múltiples fallbacks) fue reemplazado por una implementación de ~200 líneas en HTML y ~70 líneas en JS, más una hoja de estilos separada que sigue el sistema de diseño del sitio. La tabla muestra las 55 personas ordenadas de generación más antigua a más reciente, con búsqueda por nombre y rama. El modal de detalle muestra fechas, lugares, padres y, cuando existan, notas, fuentes, fotos y documentos vinculados desde la base de datos.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: panel lateral y búsqueda</h2>
-            <p class="changelog-desc">Al hacer click en cualquier tarjeta se abre un panel lateral (288px, deslizamiento desde la derecha) con la información completa de la persona: nombre, fechas y lugares de nacimiento y fallecimiento, padres, matrimonios con cónyuge y lista de hijos, notas, fuentes y archivos multimedia. Cada nombre en el panel es un link de navegación que recentra el árbol. Click en el fondo del árbol o en ✕ cierra el panel. La barra de herramientas incluye un buscador por nombre con autocompletado propio: filtra mientras se escribe, navega con ↑↓ y confirma con Enter, estilizado con el sistema de diseño del sitio.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: nuevo motor de visualización</h2>
-            <p class="changelog-desc">El árbol genealógico ahora usa un motor completamente nuevo basado en <code>d3.hierarchy()</code> y <code>d3.tree()</code>. El pedigree se centra en una persona y muestra tres generaciones hacia arriba y una hacia abajo. Las tarjetas (160×80px) tienen una franja de color por rama familiar, nombre en dos líneas y años de vida. Los conectores entre generaciones son curvas cúbicas de Bezier. Al hacer click en cualquier persona el árbol se recentra con una transición de 600ms. Zoom con Ctrl+scroll y botones +/−.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Escudo de Valais agregado al inicio</h2>
-            <p class="changelog-desc">La página de inicio muestra ahora tres escudos heráldicos en orden: Valais, Clemenzo y Ardon.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: rediseño desde cero (en progreso)</h2>
-            <p class="changelog-desc">El árbol genealógico está siendo reescrito completamente para alcanzar un nivel comparable a plataformas como FamilySearch. El objetivo es un pedigree navegable centrado en una persona, con panel lateral de información, búsqueda por nombre y dos vistas (pedigree y árbol completo). El trabajo se divide en siete fases: las tres primeras están terminadas y las cuatro restantes están en curso.</p>
-            <ul class="changelog-list">
-              <li><strong>Fase 1 — Base de datos local:</strong> la fuente de verdad migró de Google Sheets a SQLite (<code>data/arbol.db</code>). El nuevo schema incluye tablas separadas para personas, matrimonios y archivos multimedia. Se eliminaron los campos redundantes <code>spouse_id</code> y <code>children_ids</code>, cuyo contenido es ahora derivado.</li>
-              <li><strong>Fase 2 — Scripts Python:</strong> <code>export_arbol.py</code> genera el JSON estático con la estructura <code>{ personas[], matrimonios[] }</code> en cada build. <code>gestionar_arbol.py</code> permite agregar, editar y consultar personas, matrimonios y archivos desde la terminal sin abrir ninguna planilla externa.</li>
-              <li><strong>Fase 3 — Arquitectura de módulos JS:</strong> los nuevos módulos <code>config.js</code>, <code>data.js</code>, <code>store.js</code> y <code>graph.js</code> reemplazan la implementación anterior. El estado global usa pub/sub (<code>focusChange</code>, <code>selectionChange</code>). Los árboles ancestral y descendente se construyen como jerarquías compatibles con <code>d3.hierarchy()</code>.</li>
-              <li><strong>Fases 4–7 (pendientes):</strong> renderizado D3 con tarjetas y conectores de Bezier, panel lateral con toda la información de cada persona, CSS coherente con el diseño editorial del sitio, y wiring final con limpieza del código viejo.</li>
-            </ul>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">1 de mayo de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: migración a base de datos local</h2>
-            <p class="changelog-desc">Los datos del árbol dejaron de depender de Google Sheets como fuente de escritura. La fuente de verdad es ahora una base de datos SQLite local (<code>data/arbol.db</code>), con un script Python que genera el JSON estático en cada build. Agregar o editar personas se hace desde la terminal con <code>gestionar_arbol.py</code>, sin necesidad de abrir ninguna planilla externa.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Inicio: rediseño editorial</h2>
-            <p class="changelog-desc">La página de inicio fue rediseñada con un texto introductorio centrado en Source Serif 4, la foto panorámica del Valle del Ródano, los escudos heráldicos de la familia Clemenzo y Ardon, y una sección de última entrada que se actualiza automáticamente con cada nuevo post del blog. El link al blog fue movido de la barra de navegación superior a la sidebar, dejando el nav con solo el nombre del sitio y el ícono de GitHub.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Navegación mobile</h2>
-            <p class="changelog-desc">En pantallas menores a 960px la sidebar desaparece y los links de navegación (Inicio, Árbol, Archivo, Blog) pasan al nav superior. El footer en mobile queda centrado y apilado verticalmente.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Blog: tarjetas sin imagen</h2>
-            <p class="changelog-desc">Las tarjetas del blog dejaron de mostrar imágenes. El diseño es ahora puramente tipográfico: categoría, título, descripción y fecha. Se eliminó también el glitch visual donde las tarjetas aparecían grandes y se achicaban al cargar, causado por imágenes que fallaban silenciosamente en producción.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: rediseño visual</h2>
-            <p class="changelog-desc">Las conexiones entre generaciones pasaron de tres líneas rectas a curvas cúbicas de Bezier, usando d3.linkVertical(). Las tarjetas de personas fueron rediseñadas: fondo blanco, sin bordes redondeados, franja de color superior por rama familiar, nombre en zona fija de dos líneas, y fechas centradas con emojis (🌱 nacimiento, 🕊 defunción).</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: modularización del código</h2>
-            <p class="changelog-desc">El código JavaScript del árbol genealógico fue dividido en cinco módulos ES independientes: config.js (constantes y colores), data.js (carga de datos), structure.js (construcción de matrimonios y vínculos), layout.js (posicionamiento por generación) y render.js (renderizado D3). El CSS específico del árbol fue extraído a su propio archivo. El HTML del árbol quedó en 81 líneas sin código inline.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Árbol genealógico: datos estáticos y limpieza de código</h2>
-            <p class="changelog-desc">El árbol genealógico dejó de depender de Google Sheets en tiempo de ejecución. Los datos ahora se generan durante el build y se sirven como un archivo JSON estático, lo que elimina la dependencia de una API no oficial y mejora la velocidad de carga. Se eliminó el panel "Filtro de Familias", el código de debug (83 console.log), los bloques de código muerto y las versiones históricas del árbol. El script de deploy fue reescrito para hacer build + commit + push de forma automática. Los posts del blog ahora se ordenan por fecha del front matter en lugar de fecha de modificación del archivo.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Ajustes de diseño: sidebar, imagen home y tipografía</h2>
-            <p class="changelog-desc">El sidebar de navegación ahora queda fijo al hacer scroll en todas las páginas. Se añadió un indicador visual de sección activa con barra lateral y peso tipográfico mayor. La imagen del inicio fue reemplazada por una fotografía del Valle del Ródano en blanco y negro con contraste aumentado. El título "Clemenzo" en la barra de navegación fue agrandado. Las imágenes del home se optimizan como WebP durante el build.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de abril de 2026</p>
-            <h2 class="changelog-title">Rediseño editorial del sitio</h2>
-            <p class="changelog-desc">Rediseño completo del frontend. Se reemplazó la grilla de tarjetas de inicio por un layout de dos columnas con sidebar de navegación persistente. Nueva paleta de colores cálidos, tipografía editorial basada en Source Serif 4, y footer simplificado. Se eliminó la búsqueda del blog (no funcional) y se limpió el código de la navegación.</p>
-          </div>
-
-
-          <div class="changelog-entry">
-            <p class="changelog-date">29 de agosto de 2025</p>
-            <h2 class="changelog-title">Árbol genealógico interactivo</h2>
-            <p class="changelog-desc">Primera versión del árbol genealógico con visualización interactiva. Permite navegar por las ramas familiares y explorar los vínculos entre generaciones.</p>
-          </div>
-
-          <div class="changelog-entry">
-            <p class="changelog-date">10 de agosto de 2025</p>
-            <h2 class="changelog-title">Lanzamiento del sitio</h2>
-            <p class="changelog-desc">Primera versión pública del sitio. Incluye presentación personal, archivo de documentos y fotografías, y el inicio del blog de investigación genealógica.</p>
-          </div>
-
+          <p class="changelog-loading">Cargando…</p>
         </div>
       </div>
     </main>
@@ -180,6 +114,21 @@
     <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
     <a href="changelog.html" class="footer-changelog-link">Cambios</a>
   </footer>
+
+  <script src="./assets/js/path-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
+  <script>
+    const url = window.getContentPath?.('changelog.md') ?? './content/changelog.md';
+    fetch(url)
+      .then(r => r.text())
+      .then(md => {
+        document.querySelector('.changelog-content').innerHTML = marked.parse(md);
+      })
+      .catch(() => {
+        document.querySelector('.changelog-content').innerHTML =
+          '<p>No se pudo cargar el historial.</p>';
+      });
+  </script>
 
 </body>
 </html>
