@@ -42,6 +42,10 @@ STYLE = questionary.Style([
     ('selected',    'fg:#4ec9b0'),
     ('separator',   'fg:#555555'),
     ('instruction', 'fg:#888888 italic'),
+    # autocompletado: fondo oscuro, texto claro
+    ('completion-menu',                    'bg:#2a2a2a fg:#dddddd'),
+    ('completion-menu.completion',         'bg:#2a2a2a fg:#dddddd'),
+    ('completion-menu.completion.current', 'bg:#4ec9b0 fg:#1a1a1a bold'),
 ])
 
 BACK = '← Volver'
@@ -342,7 +346,21 @@ def _collect_fields(cur, defaults=None):
     mother_id   = qtext('ID madre',   d.get('mother_id',  '') or '')
     branch      = qtext('Rama familiar', d.get('branch', '') or '')
     gen_raw     = qtext('Generación (número)', str(d.get('generation') or 0))
-    ord_raw     = qtext('Orden en la generación', str(d.get('sort_order') or 0))
+
+    # Sugerir orden según hermanos existentes (solo al agregar, no al editar)
+    if defaults is None:
+        parent_id = father_id or mother_id
+        if parent_id:
+            cur.execute(
+                'SELECT COALESCE(MAX(sort_order), -1) + 1 FROM personas WHERE father_id=? OR mother_id=?',
+                (parent_id, parent_id)
+            )
+            suggested_order = str(cur.fetchone()[0])
+        else:
+            suggested_order = '0'
+    else:
+        suggested_order = str(d.get('sort_order') or 0)
+    ord_raw     = qtext('Orden en la generación', suggested_order)
     vivo        = qselect('¿Está vivo?', _VIVO_CHOICES, default=d.get('vivo', ''))
     photo_url   = qtext('Foto de perfil (ruta o vacío)', d.get('photo_url', '') or '')
     notes       = qtext('Notas',   d.get('notes',   '') or '')
