@@ -837,24 +837,64 @@
           "group_order": 0
         },
         {
-          "id": "med1",
+          "id": "med5",
           "type": "photo",
-          "url": "assets/images/personas/p26-carta-conthey-1.webp",
-          "caption": "Carta de Conthey a Francisco Clemenzo",
+          "url": "assets/images/personas/carta-conthey-1.webp",
+          "caption": "Carta del tribunal de Conthey, dirigida a Francisco y Esteban",
           "date": "1905-02-04",
-          "source_label": "Carta del tribunal de Conthey",
-          "group_label": "Carta de Conthey, 1905",
+          "source_label": "Tribunal de Conthey",
+          "group_label": "Carta de Conthey",
           "group_order": 1
         },
         {
-          "id": "med2",
+          "id": "med6",
           "type": "photo",
-          "url": "assets/images/personas/p26-carta-conthey-2.webp",
-          "caption": "Carta de Conthey a Francisco Clemenzo",
+          "url": "assets/images/personas/carta-conthey-2.webp",
+          "caption": "Carta del tribunal de Conthey, dirigida a Francisco y Esteban",
           "date": "1905-02-04",
-          "source_label": "Carta del tribunal de Conthey",
-          "group_label": "Carta de Conthey, 1905",
+          "source_label": "Tribunal de Conthey",
+          "group_label": "Carta de Conthey",
           "group_order": 2
+        },
+        {
+          "id": "med7",
+          "type": "photo",
+          "url": "assets/images/personas/p26-militar-1.webp",
+          "caption": "Enrolamiento militar en Santa Fe",
+          "date": "",
+          "source_label": "Registro Militar",
+          "group_label": "militar",
+          "group_order": 1
+        },
+        {
+          "id": "med8",
+          "type": "photo",
+          "url": "assets/images/personas/p26-militar-2.webp",
+          "caption": "Enrolamiento militar en Santa Fe",
+          "date": "",
+          "source_label": "Registro Militar",
+          "group_label": "militar",
+          "group_order": 2
+        },
+        {
+          "id": "med9",
+          "type": "photo",
+          "url": "assets/images/personas/p26-militar-3.webp",
+          "caption": "Enrolamiento militar en Santa Fe",
+          "date": "",
+          "source_label": "Registro Militar",
+          "group_label": "militar",
+          "group_order": 3
+        },
+        {
+          "id": "med10",
+          "type": "photo",
+          "url": "assets/images/personas/p26-militar-4.webp",
+          "caption": "Enrolamiento militar en Santa Fe",
+          "date": "",
+          "source_label": "Registro Militar",
+          "group_label": "militar",
+          "group_order": 4
         }
       ]
     },
