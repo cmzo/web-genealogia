@@ -1,8 +1,9 @@
 /**
- * panel.js — panel lateral con información completa de la persona seleccionada.
+ * panel.js — panel lateral con pestañas: Persona | Investigación | Archivos.
  *
- * Escucha el evento 'selectionChange' del store y renderiza el contenido.
- * Los links de navegación (padres, cónyuge, hijos) llaman a setFocus + setSelected.
+ * Escucha 'selectionChange' del store. Los links de navegación llaman a
+ * setFocus + setSelected. El estado de pestaña activa persiste entre cambios
+ * de persona (salvo que la nueva persona no tenga contenido en la pestaña).
  */
 
 import {
@@ -15,13 +16,17 @@ import { setFocus, setSelected, on } from './store.js';
 import { recenterOn } from './render.js';
 import { getBranchColor } from './config.js';
 
-let _panel = null;
-let _hero  = null;
-let _body  = null;
+let _panel    = null;
+let _hero     = null;
+let _tabs     = null;
+let _body     = null;
+let _activeTab = 'persona';
+let _currentId = null;
 
 export function initPanel() {
   _panel = document.getElementById('treePanel');
   _hero  = document.getElementById('treePanelHero');
+  _tabs  = document.getElementById('panelTabs');
   _body  = document.getElementById('treePanelBody');
   const closeBtn = document.getElementById('treePanelClose');
 
@@ -29,58 +34,111 @@ export function initPanel() {
 
   closeBtn?.addEventListener('click', () => setSelected(null));
 
+  _tabs?.querySelectorAll('.panel-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      _activeTab = btn.dataset.tab;
+      _tabs.querySelectorAll('.panel-tab').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      if (_currentId) _renderBody(_currentId);
+    });
+  });
+
   on('selectionChange', id => {
     if (!id) {
       _panel.classList.remove('is-open');
       if (_hero) _hero.innerHTML = '';
-      requestAnimationFrame(() => recenterOn());
+      _currentId = null;
+      setTimeout(() => recenterOn(), 320);
       return;
     }
-    _renderContent(id);
+    const wasOpen = _panel.classList.contains('is-open');
+    _currentId = id;
+    _renderHero(id);
+    _renderBody(id);
     _panel.classList.add('is-open');
+    if (wasOpen) {
+      requestAnimationFrame(() => recenterOn());
+    } else {
+      setTimeout(() => recenterOn(), 320);
+    }
   });
 }
 
-// ── Renderizado ───────────────────────────────────────────────────────────────
+// ── Hero ──────────────────────────────────────────────────────────────────────
 
-function _renderContent(personaId) {
+function _renderHero(personaId) {
   const p = getPersona(personaId);
-  if (!p || !_body) return;
+  if (!p || !_hero) return;
 
-  // Hero: franja de color de rama + nombre + años
-  if (_hero) {
-    const color   = getBranchColor(p.branch);
-    const birthY  = _year(p.birth_date);
-    const deathY  = _year(p.death_date);
-    let yearsStr  = '';
-    if (birthY || deathY) {
-      const end  = deathY || (p.vivo === 'si' ? '' : '?');
-      yearsStr   = end ? `${birthY || '?'} – ${end}` : birthY;
-    }
-    _hero.innerHTML = `
-      <div class="panel-hero-stripe" style="background:${color}"></div>
-      <div class="panel-hero-content">
-        <p class="panel-name">${p.name}</p>
-        ${yearsStr ? `<p class="panel-years">${yearsStr}</p>` : ''}
-      </div>`;
+  const color  = getBranchColor(p.branch);
+  const birthY = _year(p.birth_date);
+  const deathY = _year(p.death_date);
+  let yearsStr = '';
+  if (birthY || deathY) {
+    const end = deathY || (p.vivo === 'si' ? '' : '?');
+    yearsStr  = end ? `${birthY || '?'} – ${end}` : birthY;
   }
 
-  const father = p.father_id ? getPersona(p.father_id) : null;
-  const mother = p.mother_id ? getPersona(p.mother_id) : null;
+  const statusBadge = _statusBadge(p.status);
+
+  _hero.innerHTML = `
+    <div class="panel-hero-stripe" style="background:${color}"></div>
+    <div class="panel-hero-content">
+      <div class="panel-hero-top">
+        <p class="panel-name">${p.name}</p>
+        ${statusBadge}
+      </div>
+      ${yearsStr ? `<p class="panel-years">${yearsStr}</p>` : ''}
+    </div>`;
+}
+
+// ── Body dispatcher ───────────────────────────────────────────────────────────
+
+function _renderBody(personaId) {
+  if (!_body) return;
+  if (_activeTab === 'persona') {
+    _tabPersona(personaId);
+    _bindNavLinks();
+  } else if (_activeTab === 'investigacion') {
+    _tabInvestigacion(personaId); // async — manages its own content
+  } else if (_activeTab === 'archivos') {
+    _tabArchivos(personaId);
+  }
+}
+
+// ── Tab: Persona ──────────────────────────────────────────────────────────────
+
+function _tabPersona(personaId) {
+  const p = getPersona(personaId);
+  if (!p) return;
+
+  const father   = p.father_id ? getPersona(p.father_id) : null;
+  const mother   = p.mother_id ? getPersona(p.mother_id) : null;
   const marriages = getMatrimoniosByPersona(personaId);
-  const orphans = getHijosSinMatrimonio(personaId);
+  const orphans   = getHijosSinMatrimonio(personaId);
 
   let html = '';
 
-  // Datos vitales
+  // Vita: nacimiento y fallecimiento en grid de dos columnas
   const birthStr = _datePlace(p.birth_date, p.birth_place);
   const deathStr = _datePlace(p.death_date, p.death_place);
 
   if (birthStr || deathStr) {
-    html += `<section class="panel-section"><h3 class="panel-section-title">Fechas y lugares</h3>`;
-    if (birthStr) html += `<p class="panel-meta"><span class="panel-label">Nacimiento</span>${birthStr}</p>`;
-    if (deathStr) html += `<p class="panel-meta"><span class="panel-label">Fallecimiento</span>${deathStr}</p>`;
-    html += `</section>`;
+    html += `<section class="panel-section"><h3 class="panel-section-title">Fechas y lugares</h3>
+      <div class="panel-vita-grid">`;
+    if (birthStr) {
+      html += `<div class="panel-vita-item">
+        <span class="panel-label">Nacimiento</span>
+        <span class="panel-vita-val">${birthStr}</span>
+      </div>`;
+    }
+    if (deathStr) {
+      html += `<div class="panel-vita-item">
+        <span class="panel-label">Fallecimiento</span>
+        <span class="panel-vita-val">${deathStr}</span>
+      </div>`;
+    }
+    html += `</div></section>`;
   }
 
   // Padres
@@ -91,7 +149,7 @@ function _renderContent(personaId) {
     html += `</section>`;
   }
 
-  // Matrimonios
+  // Matrimonios e hijos
   if (marriages.length > 0) {
     html += `<section class="panel-section"><h3 class="panel-section-title">Matrimonios</h3>`;
     marriages.forEach(m => {
@@ -119,7 +177,6 @@ function _renderContent(personaId) {
     html += `</section>`;
   }
 
-  // Hijos sin matrimonio registrado
   if (orphans.length > 0) {
     html += `<section class="panel-section"><h3 class="panel-section-title">Hijos</h3>`;
     orphans.forEach(c => {
@@ -128,34 +185,74 @@ function _renderContent(personaId) {
     html += `</section>`;
   }
 
-  // Notas
-  if (p.notes?.trim()) {
-    html += `
-      <section class="panel-section">
-        <h3 class="panel-section-title">Notas</h3>
-        <p class="panel-text">${p.notes.trim()}</p>
-      </section>`;
-  }
-
-  // Fuentes
-  if (p.sources?.trim()) {
-    html += `
-      <section class="panel-section">
-        <h3 class="panel-section-title">Fuentes</h3>
-        <p class="panel-text">${p.sources.trim()}</p>
-      </section>`;
-  }
-
-  // Archivos multimedia
-  if (p.media?.length > 0) {
-    html += `<section class="panel-section"><h3 class="panel-section-title">Archivos</h3><div class="panel-media">`;
-    html += _renderMedia(p.media);
-    html += `</div></section>`;
+  if (!html) {
+    html = `<p class="panel-empty">Sin datos biográficos registrados.</p>`;
   }
 
   _body.innerHTML = html;
+}
 
-  // Conectar links de navegación
+// ── Tab: Investigación ────────────────────────────────────────────────────────
+
+async function _tabInvestigacion(personaId) {
+  const p = getPersona(personaId);
+  if (!p) return;
+
+  _body.innerHTML = `<p class="panel-empty">Cargando…</p>`;
+
+  const url = window.getContentPath(`personas/${personaId}.md`);
+  try {
+    const res = await fetch(url);
+    if (_currentId !== personaId) return; // navegó a otra persona mientras cargaba
+    if (res.ok) {
+      const md = await res.text();
+      if (_currentId !== personaId) return;
+      _body.innerHTML = `<div class="panel-markdown">${window.marked.parse(md)}</div>`;
+      return;
+    }
+  } catch { /* sin archivo — continúa al fallback */ }
+
+  if (_currentId !== personaId) return;
+
+  // Fallback: notas y fuentes del DB
+  let html = '';
+  if (p.notes?.trim()) {
+    html += `<section class="panel-section">
+      <h3 class="panel-section-title">Notas</h3>
+      <p class="panel-text">${p.notes.trim()}</p>
+    </section>`;
+  }
+  if (p.sources?.trim()) {
+    html += `<section class="panel-section">
+      <h3 class="panel-section-title">Fuentes</h3>
+      <p class="panel-text">${p.sources.trim()}</p>
+    </section>`;
+  }
+  if (!html) {
+    html = `<p class="panel-empty">Sin notas de investigación.<br>
+      <span class="panel-empty-hint">Crea <code>content/personas/${personaId}.md</code> para agregar contenido.</span>
+    </p>`;
+  }
+  _body.innerHTML = html;
+}
+
+// ── Tab: Archivos ─────────────────────────────────────────────────────────────
+
+function _tabArchivos(personaId) {
+  const p = getPersona(personaId);
+  if (!p) return;
+
+  if (!p.media?.length) {
+    _body.innerHTML = `<p class="panel-empty">No hay archivos multimedia para esta persona.</p>`;
+    return;
+  }
+
+  _body.innerHTML = `<div class="panel-media">${_renderMedia(p.media)}</div>`;
+}
+
+// ── Navegación interna ────────────────────────────────────────────────────────
+
+function _bindNavLinks() {
   _body.querySelectorAll('[data-focus]').forEach(el => {
     el.addEventListener('click', () => {
       const id = el.dataset.focus;
@@ -165,36 +262,11 @@ function _renderContent(personaId) {
   });
 }
 
-// ── Utilidades ────────────────────────────────────────────────────────────────
-
-function _year(dateStr) {
-  if (!dateStr) return '';
-  const m = String(dateStr).match(/^(\d{4})/);
-  return m ? m[1] : '';
-}
-
-function _formatDate(dateStr) {
-  if (!dateStr) return null;
-  const m = String(dateStr).match(/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/);
-  if (!m) return dateStr;
-  const [, y, mo, d] = m;
-  if (!mo || mo === '00') return y;
-  const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto',
-                  'septiembre','octubre','noviembre','diciembre'];
-  const month = months[parseInt(mo, 10) - 1];
-  if (!d || d === '00') return `${month} de ${y}`;
-  return `${parseInt(d, 10)} de ${month} de ${y}`;
-}
-
-function _datePlace(date, place) {
-  const parts = [_formatDate(date), place].filter(Boolean);
-  return parts.join(' · ');
-}
+// ── Media ─────────────────────────────────────────────────────────────────────
 
 function _renderMedia(media) {
-  // Separa ítems sueltos de grupos, preservando el orden de aparición
   const seen  = new Set();
-  const units = []; // { type: 'single', item } | { type: 'group', label, items[] }
+  const units = [];
 
   for (const m of media) {
     if (!m.group_label) {
@@ -231,4 +303,44 @@ function _mediaItem(item) {
   return `<a href="${item.url}" target="_blank" class="panel-media-doc">
     📄 ${item.caption || item.url}
   </a>`;
+}
+
+// ── Status badge ──────────────────────────────────────────────────────────────
+
+function _statusBadge(status) {
+  const labels = {
+    verificado:  'Verificado',
+    incompleto:  'Incompleto',
+    en_proceso:  'En proceso',
+    sin_datos:   'Sin datos',
+  };
+  const label = labels[status] || labels['sin_datos'];
+  const cls   = status && labels[status] ? status : 'sin_datos';
+  return `<span class="panel-status panel-status--${cls}">${label}</span>`;
+}
+
+// ── Utilidades ────────────────────────────────────────────────────────────────
+
+function _year(dateStr) {
+  if (!dateStr) return '';
+  const m = String(dateStr).match(/^(\d{4})/);
+  return m ? m[1] : '';
+}
+
+function _formatDate(dateStr) {
+  if (!dateStr) return null;
+  const m = String(dateStr).match(/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/);
+  if (!m) return dateStr;
+  const [, y, mo, d] = m;
+  if (!mo || mo === '00') return y;
+  const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto',
+                  'septiembre','octubre','noviembre','diciembre'];
+  const month = months[parseInt(mo, 10) - 1];
+  if (!d || d === '00') return `${month} de ${y}`;
+  return `${parseInt(d, 10)} de ${month} de ${y}`;
+}
+
+function _datePlace(date, place) {
+  const parts = [_formatDate(date), place].filter(Boolean);
+  return parts.join(' · ');
 }

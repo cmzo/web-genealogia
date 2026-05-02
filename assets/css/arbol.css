@@ -94,13 +94,14 @@
     flex: 1;
     min-height: 520px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     overflow: hidden;
 }
 
 .tree-container {
     position: relative;
     flex: 1;
+    min-width: 400px;
     min-height: 520px;
     overflow: hidden;
     /* Fondo de puntos: da sensación de canvas sin competir con el árbol */
@@ -160,25 +161,23 @@
 /* ── Panel lateral ───────────────────────────────────────────────────────────── */
 
 .tree-panel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 400px;
-    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    width: 0;
     background: var(--surface);
-    border-left: 1px solid var(--border);
+    border-left: 1px solid transparent;
     display: flex;
     flex-direction: column;
     z-index: 60;
-    transform: translateX(100%);
-    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    /* Sombra hacia la izquierda — diferencia el panel del canvas */
-    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
+    transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 300ms;
 }
 
 .tree-panel.is-open {
-    transform: translateX(0);
+    width: calc(100% - 400px);
+    border-left-color: var(--border);
+    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
 }
 
 .tree-panel-close {
@@ -233,6 +232,42 @@
 .tree-panel-body::-webkit-scrollbar { width: 4px; }
 .tree-panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 .tree-panel-body::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Tabs del panel ──────────────────────────────────────────────────────────── */
+
+.panel-tabs {
+    display: flex;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 0 18px;
+    gap: 0;
+}
+
+.panel-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 9px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.panel-tab:hover {
+    color: var(--text);
+}
+
+.panel-tab.is-active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+}
 
 /* ── Contenido del panel ─────────────────────────────────────────────────────── */
 
@@ -346,6 +381,200 @@
     white-space: pre-line;
 }
 
+/* ── Hero top row (nombre + badge) ───────────────────────────────────────────── */
+
+.panel-hero-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ── Status badge ────────────────────────────────────────────────────────────── */
+
+.panel-status {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.panel-status--verificado  { background: #d4edda; color: #2a6e3a; }
+.panel-status--incompleto  { background: #fde8cd; color: #8a4a10; }
+.panel-status--en_proceso  { background: #d9edf7; color: #2a5a7a; }
+.panel-status--sin_datos   { background: var(--border); color: var(--muted); }
+
+/* ── Vita grid ────────────────────────────────────────────────────────────────── */
+
+.panel-vita-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    margin-top: 4px;
+}
+
+.panel-vita-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.panel-vita-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+/* ── Panel empty state ───────────────────────────────────────────────────────── */
+
+.panel-empty {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 28px 0 0;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.panel-empty-hint {
+    font-style: normal;
+    font-size: 12px;
+}
+
+.panel-empty code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--border);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--text);
+}
+
+/* ── Markdown prose (pestaña Investigación) ──────────────────────────────────── */
+
+.panel-markdown {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.65;
+    padding-top: 4px;
+}
+
+.panel-markdown h1,
+.panel-markdown h2 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    color: var(--text);
+    margin: 22px 0 6px;
+    line-height: 1.25;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-markdown h1 { font-size: 17px; }
+.panel-markdown h2 { font-size: 15px; }
+
+.panel-markdown h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 18px 0 5px;
+}
+
+.panel-markdown p {
+    margin: 0 0 10px;
+}
+
+.panel-markdown ul,
+.panel-markdown ol {
+    margin: 0 0 10px;
+    padding-left: 18px;
+}
+
+.panel-markdown li {
+    margin-bottom: 3px;
+}
+
+.panel-markdown a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.panel-markdown a:hover {
+    color: var(--text);
+}
+
+.panel-markdown strong {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.panel-markdown em {
+    font-style: italic;
+    color: var(--muted);
+}
+
+.panel-markdown code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--border);
+    padding: 1px 5px;
+    border-radius: 2px;
+}
+
+.panel-markdown blockquote {
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-left: 3px solid var(--accent);
+    background: var(--bg);
+    color: var(--muted);
+    border-radius: 0 2px 2px 0;
+}
+
+.panel-markdown blockquote p {
+    margin: 0;
+}
+
+.panel-markdown hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 18px 0;
+}
+
+.panel-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.panel-markdown th,
+.panel-markdown td {
+    text-align: left;
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-markdown th {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 .panel-media {
     display: flex;
     flex-direction: column;
@@ -417,15 +646,29 @@
     width: 100%;
   }
 
-  /* El panel ocupa todo el ancho disponible en pantallas pequeñas */
+  /* En mobile el panel vuelve a ser overlay (transform) */
   .tree-panel {
-    width: min(400px, 100vw);
+    position: absolute;
+    top: 0; right: 0;
+    height: 100%;
+    width: min(420px, 100vw);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
+  }
+
+  .tree-panel.is-open {
+    width: min(420px, 100vw);
+    transform: translateX(0);
+    border-left-color: var(--border);
+    box-shadow: -4px 0 16px rgba(0,0,0,0.06);
   }
 }
 
 @media (max-width: 480px) {
-  /* En pantallas muy pequeñas el panel es full-screen */
-  .tree-panel {
+  .tree-panel,
+  .tree-panel.is-open {
     width: 100vw;
   }
 

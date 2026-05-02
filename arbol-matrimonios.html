@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="stylesheet" href="./assets/css/arbol.css" />
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
 </head>
 <body>
 
@@ -63,6 +64,11 @@
         <div class="tree-panel" id="treePanel">
           <button class="tree-panel-close" id="treePanelClose" title="Cerrar">✕</button>
           <div class="panel-hero" id="treePanelHero"></div>
+          <div class="panel-tabs" id="panelTabs">
+            <button class="panel-tab is-active" data-tab="persona">Persona</button>
+            <button class="panel-tab" data-tab="investigacion">Investigación</button>
+            <button class="panel-tab" data-tab="archivos">Archivos</button>
+          </div>
           <div class="tree-panel-body" id="treePanelBody"></div>
         </div>
       </div>
@@ -93,8 +99,6 @@
             on('focusChange', id => {
                 const layout = computeLayout(id);
                 render(layout);
-                // Diferir un frame para que setSelected ya haya abierto/cerrado el panel
-                requestAnimationFrame(() => recenterOn());
             });
 
             document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);
