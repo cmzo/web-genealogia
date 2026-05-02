@@ -25,14 +25,16 @@ npm run optimize-images      # reads assets/images/original/, outputs WebP
 # Archive data
 npm run build-archive        # regenerates content/data/archive.json
 
-# Árbol genealógico — gestión de personas
-python3 scripts/gestionar_arbol.py list
-python3 scripts/gestionar_arbol.py show <id>
-python3 scripts/gestionar_arbol.py add
-python3 scripts/gestionar_arbol.py edit <id>
+# Árbol genealógico — gestión de personas (requiere uv)
+uv run scripts/gestionar_arbol.py           # menú interactivo (recomendado)
+uv run scripts/gestionar_arbol.py list      # comandos directos también funcionan
+uv run scripts/gestionar_arbol.py show <id>
+uv run scripts/gestionar_arbol.py add
+uv run scripts/gestionar_arbol.py edit <id>
+uv run scripts/gestionar_arbol.py delete <id>
 
 # Regenerar arbol.json manualmente (sin hacer build completo)
-python3 scripts/export_arbol.py
+uv run scripts/export_arbol.py
 
 # Deploy to GitHub Pages (build + git add + commit + push)
 npm run deploy
