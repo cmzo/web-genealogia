@@ -398,7 +398,18 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med93",
+          "type": "photo",
+          "url": "assets/images/personas/p71-bautismo.webp",
+          "caption": "Bautismo de Angélica Elvira Fonteine",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p82",
@@ -418,7 +429,18 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med95",
+          "type": "photo",
+          "url": "assets/images/personas/p82-bautismo.webp",
+          "caption": "Bautismo de Teresa Lidia Costabile",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p83",
@@ -478,7 +500,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med68",
+          "type": "photo",
+          "url": "assets/images/personas/p34-bautismo.webp",
+          "caption": "Acta de bautismi de Elena Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p11",
@@ -668,6 +701,46 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med11",
+          "type": "photo",
+          "url": "assets/images/personas/p18-firma.webp",
+          "caption": "Firma de Felix Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med12",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-libreta-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Felix Clemenzo e Isabel Queipo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med14",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Felix e Isabel",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med16",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-defuncion.webp",
+          "caption": "Libreta de defuncion de Felix Clemenzo e Isabel Queipo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
         }
       ]
     },
@@ -689,7 +762,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med46",
+          "type": "photo",
+          "url": "assets/images/personas/p20-p21-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Leon Francisco Clemenzo con Emiliana Elena Baster",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p53",
@@ -729,7 +813,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med83",
+          "type": "photo",
+          "url": "assets/images/personas/p59-bautismo.webp",
+          "caption": "Bautismo de Maria Luisa Perceveranda Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p70",
@@ -769,7 +864,18 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med24",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 6
+        }
+      ]
     },
     {
       "id": "p81",
@@ -809,7 +915,28 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med96",
+          "type": "photo",
+          "url": "assets/images/personas/p84-defuncion.webp",
+          "caption": "Acta de defunción de Maria Luisa Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med97",
+          "type": "photo",
+          "url": "assets/images/personas/p84-matrimonio.webp",
+          "caption": "Acta de matrimonio de Maria Luisa Clemenzo con Eleuterio Troncoso",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p86",
@@ -849,7 +976,48 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med43",
+          "type": "photo",
+          "url": "assets/images/personas/p20-bautismo.webp",
+          "caption": "Bautismo de Leon Francisco Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med44",
+          "type": "photo",
+          "url": "assets/images/personas/p20-firma.webp",
+          "caption": "Firma de Leon Francisco Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med45",
+          "type": "photo",
+          "url": "assets/images/personas/p20-p21-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Leon Francisco Clemenzo con Emiliana Elena Baster",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med51",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-p20-p22-p23-1895-censo-2.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p60",
@@ -869,7 +1037,28 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med84",
+          "type": "photo",
+          "url": "assets/images/personas/p60-bautismo.webp",
+          "caption": "Bautismo de Fortunato Abelardo Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med85",
+          "type": "photo",
+          "url": "assets/images/personas/p60-matrimonio.webp",
+          "caption": "Matrimonio de Fortunato Abelardo Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p79",
@@ -889,7 +1078,18 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med25",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 7
+        }
+      ]
     },
     {
       "id": "p22",
@@ -909,7 +1109,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med52",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-p20-p22-p23-1895-censo-2.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p61",
@@ -929,7 +1140,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med86",
+          "type": "photo",
+          "url": "assets/images/personas/p61-bautismo.webp",
+          "caption": "Bautismo de Juan Francisco Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p19",
@@ -949,7 +1171,48 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med42",
+          "type": "photo",
+          "url": "assets/images/personas/p19-defuncion.webp",
+          "caption": "Acta de defunción de Isabel Maria Queipo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med13",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-libreta-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Felix Clemenzo e Isabel Queipo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        },
+        {
+          "id": "med15",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-matrimonio.webp",
+          "caption": "Libreta de matrimonio de Felix e Isabel",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        },
+        {
+          "id": "med17",
+          "type": "photo",
+          "url": "assets/images/personas/p18-p19-defuncion.webp",
+          "caption": "Libreta de defuncion de Felix Clemenzo e Isabel Queipo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p23",
@@ -969,7 +1232,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med53",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-p20-p22-p23-1895-censo-2.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        }
+      ]
     },
     {
       "id": "p62",
@@ -989,7 +1263,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med87",
+          "type": "photo",
+          "url": "assets/images/personas/p62-bautismo.webp",
+          "caption": "Bautismo de German Cipriano Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p25",
@@ -1009,7 +1294,28 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med47",
+          "type": "photo",
+          "url": "assets/images/personas/p25-bautismo.webp",
+          "caption": "Bautismo de Maria Celestina Roh",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med50",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        }
+      ]
     },
     {
       "id": "p63",
@@ -1029,7 +1335,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med88",
+          "type": "photo",
+          "url": "assets/images/personas/p63-bautismo.webp",
+          "caption": "Bautismo de Angela Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p29",
@@ -1049,7 +1366,38 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med63",
+          "type": "photo",
+          "url": "assets/images/personas/p29-bautismo-1.webp",
+          "caption": "Acta de bautismo de Maria Luisa Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med64",
+          "type": "photo",
+          "url": "assets/images/personas/p29-bautismo-2.webp",
+          "caption": "Acta de bautismo de Maria Luisa Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med65",
+          "type": "photo",
+          "url": "assets/images/personas/p29-defuncion.webp",
+          "caption": "Acta de defunción de Maria Luisa Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p64",
@@ -1069,7 +1417,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med89",
+          "type": "photo",
+          "url": "assets/images/personas/p64-bautismo.webp",
+          "caption": "Bautismo de Petrona Estefania Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p30",
@@ -1089,7 +1448,28 @@
       "notes": null,
       "sources": null,
       "status": "en_proceso",
-      "media": []
+      "media": [
+        {
+          "id": "med66",
+          "type": "photo",
+          "url": "assets/images/personas/p30-bautismo.webp",
+          "caption": "Acta de bautismo de Carlota Julia Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med67",
+          "type": "photo",
+          "url": "assets/images/personas/p30-defuncion.webp",
+          "caption": "Acta de defunción de Carlota Julia Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p65",
@@ -1109,7 +1489,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med90",
+          "type": "photo",
+          "url": "assets/images/personas/p65-bautismo.webp",
+          "caption": "Bautismo de Modesta Damiana Clemencia Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p66",
@@ -1129,7 +1520,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med91",
+          "type": "photo",
+          "url": "assets/images/personas/p66-bautismo.webp",
+          "caption": "Bautismo de Felisa Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p67",
@@ -1149,7 +1551,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med92",
+          "type": "photo",
+          "url": "assets/images/personas/p67-bautismo.webp",
+          "caption": "Bautismo de Esteban Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p51",
@@ -1230,6 +1643,76 @@
       "sources": "",
       "status": "sin_datos",
       "media": [
+        {
+          "id": "med48",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med54",
+          "type": "photo",
+          "url": "assets/images/personas/p26-enrolamiento-militar.webp",
+          "caption": "Enrolamiento militar de Francisco Clemenzo",
+          "date": null,
+          "source_label": "Libreta de Enrolamiento de Santa Fe",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med55",
+          "type": "photo",
+          "url": "assets/images/personas/p26-firma-1.webp",
+          "caption": null,
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med56",
+          "type": "photo",
+          "url": "assets/images/personas/p26-firma-2.webp",
+          "caption": null,
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med57",
+          "type": "photo",
+          "url": "assets/images/personas/p26-libro-colonia.webp",
+          "caption": null,
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med58",
+          "type": "photo",
+          "url": "assets/images/personas/p26-posibleLlegada.webp",
+          "caption": null,
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med21",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 3
+        },
         {
           "id": "med3",
           "type": "photo",
@@ -1330,7 +1813,38 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med59",
+          "type": "photo",
+          "url": "assets/images/personas/p27-firma.webp",
+          "caption": "Firma de Celestina Roh",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med60",
+          "type": "photo",
+          "url": "assets/images/personas/p27_defuncion.webp",
+          "caption": "Acta de defunción de Celestina Roh",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med49",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p68",
@@ -1430,7 +1944,38 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med61",
+          "type": "photo",
+          "url": "assets/images/personas/p28-defuncion-1.webp",
+          "caption": "Acta de defunción de Jose Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med62",
+          "type": "photo",
+          "url": "assets/images/personas/p28-defuncion-2.webp",
+          "caption": "Acta de defunción de Jose Clemenzo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med20",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        }
+      ]
     },
     {
       "id": "p80",
@@ -1450,7 +1995,18 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med94",
+          "type": "photo",
+          "url": "assets/images/personas/p80-bautismo.webp",
+          "caption": "Bautismo de Jose Luciano Roh Blanco",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p40",
@@ -1470,7 +2026,58 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med76",
+          "type": "photo",
+          "url": "assets/images/personas/p40-enrolamiento-militar.webp",
+          "caption": "Enrolamiento militar de Esteban Clemenzoz",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med77",
+          "type": "photo",
+          "url": "assets/images/personas/p40-censo.webp",
+          "caption": "Censo poco legible",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med78",
+          "type": "photo",
+          "url": "assets/images/personas/p40-p41-matrimonio-1.webp",
+          "caption": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med80",
+          "type": "photo",
+          "url": "assets/images/personas/p40-p41-matrimonio-2.webp",
+          "caption": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med22",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 4
+        }
+      ]
     },
     {
       "id": "p85",
@@ -1510,7 +2117,18 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med23",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 5
+        }
+      ]
     },
     {
       "id": "p31",
@@ -1570,7 +2188,28 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med79",
+          "type": "photo",
+          "url": "assets/images/personas/p40-p41-matrimonio-1.webp",
+          "caption": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        },
+        {
+          "id": "med81",
+          "type": "photo",
+          "url": "assets/images/personas/p40-p41-matrimonio-2.webp",
+          "caption": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p55",
@@ -1630,7 +2269,48 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med18",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med26",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med34",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med69",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p76",
@@ -1650,7 +2330,38 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med74",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 5
+        },
+        {
+          "id": "med33",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 7
+        },
+        {
+          "id": "med41",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 7
+        }
+      ]
     },
     {
       "id": "p72",
@@ -1670,7 +2381,28 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med29",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 3
+        },
+        {
+          "id": "med37",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 3
+        }
+      ]
     },
     {
       "id": "p73",
@@ -1690,7 +2422,28 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med30",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 4
+        },
+        {
+          "id": "med38",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 4
+        }
+      ]
     },
     {
       "id": "p74",
@@ -1710,7 +2463,38 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med72",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 3
+        },
+        {
+          "id": "med31",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 5
+        },
+        {
+          "id": "med39",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 5
+        }
+      ]
     },
     {
       "id": "p75",
@@ -1730,7 +2514,38 @@
       "notes": null,
       "sources": null,
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med73",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 4
+        },
+        {
+          "id": "med32",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 6
+        },
+        {
+          "id": "med40",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 6
+        }
+      ]
     },
     {
       "id": "p37",
@@ -1750,7 +2565,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med19",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
+          "caption": "Censo de Riddes de 1870",
+          "date": "1870-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p38",
@@ -1770,7 +2596,18 @@
       "notes": "",
       "sources": "",
       "status": "sin_datos",
-      "media": []
+      "media": [
+        {
+          "id": "med75",
+          "type": "photo",
+          "url": "assets/images/personas/p38-censo.webp",
+          "caption": "Censo",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p39",
@@ -1810,7 +2647,48 @@
       "notes": "",
       "sources": "",
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med82",
+          "type": "photo",
+          "url": "assets/images/personas/p57-censo.webp",
+          "caption": null,
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med27",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        },
+        {
+          "id": "med35",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        },
+        {
+          "id": "med70",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 1
+        }
+      ]
     },
     {
       "id": "p58",
@@ -1830,7 +2708,38 @@
       "notes": null,
       "sources": null,
       "status": "incompleto",
-      "media": []
+      "media": [
+        {
+          "id": "med28",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        },
+        {
+          "id": "med36",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp",
+          "caption": "Censo de Ardon",
+          "date": null,
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        },
+        {
+          "id": "med71",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp",
+          "caption": "Censo de Riides de 1837",
+          "date": "1837-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 2
+        }
+      ]
     }
   ],
   "matrimonios": [
