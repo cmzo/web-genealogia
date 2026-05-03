@@ -806,6 +806,12 @@ def cmd_optimize(_args=None):
     console.print()
 
 
+def cmd_deploy(_args=None):
+    console.print()
+    subprocess.run(['npm', 'run', 'deploy'], cwd=ROOT)
+    console.print()
+
+
 def interactive():
     console.print(Panel(
         '[bold]Árbol Genealógico[/bold]\n[dim]Gestor de personas, matrimonios y media[/dim]',
@@ -818,12 +824,14 @@ def interactive():
             questionary.Choice('Matrimonios',          'matrimonios'),
             questionary.Choice('Media',                'media'),
             questionary.Choice('Optimizar imágenes',   'optimize'),
+            questionary.Choice('Deploy',               'deploy'),
             SEP,
             questionary.Choice('Salir',                'salir'),
         ]))
         if not choice or choice == 'salir': break
         {'personas': _submenu_personas, 'matrimonios': _submenu_matrimonios,
-         'media': _submenu_media, 'optimize': cmd_optimize}[choice]()
+         'media': _submenu_media, 'optimize': cmd_optimize,
+         'deploy': cmd_deploy}[choice]()
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
