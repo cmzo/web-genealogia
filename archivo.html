@@ -79,8 +79,8 @@
   <!-- Modal de persona -->
   <div class="archivo-modal-overlay" id="archivoOverlay" aria-hidden="true">
     <div class="archivo-modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
-      <div class="archivo-modal-header">
-        <div>
+      <div class="archivo-modal-hero" id="modalHero">
+        <div class="archivo-modal-hero-content">
           <h2 class="archivo-modal-name" id="modalName">—</h2>
           <p class="archivo-modal-sub" id="modalSub"></p>
         </div>
@@ -112,6 +112,20 @@
     let personasMap  = new Map();
     let sorted       = [];
     let activeFilters = { branch: null, country: null };
+
+    const _branchColors = {
+      'clemenzo':'#1e40af','roh':'#16a34a','roch':'#16a34a',
+      'carvallo':'#8b5cf6','arceo':'#eab308','queipo':'#ea580c',
+      'stalder':'#7c3aed','baster':'#6b7280','guido':'#c2410c',
+      'putallaz':'#10b981','vasquez':'#dc2626','yanitelli':'#16a34a',
+      'fracchia':'#ca8a04','garrido':'#0d9488','fernandez':'#a855f7',
+      'cybulski':'#be185d','lantz':'#9333ea','vargas yegros':'#15803d',
+      'venegas':'#0369a1','costabile':'#6366f1','default':'#9ca3af',
+    };
+    function getBranchColor(branch) {
+      if (!branch?.trim()) return _branchColors.default;
+      return _branchColors[branch.toLowerCase().trim()] ?? _branchColors.default;
+    }
 
     function getCountry(p) {
       const place = (p.birth_place || p.death_place || '').toLowerCase();
@@ -236,6 +250,9 @@
     // ── Modal ──────────────────────────────────────────
 
     function openModal(p) {
+      const color = getBranchColor(p.branch);
+      document.getElementById('modalHero').style.background =
+        `linear-gradient(160deg, ${color}dd 0%, ${color}aa 100%)`;
       document.getElementById('modalName').textContent = p.name;
       document.getElementById('modalSub').textContent =
         [yearsText(p), p.branch].filter(Boolean).join(' · ');
