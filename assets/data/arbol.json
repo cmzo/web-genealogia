@@ -1734,23 +1734,23 @@
           "group_order": 0
         },
         {
-          "id": "med5",
+          "id": "med98",
           "type": "photo",
-          "url": "assets/images/personas/carta-conthey-1.webp",
-          "caption": "Carta del tribunal de Conthey, dirigida a Francisco y Esteban",
-          "date": "1905-02-04",
+          "url": "assets/images/personas/p26-p40-carta-conthey-1.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
           "source_label": "Tribunal de Conthey",
-          "group_label": "Carta de Conthey",
+          "group_label": "carta_conthey",
           "group_order": 1
         },
         {
-          "id": "med6",
+          "id": "med99",
           "type": "photo",
-          "url": "assets/images/personas/carta-conthey-2.webp",
-          "caption": "Carta del tribunal de Conthey, dirigida a Francisco y Esteban",
-          "date": "1905-02-04",
-          "source_label": "Tribunal de Conthey",
-          "group_label": "Carta de Conthey",
+          "url": "assets/images/personas/p26-p40-carta-conthey-2.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
+          "source_label": null,
+          "group_label": "carta_conthey",
           "group_order": 2
         },
         {
@@ -2075,6 +2075,26 @@
           "date": "1870-01-01",
           "source_label": null,
           "group_label": "",
+          "group_order": 4
+        },
+        {
+          "id": "med100",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p40-carta-conthey-1.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
+          "source_label": null,
+          "group_label": "carta_conthey",
+          "group_order": 3
+        },
+        {
+          "id": "med101",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p40-carta-conthey-2.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
+          "source_label": null,
+          "group_label": "carta_conthey",
           "group_order": 4
         }
       ]
