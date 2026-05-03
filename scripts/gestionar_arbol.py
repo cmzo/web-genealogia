@@ -89,7 +89,13 @@ def get_num(pid):
 
 def next_id(cur, table, prefix, pattern):
     cur.execute(f'SELECT id FROM {table}')
-    nums = [get_num(r['id']) for r in cur.fetchall() if re.match(pattern, r['id'])]
+    nums = []
+    for r in cur.fetchall():
+        if re.match(pattern, r['id']):
+            try:
+                nums.append(int(r['id'][len(prefix):]))
+            except ValueError:
+                pass
     return f'{prefix}{max(nums) + 1}' if nums else f'{prefix}1'
 
 
