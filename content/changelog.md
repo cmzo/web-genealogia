@@ -1,5 +1,23 @@
 ### 3 de mayo de 2026
 
+#### Archivo familiar: galería en grilla de 3 columnas
+
+El modal de archivo fue rediseñado con más espacio y estructura. El panel creció de 760px a 960px de ancho. El cuerpo interior tiene más padding y las secciones respiran con mayor margen entre ellas. Las fotos ahora se muestran en una **grilla de 3 columnas** con tarjetas de bordes redondeados y efecto de elevación al pasar el cursor — en lugar de apilarse una debajo de la otra. En mobile baja a 2 columnas.
+
+#### Inicio: ajustes de presentación heráldica
+
+El escudo de Clemenzo fue reemplazado por una versión definitiva (`clemenzo-def.png`) con fondo transparente limpio. Se corrigió la diferencia de tamaño visual entre los tres escudos igualando el ratio de aspecto de la imagen mediante padding transparente. El pie de imagen del Valle del Ródano quedó centrado. Se agregó más espacio vertical entre el título de sección "Heráldica" y los escudos.
+
+#### Favicon
+
+El favicon del sitio fue regenerado a partir del escudo de Clemenzo definitivo. Cubre 64×64px (PNG) y 16+32px (ICO).
+
+#### Guía del sitio y navegación mobile
+
+Nueva página **Guía** (`guia.html`) que documenta el uso del sitio: árbol genealógico, atajos de teclado, búsqueda, zoom, archivo familiar y blog. El link aparece en la barra lateral debajo de Blog. En mobile (donde la sidebar está oculta) los links Árbol, Archivo, Blog y Guía se muestran en el nav superior — aplicado a todas las páginas incluyendo posts del blog. "Cambios" se movió al pie de la sidebar con estilo secundario y hover más sutil.
+
+### 3 de mayo de 2026
+
 #### Gestor del árbol: interfaz interactiva con rich + questionary
 
 `gestionar_arbol.py` fue reescrito con una interfaz de terminal enriquecida. Al ejecutar `uv run scripts/gestionar_arbol.py` sin argumentos se abre un **menú interactivo** con submenús anidados para Personas, Matrimonios y Media; la navegación es con flechas del teclado y autocompletado por nombre. Los campos con opciones fijas (género, estado de investigación, vivo) usan `select` — eliminan errores de tipeo. La salida es con **tablas y paneles** de `rich`: estado de investigación en colores, género diferenciado, vista de detalle en panel con borde. Se agrega `delete` para personas y `delete-marriage`. Las dependencias (`rich`, `questionary`) se instalan automáticamente via [PEP 723](https://peps.python.org/pep-0723/) — sin venvs manuales. Los comandos por argumento siguen funcionando igual.
