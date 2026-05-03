@@ -327,35 +327,37 @@
     }
 
     function renderMediaUnits(media, container, allPhotos) {
-      const seen  = new Set();
-      const units = [];
+      const seen = new Set();
+      let singlesGallery = null;
+
       for (const m of media) {
         if (!m.group_label) {
-          units.push({ type: 'single', item: m });
+          if (!m.type || m.type === 'photo') {
+            if (!singlesGallery) {
+              singlesGallery = document.createElement('div');
+              singlesGallery.className = 'modal-gallery';
+              container.appendChild(singlesGallery);
+            }
+            appendMediaItem(m, singlesGallery, allPhotos);
+          } else {
+            appendMediaItem(m, container, allPhotos);
+          }
         } else if (!seen.has(m.group_label)) {
           seen.add(m.group_label);
-          units.push({ type: 'group', label: m.group_label,
-            items: media.filter(x => x.group_label === m.group_label) });
-        }
-      }
-
-      units.forEach(u => {
-        if (u.type === 'single') {
-          appendMediaItem(u.item, container, allPhotos);
-        } else {
           const wrap = document.createElement('div');
           wrap.className = 'modal-media-group';
           const lbl = document.createElement('p');
           lbl.className = 'modal-media-group-label';
-          lbl.textContent = u.label;
+          lbl.textContent = m.group_label;
           wrap.appendChild(lbl);
           const grid = document.createElement('div');
           grid.className = 'modal-gallery';
           wrap.appendChild(grid);
-          u.items.forEach(m => appendMediaItem(m, grid, allPhotos));
+          media.filter(x => x.group_label === m.group_label)
+               .forEach(item => appendMediaItem(item, grid, allPhotos));
           container.appendChild(wrap);
         }
-      });
+      }
     }
 
     function appendMediaItem(m, container, allPhotos) {
