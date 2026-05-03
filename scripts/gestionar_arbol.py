@@ -173,6 +173,42 @@ def pick_persona(cur, prompt='Seleccionar persona'):
     return m.group(1) if m else None
 
 
+def pick_persona_optional(cur, prompt, current_id=None):
+    """Como pick_persona pero permite dejar vacío (sin padre/madre)."""
+    cur.execute('SELECT id, name FROM personas ORDER BY CAST(SUBSTR(id, 2) AS INTEGER)')
+    rows = cur.fetchall()
+    none_opt = '— (ninguno)'
+    choices = [none_opt] + [f'{r["name"]}  ({r["id"]})' for r in rows]
+    default = none_opt
+    if current_id:
+        for r in rows:
+            if r['id'] == current_id:
+                default = f'{r["name"]}  ({r["id"]})'
+                break
+    raw = _ask(questionary.autocomplete(prompt, choices=choices, default=default, style=STYLE))
+    if not raw or raw == none_opt:
+        return ''
+    m = re.search(r'\((\w+)\)\s*$', raw)
+    return m.group(1) if m else ''
+
+
+def _all_places(cur):
+    places = set()
+    for table, col in [('personas','birth_place'), ('personas','death_place'), ('matrimonios','marriage_place')]:
+        try:
+            cur.execute(f'SELECT DISTINCT {col} FROM {table} WHERE {col} IS NOT NULL AND {col} != ""')
+            places.update(r[0] for r in cur.fetchall())
+        except Exception:
+            pass
+    return sorted(places)
+
+
+def qplace(label, cur, default=''):
+    places = _all_places(cur)
+    raw = _ask(questionary.autocomplete(label, choices=places, default=default or '', style=STYLE))
+    return raw if raw is not None else (default or '')
+
+
 def pick_marriage(cur, prompt='Seleccionar matrimonio'):
     cur.execute("""
         SELECT m.id, p1.name n1, p2.name n2 FROM matrimonios m
@@ -339,11 +375,11 @@ def _collect_fields(cur, defaults=None):
     name        = qtext('Nombre completo', d.get('name', ''))
     gender      = qselect('Género',   _GENDER_CHOICES, default=d.get('gender', ''))
     birth_date  = qdate('Nacimiento  (DD/MM/YYYY o YYYY)', d.get('birth_date', ''))
-    birth_place = qtext('Lugar de nacimiento',  d.get('birth_place', '') or '')
+    birth_place = qplace('Lugar de nacimiento',  cur, d.get('birth_place', '') or '')
     death_date  = qdate('Fallecimiento (DD/MM/YYYY o YYYY)', d.get('death_date', ''))
-    death_place = qtext('Lugar de fallecimiento', d.get('death_place', '') or '')
-    father_id   = qtext('ID padre',   d.get('father_id',  '') or '')
-    mother_id   = qtext('ID madre',   d.get('mother_id',  '') or '')
+    death_place = qplace('Lugar de fallecimiento', cur, d.get('death_place', '') or '')
+    father_id   = pick_persona_optional(cur, 'Padre', d.get('father_id') or None)
+    mother_id   = pick_persona_optional(cur, 'Madre', d.get('mother_id') or None)
     branch      = qtext('Rama familiar', d.get('branch', '') or '')
     gen_raw     = qtext('Generación (número)', str(d.get('generation') or 0))
 
@@ -527,7 +563,7 @@ def cmd_add_marriage(_args=None):
     mid = next_id(cur, 'matrimonios', 'm', r'^m\d+$')
     console.print()
     marriage_date  = qdate('Fecha de matrimonio (DD/MM/YYYY o YYYY)')
-    marriage_place = qtext('Lugar de matrimonio')
+    marriage_place = qplace('Lugar de matrimonio', cur)
     divorce_date   = qdate('Fecha de divorcio (vacío si no aplica)')
     notes          = qtext('Notas')
 
@@ -562,7 +598,7 @@ def cmd_edit_marriage(args=None):
     d = dict(r)
     console.print(f'\n[bold]Editar matrimonio {mid}:[/bold] {n1} ↔ {n2}\n')
     marriage_date  = qdate('Fecha de matrimonio (DD/MM/YYYY o YYYY)', d.get('marriage_date', ''))
-    marriage_place = qtext('Lugar de matrimonio',  d.get('marriage_place', '') or '')
+    marriage_place = qplace('Lugar de matrimonio', cur, d.get('marriage_place', '') or '')
     divorce_date   = qdate('Fecha de divorcio (vacío si no aplica)', d.get('divorce_date', ''))
     notes          = qtext('Notas', d.get('notes', '') or '')
 
@@ -770,17 +806,66 @@ def _submenu_matrimonios():
          'edit': cmd_edit_marriage, 'delete': cmd_delete_marriage}[choice]()
 
 
+def cmd_add_media_bulk(_args=None):
+    con = get_con(); cur = con.cursor()
+    console.print('\n[bold]Asociar archivo a varias personas[/bold]\n')
+
+    media_type = qselect('Tipo', [
+        questionary.Choice('Foto',      'photo'),
+        questionary.Choice('Documento', 'document'),
+    ])
+    default_dir = 'assets/images/personas/' if media_type == 'photo' else 'assets/docs/personas/'
+    raw_url = qtext(f'Archivo  ({default_dir}...)')
+    if not raw_url:
+        console.print('[red]✗[/red] El archivo no puede estar vacío'); con.close(); return
+    url = raw_url if '/' in raw_url else default_dir + raw_url
+
+    caption      = qtext('Descripción (caption)')
+    date         = qdate('Fecha del archivo (DD/MM/YYYY o YYYY, o vacío)')
+    source_label = qtext('Fuente / archivo de origen')
+    group_label  = qtext('Nombre del grupo (recomendado)')
+
+    console.print('\n[dim]Seleccioná las personas una por una. Enter vacío para terminar.[/dim]\n')
+
+    added = []
+    while True:
+        pid = pick_persona(cur, f'Persona {len(added) + 1}  (Enter para terminar)')
+        if not pid:
+            break
+        mid = next_id(cur, 'media', 'med', r'^med\d+$')
+        cur.execute(
+            'INSERT INTO media (id,persona_id,type,url,caption,date,source_label,group_label,group_order) '
+            'VALUES (?,?,?,?,?,?,?,?,?)',
+            (mid, pid, media_type, url, caption or None, date or None,
+             source_label or None, group_label or None, len(added)),
+        )
+        con.commit()
+        cur.execute('SELECT name FROM personas WHERE id = ?', (pid,))
+        name = cur.fetchone()['name']
+        console.print(f'  [green]✓[/green] {name} [dim]({pid}) → {mid}[/dim]')
+        added.append(pid)
+
+    con.close()
+    if added:
+        console.print(f'\n[green]✓[/green] Archivo asociado a [bold]{len(added)}[/bold] persona(s).')
+        offer_export()
+    else:
+        console.print('[dim]Sin cambios.[/dim]')
+
+
 def _submenu_media():
     while True:
         choice = _ask(questionary.select('Media', style=STYLE, choices=[
-            questionary.Choice('Listar todos',  'list'),
-            questionary.Choice('Agregar nuevo', 'add'),
-            questionary.Choice('Eliminar',      'delete'),
+            questionary.Choice('Listar todos',         'list'),
+            questionary.Choice('Agregar a una persona', 'add'),
+            questionary.Choice('Agregar a varias',     'bulk'),
+            questionary.Choice('Eliminar',             'delete'),
             SEP,
             questionary.Choice(BACK, 'back'),
         ]))
         if not choice or choice == 'back': return
-        {'list': cmd_list_media, 'add': cmd_add_media, 'delete': cmd_delete_media}[choice]()
+        {'list': cmd_list_media, 'add': cmd_add_media,
+         'bulk': cmd_add_media_bulk, 'delete': cmd_delete_media}[choice]()
 
 
 OPTIMIZE_SCRIPT = os.path.join(ROOT, 'scripts', 'optimize-personas.js')
@@ -849,6 +934,7 @@ COMMANDS = {
     'list-media':       cmd_list_media,
     'add-media':        cmd_add_media,
     'delete-media':     cmd_delete_media,
+    'add-media-bulk':   cmd_add_media_bulk,
     'optimize':         cmd_optimize,
 }
 
