@@ -641,6 +641,66 @@ def cmd_delete_marriage(args=None):
 
 # ── media CRUD ────────────────────────────────────────────────────────────────
 
+def _media_dirs(media_type):
+    if media_type == 'photo':
+        return os.path.join(ROOT, 'assets', 'images', 'personas'), 'assets/images/personas/'
+    return os.path.join(ROOT, 'assets', 'docs', 'personas'), 'assets/docs/personas/'
+
+
+def qfile(label, cur, media_type='photo', default=''):
+    """Autocomplete de archivos en la carpeta correspondiente."""
+    abs_dir, prefix = _media_dirs(media_type)
+    files = []
+    if os.path.exists(abs_dir):
+        # Archivos sin registrar primero, luego los ya registrados
+        cur.execute('SELECT DISTINCT url FROM media')
+        registered = {r[0] for r in cur.fetchall()}
+        all_files = sorted(f for f in os.listdir(abs_dir)
+                           if not f.startswith('.') and os.path.isfile(os.path.join(abs_dir, f)))
+        pending = [f for f in all_files if prefix + f not in registered]
+        done    = [f'[✓] {f}' for f in all_files if prefix + f in registered]
+        files   = pending + done
+    if not files:
+        return qtext(label, default)
+    default_choice = os.path.basename(default) if default else ''
+    raw = _ask(questionary.autocomplete(label, choices=files, default=default_choice, style=STYLE))
+    if not raw:
+        return default or ''
+    clean = raw.lstrip('[✓] ').strip()
+    return clean if '/' in clean else prefix + clean
+
+
+def cmd_list_unregistered(_args=None):
+    """Muestra archivos en assets/.../personas/ que no están en la tabla media."""
+    con = get_con(); cur = con.cursor()
+    cur.execute('SELECT DISTINCT url FROM media')
+    registered = {r[0] for r in cur.fetchall()}
+    con.close()
+
+    any_found = False
+    for rel_dir in ['assets/images/personas', 'assets/docs/personas']:
+        abs_dir = os.path.join(ROOT, rel_dir)
+        if not os.path.exists(abs_dir):
+            continue
+        files = sorted(f for f in os.listdir(abs_dir)
+                       if not f.startswith('.') and os.path.isfile(os.path.join(abs_dir, f)))
+        if not files:
+            continue
+        pending = [f for f in files if f'{rel_dir}/{f}' not in registered]
+        done    = [f for f in files if f'{rel_dir}/{f}' in registered]
+        t = Table(box=rbox.SIMPLE_HEAD, title=f'[dim]{rel_dir}[/dim]',
+                  header_style='bold', show_edge=False)
+        t.add_column('Archivo')
+        t.add_column('Estado', width=14)
+        for f in pending: t.add_row(f, '[yellow]sin registrar[/yellow]')
+        for f in done:    t.add_row(f, '[green]✓ en DB[/green]')
+        console.print()
+        console.print(t)
+        any_found = True
+    if not any_found:
+        console.print('\n[dim](carpetas vacías o inexistentes)[/dim]')
+    console.print()
+
 def cmd_list_media(args=None):
     con = get_con(); cur = con.cursor()
     if args:
@@ -698,14 +758,12 @@ def cmd_add_media(args=None):
         questionary.Choice('Foto',      'photo'),
         questionary.Choice('Documento', 'document'),
     ])
-    default_dir = 'assets/images/personas/' if media_type == 'photo' else 'assets/docs/personas/'
-    raw_url = qtext(f'Archivo  ({default_dir}...)')
-    if not raw_url:
+    url = qfile('Archivo', cur, media_type)
+    if not url:
         console.print('[red]✗[/red] El archivo no puede estar vacío'); con.close(); return
-    url = raw_url if '/' in raw_url else default_dir + raw_url
 
     caption      = qtext('Descripción (caption)')
-    date         = qdate('Fecha del archivo (DD/MM/YYYY o YYYY, o vacío)')
+    date         = qdate('Fecha del archivo (DD/MM/YYYY o YAML, o vacío)')
     source_label = qtext('Fuente / archivo de origen')
     group_label  = qtext('Nombre del grupo (vacío = sin grupo)')
     group_order  = 0
@@ -814,11 +872,9 @@ def cmd_add_media_bulk(_args=None):
         questionary.Choice('Foto',      'photo'),
         questionary.Choice('Documento', 'document'),
     ])
-    default_dir = 'assets/images/personas/' if media_type == 'photo' else 'assets/docs/personas/'
-    raw_url = qtext(f'Archivo  ({default_dir}...)')
-    if not raw_url:
+    url = qfile('Archivo', cur, media_type)
+    if not url:
         console.print('[red]✗[/red] El archivo no puede estar vacío'); con.close(); return
-    url = raw_url if '/' in raw_url else default_dir + raw_url
 
     caption      = qtext('Descripción (caption)')
     date         = qdate('Fecha del archivo (DD/MM/YYYY o YYYY, o vacío)')
@@ -856,16 +912,18 @@ def cmd_add_media_bulk(_args=None):
 def _submenu_media():
     while True:
         choice = _ask(questionary.select('Media', style=STYLE, choices=[
-            questionary.Choice('Listar todos',         'list'),
+            questionary.Choice('Listar todos',          'list'),
+            questionary.Choice('Ver sin registrar',     'pending'),
             questionary.Choice('Agregar a una persona', 'add'),
-            questionary.Choice('Agregar a varias',     'bulk'),
-            questionary.Choice('Eliminar',             'delete'),
+            questionary.Choice('Agregar a varias',      'bulk'),
+            questionary.Choice('Eliminar',              'delete'),
             SEP,
             questionary.Choice(BACK, 'back'),
         ]))
         if not choice or choice == 'back': return
-        {'list': cmd_list_media, 'add': cmd_add_media,
-         'bulk': cmd_add_media_bulk, 'delete': cmd_delete_media}[choice]()
+        {'list': cmd_list_media, 'pending': cmd_list_unregistered,
+         'add': cmd_add_media, 'bulk': cmd_add_media_bulk,
+         'delete': cmd_delete_media}[choice]()
 
 
 OPTIMIZE_SCRIPT = os.path.join(ROOT, 'scripts', 'optimize-personas.js')
@@ -935,6 +993,7 @@ COMMANDS = {
     'add-media':        cmd_add_media,
     'delete-media':     cmd_delete_media,
     'add-media-bulk':   cmd_add_media_bulk,
+    'list-unregistered': cmd_list_unregistered,
     'optimize':         cmd_optimize,
 }
 
