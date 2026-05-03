@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
+  <link rel="icon" href="./assets/images/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,58 +33,68 @@
         <a href="arbol-matrimonios.html" class="sidebar-link">Árbol</a>
         <a href="archivo.html" class="sidebar-link">Archivo</a>
         <a href="blog.html" class="sidebar-link">Blog</a>
+        <a href="guia.html" class="sidebar-link">Guía</a>
       </nav>
+      <div class="sidebar-bottom">
+        <a href="changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
+      </div>
     </aside>
 
     <main class="site-main">
-      <div class="home-section">
-        <p class="home-intro">
-          Este sitio reúne el trabajo de investigación sobre la familia Clemenzo,<br>
-          cuyo origen se encuentra en Ardon, cantón de Valais (Suiza).<br>
-          Aquí se recopilan registros, documentos y un árbol genealógico interactivo.
-        </p>
+      <div class="home-doc">
 
-        <figure class="home-figure">
-          <img
-            src="./assets/images/cards/vallee-du-rhone.webp"
-            alt="Valle del Ródano, Valais, Suiza"
-            loading="lazy">
-          <figcaption class="home-caption">Valle del Ródano, Valais, Suiza</figcaption>
+        <header class="home-doc-header">
+          <h1 class="home-doc-title">Familia Clemenzo</h1>
+          <p class="home-doc-tagline">Investigación sobre la familia Clemenzo, originaria de Ardon, cantón de Valais, Suiza</p>
+        </header>
+
+        <figure class="home-cover">
+          <img src="./assets/images/cards/vallee-du-rhone.webp"
+               alt="Valle del Ródano, Valais, Suiza" loading="lazy">
+          <figcaption>Valle del Ródano, Valais, Suiza</figcaption>
         </figure>
 
-        <div class="home-herald-row">
-          <figure class="home-herald-item">
-            <img src="./assets/images/valais.webp" alt="Escudo de Valais">
-            <figcaption>Escudo de Valais</figcaption>
-          </figure>
-          <figure class="home-herald-item">
-            <img src="./assets/images/clemenzo.webp" alt="Armorial valesano, familia Clemenzo de Ardon">
-            <figcaption>Armorial valesano de la familia<br>Clemenzo de Ardon</figcaption>
-          </figure>
-          <figure class="home-herald-item">
-            <img src="./assets/images/ardon.webp" alt="Escudo de Ardon">
-            <figcaption>Escudo de Ardon</figcaption>
-          </figure>
+        <div class="home-section" id="homeLatestSection">
+          <h2 class="home-section-label">Última entrada</h2>
+          <div id="homeLatest"></div>
         </div>
 
-        <div class="home-latest" id="homeLatest"></div>
+        <div class="home-section">
+          <h2 class="home-section-label">Heráldica</h2>
+          <div class="home-herald-row">
+            <figure class="home-herald-item">
+              <img src="./assets/images/valais.webp" alt="Escudo de Valais">
+              <figcaption>Escudo de Valais</figcaption>
+            </figure>
+            <figure class="home-herald-item">
+              <img src="./assets/images/clemenzo.webp" alt="Armorial valesano, familia Clemenzo de Ardon">
+              <figcaption>Armorial valesano<br>familia Clemenzo</figcaption>
+            </figure>
+            <figure class="home-herald-item">
+              <img src="./assets/images/ardon.webp" alt="Escudo de Ardon">
+              <figcaption>Escudo de Ardon</figcaption>
+            </figure>
+          </div>
+        </div>
+
       </div>
     </main>
   </div>
 
   <footer class="site-footer">
     <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
-    <a href="changelog.html" class="footer-changelog-link">Cambios</a>
   </footer>
 
   <script>
     fetch('./assets/data/blog-entries.json')
       .then(r => r.json())
       .then(posts => {
-        if (!posts.length) return;
+        if (!posts.length) {
+          document.getElementById('homeLatestSection').style.display = 'none';
+          return;
+        }
         const post = posts[0];
         document.getElementById('homeLatest').innerHTML = `
-          <p class="home-latest-label">Última entrada</p>
           <a href="${post.url}" class="home-latest-link">
             <h2 class="home-latest-title">${post.title}</h2>
             <p class="home-latest-desc">${post.description}</p>
@@ -91,7 +102,9 @@
           </a>
         `;
       })
-      .catch(() => {});
+      .catch(() => {
+        document.getElementById('homeLatestSection').style.display = 'none';
+      });
   </script>
 </body>
 </html>

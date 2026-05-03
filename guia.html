@@ -4,93 +4,93 @@
   <meta charset="utf-8" />
   <link rel="icon" href="./assets/images/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cambios · Matías Clemenzo</title>
+  <title>Guía · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <style>
-    /* ── Línea de tiempo ─────────────────────────────── */
+    .guia-content { }
 
-    .changelog-entry {
-      position: relative;
-      padding: 0 0 36px 28px;
-      border-left: 2px solid var(--border);
-    }
-
-    .changelog-entry:last-child {
-      border-left-color: transparent;
-      padding-bottom: 0;
-    }
-
-    /* Punto en la línea */
-    .changelog-entry::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 5px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--surface);
-    }
-
-    /* ── Tipografía ──────────────────────────────────── */
-
-    .changelog-entry h3 {
+    .guia-content h2 {
       font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.07em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
-      margin: 0 0 7px;
+      color: var(--muted);
+      margin: 36px 0 14px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
     }
 
-    .changelog-entry h4 {
+    .guia-content h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .guia-content p {
       font-family: 'Source Serif 4', serif;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0 0 16px;
+    }
+
+    .guia-content ul, .guia-content ol {
+      font-family: 'Source Serif 4', serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      margin: 0 0 16px;
+      padding-left: 22px;
+    }
+
+    .guia-content li { margin-bottom: 4px; }
+
+    .guia-content strong { font-weight: 600; color: var(--text); }
+
+    .guia-content em { font-style: italic; }
+
+    .guia-content table {
+      border-collapse: collapse;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      margin: 12px 0 20px;
+      width: 100%;
+    }
+
+    .guia-content th {
+      text-align: left;
       font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .guia-content td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
       color: var(--text);
-      margin: 0 0 10px;
-      line-height: 1.3;
     }
 
-    .changelog-entry p {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text);
-      margin: 0 0 8px;
+    .guia-content td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      white-space: nowrap;
     }
 
-    .changelog-entry ul {
-      margin: 4px 0 8px 18px;
-      padding: 0;
-    }
-
-    .changelog-entry li {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text);
-      margin-bottom: 5px;
-    }
-
-    .changelog-entry code {
+    .guia-content code {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       background: var(--bg);
       border: 1px solid var(--border);
       padding: 1px 5px;
       border-radius: 2px;
-    }
-
-    .changelog-loading {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--muted);
     }
   </style>
 </head>
@@ -117,7 +117,7 @@
         <a href="arbol-matrimonios.html" class="sidebar-link">Árbol</a>
         <a href="archivo.html" class="sidebar-link">Archivo</a>
         <a href="blog.html" class="sidebar-link">Blog</a>
-        <a href="guia.html" class="sidebar-link">Guía</a>
+        <a href="guia.html" class="sidebar-link is-active">Guía</a>
       </nav>
       <div class="sidebar-bottom">
         <a href="changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
@@ -127,12 +127,11 @@
     <main class="site-main">
       <div class="article-container">
         <header class="article-header">
-          <p class="article-kicker">Historial del sitio</p>
-          <h1 class="article-title">Cambios</h1>
+          <p class="article-kicker">Documentación</p>
+          <h1 class="article-title">Guía del sitio</h1>
         </header>
-
-        <div class="changelog-content">
-          <p class="changelog-loading">Cargando…</p>
+        <div class="guia-content">
+          <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;">Cargando…</p>
         </div>
       </div>
     </main>
@@ -145,34 +144,14 @@
   <script src="./assets/js/path-config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
   <script>
-    function wrapEntries(container) {
-      const nodes = Array.from(container.childNodes);
-      container.innerHTML = '';
-      let entry = null;
-
-      for (const node of nodes) {
-        const tag = node.nodeType === Node.ELEMENT_NODE ? node.tagName : '';
-        if (tag === 'HR') continue; // los separadores los maneja el diseño
-        if (tag === 'H3') {
-          entry = document.createElement('div');
-          entry.className = 'changelog-entry';
-          container.appendChild(entry);
-        }
-        (entry || container).appendChild(node);
-      }
-    }
-
-    const url = window.getContentPath?.('changelog.md') ?? './content/changelog.md';
+    const url = window.getContentPath?.('guia.md') ?? './content/guia.md';
     fetch(url)
       .then(r => r.text())
       .then(md => {
-        const container = document.querySelector('.changelog-content');
-        container.innerHTML = marked.parse(md);
-        wrapEntries(container);
+        document.querySelector('.guia-content').innerHTML = marked.parse(md);
       })
       .catch(() => {
-        document.querySelector('.changelog-content').innerHTML =
-          '<p>No se pudo cargar el historial.</p>';
+        document.querySelector('.guia-content').innerHTML = '<p>No se pudo cargar la guía.</p>';
       });
   </script>
 

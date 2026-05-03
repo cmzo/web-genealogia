@@ -106,7 +106,7 @@
     overflow: hidden;
     /* Fondo de puntos: da sensación de canvas sin competir con el árbol */
     background-color: var(--bg);
-    background-image: radial-gradient(circle, #c9c0b4 1px, transparent 1px);
+    background-image: radial-gradient(circle, #d0d0ce 1px, transparent 1px);
     background-size: 22px 22px;
 }
 
