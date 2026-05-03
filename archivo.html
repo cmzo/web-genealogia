@@ -41,13 +41,23 @@
         <input
           type="search"
           id="archivoSearch"
-          placeholder="Buscar por nombre o rama…"
+          placeholder="Buscar por nombre…"
           class="archivo-search"
           autocomplete="off"
           spellcheck="false"
         />
-        <span class="archivo-count" id="archivoCount"></span>
       </div>
+      <div class="archivo-filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">Rama</span>
+          <div class="filter-pills" id="branchPills"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">País</span>
+          <div class="filter-pills" id="countryPills"></div>
+        </div>
+      </div>
+      <div class="archivo-results" id="archivoCount"></div>
 
       <div class="archivo-table-wrap">
         <table class="archivo-table" id="archivoTable" aria-label="Índice de personas">
@@ -98,8 +108,83 @@
 
   <script src="./assets/js/path-config.js"></script>
   <script>
-    let allPersonas = [];
+    let allPersonas  = [];
     let personasMap  = new Map();
+    let sorted       = [];
+    let activeFilters = { branch: null, country: null };
+
+    function getCountry(p) {
+      const place = (p.birth_place || p.death_place || '').toLowerCase();
+      if (/valais|riddes|conthey|ardon|nendaz|sion|martigny|monthey|sierre|suiza|suisse|wallis/.test(place))
+        return 'Suiza';
+      if (/caba|capital federal|buenos aires|entre r[ií]os|paran[aá]|corrientes|santa fe|argentina|san jos[eé]|feliciano/.test(place))
+        return 'Argentina';
+      if (/italia|italy|liguría|liguria|piemonte|piamonte|g[eé]nova|napoli|veneto|sicilia|toscana|lombard/.test(place))
+        return 'Italia';
+      return null;
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('archivoSearch').value.trim().toLowerCase();
+      let result = sorted;
+      if (activeFilters.branch)  result = result.filter(p => p.branch === activeFilters.branch);
+      if (activeFilters.country) result = result.filter(p => getCountry(p) === activeFilters.country);
+      if (q) result = result.filter(p =>
+        p.name.toLowerCase().includes(q) || (p.branch || '').toLowerCase().includes(q));
+      renderTable(result);
+    }
+
+    function buildPills(containerId, values, filterKey, maxVisible = 99) {
+      const container = document.getElementById(containerId);
+
+      // "Todos" pill
+      const allBtn = document.createElement('button');
+      allBtn.className = 'filter-pill is-active';
+      allBtn.textContent = 'Todos';
+      allBtn.dataset.value = '';
+      container.appendChild(allBtn);
+
+      values.forEach((v, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill';
+        btn.textContent = v;
+        btn.dataset.value = v;
+        if (i >= maxVisible) btn.classList.add('pill-extra');
+        container.appendChild(btn);
+      });
+
+      // "Ver más" toggle si hay extras
+      if (values.length > maxVisible) {
+        const extra = values.length - maxVisible;
+        const toggle = document.createElement('button');
+        toggle.className = 'filter-pill filter-pill-more';
+        toggle.textContent = `+${extra} más`;
+        container.appendChild(toggle);
+
+        const setVisible = (show) => {
+          container.querySelectorAll('.pill-extra').forEach(p => p.classList.toggle('pill-extra-hidden', !show));
+          toggle.textContent = show ? 'Ver menos' : `+${extra} más`;
+        };
+        setVisible(false);
+        toggle.addEventListener('click', e => { e.stopPropagation(); setVisible(toggle.textContent.startsWith('+')); });
+      }
+
+      container.addEventListener('click', e => {
+        const pill = e.target.closest('.filter-pill:not(.filter-pill-more)');
+        if (!pill) return;
+        const wasActive = pill.classList.contains('is-active');
+        container.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('is-active'));
+        if (wasActive && pill.dataset.value !== '') {
+          // Toggle off → volver a "Todos"
+          allBtn.classList.add('is-active');
+          activeFilters[filterKey] = null;
+        } else {
+          pill.classList.add('is-active');
+          activeFilters[filterKey] = pill.dataset.value || null;
+        }
+        applyFilters();
+      });
+    }
 
     // ── Utilidades de fecha ──────────────────────────────
 
@@ -142,7 +227,10 @@
         tr.addEventListener('click', () => openModal(p));
         tbody.appendChild(tr);
       });
-      document.getElementById('archivoCount').textContent = `${personas.length} personas`;
+      const total = allPersonas.length;
+      const shown = personas.length;
+      document.getElementById('archivoCount').textContent =
+        shown === total ? `${total} personas` : `${shown} de ${total} personas`;
     }
 
     // ── Modal ──────────────────────────────────────────
@@ -325,23 +413,25 @@
       allPersonas  = json.personas || [];
       personasMap  = new Map(allPersonas.map(p => [p.id, p]));
 
-      const sorted = [...allPersonas].sort((a, b) => {
+      sorted = [...allPersonas].sort((a, b) => {
         const gd = (b.generation ?? 0) - (a.generation ?? 0);
         return gd !== 0 ? gd : (a.sort_order ?? 0) - (b.sort_order ?? 0);
       });
 
-      renderTable(sorted);
+      // Pills de rama — ordenadas por cantidad de miembros, top 5 visibles
+      const branchCounts = {};
+      sorted.forEach(p => { if (p.branch) branchCounts[p.branch] = (branchCounts[p.branch] || 0) + 1; });
+      const branches = Object.keys(branchCounts).sort((a, b) => branchCounts[b] - branchCounts[a]);
+      buildPills('branchPills', branches, 'branch', 5);
+
+      // Pills de país
+      const countries = [...new Set(sorted.map(getCountry).filter(Boolean))].sort();
+      buildPills('countryPills', countries, 'country');
+
+      applyFilters();
 
       // Búsqueda
-      document.getElementById('archivoSearch').addEventListener('input', function () {
-        const q = this.value.trim().toLowerCase();
-        const filtered = q
-          ? sorted.filter(p =>
-              p.name.toLowerCase().includes(q) ||
-              (p.branch || '').toLowerCase().includes(q))
-          : sorted;
-        renderTable(filtered);
-      });
+      document.getElementById('archivoSearch').addEventListener('input', applyFilters);
 
       // Modal
       document.getElementById('modalClose').addEventListener('click', closeModal);
