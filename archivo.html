@@ -92,7 +92,7 @@
           <h2 class="archivo-modal-name" id="modalName">—</h2>
           <p class="archivo-modal-sub" id="modalSub"></p>
         </div>
-        <button class="archivo-modal-close" id="modalClose" title="Cerrar">✕</button>
+        <button class="archivo-modal-close" id="modalClose" title="Cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       </div>
       <div class="archivo-modal-body" id="modalBody"></div>
     </div>
@@ -100,7 +100,7 @@
 
   <!-- Lightbox -->
   <div class="archivo-lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" id="lbClose" title="Cerrar">✕</button>
+    <button class="lb-close" id="lbClose" title="Cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     <button class="lb-nav lb-prev" id="lbPrev" title="Anterior">‹</button>
     <button class="lb-nav lb-next" id="lbNext" title="Siguiente">›</button>
     <div class="lb-inner">
@@ -111,6 +111,10 @@
 
   <footer class="site-footer">
     <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <a href="contacto.html" class="footer-mobile-contact">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      Contacto
+    </a>
   </footer>
 
   <script src="./assets/js/path-config.js"></script>
