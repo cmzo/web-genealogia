@@ -189,18 +189,21 @@ body {
   line-height: 1.4;
 }
 
-.footer-mobile-contact {
+.footer-mobile-nav {
   display: none;
   align-items: center;
-  gap: 5px;
-  font-size: 13px;
+  gap: 20px;
+}
+
+.footer-nav-link {
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.15s;
 }
 
-.footer-mobile-contact:hover { color: var(--text); }
+.footer-nav-link:hover { color: var(--text); }
 
 .footer-changelog-link {
   font-size: 12px;
@@ -1093,9 +1096,8 @@ body {
     display: flex;
   }
 
-  .footer-mobile-contact {
-    display: inline-flex;
-  }
+  .footer-desc { display: none; }
+  .footer-mobile-nav { display: flex; }
 
   .site-main {
     padding: 32px 24px 60px;
