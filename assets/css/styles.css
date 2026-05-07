@@ -148,6 +148,21 @@ body {
   border-radius: 0;
 }
 
+.sidebar-link--icon {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-link--icon.is-active {
+  border-left: none;
+  padding-left: 12px;
+  color: var(--accent);
+}
+
 /* ─── MAIN CONTENT ────────────────────────────────────── */
 .site-main {
   min-width: 0;

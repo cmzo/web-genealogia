@@ -19,19 +19,30 @@ node scripts/add-post.js <file.md> --add-frontmatter  # auto-generate front matt
 npm run list-posts
 npm run delete-post <slug>   # removes .md, dist/blog/<slug>.html, and JSON entry
 
-# Image optimization (requires sharp)
-npm run optimize-images      # reads assets/images/original/, outputs WebP
-
-# Archive data
-npm run build-archive        # regenerates content/data/archive.json
+# Image optimization for personas (requires sharp)
+npm run optimize-personas    # reads assets/images/personas/, outputs WebP
 
 # Árbol genealógico — gestión de personas (requiere uv)
 uv run scripts/gestionar_arbol.py           # menú interactivo (recomendado)
-uv run scripts/gestionar_arbol.py list      # comandos directos también funcionan
+
+# Comandos directos:
+uv run scripts/gestionar_arbol.py list
 uv run scripts/gestionar_arbol.py show <id>
 uv run scripts/gestionar_arbol.py add
 uv run scripts/gestionar_arbol.py edit <id>
 uv run scripts/gestionar_arbol.py delete <id>
+
+uv run scripts/gestionar_arbol.py list-marriages
+uv run scripts/gestionar_arbol.py add-marriage
+uv run scripts/gestionar_arbol.py edit-marriage <id>
+uv run scripts/gestionar_arbol.py delete-marriage <id>
+
+uv run scripts/gestionar_arbol.py list-media [<persona_id>]
+uv run scripts/gestionar_arbol.py add-media <persona_id>
+uv run scripts/gestionar_arbol.py add-media-bulk <persona_id>
+uv run scripts/gestionar_arbol.py delete-media <media_id>
+
+uv run scripts/gestionar_arbol.py list-unregistered  # fotos en disco sin entrada en DB
 
 # Regenerar arbol.json manualmente (sin hacer build completo)
 uv run scripts/export_arbol.py
@@ -82,42 +93,53 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 - `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
-- `arbol-matrimonios.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses ES modules from `assets/js/arbol/`
+- `arbol-matrimonios.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
 - `archivo.html` — document/photo archive viewer
 
 ### Family tree (`arbol-matrimonios.html`)
 
-The tree is modularized into ES modules under `assets/js/arbol/`:
+The tree is modularized into ES modules under `assets/js/arbol/` and uses **D3.js v7** for SVG rendering with zoom/pan:
 
 ```
 assets/js/arbol/
-  ├── config.js      — CONFIG object (SVG dimensions, spacing), cardColors, getBranchColor()
-  ├── data.js        — loadData(): fetches assets/data/arbol.json
-  ├── structure.js   — buildMarriageStructure(): parses rows into marriage/single units with children
-  ├── layout.js      — calculateMarriageLayout(): positions units by generation and order
-  └── render.js      — renderTree(), renderPersonCard(), renderParentChildConnections(), zoomIn/Out()
+  ├── config.js    — CARD/MARRIAGE_NODE dimensions, TRANSITION_MS, getBranchColor()
+  ├── data.js      — loadData(): fetches assets/data/arbol.json
+  ├── store.js     — reactive focus/selection state (setFocus, setSelected)
+  ├── structure.js — buildMarriageStructure(): parses personas+matrimonios into nodes
+  ├── layout.js    — calculateLayout(): positions nodes by generation/order, exports VGAP
+  ├── render.js    — initTree(), render(), recenterOn(), zoomIn/Out() — D3 SVG rendering
+  ├── panel.js     — side panel that shows person details and media when a node is selected
+  ├── search.js    — name search UI
+  └── keyboard.js  — keyboard shortcuts
 ```
 
-Styles are in `assets/css/arbol.css`. The HTML (`arbol-matrimonios.html`) is 81 lines with no inline CSS or JS.
+Styles are in `assets/css/arbol.css`. The HTML (`arbol-matrimonios.html`) has no inline CSS or JS.
 
-**Data source:** `data/arbol.db` (SQLite) is the source of truth. At build time, `scripts/build.js` calls `scripts/export_arbol.py`, which reads the DB and writes `assets/data/arbol.json`. The tree page only ever reads the static JSON — it never touches the DB or any external service.
+**Data source:** `data/arbol.db` (SQLite) is the source of truth. At build time, `scripts/build.js` calls `scripts/export_arbol.py`, which reads the DB and writes `assets/data/arbol.json`. The tree page only ever reads the static JSON — it never touches the DB directly.
 
-**Managing people:**
-```bash
-python3 scripts/gestionar_arbol.py list          # all people
-python3 scripts/gestionar_arbol.py show <id>     # detail
-python3 scripts/gestionar_arbol.py add           # interactive add
-python3 scripts/gestionar_arbol.py edit <id>     # interactive edit
+**Data schema** — `assets/data/arbol.json` root structure:
+```json
+{
+  "personas":    [ <Persona>, ... ],
+  "matrimonios": [ <Matrimonio>, ... ]
+}
 ```
 
-**One-time migration script** (already ran): `scripts/import_arbol.py` — imports from `arbol.json` into the DB. Only needed to bootstrap a fresh DB.
+Key `Persona` fields: `id` (format `p<n>`), `name`, `gender` (`"M"`/`"F"`/`""`), `birth_date`, `birth_place`, `death_date`, `death_place`, `father_id`, `mother_id`, `branch` (determines card color), `generation`, `sort_order`, `vivo`, `photo_url`, `notes`, `sources`, `status`, `media: []`.
 
-**Data schema** (`arbol.json` rows / DB columns):
-```
-{ id, name, birth_date, birth_place, death_date, death_place,
-  spouseId, childrenIds, fatherId, motherId, branch, generation, order, vivo }
-```
-Dates are stored as ISO `YYYY-MM-DD` in the DB and exported as `Date(Y,M,D)` (JS 0-indexed month) in the JSON, which is what `render.js` expects. See `data/README.md` for full schema details.
+Key `Matrimonio` fields: `id` (format `m<n>`), `spouse1_id`, `spouse2_id`, `marriage_date`, `marriage_place`, `divorce_date`, `notes`.
+
+Each `Persona` embeds its `media` array (type `"photo"` or `"document"`) with fields: `id` (format `med<n>`), `url`, `type`, `caption`, `date`, `source_label`, `group_label`, `group_order`.
+
+All dates are stored as ISO partial strings (`"YYYY"`, `"YYYY-MM"`, or `"YYYY-MM-DD"`) in both the DB and the exported JSON. Children are derived at runtime from `father_id`/`mother_id` — they are not stored as a list.
+
+See `data/README.md` for the full schema reference and DB table definitions.
+
+**Media files:**
+- Fotos: `assets/images/personas/` — WebP, naming: `p26-descripcion.webp`
+- Documentos: `assets/docs/personas/` — naming: `p26-acta-nacimiento.pdf`
+
+Run `npm run optimize-personas` to convert images to WebP before committing.
 
 ### Deploy script
 
@@ -132,6 +154,7 @@ Raw image files (`.jpg`, `.png` originals) are **not** staged by the deploy scri
 - **Originals**: `assets/images/original/` (gitignored) — also any loose `.jpg`/`.png` in `assets/images/` are not committed by the deploy script
 - **Cards** (280×380 approx WebP): `assets/images/cards/` — used in `blog-entries.json` and home cards
 - **Post images**: `assets/images/posts/` — referenced in Markdown post bodies
+- **Personas**: `assets/images/personas/` — person photos for the family tree panel
 - **Avatars**: `assets/images/avatars/`
 
 In Markdown posts, Obsidian-style `![[filename.jpg]]` syntax is auto-converted to `../../assets/images/posts/filename.jpg` during build.
