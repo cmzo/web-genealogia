@@ -1,3 +1,9 @@
+### 7 de mayo de 2026
+
+#### Página de contacto
+
+Nueva página **Contacto** (`contacto.html`) con formulario integrado vía Formspree. Campos: nombre, email (opcional) y mensaje. El envío es asíncrono — el visitante no abandona la página. El link aparece en la sidebar de todas las páginas con un ícono de sobre junto al texto. La página tiene layout centrado, distinto al resto del sitio.
+
 ### 3 de mayo de 2026
 
 #### Archivo familiar: galería en grilla de 3 columnas
