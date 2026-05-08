@@ -323,9 +323,9 @@
     {
       "id": "p10",
       "name": "Felix Ricardo Clemenzo",
-      "gender": "",
+      "gender": "M",
       "birth_date": "1926-08-13",
-      "birth_place": "Bolivar, Bs As",
+      "birth_place": "Bolivar, Buenos Aires, Argentina",
       "death_date": "",
       "death_place": "Ciudad de Buenos Aires, Argentina",
       "father_id": "p18",
@@ -334,11 +334,22 @@
       "generation": 3,
       "sort_order": 0,
       "vivo": "no",
-      "photo_url": "",
-      "notes": "",
-      "sources": "",
-      "status": "sin_datos",
-      "media": []
+      "photo_url": null,
+      "notes": null,
+      "sources": null,
+      "status": "incompleto",
+      "media": [
+        {
+          "id": "med102",
+          "type": "photo",
+          "url": "assets/images/personas/p10-nacimiento.webp",
+          "caption": "Partida de nacimiento",
+          "date": "1926-08-14",
+          "source_label": "Partida de nacimiento",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p33",
