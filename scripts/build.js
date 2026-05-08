@@ -399,8 +399,11 @@ function processMarkdownFile(filePath) {
     metadata.slug = path.basename(filePath, '.md');
   }
   
+  // Eliminar h1 inicial si duplica el título del front matter
+  const strippedContent = markdownContent.replace(/^\s*#\s+[^\n]+\n+/, '');
+
   // Convertir Markdown a HTML
-  const htmlContent = markdownToHtml(markdownContent);
+  const htmlContent = markdownToHtml(strippedContent);
   
   // Procesar aside si existe
   let asideContent = '';
