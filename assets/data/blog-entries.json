@@ -16,17 +16,6 @@
     "url": "dist/blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html"
   },
   {
-    "id": "test",
-    "title": "test",
-    "description": "test",
-    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
-    "category": "investigacion",
-    "date": "2026-05-08",
-    "tags": [],
-    "featured": false,
-    "url": "dist/blog/test.html"
-  },
-  {
     "id": "agenda-investigacion",
     "title": "Agenda de investigación genealógica con Claude AI",
     "description": "Estado actual de la investigación: qué falta, qué parece irrecuperable, y qué líneas concretas quedan por explorar en Suiza y Argentina.",
