@@ -1,3 +1,21 @@
+### 8 de mayo de 2026
+
+#### Gestor del sitio: gestionar_web.py
+
+`gestionar_arbol.py` fue renombrado a `gestionar_web.py` y ampliado con tres comandos para el blog. **Crear post** hace un formulario interactivo que pregunta título, kicker, descripción, categoría (con autocompletado de categorías existentes), tags, slug (sugerido automáticamente desde el título) y si es destacado — genera el `.md` con front matter completo y lo abre directamente en nvim en una pestaña nueva de WezTerm. **Editar post** muestra autocompletado de los posts existentes y abre el seleccionado en nvim. **Eliminar post** muestra un selector con el título de cada post y pide confirmación antes de borrar.
+
+#### Markdown: callouts, highlights y tablas
+
+El pipeline de build ahora soporta la sintaxis de Obsidian completa. Los **callouts** (`> [!NOTE]`, `> [!WARNING]`, `> [!TIP]`, etc.) se renderizan como bloques visuales con color e ícono según el tipo — doce tipos con variantes de color: azul (info/note/tip), ámbar (warning/caution), rojo (danger/error), verde (success) y gris (quote). Los **highlights** (`==texto==`) se convierten en `<mark>` con fondo amarillo. Las **tablas** y los separadores `---` tienen estilos propios en los artículos del blog. El mismo procesamiento fue incorporado al renderizado en browser de `guia.html`.
+
+#### Guía del sitio: rediseño
+
+`guia.md` fue reescrito con la nueva sintaxis disponible: secciones con emojis, callouts para tips y advertencias, y highlights para términos clave. Los estilos de `guia.html` fueron revisados: H2 pasa de 11px Inter uppercase a **Source Serif 4 a 22px**, H3 a 18px, tabla con borde exterior completo y divisores de columna, HR oculto (el `border-top` del H2 separa las secciones sin duplicar líneas).
+
+#### Diseño: auditoría y correcciones
+
+Se aplicó auditoría sistemática de diseño sobre `archivo.css` y `arbol.css`: valores de espaciado corregidos a múltiplos de 4px, colores hardcodeados reemplazados por tokens del sistema, sombras eliminadas en favor de bordes, botones de cierre con íconos SVG en lugar de `✕`. El modal del archivo y el panel del árbol quedaron visualmente consistentes. En mobile se ocultó el texto "Diseñado por…" del footer y se agregaron links de **Contacto** y **Cambios** en su lugar — visibles en todas las páginas. El párrafo introductorio del inicio fue reescrito, el H1 redundante eliminado, y la tipografía del tagline pasó a Source Serif 4.
+
 ### 7 de mayo de 2026
 
 #### Página de contacto

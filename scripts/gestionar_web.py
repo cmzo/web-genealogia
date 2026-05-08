@@ -844,6 +844,33 @@ def cmd_delete_media(args=None):
 
 # ── blog ──────────────────────────────────────────────────────────────────────
 
+def _find_bin(cmd):
+    found = shutil.which(cmd)
+    if found:
+        return found
+    for prefix in ['/opt/homebrew/bin', '/usr/local/bin', '/usr/bin']:
+        p = os.path.join(prefix, cmd)
+        if os.path.isfile(p) and os.access(p, os.X_OK):
+            return p
+    return None
+
+
+def _open_in_editor(file_path):
+    nvim    = _find_bin('nvim') or _find_bin('vim')
+    wezterm = _find_bin('wezterm')
+    if wezterm and nvim:
+        result = subprocess.run(
+            [wezterm, 'cli', 'spawn', '--', nvim, file_path],
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            subprocess.run([nvim, file_path])
+    elif nvim:
+        subprocess.run([nvim, file_path])
+    else:
+        subprocess.run(['open', file_path])
+
+
 def _slugify(text):
     text = unicodedata.normalize('NFD', text)
     text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
@@ -912,15 +939,69 @@ def cmd_create_post(_args=None):
     with open(file_path, 'w', encoding='utf-8') as fp:
         fp.write('\n'.join(fm))
 
-    console.print(f'\n[green]✓[/green] [bold]content/posts/{slug}.md[/bold]  [dim]· {today}[/dim]')
+    console.print(f'\n[green]✓[/green] [bold]content/posts/{slug}.md[/bold]  [dim]· {today}[/dim]\n')
 
-    if qconfirm('¿Abrir en el editor?', default=True):
-        if shutil.which('code'):
-            subprocess.run(['code', file_path])
-        elif os.environ.get('EDITOR'):
-            subprocess.run([os.environ['EDITOR'], file_path])
-        else:
-            subprocess.run(['open', file_path])
+    _open_in_editor(file_path)
+
+
+def cmd_edit_post(_args=None):
+    if not os.path.exists(POSTS_DIR):
+        console.print('[dim]No hay posts.[/dim]'); return
+
+    posts = sorted(f for f in os.listdir(POSTS_DIR) if f.endswith('.md'))
+    if not posts:
+        console.print('[dim]No hay posts.[/dim]'); return
+
+    console.print('\n[bold]Editar post[/bold]\n')
+    slug_choice = _ask(questionary.autocomplete(
+        'Post a editar', choices=posts, style=STYLE,
+    ))
+    if not slug_choice:
+        return
+
+    file_path = os.path.join(POSTS_DIR, slug_choice)
+    if not os.path.exists(file_path):
+        console.print(f'[red]✗[/red] No existe "{slug_choice}"'); return
+
+    _open_in_editor(file_path)
+
+
+def cmd_delete_post(_args=None):
+    if not os.path.exists(POSTS_DIR):
+        console.print('[dim]No hay posts.[/dim]'); return
+
+    posts = sorted(f for f in os.listdir(POSTS_DIR) if f.endswith('.md'))
+    if not posts:
+        console.print('[dim]No hay posts.[/dim]'); return
+
+    console.print('\n[bold]Eliminar post[/bold]\n')
+    slug_choice = _ask(questionary.select(
+        'Seleccioná el post a eliminar',
+        choices=posts + [questionary.Separator('─' * 30), questionary.Choice(BACK, 'back')],
+        style=STYLE,
+    ))
+    if not slug_choice or slug_choice == 'back':
+        return
+
+    file_path = os.path.join(POSTS_DIR, slug_choice)
+
+    # Mostrar título del post si tiene front matter
+    title_hint = slug_choice
+    try:
+        content = open(file_path, encoding='utf-8').read()
+        m = re.search(r'^title:\s*["\']?([^"\'\n]+)["\']?', content, re.MULTILINE)
+        if m:
+            title_hint = m.group(1).strip()
+    except Exception:
+        pass
+
+    console.print(f'\n  [bold]{title_hint}[/bold]  [dim]({slug_choice})[/dim]')
+    if not qconfirm('¿Eliminar este post? Esta acción no se puede deshacer.', default=False):
+        console.print('Cancelado.'); return
+
+    os.remove(file_path)
+    console.print(f'[green]✓[/green] [bold]{slug_choice}[/bold] eliminado.')
+    console.print('[dim]  Recordá hacer build para actualizar el sitio.[/dim]\n')
 
 
 # ── menús interactivos ────────────────────────────────────────────────────────
@@ -1060,6 +1141,8 @@ def interactive():
             questionary.Choice('Media',                'media'),
             SEP,
             questionary.Choice('Crear post',           'create_post'),
+            questionary.Choice('Editar post',          'edit_post'),
+            questionary.Choice('Eliminar post',        'delete_post'),
             SEP,
             questionary.Choice('Optimizar imágenes',   'optimize'),
             questionary.Choice('Deploy',               'deploy'),
@@ -1069,7 +1152,9 @@ def interactive():
         if not choice or choice == 'salir': break
         {'personas': _submenu_personas, 'matrimonios': _submenu_matrimonios,
          'media': _submenu_media, 'create_post': cmd_create_post,
-         'optimize': cmd_optimize, 'deploy': cmd_deploy}[choice]()
+         'edit_post': cmd_edit_post, 'delete_post': cmd_delete_post,
+         'optimize': cmd_optimize,
+         'deploy': cmd_deploy}[choice]()
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
@@ -1091,6 +1176,8 @@ COMMANDS = {
     'list-unregistered': cmd_list_unregistered,
     'optimize':          cmd_optimize,
     'create-post':       cmd_create_post,
+    'edit-post':         cmd_edit_post,
+    'delete-post':       cmd_delete_post,
 }
 
 
