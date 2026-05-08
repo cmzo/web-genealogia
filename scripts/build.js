@@ -137,9 +137,10 @@ function processCallouts(html) {
   );
 }
 
-// Genera el mismo id que marked v4 producía con headerIds:true, mangle:false
-function headingId(rawText) {
-  return rawText
+// Genera id de heading compatible con cualquier versión de marked
+function headingId(text) {
+  return String(text || '')
+    .replace(/<[^>]+>/g, '')
     .toLowerCase()
     .replace(/[^\p{L}\p{N}\s-]/gu, '')
     .trim()
@@ -151,9 +152,12 @@ function markdownToHtml(markdown) {
   marked.setOptions({ breaks: true, gfm: true });
   marked.use({
     renderer: {
-      heading(text, depth, raw) {
-        const id = headingId(raw);
-        return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+      heading(tokenOrText, depth) {
+        // marked v9: (text, depth, raw)  /  marked v10+: (token)
+        const isToken = typeof tokenOrText === 'object' && tokenOrText !== null;
+        const text = isToken ? tokenOrText.text  : tokenOrText;
+        const d    = isToken ? tokenOrText.depth : depth;
+        return `<h${d} id="${headingId(text)}">${text}</h${d}>\n`;
       }
     }
   });

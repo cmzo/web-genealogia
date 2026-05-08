@@ -210,15 +210,15 @@
 <p>Con esta declaración, <code>uv run server.py</code> instala automáticamente las dependencias la primera vez que se ejecuta, sin necesidad de <code>pip install</code> ni <code>venv</code>.</p>
 <h3 id="herramientas-expuestas">Herramientas expuestas</h3>
 <p>El servidor implementa cinco herramientas:</p>
-<h4 id="buscarpersonanombre-str"><code>buscar_persona(nombre: str)</code></h4>
+<h4 id="buscarpersonanombre-str">`buscar_persona(nombre: str)`</h4>
 <p>Busca en el árbol por nombre parcial (case-insensitive). Devuelve ID, generación, rama, fechas y estado de verificación.</p>
-<h4 id="obtenerpersonapersonid-str"><code>obtener_persona(person_id: str)</code></h4>
+<h4 id="obtenerpersonapersonid-str">`obtener_persona(person_id: str)`</h4>
 <p>Devuelve la ficha completa de una persona: datos del árbol principal, matrimonios con fecha y lugar, hijos, padre/madre y datos del archivo (biografía, fuentes, tags).</p>
-<h4 id="listarpersonasrama-generacion"><code>listar_personas(rama?, generacion?)</code></h4>
+<h4 id="listarpersonasrama-generacion">`listar_personas(rama?, generacion?)`</h4>
 <p>Lista todas las personas con filtros opcionales. Útil para tener una visión panorámica antes de una sesión de investigación.</p>
-<h4 id="listardocumentossubcarpeta"><code>listar_documentos(subcarpeta?)</code></h4>
+<h4 id="listardocumentossubcarpeta">`listar_documentos(subcarpeta?)`</h4>
 <p>Recorre la carpeta de documentos e imágenes y lista todos los archivos disponibles, incluyendo registros escaneados, PDFs y fotografías.</p>
-<h4 id="creararchivoinvestigacionpersonanombre-personaid-lineasinvestigacion-tareastodo-notas"><code>crear_archivo_investigacion(persona_nombre, persona_id, lineas_investigacion, tareas_todo, notas?)</code></h4>
+<h4 id="creararchivoinvestigacionpersonanombre-personaid-lineasinvestigacion-tareastodo-notas">`crear_archivo_investigacion(persona_nombre, persona_id, lineas_investigacion, tareas_todo, notas?)`</h4>
 <p>Genera un archivo Markdown estructurado con:</p>
 <ul>
 <li>Contexto de la persona</li>
@@ -349,8 +349,6 @@ if __name__ == &quot;__main__&quot;:
 <p>Un chatbot convencional es excelente para tareas de <strong>conocimiento general</strong>: explicar conceptos, redactar textos, ayudar a interpretar un documento que vos le mostrás. Pero la investigación genealógica es fundamentalmente un trabajo con <strong>datos específicos, locales y acumulativos</strong>.</p>
 <p>La diferencia clave es que el agente con MCP <strong>actúa en tu entorno real</strong>: lee los archivos que vos tenés, escribe en las carpetas que vos usás, busca en la web y te devuelve resultados verificables. No simula tener contexto, lo tiene.</p>
 <p>Con el tiempo, a medida que se generan más archivos de investigación y se actualizan los datos del árbol, el agente se vuelve progresivamente más útil porque trabaja siempre con la versión más reciente de tus datos, sin que tengas que pegar nada en un chat.</p>
-<hr>
-<p><em>Documentación generada el 2026-05-08. Stack: Claude Code + MCP + Python (FastMCP) + Tavily Search API.</em></p>
 
   <style>
     .image-clickable:hover {

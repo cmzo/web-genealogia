@@ -11,6 +11,9 @@ function hasChanges() {
   return execSync('git status --porcelain', { encoding: 'utf8' }).trim() !== '';
 }
 
+console.log('⬇️  Pull...');
+run('git pull --rebase --autostash');
+
 console.log('🔨 Build...');
 build();
 
