@@ -143,7 +143,7 @@ function markdownToHtml(markdown) {
   marked.setOptions({
     breaks: true,
     gfm: true,
-    headerIds: false,
+    headerIds: true,
     mangle: false
   });
   
