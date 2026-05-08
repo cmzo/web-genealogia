@@ -10,8 +10,6 @@ featured: true
 slug: "creacion-de-un-agente-de-investigacion-genealogica-con-claude"
 ---
 
-# Creación de un Agente Genealógico con MCP y Claude Code
-
 ## Índice
 
 1. [La necesidad: por qué un agente y no un chatbot](#1-la-necesidad)
@@ -325,7 +323,3 @@ Un chatbot convencional es excelente para tareas de **conocimiento general**: ex
 La diferencia clave es que el agente con MCP **actúa en tu entorno real**: lee los archivos que vos tenés, escribe en las carpetas que vos usás, busca en la web y te devuelve resultados verificables. No simula tener contexto, lo tiene.
 
 Con el tiempo, a medida que se generan más archivos de investigación y se actualizan los datos del árbol, el agente se vuelve progresivamente más útil porque trabaja siempre con la versión más reciente de tus datos, sin que tengas que pegar nada en un chat.
-
----
-
-*Documentación generada el 2026-05-08. Stack: Claude Code + MCP + Python (FastMCP) + Tavily Search API.*
