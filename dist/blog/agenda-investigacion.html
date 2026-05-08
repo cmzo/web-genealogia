@@ -72,7 +72,7 @@
   <div class="callout-title"><span class="callout-icon">▲</span><span>Alucinaciones</span></div>
   <div class="callout-body"><br>Claude te lo dice apenas lo abris: no me creas todo<br>Y tiene razón, a continuación  una lista de sus alucinaciones (mentiras e inventos) o puntos donde hizo lo que quiso, a pesar de tener datos concretos.</p></div>
 </div>
-<h2>Alucinaciones</h2>
+<h2 id="alucinaciones">Alucinaciones</h2>
 <blockquote>
 <p><strong>Généalogies vaudoises et valaisannes</strong> — algunas bases de datos de aficionados locales indexan apellidos vallesanos raros. Los Clemenzoz/Clemenzo son lo suficientemente poco comunes como para que alguien los haya trabajado antes.</p>
 </blockquote>
@@ -100,12 +100,12 @@
 <p><strong>Pedro</strong> (p22), <strong>Francisca</strong> (p23), <strong>Celestina</strong> (p25), <strong>María Luisa</strong> (p29), <strong>Carlota Julia</strong> (p30) — hijos de François y Celestina.<br>Todos nacidos en Entre Ríos, con lugar de nacimiento vago o sin fecha. Las actas de nacimiento del Registro Civil de Concordia y Concepción del Uruguay para el período 1880–1900 deberían cubrir varios de estos casos.</p>
 </blockquote>
 <p>Acá un caso parecido, si bien tiene razón en los 3 primeros decidió meter a Maria Luisa y Carlota en la misma bolsa y las dos tienen actas de nacimiento y de defunción.</p>
-<h2>Hizo todo mal Claude?</h2>
+<h2 id="hizo-todo-mal-claude">Hizo todo mal Claude?</h2>
 <ul>
 <li>No, al principio del archivo encontró dos inconsistencias que yo no había notado.</li>
 <li>Me hizo ver que no cargué los hijos de Etienne</li>
 </ul>
-<h2>Para probar próximamente</h2>
+<h2 id="para-probar-próximamente">Para probar próximamente</h2>
 <blockquote>
 <p><strong>Contexto histórico.</strong> La emigración vallesana a Argentina se intensificó entre 1850 y 1890, impulsada por crisis agrícolas y el proyecto de colonización de Entre Ríos. Un prompt bien armado sobre el contexto específico del Bas-Valais en 1855–1875 puede ayudar a entender qué documentos esperarías encontrar y cuáles probablemente no sobrevivieron.</p>
 </blockquote>
@@ -118,20 +118,20 @@
 <li>¿Existían redes o cadenas migratorias conocidas entre el Bas-Valais y las colonias suizas de Entre Ríos (Colonia San José, fundada 1857)?</li>
 </ol>
 <p>--- <strong>De aquí para abajo es obra de la IA</strong> ---</p>
-<h2>Errores de datos a corregir</h2>
+<h2 id="errores-de-datos-a-corregir">Errores de datos a corregir</h2>
 <p>Antes de seguir investigando, hay tres inconsistencias en el árbol que conviene corregir para no construir sobre datos incorrectos.</p>
 <p><strong>François Clemenzo — fecha de nacimiento a verificar.</strong> El registro dice 31 de mayo de 1858. La fecha es válida, pero vale confirmarla contra el acta original si aún no se hizo, dado que es el dato de base de toda la rama.</p>
 <p><strong>Félix Clemenzo (p18) — referencia circular.</strong> Su propio ID aparece en su lista de hijos. Es un error de carga en la planilla. No tiene consecuencias en la visualización actual, pero romperá cualquier análisis de grafo que se haga en el futuro.</p>
 <p><strong>Celestina Roh — hija incorrecta.</strong> El campo <code>childrenIds</code> de Celestina (p27) incluye a Isabel María Queipo (p19), que en realidad es la <em>esposa</em> de su hijo Félix. No su hija. El origen probable: al cargar las familias, se mezcló un campo.</p>
 <hr>
-<h2>Vacíos por individuo</h2>
-<h3>Generación 6 — Valais, ~1800–1830</h3>
+<h2 id="vacíos-por-individuo">Vacíos por individuo</h2>
+<h3 id="generación-6-valais-18001830">Generación 6 — Valais, ~1800–1830</h3>
 <p>Estos son los ancestros más difíciles de documentar. El registro civil suizo comienza en 1876; todo lo anterior es registro parroquial.</p>
 <p><strong>François Clemenzoz</strong> (p36) — nacido 1809, Ardon, Valais.<br>El más antiguo con datos concretos. Falta: fecha y lugar de defunción, y todo sobre sus padres. Si murió en Valais antes de emigrar su familia, el acta de defunción debería estar en el registro parroquial de Ardon. Si sobrevivió a la emigración de sus hijos (François/Francisco nació en 1858, cuando el padre tenía ~49), podría haber fallecido en Argentina, aunque no hay ningún indicio de esto.</p>
 <p><strong>Marie Louise Stalder</strong> (p37) — nacida 1828, Salins, Valais.<br>Salins es una localidad pequeña, contigua a Ardon. El apellido Stalder es común en el Valais romando. Falta: fecha de defunción, lugar exacto, y sus padres. Si se casó con François Clemenzoz en Ardon o Salins, el acta matrimonial debería existir en los registros parroquiales de alguna de las dos parroquias (~1845–1855).</p>
 <p><strong>Jose Roh</strong> (p38) y <strong>Maria Putallaz</strong> (p39) — Conthey/Ardon.<br>Ambos con fecha de nacimiento desconocida. Solo se sabe el origen geográfico aproximado. Roh y Putallaz son apellidos vallesanos rastreables. La hija de ambos, Celestina, nació en 1863 en Conthey, lo que ubica el matrimonio Roh–Putallaz probablemente entre 1855 y 1862. Falta: todo.</p>
 <hr>
-<h3>Generación 5 — Emigración, ~1855–1870</h3>
+<h3 id="generación-5-emigración-18551870">Generación 5 — Emigración, ~1855–1870</h3>
 <p><strong>François Clemenzo</strong> (p26) — 1858, Riddes → 1928, Concepción del Uruguay.<br>El individuo mejor documentado de esta generación. Sin embargo:</p>
 <ul>
 <li>La fecha exacta de emigración es desconocida. Dado que sus primeros hijos nacen en Entre Ríos (Félix, ~1880s), emigró probablemente entre 1875 y 1885. Hay registros de emigración del cantón Valais para ese período.</li>
@@ -144,7 +144,7 @@
 <p><strong>Tomas Baster</strong> (p31) — nacido en Inglaterra, lugar no especificado.<br>La presencia de un inglés en esta rama es llamativa. Falta absolutamente todo: fecha de nacimiento, lugar exacto, cómo llegó al Río de la Plata, cuándo murió. El apellido Baster existe en el sur de Inglaterra. Su esposa Francisca Guido es de Uruguay, lo que sugiere que Tomas llegó a la región rioplatense posiblemente como trabajador, comerciante o marino.</p>
 <p><strong>Estefanía Venegas</strong> (p41), <strong>Pablo Martín Vásquez</strong> (p55), <strong>Elvira Garrido</strong> (p56) — sin datos.<br>Sin información más allá del nombre. Elvira Garrido ni siquiera tiene rama asignada. Para estos, la única vía realista es documentación en manos de ramas familiares vivas.</p>
 <hr>
-<h3>Generación 4 — Entre Ríos, ~1880–1900</h3>
+<h3 id="generación-4-entre-ríos-18801900">Generación 4 — Entre Ríos, ~1880–1900</h3>
 <p><strong>Félix Clemenzo</strong> (p18) — hijo de François y Celestina, nacido en Entre Ríos.<br>Fecha de nacimiento desconocida. Si nació en la Colonia San José o zonas aledañas, el registro parroquial de la colonia o el Registro Civil de Concepción del Uruguay deberían tenerlo. Falta también la fecha de defunción.</p>
 <p><strong>Isabel María Queipo</strong> (p19) — esposa de Félix, nacida en Buenos Aires.<br>Sin fecha de nacimiento ni información sobre sus padres. El apellido Queipo tiene presencia en Buenos Aires desde mediados del siglo XIX.</p>
 <p><strong>Léon Francisco Clemenzo</strong> (p20) — 1891, Colonia San José.<br>El lugar de nacimiento está bien documentado. Solo falta la fecha y lugar de defunción.</p>
@@ -152,13 +152,13 @@
 <p><strong>Pedro</strong> (p22), <strong>Francisca</strong> (p23), <strong>Celestina</strong> (p25), <strong>María Luisa</strong> (p29), <strong>Carlota Julia</strong> (p30) — hijos de François y Celestina.<br>Todos nacidos en Entre Ríos, con lugar de nacimiento vago o sin fecha. Las actas de nacimiento del Registro Civil de Concordia y Concepción del Uruguay para el período 1880–1900 deberían cubrir varios de estos casos.</p>
 <p><strong>Benito Arceo</strong> (p51), <strong>Antonia Yanitelli</strong> (p52), <strong>Enrique Alfredo Vásquez</strong> (p53), <strong>María Luisa Fracchia</strong> (p54) — sin datos.<br>Ramas colaterales con información nula. Yanitelli e incluso Fracchia son apellidos de origen italiano frecuentes en Entre Ríos y Santa Fe.</p>
 <hr>
-<h3>Generación 3 — ~1910–1930</h3>
+<h3 id="generación-3-19101930">Generación 3 — ~1910–1930</h3>
 <p><strong>Félix Ricardo Clemenzo</strong> (p10) — 1926, Bolívar, Buenos Aires.<br>Tiene lugar de defunción (CABA) pero no fecha. Siendo el bisabuelo del autor, esta fecha debería ser conocida por la familia directa.</p>
 <p><strong>Raquel Noemí Carvallo</strong> (p11) — CABA.<br>Sin ninguna fecha. El apellido Carvallo tiene distribución amplia en Argentina.</p>
 <p><strong>Hijos de Félix e Isabel</strong> (p12 al p17) — sin fechas de nacimiento.<br>Nacidos probablemente entre 1905 y 1925 en Buenos Aires. El Registro Civil de CABA tiene registros digitalizados accesibles para ese período.</p>
 <hr>
-<h2>Líneas de investigación</h2>
-<h3>Microfilmes no indexados en FamilySearch</h3>
+<h2 id="líneas-de-investigación">Líneas de investigación</h2>
+<h3 id="microfilmes-no-indexados-en-familysearch">Microfilmes no indexados en FamilySearch</h3>
 <p>Los registros parroquiales del Valais anteriores a 1876 están en gran parte microfilmados pero no indexados ni digitalizados. Esto significa que no aparecen en búsquedas por nombre, pero existen en el catálogo y se pueden consultar.</p>
 <p>Las colecciones clave para buscar:</p>
 <ul>
@@ -170,7 +170,7 @@
 <p>Para ver estos microfilmes sin viajar: algunos FamilySearch Centers todavía permiten solicitar rollos. Pero la opción más directa, dado el contexto del viaje planeado, es leerlos directamente en Sion.</p>
 <p>Para Argentina, el Registro Civil de Entre Ríos tiene microfilmes de 1870 a ~1920 que tampoco están completamente indexados. El catálogo de FamilySearch para &quot;Entre Ríos, Argentina&quot; lista varias colecciones por partido (Concordia, Concepción del Uruguay, Paraná) que merecen revisión rollo por rollo si la búsqueda indexada ya se agotó.</p>
 <hr>
-<h3>Para el viaje a Valais</h3>
+<h3 id="para-el-viaje-a-valais">Para el viaje a Valais</h3>
 <p><strong>Archives de l&#39;État du Valais (AEV), Sion.</strong> El recurso central. Tienen:</p>
 <ul>
 <li>Registros civiles completos desde 1876</li>
@@ -183,20 +183,20 @@
 <p><strong>Registro communal.</strong> Cada commune suiza tiene un <em>registre des familles</em> o <em>Familienbuch</em> que lista los miembros de cada familia burguesa. Para Ardon/Riddes y los Clemenzoz, esto puede dar información sobre varias generaciones de una sola vez.</p>
 <p><strong>Contactos ya establecidos en Valais.</strong> Si alguno de los contactos locales tiene acceso o conocimiento de archivos privados, registros de asociaciones de emigrantes vallesanos, o publicaciones genealógicas locales (la Societé d&#39;Histoire du Valais Romand publica anualmente), eso puede acortar mucho el trabajo de archivo.</p>
 <hr>
-<h3>Recursos online específicos</h3>
+<h3 id="recursos-online-específicos">Recursos online específicos</h3>
 <p><strong>Généalogies vaudoises et valaisannes</strong> — algunas bases de datos de aficionados locales indexan apellidos vallesanos raros. Los Clemenzoz/Clemenzo son lo suficientemente poco comunes como para que alguien los haya trabajado antes.</p>
 <p><strong>HISREG</strong> — registro histórico suizo de communes, útil para entender migraciones internas (de Ardon a Riddes, que parece haber ocurrido entre generaciones).</p>
 <p><strong>Registros de emigración del Cantón Valais</strong> — el cantón exigía pasaportes internos para emigrar. Los registros de emigración vallesana del período 1860–1890 están parcialmente disponibles y permitirían confirmar la fecha y los hermanos que viajaron juntos.</p>
 <p><strong>Portal de la Colonia San José</strong> — el Museo Histórico de la Colonia tiene un registro de colonos digitalizado parcialmente. Dado el contexto (libros sobre la colonia ya consultados), es probable que esto ya se revisó, pero los registros de tierras asignadas pueden dar fechas de llegada.</p>
 <p><strong>Archivo Histórico de la Provincia de Entre Ríos (Paraná)</strong> — tiene documentación de los partidos del interior que no siempre está en FamilySearch. Vale consultar directamente, especialmente para Concordia y Concepción del Uruguay en el período 1880–1910.</p>
 <hr>
-<h3>Estrategias con IA</h3>
+<h3 id="estrategias-con-ia">Estrategias con IA</h3>
 <p><strong>Transcripción de documentos.</strong> Los registros parroquiales vallesanos del siglo XIX están escritos en francés con caligrafía cursiva antigua y con abreviaturas específicas. Claude (con visión) puede transcribir y traducir estos documentos con buena precisión, incluso cuando la caligrafía es difícil. Útil para acelerar la lectura de rollos en Sion.</p>
 <p><strong>Análisis de patrones de nombres.</strong> El árbol muestra recurrencias claras: François/Félix/Francisco en la línea masculina, Celestina en la femenina. Esto es sistemático en las familias campesinas suizas del siglo XIX, donde se usaba el nombre del abuelo. Conociendo este patrón, si se encuentra un François Clemenzoz nacido en Ardon antes de 1809, es candidato fuerte a ser el padre del François nacido en 1809.</p>
 <p><strong>Búsqueda de redes familiares.</strong> Roh, Putallaz y Stalder son apellidos localizados geográficamente en el Valais romando. Si se encuentran matrimonios o documentos que crucen estos apellidos con los Clemenzoz en las mismas parroquias, pueden revelar conexiones que no están en el árbol todavía.</p>
 <p><strong>Contexto histórico.</strong> La emigración vallesana a Argentina se intensificó entre 1850 y 1890, impulsada por crisis agrícolas y el proyecto de colonización de Entre Ríos. Un prompt bien armado sobre el contexto específico del Bas-Valais en 1855–1875 puede ayudar a entender qué documentos esperarías encontrar y cuáles probablemente no sobrevivieron.</p>
 <hr>
-<h2>Hipótesis de trabajo</h2>
+<h2 id="hipótesis-de-trabajo">Hipótesis de trabajo</h2>
 <p><strong>Los tres hermanos emigraron en tiempos cercanos.</strong> François (1858), José (1856) y Étienne (1862) nacen en Riddes con pocos años de diferencia. Los tres aparecen en Argentina. Lo más probable es que hayan emigrado juntos o en oleadas del mismo contexto familiar, posiblemente con algún referente previo en la Colonia San José. Los registros de emigración del Valais podrían confirmar si viajaron con el mismo permiso o en fechas contiguas.</p>
 <p><strong>El salto de Ardon a Riddes.</strong> El padre François Clemenzoz nació en Ardon en 1809. Sus hijos nacen en Riddes, a unos 15 km. Esto sugiere una migración interna entre 1830 y 1855. Las razones pueden ser económicas (búsqueda de tierras o trabajo) o matrimoniales (Marie Louise Stalder es de Salins, también próxima a Riddes). El registro de bourgeoisie de Riddes podría confirmar cuándo la familia obtuvo derechos locales.</p>
 <p><strong>Celestina Roh y el matrimonio en Argentina.</strong> Celestina nació en Conthey en 1863 y François en Riddes en 1858. La distancia geográfica sugiere que el matrimonio no se concertó en Suiza sino que se conocieron en Argentina, posiblemente en la colonia o en Concepción del Uruguay. No hay constancia del acta matrimonial en el árbol actual.</p>

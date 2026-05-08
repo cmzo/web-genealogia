@@ -137,14 +137,25 @@ function processCallouts(html) {
   );
 }
 
+// Genera el mismo id que marked v4 producía con headerIds:true, mangle:false
+function headingId(rawText) {
+  return rawText
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
 // Función para convertir Markdown a HTML
 function markdownToHtml(markdown) {
-  // Configurar marked para que sea compatible con nuestro CSS
-  marked.setOptions({
-    breaks: true,
-    gfm: true,
-    headerIds: true,
-    mangle: false
+  marked.setOptions({ breaks: true, gfm: true });
+  marked.use({
+    renderer: {
+      heading(text, depth, raw) {
+        const id = headingId(raw);
+        return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+      }
+    }
   });
   
   // Preservar HTML personalizado antes de procesar con marked

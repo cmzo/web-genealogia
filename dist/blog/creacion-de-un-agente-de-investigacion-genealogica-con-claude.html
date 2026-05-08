@@ -62,7 +62,7 @@
 
         <section class="article-grid">
           <article class="article-content">
-            <h2>Índice</h2>
+            <h2 id="índice">Índice</h2>
 <ol>
 <li><a href="#1-la-necesidad">La necesidad: por qué un agente y no un chatbot</a></li>
 <li><a href="#2-qu%C3%A9-es-el-protocolo-mcp">Qué es el protocolo MCP</a></li>
@@ -76,7 +76,7 @@
 <li><a href="#10-ventajas-frente-a-un-chatbot-convencional">Ventajas frente a un chatbot convencional</a></li>
 </ol>
 <hr>
-<h2>1. La necesidad</h2>
+<h2 id="1-la-necesidad">1. La necesidad</h2>
 <p>La investigación genealógica tiene características que la hacen particularmente difícil de gestionar con herramientas genéricas:</p>
 <ul>
 <li><strong>Los datos están dispersos</strong>: registros en archivos locales, bases de datos en la nube, imágenes escaneadas, documentos en múltiples idiomas y formatos.</li>
@@ -86,7 +86,7 @@
 </ul>
 <p>Un chatbot convencional puede ayudar a redactar, resumir o sugerir, pero no puede <strong>leer tus archivos reales</strong>, <strong>buscar en la web en tiempo real</strong> ni <strong>guardar resultados</strong> en tu sistema. Para eso se necesita un agente.</p>
 <hr>
-<h2>2. Qué es el protocolo MCP</h2>
+<h2 id="2-qué-es-el-protocolo-mcp">2. Qué es el protocolo MCP</h2>
 <p><strong>MCP (Model Context Protocol)</strong> es un estándar abierto creado por Anthropic que define cómo los modelos de lenguaje pueden interactuar con herramientas externas de forma estandarizada.</p>
 <p>Funciona como un contrato entre tres partes:</p>
 <pre><code>┌─────────────────┐        MCP         ┌──────────────────┐
@@ -94,7 +94,7 @@
 │   (el modelo)   │   (JSON-RPC 2.0)   │  (tus herram.)   │
 └─────────────────┘                    └──────────────────┘
 </code></pre>
-<h3>Conceptos clave</h3>
+<h3 id="conceptos-clave">Conceptos clave</h3>
 <table>
 <thead>
 <tr>
@@ -119,10 +119,10 @@
 <td>El canal de comunicación; aquí usamos <code>stdio</code> (entrada/salida estándar)</td>
 </tr>
 </tbody></table>
-<h3>Por qué MCP y no una integración ad-hoc</h3>
+<h3 id="por-qué-mcp-y-no-una-integración-ad-hoc">Por qué MCP y no una integración ad-hoc</h3>
 <p>Antes de MCP, integrar herramientas con un LLM requería construir glue code específico para cada modelo. Con MCP, el servidor es <strong>agnóstico al modelo</strong>: el mismo servidor que usás con Claude Code podría conectarse a cualquier host compatible con el protocolo. Esto hace que la inversión valga más a largo plazo.</p>
 <hr>
-<h2>3. Arquitectura del agente</h2>
+<h2 id="3-arquitectura-del-agente">3. Arquitectura del agente</h2>
 <p>El agente genealógico está compuesto por tres servidores MCP que corren en paralelo cada vez que se inicia una sesión de Claude Code:</p>
 <pre><code>Claude Code (host)
 │
@@ -141,7 +141,7 @@
 </code></pre>
 <p>Cada servidor corre como un proceso separado y se comunica con Claude Code mediante <code>stdio</code> usando el protocolo MCP (JSON-RPC 2.0).</p>
 <hr>
-<h2>4. Requisitos previos</h2>
+<h2 id="4-requisitos-previos">4. Requisitos previos</h2>
 <ul>
 <li><strong>Claude Code</strong> instalado y con sesión activa</li>
 <li><strong>Node.js</strong> (para los servidores MCP oficiales via <code>npx</code>)</li>
@@ -149,15 +149,15 @@
 <li><strong>Cuenta en Tavily</strong> con API key (plan gratuito)</li>
 <li>Archivos de datos genealógicos organizados localmente</li>
 </ul>
-<h3>Instalar uv (gestor de paquetes Python moderno)</h3>
+<h3 id="instalar-uv-gestor-de-paquetes-python-moderno">Instalar uv (gestor de paquetes Python moderno)</h3>
 <pre><code class="language-bash">curl -LsSf https://astral.sh/uv/install.sh | sh
 </code></pre>
 <p>Reiniciar la terminal después de la instalación para que <code>uv</code> quede disponible en el PATH.</p>
 <hr>
-<h2>5. Paso 1: API de búsqueda web</h2>
-<h3>Por qué Tavily</h3>
+<h2 id="5-paso-1-api-de-búsqueda-web">5. Paso 1: API de búsqueda web</h2>
+<h3 id="por-qué-tavily">Por qué Tavily</h3>
 <p>Tavily es una API de búsqueda diseñada específicamente para agentes de IA. A diferencia de las APIs de búsqueda convencionales que devuelven HTML crudo o listas de URLs, Tavily devuelve <strong>contenido limpio y estructurado</strong>, listo para ser procesado por un modelo de lenguaje. Tiene un plan gratuito de 1.000 consultas mensuales, suficiente para uso personal de investigación.</p>
-<h3>Registro</h3>
+<h3 id="registro">Registro</h3>
 <ol>
 <li>Ir a <code>https://tavily.com</code> y crear una cuenta (no requiere tarjeta de crédito en el plan gratuito).</li>
 <li>Dentro del dashboard, copiar la <strong>API Key</strong> generada (comienza con <code>tvly-...</code>).</li>
@@ -167,58 +167,58 @@
 <p>⚠️ Si la key queda expuesta accidentalmente, revocarla de inmediato desde el dashboard de Tavily y generar una nueva.</p>
 </blockquote>
 <hr>
-<h2>6. Paso 2: Servidores MCP base</h2>
+<h2 id="6-paso-2-servidores-mcp-base">6. Paso 2: Servidores MCP base</h2>
 <p>Los servidores base son paquetes npm oficiales que se registran en Claude Code con el comando <code>claude mcp add</code>.</p>
-<h3>Sintaxis general</h3>
+<h3 id="sintaxis-general">Sintaxis general</h3>
 <pre><code class="language-bash">claude mcp add --scope user &lt;nombre&gt; [opciones] -- &lt;comando&gt; [args...]
 </code></pre>
 <ul>
 <li><code>--scope user</code>: el servidor queda disponible en <strong>todas</strong> las sesiones de Claude Code, no solo en un proyecto.</li>
 <li>El <code>--</code> separa las opciones del comando del servidor.</li>
 </ul>
-<h3>Servidor de búsqueda web (Tavily)</h3>
+<h3 id="servidor-de-búsqueda-web-tavily">Servidor de búsqueda web (Tavily)</h3>
 <pre><code class="language-bash">claude mcp add --scope user tavily -e TAVILY_API_KEY=TU_KEY -- npx -y tavily-mcp@0.2.19
 </code></pre>
 <blockquote>
 <p>Nota de sintaxis: el nombre del servidor (<code>tavily</code>) debe ir <strong>antes</strong> de las opciones <code>-e</code>, de lo contrario el parser lo interpreta como un valor de la variable de entorno.</p>
 </blockquote>
-<h3>Servidor de acceso a archivos (Filesystem)</h3>
+<h3 id="servidor-de-acceso-a-archivos-filesystem">Servidor de acceso a archivos (Filesystem)</h3>
 <pre><code class="language-bash">claude mcp add --scope user filesystem -- npx -y @modelcontextprotocol/server-filesystem /ruta/a/datos
 </code></pre>
 <p>Si alguna ruta contiene espacios (como carpetas de iCloud en macOS), conviene crear un symlink sin espacios:</p>
 <pre><code class="language-bash">ln -s &quot;/ruta/con espacios/Carpeta&quot; ~/carpeta-sin-espacios
 </code></pre>
 <p>Y usar el symlink en el comando <code>mcp add</code>.</p>
-<h3>Verificar los servidores</h3>
+<h3 id="verificar-los-servidores">Verificar los servidores</h3>
 <pre><code class="language-bash">claude mcp list
 </code></pre>
 <p>Todos los servidores deben mostrar <code>✓ Connected</code>. Un <code>✗ Failed to connect</code> indica problema con el comando, la versión del paquete o las rutas.</p>
 <hr>
-<h2>7. Paso 3: Servidor MCP personalizado</h2>
+<h2 id="7-paso-3-servidor-mcp-personalizado">7. Paso 3: Servidor MCP personalizado</h2>
 <p>El servidor personalizado es el núcleo del agente. Está escrito en Python usando el SDK oficial de MCP y expone herramientas específicas del dominio genealógico.</p>
-<h3>Estructura del proyecto</h3>
+<h3 id="estructura-del-proyecto">Estructura del proyecto</h3>
 <pre><code>genealogy-agent/
 ├── server.py          ← Servidor MCP principal
 └── requirements.txt   ← Dependencias (mcp[cli])
 </code></pre>
-<h3>Dependencias inline con uv</h3>
+<h3 id="dependencias-inline-con-uv">Dependencias inline con uv</h3>
 <p>Para evitar gestionar entornos virtuales manualmente, el script usa la sintaxis de dependencias inline de <code>uv</code>:</p>
 <pre><code class="language-python"># /// script
 # dependencies = [&quot;mcp[cli]&quot;]
 # ///
 </code></pre>
 <p>Con esta declaración, <code>uv run server.py</code> instala automáticamente las dependencias la primera vez que se ejecuta, sin necesidad de <code>pip install</code> ni <code>venv</code>.</p>
-<h3>Herramientas expuestas</h3>
+<h3 id="herramientas-expuestas">Herramientas expuestas</h3>
 <p>El servidor implementa cinco herramientas:</p>
-<h4><code>buscar_persona(nombre: str)</code></h4>
+<h4 id="buscarpersonanombre-str"><code>buscar_persona(nombre: str)</code></h4>
 <p>Busca en el árbol por nombre parcial (case-insensitive). Devuelve ID, generación, rama, fechas y estado de verificación.</p>
-<h4><code>obtener_persona(person_id: str)</code></h4>
+<h4 id="obtenerpersonapersonid-str"><code>obtener_persona(person_id: str)</code></h4>
 <p>Devuelve la ficha completa de una persona: datos del árbol principal, matrimonios con fecha y lugar, hijos, padre/madre y datos del archivo (biografía, fuentes, tags).</p>
-<h4><code>listar_personas(rama?, generacion?)</code></h4>
+<h4 id="listarpersonasrama-generacion"><code>listar_personas(rama?, generacion?)</code></h4>
 <p>Lista todas las personas con filtros opcionales. Útil para tener una visión panorámica antes de una sesión de investigación.</p>
-<h4><code>listar_documentos(subcarpeta?)</code></h4>
+<h4 id="listardocumentossubcarpeta"><code>listar_documentos(subcarpeta?)</code></h4>
 <p>Recorre la carpeta de documentos e imágenes y lista todos los archivos disponibles, incluyendo registros escaneados, PDFs y fotografías.</p>
-<h4><code>crear_archivo_investigacion(persona_nombre, persona_id, lineas_investigacion, tareas_todo, notas?)</code></h4>
+<h4 id="creararchivoinvestigacionpersonanombre-personaid-lineasinvestigacion-tareastodo-notas"><code>crear_archivo_investigacion(persona_nombre, persona_id, lineas_investigacion, tareas_todo, notas?)</code></h4>
 <p>Genera un archivo Markdown estructurado con:</p>
 <ul>
 <li>Contexto de la persona</li>
@@ -227,7 +227,7 @@
 <li>Secciones vacías para fuentes consultadas y hallazgos</li>
 </ul>
 <p>El archivo se guarda automáticamente en la carpeta de documentos con el nombre <code>investigacion-&lt;slug&gt;.md</code>.</p>
-<h3>Implementación con FastMCP</h3>
+<h3 id="implementación-con-fastmcp">Implementación con FastMCP</h3>
 <p>El servidor usa <code>FastMCP</code>, la API de alto nivel del SDK que permite declarar herramientas como funciones Python decoradas:</p>
 <pre><code class="language-python">from mcp.server.fastmcp import FastMCP
 
@@ -242,13 +242,13 @@ if __name__ == &quot;__main__&quot;:
     mcp.run()
 </code></pre>
 <p>El decorador <code>@mcp.tool()</code> registra automáticamente la función, usa el docstring como descripción para el modelo, e infiere el esquema de parámetros desde los type hints de Python.</p>
-<h3>Registro en Claude Code</h3>
+<h3 id="registro-en-claude-code">Registro en Claude Code</h3>
 <pre><code class="language-bash">claude mcp add --scope user genealogy-agent -- uv run /ruta/al/servidor/server.py
 </code></pre>
 <hr>
-<h2>8. Paso 4: Contexto del agente</h2>
+<h2 id="8-paso-4-contexto-del-agente">8. Paso 4: Contexto del agente</h2>
 <p>Un agente con herramientas pero sin contexto es como un experto que no sabe para qué lo contrataron. El archivo <code>CLAUDE.md</code> en la raíz del proyecto genealógico cumple esa función: le dice al modelo <strong>cómo comportarse</strong> en este dominio específico.</p>
-<h3>Qué incluye el CLAUDE.md del agente</h3>
+<h3 id="qué-incluye-el-claudemd-del-agente">Qué incluye el CLAUDE.md del agente</h3>
 <ul>
 <li><strong>Descripción del rol</strong>: investigador genealógico especializado en la familia</li>
 <li><strong>Inventario de herramientas</strong>: qué hace cada tool y cuándo usarla</li>
@@ -265,37 +265,37 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 <p>Este archivo se carga automáticamente cuando Claude Code se abre en ese directorio.</p>
 <hr>
-<h2>9. Cómo usar el agente</h2>
-<h3>Activación</h3>
+<h2 id="9-cómo-usar-el-agente">9. Cómo usar el agente</h2>
+<h3 id="activación">Activación</h3>
 <p>Abrir Claude Code en el directorio del proyecto genealógico. Los tres servidores MCP se inicializan automáticamente en cada sesión.</p>
-<h3>Ejemplos de uso</h3>
-<h4>Consulta sobre una persona</h4>
+<h3 id="ejemplos-de-uso">Ejemplos de uso</h3>
+<h4 id="consulta-sobre-una-persona">Consulta sobre una persona</h4>
 <blockquote>
 <p><em>&quot;¿Qué información tenemos sobre [nombre]? Consultá el árbol y el archivo.&quot;</em></p>
 </blockquote>
 <p>El agente invocará <code>buscar_persona</code> y luego <code>obtener_persona</code>, devolviendo una ficha consolidada con todos los datos disponibles.</p>
-<h4>Verificación de datos con la web</h4>
+<h4 id="verificación-de-datos-con-la-web">Verificación de datos con la web</h4>
 <blockquote>
 <p><em>&quot;Verificá la fecha de nacimiento de [nombre] en fuentes online.&quot;</em></p>
 </blockquote>
 <p>El agente usará Tavily para buscar en FamilySearch, Ancestry y archivos civiles relevantes, citando las fuentes encontradas.</p>
-<h4>Creación de archivo de investigación</h4>
+<h4 id="creación-de-archivo-de-investigación">Creación de archivo de investigación</h4>
 <blockquote>
 <p><em>&quot;Creame un archivo de investigación para [nombre] con las líneas de trabajo principales.&quot;</em></p>
 </blockquote>
 <p>El agente obtendrá los datos del árbol, formulará líneas de investigación según los datos faltantes o sin verificar, generará tareas ToDo específicas y guardará el archivo Markdown en la carpeta de documentos.</p>
-<h4>Exploración del material disponible</h4>
+<h4 id="exploración-del-material-disponible">Exploración del material disponible</h4>
 <blockquote>
 <p><em>&quot;¿Qué registros escaneados tenemos de la rama [X]?&quot;</em></p>
 </blockquote>
 <p>El agente usará <code>listar_documentos</code> para mostrar el inventario de archivos disponibles.</p>
-<h4>Sesión de investigación guiada</h4>
+<h4 id="sesión-de-investigación-guiada">Sesión de investigación guiada</h4>
 <blockquote>
 <p><em>&quot;Quiero trabajar en la investigación de [nombre]. Mostrá todo lo que sabemos, qué está sin verificar y qué deberíamos buscar primero.&quot;</em></p>
 </blockquote>
 <p>Esta consulta más abierta combina todas las herramientas: árbol local → documentos disponibles → búsqueda web → archivo de investigación.</p>
 <hr>
-<h2>10. Ventajas frente a un chatbot convencional</h2>
+<h2 id="10-ventajas-frente-a-un-chatbot-convencional">10. Ventajas frente a un chatbot convencional</h2>
 <table>
 <thead>
 <tr>
@@ -345,7 +345,7 @@ if __name__ == &quot;__main__&quot;:
 <td>Los archivos se guardan directamente donde los necesitás.</td>
 </tr>
 </tbody></table>
-<h3>El argumento de fondo</h3>
+<h3 id="el-argumento-de-fondo">El argumento de fondo</h3>
 <p>Un chatbot convencional es excelente para tareas de <strong>conocimiento general</strong>: explicar conceptos, redactar textos, ayudar a interpretar un documento que vos le mostrás. Pero la investigación genealógica es fundamentalmente un trabajo con <strong>datos específicos, locales y acumulativos</strong>.</p>
 <p>La diferencia clave es que el agente con MCP <strong>actúa en tu entorno real</strong>: lee los archivos que vos tenés, escribe en las carpetas que vos usás, busca en la web y te devuelve resultados verificables. No simula tener contexto, lo tiene.</p>
 <p>Con el tiempo, a medida que se generan más archivos de investigación y se actualizan los datos del árbol, el agente se vuelve progresivamente más útil porque trabaja siempre con la versión más reciente de tus datos, sin que tengas que pegar nada en un chat.</p>
