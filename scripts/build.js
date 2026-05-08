@@ -84,6 +84,59 @@ function extractFrontMatter(content) {
   return { metadata, content: match[2] };
 }
 
+// ── Callout helpers ───────────────────────────────────────────────────────────
+
+function calloutDefaultLabel(type) {
+  const labels = {
+    note: 'Nota', info: 'Información', tip: 'Consejo', hint: 'Pista',
+    important: 'Importante', warning: 'Advertencia', caution: 'Precaución',
+    attention: 'Atención', danger: 'Peligro', error: 'Error', bug: 'Error',
+    success: 'Éxito', check: 'Verificado', done: 'Completado',
+    question: 'Pregunta', faq: 'Pregunta', help: 'Ayuda',
+    quote: 'Cita', cite: 'Cita', example: 'Ejemplo',
+    abstract: 'Resumen', summary: 'Resumen', tldr: 'Resumen',
+    failure: 'Fallo', fail: 'Fallo', missing: 'Faltante',
+  };
+  return labels[type] || type.charAt(0).toUpperCase() + type.slice(1);
+}
+
+function calloutIcon(type) {
+  const icons = {
+    note: 'ℹ', info: 'ℹ', tip: '✦', hint: '✦', important: '★',
+    warning: '▲', caution: '▲', attention: '▲',
+    danger: '✕', error: '✕', bug: '✕',
+    success: '✓', check: '✓', done: '✓',
+    question: '?', faq: '?', help: '?',
+    quote: '"', cite: '"', example: '◆',
+    abstract: '≡', summary: '≡', tldr: '≡',
+    failure: '✕', fail: '✕', missing: '✕',
+  };
+  return icons[type] || '·';
+}
+
+function processCallouts(html) {
+  return html.replace(
+    /<blockquote>\n<p>\[!([A-Za-z_]+)\]([^\n<]*)([\s\S]*?)<\/blockquote>/g,
+    (match, type, titleRest, bodyRest) => {
+      const t = type.toLowerCase();
+      const title = titleRest.trim() || calloutDefaultLabel(t);
+      let body = bodyRest;
+      if (body.startsWith('\n')) {
+        body = body.substring(1).replace(/^([^<]*)<\/p>/, (_, content) =>
+          content.trim() ? `<p>${content.trim()}</p>` : ''
+        );
+      } else {
+        body = body.replace(/^<\/p>/, '').trim();
+      }
+      body = body.trim();
+      return `<div class="callout callout--${t}">
+  <div class="callout-title"><span class="callout-icon">${calloutIcon(t)}</span><span>${title}</span></div>
+  ${body ? `<div class="callout-body">${body}</div>` : ''}
+</div>`;
+    }
+  );
+}
+
 // Función para convertir Markdown a HTML
 function markdownToHtml(markdown) {
   // Configurar marked para que sea compatible con nuestro CSS
@@ -114,18 +167,14 @@ function markdownToHtml(markdown) {
     return `![${altText}](../../assets/images/posts/${filename})`;
   });
   
+  // Highlights de Obsidian: ==texto== → <mark>texto</mark>
+  markdown = markdown.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+
   // Procesar el markdown actualizado
   let html = marked(markdown);
 
-  // Convertir callouts [!NOTE] a formato más legible
-  html = html.replace(/\[!NOTE\]/g, '<strong>Nota:</strong>');
-  html = html.replace(/\[!WARNING\]/g, '<strong>Advertencia:</strong>');
-  html = html.replace(/\[!TIP\]/g, '<strong>Consejo:</strong>');
-  html = html.replace(/\[!IMPORTANT\]/g, '<strong>Importante:</strong>');
-  
-  // Convertir blockquotes para que usen nuestro estilo con más espaciado
-  html = html.replace(/<blockquote>/g, '<blockquote style="margin: 48px 0 32px 0; padding: 24px; background: rgba(248, 250, 252, 0.8); border-left: 4px solid #3b82f6; border-radius: 8px;"><p>');
-  html = html.replace(/<\/blockquote>/g, '</p></blockquote>');
+  // Procesar callouts de Obsidian
+  html = processCallouts(html);
   
   // Mejorar el estilo de las imágenes y corregir rutas
   html = html.replace(
