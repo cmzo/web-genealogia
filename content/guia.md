@@ -1,54 +1,65 @@
-## Pantallas recomendadas
+## 🗂️ Qué hay en este sitio
 
-Este sitio está optimizado para **tablet y computadora**. En celular el árbol genealógico puede verse reducido y la navegación con teclado no aplica.
+Un archivo genealógico de la familia Clemenzo, originaria de ==Ardon, cantón de Valais, Suiza==. Incluye un árbol interactivo, un archivo de fotos y documentos, y artículos de investigación sobre su emigración a Argentina a fines del siglo XIX.
 
-## Árbol genealógico
+---
 
-El árbol centra la vista en una persona y muestra hasta tres generaciones hacia arriba y una hacia abajo.
+## 🌳 Árbol genealógico
 
-**Navegar:**
+La vista se centra en una persona y muestra su familia en todas las direcciones: padres, abuelos, bisabuelos, cónyuge e hijos. Hacé click en cualquier tarjeta para recentrar desde ahí — el árbol se reconstruye automáticamente.
 
-- Click en cualquier tarjeta → recentra el árbol en esa persona
-- El árbol se reconstruye automáticamente desde el nuevo punto de foco
+### Buscar y navegar
 
-**Panel lateral:**
+Escribí un nombre en el campo de búsqueda de la barra superior. Navegá los resultados con ↑ ↓ y confirmá con **Enter**.
 
-Al hacer click en una tarjeta se abre un panel con información completa. Tiene tres pestañas:
+Para hacer zoom: `Ctrl + scroll` sobre el árbol, o los botones `+` `−` en la barra.
 
-- *Persona* — datos biográficos, padres, matrimonios e hijos
-- *Investigación* — notas de investigación en formato libre
-- *Archivos* — fotos y documentos asociados
-
-Hacer click en cualquier nombre del panel navega a esa persona.
-
-**Búsqueda:**
-
-El campo de búsqueda en la barra superior filtra por nombre mientras escribís. Navegá los resultados con ↑ ↓ y confirmá con **Enter**.
-
-**Teclado:**
+### Teclado
 
 | Tecla | Acción |
-|-------|--------|
+|---|---|
 | ↑ | Ir al padre |
 | ↓ | Ir al primer hijo |
 | ← | Ciclar entre hermanos |
 | → | Ir al cónyuge |
-| Enter / Espacio | Abrir panel |
+| Enter / Espacio | Abrir panel de detalle |
 | Escape | Cerrar panel |
 
-**Zoom:**
+### Panel de detalle
 
-- `Ctrl + scroll` sobre el árbol
-- Botones `+` y `−` en la barra superior
+Al hacer click en una tarjeta se abre el panel lateral. Tiene tres pestañas:
 
-## Archivo familiar
+- **Persona** — datos biográficos, padres, matrimonios e hijos
+- **Investigación** — notas en formato libre con fuentes y preguntas abiertas
+- **Archivos** — fotos y documentos asociados a esa persona
 
-Tabla con todas las personas y sus archivos multimedia.
+Cualquier nombre dentro del panel es un link: hacé click y el árbol navega ahí.
 
-- **Búsqueda** por nombre en la barra superior
-- **Filtros** por rama familiar o país de origen con las pills
-- Click en cualquier fila → abre el detalle completo con fotos, documentos y datos de familia
+> [!TIP] La pestaña Investigación es la más rica
+> Muchas personas tienen notas con contexto histórico, documentos encontrados y pistas sin resolver. Vale la pena explorarla.
 
-## Blog de investigación
+> [!WARNING] Mejor en tablet o computadora
+> En celular el árbol puede verse reducido y la navegación con teclado no aplica.
 
-Artículos sobre hallazgos, documentos y avances. Cada entrada tiene contexto histórico y fuentes.
+---
+
+## 📁 Archivo familiar
+
+Tabla con todas las personas del árbol y sus archivos multimedia. Usá la barra superior para buscar por nombre, o filtrá por ==rama familiar== y ==país de origen== con las pills de filtro.
+
+Click en una fila → se abre el detalle completo con fotos, documentos, datos biográficos y familia directa.
+
+---
+
+## 📝 Blog de investigación
+
+Artículos sobre hallazgos, documentos encontrados y contexto histórico. Cada entrada documenta el proceso y cita sus fuentes.
+
+---
+
+## 🔎 Sobre los datos
+
+Los datos son un ==trabajo en progreso==. Algunas fechas son aproximadas — se muestran con `~`. Las fuentes están documentadas persona a persona en el árbol y en los artículos del blog.
+
+> [!NOTE] ¿Tenés información sobre alguien del árbol?
+> Si encontrás un error, tenés documentos o sabés algo que no está registrado, escribime desde la página de [Contacto](contacto.html). Toda colaboración suma.

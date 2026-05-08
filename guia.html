@@ -92,6 +92,33 @@
       padding: 1px 5px;
       border-radius: 2px;
     }
+
+    .guia-content h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    .guia-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0;
+    }
+
+    .guia-content mark {
+      background: #fef08a;
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+
+    .guia-content a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -151,11 +178,32 @@
   <script src="./assets/js/path-config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
   <script>
+    function _calloutLabel(t) {
+      return ({note:'Nota',info:'Información',tip:'Consejo',hint:'Pista',important:'Importante',warning:'Advertencia',caution:'Precaución',danger:'Peligro',error:'Error',success:'Éxito',quote:'Cita',example:'Ejemplo'})[t] || t.charAt(0).toUpperCase() + t.slice(1);
+    }
+    function _calloutIcon(t) {
+      return ({note:'ℹ',info:'ℹ',tip:'✦',hint:'✦',important:'★',warning:'▲',caution:'▲',danger:'✕',error:'✕',success:'✓',quote:'"',example:'◆'})[t] || '·';
+    }
+    function processCallouts(html) {
+      return html.replace(/<blockquote>\n<p>\[!([A-Za-z_]+)\]([^\n<]*)([\s\S]*?)<\/blockquote>/g, (m, type, titleRest, bodyRest) => {
+        const t = type.toLowerCase();
+        const title = titleRest.trim() || _calloutLabel(t);
+        let body = bodyRest;
+        if (body.startsWith('\n')) body = body.substring(1).replace(/^([^<]*)<\/p>/, (_, c) => c.trim() ? `<p>${c.trim()}</p>` : '');
+        else body = body.replace(/^<\/p>/, '').trim();
+        body = body.trim();
+        return `<div class="callout callout--${t}"><div class="callout-title"><span class="callout-icon">${_calloutIcon(t)}</span><span>${title}</span></div>${body ? `<div class="callout-body">${body}</div>` : ''}</div>`;
+      });
+    }
+
     const url = window.getContentPath?.('guia.md') ?? './content/guia.md';
     fetch(url)
       .then(r => r.text())
       .then(md => {
-        document.querySelector('.guia-content').innerHTML = marked.parse(md);
+        md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+        let html = marked.parse(md);
+        html = processCallouts(html);
+        document.querySelector('.guia-content').innerHTML = html;
       })
       .catch(() => {
         document.querySelector('.guia-content').innerHTML = '<p>No se pudo cargar la guía.</p>';
