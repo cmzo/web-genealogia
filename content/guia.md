@@ -1,6 +1,6 @@
 ## 🗂️ Qué hay en este sitio
 
-Un archivo genealógico de la familia Clemenzo, originaria de ==Ardon, cantón de Valais, Suiza==. Incluye un árbol interactivo, un archivo de fotos y documentos, y artículos de investigación sobre su emigración a Argentina a fines del siglo XIX.
+Un archivo genealógico de la familia Clemenzo, originaria de Ardon, cantón de Valais, Suiza. Incluye un árbol interactivo, un archivo de fotos y documentos, y artículos de investigación sobre su emigración a Argentina a fines del siglo XIX.
 
 ---
 
@@ -45,7 +45,7 @@ Cualquier nombre dentro del panel es un link: hacé click y el árbol navega ah�
 
 ## 📁 Archivo familiar
 
-Tabla con todas las personas del árbol y sus archivos multimedia. Usá la barra superior para buscar por nombre, o filtrá por ==rama familiar== y ==país de origen== con las pills de filtro.
+Tabla con todas las personas del árbol y sus archivos multimedia. Usá la barra superior para buscar por nombre, o filtrá por rama familiar y país de origen con las pills de filtro.
 
 Click en una fila → se abre el detalle completo con fotos, documentos, datos biográficos y familia directa.
 
@@ -59,7 +59,7 @@ Artículos sobre hallazgos, documentos encontrados y contexto histórico. Cada e
 
 ## 🔎 Sobre los datos
 
-Los datos son un ==trabajo en progreso==. Algunas fechas son aproximadas — se muestran con `~`. Las fuentes están documentadas persona a persona en el árbol y en los artículos del blog.
+Los datos son un trabajo en progreso. Algunas fechas son aproximadas — se muestran con `~`. Las fuentes están documentadas persona a persona en el árbol y en los artículos del blog.
 
 > [!NOTE] ¿Tenés información sobre alguien del árbol?
 > Si encontrás un error, tenés documentos o sabés algo que no está registrado, escribime desde la página de [Contacto](contacto.html). Toda colaboración suma.
