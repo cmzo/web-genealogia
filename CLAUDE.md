@@ -23,26 +23,28 @@ npm run delete-post <slug>   # removes .md, dist/blog/<slug>.html, and JSON entr
 npm run optimize-personas    # reads assets/images/personas/, outputs WebP
 
 # Árbol genealógico — gestión de personas (requiere uv)
-uv run scripts/gestionar_arbol.py           # menú interactivo (recomendado)
+uv run scripts/gestionar_web.py           # menú interactivo (recomendado)
 
 # Comandos directos:
-uv run scripts/gestionar_arbol.py list
-uv run scripts/gestionar_arbol.py show <id>
-uv run scripts/gestionar_arbol.py add
-uv run scripts/gestionar_arbol.py edit <id>
-uv run scripts/gestionar_arbol.py delete <id>
+uv run scripts/gestionar_web.py list
+uv run scripts/gestionar_web.py show <id>
+uv run scripts/gestionar_web.py add
+uv run scripts/gestionar_web.py edit <id>
+uv run scripts/gestionar_web.py delete <id>
 
-uv run scripts/gestionar_arbol.py list-marriages
-uv run scripts/gestionar_arbol.py add-marriage
-uv run scripts/gestionar_arbol.py edit-marriage <id>
-uv run scripts/gestionar_arbol.py delete-marriage <id>
+uv run scripts/gestionar_web.py list-marriages
+uv run scripts/gestionar_web.py add-marriage
+uv run scripts/gestionar_web.py edit-marriage <id>
+uv run scripts/gestionar_web.py delete-marriage <id>
 
-uv run scripts/gestionar_arbol.py list-media [<persona_id>]
-uv run scripts/gestionar_arbol.py add-media <persona_id>
-uv run scripts/gestionar_arbol.py add-media-bulk <persona_id>
-uv run scripts/gestionar_arbol.py delete-media <media_id>
+uv run scripts/gestionar_web.py list-media [<persona_id>]
+uv run scripts/gestionar_web.py add-media <persona_id>
+uv run scripts/gestionar_web.py add-media-bulk <persona_id>
+uv run scripts/gestionar_web.py delete-media <media_id>
 
-uv run scripts/gestionar_arbol.py list-unregistered  # fotos en disco sin entrada en DB
+uv run scripts/gestionar_web.py list-unregistered  # fotos en disco sin entrada en DB
+
+uv run scripts/gestionar_web.py create-post        # crear nuevo post interactivo
 
 # Regenerar arbol.json manualmente (sin hacer build completo)
 uv run scripts/export_arbol.py

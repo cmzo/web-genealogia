@@ -4,20 +4,25 @@
 # dependencies = ["rich", "questionary"]
 # ///
 """
-Gestor del árbol genealógico.
+Gestor del sitio genealógico: árbol, media y blog.
 
-  uv run scripts/gestionar_arbol.py            → menú interactivo
-  uv run scripts/gestionar_arbol.py list        → comando directo
+  uv run scripts/gestionar_web.py               → menú interactivo
+  uv run scripts/gestionar_web.py list          → comando directo
+  uv run scripts/gestionar_web.py create-post   → nuevo post
 """
 
 import os
 import re
+import shutil
 import sqlite3
 import subprocess
 import sys
+import unicodedata
+from datetime import date as _date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(ROOT, 'data', 'arbol.db')
+DB_PATH   = os.path.join(ROOT, 'data', 'arbol.db')
+POSTS_DIR = os.path.join(ROOT, 'content', 'posts')
 EXPORT_SCRIPT = os.path.join(ROOT, 'scripts', 'export_arbol.py')
 
 try:
@@ -837,6 +842,87 @@ def cmd_delete_media(args=None):
     offer_export()
 
 
+# ── blog ──────────────────────────────────────────────────────────────────────
+
+def _slugify(text):
+    text = unicodedata.normalize('NFD', text)
+    text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s-]', '', text)
+    text = re.sub(r'\s+', '-', text.strip())
+    return re.sub(r'-+', '-', text)
+
+
+def _existing_categories():
+    cats = set()
+    if os.path.exists(POSTS_DIR):
+        for f in os.listdir(POSTS_DIR):
+            if f.endswith('.md'):
+                try:
+                    content = open(os.path.join(POSTS_DIR, f), encoding='utf-8').read()
+                    m = re.search(r'^category:\s*["\']?([^"\'\n]+)["\']?', content, re.MULTILINE)
+                    if m:
+                        cats.add(m.group(1).strip())
+                except Exception:
+                    pass
+    return sorted(cats) or ['investigación', 'árbol', 'documentos', 'historia']
+
+
+def cmd_create_post(_args=None):
+    console.print('\n[bold]Crear post[/bold]\n')
+
+    title = qtext('Título')
+    if not title:
+        console.print('[red]✗[/red] El título es obligatorio.'); return
+
+    kicker      = qtext('Kicker  (subtítulo corto sobre el título)')
+    description = qtext('Descripción  (para cards y SEO)')
+
+    cats     = _existing_categories()
+    category = _ask(questionary.autocomplete('Categoría', choices=cats,
+                    default=cats[0], style=STYLE)) or ''
+
+    tags = qtext('Tags  (separados por coma, ej: valais, emigración)')
+
+    featured = qselect('¿Destacado en el inicio?', [
+        questionary.Choice('No', False),
+        questionary.Choice('Sí', True),
+    ], default=False)
+
+    suggested_slug = _slugify(title)
+    slug = qtext('Slug  (URL del post)', suggested_slug).strip() or suggested_slug
+
+    os.makedirs(POSTS_DIR, exist_ok=True)
+    file_path = os.path.join(POSTS_DIR, f'{slug}.md')
+    if os.path.exists(file_path):
+        console.print(f'[red]✗[/red] Ya existe [bold]{slug}.md[/bold]'); return
+
+    today = _date.today().isoformat()
+
+    fm = ['---', f'title: "{title}"']
+    if kicker:      fm.append(f'kicker: "{kicker}"')
+    if description: fm.append(f'description: "{description}"')
+    if category:    fm.append(f'category: "{category}"')
+    fm.append(f'date: "{today}"')
+    if tags:        fm.append(f'tags: "{tags}"')
+    if featured:    fm.append('featured: true')
+    fm.append(f'slug: "{slug}"')
+    fm += ['---', '', '## Introducción', '', '', '## Primera sección', '', '']
+
+    with open(file_path, 'w', encoding='utf-8') as fp:
+        fp.write('\n'.join(fm))
+
+    console.print(f'\n[green]✓[/green] [bold]content/posts/{slug}.md[/bold]  [dim]· {today}[/dim]')
+
+    if qconfirm('¿Abrir en el editor?', default=True):
+        if shutil.which('code'):
+            subprocess.run(['code', file_path])
+        elif os.environ.get('EDITOR'):
+            subprocess.run([os.environ['EDITOR'], file_path])
+        else:
+            subprocess.run(['open', file_path])
+
+
 # ── menús interactivos ────────────────────────────────────────────────────────
 
 def _submenu_personas():
@@ -963,7 +1049,7 @@ def cmd_deploy(_args=None):
 
 def interactive():
     console.print(Panel(
-        '[bold]Árbol Genealógico[/bold]\n[dim]Gestor de personas, matrimonios y media[/dim]',
+        '[bold]Clemenzo — Gestor del sitio[/bold]\n[dim]Árbol genealógico · Media · Blog[/dim]',
         expand=False, border_style='dim',
     ))
     console.print()
@@ -972,6 +1058,9 @@ def interactive():
             questionary.Choice('Personas',             'personas'),
             questionary.Choice('Matrimonios',          'matrimonios'),
             questionary.Choice('Media',                'media'),
+            SEP,
+            questionary.Choice('Crear post',           'create_post'),
+            SEP,
             questionary.Choice('Optimizar imágenes',   'optimize'),
             questionary.Choice('Deploy',               'deploy'),
             SEP,
@@ -979,28 +1068,29 @@ def interactive():
         ]))
         if not choice or choice == 'salir': break
         {'personas': _submenu_personas, 'matrimonios': _submenu_matrimonios,
-         'media': _submenu_media, 'optimize': cmd_optimize,
-         'deploy': cmd_deploy}[choice]()
+         'media': _submenu_media, 'create_post': cmd_create_post,
+         'optimize': cmd_optimize, 'deploy': cmd_deploy}[choice]()
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
 
 COMMANDS = {
-    'list':             cmd_list,
-    'show':             cmd_show,
-    'add':              cmd_add,
-    'edit':             cmd_edit,
-    'delete':           cmd_delete,
-    'list-marriages':   cmd_list_marriages,
-    'add-marriage':     cmd_add_marriage,
-    'edit-marriage':    cmd_edit_marriage,
-    'delete-marriage':  cmd_delete_marriage,
-    'list-media':       cmd_list_media,
-    'add-media':        cmd_add_media,
-    'delete-media':     cmd_delete_media,
-    'add-media-bulk':   cmd_add_media_bulk,
+    'list':              cmd_list,
+    'show':              cmd_show,
+    'add':               cmd_add,
+    'edit':              cmd_edit,
+    'delete':            cmd_delete,
+    'list-marriages':    cmd_list_marriages,
+    'add-marriage':      cmd_add_marriage,
+    'edit-marriage':     cmd_edit_marriage,
+    'delete-marriage':   cmd_delete_marriage,
+    'list-media':        cmd_list_media,
+    'add-media':         cmd_add_media,
+    'delete-media':      cmd_delete_media,
+    'add-media-bulk':    cmd_add_media_bulk,
     'list-unregistered': cmd_list_unregistered,
-    'optimize':         cmd_optimize,
+    'optimize':          cmd_optimize,
+    'create-post':       cmd_create_post,
 }
 
 
