@@ -2455,6 +2455,26 @@
       ]
     },
     {
+      "id": "p92",
+      "name": "Jean-François Battnier",
+      "gender": "M",
+      "birth_date": "1817-01-01",
+      "birth_place": "Saint-Jean-d'Aulph, Haute-Savoie, Francia",
+      "death_date": "",
+      "death_place": null,
+      "father_id": null,
+      "mother_id": null,
+      "branch": "Battnier",
+      "generation": 6,
+      "sort_order": 0,
+      "vivo": "no",
+      "photo_url": null,
+      "notes": null,
+      "sources": null,
+      "status": "incompleto",
+      "media": []
+    },
+    {
       "id": "p72",
       "name": "Joseph Florentine Clemenzo",
       "gender": "M",
@@ -2606,6 +2626,16 @@
       "sources": null,
       "status": "sin_datos",
       "media": [
+        {
+          "id": "med103",
+          "type": "photo",
+          "url": "assets/images/personas/p75-matrimonio.webp",
+          "caption": "Acta de matrimonio",
+          "date": "1840-11-23",
+          "source_label": "Registro parroquial de Vallorsine",
+          "group_label": "",
+          "group_order": 0
+        },
         {
           "id": "med73",
           "type": "photo",
@@ -2975,6 +3005,15 @@
       "spouse2_id": "p86",
       "marriage_date": "1915-06-26",
       "marriage_place": null,
+      "divorce_date": null,
+      "notes": null
+    },
+    {
+      "id": "m24",
+      "spouse1_id": "p75",
+      "spouse2_id": "p92",
+      "marriage_date": "1840-11-23",
+      "marriage_place": "Vallorcine, Francia",
       "divorce_date": null,
       "notes": null
     },
