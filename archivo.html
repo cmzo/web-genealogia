@@ -156,7 +156,7 @@
       if (activeFilters.branch)  result = result.filter(p => p.branch === activeFilters.branch);
       if (activeFilters.country) result = result.filter(p => getCountry(p) === activeFilters.country);
       if (q) result = result.filter(p =>
-        p.name.toLowerCase().includes(q) || (p.branch || '').toLowerCase().includes(q));
+        p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q) || (p.branch || '').toLowerCase().includes(q));
       renderTable(result);
     }
 

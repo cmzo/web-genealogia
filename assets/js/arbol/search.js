@@ -24,7 +24,7 @@ export function initSearch() {
     items.forEach((p, i) => {
       const li = document.createElement('li');
       li.className = 'search-suggestion-item';
-      li.textContent = p.name;
+      li.innerHTML = `<span>${p.name}</span><span class="search-suggestion-id">${p.id}</span>`;
       li.dataset.id = p.id;
       li.addEventListener('mousedown', e => {
         e.preventDefault(); // evita que el input pierda foco antes del click
@@ -61,7 +61,7 @@ export function initSearch() {
     const q = input.value.trim().toLowerCase();
     if (!q) { _hide(); return; }
     const matches = personas
-      .filter(p => p.name.toLowerCase().includes(q))
+      .filter(p => p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q))
       .slice(0, MAX_RESULTS);
     _show(matches);
   });
