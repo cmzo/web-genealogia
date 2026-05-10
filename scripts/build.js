@@ -358,35 +358,39 @@ function markdownToHtml(markdown) {
     display: none;
     position: fixed;
     z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.9);
     cursor: pointer;
   " onclick="closeLightbox()">
+    <button onclick="event.stopPropagation(); closeLightbox();" style="
+      position: absolute;
+      top: 16px; right: 16px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: white;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      line-height: 1;
+    ">✕</button>
     <div style="
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      max-width: 95%;
-      max-height: 95%;
+      max-width: 95%; max-height: 90%;
       text-align: center;
     ">
       <img id="lightbox-img" style="
         max-width: 100%;
-        max-height: 100vh;
+        max-height: 90vh;
         object-fit: contain;
         border-radius: 8px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       ">
-      <div style="
-        color: white;
-        margin-top: 15px;
-        font-size: 14px;
-        opacity: 0.8;
-      ">Click para cerrar</div>
     </div>
   </div>
 
@@ -394,19 +398,14 @@ function markdownToHtml(markdown) {
     function openLightbox(src) {
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').style.display = 'block';
-      document.body.style.overflow = 'hidden';
     }
-    
+
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
-      document.body.style.overflow = 'auto';
     }
-    
-    // Cerrar con ESC
+
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
+      if (e.key === 'Escape') closeLightbox();
     });
   </script>
   `;
