@@ -17,9 +17,13 @@ Documento de investigación sobre la rama Clemenzo con burguesía en Riddes y do
 
 ## Censos
 
+![](../../assets/images/posts/header_censo.png)
+
 ### 1802 — Riddes
 
 **Fuente:** [Censo de Riddes 1802 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Riddes)
+
+![Censo de Riddes 1802](../../assets/images/posts/censo_1802_riddes.png)
 
 No se encontraron entradas Clemenzo/Clemenzoz en Riddes en este año. Consistente con la hipótesis de que la familia vivía en Ardon en 1802 y migró a Riddes en algún momento entre 1802 y 1829.
 
