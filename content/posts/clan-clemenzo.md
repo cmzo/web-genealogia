@@ -796,4 +796,4 @@ La confirmación documental completa requiere el acta de bautismo de Jean Joseph
 
 ---
 
-*Última actualización: 2026-05-14*
+*Última actualización: 2026-05-10*
