@@ -17,7 +17,7 @@
 
 /* ─── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; }
+html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
 
 /* ─── BASE ────────────────────────────────────────────── */
 body {
@@ -166,9 +166,11 @@ body {
 /* ─── MAIN CONTENT ────────────────────────────────────── */
 .site-main {
   min-width: 0;
+  max-width: 100%;
   background: var(--surface);
   padding: 48px 56px 80px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* ─── FOOTER ──────────────────────────────────────────── */

@@ -13,7 +13,7 @@ slug: "clan-clemenzo"
 
 Investigar la propia familia es encontrar personas detrás de los nombres escritos en un padrón. Este documento reúne lo que los archivos del cantón del Valais cuentan sobre los Clemenzo de Ardon y Riddes: quiénes eran, dónde vivían, cuándo se movieron, y qué relación tienen con la rama que llegó a Argentina hace 150 años.
 
-Las fuentes principales son los censos digitalizados del Valais (1802–1870), el *Armorial Valaisan* en dos ediciones, y las memorias del oficial napoleónico Hyacinthe Clemenzo. El árbol genealógico de Jean-Yves —descendiente actual de la misma familia, contactado en 2026— fue clave para confirmar las hipótesis sobre el siglo XIX.
+Las fuentes principales son los censos digitalizados del Valais (1802–1870), el *Armorial Valaisan* en dos ediciones, y las memorias del oficial napoleónico Hyacinthe Clemenzo. El árbol genealógico de Jean-Yves —descendiente de Jean-Baptiste Clemenzo que vive en Suiza— fue clave para confirmar las hipótesis sobre el siglo XIX.
 
 ---
 
@@ -502,7 +502,7 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 
 ---
 
-## Las memorias de Hyacinthe Clemenzo (1781–1862)
+## Las memorias de Hyacinthe Clemenzo
 
 Hyacinthe Clemenzo dejó escritas sus memorias: *Souvenirs d'un officier valaisan au service de France*, publicadas en las *Annales valaisannes* de 1957. Son una fuente excepcional: registran su filiación exacta y permiten contextualizar a los Clemenzo de Ardon en las generaciones anteriores a los censos.
 
@@ -532,9 +532,9 @@ Las memorias fueron preservadas por **M. Raymond de Laroche-Clémenso** (Lyon), 
 
 ## El árbol de Jean-Yves
 
-Jean-Yves es un descendiente actual de **Jean-Baptiste Clemenzo \*1774**, el hermano (probable) de Jean Joseph p57. Contactado en 2026 luego de los hallazgos en el censo de Ardon 1802, compartió su árbol genealógico y realizamos intercambios sobre los documentos encontrados.
+Jean-Yves es un descendiente de **Jean-Baptiste Clemenzo \*1774**, el hermano (probable) de Jean Joseph p57. Vive en Suiza y compartió su árbol genealógico, que fue clave para confirmar las hipótesis sobre el siglo XIX.
 
-Su árbol parte de Jean-Baptiste \*1774 como primera generación documentada, con datos de nacimiento y fallecimiento respaldados por el *Armorial Valaisan* de 1946. El árbol llega hasta la actualidad en Francia.
+Su árbol parte de Jean-Baptiste \*1774 como primera generación documentada, con datos de nacimiento y fallecimiento respaldados por el *Armorial Valaisan* de 1946.
 
 **Lo que el árbol de Jean-Yves aportó:**
 
@@ -589,7 +589,7 @@ flowchart TD
     JJC["Jean Joseph Clemenzo · p57\n✶~1780 · Ardon\n× Catherine Cerisier (p58, ✶1786)"]
     FR2["François Clemenzoz · p36\n✶9 Abril 1809 · Ardon/Riddes\n† entre 1871 y 1874"]
     FRA["François / Francisco Clemenzo · p26\n✶31 Mayo 1858 · Riddes, Valais, Suiza\n† 17 Abril 1928 · Concepción del Uruguay\n⟶ emigró a Argentina ~1880"]
-    FEL["Félix Clemenzo · p18\n✶? · Villa Elisa, Entre Ríos\n† 24 Junio 1943 · Buenos Aires\n× Isabel María Queipo"]
+    FEL["Félix Clemenzo · p18\n✶1894 · Villa Elisa, Entre Ríos\n† 24 Junio 1943 · Buenos Aires\n× Isabel María Queipo"]
     FER["Félix Ricardo Clemenzo · p10\n✶13 Agosto 1926 · Bolívar, Buenos Aires"]
     DAN["Daniel Jorge Clemenzo · p7\n✶7 Diciembre 1959 · Buenos Aires"]
     MAT["Matías Damián Clemenzo · p3\n✶7 Agosto 1986 · Buenos Aires"]
@@ -630,7 +630,7 @@ flowchart TD
     JYB["Jean Baptiste\n✶1822"]
     VER["Véronique\n✶1828"]
     FRD["Frédéric\n✶1832"]
-    JY["→ rama Jean-Yves\n(Francia · descendientes actuales)"]
+    JY["→ rama Jean-Yves\n(Suiza · descendientes actuales)"]
 
     JF["Joseph Florentin · p72\n✶~1810\nChirurgien à Naples"]
     JCL["Jean Claude · p73\n✶~1812"]
