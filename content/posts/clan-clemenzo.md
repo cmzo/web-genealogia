@@ -211,7 +211,7 @@ Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine 
 **Cota:** CH AEV, DI 3090, 1846, Conthey, Ardon
 
 ![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_1.png)
-![Censo de Ardon 1846]](../../assets/images/posts/censo_1856_ardon_2.png)
+![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_2.png)
 
 Todas las entradas tienen origen declarado **D'Ardon**.
 
