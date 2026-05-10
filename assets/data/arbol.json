@@ -2734,6 +2734,26 @@
           "source_label": "AEV, DI 3090, Riddes 1829",
           "group_label": "Censos",
           "group_order": 2
+        },
+        {
+          "id": "med122",
+          "type": "document",
+          "url": "assets/images/personas/p74-1846-riddes.webp",
+          "caption": "Censo de Riddes 1846 — l.46: Clemenzo Jeanne, fille majeure. Riddes.",
+          "date": "1846",
+          "source_label": "AEV, DI 3090, Riddes 1846",
+          "group_label": "Censos",
+          "group_order": 3
+        },
+        {
+          "id": "med124",
+          "type": "document",
+          "url": "assets/images/personas/p58-p74-1850-riddes.webp",
+          "caption": "Censo de Riddes 1850 — l.59: Clemenzoz Jeanne *1820. Vive con su madre viuda (p58).",
+          "date": "1850",
+          "source_label": "AEV, DI 3090, Riddes 1850",
+          "group_label": "Censos",
+          "group_order": 4
         }
       ]
     },
@@ -2958,6 +2978,16 @@
           "source_label": "AEV, DI 3090, Riddes 1829",
           "group_label": "Censos",
           "group_order": 2
+        },
+        {
+          "id": "med120",
+          "type": "document",
+          "url": "assets/images/personas/p57-p58-1846-riddes.webp",
+          "caption": "Censo de Riddes 1846 — l.44: Clemenzo Joseph (p57). l.45: Catherine sa femme (p58).",
+          "date": "1846",
+          "source_label": "AEV, DI 3090, Riddes 1846",
+          "group_label": "Censos",
+          "group_order": 3
         }
       ]
     },
@@ -3019,6 +3049,26 @@
           "source_label": "AEV, DI 3090, Riddes 1829",
           "group_label": "Censos",
           "group_order": 2
+        },
+        {
+          "id": "med121",
+          "type": "document",
+          "url": "assets/images/personas/p57-p58-1846-riddes.webp",
+          "caption": "Censo de Riddes 1846 — l.45: Catherine, sa femme de Joseph (p57). Figura como Clemenzo Catherine.",
+          "date": "1846",
+          "source_label": "AEV, DI 3090, Riddes 1846",
+          "group_label": "Censos",
+          "group_order": 3
+        },
+        {
+          "id": "med123",
+          "type": "document",
+          "url": "assets/images/personas/p58-p74-1850-riddes.webp",
+          "caption": "Censo de Riddes 1850 — l.58: Clemenzoz Cerisier Marie Catherine *1786. Aparece sin marido: p57 falleció entre 1846 y 1850.",
+          "date": "1850",
+          "source_label": "AEV, DI 3090, Riddes 1850",
+          "group_label": "Censos",
+          "group_order": 4
         }
       ]
     }

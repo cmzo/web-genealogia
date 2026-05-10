@@ -279,13 +279,16 @@ La 4me Clase registra "les ressortissans de la commune absens du pays" — burgu
 **Fuente:** [Censo de Riddes 1846 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1846_Martigny_Riddes)
 **Cota:** CH AEV, DI 3090, 1846, Martigny, Riddes — Páginas 1 y 2
 
+![Censo de Riddes 1846 — líneas 44–45](../../assets/images/posts/censo_1846_riddes_1.png)
+![Censo de Riddes 1846 — línea 46](../../assets/images/posts/censo_1846_riddes_2.png)
+
 | Línea | Apellido  | Nombre    | Origen | Observación   |
 |-------|-----------|-----------|--------|---------------|
 | 44    | Clemenzoz | Joseph    | Riddes |               |
-| 45    | Clemenzoz | Catherine | Riddes |               |
+| 45    | Clemenzoz | Catherine | Riddes | sa femme      |
 | 46    | Clemenzo  | Jeanne    | Riddes | fille majeure |
 
-Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine (l.45) = p58 Marie Catherine Cerisier. Jeanne (l.46) = hija adulta soltera, la misma que aparece en el censo de Riddes 1850.
+Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine (l.45) = p58 Marie Catherine Cerisier, anotada como **"sa femme"**. Jeanne (l.46) = hija adulta soltera, la misma que aparece en el censo de Riddes 1850.
 
 **Nota sobre el nombre de p57:** Figura aquí como **"Joseph"** (sin "Jean"). El documento S 77 (1851) también lo llama "Joseph Clemenzoz de Riddes". El árbol lo registra como "Jean Joseph" — el censo de 1829 confirma el nombre completo. Probable que en 1846 el censista lo anotó abreviado. Confirmar en registros parroquiales.
 
@@ -400,6 +403,8 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 
 **Fuente:** [Censo de Riddes 1850 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1850_Martigny_Riddes)
 **Cota:** CH AEV, DI 3090, 1850, Martigny, Riddes — Página 3
+
+![Censo de Riddes 1850 — líneas 58–60](../../assets/images/posts/censo_1850_riddes.png)
 
 | Línea | Apellido           | Nombre          | Año nac. | Sexo     | Profesión   |
 |-------|--------------------|-----------------|----------|----------|-------------|
