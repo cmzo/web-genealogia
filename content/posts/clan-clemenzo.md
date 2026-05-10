@@ -32,6 +32,15 @@ Las fuentes principales son los censos digitalizados del Valais (1802–1870), e
 
 ---
 
+> [!INFO] Clases en los censos del Valais
+> Los censos valaisanos del siglo XIX dividían a la población en clases según la relación entre el burgués y la commune:
+>
+> - **1ère Classe** — Burgueses *residentes* en la commune. Aparecen con domicilio declarado en la misma localidad.
+> - **2ème Classe** — Burgueses de la commune *domiciliados en otra commune*. Aparecen con "Lieu du domicile" distinto y una nota del tipo *"porté à [otra commune]"* indicando doble registro.
+> - **4me Classe** — Burgueses *ausentes del cantón* ("ressortissans absens du pays"). Figura su profesión y el lugar donde residen fuera del Valais.
+>
+> Los Clemenzo aparecen en 2ème Classe en el censo de Riddes 1829 (burgueses de Riddes domiciliados en Ardon), y pasan a 1ère Classe en 1837, cuando la familia se establece definitivamente en Riddes. Joseph Florentin (p72) figura en la 4me Classe de Riddes 1837 y 1846 como cirujano en Nápoles.
+
 ## Censos
 
 ### 1802 — Riddes
