@@ -15,11 +15,13 @@ Investigar la propia familia es encontrar personas detrás de los nombres escrit
 
 Las fuentes principales son los censos digitalizados del Valais (1802–1870), el *Armorial Valaisan* en dos ediciones, y las memorias del oficial napoleónico Hyacinthe Clemenzo. El árbol genealógico de Jean-Yves —descendiente de Jean-Baptiste Clemenzo que vive en Suiza— fue clave para confirmar las hipótesis sobre el siglo XIX.
 
+Los personajes centrales de esta historia son **Baptiste Clemenzo** (el patriarca más antiguo identificado, n.~1745–1755), sus hijos **Jean Baptiste** (~1774) y **Jean Joseph (p57, ~1780)**, y la descendencia de este último que migró de Ardon a Riddes y, finalmente, a Argentina. Jean-Yves y el autor de este documento descienden de esos dos hermanos — son primos lejanos con un ancestro común que vivió en Ardon hace más de 270 años.
+
 ---
 
 ![](../../assets/images/posts/header_censo.png)
 
-**En este documento:** 
+**En este documento:**
 - [Censos](#censos)
 - [Armorial](#armorial-valaisan)
 - [Memorias de Hyacinthe](#las-memorias-de-hyacinthe-clemenzo)
@@ -51,6 +53,9 @@ Las fuentes principales son los censos digitalizados del Valais (1802–1870), e
 
 No se encontraron entradas Clemenzo/Clemenzoz en Riddes en este año. Consistente con la hipótesis de que la familia vivía en Ardon en 1802 y migró a Riddes en algún momento entre 1802 y 1829.
 
+> [!NOTE] 🔎 Una Cerisier en Riddes — posible familia de p58
+> La entrada de la familia Cerisier en este censo es de interés indirecto. La hija "cattherine fls." tendría ~16 años si nació en 1786, coincidiendo exactamente con el año de nacimiento de **Marie Catherine Cerisier (p58)**, futura esposa de Jean Joseph Clemenzo y abuela de la rama argentina. → Ver H10
+
 **Entrada Cerisier — de interés para p58:**
 
 | Apellido  | Nombre      | Rol      |
@@ -81,6 +86,9 @@ Total: 4 personas. La **hija "cattherine fls."** tendría ~16 años si nació en
 
 ![Censo de 1802 en Ardon](../../assets/images/posts/censo_1802_ardon.png)
 
+> [!NOTE] 🔎 Primera aparición de los Clemenzo en los censos del Valais
+> Este es el registro nominativo más antiguo disponible de la familia. Los Clemenzo están en Ardon desde 1481 (Armorial Valaisan), pero estos son los primeros datos concretos de individuos: Baptiste Clemenzo, su esposa Marie, y sus dos hijos. Uno de esos hijos, Jean Joseph, se convertirá en el abuelo directo de la rama argentina.
+
 Primera aparición de los Clemenzo en los registros censales. Se identifican dos hogares consecutivos relacionados:
 
 **Hogar 1 — Baptiste Clemenzo (4 personas):**
@@ -89,14 +97,15 @@ Primera aparición de los Clemenzo en los registros censales. Se identifican dos
 
 | Nombre            | Rol              |
 |-------------------|------------------|
-| Baptiste Clemenzo | Père (jefe)      |
-| Marie [?]         | sa fame (esposa) |
-| Jean Baptiste     | fils             |
-| Jean Joseph       | fils             |
+| Baptiste Clemenzo | Père (jefe) — patriarca del clan, n.~1745–1755 |
+| Marie [?]         | sa fame (esposa) — apellido ilegible |
+| Jean Baptiste     | fils — el hermano que permanecerá en Ardon |
+| Jean Joseph       | fils — quien migrará a Riddes y será abuelo de la rama argentina |
 
 El "4" al margen indica recuento total: Baptiste + Marie + Jean Baptiste + Jean Joseph = 4 personas. El apellido de la esposa Marie no es legible con certeza.
 
-**Jean Joseph** (fils de Baptiste, Ardon 1802) coincide con **p57 Jean Joseph Clemenzo** (n.1780), quien aparece 27 años después como jefe de hogar en Riddes 1829. → Ver H9.
+> [!NOTE] 🔎 Jean Joseph en 1802: el vínculo con la línea argentina
+> **Jean Joseph** (fils de Baptiste, Ardon 1802) tiene aquí ~22 años. Es el mismo **Jean Joseph Clemenzo (p57, n.~1780)** que aparecerá 27 años después como jefe de hogar en Riddes 1829 — ya casado con Catherine Cerisier, con seis hijos, y establecido en la commune donde nacerá Francisco el emigrante. → Ver H9
 
 **Hogar 2 — Jaque [R?] / Anne Marie Clemenzo (7 personas):**
 
@@ -146,22 +155,24 @@ Los Clemenzo de las líneas 21–34 pertenecen a la **Segunda Clase**: son burgu
 
 **Correspondencia con el árbol:**
 
-| Línea | ID   | Nombre en árbol               | Nota                                                                                      |
-|-------|------|-------------------------------|-------------------------------------------------------------------------------------------|
-| 21    | p57  | Jean Joseph Clemenzo          | Nombre completo confirmado. En el censo de 1846 figura abreviado como "Joseph".           |
-| 22    | p58  | Catherine Fortuneé "Pirisier" | Apellido real confirmado: **Cerisier**. Nombre completo probable: **Marie Catherine Fortunée Cerisier**. "Pirisier" en el árbol es error de transcripción. |
-| 23    | p72  | Joseph Florentine Clemenzo    | En 1829 era **estudiante en Viena, Austria**. Dato extraordinario para un hijo de laboureur. |
-| 24    | p36  | François Clemenzoz            | ✓                                                                                         |
-| 25    | p73  | Joseph Marie Clemenzo         | ✓                                                                                         |
-| 26    | p74  | Janne Marie Clemenzo          | ✓                                                                                         |
-| 27    | p76  | Marie Elizabet Clemenzo       | ✓                                                                                         |
-| 28    | p75  | Marie Henriette Clemenzo      | ✓                                                                                         |
+| Línea | ID   | Nombre en árbol               | Quién es en la historia familiar |
+|-------|------|-------------------------------|----------------------------------|
+| 21    | p57  | Jean Joseph Clemenzo          | **Abuelo de la rama argentina.** Nombre completo confirmado. En el censo de 1846 figura abreviado como "Joseph". |
+| 22    | p58  | Catherine Fortuneé "Pirisier" | **Abuela de la rama argentina.** Apellido real confirmado: **Cerisier**. "Pirisier" en el árbol es error de transcripción. |
+| 23    | p72  | Joseph Florentine Clemenzo    | Hijo mayor — en 1829 era **estudiante en Viena, Austria**. Dato extraordinario para un hijo de laboureur. |
+| 24    | p36  | François Clemenzoz            | **Padre de Francisco el emigrante.** ✓ |
+| 25    | p73  | Joseph Marie Clemenzo         | ✓ |
+| 26    | p74  | Janne Marie Clemenzo          | ✓ |
+| 27    | p76  | Marie Elizabet Clemenzo       | ✓ |
+| 28    | p75  | Marie Henriette Clemenzo      | ✓ — casará en 1840 con Jean-François Battnier y se instalará en Saxon |
 
 **Notas:**
 - **"Jeanne" (n.1820) no aparece.** Si hubiera nacido en 1820, tendría 9 años y debería estar listada. Su ausencia confirma que nació *después* de 1829 — el año "1820" del censo de 1850 es un error del censista.
 - La columna "Observations" con *"porté à ardon"* indica doble registro: burgueses de Riddes con residencia y también registro en Ardon.
 
 #### Familia Jean Claude (líneas 29–34) — inmediatamente debajo
+
+Listado consecutivo a la familia de Jean Joseph, lo que sugiere parentesco. **Jean Claude Clemenzo (n.1773, notario)** es un personaje clave: su educación y posición social lo distinguen del resto del clan. → H6
 
 | Línea | Apellido     | Nombre           | Año nac. | Profesión  | Facultades | Domicilio | Observaciones              |
 |-------|--------------|------------------|----------|------------|------------|-----------|----------------------------|
@@ -186,6 +197,8 @@ Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la
 
 #### Jean Joseph Clemenzo n.1761 — rama diferente
 
+Un **segundo Jean Joseph Clemenzo** (n.1761), Conseiller. No es p57. Las entradas con apellido **Balleij** (l.23) y **Loye** (l.25) son yerno y nieto respectivamente — fruto de matrimonios de hijas de este Jean Joseph. Rama colateral (ver H9).
+
 | Línea | Apellido | Nombre | Año nac. | Profesión |
 |---|---|---|---|---|
 | 21 | Clemenzo | Jean Joseph | **1761** | Conseiller |
@@ -197,9 +210,9 @@ Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la
 | 27 | Clemenzo | Joseph Marie | 1793 | — |
 | 28 | Clemenzo | Joseph Marie fils | 1819 | — |
 
-Un **segundo Jean Joseph Clemenzo** (n.1761), Conseiller. No es p57. Las entradas con apellido **Balleij** (l.23, François Joseph *1791) y **Loye** (l.25, François Joseph *1820) son miembros del hogar con apellido propio — probablemente yerno y nieto respectivamente, fruto de matrimonios de hijas de este Jean Joseph. La estructura es más extendida de lo que indicaba el censo de Riddes. Rama colateral (ver H9).
-
 #### Familia Jean Joseph n.1780 — continuación en siguiente página
+
+Este es el hogar de **Jean Joseph Clemenzo (p57, abuelo de la rama argentina)**, con su esposa Catherine y sus hijos. El apellido de Catherine aparece aquí como **"Pirisier"** — escritura ambigua que el acta de matrimonio de p75 (1840) y el censo de Riddes 1850 confirman definitivamente como **Cerisier**.
 
 | Apellido | Nombre | Año nac. | Profesión | Observaciones |
 |---|---|---|---|---|
@@ -211,38 +224,35 @@ Un **segundo Jean Joseph Clemenzo** (n.1761), Conseiller. No es p57. Las entrada
 | Clemenzo | Enrijette | 1815 | — | — |
 | Clemenzo | Marie Helizabet | 1821 | — | — |
 
-Es la continuación del hogar de Jean Joseph n.1780 (p57). El apellido de Catherine aparece como **"Pirisier"** en este censo — escritura ambigua que en el siglo XIX se leyó como P, pero el acta de matrimonio de p75 (1840) y el censo de Riddes 1850 confirman definitivamente que es **Cerisier**.
-
 **Discrepancia Joseph Florentin:** el censo de Riddes 1829 lo ubica en "Vienne (Autriche)" mientras este Ardon 1829 dice "Fribourg en Breisgau" (Freiburg im Breisgau, Alemania, ciudad universitaria desde 1457). Posibles explicaciones: los dos censos no son exactamente simultáneos y él se movió entre instituciones, o uno de los censistas cometió un error. Freiburg im Breisgau es mucho más accesible desde el Valais que Viena.
 
 #### Jean Joseph y Jean Baptiste en Ardon 1829 — primer registro conjunto
 
 ![Censo de Ardon 1829 — 1ère Classe: Jean Joseph, Jean Baptiste y Baptiste Père](../../assets/images/posts/censo_1829_ardon_1clase_2.png)
 
-Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo aparecen juntos** en el mismo documento. En 1802 solo se ve el hogar de Baptiste con ambos hijos nombrados; acá, en 1829, cada uno aparece ya como adulto con su propia situación, y su padre sigue vivo.
+Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo aparecen juntos** en el mismo documento. En 1802 solo se ve el hogar de Baptiste con ambos hijos nombrados; acá, en 1829, cada uno aparece ya como adulto con su propia situación — y su padre sigue vivo, en el hogar de su hijo Jean Baptiste.
+
+> [!WARNING] ⚠️ El año "1765" de Baptiste es casi seguramente un error del censista
+> La línea 13 registra a "Jn. Baptiste Père" con año de nacimiento **1765**. Si fuera correcto, habría tenido a Jean Baptiste (~1774) con 9 años y a Jean Joseph (~1780) con 15 — biológicamente imposible. Lo más probable es que el censista leyera mal **"1745"** en cursiva valaisana. El censo de 1846 lo muestra como anciano de ~90 años conviviendo con su hijo, lo que es coherente con un nacimiento entre 1745 y 1755.
 
 | Entrada | Apellido | Nombre | Año nac. | Notas |
 |---|---|---|---|---|
-| — | Clemenzo | **Jean Joseph** | **1780** | p57 — en 1829 vive en Riddes (2da Clase allá) |
-| — | Clemenzo + Galliard | **Jean Baptiste** | ~1774 | Residente en Ardon, con familia propia |
-| — | Galliard | anne Marguerite | 1797 | Esposa de Jean Baptiste (apellido: **Galliard**) |
+| — | Clemenzo | **Jean Joseph** | **1780** | p57 — abuelo de la rama argentina; en 1829 es burgués de Riddes domiciliado en Ardon |
+| — | Clemenzo + Galliard | **Jean Baptiste** | ~1774 | El hermano que permaneció en Ardon; ancestro de Jean-Yves |
+| — | Galliard | anne Marguerite | 1797 | Esposa de Jean Baptiste (apellido: **Galliard**, variante de Gaillard) |
 | 9 | Clemenzo | Jean Baptiste | 1822 | Fils ✓ árbol Jean-Yves |
-| 10 | Clemenzo | Jn. Jos. Danielle | 1825 | Fils — **no figura en árbol de Jean-Yves** |
+| 10 | Clemenzo | Jn. Jos. Danielle | 1825 | Fils — **no figura en árbol de Jean-Yves** (probablemente murió joven) |
 | 11 | Clemenzo | Marie helizabet | 1820 | Fille ✓ árbol Jean-Yves |
 | 12 | Clemenzo | Marie Veronique | 1828 | Fille ✓ árbol Jean-Yves |
-| 13 | Clemenzo | **Jn. Baptiste Père** | **1765** | Baptiste Clemenzo del censo 1802 — ver nota |
+| 13 | Clemenzo | **Jn. Baptiste Père** | **1765** | Baptiste Clemenzo del censo 1802 — ver callout arriba |
 
-**Notas:**
-
-- **Apellido de la esposa de Jean Baptiste: Galliard.** Jean-Yves llama a la esposa "Gaillard" — es la misma familia (variante ortográfica). El nombre "anne Marguerite" vs "Anne-Marie" en el árbol de Jean-Yves es una discrepancia menor, posiblemente nombre compuesto.
-
-- **Hijo "Jn. Jos. Danielle" \*1825** no figura en el árbol de Jean-Yves — probablemente falleció joven.
-
-- **Línea 13 — "Jn. Baptiste Père / 1765":** es Baptiste Clemenzo del censo de 1802, que en 1829 vive con su hijo Jean Baptiste. El año 1765 presenta una dificultad aritmética: si sus hijos nacieron en ~1774 y ~1780, los habría tenido con 9 y 15 años — imposible. Lo más probable es que el censista transcribiera mal el año (quizás "1745" leído como "1765" en cursiva valaisana), lo que daría una edad de ~29 años al nacer Jean Baptiste. En el censo de 1846 "Baptiste" aparece como anciano conviviente (~90 años), lo que es coherente con haber nacido en torno a 1745–1755. La confirmación requiere acta de bautismo en Ardon.
+**Nota:** El apellido de la esposa de Jean Baptiste es **Galliard** (Jean-Yves lo llama "Gaillard" — variante ortográfica de la misma familia). El nombre "anne Marguerite" vs "Anne-Marie" en el árbol de Jean-Yves es una discrepancia menor, posiblemente nombre compuesto.
 
 #### Jean Claude Clemenzo — rama notarial (Ardon 1829)
 
 ![Censo de Ardon 1829 — 1ère Classe, familia Jean Claude Clemenzo](../../assets/images/posts/censo_1829_ardon_1clase_3.png)
+
+Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) — diferencia de un año, error habitual de transcripción. El censo de Ardon revela una **sexta hija** (l.20, n.1810) no registrada en el de Riddes.
 
 | Línea | Apellido | Nombre | Año nac. | Profesión |
 |---|---|---|---|---|
@@ -254,8 +264,6 @@ Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo apar
 | 19 | Clemenzo | Marie Therese | 1814 | — |
 | 20 | Clemenzo | [nombre ilegible] | 1810 | — |
 
-Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) — diferencia de un año, error habitual de transcripción. El censo de Ardon revela una **sexta hija** (l.20, n.1810) no registrada en el de Riddes, probablemente casada (de ahí el símbolo diferente).
-
 ---
 
 ### 1837 — Riddes
@@ -263,9 +271,10 @@ Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) —
 **Fuente:** Censo de Riddes 1837 — Archivo del Estado del Valais (1ère Classe: residentes)
 **Cota:** CH AEV, DI 3090, 1837, Martigny, Riddes — Pág. 46
 
-![Censo de Riddes 1837](../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp)
+> [!NOTE] Los Clemenzo se instalan definitivamente en Riddes
+> En 1829 figuraban en 2ème Classe — burgueses de Riddes, pero viviendo en Ardon. En 1837 pasan a 1ère Classe: la familia se estableció en Riddes entre ambas fechas. Es el momento en que **Jean Joseph (p57)** y su familia arraigan en la commune donde nacerá **François (p26)**, el futuro emigrante.
 
-Primer censo que registra a los Clemenzo en **Primera Clase** (burgueses residentes de Riddes). En 1829 figuraban en Segunda Clase como domiciliados en Ardon; este cambio confirma que la familia se estableció definitivamente en Riddes en algún momento entre 1829 y 1837.
+![Censo de Riddes 1837](../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp)
 
 | Apellido  | Nombre          | Sexo | Rol       | ID  |
 |-----------|-----------------|------|-----------|-----|
@@ -292,7 +301,8 @@ La 4me Clase registra "les ressortissans de la commune absens du pays" — burgu
 |---|---|---|---|---|
 | Clémenzo | Florentin | Chirurgien | à Naples | communier + NJ— |
 
-**Joseph Florentin (p72)** figura como **cirujano** ("chirurgien") residente en **Nápoles**. La observación "communier" confirma que mantiene sus derechos de burguesía en Riddes. En 1829 era estudiante (en Viena o Freiburg); para 1837 ya había completado sus estudios de medicina y ejercía en Italia.
+> [!TIP] 🔎 Joseph Florentin: de labrador a cirujano en Nápoles
+> **Joseph Florentin (p72)**, hijo de Jean Joseph el labrador, pasó de "étudiant" en 1829 a ejercer la medicina en Italia en 1837. Una educación médica en Europa central en la primera mitad del siglo XIX era costosa y poco común para la familia de un laboureur del Valais. La observación "communier" confirma que mantiene sus derechos de burguesía en Riddes. → H6
 
 ---
 
@@ -310,7 +320,7 @@ La 4me Clase registra "les ressortissans de la commune absens du pays" — burgu
 | 45    | Clemenzoz | Catherine | Riddes | sa femme      |
 | 46    | Clemenzo  | Jeanne    | Riddes | fille majeure |
 
-Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine (l.45) = p58 Marie Catherine Cerisier, anotada como **"sa femme"**. Jeanne (l.46) = hija adulta soltera, la misma que aparece en el censo de Riddes 1850.
+Las tres entradas forman un hogar: Joseph (l.44) = **p57 Jean Joseph Clemenzo**, vivo en 1846. Catherine (l.45) = **p58 Marie Catherine Cerisier**, anotada como "sa femme". Jeanne (l.46) = hija adulta soltera, la misma que aparece en el censo de Riddes 1850.
 
 **Nota sobre el nombre de p57:** Figura aquí como **"Joseph"** (sin "Jean"). El documento S 77 (1851) también lo llama "Joseph Clemenzoz de Riddes". El árbol lo registra como "Jean Joseph" — el censo de 1829 confirma el nombre completo. Probable que en 1846 el censista lo anotó abreviado. Confirmar en registros parroquiales.
 
@@ -324,7 +334,7 @@ La misma 4me Clase del censo de febrero de 1846. Línea 7:
 |---|---|---|---|---|
 | 7 | Clemenzoz | Florentin | Chirurgien | Naples |
 
-Florentin seguía en Nápoles en 1846. Desde 1837 hasta al menos febrero de 1846 ejerció como cirujano en Italia — un período mínimo de 9 años fuera de Riddes. No hay rastro suyo en censos posteriores disponibles.
+**Joseph Florentin (p72)** seguía en Nápoles en 1846. Desde 1837 hasta al menos febrero de 1846 ejerció como cirujano en Italia — un período mínimo de 9 años fuera de Riddes. No hay rastro suyo en censos posteriores disponibles.
 
 ---
 
@@ -367,6 +377,8 @@ Todas las entradas tienen origen declarado **D'Ardon**.
 
 Los grupos se delimitan por los marcadores de rol (père/mère inician cada unidad doméstica). Las asignaciones de identidad son hipótesis, no datos confirmados. En Ardon coexistían múltiples núcleos Clemenzo, todos con el mismo apellido — la diferenciación por el nombre de la mujer es la forma más práctica de identificarlos.
 
+---
+
 **Familia François Clemenzo × Anne Catrin — líneas 92–95** *(H3)*
 
 | Línea | Nombre        | Rol               |
@@ -378,6 +390,10 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 
 *H3:* François Conseiller (l.92) es probablemente el **François-Joseph Clemenzoz d'Ardon** del documento AC Riddes D 10/40 (1854), identificado como un Clemenzoz distinto de p36. Rama colateral sin confirmar.
 
+---
+
+Más abajo, otro núcleo familiar, hipotéticamente identificado como el hermano de p36:
+
 **Familia Joseph Marie Clemenzo × Marie Josephe — líneas 96–100** *(H2)*
 
 | Línea | Nombre        | Rol   |
@@ -388,14 +404,18 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 99    | Joseph Marie  | Fils  |
 | 100   | Jenerique     | Fille |
 
-*H2:* El Joseph Marie père (l.96) tendría ~28 años en 1846, consistente con p73 Joseph Marie Clemenzo (n.1818, hermano de p36). Su familia no está en el árbol.
+*H2:* El Joseph Marie père (l.96) tendría ~28 años en 1846, consistente con **p73 Joseph Marie Clemenzo (n.1818, hermano de p36 y de Jean Joseph)**. Su familia no está en el árbol.
+
+---
+
+El grupo siguiente es el más importante del bloque: el único que puede verificarse con certeza gracias al árbol de Jean-Yves. Aquí aparece el patriarca Baptiste ya como anciano, en el hogar de su hijo:
 
 **Familia Jean Baptiste Clemenzo × Elsabeth — líneas 101–108** *(H4 — confirmado)*
 
 | Línea | Nombre        | Rol         | Identidad (árbol Jean-Yves)                    | Edad 1846 |
 |-------|---------------|-------------|------------------------------------------------|-----------|
-| 101   | Baptiste      | Père        | Baptiste Clemenzo (patriarca del censo 1802)   | ~90+      |
-| 102   | Jean Baptiste | Père        | Jean-Baptiste Clemenzo \* **1774** † 1859       | 72 ✓      |
+| 101   | Baptiste      | Père        | **Baptiste Clemenzo** — el patriarca del censo 1802, ~90 años como anciano conviviente | ~90+      |
+| 102   | Jean Baptiste | Père        | **Jean-Baptiste Clemenzo \*1774 †1859** — el hermano que permaneció en Ardon | 72 ✓      |
 | 103   | Elsabeth      | Mère        | [esposa de Jean-Baptiste — ver nota]           | —         |
 | 104   | Jean Baptiste | Fils        | Jean-Baptiste \* **1822** † 1908               | 24 ✓      |
 | 105   | Frédérich     | Fils        | Frédéric \* **1832** † 1885                    | 14 ✓      |
@@ -403,9 +423,13 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 107   | Véronique     | Fille       | Anne-Marie-**Véronique** \* **1828**           | 18 ✓      |
 | 108   | Margueritte   | Fille       | Marguerite (no figura en árbol de Jean-Yves)   | —         |
 
-**Nota:** Los datos del árbol de Jean-Yves confirman esta familia con precisión notable — cuatro hijos coinciden en nombre y edad calculada sin margen de error. L101 "Baptiste" es el patriarca del censo de 1802, que en 1846 tendría ~90 años como anciano en el hogar de su hijo. La "Elsabeth" de l.103 no coincide con "Anne-Marie Gaillard \*1797" que registra Jean-Yves como esposa de Jean-Baptiste: posible segundo matrimonio de Jean-Baptiste tras enviudar, o que "Elsabeth" sea su segundo nombre. Pendiente de aclaración con actas parroquiales de Ardon.
+**Nota:** Los datos del árbol de Jean-Yves confirman esta familia con precisión notable — cuatro hijos coinciden en nombre y edad calculada sin margen de error. La "Elsabeth" de l.103 no coincide con "Anne-Marie Gaillard \*1797" que registra Jean-Yves como esposa de Jean-Baptiste: posible segundo matrimonio de Jean-Baptiste tras enviudar, o que "Elsabeth" sea su segundo nombre. Pendiente de aclaración con actas parroquiales de Ardon.
 
 **Fuente:** Árbol genealógico de Jean-Yves (descendiente de Jean-Baptiste), basado en el *Armorial Valaisan, Sion et Zurich, 1946, p. 63*. → Ver H4 y H11.
+
+---
+
+El último grupo abre una pregunta directa sobre la línea principal hacia Argentina: ¿quién era la mujer de p36 antes de Marie Louise Stalder?
 
 **Familia François Clemenzo × Clémence — líneas 109–113** *(H1)*
 
@@ -417,7 +441,7 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 112   | Marie Josephine | Fille |
 | 113   | [ilegible]      | Fille |
 
-*H1:* François (l.109) sería **p36 François Clemenzoz** (n.1809), con ~37 años en 1846. La esposa "Clémence" no coincide con Marie Louise Stalder (p37), quien figura en el censo de 1870 como su mujer: lo más probable es que Clémence fuera una **primera esposa** que falleció entre 1846 y 1850. Ver H1 en sección Hipótesis.
+*H1:* François (l.109) sería **p36 François Clemenzoz (n.1809, padre de Francisco el emigrante)**, con ~37 años en 1846. La esposa "Clémence" no coincide con Marie Louise Stalder (p37), quien figura en el censo de 1870 como su mujer: lo más probable es que Clémence fuera una **primera esposa** que falleció entre 1846 y 1850. Ver H1 en sección Hipótesis.
 
 ---
 
@@ -434,7 +458,8 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 59    | Clemenzoz          | Jeanne          | 1820     | Femenino | Agricultora |
 | 60    | Clemenzoz          | Marie Josephine | 1844     | Femenino |             |
 
-La línea 58 usa doble apellido **Clemenzoz Cerisier** (casada + soltera), confirmando definitivamente que el apellido de p58 es **Cerisier**. Aparece sin marido: p57 falleció entre 1846 y 1850.
+> [!TIP] ✓ El apellido de p58 queda confirmado definitivamente
+> La línea 58 usa doble apellido **Clemenzoz Cerisier** — el patrón valaisano de apellido casado + apellido de soltera. Esto resuelve décadas de ambigüedad: el apellido de **Marie Catherine (p58)**, abuela de la rama argentina, no era "Pirisier" sino **Cerisier**. Su marido p57 falleció entre 1846 y 1850 — ella aparece aquí sin él, como viuda agricultora.
 
 ---
 
@@ -445,7 +470,7 @@ La línea 58 usa doble apellido **Clemenzoz Cerisier** (casada + soltera), confi
 
 ![Censo de Riddes 1870](../../assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp)
 
-Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembre al 1 de diciembre de 1870.
+Censo federal suizo: fotografía del hogar de **p36 François Clemenzoz** en la noche del 30 de noviembre al 1 de diciembre de 1870.
 
 | N° | Apellido  | Nombre          | Pos.      | Nacimiento     | E. civil  | Origen | Sexo |
 |----|-----------|-----------------|-----------|----------------|-----------|--------|------|
@@ -464,16 +489,18 @@ Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembr
 | François      | p36 | Nacimiento **9 Avril 1809** ✓ — origen Ardon ✓ |
 | Marie-Stalder | p37 | **5 Mai 1828** ✓ — coincide con el árbol |
 | [José?]       | p28 | José Clemenzo n.1856 — aquí ~14–15 años |
-| François fils | p26 | François Clemenzo n.1858 — el futuro emigrante a Argentina, aquí ~12 años |
+| François fils | p26 | **François Clemenzo (n.1858)** — el futuro emigrante a Argentina, aquí con ~12 años |
 | [Etienne?]    | p40 | Etienne Clemenzo n.1862 — ~8 años |
 | [Joséphine?]  | p77 | Joséphine Clemenzo n.1843 — ~27 años, soltera, viviendo con sus padres ✓ |
+
+> [!NOTE] 🔎 François / Francisco tiene 12 años en este censo
+> La entrada 4 es **p26 François Clemenzo (n.1858)** — el mismo que emigrará a Argentina alrededor de 1880 y fundará la rama familiar en Entre Ríos bajo el nombre **Francisco Clemenzo**. Cuando se tomó este censo vivía en Riddes con sus padres, tenía ~12 años, y el Atlántico probablemente no era más que un rumor lejano.
 
 **Notas:**
 - **p36 estaba vivo** en diciembre de 1870. El documento D 10/86 (11/01/1874) ya lo menciona en pasado — murió entre enero de 1871 y enero de 1874.
 - La presencia de **p77 Joséphine** en el hogar paterno en 1870 confirma que era hija de p36, coherente con H8.
 - El año de nacimiento de **p37 Marie Louise Stalder** aparece como **5 Mai 1828** — coincide con el árbol ✓.
 - La entrada 7 corresponde a un hijo/a adicional no identificado aún (p78 o p79 en el árbol).
-- **François (p26)** tenía ~12 años en este censo; emigraría a Argentina ~18 años después.
 
 ---
 
@@ -683,21 +710,43 @@ flowchart TD
 
 ### H1 — Familia François × Clémence (Ardon 1846) = p36 François Clemenzoz (n. 1809)
 
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis plausible | François père ~37 años en 1846; hija Marie Josephine encaja con p77 (n.1843) | Acta de defunción de Clémence (Ardon, 1846–1850); acta de matrimonio de p36 con Stalder |
+
 El François père de las líneas 109–113 (censo Ardon 1846) tendría ~37 años, coincidiendo con p36. La fille "Marie Josephine" (l.112) encaja con **p77 Joséphine Clemenzo** (nacida 1843), quien tendría 3 años en este censo. "Adolphe" sería un hijo mayor no registrado en el árbol (fallecido joven o emigrado).
 
 La dificultad: el árbol registra a **Marie Louise Stalder (p37, n.1828)** como esposa de p36, pero en el censo figura **Clémence**. Dos posibles explicaciones:
 - p36 tuvo un **primer matrimonio con una Clémence** que falleció entre 1846 y 1850. Marie Louise Stalder sería su segunda esposa, lo que explica que los hijos José (n.1856), François (n.1858) y Etienne (n.1862) nazcan muchos años después.
 - El **año 1828 de Marie Louise Stalder está errado** en el árbol.
 
+---
+
 ### H2 — Familia Joseph Marie × Marie Josephe (Ardon 1846) = p73 Joseph Marie Clemenzo (n. 1818)
 
-El Joseph Marie père (líneas 96–100) tendría ~28 años en 1846, consistente con p73 (hermano de p36). Su esposa "Marie Josephe" y sus hijos Catherine, Joseph Marie y Jenerique no están registrados en el árbol.
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis plausible | Joseph Marie père ~28 años en 1846, consistente con p73 (hermano de p36) | Acta de matrimonio en registros parroquiales de Ardon |
+
+El Joseph Marie père (líneas 96–100) tendría ~28 años en 1846, consistente con **p73 Joseph Marie Clemenzo (n.1818, hermano de p36 y Jean Joseph)**. Su esposa "Marie Josephe" y sus hijos Catherine, Joseph Marie y Jenerique no están registrados en el árbol.
+
+---
 
 ### H3 — Familia François × Anne Catrin (Ardon 1846) = François-Joseph Clemenzoz d'Ardon
 
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis tentativa | Documento AC Riddes D 10/40 (1854) identifica un "François-Joseph Clemenzoz d'Ardon" distinto de p36 | Identificación directa en registros parroquiales o notariales |
+
 El François Conseiller (líneas 92–95) es probablemente el **François-Joseph Clemenzoz d'Ardon** del documento AC Riddes D 10/40 (1854), identificado como un Clemenzoz diferente de p36. Su hijo también llamado François (l.94) sugiere dos generaciones en Ardon.
 
+---
+
 ### H4 — Familia Jean Baptiste × Elsabeth (Ardon 1846) = rama Jean-Yves ✓ CONFIRMADO
+
+| Estado | Evidencia principal | Pendiente |
+|--------|---------------------|-----------|
+| ✓ Confirmado | 4/4 hijos coinciden por nombre y edad calculada con el árbol de Jean-Yves | Identificar a "Elsabeth" (l.103): ¿segundo nombre de Anne-Marie Gaillard o segundo matrimonio? |
 
 El árbol genealógico de Jean-Yves, descendiente directo de esta rama, confirma la identidad con precisión documental:
 
@@ -712,25 +761,55 @@ El "Baptiste" de l.101 es el padre de Jean-Baptiste \*1774, es decir, el mismo *
 
 **Fuente:** Árbol de Jean-Yves, basado en el *Armorial Valaisan, Sion et Zurich, 1946, p. 63*.
 
+---
+
 ### H5 — p58 no aparece en el censo de Ardon 1846 porque vivía en Riddes ✓ CONFIRMADO
+
+| Estado | Evidencia principal | Pendiente |
+|--------|---------------------|-----------|
+| ✓ Confirmado | Aparece en Riddes 1850 (l.58) como "Clemenzoz Cerisier / Marie Catherine / 1786", sin marido | — |
 
 Confirmado por su aparición en el censo de Riddes 1850 (línea 58), donde figura como "Clemenzoz Cerisier / Marie Catherine / 1786", sin marido. Consistente con el documento S 77 (1851), que la llama "veuve de Joseph Clemenzoz de Riddes".
 
+---
+
 ### H6 — Jean Claude Clemenzo (notario, 1773) pudo haber financiado los estudios de Joseph Florentin
+
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis especulativa | Proximidad censal; diferencia de 7 años; Jean Claude era notario con recursos; Joseph Florentin estudió en Europa central como hijo de labrador | Documentación directa (carta, testamento, registro universitario) |
 
 Jean Claude Clemenzo (n.1773) aparece listado inmediatamente después del hogar de Jean Joseph (n.1780) en el censo de Riddes 1829. La diferencia de 7 años y la proximidad en el censo sugieren parentesco cercano (¿hermanos?, ¿primos?). Jean Claude era **notario** — educación superior, posición social y recursos considerables.
 
 Joseph Florentin (p72, n.1805) aparece en ese mismo censo como **étudiant en Viena, Austria** — extraordinario para un hijo de laboureur de Ardon. El costo de estudiar en Viena en 1829 superaría los medios de un agricultor. Es plausible que Jean Claude haya facilitado esa oportunidad.
 
+---
+
 ### H7 — "Jeanne" es una hija tardía de p57/p58, nacida después de 1829
+
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis sólida | Ausente en el censo de 1829 (donde debería estar si hubiera nacido en 1820); el "1820" en Riddes 1850 es error del censista | Acta de bautismo circa 1830–1833 en registros parroquiales de Riddes o Ardon |
 
 En el censo de Riddes 1850 (línea 59) aparece **Jeanne Clemenzoz** con año de nacimiento "1820". Sin embargo, el censo de 1829 lista a los 8 miembros del hogar y Jeanne no está — si hubiera nacido en 1820, tendría 9 años y debería figurar. Nació *después* de 1829, probablemente entre **1830 y 1833**. El "1820" del censo de 1850 es un error del censista. Aparece en Riddes 1846 como "fille majeure" con sus padres, y en 1850 como agricultora con su madre viuda.
 
+---
+
 ### H8 — "Marie Josephine" (1844, Riddes 1850) es p77 Joséphine Clemenzo
 
-El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia de un año, habitual en registros manuscritos. En 1850 Joséphine (~6 años) viviría con su abuela porque su madre había fallecido. Refuerza la H1: la esposa Clémence de p36 murió entre 1846 y 1850, dejando a la niña al cuidado de p58.
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis plausible | p77 Joséphine n.1843 (árbol) vs "1844" en censo — diferencia de un año, habitual; presencia en hogar paterno en 1870 confirma que es hija de p36 | Acta de bautismo de Joséphine (circa 1843–1844) |
+
+El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia de un año, habitual en registros manuscritos. En 1850 Joséphine (~6 años) viviría con su abuela **p58 Marie Catherine Cerisier** porque su madre había fallecido. Refuerza la H1: la esposa Clémence de p36 murió entre 1846 y 1850, dejando a la niña al cuidado de p58.
+
+---
 
 ### H9 — Jean Joseph fils de Baptiste (Ardon 1802) = posiblemente p57
+
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis sólida | Coincidencia de nombre + descarte por edad del otro Jean Joseph (n.1761, demasiado mayor para ser hijo en 1802) | Acta de bautismo de Jean Joseph (~1780) en Ardon, que nombre al padre |
 
 **Nivel de certeza: hipótesis por nombre + argumento de edad. No confirmada documentalmente pero sólida.**
 
@@ -743,22 +822,34 @@ La existencia de los dos Jean Joseph no debilita la hipótesis sino que la **ref
 
 | Gen. | Persona | Nacimiento (est.) | Fuente |
 |------|---------|-------------------|--------|
-| G1   | **Baptiste Clemenzo** | ~1750–1760 | Ardon 1802 |
+| G1   | **Baptiste Clemenzo** | ~1745–1755 | Ardon 1802 |
 | G2   | **Jean Joseph Clemenzo** (p57) | 1780 | Riddes 1829 (año) + Ardon 1802 (nombre, sin año) |
 | G3   | **François Clemenzoz** (p36) | 1809 | Riddes 1829 |
 | G4   | **François Clemenzo** (emigrado) | 1858 | Riddes / Argentina |
 
 Pendiente: acta de bautismo de Jean Joseph en Ardon (~1780) que mencione el nombre del padre.
 
+---
+
 ### H10 — Jacques Cerisier (Riddes 1802) = posible padre de Catherine Cerisier (p58, n.1786)
 
-La entrada del censo de Riddes 1802 muestra a **Jacques Cerisier** con su esposa **Catherine Sillio** y dos hijas, una también llamada "cattherine fls." La denominación "Cerisier — Sillio" sigue el patrón valaisano: apellido del padre × apellido de soltera de la madre. La hija Catherine tendría ~16 años en 1802 si nació en 1786, coincidiendo con p58.
+| Estado | Evidencia principal | Falta para confirmar |
+|--------|---------------------|----------------------|
+| Hipótesis plausible | "cattherine fls." en Riddes 1802 con edad ~1786, coincide con p58; patrón Cerisier × Sillio sigue convención valaisana | Acta de bautismo de Catherine Cerisier en Riddes (~1786) |
+
+La entrada del censo de Riddes 1802 muestra a **Jacques Cerisier** con su esposa **Catherine Sillio** y dos hijas, una también llamada "cattherine fls." La denominación "Cerisier — Sillio" sigue el patrón valaisano: apellido del padre × apellido de soltera de la madre. La hija Catherine tendría ~16 años en 1802 si nació en 1786, coincidiendo con **p58 Marie Catherine Cerisier (abuela de la rama argentina)**.
 
 Si la identificación es correcta:
 - **Jacques Cerisier** = padre de p58
 - **Catherine Sillio** = madre de p58
 
+---
+
 ### H11 — Baptiste Clemenzo = ancestro común de mi línea y la de Jean-Yves ✓ CONFIRMADO INFORMALMENTE
+
+| Estado | Evidencia principal | Pendiente |
+|--------|---------------------|-----------|
+| ✓ Confirmado informalmente | 4/4 hijos de Jean-Baptiste en árbol de Jean-Yves identificados en Ardon 1846; Baptiste en l.101 (1846) como anciano conviviente; censo 1802 lo nombra con ambos hijos | Confirmación formal: acta de bautismo de Jean Joseph o Jean Baptiste que nombre a Baptiste como padre |
 
 El árbol de Jean-Yves confirma que su ancestro **Jean-Baptiste Clemenzo \*1774** figura en el censo de Ardon 1846 con cuatro hijos perfectamente identificables. Su árbol parte de Gen. II (Jean-Baptiste \*1774), lo que implica que la "Gen. I" no documentada es el padre: **Baptiste Clemenzo**, el patriarca del censo de Ardon 1802.
 
@@ -770,7 +861,7 @@ Del lado de mi línea, Jean Baptiste y Jean Joseph son los dos hijos de Baptiste
 
 La confirmación documental completa requiere el acta de bautismo de Jean Joseph (~1780, Ardon) que mencione a Baptiste como padre.
 
-**Fuente:** Árbol de Jean-Yves (comunicación personal, 2026). Referencia publicada: *Armorial Valaisan, Sion et Zurich, 1946, p. 63*.
+**Fuente:** Árbol de Jean-Yves (comunicación personal). Referencia publicada: *Armorial Valaisan, Sion et Zurich, 1946, p. 63*.
 
 ---
 
