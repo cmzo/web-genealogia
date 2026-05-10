@@ -548,17 +548,37 @@ Esto confirma explícitamente que la rama **Clemenzo** tiene su burguesía en **
 
 Edición más reciente (las armas fueron adoptadas en 1977). Artículo exclusivo para la rama Clemenzo de Ardon. Menciona dos figuras históricas de interés:
 
-**Hyacinthe Clemenzo (1781–1862)**
+**Hyacinthe Clemenzo (1781–1862) — filiación confirmada por las memorias**
 
-Oficial al servicio de Francia bajo el Imperio y la Restauración. Combatió en España, Rusia, Alemania y Francia. Condecorado con la Legión de Honor. Murió en Mâcon. Redactó memorias publicadas por L. Dupont Lachenal y L. Imhoff en *Annales valaisannes*, 1957.
+Las memorias (leídas en el PDF *Souvenirs d'un officier valaisan au service de France*, Annales valaisannes 1957) revelan en nota a pie de página del Capítulo I:
 
-Fecha de nacimiento: **1781**. Jean-Baptiste Clemenzo (ancestro de Jean-Yves) nació en **1774**, y Jean-Joseph Clemenzo (p57) en **~1780**. La proximidad cronológica lo sitúa en la misma generación. Si Hyacinthe es hijo de Baptiste Clemenzo, habría partido a Francia como soldado antes del censo de 1802 (a sus ~21 años), lo que explicaría su ausencia en ese documento. Hipótesis plausible pendiente de confirmación.
+> *"Fils de **Jean-André Clemenzo (1716–1812)** et de **Marie-Marguerite Favre (1728–1813)**."*
 
-Sus memorias (*Annales valaisannes*, 1957) son una fuente primaria potencialmente valiosa: un Clemenzo de Ardon de esa generación describiendo su vida y probablemente su familia de origen.
+Hyacinthe **no es hijo de Baptiste Clemenzo** — es hijo de **Jean-André Clemenzo \*1716**, un patriarca distinto. Esto descarta la hipótesis anterior de que Hyacinthe fuera hermano de Jean-Baptiste y Jean-Joseph.
+
+Jean-André nació en **1716** y vivió hasta **1812** — estaba vivo durante el censo de 1802 (86 años). Su esposa Marie-Marguerite Favre vivió hasta **1813**. Hyacinthe, su último hijo conocido, nació en 1781 cuando Jean-André tenía 65 años — edad inusual pero documentada en familias longevas.
+
+**Nueva hipótesis (H12):** Jean-André Clemenzo \*1716 y Baptiste Clemenzo (del censo 1802) podrían ser padre e hijo:
+- Si Baptiste nació ~1745–1750, Jean-André tendría ~30 al nacer — perfectamente normal
+- Esto haría a Hyacinthe (\*1781) hermano tardío de Baptiste, y por tanto tío de Jean-Baptiste \*1774 y Jean-Joseph \*1780
+
+Esta hipótesis requiere confirmación documental. Lo que sí está establecido: Jean-André y Baptiste son dos Clemenzo de Ardon de generaciones contiguas, casi con certeza relacionados.
+
+**Otros datos biográficos de las memorias:**
+- Nació el **17 de abril de 1781** en Ardon
+- Estudió en la Abbaye de Saint-Maurice; obtuvo el diploma de notario en otoño de 1799 (el primero expedido bajo el nuevo régimen en el Valais)
+- Casó en noviembre de 1801 en Sion con la sobrina de un canónigo; hijos: **Virginie** y **Patience**
+- Se alistó en 1806 en el batallón valaisan para Napoleón; 20 años de campaña
+- Enviudó; segundo matrimonio en 1821; hijos del segundo matrimonio: **Camille y Etienne** (a quienes dedica las memorias en 1854)
+- Primo hermano de Nicolas Favre, canónigo, curé de Liddes (rama materna Favre)
+- La familia poseía un **mayen en Montot** (alpage sobre Ardon)
+- Murió el 11 de julio de 1862 en Mâcon a las 9 de la noche
+
+El avant-propos de las memorias menciona a **"M. le Colonel Frédéric Clemenzo, président d'honneur de la Société valaisanne des carabiniers"** como notable Clemenzo vivo en 1955. Las memorias fueron preservadas por **M. Raymond de Laroche-Clémenso** (Lyon), casado con una bisnieta de Hyacinthe.
 
 **Frédéric Clemenzo (1893–1980)**
 
-Diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. La cronología encaja con la descendencia de Frédéric \*1832 (hijo de Jean-Baptiste \*1774 del árbol de Jean-Yves), que habría tenido hijos hacia 1860–1880; un nieto nacido en 1893 es perfectamente plausible.
+Diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. Mencionado como "Colonel Clemenzo" en el Avant-propos de las memorias (1955). Puede ser descendiente de Jean-André vía Hyacinthe, o de Jean-Baptiste \*1774 vía Frédéric \*1832 — pendiente de verificación.
 
 **Armas de la familia Clemenzo (adoptadas 1977):**
 *"Au I d'or à une clef à double panneton de gueules, posée en barre; au II d'azur à une ancre d'argent posée aussi en barre."*
@@ -584,7 +604,7 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 - [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con Jean-Yves)
 - [x] ~~Compartir hallazgos del censo de Ardon 1802 con Jean-Yves~~ → **Hecho:** su árbol confirma Grupo C = rama Jean-Baptiste; 4/4 coincidencias nombre+edad; H11 prácticamente confirmada
 - [x] ~~Consultar el Armorial Valaisan~~ → **Hecho:** dos ediciones analizadas; familia en Ardon desde 1481; Claude-Antoine Clemenchoz vidomnal 1795; Hyacinthe \*1781 posible hermano de p57
-- [ ] Buscar las memorias de **Hyacinthe Clemenzo (1781–1862)** en *Annales valaisannes*, 1957 — pueden contener datos sobre su familia de origen en Ardon (padres, hermanos)
+- [x] ~~Buscar las memorias de **Hyacinthe Clemenzo (1781–1862)**~~ → **Hecho:** PDF leído (*Souvenirs d'un officier valaisan*, Annales valaisannes 1957); padres confirmados: Jean-André Clemenzo \*1716 × Marie-Marguerite Favre \*1728; Hyacinthe NO es hijo de Baptiste — genera H12
 - [ ] Investigar **Claude-Antoine Clemenchoz, lieutenant vidomnal d'Ardon 1795** — ¿es Baptiste Clemenzo bajo variante de apellido, o un pariente? Buscar en registros parroquiales de Ardon y en el AEV
 - [ ] Verificar si **Frédéric (1893–1980)** del Armorial es descendiente de Frédéric \*1832 del árbol de Jean-Yves — confirmaría la continuidad de esa rama hasta el siglo XX
 - [ ] Identificar el apellido de "Marie [?]", esposa de Baptiste Clemenzo (Ardon 1802) — buscar en registros parroquiales de Ardon
