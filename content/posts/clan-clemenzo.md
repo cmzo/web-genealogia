@@ -188,6 +188,31 @@ Es la continuación del hogar de Jean Joseph n.1780 (p57). El apellido de Cather
 
 ---
 
+### 1837 — Riddes
+
+**Fuente:** Censo de Riddes 1837 — Archivo del Estado del Valais (1ère Classe: residentes)
+**Cota:** CH AEV, DI 3090, 1837, Martigny, Riddes — Pág. 46
+
+![Censo de Riddes 1837](../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp)
+
+Primer censo que registra a los Clemenzo en **Primera Clase** (burgueses residentes de Riddes). En 1829 figuraban en Segunda Clase como domiciliados en Ardon; este cambio confirma que la familia se estableció definitivamente en Riddes en algún momento entre 1829 y 1837.
+
+| Apellido  | Nombre          | Sexo | Rol       | ID  |
+|-----------|-----------------|------|-----------|-----|
+| Clemenzo  | Jean Joseph     | M    | père      | p57 |
+| Clemenzo  | Marie Catherine | F    | la femme  | p58 |
+| Clemenzo  | Janne Marie     | F    | fille     | p74 |
+| Clemenzo  | Marie Henriette | F    | fille     | p75 |
+| Clemenzo  | Marie Elisabeth | F    | fille     | p76 |
+| Clemenzo  | François        | M    | fils      | p36 |
+
+**Notas:**
+- **p72 Joseph Florentin (n.1805)** y **p73 Joseph Marie (n.1818)** no aparecen — ya no vivían en el hogar paterno.
+- Este formato censal no incluye columna de apellido de soltera, por lo que no permite confirmar la ortografía de p58. La evidencia definitiva de **Cerisier** proviene del censo de Riddes 1829 y del acta de matrimonio de p75 (1840).
+- Una observación marginal en la última fila parece indicar "à Ardon" — posiblemente François también estaba registrado en Ardon por su burguesía.
+
+---
+
 ### 1846 — Riddes
 
 **Fuente:** [Censo de Riddes 1846 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1846_Martigny_Riddes)
@@ -220,24 +245,25 @@ Todas las entradas tienen origen declarado **D'Ardon**.
 | 92    | Clemenzo | François        | D'Ardon | Masculino | Père — Conseiller |
 | 93    | Clemenzo | Anne Catrin     | D'Ardon | Femenino  | Mère              |
 | 94    | Clemenzo | François        | D'Ardon | Masculino | Fils              |
-| 95    | Clemenzo | Chrisenze (?)   | D'Ardon | Femenino  | Fille             |
+| 95    | Clemenzo | Chrisenge       | D'Ardon | Femenino  | Fille             |
 | 96    | Clemenzo | Joseph Marie    | D'Ardon | Masculino | Père              |
 | 97    | Clemenzo | Marie Josephe   | D'Ardon | Femenino  | Mère              |
 | 98    | Clemenzo | Catherine       | D'Ardon | Femenino  | Fille             |
-| 99    | Clemenzo | Josep Marie     | D'Ardon | Masculino | Fils              |
-| 100   | Clemenzo | Jenerique (?)   | D'Ardon | Femenino  | Fille             |
+| 99    | Clemenzo | Joseph Marie    | D'Ardon | Masculino | Fils              |
+| 100   | Clemenzo | Jenerique       | D'Ardon | Femenino  | Fille             |
 | 101   | Clemenzo | Baptiste        | D'Ardon | Masculino | Père              |
 | 102   | Clemenzo | Jean Baptiste   | D'Ardon | Masculino | Père              |
-| 103   | Clemenzo | Elizabeth       | D'Ardon | Femenino  | Mère              |
+| 103   | Clemenzo | Elsabeth        | D'Ardon | Femenino  | Mère              |
 | 104   | Clemenzo | Jean Baptiste   | D'Ardon | Masculino | Fils              |
-| 105   | Clemenzo | Frederich       | D'Ardon | Masculino | Fils              |
-| 106   | Clemenzo | Elisabeth       | D'Ardon | Femenino  | Fille             |
-| 107   | Clemenzo | Veronique       | D'Ardon | Femenino  | Fille             |
+| 105   | Clemenzo | Frédérich       | D'Ardon | Masculino | Fils              |
+| 106   | Clemenzo | Elsabeth        | D'Ardon | Femenino  | Fille             |
+| 107   | Clemenzo | Véronique       | D'Ardon | Femenino  | Fille             |
 | 108   | Clemenzo | Margueritte     | D'Ardon | Femenino  | Fille             |
 | 109   | Clemenzo | François        | D'Ardon | Masculino | Père              |
-| 110   | Clemenzo | Clemense (?)    | D'Ardon | Femenino  | Mère              |
-| 111   | Clemenzo | Adolphe (?)     | D'Ardon | Masculino | Fils              |
+| 110   | Clemenzo | Clémence        | D'Ardon | Femenino  | Mère              |
+| 111   | Clemenzo | Adolphe         | D'Ardon | Masculino | Fils              |
 | 112   | Clemenzo | Marie Josephine | D'Ardon | Femenino  | Fille             |
+| 113   | Clemenzo | [ilegible]      | D'Ardon | Femenino  | Fille             |
 
 #### Grupos familiares — hipótesis basada en este censo
 
@@ -250,7 +276,7 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 92    | François      | Père (Conseiller) |
 | 93    | Anne Catrin   | Mère              |
 | 94    | François      | Fils              |
-| 95    | Chrisenze (?) | Fille             |
+| 95    | Chrisenge     | Fille             |
 
 **Grupo B — Líneas 96–100**
 
@@ -260,7 +286,7 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 97    | Marie Josephe | Mère  |
 | 98    | Catherine     | Fille |
 | 99    | Joseph Marie  | Fils  |
-| 100   | Jenerique (?) | Fille |
+| 100   | Jenerique     | Fille |
 
 **Grupo C — Líneas 101–108**
 
@@ -282,9 +308,10 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | Línea | Nombre          | Rol   |
 |-------|-----------------|-------|
 | 109   | François        | Père  |
-| 110   | Clemense (?)    | Mère  |
-| 111   | Adolphe (?)     | Fils  |
+| 110   | Clémence        | Mère  |
+| 111   | Adolphe         | Fils  |
 | 112   | Marie Josephine | Fille |
+| 113   | [ilegible]      | Fille |
 
 ---
 
@@ -300,6 +327,45 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 | 60    | Clemenzoz          | Marie Josephine | 1844     | Femenino |             |
 
 La línea 58 usa doble apellido **Clemenzoz Cerisier** (casada + soltera), confirmando definitivamente que el apellido de p58 es **Cerisier**. Aparece sin marido: p57 falleció entre 1846 y 1850.
+
+---
+
+### 1870 — Riddes
+
+**Fuente:** Recensement fédéral de la population au 1er Décembre 1870 — Archivo del Estado del Valais
+**Cota:** CH AEV, DI 3090, 1870, Martigny, Riddes — Bulletin N.° 84
+
+![Censo de Riddes 1870](../../assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp)
+
+Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembre al 1 de diciembre de 1870.
+
+| N° | Apellido  | Nombre          | Pos.      | Nacimiento     | E. civil  | Origen | Sexo |
+|----|-----------|-----------------|-----------|----------------|-----------|--------|------|
+| 1  | Clemenzo  | François        | Chef      | 9 Avril 1809   | Marié     | Ardon  | M    |
+| 2  | [Clemenzo]| Marie-Stalder   | Femme     | 5 Mai 1826     | Mariée    | Riddes | F    |
+| 3  | Clemenzo  | [José?]         | Fils      | [~1855–1856]   | Célibat.  | Riddes | M    |
+| 4  | Clemenzo  | François        | Fils      | [~1858]        | Célibat.  | Riddes | M    |
+| 5  | Clemenzo  | [Etienne?]      | Fils      | [~1862]        | Célibat.  | Riddes | M    |
+| 6  | Clemenzo  | [Joséphine?]    | Fille     | [~1843]        | Célibat.  | Riddes | F    |
+| 7  | Clemenzo  | [?]             | Fille     | [?]            | Célibat.  | Riddes | F    |
+
+**Correspondencia con el árbol:**
+
+| Entrada       | ID  | Nota |
+|---------------|-----|------|
+| François      | p36 | Nacimiento **9 Avril 1809** ✓ — origen Ardon ✓ |
+| Marie-Stalder | p37 | **5 Mai 1826** — el árbol registra 1828: **discrepancia confirmada** |
+| [José?]       | p28 | José Clemenzo n.1856 — aquí ~14–15 años |
+| François fils | p26 | François Clemenzo n.1858 — el futuro emigrante a Argentina, aquí ~12 años |
+| [Etienne?]    | p40 | Etienne Clemenzo n.1862 — ~8 años |
+| [Joséphine?]  | p77 | Joséphine Clemenzo n.1843 — ~27 años, soltera, viviendo con sus padres ✓ |
+
+**Notas:**
+- **p36 estaba vivo** en diciembre de 1870. El documento D 10/86 (11/01/1874) ya lo menciona en pasado — murió entre enero de 1871 y enero de 1874.
+- La presencia de **p77 Joséphine** en el hogar paterno en 1870 confirma que era hija de p36, coherente con H8.
+- El año de nacimiento de **p37 Marie Louise Stalder** aparece como **1826** en el censo; el árbol lo registra como 1828. El censo federal suizo es más preciso que los registros anteriores. → Actualizar el árbol.
+- La entrada 7 corresponde a un hijo/a adicional no identificado aún (p78 o p79 en el árbol).
+- **François (p26)** tenía ~12 años en este censo; emigraría a Argentina ~18 años después.
 
 ---
 
@@ -352,7 +418,7 @@ La línea 58 usa doble apellido **Clemenzoz Cerisier** (casada + soltera), confi
 
 El François père del Grupo D (líneas 109–112, censo Ardon 1846) tendría ~37 años, coincidiendo con p36. La fille "Marie Josephine" (l.112) encaja con **p77 Joséphine Clemenzo** (nacida 1843), quien tendría 3 años en este censo. "Adolphe" sería un hijo mayor no registrado en el árbol (fallecido joven o emigrado).
 
-La dificultad: el árbol registra a **Marie Louise Stalder (p37, n.1828)** como esposa de p36, pero en el censo figura **"Clemense" (Clémence)**. Dos posibles explicaciones:
+La dificultad: el árbol registra a **Marie Louise Stalder (p37, n.1828)** como esposa de p36, pero en el censo figura **Clémence**. Dos posibles explicaciones:
 - p36 tuvo un **primer matrimonio con una Clémence** que falleció entre 1846 y 1850. Marie Louise Stalder sería su segunda esposa, lo que explica que los hijos José (n.1856), François (n.1858) y Etienne (n.1862) nazcan muchos años después.
 - El **año 1828 de Marie Louise Stalder está errado** en el árbol.
 
@@ -436,19 +502,20 @@ Si ambas actas confirman el mismo padre, la conexión queda establecida document
 
 ### H8 — "Marie Josephine" (1844, Riddes 1850) es p77 Joséphine Clemenzo
 
-El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia de un año, habitual en registros manuscritos. En 1850 Joséphine (~6 años) viviría con su abuela porque su madre había fallecido. Refuerza la H1: la esposa "Clemense" de p36 murió entre 1846 y 1850, dejando a la niña al cuidado de p58.
+El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia de un año, habitual en registros manuscritos. En 1850 Joséphine (~6 años) viviría con su abuela porque su madre había fallecido. Refuerza la H1: la esposa Clémence de p36 murió entre 1846 y 1850, dejando a la niña al cuidado de p58.
 
 ---
 
 ## Tareas
 
 - [x] ~~Buscar en recensements.vallesiana.ch el censo de Riddes para localizar a p58~~ → **Encontrada en Riddes 1850, línea 58** (Marie Catherine Cerisier, viuda)
-- [ ] Leer las lecturas dudosas en la imagen del censo de Ardon 1846: "Chrisenze" (l.95), "Jenerique" (l.100), "Clemense" (l.110), "Adolphe" (l.111)
-- [ ] Verificar si "Clemense" (l.110) es una primera esposa de p36 — buscar actas de matrimonio y defunción en registros parroquiales de Ardon
-- [ ] Buscar acta de defunción de **"Clémence"** en registros parroquiales de Ardon y Riddes, período 1846–1850
+- [x] ~~Leer las lecturas dudosas en la imagen del censo de Ardon 1846~~ → **Confirmado:** l.95 = Chrisenge, l.100 = Jenerique (J clara), l.110 = Clémence, l.111 = Adolphe. Se descubre l.113: fille adicional, nombre ilegible (imagen cortada en borde inferior)
+- [ ] Verificar si **Clémence** (l.110) es una primera esposa de p36 — buscar actas de matrimonio y defunción en registros parroquiales de Ardon
+- [ ] Buscar acta de defunción de **Clémence** en registros parroquiales de Ardon y Riddes, período 1846–1850
+- [ ] Identificar la fille de l.113 (nombre ilegible por corte de imagen) — buscar en registros parroquiales de Ardon junto con Adolphe y Marie Josephine
 - [ ] Buscar a **Jeanne Clemenzoz** (nacida post-1829) en registros parroquiales de Ardon/Riddes — confirmar si es hija de p57/p58
 - [ ] Confirmar si **Marie Josephine (n.1844, Riddes 1850)** es p77 Joséphine — verificar acta de bautismo circa 1843–1844
-- [ ] Actualizar el árbol: corregir nombre de p58 a **Marie Catherine Cerisier**
+- [x] ~~Actualizar el árbol: corregir nombre de p58 a **Marie Catherine Cerisier**~~ → **Hecho** (arbol.db actualizado)
 - [ ] Verificar el nombre completo de p57: censos sugieren "Jean Joseph" (1829) o "Joseph" (1846) — confirmar en registros parroquiales
 - [ ] Resolver discrepancia de Joseph Florentin: Riddes 1829 dice "Vienne (Autriche)", Ardon 1829 dice "Fribourg en Breisgau" — buscar registros universitarios en ambas ciudades (Universität Wien y Albert-Ludwigs-Universität Freiburg, siglo XIX)
 - [ ] Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo — rastrear su vida tras los estudios
@@ -460,6 +527,9 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 - [ ] Identificar el apellido completo del esposo de Anne Marie Clemenzo ("Jaque [R?]", Ardon 1802)
 - [ ] Buscar a Baptiste Clemenzo en censos anteriores a 1802 o en registros parroquiales de Ardon — determinar año de nacimiento y origen
 - [x] ~~Verificar si "Sillio" es un dit-name de Cerisier o familia independiente~~ → **Resuelto: "Cerisier — Sillio" = patrón valaisano, padre Cerisier × madre Sillio**
+- [x] ~~Leer imagen censo Riddes 1837~~ → **Hecho:** familia en 1ère Classe (residentes) por primera vez; 6 personas (p57, p58, p74, p75, p76, p36); sin columna de apellido de soltera en este formato
+- [x] ~~Leer imagen censo Riddes 1870~~ → **Hecho:** p36 vivo en dic. 1870; p37 nació 5 Mai **1826** (árbol dice 1828 — discrepancia); p77 Joséphine en el hogar confirma H8; p26 François con ~12 años
+- [ ] Corregir en el árbol año de nacimiento de **p37 Marie Louise Stalder**: el censo 1870 indica **5 Mai 1826** (el árbol dice 1828)
 
 ---
 

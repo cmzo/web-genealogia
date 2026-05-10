@@ -2210,6 +2210,26 @@
       "status": "sin_datos",
       "media": [
         {
+          "id": "med108",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-1.webp",
+          "caption": "Censo de Ardon 1846 — pág. 1",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med109",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-2.webp",
+          "caption": "Censo de Ardon 1846 — pág. 2",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
           "id": "med23",
           "type": "photo",
           "url": "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp",
@@ -2361,6 +2381,26 @@
       "sources": null,
       "status": "sin_datos",
       "media": [
+        {
+          "id": "med104",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-1.webp",
+          "caption": "Censo de Ardon 1846 — pág. 1",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med105",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-2.webp",
+          "caption": "Censo de Ardon 1846 — pág. 2",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
         {
           "id": "med18",
           "type": "photo",
@@ -2535,6 +2575,26 @@
       "status": "sin_datos",
       "media": [
         {
+          "id": "med106",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-1.webp",
+          "caption": "Censo de Ardon 1846 — pág. 1",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med107",
+          "type": "photo",
+          "url": "assets/images/personas/p36-p73-p77-1846-ardon-censo-2.webp",
+          "caption": "Censo de Ardon 1846 — pág. 2",
+          "date": "1846-01-01",
+          "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        },
+        {
           "id": "med30",
           "type": "photo",
           "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp",
@@ -2672,7 +2732,7 @@
       "id": "p37",
       "name": "Marie Louise Stalder",
       "gender": "",
-      "birth_date": "1828-06-15",
+      "birth_date": "1826-05-05",
       "birth_place": "Salins, Valais, Suiza",
       "death_date": "",
       "death_place": "",
