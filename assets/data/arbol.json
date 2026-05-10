@@ -2813,7 +2813,7 @@
     },
     {
       "id": "p58",
-      "name": "Catherine Fortuneé Pirisier",
+      "name": "Marie Catherine Cerisier",
       "gender": "F",
       "birth_date": "1786-01-01",
       "birth_place": null,
@@ -2821,7 +2821,7 @@
       "death_place": null,
       "father_id": null,
       "mother_id": null,
-      "branch": "pirisier",
+      "branch": "cerisier",
       "generation": 7,
       "sort_order": 18,
       "vivo": "no",

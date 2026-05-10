@@ -210,6 +210,9 @@ Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine 
 **Fuente:** [Censo de Ardon 1846 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1846_Conthey_Ardon)
 **Cota:** CH AEV, DI 3090, 1846, Conthey, Ardon
 
+![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_1.png)
+![Censo de Ardon 1846]](../../assets/images/posts/censo_1856_ardon_2.png)
+
 Todas las entradas tienen origen declarado **D'Ardon**.
 
 | Línea | Apellido | Nombre          | Origen  | Sexo      | Rol / Profesión   |
@@ -416,9 +419,9 @@ Si la identificación es correcta:
 - **Jacques Cerisier** = padre de p58
 - **Catherine Sillio** = madre de p58
 
-### H11 — Jean Baptiste Clemenzo (Ardon 1802) = ancestro de Jean-Yves, mi contacto en Francia
+### H11 — Jean Baptiste Clemenzo (Ardon 1802) = ancestro de Jean-Yves
 
-Mantengo contacto con **Jean-Yves**, descendiente de Jean Baptiste Clemenzo de Ardon. Realizamos videollamadas, conozco a su familia, y me pasó su árbol genealógico de descendencia hasta hoy. Su árbol comienza desde Jean Baptiste — no incluye datos sobre el padre de este.
+Tengo contacto con **Jean-Yves**, descendiente suizo de Jean Baptiste Clemenzo de Ardon. Su árbol comienza desde Jean Baptiste — no incluye datos sobre el padre de este.
 
 Si H9 se confirma (Jean Joseph = p57, hijo de Baptiste), entonces:
 - **Jean Baptiste** y **Jean Joseph** son hermanos (hijos del mismo Baptiste Clemenzo)
