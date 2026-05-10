@@ -95,30 +95,10 @@
 └─────────────────┘                    └──────────────────┘
 </code></pre>
 <h3 id="conceptos-clave">Conceptos clave</h3>
-<table>
-<thead>
-<tr>
-<th>Concepto</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Host</strong></td>
-<td>El cliente que usa el modelo (Claude Code en este caso)</td>
-</tr>
-<tr>
-<td><strong>Servidor MCP</strong></td>
-<td>Un proceso que expone herramientas al modelo</td>
-</tr>
-<tr>
-<td><strong>Tool</strong></td>
-<td>Una función que el modelo puede invocar (buscar, leer, escribir, etc.)</td>
-</tr>
-<tr>
-<td><strong>Transport</strong></td>
-<td>El canal de comunicación; aquí usamos <code>stdio</code> (entrada/salida estándar)</td>
-</tr>
-</tbody></table>
+<div class="table-wrapper"><table><thead><tr><th>Concepto</th><th>Descripción</th></tr></thead><tbody><tr><td>**Host**</td><td>El cliente que usa el modelo (Claude Code en este caso)</td></tr>
+<tr><td>**Servidor MCP**</td><td>Un proceso que expone herramientas al modelo</td></tr>
+<tr><td>**Tool**</td><td>Una función que el modelo puede invocar (buscar, leer, escribir, etc.)</td></tr>
+<tr><td>**Transport**</td><td>El canal de comunicación; aquí usamos `stdio` (entrada/salida estándar)</td></tr></tbody></table></div>
 <h3 id="por-qué-mcp-y-no-una-integración-ad-hoc">Por qué MCP y no una integración ad-hoc</h3>
 <p>Antes de MCP, integrar herramientas con un LLM requería construir glue code específico para cada modelo. Con MCP, el servidor es <strong>agnóstico al modelo</strong>: el mismo servidor que usás con Claude Code podría conectarse a cualquier host compatible con el protocolo. Esto hace que la inversión valga más a largo plazo.</p>
 <hr>
@@ -296,55 +276,14 @@ if __name__ == &quot;__main__&quot;:
 <p>Esta consulta más abierta combina todas las herramientas: árbol local → documentos disponibles → búsqueda web → archivo de investigación.</p>
 <hr>
 <h2 id="10-ventajas-frente-a-un-chatbot-convencional">10. Ventajas frente a un chatbot convencional</h2>
-<table>
-<thead>
-<tr>
-<th>Característica</th>
-<th>Chatbot LLM convencional</th>
-<th>Agente con MCP</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Acceso a tus datos</strong></td>
-<td>No. Solo conoce lo que pegás en el chat.</td>
-<td>Sí. Lee directamente tus archivos CSV, JSON e imágenes.</td>
-</tr>
-<tr>
-<td><strong>Búsqueda web</strong></td>
-<td>No (salvo plugins específicos, no siempre disponibles).</td>
-<td>Sí, en tiempo real, con Tavily como capa de búsqueda.</td>
-</tr>
-<tr>
-<td><strong>Persistencia</strong></td>
-<td>Ninguna. Cada sesión empieza de cero.</td>
-<td>Parcial. Los archivos <code>.md</code> generados persisten entre sesiones.</td>
-</tr>
-<tr>
-<td><strong>Consistencia de datos</strong></td>
-<td>Inventa o alucina si no tiene información.</td>
-<td>Opera sobre datos reales, claramente distingue verificado de no verificado.</td>
-</tr>
-<tr>
-<td><strong>Fuentes citables</strong></td>
-<td>Las citas son generadas, no verificadas.</td>
-<td>Tavily devuelve URLs y fuentes reales que podés consultar.</td>
-</tr>
-<tr>
-<td><strong>Tareas específicas</strong></td>
-<td>Las sugerencias son genéricas.</td>
-<td>Las tareas ToDo se generan en base a los datos reales de cada persona.</td>
-</tr>
-<tr>
-<td><strong>Escalabilidad</strong></td>
-<td>Requiere pegar contexto manualmente cada vez.</td>
-<td>El contexto se carga automáticamente desde el árbol y los archivos.</td>
-</tr>
-<tr>
-<td><strong>Integración con tu flujo</strong></td>
-<td>Copiar y pegar entre el chat y tus herramientas.</td>
-<td>Los archivos se guardan directamente donde los necesitás.</td>
-</tr>
-</tbody></table>
+<div class="table-wrapper"><table><thead><tr><th>Característica</th><th>Chatbot LLM convencional</th><th>Agente con MCP</th></tr></thead><tbody><tr><td>**Acceso a tus datos**</td><td>No. Solo conoce lo que pegás en el chat.</td><td>Sí. Lee directamente tus archivos CSV, JSON e imágenes.</td></tr>
+<tr><td>**Búsqueda web**</td><td>No (salvo plugins específicos, no siempre disponibles).</td><td>Sí, en tiempo real, con Tavily como capa de búsqueda.</td></tr>
+<tr><td>**Persistencia**</td><td>Ninguna. Cada sesión empieza de cero.</td><td>Parcial. Los archivos `.md` generados persisten entre sesiones.</td></tr>
+<tr><td>**Consistencia de datos**</td><td>Inventa o alucina si no tiene información.</td><td>Opera sobre datos reales, claramente distingue verificado de no verificado.</td></tr>
+<tr><td>**Fuentes citables**</td><td>Las citas son generadas, no verificadas.</td><td>Tavily devuelve URLs y fuentes reales que podés consultar.</td></tr>
+<tr><td>**Tareas específicas**</td><td>Las sugerencias son genéricas.</td><td>Las tareas ToDo se generan en base a los datos reales de cada persona.</td></tr>
+<tr><td>**Escalabilidad**</td><td>Requiere pegar contexto manualmente cada vez.</td><td>El contexto se carga automáticamente desde el árbol y los archivos.</td></tr>
+<tr><td>**Integración con tu flujo**</td><td>Copiar y pegar entre el chat y tus herramientas.</td><td>Los archivos se guardan directamente donde los necesitás.</td></tr></tbody></table></div>
 <h3 id="el-argumento-de-fondo">El argumento de fondo</h3>
 <p>Un chatbot convencional es excelente para tareas de <strong>conocimiento general</strong>: explicar conceptos, redactar textos, ayudar a interpretar un documento que vos le mostrás. Pero la investigación genealógica es fundamentalmente un trabajo con <strong>datos específicos, locales y acumulativos</strong>.</p>
 <p>La diferencia clave es que el agente con MCP <strong>actúa en tu entorno real</strong>: lee los archivos que vos tenés, escribe en las carpetas que vos usás, busca en la web y te devuelve resultados verificables. No simula tener contexto, lo tiene.</p>

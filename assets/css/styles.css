@@ -17,7 +17,7 @@
 
 /* ─── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+html, body { margin: 0; padding: 0; height: 100%; }
 
 /* ─── BASE ────────────────────────────────────────────── */
 body {
@@ -613,6 +613,16 @@ body {
   grid-template-columns: 1fr;
   gap: 56px;
   margin-top: 40px;
+  min-width: 0;
+}
+
+.article-content {
+  min-width: 0;
+}
+
+.article-content .mermaid {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .article-grid:has(> .article-aside:has(*)) {
@@ -745,17 +755,20 @@ body {
 }
 
 /* tables */
-.article-content table {
-  display: block;
+.article-content .table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin: 16px 0 24px;
+}
+
+.article-content table {
   border-collapse: collapse;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  margin: 16px 0 24px;
-  max-width: 100%;
+  width: 100%;
   border: 1px solid var(--border);
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .article-content th {
@@ -1284,6 +1297,10 @@ body {
   }
   .blog-grid { grid-template-columns: 1fr; }
   .article-title { font-size: clamp(28px, 8vw, 40px); }
+  .article-content p,
+  .article-content ul,
+  .article-content ol,
+  .article-content blockquote { font-size: 14px; }
   .places-grid { grid-template-columns: 1fr; }
   .migration-timeline::before { left: 14px; }
 }

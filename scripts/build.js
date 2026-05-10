@@ -158,6 +158,17 @@ function markdownToHtml(markdown) {
         const text = isToken ? tokenOrText.text  : tokenOrText;
         const d    = isToken ? tokenOrText.depth : depth;
         return `<h${d} id="${headingId(text)}">${text}</h${d}>\n`;
+      },
+      table(tokenOrHeader, body) {
+        const isToken = typeof tokenOrHeader === 'object' && tokenOrHeader !== null && 'header' in tokenOrHeader;
+        if (isToken) {
+          const header = tokenOrHeader.header.map(cell => `<th>${cell.tokens.map(t => t.raw ?? t.text ?? '').join('')}</th>`).join('');
+          const rows = tokenOrHeader.rows.map(row =>
+            `<tr>${row.map(cell => `<td>${cell.tokens.map(t => t.raw ?? t.text ?? '').join('')}</td>`).join('')}</tr>`
+          ).join('\n');
+          return `<div class="table-wrapper"><table><thead><tr>${header}</tr></thead><tbody>${rows}</tbody></table></div>\n`;
+        }
+        return `<div class="table-wrapper"><table><thead>${tokenOrHeader}</thead><tbody>${body}</tbody></table></div>\n`;
       }
     }
   });
