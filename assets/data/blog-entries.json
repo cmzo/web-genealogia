@@ -1,5 +1,23 @@
 [
   {
+    "id": "clan-clemenzo",
+    "title": "Clan Clemenzo",
+    "description": "En este post extraigo información de los censos disponibles del Valais entre 1798 y 1880. A partir de estos datos trato de establecer relaciones familiares, acotar el margen en fechas de decesos, ver movimientos entre comunas y establecer algunas hipótesis.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "investigacion",
+    "date": "2026-05-10",
+    "tags": [
+      "clemenzo",
+      "investigacion",
+      "valais",
+      "ardon",
+      "riddes",
+      "censos"
+    ],
+    "featured": true,
+    "url": "dist/blog/clan-clemenzo.html"
+  },
+  {
     "id": "creacion-de-un-agente-de-investigacion-genealogica-con-claude",
     "title": "Creación de un agente de investigación genealógica con CLAUDE",
     "description": "Este es el proceso (con errores, aciertos y fracasos) para crear un agente que me asista en la investigación de mis antepasa",
