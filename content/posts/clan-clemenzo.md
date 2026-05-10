@@ -15,9 +15,10 @@ Documento de investigación sobre la rama Clemenzo con burguesía en Riddes y do
 
 ---
 
-## Censos
 
 ![](../../assets/images/posts/header_censo.png)
+
+## Censos
 
 ### 1802 — Riddes
 
@@ -147,6 +148,43 @@ Los Clemenzo de las líneas 21–34 pertenecen a la **Segunda Clase**: son burgu
 | 34    | × Clemenzo   | Marie Therese    | 1814     | ..         | ..         | ..        | — à ardon 1er[?]           |
 
 Jean Claude (notario, n.1773) con cinco hijas: Marie Marguerite (1801), Marie Elizabeth (1804), Anne Marie (1808), Marie Catherine (1811), Marie Therese (1814). No aparece su esposa. Los símbolos + y × en líneas 32–34 probablemente indican estado civil (casada / viuda).
+
+---
+
+### 1829 — Ardon (Primera Clase)
+
+**Fuente:** Censo de Ardon 1829 — Archivo del Estado del Valais (Primera Clase: residentes de Ardon)
+
+Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la familia en Segunda Clase (burgueses de Riddes domiciliados en Ardon), este los muestra como residentes efectivos de Ardon. Dos datos son nuevos respecto al de Riddes.
+
+#### Jean Joseph Clemenzo n.1761 — rama diferente
+
+| Apellido | Nombre | Año nac. | Profesión |
+|---|---|---|---|
+| Clemenzo | Jean Joseph | **1761** | Conseiller |
+| [esposa] | Marie Catherine | 1769 | Servante |
+| Clemenzo | Anne Catherine | 1784 | — |
+| Clemenzo | Joseph Marie | 1793 | — |
+| Clemenzo | Joseph Marie fils | 1819 | — |
+| Clemenzo | Marie Crescenze | 1819 | — |
+
+Un **segundo Jean Joseph Clemenzo** (n.1761), con el título de Conseiller. No es p57. Tiene esposa propia (Marie Catherine, n.1769) e hijos adultos (Anne Catherine 1784, Joseph Marie 1793). Este Joseph Marie de 1793 ya tiene su propio hijo en 1819 — una familia claramente establecida e independiente. Rama probablemente colateral (ver impacto en H9).
+
+#### Familia Jean Joseph n.1780 — continuación en siguiente página
+
+| Apellido | Nombre | Año nac. | Profesión | Observaciones |
+|---|---|---|---|---|
+| [Cerisier] | Catherine Fortunée | 1786 | Laboureur | Ardon |
+| Clemenzo | Joseph Florentin | 1805 | Etudient | **à Fribourg en Breisgau** |
+| Clemenzo | François | 1809 | Laboureur | — |
+| Clemenzo | Joseph Marie | 1818 | — | — |
+| Clemenzo | Jonne Marie | 1813 | — | — |
+| Clemenzo | Enrijette | 1815 | — | — |
+| Clemenzo | Marie Helizabet | 1821 | — | — |
+
+Es la continuación del hogar de Jean Joseph n.1780 (p57). El apellido de Catherine aparece como **"Pirisier"** en este censo — escritura ambigua que en el siglo XIX se leyó como P, pero el acta de matrimonio de p75 (1840) y el censo de Riddes 1850 confirman definitivamente que es **Cerisier**.
+
+**Discrepancia Joseph Florentin:** el censo de Riddes 1829 lo ubica en "Vienne (Autriche)" mientras este Ardon 1829 dice "Fribourg en Breisgau" (Freiburg im Breisgau, Alemania, ciudad universitaria desde 1457). Posibles explicaciones: los dos censos no son exactamente simultáneos y él se movió entre instituciones, o uno de los censistas cometió un error. Freiburg im Breisgau es mucho más accesible desde el Valais que Viena.
 
 ---
 
@@ -350,13 +388,14 @@ En el censo de Riddes 1850 (línea 59) aparece **Jeanne Clemenzoz** con año de 
 
 ### H9 — Jean Joseph fils de Baptiste (Ardon 1802) = posiblemente p57
 
-**Nivel de certeza: hipótesis por nombre solamente.**
+**Nivel de certeza: hipótesis por nombre + argumento de edad. No confirmada documentalmente pero sólida.**
 
-El censo de Ardon 1802 no consigna años de nacimiento para los hijos. La identificación de "Jean Joseph fils de Baptiste" con p57 Jean Joseph Clemenzo (n.1780) se basa únicamente en:
-- Coincidencia de nombre (Jean Joseph)
-- Edad plausible: si p57 nació en 1780, tendría ~22 años en 1802 — edad razonable para ser un hijo joven aún en el hogar paterno
+El censo de Ardon 1802 no consigna años de nacimiento para los hijos. Sin embargo, el censo de Ardon 1829 revela que en Ardon había **dos Jean Joseph Clemenzo simultáneos**:
 
-No hay match de año de nacimiento. La hipótesis es plausible pero requiere confirmación documental.
+- **Jean Joseph n.1761** (Conseiller): tenía esposa, hijos adultos y nietos en 1829 — una familia independiente y establecida. En 1802 habría tenido 41 años: imposible que figurara como hijo en el hogar de Baptiste.
+- **Jean Joseph n.1780** (p57, Laboureur): en 1802 habría tenido ~22 años — edad perfectamente normal para un hijo joven aún en el hogar paterno.
+
+La existencia de los dos Jean Joseph no debilita la hipótesis sino que la **refuerza por descarte**: el único que puede ser el hijo de Baptiste en 1802 es el nacido en 1780.
 
 Si se confirma, la cadena generacional hipotética sería:
 
@@ -408,7 +447,8 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 - [ ] Confirmar si **Marie Josephine (n.1844, Riddes 1850)** es p77 Joséphine — verificar acta de bautismo circa 1843–1844
 - [ ] Actualizar el árbol: corregir nombre de p58 a **Marie Catherine Cerisier**
 - [ ] Verificar el nombre completo de p57: censos sugieren "Jean Joseph" (1829) o "Joseph" (1846) — confirmar en registros parroquiales
-- [ ] Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo — rastrear su vida tras los estudios en Viena
+- [ ] Resolver discrepancia de Joseph Florentin: Riddes 1829 dice "Vienne (Autriche)", Ardon 1829 dice "Fribourg en Breisgau" — buscar registros universitarios en ambas ciudades (Universität Wien y Albert-Ludwigs-Universität Freiburg, siglo XIX)
+- [ ] Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo — rastrear su vida tras los estudios
 - [x] ~~Investigar al Grupo C (Jean Baptiste + Baptiste) para determinar el parentesco con la línea principal~~ → **Resuelto: Baptiste Clemenzo (Ardon 1802) = padre de Jean Joseph (p57) y de Jean Baptiste (Grupo C)**
 - [ ] Buscar acta de bautismo de Jean Joseph Clemenzo (~1780) en registros parroquiales de Ardon — confirmar que el padre es Baptiste Clemenzo (confirmaría H9 y H11)
 - [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con Jean-Yves)
