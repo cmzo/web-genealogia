@@ -47,6 +47,9 @@ Si es un solo hogar (hipótesis preferida): Jacques Cerisier + esposa Catherine 
 
 **Fuente:** [Censo de Ardon 1802 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Ardon)
 
+
+![Censo de 1802, Ardon](../../assets/images/posts/censo_1802_ardon.png)
+
 Primera aparición de los Clemenzo en los registros censales. Se identifican dos hogares consecutivos relacionados:
 
 **Hogar 1 — Baptiste Clemenzo (4 personas):**
