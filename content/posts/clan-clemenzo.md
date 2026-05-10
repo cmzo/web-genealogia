@@ -106,6 +106,9 @@ Este censo estaba dividido en dos secciones:
 
 Los Clemenzo de las líneas 21–34 pertenecen a la **Segunda Clase**: son burgueses de Riddes pero viven en Ardon. Por eso la columna "Lieu du domicile" dice "Ardon" y las observaciones dicen "porté à ardon" (también registrados en el censo de Ardon).
 
+![Censo de Riddes 1829 — 2ème Classe, líneas 21–31](../../assets/images/posts/censo_1829_riddes_2clase_1.png)
+![Censo de Riddes 1829 — 2ème Classe, líneas 32–34](../../assets/images/posts/censo_1829_riddes_2clase_2.png)
+
 #### Familia Jean Joseph (líneas 21–28)
 
 | Línea | Apellido            | Nombre             | Año nac. | Profesión  | Facultades | Domicilio         | Observaciones               |
@@ -155,20 +158,24 @@ Jean Claude (notario, n.1773) con cinco hijas: Marie Marguerite (1801), Marie El
 
 **Fuente:** Censo de Ardon 1829 — Archivo del Estado del Valais (Primera Clase: residentes de Ardon)
 
-Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la familia en Segunda Clase (burgueses de Riddes domiciliados en Ardon), este los muestra como residentes efectivos de Ardon. Dos datos son nuevos respecto al de Riddes.
+Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la familia en Segunda Clase (burgueses de Riddes domiciliados en Ardon), este los muestra como residentes efectivos de Ardon.
+
+![Censo de Ardon 1829 — 1ère Classe, bloque Jean Joseph *1761 y Jean Joseph *1780](../../assets/images/posts/censo_1829_ardon_1clase_1.png)
 
 #### Jean Joseph Clemenzo n.1761 — rama diferente
 
-| Apellido | Nombre | Año nac. | Profesión |
-|---|---|---|---|
-| Clemenzo | Jean Joseph | **1761** | Conseiller |
-| [esposa] | Marie Catherine | 1769 | Servante |
-| Clemenzo | Anne Catherine | 1784 | — |
-| Clemenzo | Joseph Marie | 1793 | — |
-| Clemenzo | Joseph Marie fils | 1819 | — |
-| Clemenzo | Marie Crescenze | 1819 | — |
+| Línea | Apellido | Nombre | Año nac. | Profesión |
+|---|---|---|---|---|
+| 21 | Clemenzo | Jean Joseph | **1761** | Conseiller |
+| 22 | [Clemenzo] | Marie Catherine | 1769 | Servante |
+| 23 | Balleij | François Joseph | 1791 | Laboureur |
+| 24 | Clemenzo | Anne Catherine | 1784 | — |
+| 25 | Loye | François Joseph | 1820 | — |
+| 26 | Clemenzo | Marie Crescenze | 1819 | — |
+| 27 | Clemenzo | Joseph Marie | 1793 | — |
+| 28 | Clemenzo | Joseph Marie fils | 1819 | — |
 
-Un **segundo Jean Joseph Clemenzo** (n.1761), con el título de Conseiller. No es p57. Tiene esposa propia (Marie Catherine, n.1769) e hijos adultos (Anne Catherine 1784, Joseph Marie 1793). Este Joseph Marie de 1793 ya tiene su propio hijo en 1819 — una familia claramente establecida e independiente. Rama probablemente colateral (ver impacto en H9).
+Un **segundo Jean Joseph Clemenzo** (n.1761), Conseiller. No es p57. Las entradas con apellido **Balleij** (l.23, François Joseph *1791) y **Loye** (l.25, François Joseph *1820) son miembros del hogar con apellido propio — probablemente yerno y nieto respectivamente, fruto de matrimonios de hijas de este Jean Joseph. La estructura es más extendida de lo que indicaba el censo de Riddes. Rama colateral (ver H9).
 
 #### Familia Jean Joseph n.1780 — continuación en siguiente página
 
@@ -185,6 +192,47 @@ Un **segundo Jean Joseph Clemenzo** (n.1761), con el título de Conseiller. No e
 Es la continuación del hogar de Jean Joseph n.1780 (p57). El apellido de Catherine aparece como **"Pirisier"** en este censo — escritura ambigua que en el siglo XIX se leyó como P, pero el acta de matrimonio de p75 (1840) y el censo de Riddes 1850 confirman definitivamente que es **Cerisier**.
 
 **Discrepancia Joseph Florentin:** el censo de Riddes 1829 lo ubica en "Vienne (Autriche)" mientras este Ardon 1829 dice "Fribourg en Breisgau" (Freiburg im Breisgau, Alemania, ciudad universitaria desde 1457). Posibles explicaciones: los dos censos no son exactamente simultáneos y él se movió entre instituciones, o uno de los censistas cometió un error. Freiburg im Breisgau es mucho más accesible desde el Valais que Viena.
+
+#### Jean Joseph y Jean Baptiste en Ardon 1829 — primer registro conjunto
+
+![Censo de Ardon 1829 — 1ère Classe: Jean Joseph, Jean Baptiste y Baptiste Père](../../assets/images/posts/censo_1829_ardon_1clase_2.png)
+
+Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo aparecen juntos** en el mismo documento. En 1802 solo se ve el hogar de Baptiste con ambos hijos nombrados; acá, en 1829, cada uno aparece ya como adulto con su propia situación, y su padre sigue vivo.
+
+| Entrada | Apellido | Nombre | Año nac. | Notas |
+|---|---|---|---|---|
+| — | Clemenzo | **Jean Joseph** | **1780** | p57 — en 1829 vive en Riddes (2da Clase allá) |
+| — | Clemenzo + Galliard | **Jean Baptiste** | ~1774 | Residente en Ardon, con familia propia |
+| — | Galliard | anne Marguerite | 1797 | Esposa de Jean Baptiste (apellido: **Galliard**) |
+| 9 | Clemenzo | Jean Baptiste | 1822 | Fils ✓ árbol Jean-Yves |
+| 10 | Clemenzo | Jn. Jos. Danielle | 1825 | Fils — **no figura en árbol de Jean-Yves** |
+| 11 | Clemenzo | Marie helizabet | 1820 | Fille ✓ árbol Jean-Yves |
+| 12 | Clemenzo | Marie Veronique | 1828 | Fille ✓ árbol Jean-Yves |
+| 13 | Clemenzo | **Jn. Baptiste Père** | **1765** | Baptiste Clemenzo del censo 1802 — ver nota |
+
+**Notas:**
+
+- **Apellido de la esposa de Jean Baptiste: Galliard.** Jean-Yves llama a la esposa "Gaillard" — es la misma familia (variante ortográfica). El nombre "anne Marguerite" vs "Anne-Marie" en el árbol de Jean-Yves es una discrepancia menor, posiblemente nombre compuesto.
+
+- **Hijo "Jn. Jos. Danielle" \*1825** no figura en el árbol de Jean-Yves — probablemente falleció joven.
+
+- **Línea 13 — "Jn. Baptiste Père / 1765":** el padre de Jean Baptiste, viviendo con él. El año 1765 presenta una dificultad aritmética: si sus hijos nacieron en ~1774 y ~1780, los habría tenido con 9 y 15 años — imposible. Lo más probable es que el censista transcribiera mal el año (quizás "1745" leído como "1765" en cursiva valaisana), lo que daría una edad de ~29 años al nacer Jean Baptiste — perfectamente normal. La confirmación requiere acta de bautismo de Baptiste en Ardon.
+
+#### Jean Claude Clemenzo — rama notarial (Ardon 1829)
+
+![Censo de Ardon 1829 — 1ère Classe, familia Jean Claude Clemenzo](../../assets/images/posts/censo_1829_ardon_1clase_3.png)
+
+| Línea | Apellido | Nombre | Año nac. | Profesión |
+|---|---|---|---|---|
+| 14 | Clemenzo | Jean Claude | **1772** | Notaire |
+| 15 | Clemenzo | Marie Marguerite | 1801 | Labr. |
+| 16 | Clemenzo | Marie helizaBet | 1804 | — |
+| 17 | Clemenzo | Anne Marie | 1808 | — |
+| 18 | Clemenzo | Marie Catherine | 1811 | — |
+| 19 | Clemenzo | Marie Therese | 1814 | — |
+| 20 | Clemenzo | [nombre ilegible] | 1810 | — |
+
+Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) — diferencia de un año, error habitual de transcripción. El censo de Ardon revela una **sexta hija** (l.20, n.1810) no registrada en el de Riddes, probablemente casada (de ahí el símbolo diferente).
 
 ---
 
@@ -375,7 +423,7 @@ Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembr
 | N° | Apellido  | Nombre          | Pos.      | Nacimiento     | E. civil  | Origen | Sexo |
 |----|-----------|-----------------|-----------|----------------|-----------|--------|------|
 | 1  | Clemenzo  | François        | Chef      | 9 Avril 1809   | Marié     | Ardon  | M    |
-| 2  | [Clemenzo]| Marie-Stalder   | Femme     | 5 Mai 1826     | Mariée    | Riddes | F    |
+| 2  | [Clemenzo]| Marie-Stalder   | Femme     | 5 Mai 1828     | Mariée    | Riddes | F    |
 | 3  | Clemenzo  | [José?]         | Fils      | [~1855–1856]   | Célibat.  | Riddes | M    |
 | 4  | Clemenzo  | François        | Fils      | [~1858]        | Célibat.  | Riddes | M    |
 | 5  | Clemenzo  | [Etienne?]      | Fils      | [~1862]        | Célibat.  | Riddes | M    |
@@ -387,7 +435,7 @@ Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembr
 | Entrada       | ID  | Nota |
 |---------------|-----|------|
 | François      | p36 | Nacimiento **9 Avril 1809** ✓ — origen Ardon ✓ |
-| Marie-Stalder | p37 | **5 Mai 1826** — el árbol registra 1828: **discrepancia confirmada** |
+| Marie-Stalder | p37 | **5 Mai 1828** ✓ — coincide con el árbol |
 | [José?]       | p28 | José Clemenzo n.1856 — aquí ~14–15 años |
 | François fils | p26 | François Clemenzo n.1858 — el futuro emigrante a Argentina, aquí ~12 años |
 | [Etienne?]    | p40 | Etienne Clemenzo n.1862 — ~8 años |
@@ -396,7 +444,7 @@ Censo federal suizo: fotografía del hogar de p36 en la noche del 30 de noviembr
 **Notas:**
 - **p36 estaba vivo** en diciembre de 1870. El documento D 10/86 (11/01/1874) ya lo menciona en pasado — murió entre enero de 1871 y enero de 1874.
 - La presencia de **p77 Joséphine** en el hogar paterno en 1870 confirma que era hija de p36, coherente con H8.
-- El año de nacimiento de **p37 Marie Louise Stalder** aparece como **1826** en el censo; el árbol lo registra como 1828. El censo federal suizo es más preciso que los registros anteriores. → Actualizar el árbol.
+- El año de nacimiento de **p37 Marie Louise Stalder** aparece como **5 Mai 1828** — coincide con el árbol ✓.
 - La entrada 7 corresponde a un hijo/a adicional no identificado aún (p78 o p79 en el árbol).
 - **François (p26)** tenía ~12 años en este censo; emigraría a Argentina ~18 años después.
 
@@ -638,7 +686,7 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 - [x] ~~Verificar si "Sillio" es un dit-name de Cerisier o familia independiente~~ → **Resuelto: "Cerisier — Sillio" = patrón valaisano, padre Cerisier × madre Sillio**
 - [x] ~~Leer imagen censo Riddes 1837~~ → **Hecho:** familia en 1ère Classe (residentes) por primera vez; 6 personas (p57, p58, p74, p75, p76, p36); sin columna de apellido de soltera en este formato
 - [x] ~~Leer imagen censo Riddes 1870~~ → **Hecho:** p36 vivo en dic. 1870; p37 nació 5 Mai **1826** (árbol dice 1828 — discrepancia); p77 Joséphine en el hogar confirma H8; p26 François con ~12 años
-- [ ] Corregir en el árbol año de nacimiento de **p37 Marie Louise Stalder**: el censo 1870 indica **5 Mai 1826** (el árbol dice 1828)
+- [x] ~~Verificar año de nacimiento de p37 Marie Louise Stalder~~ → **1828** ✓ — el censo 1870 lo confirma; árbol correcto
 
 ---
 

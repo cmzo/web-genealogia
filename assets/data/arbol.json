@@ -2440,6 +2440,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med114",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. François Clemenzo, l.24, laboureur, domicilio Ardon.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2491,6 +2501,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 7
+        },
+        {
+          "id": "med119",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Marie Elizabeth Clemenzo, l.27, n.1821, domicilio Ardon.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2552,6 +2572,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 3
+        },
+        {
+          "id": "med115",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Joseph Florentin Clemenzo, l.23, étudiant, Vienne (Autriche).",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 1
         },
         {
           "id": "med110",
@@ -2633,6 +2663,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 4
+        },
+        {
+          "id": "med116",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Joseph Marie Clemenzo, l.25, n.1818, domicilio Ardon.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2684,6 +2724,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 5
+        },
+        {
+          "id": "med117",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Jeanne Marie Clemenzo, l.26, n.1813, domicilio Ardon.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2745,6 +2795,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 6
+        },
+        {
+          "id": "med118",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Marie Henriette Clemenzo, l.28, n.1815, domicilio Ardon.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2888,6 +2948,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 1
+        },
+        {
+          "id": "med112",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe (burgueses de Riddes domiciliados en Ardon). Familia Jean Joseph Clemenzo, líneas 21-28, y familia Jean Claude, líneas 29-34.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
+          "group_order": 2
         }
       ]
     },
@@ -2938,6 +3008,16 @@
           "date": "1837-01-01",
           "source_label": null,
           "group_label": "",
+          "group_order": 2
+        },
+        {
+          "id": "med113",
+          "type": "document",
+          "url": "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp",
+          "caption": "Censo de Riddes 1829 — 2ème Classe. Figura como 'Clemenzo Cerisier / Catherine Fortunée / 1786'. Confirma apellido Cerisier.",
+          "date": "1829",
+          "source_label": "AEV, DI 3090, Riddes 1829",
+          "group_label": "Censos",
           "group_order": 2
         }
       ]
