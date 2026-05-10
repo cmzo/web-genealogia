@@ -664,6 +664,62 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 
 ---
 
+## Árbol del Clan Clemenzo
+
+Diagrama simplificado de las relaciones documentadas e hipotéticas. Las líneas punteadas indican hipótesis no confirmadas (H12).
+
+```mermaid
+flowchart TD
+    JA["Jean-André Clemenzo\n✶1716 · Ardon"]
+    MMF["Marie-Marguerite Favre\n✶1728"]
+    m0(( ))
+    BAP["Baptiste Clemenzo\n✶~1745–1755?\nArdon 1802"]
+    MUNK["Marie ?"]
+    m1(( ))
+    JBC["Jean Baptiste Clemenzo\n✶~1774?"]
+    JJ["Jean Joseph Clemenzo\n✶~1780 · p57"]
+    CC["Catherine Cerisier · p58"]
+    m2(( ))
+    HY["Hyacinthe Clemenzo\n✶1781\nofficier valaisan"]
+    JF["Joseph Florentin\n✶~1810 · p72\nChirurgien à Naples"]
+    JCL["Jean Claude\n✶~1812 · p73"]
+    MAR["Marguerite\n✶~1814 · p74"]
+    MH["Marie Henriette\n✶1815 · p75"]
+    FR["François Clemenzoz\n✶1858 · p36"]
+    JFB["Jean-François Battnier\n✶~1817"]
+    m3(( ))
+    MLS["Marie Louise Stalder\n✶1828 · p37"]
+    m4(( ))
+
+    JA --- m0
+    MMF --- m0
+    m0 --> HY
+    m0 -.->|H12| BAP
+
+    BAP --- m1
+    MUNK --- m1
+    m1 --> JBC
+    m1 --> JJ
+
+    JJ --- m2
+    CC --- m2
+    m2 --> JF
+    m2 --> JCL
+    m2 --> MAR
+    m2 --> MH
+    m2 --> FR
+
+    MH --- m3
+    JFB --- m3
+    m3 --> SAX["familia en Saxon"]
+
+    FR --- m4
+    MLS --- m4
+    m4 --> ARG["rama argentina"]
+```
+
+---
+
 ## Tareas
 
 - [x] ~~Buscar en recensements.vallesiana.ch el censo de Riddes para localizar a p58~~ → **Encontrada en Riddes 1850, línea 58** (Marie Catherine Cerisier, viuda)

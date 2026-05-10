@@ -1691,6 +1691,57 @@
 <p>Diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. Mencionado como &quot;Colonel Clemenzo&quot; en el Avant-propos de las memorias (1955). Puede ser descendiente de Jean-André vía Hyacinthe, o de Jean-Baptiste *1774 vía Frédéric *1832 — pendiente de verificación.</p>
 <p><strong>Armas de la familia Clemenzo (adoptadas 1977):</strong><figcaption style="display: block; text-align: center; font-style: italic; margin: -28px 0 12px 0; padding: 2px 8px; font-size: 0.75em; color: #666; line-height: 1.1; background: rgba(255, 255, 255, 0.95);">&quot;Au I d&#39;or à une clef à double panneton de gueules, posée en barre; au II d&#39;azur à une ancre d&#39;argent posée aussi en barre.&quot;</figcaption><br>La clef viene de las armas de la commune d&#39;Ardon; el ancla es atributo iconográfico de saint Clément (patrono de la familia). La clave y el ancla también evocan Saint-Pierre-de-Clages, donde la familia está citada en el siglo XVI.</p>
 <hr>
+<h2 id="árbol-del-clan-clemenzo">Árbol del Clan Clemenzo</h2>
+<p>Diagrama simplificado de las relaciones documentadas e hipotéticas. Las líneas punteadas indican hipótesis no confirmadas (H12).</p>
+<div class="mermaid" style="overflow-x:auto; margin: 32px 0;">flowchart TD
+    JA["Jean-André Clemenzo\n✶1716 · Ardon"]
+    MMF["Marie-Marguerite Favre\n✶1728"]
+    m0(( ))
+    BAP["Baptiste Clemenzo\n✶~1745–1755?\nArdon 1802"]
+    MUNK["Marie ?"]
+    m1(( ))
+    JBC["Jean Baptiste Clemenzo\n✶~1774?"]
+    JJ["Jean Joseph Clemenzo\n✶~1780 · p57"]
+    CC["Catherine Cerisier · p58"]
+    m2(( ))
+    HY["Hyacinthe Clemenzo\n✶1781\nofficier valaisan"]
+    JF["Joseph Florentin\n✶~1810 · p72\nChirurgien à Naples"]
+    JCL["Jean Claude\n✶~1812 · p73"]
+    MAR["Marguerite\n✶~1814 · p74"]
+    MH["Marie Henriette\n✶1815 · p75"]
+    FR["François Clemenzoz\n✶1858 · p36"]
+    JFB["Jean-François Battnier\n✶~1817"]
+    m3(( ))
+    MLS["Marie Louise Stalder\n✶1828 · p37"]
+    m4(( ))
+
+    JA --- m0
+    MMF --- m0
+    m0 --> HY
+    m0 -.->|H12| BAP
+
+    BAP --- m1
+    MUNK --- m1
+    m1 --> JBC
+    m1 --> JJ
+
+    JJ --- m2
+    CC --- m2
+    m2 --> JF
+    m2 --> JCL
+    m2 --> MAR
+    m2 --> MH
+    m2 --> FR
+
+    MH --- m3
+    JFB --- m3
+    m3 --> SAX["familia en Saxon"]
+
+    FR --- m4
+    MLS --- m4
+    m4 --> ARG["rama argentina"]
+</div>
+<hr>
 <h2 id="tareas">Tareas</h2>
 <ul>
 <li><input checked="" disabled="" type="checkbox"> <del>Buscar en recensements.vallesiana.ch el censo de Riddes para localizar a p58</del> → <strong>Encontrada en Riddes 1850, línea 58</strong> (Marie Catherine Cerisier, viuda)</li>
@@ -1795,6 +1846,8 @@
     });
   </script>
   
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
           </article>
           <aside class="article-aside">
             

@@ -190,7 +190,23 @@ function markdownToHtml(markdown) {
 
   // Procesar callouts de Obsidian
   html = processCallouts(html);
-  
+
+  // Procesar bloques Mermaid: ```mermaid → <div class="mermaid">
+  let hasMermaid = false;
+  html = html.replace(
+    /<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g,
+    (match, code) => {
+      hasMermaid = true;
+      const unescaped = code
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+      return `<div class="mermaid" style="overflow-x:auto; margin: 32px 0;">${unescaped}</div>`;
+    }
+  );
+
   // Mejorar el estilo de las imágenes y corregir rutas
   html = html.replace(
     /<img src="([^"]+)" alt="([^"]*)"/g,
@@ -394,7 +410,11 @@ function markdownToHtml(markdown) {
     /src="mapa-francisco-embed\.html"/g,
     'src="../../mapa-francisco-embed.html"'
   );
-  
+
+  if (hasMermaid) {
+    html += '\n<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"><\/script>\n<script>mermaid.initialize({ startOnLoad: true, theme: \'neutral\' });<\/script>';
+  }
+
   return html;
 }
 
