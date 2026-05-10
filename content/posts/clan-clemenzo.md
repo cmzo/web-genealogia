@@ -207,9 +207,22 @@ Primer censo que registra a los Clemenzo en **Primera Clase** (burgueses residen
 | Clemenzo  | François        | M    | fils      | p36 |
 
 **Notas:**
-- **p72 Joseph Florentin (n.1805)** y **p73 Joseph Marie (n.1818)** no aparecen — ya no vivían en el hogar paterno.
+- **p73 Joseph Marie (n.1818)** no aparece — ya no vivía en el hogar paterno.
+- **p72 Joseph Florentin** no figura en el hogar, pero sí aparece en la 4me Classe (ver abajo).
 - Este formato censal no incluye columna de apellido de soltera, por lo que no permite confirmar la ortografía de p58. La evidencia definitiva de **Cerisier** proviene del censo de Riddes 1829 y del acta de matrimonio de p75 (1840).
 - Una observación marginal en la última fila parece indicar "à Ardon" — posiblemente François también estaba registrado en Ardon por su burguesía.
+
+#### 4me Classe — ausentes de Riddes (1837)
+
+![Censo de Riddes 1837 — 4me Classe, ausentes](../../assets/images/posts/censo-1837-riddes-ausentes.png)
+
+La 4me Clase registra "les ressortissans de la commune absens du pays" — burgueses de Riddes que residen fuera del cantón. La única entrada Clemenzo:
+
+| Apellido | Nombre | Profesión | Lugar | Observaciones |
+|---|---|---|---|---|
+| Clémenzo | Florentin | Chirurgien | à Naples | communier + NJ— |
+
+**Joseph Florentin (p72)** figura como **cirujano** ("chirurgien") residente en **Nápoles**. La observación "communier" confirma que mantiene sus derechos de burguesía en Riddes. En 1829 era estudiante (en Viena o Freiburg); para 1837 ya había completado sus estudios de medicina y ejercía en Italia.
 
 ---
 
@@ -227,6 +240,18 @@ Primer censo que registra a los Clemenzo en **Primera Clase** (burgueses residen
 Las tres entradas forman un hogar: Joseph (l.44) = p57, vivo en 1846. Catherine (l.45) = p58 Marie Catherine Cerisier. Jeanne (l.46) = hija adulta soltera, la misma que aparece en el censo de Riddes 1850.
 
 **Nota sobre el nombre de p57:** Figura aquí como **"Joseph"** (sin "Jean"). El documento S 77 (1851) también lo llama "Joseph Clemenzoz de Riddes". El árbol lo registra como "Jean Joseph" — el censo de 1829 confirma el nombre completo. Probable que en 1846 el censista lo anotó abreviado. Confirmar en registros parroquiales.
+
+#### 4me Classe — ausentes de Riddes (1846)
+
+![Censo de Riddes 1846 — 4me Classe, ausentes](../../assets/images/posts/censo-1846-riddes-ausentes.png)
+
+La misma 4me Clase del censo de febrero de 1846. Línea 7:
+
+| Nº | Apellido | Nombre | Profesión | Lugar |
+|---|---|---|---|---|
+| 7 | Clemenzoz | Florentin | Chirurgien | Naples |
+
+Florentin seguía en Nápoles en 1846. Desde 1837 hasta al menos febrero de 1846 ejerció como cirujano en Italia — un período mínimo de 9 años fuera de Riddes. No hay rastro suyo en censos posteriores disponibles.
 
 ---
 
@@ -598,7 +623,7 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 - [x] ~~Actualizar el árbol: corregir nombre de p58 a **Marie Catherine Cerisier**~~ → **Hecho** (arbol.db actualizado)
 - [ ] Verificar el nombre completo de p57: censos sugieren "Jean Joseph" (1829) o "Joseph" (1846) — confirmar en registros parroquiales
 - [ ] Resolver discrepancia de Joseph Florentin: Riddes 1829 dice "Vienne (Autriche)", Ardon 1829 dice "Fribourg en Breisgau" — buscar registros universitarios en ambas ciudades (Universität Wien y Albert-Ludwigs-Universität Freiburg, siglo XIX)
-- [ ] Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo — rastrear su vida tras los estudios
+- [x] ~~Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo~~ → **Encontrado:** Riddes 1837 y 1846 (4me Classe — ausentes): **Chirurgien à Naples**; mínimo 9 años en Italia; mantiene burguesía en Riddes
 - [x] ~~Investigar al Grupo C (Jean Baptiste + Baptiste) para determinar el parentesco con la línea principal~~ → **Resuelto: Baptiste Clemenzo (Ardon 1802) = padre de Jean Joseph (p57) y de Jean Baptiste (Grupo C)**
 - [ ] Buscar acta de bautismo de Jean Joseph Clemenzo (~1780) en registros parroquiales de Ardon — confirmar que el padre es Baptiste Clemenzo (confirmaría H9 y H11)
 - [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con Jean-Yves)
@@ -617,5 +642,5 @@ La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográ
 
 ---
 
-*Última actualización: 2026-05-13*
+*Última actualización: 2026-05-14*
 

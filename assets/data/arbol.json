@@ -2552,6 +2552,26 @@
           "source_label": null,
           "group_label": "",
           "group_order": 3
+        },
+        {
+          "id": "med110",
+          "type": "document",
+          "url": "assets/images/personas/p72-1837-riddes-ausente.webp",
+          "caption": "Censo de Riddes 1837 — 4me Classe (ausentes). Clémenzo Florentin, Chirurgien, à Naples. Conserva derechos de burguesía en Riddes.",
+          "date": "1837",
+          "source_label": "AEV, DI 3090, Riddes 1837",
+          "group_label": "Censos",
+          "group_order": 4
+        },
+        {
+          "id": "med111",
+          "type": "document",
+          "url": "assets/images/personas/p72-1846-riddes-ausente.webp",
+          "caption": "Censo de Riddes 1846 — 4me Classe (ausentes). Clemenzoz Florentin, Chirurgien, à Naples. Línea 7.",
+          "date": "1846",
+          "source_label": "AEV, DI 3090, Riddes 1846",
+          "group_label": "Censos",
+          "group_order": 5
         }
       ]
     },
