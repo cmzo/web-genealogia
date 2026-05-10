@@ -290,18 +290,26 @@ Los grupos se delimitan por los marcadores de rol (père/mère inician cada unid
 
 **Grupo C — Líneas 101–108**
 
-| Línea | Nombre        | Rol              |
-|-------|---------------|------------------|
-| 101   | Baptiste      | Père (¿abuelo?)  |
-| 102   | Jean Baptiste | Père             |
-| 103   | Elizabeth     | Mère             |
-| 104   | Jean Baptiste | Fils             |
-| 105   | Frederich     | Fils             |
-| 106   | Elisabeth     | Fille            |
-| 107   | Veronique     | Fille            |
-| 108   | Margueritte   | Fille            |
+| Línea | Nombre        | Rol         | Identidad (árbol Jean-Yves)              | Edad 1846 |
+|-------|---------------|-------------|------------------------------------------|-----------|
+| 101   | Baptiste      | Père        | Baptiste Clemenzo (patriarca, c.1802)    | ~90+      |
+| 102   | Jean Baptiste | Père        | Jean-Baptiste Clemenzo \* **1774** † 1859 | 72 ✓      |
+| 103   | Elsabeth      | Mère        | [esposa de Jean-Baptiste — ver nota]     | —         |
+| 104   | Jean Baptiste | Fils        | Jean-Baptiste \* **1822** † 1908          | 24 ✓      |
+| 105   | Frédérich     | Fils        | Frédéric \* **1832** † 1885              | 14 ✓      |
+| 106   | Elsabeth      | Fille       | Anne-Marie-**Elisabeth** \* **1820** † 1890 | 26 ✓   |
+| 107   | Véronique     | Fille       | Anne-Marie-**Véronique** \* **1828**     | 18 ✓      |
+| 108   | Margueritte   | Fille       | Marguerite (no figura en árbol JY)       | —         |
 
-**Nota (Grupo C):** El "Baptiste" de l.101 y el "Jean Baptiste" de l.102 coinciden con los identificados en el censo de Ardon 1802: Baptiste Clemenzo (padre) y su hijo Jean Baptiste. Para 1846, Baptiste tendría ~90+ años — puede figurar como patriarca anciano en el hogar de su hijo. Jean Joseph (el otro hijo de 1802) habría migrado a Riddes y es p57. → Ver H4 y H9.
+**Nota (Grupo C):** Los datos del árbol de Jean-Yves confirman la identificación de este grupo con una precisión notable: cuatro hijos coinciden en nombre y edad calculada para 1846 sin margen de error. Las correspondencias son:
+
+- **L101 "Baptiste"** = patriarca Baptiste Clemenzo (del censo 1802), que en 1846 tendría ~90 años y viviría en casa de su hijo. Jean-Yves no tiene datos de este nivel (su árbol comienza en Gen. II = Jean-Baptiste *1774), lo que es consistente con que el padre se lo transmitiera solo por tradición oral.
+- **L102 "Jean Baptiste"** = Jean-Baptiste Clemenzo *1774 †1859 — el ancestro de Jean-Yves. Tiene 72 años en 1846 y muere en 1859.
+- **L103 "Elsabeth" (Mère)** = el árbol de Jean-Yves registra a la esposa como Anne-Marie Gaillard *1797 (casada 1819). Discrepancia de nombre: posible que Anne-Marie Gaillard falleciera antes de 1846 y Jean-Baptiste se hubiera vuelto a casar con una Elsabeth, o que el censista usara su segundo nombre. Pendiente de aclaración.
+- **L104–L108** = hijos de Jean-Baptiste *1774 × Anne-Marie Gaillard, con edades que cuadran perfectamente. La única excepción es Margueritte (l.108), que no aparece en el árbol de Jean-Yves — puede ser la hija menor o una que falleció joven.
+- **Jean Joseph (p57)** no aparece en este grupo porque para 1846 ya vivía en Riddes con su propia familia. → Ver H9.
+
+**Fuente:** Árbol genealógico de Jean-Yves (descendiente de Jean-Baptiste), basado en parte en el *Armorial Valaisan, Sion et Zurich, 1946, p. 63* — fuente primaria publicada pendiente de consulta. → Ver H4 y H11.
 
 **Grupo D — Líneas 109–112**
 
@@ -430,14 +438,20 @@ El Joseph Marie père del Grupo B (líneas 96–100) tendría ~28 años en 1846,
 
 El François Conseiller del Grupo A (líneas 92–95) es probablemente el **François-Joseph Clemenzoz d'Ardon** del documento AC Riddes D 10/40 (1854), identificado como un Clemenzoz diferente de p36. Su hijo también llamado François (l.94) sugiere dos generaciones en Ardon.
 
-### H4 — Grupo C (Ardon 1846) = Jean Baptiste Clemenzo, hermano de p57, con su padre Baptiste
+### H4 — Grupo C (Ardon 1846) = Jean Baptiste Clemenzo, hermano de p57, con su padre Baptiste ✓ CONFIRMADO
 
-El censo de Ardon 1802 muestra a Baptiste Clemenzo con dos hijos: Jean Baptiste y Jean Joseph. Para 1846 (44 años después):
-- **Baptiste** (l.101, ~90+ años) = el mismo Baptiste del censo 1802, ya anciano, viviendo con su hijo
-- **Jean Baptiste** (l.102, ~55–60 años) = su hijo, ahora père con hogar propio, casado con Elizabeth (l.103)
-- Sus hijos: Jean Baptiste fils (l.104), Frederich (l.105), Elisabeth (l.106), Veronique (l.107), Margueritte (l.108)
+El árbol genealógico de Jean-Yves, descendiente directo de esta rama, confirma la identidad del Grupo C con precisión documental:
 
-**Jean Joseph** (el otro hijo de Baptiste en 1802) es p57, quien migró a Riddes. La rama de Jean Baptiste permaneció en Ardon. Ambas ramas descienden de Baptiste Clemenzo. **Grupo C ya no es colateral desconocido: es la línea fraterna de p57, y Baptiste Clemenzo es el ancestro común.**
+- **Jean-Baptiste Clemenzo** \* 1774 † 1859 — el "Jean Baptiste" de l.102, con 72 años en 1846
+- Sus hijos: Anne-Marie-Elisabeth \*1820, Jean-Baptiste \*1822, Anne-Marie-Véronique \*1828, Frédéric \*1832
+  - Los cuatro cruzados con el censo: **4/4 coincidencias de nombre y edad calculada**
+- La "Elisabeth" de l.103 (Mère) no coincide con el nombre "Anne-Marie Gaillard" que registra Jean-Yves como esposa de Jean-Baptiste. Posible segundo matrimonio o variante de nombre — pendiente de aclaración.
+
+El "Baptiste" de l.101 es el padre de Jean-Baptiste \*1774, es decir, el mismo **Baptiste Clemenzo** del censo de Ardon 1802 — tendría ~90 años en 1846 y figuraría como patriarca anciano en el hogar de su hijo.
+
+**Jean Joseph** (el otro hijo de Baptiste en 1802) es p57, quien migró a Riddes. La rama de Jean Baptiste permaneció en Ardon. **Baptiste Clemenzo es el ancestro común de ambas ramas.**
+
+**Fuente:** Árbol de Jean-Yves, basado en el *Armorial Valaisan, Sion et Zurich, 1946, p. 63*.
 
 ### H5 — p58 no aparece en el censo de Ardon 1846 porque vivía en Riddes ✓ CONFIRMADO
 
@@ -485,24 +499,70 @@ Si la identificación es correcta:
 - **Jacques Cerisier** = padre de p58
 - **Catherine Sillio** = madre de p58
 
-### H11 — Jean Baptiste Clemenzo (Ardon 1802) = ancestro de Jean-Yves
+### H11 — Baptiste Clemenzo = ancestro común de mi línea y la de Jean-Yves ✓ CONFIRMADO INFORMALMENTE
 
-Tengo contacto con **Jean-Yves**, descendiente suizo de Jean Baptiste Clemenzo de Ardon. Su árbol comienza desde Jean Baptiste — no incluye datos sobre el padre de este.
+El árbol de Jean-Yves confirma que su ancestro **Jean-Baptiste Clemenzo \*1774** figura en el Grupo C del censo de Ardon 1846 con cuatro hijos perfectamente identificables — los mismos que aparecen en su árbol. Su árbol parte de Gen. II (Jean-Baptiste \*1774), lo que implica que el "I." no documentado es el padre: **Baptiste Clemenzo**, el patriarca del censo de Ardon 1802.
 
-Si H9 se confirma (Jean Joseph = p57, hijo de Baptiste), entonces:
-- **Jean Baptiste** y **Jean Joseph** son hermanos (hijos del mismo Baptiste Clemenzo)
-- Jean-Yves y yo compartimos a Baptiste Clemenzo como ancestro común
-- Jean-Yves sería mi primo lejano
+Del lado de mi línea, Jean Baptiste y Jean Joseph son los dos hijos de Baptiste en el censo de 1802. Jean Joseph migró a Riddes y es p57. Jean Baptiste \*1774 permaneció en Ardon y es el ancestro de Jean-Yves.
 
-La confirmación del parentesco depende de:
-1. Que el acta de bautismo de Jean Joseph (Ardon, ~1780) lo registre como hijo de Baptiste Clemenzo
-2. Que el acta de bautismo de Jean Baptiste (Ardon, fecha similar) también mencione a Baptiste Clemenzo como padre
+**En consecuencia:**
+- Jean-Baptiste \*1774 (ancestro de Jean-Yves) y Jean Joseph \*1780 (p57, mi ancestro Gen. 7) son **hermanos**, hijos del mismo Baptiste Clemenzo
+- Jean-Yves y yo compartimos a **Baptiste Clemenzo** como ancestro común — somos primos lejanos
+- **Nota:** Jean-Baptiste \*1774 nació antes que Jean-Joseph \*1780, lo que es consistente con ser hermano mayor
 
-Si ambas actas confirman el mismo padre, la conexión queda establecida documentalmente.
+La confirmación documental completa requiere el acta de bautismo de Jean Joseph (~1780, Ardon) que mencione a Baptiste como padre. Pero la coincidencia entre el árbol de Jean-Yves y los censos de Ardon 1802 y 1846 hace que el parentesco sea ya una certeza práctica.
+
+**Fuente:** Árbol de Jean-Yves (comunicación personal, 2026). Referencia publicada: *Armorial Valaisan, Sion et Zurich, 1946, p. 63* — pendiente de consulta para datos adicionales sobre Baptiste.
 
 ### H8 — "Marie Josephine" (1844, Riddes 1850) es p77 Joséphine Clemenzo
 
 El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia de un año, habitual en registros manuscritos. En 1850 Joséphine (~6 años) viviría con su abuela porque su madre había fallecido. Refuerza la H1: la esposa Clémence de p36 murió entre 1846 y 1850, dejando a la niña al cuidado de p58.
+
+---
+
+## Armorial Valaisan
+
+El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 1946, p. 63* como fuente base. Existen dos ediciones relevantes con entradas distintas para la familia Clemenzo.
+
+### Edición 1946 — entrada CLEMENZ / CLEMENZO
+
+![Armorial Valaisan 1946 — entrada Clemenz/Clemenzo](../../assets/images/posts/armorial-valaisan-1946-clemenz-clemenzo.png)
+
+Edición bilingüe (francés / alemán). La entrada CLEMENZ/CLEMENZO cubre todas las variantes del apellido y distingue dos ramas por burguesía:
+
+> *"B.: Clemenz: Staldenried, Viège, etc.; Clemenzo: **Ardon, Riddes**."*
+
+Esto confirma explícitamente que la rama **Clemenzo** tiene su burguesía en **Ardon** y **Riddes** — exactamente la rama que investigamos.
+
+**Datos históricos documentados:**
+- **1481** — Guillaume et Perrod *Clemenczoz* figuran como habitantes y burgueses de Ardon-Chamoson. Primera mención documentada de la familia en Ardon, 321 años antes del censo 1802.
+- **1517** — Jean *Clementii* figura a Riddes et Leytron (en el marco de una disputa con los Supersaxo). Primera mención en Riddes.
+- **1500–1514** — Distintas menciones de clérigos Clemenz/Clemenzi en Leytron y Fully.
+- **1569** — André *Clemency*, fils d'André, reconocimiento al Chapitre de Sion por el priorato de Saint-Pierre-de-Clages.
+- **1652** — André *Clemence*, síndico de Ardon.
+- **1795** — **Claude-Antoine Clemenchoz, lieutenant vidomnal d'Ardon.** Cargo de magistrado local en Ardon, siete años antes del censo 1802. Contemporáneo de Baptiste Clemenzo — posible pariente directo o incluso el mismo Baptiste bajo variante de apellido.
+
+### Edición posterior (post-1977) — entrada CLEMENZO (Famille d'Ardon)
+
+![Armorial Valaisan — entrada Clemenzo, Famille d'Ardon](../../assets/images/posts/armorial-valaisan-clemenzo-ardon.png)
+
+Edición más reciente (las armas fueron adoptadas en 1977). Artículo exclusivo para la rama Clemenzo de Ardon. Menciona dos figuras históricas de interés:
+
+**Hyacinthe Clemenzo (1781–1862)**
+
+Oficial al servicio de Francia bajo el Imperio y la Restauración. Combatió en España, Rusia, Alemania y Francia. Condecorado con la Legión de Honor. Murió en Mâcon. Redactó memorias publicadas por L. Dupont Lachenal y L. Imhoff en *Annales valaisannes*, 1957.
+
+Fecha de nacimiento: **1781**. Jean-Baptiste Clemenzo (ancestro de Jean-Yves) nació en **1774**, y Jean-Joseph Clemenzo (p57) en **~1780**. La proximidad cronológica lo sitúa en la misma generación. Si Hyacinthe es hijo de Baptiste Clemenzo, habría partido a Francia como soldado antes del censo de 1802 (a sus ~21 años), lo que explicaría su ausencia en ese documento. Hipótesis plausible pendiente de confirmación.
+
+Sus memorias (*Annales valaisannes*, 1957) son una fuente primaria potencialmente valiosa: un Clemenzo de Ardon de esa generación describiendo su vida y probablemente su familia de origen.
+
+**Frédéric Clemenzo (1893–1980)**
+
+Diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. La cronología encaja con la descendencia de Frédéric \*1832 (hijo de Jean-Baptiste \*1774 del árbol de Jean-Yves), que habría tenido hijos hacia 1860–1880; un nieto nacido en 1893 es perfectamente plausible.
+
+**Armas de la familia Clemenzo (adoptadas 1977):**
+*"Au I d'or à une clef à double panneton de gueules, posée en barre; au II d'azur à une ancre d'argent posée aussi en barre."*
+La clef viene de las armas de la commune d'Ardon; el ancla es atributo iconográfico de saint Clément (patrono de la familia). La clave y el ancla también evocan Saint-Pierre-de-Clages, donde la familia está citada en el siglo XVI.
 
 ---
 
@@ -522,7 +582,11 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 - [x] ~~Investigar al Grupo C (Jean Baptiste + Baptiste) para determinar el parentesco con la línea principal~~ → **Resuelto: Baptiste Clemenzo (Ardon 1802) = padre de Jean Joseph (p57) y de Jean Baptiste (Grupo C)**
 - [ ] Buscar acta de bautismo de Jean Joseph Clemenzo (~1780) en registros parroquiales de Ardon — confirmar que el padre es Baptiste Clemenzo (confirmaría H9 y H11)
 - [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con Jean-Yves)
-- [ ] Compartir el hallazgo del censo de Ardon 1802 con Jean-Yves — ver si reconoce a Baptiste en su árbol o si puede ampliarlo hacia atrás
+- [x] ~~Compartir hallazgos del censo de Ardon 1802 con Jean-Yves~~ → **Hecho:** su árbol confirma Grupo C = rama Jean-Baptiste; 4/4 coincidencias nombre+edad; H11 prácticamente confirmada
+- [x] ~~Consultar el Armorial Valaisan~~ → **Hecho:** dos ediciones analizadas; familia en Ardon desde 1481; Claude-Antoine Clemenchoz vidomnal 1795; Hyacinthe \*1781 posible hermano de p57
+- [ ] Buscar las memorias de **Hyacinthe Clemenzo (1781–1862)** en *Annales valaisannes*, 1957 — pueden contener datos sobre su familia de origen en Ardon (padres, hermanos)
+- [ ] Investigar **Claude-Antoine Clemenchoz, lieutenant vidomnal d'Ardon 1795** — ¿es Baptiste Clemenzo bajo variante de apellido, o un pariente? Buscar en registros parroquiales de Ardon y en el AEV
+- [ ] Verificar si **Frédéric (1893–1980)** del Armorial es descendiente de Frédéric \*1832 del árbol de Jean-Yves — confirmaría la continuidad de esa rama hasta el siglo XX
 - [ ] Identificar el apellido de "Marie [?]", esposa de Baptiste Clemenzo (Ardon 1802) — buscar en registros parroquiales de Ardon
 - [ ] Identificar el apellido completo del esposo de Anne Marie Clemenzo ("Jaque [R?]", Ardon 1802)
 - [ ] Buscar a Baptiste Clemenzo en censos anteriores a 1802 o en registros parroquiales de Ardon — determinar año de nacimiento y origen
@@ -533,5 +597,5 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 
 ---
 
-*Última actualización: 2026-05-11*
+*Última actualización: 2026-05-13*
 
