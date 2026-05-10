@@ -92,6 +92,13 @@ Archivo cantonal que conserva copias de registros parroquiales de toda la regió
 
 ---
 
+### Recensements Vallesiana
+**Web:** [recensements.vallesiana.ch](https://recensements.vallesiana.ch/)
+
+Base de datos de censos históricos del Cantón del Valais. Permite consultar padrones y registros de población de las comunas vallesanas, útil para localizar a los antepasados Clemenzo y Roh en Riddes y Conthey antes de su emigración a Argentina.
+
+---
+
 ## Bibliografía relevante
 
 Publicaciones con listados de familias, censos transcritos o historia de las colonias:
