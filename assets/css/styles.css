@@ -525,6 +525,8 @@ body {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 0 80px 0;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .top-bar {
@@ -680,9 +682,15 @@ body {
 
 .article-content iframe {
   margin: 32px 0;
+  max-width: 100%;
   border-radius: 4px;
   border: none;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
 }
 
 .article-content blockquote {

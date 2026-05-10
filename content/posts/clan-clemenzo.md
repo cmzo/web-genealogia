@@ -19,7 +19,16 @@ Las fuentes principales son los censos digitalizados del Valais (1802–1870), e
 
 ![](../../assets/images/posts/header_censo.png)
 
-**En este documento:** [Censos](#censos) · [Armorial](#armorial-valaisan) · [Memorias de Hyacinthe](#las-memorias-de-hyacinthe-clemenzo) · [Árbol de Jean-Yves](#el-árbol-de-jean-yves) · [Conclusiones](#conclusiones) · [Línea directa](#línea-directa) · [Árbol del clan](#árbol-del-clan-clemenzo) · [Hipótesis](#hipótesis) · [Tareas](#tareas)
+**En este documento:** 
+- [Censos](#censos)
+- [Armorial](#armorial-valaisan)
+- [Memorias de Hyacinthe](#las-memorias-de-hyacinthe-clemenzo)
+- [Árbol de Jean-Yves](#el-árbol-de-jean-yves)
+- [Conclusiones](#conclusiones)
+- [Línea directa](#línea-directa)
+- [Árbol del clan](#árbol-del-clan-clemenzo)
+- [Hipótesis](#hipótesis)
+- [Tareas](#tareas)
 
 ---
 
