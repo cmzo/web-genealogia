@@ -9,7 +9,6 @@ featured: true
 slug: "clan-clemenzo"
 ---
 
-
 # Clan Clemenzo
 
 Documento de investigación sobre la rama Clemenzo con burguesía en Riddes y domicilio en Ardon, cantón del Valais, Suiza.
@@ -35,11 +34,16 @@ No se encontraron entradas Clemenzo/Clemenzoz en Riddes en este año. Consistent
 
 Bracket = **4** personas.
 
-**Nota sobre "Sillio":** La lectura es ambigua. Puede tratarse de:
-1. Un dit-name o apellido secundario: "Cerisier dit Sillio — Jaque" → un solo hogar de 4 miembros
-2. Dos hogares separados: "Cerisier — Jaque" (solo) y "Sillio" (4 miembros)
+La familia aparece identificada con doble apellido según el patrón habitual valaisano: **Cerisier** (apellido del padre) × **Sillio** (apellido de soltera de la madre):
 
-Si es un solo hogar (hipótesis preferida): Jacques Cerisier + esposa Catherine [Sillio] + hija Marie Josée + hija Catherine = 4 personas. La **hija "cattherine fls."** tendría ~16 años si nació en 1786, coincidiendo exactamente con el año de nacimiento de p58. → Ver H10.
+| Nombre      | Rol         |
+|-------------|-------------|
+| Jaque       | Père (jefe) — Cerisier |
+| cattherine  | sa fame — Sillio       |
+| marie José  | fille                  |
+| cattherine  | fls.                   |
+
+Total: 4 personas. La **hija "cattherine fls."** tendría ~16 años si nació en 1786, coincidiendo exactamente con el año de nacimiento de p58 Marie Catherine Cerisier. → Ver H10.
 
 ---
 
@@ -47,8 +51,8 @@ Si es un solo hogar (hipótesis preferida): Jacques Cerisier + esposa Catherine 
 
 **Fuente:** [Censo de Ardon 1802 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Ardon)
 
+![Censo de 1802 en Ardon](../../assets/images/posts/censo_1802_ardon.png)
 
-![Censo de 1802, Ardon](../../assets/images/posts/censo_1802_ardon.png)
 
 Primera aparición de los Clemenzo en los registros censales. Se identifican dos hogares consecutivos relacionados:
 
@@ -254,6 +258,49 @@ La línea 58 usa doble apellido **Clemenzoz Cerisier** (casada + soltera), confi
 
 ---
 
+## Línea directa
+
+```
+  Gen. 0   Juan Martin Clemenzo Vargas Yegros
+           n. 2016 — Buenos Aires, Argentina
+           |
+  Gen. 1   Matías Damián Clemenzo
+           n. 1986 — Buenos Aires, Argentina
+           |
+  Gen. 2   Daniel Jorge Clemenzo
+           n. 1959 — Buenos Aires, Argentina
+           |
+  Gen. 3   Félix Ricardo Clemenzo
+           n. 1926 — Villa Elisa, Entre Ríos, Argentina
+           |
+  Gen. 4   Félix Clemenzo
+           n. ? — Villa Elisa, Entre Ríos  ·  m. 1943 — Buenos Aires
+           |
+  Gen. 5   François Clemenzo  [Francisco en Argentina]
+           n. 31/05/1858 — Riddes, Valais, Suiza
+           m. 17/04/1928 — Concepción del Uruguay, Entre Ríos
+           emigró a Argentina ~1880
+           |
+  Gen. 6   François Clemenzoz
+           n. 1809 — Ardon (burgués de Riddes), Valais, Suiza
+           m. entre 1870 y 1874
+           |
+  Gen. 7   Jean Joseph Clemenzo
+           n. 1780 (est.) — Ardon, Valais, Suiza
+           × Catherine Fortunée Cerisier  (n. 1786 — Riddes)
+           m. entre 1846 y 1850
+           documentado: Ardon 1802, Riddes 1829, 1846
+           |
+  Gen. 8   Baptiste Clemenzo                    ← [ HIPÓTESIS — censo Ardon 1802 ]
+           n. ~1750–1760 (est.) — Ardon, Valais, Suiza
+           × Marie [apellido ilegible]
+           primera aparición documental: 1802
+```
+
+*Gen. 7 e identificación de Baptiste (Gen. 8) son hipótesis por coincidencia de nombre; pendientes de confirmación con actas de bautismo en Ardon.*
+
+---
+
 ## Hipótesis
 
 ### H1 — Grupo D = p36 François Clemenzoz (n. 1809)
@@ -320,20 +367,20 @@ Pendiente: acta de bautismo de Jean Joseph en Ardon (~1780) que mencione el nomb
 
 ### H10 — Jacques Cerisier (Riddes 1802) = posible padre de Catherine Cerisier (p58, n.1786)
 
-La entrada "Cerisier — Jaque" en el censo de Riddes 1802 incluye una "cattherine fls." que tendría ~16 años si nació en 1786 — coincidiendo exactamente con el año de nacimiento de Catherine Fortunée Cerisier (p58). Si esta identificación es correcta:
+La entrada del censo de Riddes 1802 muestra a **Jacques Cerisier** con su esposa **Catherine Sillio** y dos hijas, una de ellas también llamada "cattherine fls." La denominación "Cerisier — Sillio" sigue el patrón valaisano habitual: apellido del padre × apellido de soltera de la madre. La hija Catherine hereda el apellido paterno — sería **Catherine Cerisier**, que tendría ~16 años en 1802 si nació en 1786, coincidiendo exactamente con p58.
+
+Si la identificación es correcta:
 - **Jacques Cerisier** = padre de p58
-- **Catherine [Sillio?] sa fame** = madre de p58
+- **Catherine Sillio** = madre de p58
 
-La hipótesis depende de la resolución de la ambigüedad sobre "Sillio" (dit-name vs. familia separada). Si Sillio es un dit-name o el apellido de la esposa, la familia es Cerisier con hija Catherine. Si es una familia diferente, la Catherine del bracket sería una Sillio y el vínculo Cerisier se pierde.
+### H11 — Jean Baptiste Clemenzo (Ardon 1802) = ancestro de Jean-Yves, mi contacto en Francia
 
-### H11 — Jean Baptiste Clemenzo (Ardon 1802) = ancestro del contacto actual del usuario
-
-El usuario mantiene contacto con un **descendiente de Jean Baptiste Clemenzo** de Ardon, con quien realizó videollamadas y de quien tiene el árbol genealógico de descendencia hasta hoy. El árbol del contacto comienza desde Jean Baptiste — no incluye datos sobre su padre.
+Mantengo contacto con **Jean-Yves**, descendiente de Jean Baptiste Clemenzo de Ardon. Realizamos videollamadas, conozco a su familia, y me pasó su árbol genealógico de descendencia hasta hoy. Su árbol comienza desde Jean Baptiste — no incluye datos sobre el padre de este.
 
 Si H9 se confirma (Jean Joseph = p57, hijo de Baptiste), entonces:
 - **Jean Baptiste** y **Jean Joseph** son hermanos (hijos del mismo Baptiste Clemenzo)
-- El contacto y el usuario comparten a Baptiste Clemenzo como ancestro común
-- El contacto sería primo lejano del usuario
+- Jean-Yves y yo compartimos a Baptiste Clemenzo como ancestro común
+- Jean-Yves sería mi primo lejano
 
 La confirmación del parentesco depende de:
 1. Que el acta de bautismo de Jean Joseph (Ardon, ~1780) lo registre como hijo de Baptiste Clemenzo
@@ -360,14 +407,14 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 - [ ] Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo — rastrear su vida tras los estudios en Viena
 - [x] ~~Investigar al Grupo C (Jean Baptiste + Baptiste) para determinar el parentesco con la línea principal~~ → **Resuelto: Baptiste Clemenzo (Ardon 1802) = padre de Jean Joseph (p57) y de Jean Baptiste (Grupo C)**
 - [ ] Buscar acta de bautismo de Jean Joseph Clemenzo (~1780) en registros parroquiales de Ardon — confirmar que el padre es Baptiste Clemenzo (confirmaría H9 y H11)
-- [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con el contacto)
-- [ ] Compartir el hallazgo del censo de Ardon 1802 con el contacto descendiente de Jean Baptiste — ver si conoce a Baptiste o si su árbol puede ampliarse hacia atrás
+- [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (~1782–1790?) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11: parentesco con Jean-Yves)
+- [ ] Compartir el hallazgo del censo de Ardon 1802 con Jean-Yves — ver si reconoce a Baptiste en su árbol o si puede ampliarlo hacia atrás
 - [ ] Identificar el apellido de "Marie [?]", esposa de Baptiste Clemenzo (Ardon 1802) — buscar en registros parroquiales de Ardon
 - [ ] Identificar el apellido completo del esposo de Anne Marie Clemenzo ("Jaque [R?]", Ardon 1802)
 - [ ] Buscar a Baptiste Clemenzo en censos anteriores a 1802 o en registros parroquiales de Ardon — determinar año de nacimiento y origen
-- [ ] Verificar si "Sillio" (Riddes 1802) es un dit-name de la familia Cerisier o una familia independiente — registros parroquiales de Riddes
+- [x] ~~Verificar si "Sillio" es un dit-name de Cerisier o familia independiente~~ → **Resuelto: "Cerisier — Sillio" = patrón valaisano, padre Cerisier × madre Sillio**
 
 ---
 
-*Última actualización: 2026-05-10*
+*Última actualización: 2026-05-11*
 
