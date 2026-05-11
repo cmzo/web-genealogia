@@ -550,6 +550,8 @@ El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 
 
 ![Armorial Valesano de la familia Clemenzo](../../assets/images/posts/clemenzo-def.png)
 
+> **Escudo adoptado en 1977. El ancla es uno de los atributos iconográficos de san Clemente; la llave está tomada del escudo de armas de la comuna de Ardon y también recuerda a Saint-Pierre-de-Clages, donde la familia es mencionada en el siglo XVI**
+
 </div>
 
 ### Edición 1946 — entrada CLEMENZ / CLEMENZO
@@ -576,7 +578,6 @@ Esto confirma explícitamente que la rama **Clemenzo** tiene su burguesía en **
 
 Edición más reciente (las armas fueron adoptadas en 1977). Artículo exclusivo para la rama Clemenzo de Ardon. Menciona a Hyacinthe Clemenzo (ver sección siguiente) y a Frédéric Clemenzo (1893–1980), diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. Puede ser descendiente de Jean-André vía Hyacinthe, o de Jean-Baptiste \*1774 vía Frédéric \*1832 — pendiente de verificación.
 
-**Escudo adoptado en 1977. El ancla es uno de los atributos iconográficos de san Clemente; la llave está tomada del escudo de armas de la comuna de Ardon y también recuerda a Saint-Pierre-de-Clages, donde la familia es mencionada en el siglo XVI**
 
 ---
 
