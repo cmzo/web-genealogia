@@ -10,18 +10,20 @@ featured: true
 slug: "creacion-de-un-agente-de-investigacion-genealogica-con-claude"
 ---
 
-## Índice
+Este post documenta el proceso para construir un agente de investigación genealógica con Claude Code y el protocolo MCP: desde la explicación conceptual hasta la implementación y el uso real. No es una guía de laboratorio — es el proceso con errores, decisiones y soluciones incluidas.
 
-1. [La necesidad: por qué un agente y no un chatbot](#1-la-necesidad)
-2. [Qué es el protocolo MCP](#2-qué-es-el-protocolo-mcp)
-3. [Arquitectura del agente](#3-arquitectura-del-agente)
-4. [Requisitos previos](#4-requisitos-previos)
-5. [Paso 1: API de búsqueda web (Tavily)](#5-paso-1-api-de-búsqueda-web)
-6. [Paso 2: Servidores MCP base](#6-paso-2-servidores-mcp-base)
-7. [Paso 3: Servidor MCP genealógico personalizado](#7-paso-3-servidor-mcp-personalizado)
-8. [Paso 4: Contexto del agente (CLAUDE.md)](#8-paso-4-contexto-del-agente)
-9. [Cómo usar el agente](#9-cómo-usar-el-agente)
-10. [Ventajas frente a un chatbot convencional](#10-ventajas-frente-a-un-chatbot-convencional)
+**En este post:**
+
+- [La necesidad: por qué un agente y no un chatbot](#1-la-necesidad)
+- [Qué es el protocolo MCP](#2-qué-es-el-protocolo-mcp)
+- [Arquitectura del agente](#3-arquitectura-del-agente)
+- [Requisitos previos](#4-requisitos-previos)
+- [Paso 1: API de búsqueda web (Tavily)](#5-paso-1-api-de-búsqueda-web-tavily)
+- [Paso 2: Servidores MCP base](#6-paso-2-servidores-mcp-base)
+- [Paso 3: Servidor MCP genealógico personalizado](#7-paso-3-servidor-mcp-personalizado)
+- [Paso 4: Contexto del agente (CLAUDE.md)](#8-paso-4-contexto-del-agente)
+- [Cómo usar el agente](#9-cómo-usar-el-agente)
+- [Ventajas frente a un chatbot convencional](#10-ventajas-frente-a-un-chatbot-convencional)
 
 ---
 
@@ -93,6 +95,8 @@ Cada servidor corre como un proceso separado y se comunica con Claude Code media
 
 ## 4. Requisitos previos
 
+Lo que necesitás tener instalado y configurado antes de empezar. La mayoría son herramientas estándar de desarrollo; la única dependencia específica del proyecto es una cuenta en Tavily.
+
 - **Claude Code** instalado y con sesión activa
 - **Node.js** (para los servidores MCP oficiales via `npx`)
 - **Python 3.9+** y **uv** (para el servidor personalizado)
@@ -121,7 +125,8 @@ Tavily es una API de búsqueda diseñada específicamente para agentes de IA. A 
 2. Dentro del dashboard, copiar la **API Key** generada (comienza con `tvly-...`).
 3. **No compartir esta key en ningún chat ni repositorio público.** Guardarla para el paso de configuración.
 
-> ⚠️ Si la key queda expuesta accidentalmente, revocarla de inmediato desde el dashboard de Tavily y generar una nueva.
+> [!WARNING] ⚠️ Si la key queda expuesta
+> Revocarla de inmediato desde el dashboard de Tavily y generar una nueva.
 
 ---
 
@@ -270,6 +275,8 @@ Este archivo se carga automáticamente cuando Claude Code se abre en ese directo
 
 ## 9. Cómo usar el agente
 
+Con los tres servidores configurados, el agente responde a instrucciones en lenguaje natural. Estos son los patrones de uso más frecuentes.
+
 ### Activación
 
 Abrir Claude Code en el directorio del proyecto genealógico. Los tres servidores MCP se inicializan automáticamente en cada sesión.
@@ -304,6 +311,8 @@ Esta consulta más abierta combina todas las herramientas: árbol local → docu
 ---
 
 ## 10. Ventajas frente a un chatbot convencional
+
+La diferencia no es de capacidad del modelo sino de acceso al contexto real. Esta tabla resume las implicaciones prácticas.
 
 | Característica | Chatbot LLM convencional | Agente con MCP |
 |---|---|---|
