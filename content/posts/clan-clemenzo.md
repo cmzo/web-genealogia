@@ -546,7 +546,11 @@ Censo federal suizo: fotografía del hogar de **p36 François Clemenzoz** en la 
 
 El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 1946, p. 63* como fuente base. Existen dos ediciones relevantes con entradas distintas para la familia Clemenzo.
 
+<div style="max-width: 320px; margin: 24px auto;">
+
 ![Armorial Valesano de la familia Clemenzo](../../assets/images/posts/clemenzo-def.png)
+
+</div>
 
 ### Edición 1946 — entrada CLEMENZ / CLEMENZO
 
