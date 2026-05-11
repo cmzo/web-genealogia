@@ -550,9 +550,9 @@ El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 
 
 ![Armorial Valesano de la familia Clemenzo](../../assets/images/posts/clemenzo-def.png)
 
-> **Escudo adoptado en 1977. El ancla es uno de los atributos iconográficos de san Clemente; la llave está tomada del escudo de armas de la comuna de Ardon y también recuerda a Saint-Pierre-de-Clages, donde la familia es mencionada en el siglo XVI**
-
 </div>
+
+> **Escudo adoptado en 1977. El ancla es uno de los atributos iconográficos de san Clemente; la llave está tomada del escudo de armas de la comuna de Ardon y también recuerda a Saint-Pierre-de-Clages, donde la familia es mencionada en el siglo XVI**
 
 ### Edición 1946 — entrada CLEMENZ / CLEMENZO
 
