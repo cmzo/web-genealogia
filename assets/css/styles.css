@@ -11,7 +11,7 @@
   --text:      #1a1a1a;
   --muted:     #8a8a88;
   --accent:    #2563eb;
-  --sidebar-w: 160px;
+  --sidebar-w: 200px;
   --nav-h:     52px;
 }
 
@@ -133,6 +133,8 @@ body {
   padding: 7px 12px;
   border-radius: 4px;
   transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .sidebar-link:hover {

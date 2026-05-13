@@ -5,10 +5,10 @@
   const current  = path.split('/').pop() || 'index.html';
 
   const mainLinks = [
+    { href: 'sobre.html',             label: 'Sobre el proyecto' },
     { href: 'arbol-matrimonios.html', label: 'Árbol' },
     { href: 'archivo.html',           label: 'Archivo' },
     { href: 'blog.html',              label: 'Blog' },
-    { href: 'guia.html',              label: 'Guía' },
     { href: 'fuentes.html',           label: 'Fuentes' },
   ];
 
