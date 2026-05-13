@@ -910,32 +910,34 @@ La confirmación documental completa requiere el acta de bautismo de Jean Joseph
 
 ## Tareas
 
-- [x] ~~Buscar en recensements.vallesiana.ch el censo de Riddes para localizar a p58~~ → **Encontrada en Riddes 1850, línea 58** (Marie Catherine Cerisier, viuda)
-- [x] ~~Leer las lecturas dudosas en la imagen del censo de Ardon 1846~~ → **Confirmado:** l.95 = Chrisenge, l.100 = Jenerique (J clara), l.110 = Clémence, l.111 = Adolphe. Se descubre l.113: fille adicional, nombre ilegible (imagen cortada en borde inferior)
-- [ ] Verificar si **Clémence** (l.110) es una primera esposa de p36 — buscar actas de matrimonio y defunción en registros parroquiales de Ardon
-- [ ] Buscar acta de defunción de **Clémence** en registros parroquiales de Ardon y Riddes, período 1846–1850
-- [ ] Identificar la fille de l.113 (nombre ilegible por corte de imagen) — buscar en registros parroquiales de Ardon junto con Adolphe y Marie Josephine
-- [ ] Buscar a **Jeanne Clemenzoz** (nacida post-1829) en registros parroquiales de Ardon/Riddes — confirmar si es hija de p57/p58
-- [ ] Confirmar si **Marie Josephine (n.1844, Riddes 1850)** es p77 Joséphine — verificar acta de bautismo circa 1843–1844
-- [x] ~~Actualizar el árbol: corregir nombre de p58 a **Marie Catherine Cerisier**~~ → **Hecho** (arbol.db actualizado)
-- [ ] Verificar el nombre completo de p57: censos sugieren "Jean Joseph" (1829) o "Joseph" (1846) — confirmar en registros parroquiales
-- [ ] Resolver discrepancia de Joseph Florentin: Riddes 1829 dice "Vienne (Autriche)", Ardon 1829 dice "Fribourg en Breisgau" — buscar registros universitarios en ambas ciudades (Universität Wien y Albert-Ludwigs-Universität Freiburg, siglo XIX)
-- [x] ~~Buscar a **Joseph Florentin (p72)** en censos posteriores donde aparece solo~~ → **Encontrado:** Riddes 1837 y 1846 (4me Classe — ausentes): **Chirurgien à Naples**; mínimo 9 años en Italia; mantiene burguesía en Riddes
-- [x] ~~Investigar al Grupo C (Jean Baptiste + Baptiste) para determinar el parentesco con la línea principal~~ → **Resuelto: Baptiste Clemenzo (Ardon 1802) = padre de Jean Joseph (p57) y de Jean Baptiste (Grupo C)**
-- [ ] Buscar acta de bautismo de Jean Joseph Clemenzo (c. 1780) en registros parroquiales de Ardon — confirmar que el padre es Baptiste Clemenzo (confirmaría H9 y H11)
-- [ ] Buscar acta de bautismo de Jean Baptiste Clemenzo (c. 1774) en registros parroquiales de Ardon — confirmar mismo padre Baptiste (confirmaría H11)
-- [x] ~~Compartir hallazgos del censo de Ardon 1802 con Jean-Yves~~ → **Hecho:** su árbol confirma rama Jean-Baptiste; 4/4 coincidencias nombre+edad; H11 prácticamente confirmada
-- [x] ~~Consultar el Armorial Valaisan~~ → **Hecho:** dos ediciones analizadas; familia en Ardon desde 1481; Claude-Antoine Clemenchoz vidomnal 1795; Hyacinthe \*1781 hijo de Jean-André, no de Baptiste
-- [x] ~~Buscar las memorias de **Hyacinthe Clemenzo (1781–1862)**~~ → **Hecho:** PDF leído (*Souvenirs d'un officier valaisan*, Annales valaisannes 1957); padres confirmados: Jean-André Clemenzo \*1716 × Marie-Marguerite Favre \*1728; Hyacinthe NO es hijo de Baptiste
-- [ ] Investigar **Claude-Antoine Clemenchoz, lieutenant vidomnal d'Ardon 1795** — ¿es Baptiste Clemenzo bajo variante de apellido, o un pariente? Buscar en registros parroquiales de Ardon y en el AEV
-- [ ] Verificar si **Frédéric (1893–1980)** del Armorial es descendiente de Frédéric \*1832 del árbol de Jean-Yves — confirmaría la continuidad de esa rama hasta el siglo XX
-- [ ] Identificar el apellido de "Marie [?]", esposa de Baptiste Clemenzo (Ardon 1802) — buscar en registros parroquiales de Ardon
-- [ ] Identificar el apellido completo del esposo de Anne Marie Clemenzo ("Jaque [R?]", Ardon 1802)
-- [ ] Buscar a Baptiste Clemenzo en censos anteriores a 1802 o en registros parroquiales de Ardon — determinar año de nacimiento y origen
-- [x] ~~Verificar si "Sillio" es un dit-name de Cerisier o familia independiente~~ → **Resuelto: "Cerisier — Sillio" = patrón valaisano, padre Cerisier × madre Sillio**
-- [x] ~~Leer imagen censo Riddes 1837~~ → **Hecho:** familia en 1ère Classe (residentes) por primera vez; 6 personas (p57, p58, p74, p75, p76, p36); sin columna de apellido de soltera en este formato
-- [x] ~~Leer imagen censo Riddes 1870~~ → **Hecho:** p36 vivo en dic. 1870; p37 nació 5 Mai **1828** ✓; p77 Joséphine en el hogar confirma H8; p26 François con c. 12 años
-- [x] ~~Verificar año de nacimiento de p37 Marie Louise Stalder~~ → **1828** ✓ — el censo 1870 lo confirma; árbol correcto
+| Estado | Tarea | Hipótesis |
+|--------|-------|-----------|
+| Pendiente | Buscar acta de bautismo de **Jean Joseph Clemenzo** (c. 1780, Ardon) — confirmar que el padre es Baptiste. Es el eslabón documental que falta para cerrar la cadena genealógica | H9, H11 |
+| Pendiente | Buscar acta de bautismo de **Jean Baptiste Clemenzo** (c. 1774, Ardon) — confirmar mismo padre Baptiste | H11 |
+| Pendiente | Buscar a **Baptiste Clemenzo** en censos anteriores a 1802 o en registros parroquiales de Ardon — determinar año de nacimiento y origen | H9, H11 |
+| Pendiente | Verificar si **Clémence** (l.110, Ardon 1846) es primera esposa de p36 — buscar acta de matrimonio en registros parroquiales de Ardon | H1 |
+| Pendiente | Buscar acta de defunción de **Clémence** en registros parroquiales de Ardon y Riddes, período 1846–1850 | H1 |
+| Pendiente | Investigar **Claude-Antoine Clemenchoz, lieutenant vidomnal d'Ardon 1795** — ¿Baptiste bajo variante de apellido, o pariente? Buscar en AEV | H9 |
+| Pendiente | Identificar el apellido de **"Marie [?]"**, esposa de Baptiste Clemenzo (Ardon 1802) — registros parroquiales de Ardon | H9, H11 |
+| Pendiente | Buscar a **Jeanne Clemenzoz** (nacida post-1829) en registros parroquiales de Ardon/Riddes — confirmar si es hija de p57/p58 | H7 |
+| Pendiente | Confirmar si **Marie Josephine (n.1844, Riddes 1850)** = p77 Joséphine — verificar acta de bautismo circa 1843–1844 | H8 |
+| Pendiente | Identificar la fille de l.113 (nombre ilegible, imagen cortada) — registros parroquiales de Ardon junto con Adolphe y Marie Josephine | H1, H2 |
+| Pendiente | Verificar nombre completo de p57: censos dicen "Jean Joseph" (1829) o "Joseph" (1846) — confirmar en registros parroquiales | H9 |
+| Pendiente | Resolver discrepancia de **Joseph Florentin**: Riddes 1829 → "Vienne (Autriche)", Ardon 1829 → "Fribourg en Breisgau" — buscar en registros universitarios de ambas ciudades | H6 |
+| Pendiente | Verificar si **Frédéric (1893–1980)** del Armorial desciende de Frédéric n.1832 del árbol de Jean-Yves | H4 |
+| Pendiente | Identificar el apellido completo del esposo de **Anne Marie Clemenzo** ("Jaque [R?]", Ardon 1802) | — |
+| ✓ Hecho | Buscar en recensements.vallesiana.ch el censo de Riddes → **Riddes 1850, línea 58**: Marie Catherine Cerisier, viuda | H5 |
+| ✓ Hecho | Leer lecturas dudosas en censo Ardon 1846 → **l.95=Chrisenge, l.100=Jenerique, l.110=Clémence, l.111=Adolphe**; l.113 fille adicional (nombre ilegible) | H1, H2 |
+| ✓ Hecho | Corregir nombre de p58 a **Marie Catherine Cerisier** en el árbol (arbol.db actualizado) | H5, H10 |
+| ✓ Hecho | Localizar a **Joseph Florentin (p72)** en censos posteriores → **Chirurgien à Naples** (Riddes 1837 y 1846, 4me Classe); mínimo 9 años en Italia | H6 |
+| ✓ Hecho | Investigar Grupo C (Jean Baptiste + Baptiste Père, Ardon 1846) → **Baptiste Clemenzo = padre de Jean Joseph (p57) y Jean Baptiste** | H4, H9, H11 |
+| ✓ Hecho | Compartir hallazgos del censo 1802 con Jean-Yves → **4/4 coincidencias nombre+edad** en Ardon 1846; H11 prácticamente confirmada | H11 |
+| ✓ Hecho | Consultar el **Armorial Valaisan** → familia en Ardon desde **1481**; Jean-André Clemenzo n.1716 identificado como patriarca distinto de Baptiste | — |
+| ✓ Hecho | Leer las memorias de **Hyacinthe Clemenzo** → *Souvenirs d'un officier valaisan* (Annales valaisannes, 1957); padres: Jean-André n.1716 × Marie-Marguerite Favre | H6 |
+| ✓ Hecho | Verificar si "Sillio" es un dit-name de Cerisier → **patrón valaisano confirmado**: padre Cerisier × madre Sillio | H10 |
+| ✓ Hecho | Leer imagen censo Riddes 1837 → familia en **1ère Classe** por primera vez; 6 personas: p57, p58, p74, p75, p76, p36 | — |
+| ✓ Hecho | Leer imagen censo Riddes 1870 → p36 vivo dic. 1870; p37 nació **5 Mai 1828** ✓; p26 François con c. 12 años | H8 |
+| ✓ Hecho | Verificar año de nacimiento de **p37 Marie Louise Stalder** → **1828** ✓ confirmado en censo 1870 | H1 |
 
 ---
 

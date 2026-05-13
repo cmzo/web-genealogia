@@ -759,6 +759,8 @@ body {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 16px 0 24px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1.5px #c0c4c8, 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .article-content table {
@@ -766,9 +768,6 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
 }
 
 .article-content th {
