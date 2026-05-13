@@ -173,25 +173,26 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 
 ## Site design system
 
-All pages share a two-column layout: persistent sidebar (Inicio / Árbol / Archivo / Blog) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses `is-active` class for current page indicator.
+All pages share a two-column layout: persistent sidebar (Inicio / Árbol / Archivo / Blog / Guía / Fuentes) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses `is-active` class for current page indicator.
 
 **Color palette:**
 
 | Token | Value | Use |
 |---|---|---|
-| `--bg` | `#f5f2ec` | General background |
-| `--surface` | `#fdfcf9` | Content surface (site-main) |
-| `--border` | `#e2dbd0` | Borders and dividers |
-| `--text` | `#1c1814` | Body text |
-| `--muted` | `#7a7060` | Secondary text, metadata |
-| `--accent` | `#5c4a2a` | Emphasis, hover, details |
+| `--bg` | `#f6f6f4` | General background |
+| `--surface` | `#ffffff` | Content surface (site-main) |
+| `--border` | `#e8e8e6` | Borders and dividers |
+| `--text` | `#1a1a1a` | Body text |
+| `--muted` | `#8a8a88` | Secondary text, metadata |
+| `--accent` | `#2563eb` | Emphasis, hover, links |
 
 **Typography:**
 
 | Font | Weights | Use |
 |---|---|---|
-| Source Serif 4 | 400, 600, 700 | Nav brand, article titles, editorial body |
-| Inter | 400, 500, 600, 700 | UI, navigation, metadata, changelog |
+| Source Serif 4 | 400, 600, 700 | Nav brand (`.nav-brand`) |
+| Playfair Display | 700 (normal + italic) | Article titles, H2/H3 in blog posts |
+| Inter | 400, 500, 600, 700 | UI, navigation, body text in posts, metadata |
 | JetBrains Mono | 400, 500 | Code blocks |
 
-**Layout constants:** nav `height: 52px` sticky; sidebar `width: 160px` sticky; grid `160px 1fr`. Mobile (≤960px): sidebar hidden, nav links shown inline. Article grid switches to two columns when `aside` content is present.
+**Layout constants:** nav `height: 52px` sticky; sidebar `width: 160px` sticky; grid `160px 1fr`. Mobile (≤960px): sidebar hidden, footer hidden, hamburger button opens a slide-in drawer with all nav links. Article grid switches to two columns when `aside` content is present.

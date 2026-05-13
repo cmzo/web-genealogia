@@ -167,3 +167,33 @@ Dirección: **documental mínimo con densidad controlada**. El árbol es una can
 
 - `arbol.css`: `.tree-panel-body` padding-top 2px → 10px; `.panel-section` margin/padding-top 14/12px → 20/16px; `.panel-media` gap 8px → 16px; `.panel-media-group-photos` gap 4px → 8px
 - `archivo.css`: `.archivo-modal-body` padding-top 16px → 20px; `.modal-section` margin/padding-top 14/12px → 22/16px; `.modal-gallery` gap 10px → 14px; `.modal-media-group` margin-top 10px → 18px
+
+### ✅ Tipografía editorial en posts (Playfair Display + Inter)
+
+- Títulos y encabezados H2/H3 de posts: **Playfair Display** 700 (normal + itálica), reemplaza Source Serif 4 en artículos
+- Cuerpo de posts (párrafos, listas, blockquotes): **Inter**, `clamp(15px, 1.2vw, 16px)` en desktop, `14px` en mobile
+- H2 posts: `clamp(30px, 3.5vw, 42px)`; H3: `clamp(22px, 2.5vw, 28px)`
+
+### ✅ Mobile: overflow horizontal en posts corregido
+
+- Causa raíz: grid items con `min-width: auto` empujaban el artículo más allá del viewport cuando había tablas o mermaid
+- Solución: `min-width: 0` en `.article-grid` y `.article-content`; `max-width: 100%; overflow-x: hidden` en `.site-main`
+- Tablas envueltas en `<div class="table-wrapper">` generado por el custom renderer de marked; permite scroll horizontal en mobile sin romper desktop
+
+### ✅ Mobile: drawer de navegación
+
+- Hamburger button en el nav (`.nav-hamburger`) — visible solo en ≤960px
+- Drawer desde la izquierda con overlay: sección principal (Árbol, Archivo, Blog, Guía, Fuentes) + sección secundaria (Contacto, Cambios)
+- Implementado en `assets/js/nav-drawer.js` cargado con `defer` en todas las páginas
+- Footer oculto en ≤960px (`display: none`); links accesibles desde el drawer
+
+### ✅ Blog: mejoras de robustez
+
+- Botón back-to-top en todos los posts: fijo en esquina inferior derecha, aparece tras 400px de scroll
+- `marked.parseInline()` en renderer de tablas: las celdas con `**negrita**` o `_cursiva_` ahora renderizan HTML en lugar de texto raw
+- Lightbox sin manipulación de `body.overflow` — elimina bug de scroll bloqueado en iOS Safari
+
+### ✅ Árbol y archivo: búsqueda por ID
+
+- El buscador del árbol genealógico acepta IDs (`p26`) además de nombres; cada sugerencia muestra nombre + ID
+- El filtro del archivo acepta IDs de persona

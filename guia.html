@@ -7,16 +7,15 @@
   <title>Guía · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <style>
     .guia-content { }
 
     .guia-content h2 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
       color: var(--text);
       margin: 48px 0 14px;
       padding-top: 36px;
@@ -30,16 +29,16 @@
     }
 
     .guia-content p {
-      font-family: 'Source Serif 4', serif;
-      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
       line-height: 1.75;
       color: var(--text);
       margin: 0 0 16px;
     }
 
     .guia-content ul, .guia-content ol {
-      font-family: 'Source Serif 4', serif;
-      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
       line-height: 1.75;
       color: var(--text);
       margin: 0 0 16px;
@@ -52,15 +51,20 @@
 
     .guia-content em { font-style: italic; }
 
+    .guia-content .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 16px 0 24px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
     .guia-content table {
       border-collapse: collapse;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
-      margin: 16px 0 24px;
       width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
     }
 
     .guia-content th {
@@ -70,30 +74,27 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--muted);
-      padding: 9px 14px;
+      padding: 10px 16px;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
       border-right: 1px solid var(--border);
     }
 
-    .guia-content th:last-child {
-      border-right: none;
-    }
+    .guia-content th:last-child { border-right: none; }
 
     .guia-content td {
-      padding: 9px 14px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--border);
       border-right: 1px solid var(--border);
       color: var(--text);
+      vertical-align: top;
+      line-height: 1.6;
+      font-size: 14px;
     }
 
-    .guia-content td:last-child {
-      border-right: none;
-    }
+    .guia-content td:last-child { border-right: none; }
 
-    .guia-content tr:last-child td {
-      border-bottom: none;
-    }
+    .guia-content tr:last-child td { border-bottom: none; }
 
     .guia-content td:first-child {
       font-family: 'JetBrains Mono', monospace;
@@ -112,9 +113,9 @@
     }
 
     .guia-content h3 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 18px;
-      font-weight: 600;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
       color: var(--text);
       margin: 32px 0 10px;
     }
@@ -212,6 +213,12 @@
         return `<div class="callout callout--${t}"><div class="callout-title"><span class="callout-icon">${_calloutIcon(t)}</span><span>${title}</span></div>${body ? `<div class="callout-body">${body}</div>` : ''}</div>`;
       });
     }
+
+    marked.use({ renderer: {
+      table(header, body) {
+        return `<div class="table-wrapper"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>\n`;
+      }
+    }});
 
     const url = window.getContentPath?.('guia.md') ?? './content/guia.md';
     fetch(url)

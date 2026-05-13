@@ -1,3 +1,43 @@
+### 13 de mayo de 2026
+
+#### Fuentes y Guía: tipografía editorial
+
+Las páginas de fuentes y guía adoptan **Playfair Display** para los títulos de sección (H2) y subtítulos (H3), e **Inter** para el cuerpo. El estilo es coherente con el de los posts del blog. Las tablas de la guía usan el mismo formato que el de los artículos: header uppercase en Inter, celdas con más padding y scroll horizontal en mobile.
+
+#### Mobile: drawer de navegación
+
+El nav móvil pasa de mostrar links inline a un **hamburger + drawer**: el botón abre un panel lateral con todos los links del sitio organizados en sección principal (Árbol, Archivo, Blog, Guía, Fuentes) y secundaria (Contacto, Cambios). El drawer se cierra con el botón ✕, click en el overlay o tecla Escape. Implementado en `assets/js/nav-drawer.js`, incluido en todas las páginas.
+
+#### Mobile: footer oculto
+
+El footer se oculta en pantallas ≤960px. Los links de Contacto y Cambios están accesibles desde el drawer.
+
+#### Lightbox: scroll lock en iOS corregido
+
+El lightbox ya no manipula `body.overflow` al abrirse, eliminando un bug en iOS Safari donde el scroll quedaba trabado tras cerrar una foto y era necesario recargar la página.
+
+### 10 de mayo de 2026
+
+#### Blog: tipografía editorial (Playfair Display + Inter)
+
+Los posts del blog adoptan una combinación tipográfica editorial definida: **Playfair Display** para el título del artículo y los encabezados H2/H3, **Inter** para párrafos, listas y citas. El contraste serif/sans-serif marca jerarquía visual sin mezclar pesos arbitrarios.
+
+#### Blog: overflow horizontal en mobile corregido
+
+Posts con tablas o diagramas mermaid ya no generan scroll horizontal en mobile. La causa raíz era que los grid items tienen `min-width: auto` por defecto, por lo que una tabla ancha empujaba el artículo fuera del viewport. Solucionado con `min-width: 0` en `.article-grid` y `.article-content`. Las tablas se renderizan dentro de un `<div class="table-wrapper">` con `overflow-x: auto` propio — visible en desktop y scrolleable en mobile sin romper el layout.
+
+#### Blog: renderizado de markdown en celdas de tabla
+
+Las celdas de tabla con formato en negrita (`**texto**`) o cursiva ahora se renderizan correctamente como HTML. El renderer de tablas pasó de usar el token `raw` directo a procesar cada celda con `marked.parseInline()`.
+
+#### Blog: botón volver arriba
+
+Todos los posts tienen un botón fijo en la esquina inferior derecha que aparece al scrollear 400px. Click vuelve al inicio del artículo con animación suave.
+
+#### Árbol y archivo: búsqueda por ID de persona
+
+El buscador del árbol genealógico y el filtro del archivo aceptan ahora IDs de persona en formato `p26`. El árbol muestra el ID junto al nombre en cada sugerencia del autocompletado.
+
 ### 8 de mayo de 2026
 
 #### Gestor del sitio: gestionar_web.py

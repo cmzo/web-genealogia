@@ -7,15 +7,15 @@
   <title>Fuentes · Matías Clemenzo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <style>
     .fuentes-content h1 { display: none; }
 
     /* Párrafo de intro */
     .fuentes-content > p:first-child {
-      font-family: 'Source Serif 4', serif;
-      font-size: 17px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
       color: var(--muted);
       line-height: 1.75;
       margin-bottom: 0;
@@ -23,9 +23,9 @@
 
     /* Sección país/región */
     .fuentes-content h2 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 22px;
-      font-weight: 600;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
       color: var(--text);
       margin: 64px 0 28px;
       padding-bottom: 14px;
@@ -61,9 +61,9 @@
 
     /* Nombre de institución */
     .fuente-entry h3 {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 18px;
-      font-weight: 600;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
       color: var(--text);
       margin: 0 0 12px;
       line-height: 1.35;
@@ -84,7 +84,7 @@
 
     /* Texto descriptivo dentro de entrada */
     .fuente-entry p {
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.75;
       color: var(--text);
@@ -92,7 +92,7 @@
     }
 
     .fuente-entry ul, .fuente-entry ol {
-      font-family: 'Source Serif 4', serif;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.7;
       color: var(--text);
@@ -114,15 +114,20 @@
     }
 
     /* Tabla de bibliografía */
+    .fuentes-content .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 16px 0 24px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
     .fuentes-content table {
       border-collapse: collapse;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
-      margin: 16px 0 24px;
       width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
     }
 
     .fuentes-content th {
@@ -269,6 +274,12 @@
       container.innerHTML = '';
       container.appendChild(fragment);
     }
+
+    marked.use({ renderer: {
+      table(header, body) {
+        return `<div class="table-wrapper"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>\n`;
+      }
+    }});
 
     const url = window.getContentPath?.('fuentes.md') ?? './content/fuentes.md';
     fetch(url)
