@@ -43,16 +43,17 @@ Repositorio de fuentes consultadas: archivos cantonales suizos, registros parroq
 ## Cómo se relacionan las secciones
 
 ```mermaid
-flowchart LR
-    AR["🌳 Árbol"]
-    AC["📁 Archivo"]
-    BL["📝 Blog"]
-    FU["📚 Fuentes"]
+flowchart TD
+    classDef root    fill:#2563eb,stroke:#1d4ed8,color:#fff,font-weight:bold
+    classDef section fill:#ffffff,stroke:#e8e8e6,color:#1a1a1a
+    classDef leaf    fill:#f6f6f4,stroke:#e8e8e6,color:#6b7280
 
-    AR -- "fotos y docs" --> AC
-    AR -- "personas" --> BL
-    BL -- "referencias" --> FU
-    AC -- "contexto" --> BL
+    A([Sobre el proyecto]):::root --> B & C & D & E
+
+    B[🌳 Árbol]:::section    --> F[Personas y relaciones familiares]:::leaf
+    C[📁 Archivo]:::section  --> G[Documentos, fotos y actas]:::leaf
+    D[📝 Blog]:::section     --> H[Hipótesis e investigaciones]:::leaf
+    E[📚 Fuentes]:::section  --> I[Verificación documental]:::leaf
 ```
 
 ---
