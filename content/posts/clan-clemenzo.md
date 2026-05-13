@@ -751,7 +751,7 @@ flowchart TD
 
 ## Hipótesis
 
-### H1 — Familia François × Clémence (Ardon 1846) = p36 François Clemenzoz (n. 1809)
+### H1 — Familia François × Clémence (Ardon 1846) = p36 François Clemenzoz (n. 1809) `rama-directa`
 
 | Estado | Evidencia principal | Falta para confirmar |
 |--------|---------------------|----------------------|
@@ -806,7 +806,7 @@ El "Baptiste" de l.101 es el padre de Jean-Baptiste \*1774, es decir, el mismo *
 
 ---
 
-### H5 — p58 no aparece en el censo de Ardon 1846 porque vivía en Riddes ✓ CONFIRMADO
+### H5 — p58 no aparece en el censo de Ardon 1846 porque vivía en Riddes ✓ CONFIRMADO `rama-directa`
 
 | Estado | Evidencia principal | Pendiente |
 |--------|---------------------|-----------|
@@ -828,7 +828,7 @@ Joseph Florentin (p72, n.1805) aparece en ese mismo censo como **étudiant en Vi
 
 ---
 
-### H7 — "Jeanne" es una hija tardía de p57/p58, nacida después de 1829
+### H7 — "Jeanne" es una hija tardía de p57/p58, nacida después de 1829 `rama-directa`
 
 | Estado | Evidencia principal | Falta para confirmar |
 |--------|---------------------|----------------------|
@@ -838,7 +838,7 @@ En el censo de Riddes 1850 (línea 59) aparece **Jeanne Clemenzoz** con año de 
 
 ---
 
-### H8 — "Marie Josephine" (1844, Riddes 1850) es p77 Joséphine Clemenzo
+### H8 — "Marie Josephine" (1844, Riddes 1850) es p77 Joséphine Clemenzo `rama-directa`
 
 | Estado | Evidencia principal | Falta para confirmar |
 |--------|---------------------|----------------------|
@@ -848,7 +848,7 @@ El árbol registra a **p77 Joséphine Clemenzo** nacida en 1843 — diferencia d
 
 ---
 
-### H9 — Jean Joseph fils de Baptiste (Ardon 1802) = posiblemente p57
+### H9 — Jean Joseph fils de Baptiste (Ardon 1802) = posiblemente p57 `rama-directa`
 
 | Estado | Evidencia principal | Falta para confirmar |
 |--------|---------------------|----------------------|
@@ -874,7 +874,7 @@ Pendiente: acta de bautismo de Jean Joseph en Ardon (c. 1780) que mencione el no
 
 ---
 
-### H10 — Jacques Cerisier (Riddes 1802) = posible padre de Catherine Cerisier (p58, n.1786)
+### H10 — Jacques Cerisier (Riddes 1802) = posible padre de Catherine Cerisier (p58, n.1786) `rama-directa`
 
 | Estado | Evidencia principal | Falta para confirmar |
 |--------|---------------------|----------------------|
@@ -888,7 +888,7 @@ Si la identificación es correcta:
 
 ---
 
-### H11 — Baptiste Clemenzo = ancestro común de mi línea y la de Jean-Yves ✓ CONFIRMADO INFORMALMENTE
+### H11 — Baptiste Clemenzo = ancestro común de mi línea y la de Jean-Yves ✓ CONFIRMADO INFORMALMENTE `rama-directa`
 
 | Estado | Evidencia principal | Pendiente |
 |--------|---------------------|-----------|

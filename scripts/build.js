@@ -137,6 +137,45 @@ function processCallouts(html) {
   );
 }
 
+// ── Hypothesis Cards ─────────────────────────────────────────────────────────
+
+function processHypotheses(html) {
+  const STATUS_MAP = [
+    { test: s => s.includes('Confirmado informalmente'), cls: 'confirmed-informal' },
+    { test: s => s.includes('Confirmado'),               cls: 'confirmed' },
+    { test: s => s.includes('sólida'),                   cls: 'solida' },
+    { test: s => s.includes('plausible'),                cls: 'plausible' },
+    { test: () => true,                                  cls: 'speculative' },
+  ];
+
+  return html.replace(
+    /<h3 id="(h(\d+)[^"]*)">([\s\S]*?)<\/h3>\n([\s\S]*?)(?=<hr>|<h2 )/g,
+    (match, fullId, hNum, h3Inner, body) => {
+      const isDirecta = h3Inner.includes('`rama-directa`');
+      const cleanTitle = h3Inner.replace(/`rama-directa`/g, '').trim();
+
+      const tdMatch = body.match(/<td>([\s\S]*?)<\/td>/);
+      const estado = tdMatch
+        ? tdMatch[1].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim()
+        : '';
+
+      const { cls: statusClass } = STATUS_MAP.find(({ test }) => test(estado));
+
+      return `<div class="hypothesis-card hypothesis-card--${statusClass}${isDirecta ? ' hypothesis-card--directa' : ''}" id="${fullId}">
+  <div class="hypothesis-header">
+    <div class="hypothesis-meta">
+      <span class="hypothesis-number">H${hNum}</span>${isDirecta ? '\n      <span class="hypothesis-badge-directa">★ Rama directa</span>' : ''}
+    </div>
+    <span class="hypothesis-status hypothesis-status--${statusClass}">${estado}</span>
+  </div>
+  <h3 class="hypothesis-title">${cleanTitle}</h3>
+  <div class="hypothesis-body">${body}</div>
+</div>
+`;
+    }
+  );
+}
+
 // Genera id de heading compatible con cualquier versión de marked
 function headingId(text) {
   return String(text || '')
@@ -201,6 +240,9 @@ function markdownToHtml(markdown) {
 
   // Procesar callouts de Obsidian
   html = processCallouts(html);
+
+  // Convertir bloques de hipótesis en tarjetas visuales
+  html = processHypotheses(html);
 
   // Procesar bloques Mermaid: ```mermaid → <div class="mermaid">
   let hasMermaid = false;
@@ -339,6 +381,78 @@ function markdownToHtml(markdown) {
   // Agregar lightbox HTML, CSS y scripts al final
   html += `
   <style>
+    /* ── Hypothesis Cards ───────────────────────────────────────────── */
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #9ca3af;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 16px 0;
+      background: #f9fafb;
+    }
+    .hypothesis-card + hr { display: none; }
+    .hypothesis-card--confirmed       { border-left-color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--solida          { border-left-color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+    .hypothesis-card--plausible       { border-left-color: #d97706; background: #fffbeb; border-color: #fde68a; }
+    .hypothesis-card--speculative     { border-left-color: #9ca3af; background: #f9fafb; border-color: #e5e7eb; }
+    .hypothesis-card--directa         { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
+    .hypothesis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .hypothesis-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hypothesis-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6b7280;
+      background: #e5e7eb;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .hypothesis-badge-directa {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .hypothesis-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+    .hypothesis-status--confirmed,
+    .hypothesis-status--confirmed-informal { color: #15803d; background: #dcfce7; }
+    .hypothesis-status--solida             { color: #1d4ed8; background: #dbeafe; }
+    .hypothesis-status--plausible          { color: #92400e; background: #fef3c7; }
+    .hypothesis-status--speculative        { color: #374151; background: #f3f4f6; }
+    .hypothesis-title {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin: 0 0 14px 0;
+      color: #111827;
+      line-height: 1.4;
+    }
+    .hypothesis-body { font-size: 0.9rem; }
+    .hypothesis-body .table-wrapper { margin-top: 0; }
+    /* ──────────────────────────────────────────────────────────────── */
+
     .image-clickable:hover {
       transform: scale(1.02);
     }
