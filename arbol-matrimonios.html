@@ -117,7 +117,8 @@
             document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
 
             const personas = getAllPersonas();
-            const initial  = [...personas.values()].find(p => p.generation === 1)
+            const initial  = personas.get('p93')
+                          ?? [...personas.values()].find(p => p.generation === 1)
                           ?? [...personas.values()][0];
             if (initial) setFocus(initial.id);
         }

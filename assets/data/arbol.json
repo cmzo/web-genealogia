@@ -2911,6 +2911,26 @@
       "media": []
     },
     {
+      "id": "p94",
+      "name": "Jean Baptiste Clemenzo",
+      "gender": "M",
+      "birth_date": "1774",
+      "birth_place": "Ardon, Valais, Suiza",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p93",
+      "mother_id": "",
+      "branch": "clemenzo",
+      "generation": 7,
+      "sort_order": 0,
+      "vivo": "no",
+      "photo_url": "",
+      "notes": "Hijo de Baptiste Clemenzo. Hermano de Jean Joseph Clemenzo (p57). Rama que permaneció en Suiza.",
+      "sources": "Censos digitalizados del Valais (1802–1870); árbol de Jean-Yves Clemenzo",
+      "status": "incompleto",
+      "media": []
+    },
+    {
       "id": "p57",
       "name": "Jean Joseph Clemenzo",
       "gender": "M",
@@ -2918,7 +2938,7 @@
       "birth_place": "Valais, Suiza",
       "death_date": "",
       "death_place": "",
-      "father_id": "",
+      "father_id": "p93",
       "mother_id": "",
       "branch": "clemenzo",
       "generation": 7,
@@ -3071,6 +3091,26 @@
           "group_order": 4
         }
       ]
+    },
+    {
+      "id": "p93",
+      "name": "Baptiste Clemenzo",
+      "gender": "M",
+      "birth_date": "1750",
+      "birth_place": "Ardon, Valais, Suiza",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "clemenzo",
+      "generation": 8,
+      "sort_order": 0,
+      "vivo": "no",
+      "photo_url": "",
+      "notes": "Patriarca más antiguo identificado de la rama Clemenzo. Fecha de nacimiento aproximada (circa 1745–1755). Padre de Jean Joseph (p57) y Jean Baptiste (p94). Vivió en Ardon, cantón de Valais, Suiza.",
+      "sources": "Censos digitalizados del Valais (1802–1870); Armorial Valaisan (dos ediciones); árbol de Jean-Yves Clemenzo",
+      "status": "incompleto",
+      "media": []
     }
   ],
   "matrimonios": [
