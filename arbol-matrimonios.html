@@ -92,13 +92,13 @@
 
     <script src="./assets/js/path-config.js"></script>
     <script type="module">
-        import { loadData, getAllPersonas }                        from './assets/js/arbol/data.js';
-        import { setFocus, on }                                   from './assets/js/arbol/store.js';
-        import { computeLayout }                                  from './assets/js/arbol/layout.js';
-        import { initTree, render, recenterOn, zoomIn, zoomOut }  from './assets/js/arbol/render.js';
-        import { initPanel }                                      from './assets/js/arbol/panel.js';
-        import { initSearch }                                     from './assets/js/arbol/search.js';
-        import { initKeyboard }                                   from './assets/js/arbol/keyboard.js';
+        import { loadData, getAllPersonas }                              from './assets/js/arbol/data.js';
+        import { setFocus, on }                                         from './assets/js/arbol/store.js';
+        import { computeLayout }                                        from './assets/js/arbol/layout.js';
+        import { initTree, render, rerender, recenterOn, zoomIn, zoomOut } from './assets/js/arbol/render.js';
+        import { initPanel }                                            from './assets/js/arbol/panel.js';
+        import { initSearch }                                           from './assets/js/arbol/search.js';
+        import { initKeyboard }                                         from './assets/js/arbol/keyboard.js';
 
         async function init() {
             await loadData();
@@ -111,7 +111,12 @@
             on('focusChange', id => {
                 const layout = computeLayout(id);
                 render(layout);
+                recenterOn();
             });
+
+            // Redibuja al cambiar selección para aplicar el halo en la tarjeta correcta.
+            // setSelected se llama justo después de setFocus, de ahí el setTimeout(0).
+            on('selectionChange', () => setTimeout(rerender, 0));
 
             document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);
             document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);

@@ -2,19 +2,20 @@
  * render.js — renderizado del árbol genealógico con D3.
  *
  * Expone:
- *   initTree(containerId)          → crea el SVG y el comportamiento zoom/pan
- *   render(layout)                 → dibuja nodos y aristas
- *   recenterOn(duration?)          → recentra la vista en el foco actual (y=0)
- *   zoomIn() / zoomOut()           → botones de zoom
+ *   initTree(containerId)                  → crea el SVG y el comportamiento zoom/pan
+ *   render(layout)                          → dibuja nodos y aristas; focusId viene en layout
+ *   recenterOn(duration?)                  → centra la vista en el foco (siempre x=0)
+ *   zoomIn() / zoomOut()                   → botones de zoom
  */
 
 import { CARD, MARRIAGE_NODE, TRANSITION_MS, getBranchColor } from './config.js';
-import { setFocus, setSelected } from './store.js';
 import { VGAP } from './layout.js';
+import { setFocus, setSelected, getSelectedPersonId } from './store.js';
 
-let _svg   = null;
-let _g     = null;
-let _zoom  = null;
+let _svg    = null;
+let _g      = null;
+let _zoom   = null;
+let _layout = null;
 
 // ── Inicialización ────────────────────────────────────────────────────────────
 
@@ -39,22 +40,27 @@ export function initTree(containerId) {
   // Click en fondo del SVG → cierra el panel
   _svg.on('click', () => setSelected(null));
 
-  // Posición inicial: foco en el centro-superior del viewport
+  // Posición inicial: origen en el centro de la pantalla.
+  // recenterOn() la ajustará al primer render.
   const W = container.clientWidth  || 800;
   const H = container.clientHeight || 600;
-  // Posición inicial equivalente a recenterOn(): foco ligeramente bajo centro
-  _svg.call(_zoom.transform,
-    d3.zoomIdentity.translate(W / 2, H / 2 + VGAP / 2));
+  _svg.call(_zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2));
 
 }
 
 // ── Renderizado principal ─────────────────────────────────────────────────────
 
+/** Redibuja el layout actual (útil para actualizar el estado de selección). */
+export function rerender() {
+  if (_layout) render(_layout);
+}
+
 export function render(layout) {
   if (!_g || !layout) return;
+  _layout = layout;
   _g.selectAll('*').remove();
 
-  const { nodes, edges } = layout;
+  const { nodes, edges, focusId } = layout;
 
   // Aristas primero (quedan detrás de los nodos)
   const linksLayer = _g.append('g').attr('class', 'links');
@@ -63,21 +69,38 @@ export function render(layout) {
   // Nodos encima
   const nodesLayer = _g.append('g').attr('class', 'nodes');
   nodes.forEach(node => {
-    if (node.type === 'persona')  _drawCard(nodesLayer, node, layout.focusId);
+    if (node.type === 'persona')  _drawCard(nodesLayer, node, focusId);
     if (node.type === 'marriage') _drawMarriage(nodesLayer, node);
   });
 }
 
 // ── Navegación y zoom ─────────────────────────────────────────────────────────
 
+/** Centra la vista en el contenido de la fila del foco, asegurando que la tarjeta
+ *  del foco (en x=0) siempre quede visible dentro del espacio disponible. */
 export function recenterOn(duration = TRANSITION_MS) {
   if (!_svg || !_zoom) return;
+
   const container = _svg.node().parentElement;
   const W = container.clientWidth  || 800;
   const H = container.clientHeight || 600;
 
+  // Centro del bounding box de la fila del foco (personas en y=0)
+  let cx = 0;
+  if (_layout) {
+    const rowNodes = [..._layout.nodes.values()].filter(n => n.type === 'persona' && n.y === 0);
+    if (rowNodes.length > 0) {
+      const minX = Math.min(...rowNodes.map(n => n.x));
+      const maxX = Math.max(...rowNodes.map(n => n.x));
+      const bboxCenter = (minX + maxX) / 2;
+      // Clamp para que el foco (x=0) nunca salga de la pantalla
+      const maxShift = W / 2 - CARD.width / 2 - 24;
+      cx = Math.max(-maxShift, Math.min(maxShift, bboxCenter));
+    }
+  }
+
   _svg.transition().duration(duration)
-    .call(_zoom.translateTo, 0, -VGAP / 2, [W / 2, H / 2]);
+    .call(_zoom.translateTo, cx, -VGAP * 0.15, [W / 2, H / 2]);
 }
 
 export function zoomIn() {
@@ -126,12 +149,12 @@ function _drawEdge(layer, edge, nodes) {
       .attr('stroke-width', 1.8)
       .attr('stroke-opacity', 0.7);
 
-  } else if (edge.kind === 'focus-marriage' || edge.kind === 'direct') {
-    // Foco → círculo de matrimonio / hijo directo (descendentes)
+  } else if (edge.kind === 'direct') {
+    // Padre → hijo directo (sin nodo de matrimonio)
     layer.append('path')
       .attr('d', _link({
         source: { x: src.x, y: src.y + CARD.height / 2 },
-        target: { x: tgt.x, y: tgt.y - (tgt.type === 'marriage' ? MARRIAGE_NODE.r : CARD.height / 2) },
+        target: { x: tgt.x, y: tgt.y - CARD.height / 2 },
       }))
       .attr('fill', 'none')
       .attr('stroke', color)
@@ -150,8 +173,9 @@ function _edgeColor(edge, src, tgt) {
 
 function _drawCard(layer, node, focusId) {
   const { x, y, data: p } = node;
-  const isFocus     = p.id === focusId;
-  const branchColor = getBranchColor(p.branch);
+  const isFocus      = p.id === focusId;
+  const isSelected   = p.id === getSelectedPersonId();
+  const branchColor  = getBranchColor(p.branch);
   const W = CARD.width, H = CARD.height, R = CARD.borderRadius;
 
   const g = layer.append('g')
@@ -161,6 +185,19 @@ function _drawCard(layer, node, focusId) {
     .style('cursor', 'pointer')
     .on('click', (e) => { e.stopPropagation(); setFocus(p.id); setSelected(p.id); });
 
+  // Anillo de selección: halo coloreado detrás de la tarjeta
+  if (isSelected) {
+    g.append('rect')
+      .attr('x', -W / 2 - 4).attr('y', -H / 2 - 4)
+      .attr('width', W + 8).attr('height', H + 8)
+      .attr('rx', R + 3)
+      .attr('fill', 'none')
+      .attr('stroke', branchColor)
+      .attr('stroke-width', 2.5)
+      .attr('stroke-opacity', 0.45)
+      .attr('filter', `drop-shadow(0 0 8px ${branchColor}88)`);
+  }
+
   // Fondo de la tarjeta
   g.append('rect')
     .attr('x', -W / 2).attr('y', -H / 2)
@@ -169,7 +206,9 @@ function _drawCard(layer, node, focusId) {
     .attr('fill', 'var(--surface, #fdfcf9)')
     .attr('stroke', isFocus ? branchColor : 'var(--border, #e2dbd0)')
     .attr('stroke-width', isFocus ? 2 : 1)
-    .attr('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.07))');
+    .attr('filter', isSelected
+      ? 'drop-shadow(0 4px 18px rgba(0,0,0,0.18))'
+      : 'drop-shadow(0 1px 3px rgba(0,0,0,0.07))');
 
   // Franja de color de rama (arriba)
   g.append('rect')
