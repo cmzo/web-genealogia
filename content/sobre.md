@@ -44,16 +44,19 @@ Repositorio de fuentes consultadas: archivos cantonales suizos, registros parroq
 
 ```mermaid
 flowchart TD
-    classDef root    fill:#2563eb,stroke:#1d4ed8,color:#fff,font-weight:bold
+    classDef root fill:#2563eb,stroke:#1d4ed8,color:#fff,font-weight:bold
     classDef section fill:#ffffff,stroke:#e8e8e6,color:#1a1a1a
-    classDef leaf    fill:#f6f6f4,stroke:#e8e8e6,color:#6b7280
+    classDef leaf fill:#f6f6f4,stroke:#e8e8e6,color:#6b7280
 
-    A([Sobre el proyecto]):::root --> B & C & D & E
-
-    B[🌳 Árbol]:::section    --> F[Personas y relaciones familiares]:::leaf
-    C[📁 Archivo]:::section  --> G[Documentos, fotos y actas]:::leaf
-    D[📝 Blog]:::section     --> H[Hipótesis e investigaciones]:::leaf
-    E[📚 Fuentes]:::section  --> I[Verificación documental]:::leaf
+    A([Sobre el proyecto]):::root
+    A --> B[Arbol]:::section
+    A --> C[Archivo]:::section
+    A --> D[Blog]:::section
+    A --> E[Fuentes]:::section
+    B --> F[Personas y relaciones]:::leaf
+    C --> G[Documentos y fotos]:::leaf
+    D --> H[Hipotesis e investigaciones]:::leaf
+    E --> I[Verificacion documental]:::leaf
 ```
 
 ---
