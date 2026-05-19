@@ -1,3 +1,9 @@
+### 19 de mayo de 2026
+
+#### Árbol: navegación mobile menos invasiva
+
+Al tocar una persona en mobile ya no se abre el panel de información de forma inmediata. En cambio, aparece una pequeña pestaña azul en el borde superior derecho del árbol con el nombre de la persona y la acción "Abrir ficha". El árbol queda libre para seguir navegando. Tocar la pestaña abre el panel completo. Tocar el fondo del árbol descarta la pestaña.
+
 ### 13 de mayo de 2026
 
 #### Fuentes y Guía: tipografía editorial

@@ -20,19 +20,32 @@ let _panel    = null;
 let _hero     = null;
 let _tabs     = null;
 let _body     = null;
+let _peek     = null;
+let _peekName = null;
 let _activeTab = 'persona';
 let _currentId = null;
 
 export function initPanel() {
-  _panel = document.getElementById('treePanel');
-  _hero  = document.getElementById('treePanelHero');
-  _tabs  = document.getElementById('panelTabs');
-  _body  = document.getElementById('treePanelBody');
+  _panel    = document.getElementById('treePanel');
+  _hero     = document.getElementById('treePanelHero');
+  _tabs     = document.getElementById('panelTabs');
+  _body     = document.getElementById('treePanelBody');
+  _peek     = document.getElementById('panelPeek');
+  _peekName = document.getElementById('panelPeekName');
   const closeBtn = document.getElementById('treePanelClose');
 
   if (!_panel || !_body) return;
 
   closeBtn?.addEventListener('click', () => setSelected(null));
+
+  _peek?.addEventListener('click', () => {
+    if (!_currentId) return;
+    _hidePeek();
+    _renderHero(_currentId);
+    _renderBody(_currentId);
+    _panel.classList.add('is-open');
+    setTimeout(() => recenterOn(), 320);
+  });
 
   _tabs?.querySelectorAll('.panel-tab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -46,6 +59,7 @@ export function initPanel() {
   on('selectionChange', id => {
     if (!id) {
       _panel.classList.remove('is-open');
+      _hidePeek();
       if (_hero) _hero.innerHTML = '';
       _currentId = null;
       setTimeout(() => recenterOn(), 320);
@@ -53,6 +67,12 @@ export function initPanel() {
     }
     const wasOpen = _panel.classList.contains('is-open');
     _currentId = id;
+
+    if (_isMobile() && !wasOpen) {
+      _showPeek(id);
+      return;
+    }
+
     _renderHero(id);
     _renderBody(id);
     _panel.classList.add('is-open');
@@ -343,4 +363,23 @@ function _formatDate(dateStr) {
 function _datePlace(date, place) {
   const parts = [_formatDate(date), place].filter(Boolean);
   return parts.join(' · ');
+}
+
+// ── Mobile peek tab ───────────────────────────────────────────────────────────
+
+function _isMobile() {
+  return window.innerWidth <= 960;
+}
+
+function _showPeek(id) {
+  if (!_peek) return;
+  const p = getPersona(id);
+  if (!p) return;
+  if (_peekName) _peekName.textContent = p.name;
+  _peek.style.borderLeftColor = getBranchColor(p.branch);
+  _peek.classList.add('is-visible');
+}
+
+function _hidePeek() {
+  _peek?.classList.remove('is-visible');
 }
