@@ -45,16 +45,6 @@
     </aside>
 
     <main class="site-main" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
-      <div class="archivo-toolbar">
-        <input
-          type="search"
-          id="archivoSearch"
-          placeholder="Buscar por nombre…"
-          class="archivo-search"
-          autocomplete="off"
-          spellcheck="false"
-        />
-      </div>
       <div class="archivo-filter-bar">
         <div class="filter-group">
           <span class="filter-label">Rama</span>
@@ -150,12 +140,9 @@
     }
 
     function applyFilters() {
-      const q = document.getElementById('archivoSearch').value.trim().toLowerCase();
       let result = sorted;
       if (activeFilters.branch)  result = result.filter(p => p.branch === activeFilters.branch);
       if (activeFilters.country) result = result.filter(p => getCountry(p) === activeFilters.country);
-      if (q) result = result.filter(p =>
-        p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q) || (p.branch || '').toLowerCase().includes(q));
       renderTable(result);
     }
 
@@ -460,9 +447,6 @@
 
       applyFilters();
 
-      // Búsqueda
-      document.getElementById('archivoSearch').addEventListener('input', applyFilters);
-
       // Modal
       document.getElementById('modalClose').addEventListener('click', closeModal);
       document.getElementById('archivoOverlay').addEventListener('click', e => {
@@ -489,5 +473,6 @@
     })();
   </script>
 <script src="assets/js/nav-drawer.js" defer></script>
+<script src="assets/js/command-palette.js" defer></script>
 </body>
 </html>

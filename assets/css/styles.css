@@ -103,66 +103,70 @@ body {
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  padding: 0 24px;
-  gap: 2px;
+  padding: 0 16px;
+  gap: 3px;
   flex: 1;
 }
 
 .sidebar-bottom {
-  padding: 12px 24px 0;
+  padding: 12px 16px 0;
   margin-top: 16px;
 }
 
-.sidebar-link--minor {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.sidebar-link.sidebar-link--minor:hover {
-  background: transparent;
-  color: var(--muted);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-}
-
+/* Links de la sidebar: ícono Material Symbols + etiqueta en mayúsculas.
+   El ítem activo es una píldora verde (acento) con texto e ícono claros. */
 .sidebar-link {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #45544c;
   text-decoration: none;
-  padding: 7px 12px;
-  border-radius: 4px;
+  padding: 11px 14px;
+  border-radius: 8px;
   transition: color 0.15s, background 0.15s;
-  white-space: nowrap;
-  overflow: hidden;
+  line-height: 1.25;
 }
+
+/* Ícono: oculto hasta que la fuente Material Symbols esté lista (evita el
+   flash del texto de la ligadura). Reserva su espacio para no saltar. */
+.sidebar-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  visibility: hidden;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;
+}
+
+html.ms-ready .sidebar-icon { visibility: visible; }
 
 .sidebar-link:hover {
   color: var(--text);
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(45, 74, 62, 0.07);
 }
 
-.sidebar-link.is-active {
-  color: var(--text);
+.sidebar-link.is-active,
+.sidebar-link.is-active:hover {
+  background: var(--accent);
+  color: #cad7d0;
+  font-weight: 700;
+}
+
+.sidebar-link.is-active .sidebar-icon { color: #cad7d0; }
+
+/* Cambios — secundario, al pie */
+.sidebar-link--minor {
+  font-size: 10px;
   font-weight: 600;
-  border-left: 2px solid var(--accent);
-  padding-left: 10px;
-  border-radius: 0;
+  color: var(--muted);
 }
 
-.sidebar-link--icon {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
-  margin-top: 8px;
-  border-top: 1px solid var(--border);
-}
-
-.sidebar-link--icon.is-active {
-  border-left: none;
-  padding-left: 12px;
-  color: var(--accent);
+.sidebar-link--minor:hover {
+  color: var(--text);
+  background: rgba(45, 74, 62, 0.07);
 }
 
 /* ─── MAIN CONTENT ────────────────────────────────────── */

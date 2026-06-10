@@ -48,17 +48,7 @@
 
     <main class="site-main" style="padding: 0; display: flex; flex-direction: column;">
       <div class="tree-toolbar">
-        <div class="tree-search-wrap">
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Buscar persona…"
-            class="tree-search"
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <ul class="search-suggestions" id="searchSuggestions"></ul>
-        </div>
+        <span class="tree-toolbar-hint">Buscá cualquier persona con <kbd class="tree-toolbar-key" data-cmdk-key>⌘K</kbd></span>
         <div class="zoom-controls">
           <button id="zoomInBtn"  class="zoom-btn" title="Acercar (+)">+</button>
           <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
@@ -104,11 +94,10 @@
     <script src="./assets/js/path-config.js"></script>
     <script type="module">
         import { loadData, getAllPersonas }                              from './assets/js/arbol/data.js';
-        import { setFocus, on }                                         from './assets/js/arbol/store.js';
+        import { setFocus, setSelected, on }                            from './assets/js/arbol/store.js';
         import { computeLayout }                                        from './assets/js/arbol/layout.js';
         import { initTree, render, rerender, recenterOn, zoomIn, zoomOut } from './assets/js/arbol/render.js';
         import { initPanel }                                            from './assets/js/arbol/panel.js';
-        import { initSearch }                                           from './assets/js/arbol/search.js';
         import { initKeyboard }                                         from './assets/js/arbol/keyboard.js';
 
         async function init() {
@@ -116,7 +105,6 @@
 
             initTree('tree-container');
             initPanel();
-            initSearch();
             initKeyboard();
 
             on('focusChange', id => {
@@ -132,15 +120,29 @@
             document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);
             document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
 
+            // Permite que el command palette enfoque una persona sin recargar
+            window.__treeFocus = (id) => {
+                if (!getAllPersonas().has(id)) return;
+                setFocus(id);
+                setSelected(id);
+            };
+
             const personas = getAllPersonas();
-            const initial  = personas.get('p93')
-                          ?? [...personas.values()].find(p => p.generation === 1)
-                          ?? [...personas.values()][0];
-            if (initial) setFocus(initial.id);
+            const wanted   = new URLSearchParams(location.search).get('focus');
+            const target   = wanted && personas.get(wanted);
+            const initial  = target
+                          || personas.get('p93')
+                          || [...personas.values()].find(p => p.generation === 1)
+                          || [...personas.values()][0];
+            if (initial) {
+                setFocus(initial.id);
+                if (target) setSelected(initial.id); // llega desde el buscador → abre su ficha
+            }
         }
 
         document.addEventListener('DOMContentLoaded', init);
     </script>
 <script src="assets/js/nav-drawer.js" defer></script>
+<script src="assets/js/command-palette.js" defer></script>
 </body>
 </html>

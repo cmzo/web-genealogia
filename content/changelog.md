@@ -1,5 +1,13 @@
 ### 10 de junio de 2026
 
+#### Buscador global con ⌘ + K
+
+Nuevo buscador estilo *command palette* (Spotlight/Raycast) que se abre con **⌘ + K** (o **Ctrl + K** en Windows/Linux) desde cualquier página con buscador. Indexa y permite saltar a **páginas** del sitio, las **personas** del árbol y los **posts** del blog, con resultados agrupados, búsqueda difusa insensible a acentos (José = jose), resaltado del término, navegación con flechas/Enter y cierre con Esc. Al elegir una persona la enfoca en el árbol (sin recargar si ya estás ahí, o navegando con `?focus=`); páginas y posts navegan directo. En el nav aparece un botón **"Buscar ⌘ + K"** que sirve de indicador del atajo y de acceso al click. Disponible en Inicio, Árbol, Archivo, Blog, Cambios y los posts; queda fuera de Contacto, Fuentes y Sobre el proyecto. Reemplaza las barras de búsqueda propias del **Árbol** y el **Archivo** (en el Archivo se conservan los filtros por rama y país).
+
+#### Sidebar con iconos y sección activa resaltada
+
+La barra lateral adoptó **iconos Material Symbols** por sección (`info`, `account_tree`, `folder`, `edit_note`, `description`, `mail`, `history`), etiquetas en mayúsculas con tracking y el ítem activo como **píldora verde** con texto e icono claros. La fuente de iconos se carga sin el típico flash del texto de la ligadura. El cambio es global a todas las páginas.
+
 #### Acento verde botella en todo el sitio
 
 El color de acento del sitio pasó de azul (`#2563eb`) a **verde botella (`#2d4a3e`)**. El cambio repercute en todas las páginas y en mobile: links, hovers, foco de inputs, etiquetas de categoría del blog, callouts, badges y botones. Los colores de rama del árbol genealógico son un sistema aparte y se mantienen.

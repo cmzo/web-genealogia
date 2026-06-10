@@ -96,7 +96,11 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 - `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
 - `arbol-matrimonios.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
-- `archivo.html` — document/photo archive viewer
+- `archivo.html` — document/photo archive viewer; faceted filters by branch/country (the name search bar was removed in favor of the global ⌘+K palette)
+
+### Global command palette (`assets/js/command-palette.js`)
+
+Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol-matrimonios.html`) when already on the tree, otherwise navigates to `arbol-matrimonios.html?focus=<id>`. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Contacto, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
 
 ### Family tree (`arbol-matrimonios.html`)
 
@@ -175,7 +179,7 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 
 ## Site design system
 
-All pages share a two-column layout: persistent sidebar (Inicio / Árbol / Archivo / Blog / Guía / Fuentes) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses `is-active` class for current page indicator.
+All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Archivo / Blog / Fuentes / Contacto, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
 
 **Color palette:**
 

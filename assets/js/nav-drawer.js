@@ -79,4 +79,42 @@
   overlay.addEventListener('click', close);
   drawer.querySelector('.nav-drawer-close').addEventListener('click', close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  // ── Iconos Material Symbols en la sidebar de escritorio ──────────────────────
+  const SIDEBAR_ICONS = {
+    'sobre.html':             'info',
+    'arbol-matrimonios.html': 'account_tree',
+    'archivo.html':           'folder',
+    'blog.html':              'edit_note',
+    'fuentes.html':           'description',
+    'contacto.html':          'mail',
+    'changelog.html':         'history',
+  };
+
+  if (!document.querySelector('link[href*="Material+Symbols"]')) {
+    const mlink = document.createElement('link');
+    mlink.rel = 'stylesheet';
+    mlink.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block';
+    document.head.appendChild(mlink);
+  }
+
+  document.querySelectorAll('.site-sidebar .sidebar-link').forEach(a => {
+    const file = (a.getAttribute('href') || '').split('/').pop().split(/[?#]/)[0];
+    const icon = SIDEBAR_ICONS[file];
+    if (!icon) return;
+    const label = a.textContent.trim();
+    a.classList.remove('sidebar-link--icon'); // ya no usa el SVG inline
+    a.innerHTML =
+      `<span class="material-symbols-outlined sidebar-icon" aria-hidden="true">${icon}</span>` +
+      `<span class="sidebar-label">${label}</span>`;
+  });
+
+  // Revela los iconos cuando la fuente está lista (con fallback por las dudas)
+  function revealIcons() { document.documentElement.classList.add('ms-ready'); }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(revealIcons);
+    setTimeout(revealIcons, 1500);
+  } else {
+    revealIcons();
+  }
 })();
