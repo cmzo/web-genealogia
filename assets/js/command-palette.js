@@ -129,7 +129,7 @@
   // ── Utilidades de texto ───────────────────────────────────────────────────────
   const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   const esc  = s => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const year = d => { const m = String(d || '').match(/^(\d{4})/); return m ? m[1] : ''; };
+  const year = d => { const r = String(d || '').match(/^(\d{4})\/(\d{4})$/); if (r) return `${r[1]}/${r[2].slice(2)}`; const m = String(d || '').match(/^(\d{4})/); return m ? m[1] : ''; };
   const cap  = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 
   /** Puntaje de coincidencia: substring fuerte, luego subsecuencia. -1 si no hay. */

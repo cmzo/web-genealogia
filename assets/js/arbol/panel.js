@@ -379,12 +379,16 @@ function _statusBadge(status) {
 
 function _year(dateStr) {
   if (!dateStr) return '';
+  const r = String(dateStr).match(/^(\d{4})\/(\d{4})$/);
+  if (r) return `${r[1]}/${r[2].slice(2)}`; // rango incierto: «1846/50»
   const m = String(dateStr).match(/^(\d{4})/);
   return m ? m[1] : '';
 }
 
 function _formatDate(dateStr) {
   if (!dateStr) return null;
+  const r = String(dateStr).match(/^(\d{4})\/(\d{4})$/);
+  if (r) return `entre ${r[1]} y ${r[2]}`;
   const m = String(dateStr).match(/^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/);
   if (!m) return dateStr;
   const [, y, mo, d] = m;

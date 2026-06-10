@@ -295,6 +295,8 @@ function _wrapName(name, maxChars) {
 
 function _year(dateStr) {
   if (!dateStr) return '';
+  const r = String(dateStr).match(/^(\d{4})\/(\d{4})$/);
+  if (r) return `${r[1]}/${r[2].slice(2)}`; // rango incierto: «1846/50»
   const m = String(dateStr).match(/^(\d{4})/);
   return m ? m[1] : '';
 }
