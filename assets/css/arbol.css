@@ -103,18 +103,23 @@
     display: flex;
     flex-direction: row;
     overflow: hidden;
+    /* Gaps tipo window manager (i3): el panel y el árbol flotan separados. */
+    padding: 5mm;
+    gap: 5mm;
+    /* Fondo de puntos del "escritorio": se ve en los gaps alrededor del panel */
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, #d0d0ce 1px, transparent 1px);
+    background-size: 22px 22px;
 }
 
 .tree-container {
     position: relative;
     flex: 1;
-    min-width: 576px;
+    min-width: 0;
     min-height: 520px;
     overflow: hidden;
-    /* Fondo de puntos: da sensación de canvas sin competir con el árbol */
-    background-color: var(--bg);
-    background-image: radial-gradient(circle, #d0d0ce 1px, transparent 1px);
-    background-size: 22px 22px;
+    /* Sin fondo propio: los puntos vienen del wrapper, así son continuos en los gaps */
+    background: transparent;
 }
 
 /* ── Controles de zoom ───────────────────────────────────────────────────────── */
@@ -169,7 +174,8 @@
     flex-shrink: 0;
     width: 0;
     background: var(--bg);
-    border-left: 1px solid transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     z-index: 60;
@@ -180,46 +186,54 @@
 
 .tree-panel.is-open {
     width: calc(100% - 576px);
-    border-left-color: var(--border);
-    box-shadow: -6px 0 32px rgba(0,0,0,0.09);
+    border-color: var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
 
-/* Close button — glass sobre el hero de color */
+/* Estado expandido: el panel ocupa todo el área dejando solo el gap de 5mm
+   alrededor (el árbol detrás se intuye por el fondo de puntos del wrapper).
+   Se quita el gap interno para que el panel quede centrado con gap uniforme. */
+.tree-wrapper.is-panel-expanded {
+    gap: 0;
+}
+
+.tree-panel.is-open.is-expanded {
+    width: 100%;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.16);
+}
+
+/* Close button — ícono minimal, sin caja (como en el mockup) */
 .tree-panel-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 18px;
+    right: 18px;
     z-index: 10;
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.30);
-    font-size: 11px;
-    color: rgba(255,255,255,0.90);
+    background: none;
+    border: none;
+    padding: 4px;
+    color: var(--muted);
     cursor: pointer;
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
     line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.15s, color 0.15s;
+    transition: color 0.15s;
 }
 
 .tree-panel-close:hover {
-    background: rgba(255,255,255,0.30);
-    color: #fff;
+    color: var(--text);
 }
 
-/* ── Hero del panel — fondo de color sólido ──────────────────────────────────── */
+/* ── Hero del panel — superficie clara editorial (estilo blog) ───────────────── */
+/* El !important anula el gradiente de color que panel.js aplica inline. */
 
 .panel-hero {
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    padding: 24px 20px;
-    background-color: var(--muted);
+    padding: 24px 20px 20px;
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border);
 }
 
 .panel-hero-content {
@@ -276,25 +290,60 @@
 .tree-panel-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 .tree-panel-body::-webkit-scrollbar-track { background: transparent; }
 
-/* ── Contenido del panel ─────────────────────────────────────────────────────── */
+/* ── Footer del panel — CTA para ampliar/reducir ─────────────────────────────── */
 
-/* Hero: nombre en blanco sobre fondo de color */
-.panel-name {
-    font-family: 'Source Serif 4', serif;
-    font-size: 28px;
-    font-weight: 600;
-    color: #fff;
-    margin: 0 0 6px;
-    line-height: 1.2;
-    padding-right: 36px;
+.panel-footer {
+    flex-shrink: 0;
+    padding: 12px 16px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
 }
 
-.panel-years {
+.panel-expand-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
     font-family: 'Inter', sans-serif;
     font-size: 13px;
-    color: rgba(255,255,255,0.78);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: filter 0.15s, transform 0.1s;
+}
+
+.panel-expand-btn:hover { filter: brightness(0.93); }
+.panel-expand-btn:active { transform: scale(0.985); }
+.panel-expand-btn svg { flex-shrink: 0; }
+
+/* ── Contenido del panel ─────────────────────────────────────────────────────── */
+
+/* Hero: nombre en serif grande oscuro sobre superficie clara (estilo editorial) */
+.panel-name {
+    font-family: 'Source Serif 4', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 4px;
+    line-height: 1.1;
+    padding-right: 32px;
+}
+
+/* Años: serif en cursiva, tono muted (toque editorial del mockup) */
+.panel-years {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--muted);
     margin: 0;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
 }
 
 /* Secciones como cards */
@@ -400,28 +449,26 @@
     flex-wrap: wrap;
 }
 
-/* ── Status badge — glass sobre hero de color ────────────────────────────────── */
+/* ── Status badge — píldoras claras sobre hero editorial ─────────────────────── */
 
 .panel-status {
     display: inline-flex;
     align-items: center;
     font-family: 'Inter', sans-serif;
     font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 20px;
+    padding: 4px 8px;
+    border-radius: 3px;
     flex-shrink: 0;
-    margin-top: 4px;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    margin-top: 6px;
 }
 
-.panel-status--verificado { background: rgba(255,255,255,0.25); color: #fff; border: 1px solid rgba(255,255,255,0.40); }
-.panel-status--incompleto { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.90); border: 1px solid rgba(255,255,255,0.25); }
-.panel-status--en_proceso { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.90); border: 1px solid rgba(255,255,255,0.25); }
-.panel-status--sin_datos  { background: rgba(0,0,0,0.18); color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.15); }
+.panel-status--verificado { background: rgba(45,74,62,0.10); color: var(--accent); border: 1px solid rgba(45,74,62,0.20); }
+.panel-status--incompleto { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+.panel-status--en_proceso { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+.panel-status--sin_datos  { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
 
 /* ── Vita grid — mini cards ──────────────────────────────────────────────────── */
 
@@ -563,7 +610,7 @@
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 2px;
-    text-decoration-color: rgba(37,99,235,0.35);
+    text-decoration-color: rgba(45,74,62,0.35);
     transition: text-decoration-color 0.15s;
 }
 
@@ -718,8 +765,8 @@
     right: 0;
     top: 48px;
     transform: translateX(110%);
-    background: #dbeafe;
-    border: 1px solid #bfdbfe;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-right: none;
     border-left: 3px solid var(--accent);
     border-radius: 8px 0 0 8px;
@@ -738,14 +785,14 @@
   }
 
   .panel-peek:active {
-    background: #bfdbfe;
+    background: var(--bg);
   }
 
   .panel-peek-name {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 600;
-    color: #1e3a5f;
+    color: var(--text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -775,13 +822,21 @@
     width: 100%;
   }
 
+  /* En mobile no hay gaps: el árbol ocupa todo y el panel es overlay */
+  .tree-wrapper {
+    padding: 0;
+    gap: 0;
+  }
+
   /* En mobile el panel vuelve a ser overlay (transform) */
   .tree-panel {
     position: absolute;
     top: 0; right: 0;
     height: 100%;
     width: min(420px, 100vw);
+    border: none;
     border-left: 1px solid var(--border);
+    border-radius: 0;
     transform: translateX(100%);
     transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: -6px 0 32px rgba(0,0,0,0.12);
@@ -792,6 +847,11 @@
     transform: translateX(0);
     border-left-color: var(--border);
     box-shadow: -6px 0 32px rgba(0,0,0,0.12);
+  }
+
+  /* En mobile el panel ya es overlay; ampliar no aplica */
+  .panel-footer {
+    display: none;
   }
 }
 

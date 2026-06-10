@@ -38,6 +38,41 @@ export function initPanel() {
 
   closeBtn?.addEventListener('click', () => setSelected(null));
 
+  // ── Ampliar / reducir el panel ────────────────────────────────────────────
+  const wrapper   = _panel.closest('.tree-wrapper');
+  const expandBtn = document.getElementById('panelExpandBtn');
+
+  expandBtn?.addEventListener('click', () => {
+    const expanded = _panel.classList.toggle('is-expanded');
+    expandBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    expandBtn.title = expanded ? 'Volver al árbol' : 'Ampliar el panel';
+    const label = expandBtn.querySelector('.panel-expand-label');
+    if (label) label.textContent = expanded ? 'Volver al árbol' : 'Ampliar panel';
+
+    if (expanded) {
+      wrapper?.classList.add('is-panel-expanded');
+    } else {
+      // al reducir, devuelve el espacio al árbol cuando termina la transición
+      setTimeout(() => {
+        wrapper?.classList.remove('is-panel-expanded');
+        recenterOn();
+      }, 320);
+    }
+  });
+
+  // Restaura el estado normal (lo llama el cierre del panel)
+  const _collapseExpand = () => {
+    if (!_panel.classList.contains('is-expanded')) return;
+    _panel.classList.remove('is-expanded');
+    wrapper?.classList.remove('is-panel-expanded');
+    if (expandBtn) {
+      expandBtn.setAttribute('aria-expanded', 'false');
+      expandBtn.title = 'Ampliar el panel';
+      const label = expandBtn.querySelector('.panel-expand-label');
+      if (label) label.textContent = 'Ampliar panel';
+    }
+  };
+
   _peek?.addEventListener('click', () => {
     if (!_currentId) return;
     _hidePeek();
@@ -58,6 +93,7 @@ export function initPanel() {
 
   on('selectionChange', id => {
     if (!id) {
+      _collapseExpand();
       _panel.classList.remove('is-open');
       _hidePeek();
       if (_hero) _hero.innerHTML = '';

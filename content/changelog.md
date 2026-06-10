@@ -1,3 +1,13 @@
+### 10 de junio de 2026
+
+#### Acento verde botella en todo el sitio
+
+El color de acento del sitio pasó de azul (`#2563eb`) a **verde botella (`#2d4a3e`)**. El cambio repercute en todas las páginas y en mobile: links, hovers, foco de inputs, etiquetas de categoría del blog, callouts, badges y botones. Los colores de rama del árbol genealógico son un sistema aparte y se mantienen.
+
+#### Árbol: panel inspector con lenguaje editorial
+
+El panel lateral abandonó el hero de color saturado con texto blanco y adoptó el lenguaje del blog: hero sobre superficie clara con el nombre en **Source Serif 4** y los años en serif cursiva, badge de estado tipo chip, botón de cierre minimal y secciones en cards blancas. En desktop el panel ahora **flota como tarjeta con gaps de 5mm** al estilo de un window manager (i3) — el fondo de puntos del canvas se ve en los gaps alrededor. Un botón **"Ampliar panel"** al pie lo expande hasta ocupar toda el área dejando solo el marco de 5mm (con el árbol intuyéndose detrás), y cambia a **"Volver al árbol"**. La expansión y los gaps son exclusivos de desktop; en mobile el panel sigue siendo un drawer overlay como antes.
+
 ### 19 de mayo de 2026
 
 #### Árbol: navegación mobile menos invasiva

@@ -117,6 +117,8 @@ assets/js/arbol/
 
 Styles are in `assets/css/arbol.css`. The HTML (`arbol-matrimonios.html`) has no inline CSS or JS.
 
+**Panel inspector (`panel.js` + `.tree-panel`):** lenguaje editorial coherente con el blog — hero sobre superficie clara (nombre en Source Serif 4, años en serif cursiva), badge de estado tipo chip, secciones en cards blancas. En desktop el panel flota como tarjeta con **gaps de 5mm tipo i3** (el fondo de puntos vive en `.tree-wrapper` y se ve en los gaps). El botón "Ampliar panel" del footer alterna el estado `.is-expanded`, que hace que el panel ocupe todo el área dejando solo el gap de 5mm (toggle a "Volver al árbol"). **Esta expansión y los gaps son solo desktop** (`@media max-width: 960px` los desactiva: el panel vuelve a ser un drawer overlay a pantalla completa y el footer se oculta).
+
 **Data source:** `data/arbol.db` (SQLite) is the source of truth. At build time, `scripts/build.js` calls `scripts/export_arbol.py`, which reads the DB and writes `assets/data/arbol.json`. The tree page only ever reads the static JSON — it never touches the DB directly.
 
 **Data schema** — `assets/data/arbol.json` root structure:
@@ -184,7 +186,7 @@ All pages share a two-column layout: persistent sidebar (Inicio / Árbol / Archi
 | `--border` | `#e8e8e6` | Borders and dividers |
 | `--text` | `#1a1a1a` | Body text |
 | `--muted` | `#8a8a88` | Secondary text, metadata |
-| `--accent` | `#2563eb` | Emphasis, hover, links |
+| `--accent` | `#2d4a3e` | Emphasis, hover, links (verde botella) |
 
 **Typography:**
 
