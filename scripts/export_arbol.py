@@ -50,6 +50,14 @@ def main():
         print(f'⚠️  No existe {DB_PATH} — saltando actualización de arbol.json')
         return
 
+    try:
+        from actualizar_status import actualizar_status
+        n = actualizar_status(apply=True, quiet=True)
+        if n:
+            print(f'🏷️  {n} status actualizado(s) automáticamente')
+    except Exception as e:
+        print(f'⚠️  actualizar_status falló: {e}')
+
     con = sqlite3.connect(DB_PATH)
     con.row_factory = sqlite3.Row
     cur = con.cursor()

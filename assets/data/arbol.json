@@ -17,7 +17,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": []
     },
     {
@@ -37,7 +37,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -57,7 +57,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -77,7 +77,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -137,7 +137,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -157,7 +157,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -197,7 +197,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -217,7 +217,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -277,7 +277,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -337,7 +337,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med102",
@@ -368,7 +368,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -428,7 +428,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med93",
@@ -459,7 +459,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med95",
@@ -490,7 +490,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -510,7 +510,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -530,7 +530,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med68",
@@ -561,7 +561,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -581,7 +581,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -601,7 +601,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -621,7 +621,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -641,7 +641,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -661,7 +661,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -681,7 +681,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -792,7 +792,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med46",
@@ -843,7 +843,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med83",
@@ -874,7 +874,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -894,7 +894,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med24",
@@ -925,7 +925,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -945,7 +945,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med96",
@@ -986,7 +986,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -1006,7 +1006,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med43",
@@ -1067,7 +1067,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med84",
@@ -1108,7 +1108,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med25",
@@ -1139,7 +1139,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med52",
@@ -1170,7 +1170,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med86",
@@ -1201,7 +1201,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med42",
@@ -1262,7 +1262,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med53",
@@ -1293,7 +1293,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med87",
@@ -1324,7 +1324,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med47",
@@ -1365,7 +1365,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med88",
@@ -1396,7 +1396,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med63",
@@ -1447,7 +1447,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med89",
@@ -1519,7 +1519,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med90",
@@ -1550,7 +1550,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med91",
@@ -1581,7 +1581,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med92",
@@ -1672,7 +1672,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med48",
@@ -1843,7 +1843,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med59",
@@ -1934,7 +1934,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -1974,7 +1974,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -2014,7 +2014,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med61",
@@ -2065,7 +2065,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med94",
@@ -2096,7 +2096,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med76",
@@ -2187,7 +2187,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": []
     },
     {
@@ -2207,7 +2207,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med108",
@@ -2258,7 +2258,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -2278,7 +2278,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -2298,7 +2298,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med79",
@@ -2379,7 +2379,7 @@
       "photo_url": null,
       "notes": null,
       "sources": null,
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med104",
@@ -2470,7 +2470,7 @@
       "photo_url": null,
       "notes": null,
       "sources": "Censos Riddes y Ardon 1829 (n.1821; Riddes anota 1831, probable error del escriba)",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med74",
@@ -2622,7 +2622,7 @@
       "photo_url": null,
       "notes": null,
       "sources": "Censos Riddes y Ardon 1829 (n.1818)",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med106",
@@ -2693,7 +2693,7 @@
       "photo_url": null,
       "notes": "Soltera; en el hogar materno en 1846 («fille majeure») y en 1850 (anotada n.1820, discrepancia sin resolver).",
       "sources": "Censos Riddes y Ardon 1829 (n.1813) · Riddes 1846 l.46 · Riddes 1850 l.59",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med72",
@@ -2774,7 +2774,7 @@
       "photo_url": null,
       "notes": null,
       "sources": "Censos Riddes y Ardon 1829 (n.1815)",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med103",
@@ -2845,7 +2845,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med19",
@@ -2876,7 +2876,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "en_proceso",
       "media": [
         {
           "id": "med75",
@@ -2907,7 +2907,7 @@
       "photo_url": "",
       "notes": "",
       "sources": "",
-      "status": "sin_datos",
+      "status": "incompleto",
       "media": []
     },
     {
@@ -2927,7 +2927,7 @@
       "photo_url": "",
       "notes": "Hijo de Baptiste Clemenzo. Hermano de Jean Joseph Clemenzo (p57). Rama que permaneció en Suiza.",
       "sources": "Censos digitalizados del Valais (1802–1870); árbol de Jean-Yves Clemenzo",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": []
     },
     {
@@ -3109,7 +3109,7 @@
       "photo_url": "",
       "notes": "Patriarca más antiguo identificado de la rama Clemenzo. Fecha de nacimiento aproximada (circa 1745–1755). Padre de Jean Joseph (p57) y Jean Baptiste (p94). Vivió en Ardon, cantón de Valais, Suiza.",
       "sources": "Censos digitalizados del Valais (1802–1870); Armorial Valaisan (dos ediciones); árbol de Jean-Yves Clemenzo",
-      "status": "incompleto",
+      "status": "en_proceso",
       "media": []
     }
   ],
