@@ -349,8 +349,12 @@ function _renderMedia(media) {
   }).join('');
 }
 
+const _IMG_EXT = /\.(webp|jpe?g|png|gif|avif)$/i;
+
 function _mediaItem(item) {
-  if (item.type !== 'document') {
+  // Mostrar como imagen todo lo que sea un archivo de imagen, aunque esté
+  // tipado 'document' en la base (escaneos); el enlace 📄 queda para PDFs y similares.
+  if (item.type !== 'document' || _IMG_EXT.test(item.url)) {
     return `<a href="${item.url}" target="_blank" class="panel-media-photo">
       <img src="${item.url}" alt="${item.caption || ''}">
       ${item.caption ? `<span>${item.caption}</span>` : ''}
