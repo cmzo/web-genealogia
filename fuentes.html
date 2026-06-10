@@ -288,6 +288,11 @@
         const container = document.querySelector('.fuentes-content');
         container.innerHTML = html;
         postProcess(container);
+        // Los enlaces externos se abren en una pestaña nueva
+        container.querySelectorAll('a[href^="http"]').forEach(a => {
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+        });
       })
       .catch(() => {
         document.querySelector('.fuentes-content').innerHTML = '<p>No se pudo cargar el contenido.</p>';

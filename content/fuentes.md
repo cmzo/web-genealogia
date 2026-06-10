@@ -65,6 +65,21 @@ Colección específica con registros digitalizados de parroquias entrerrianas. I
 - Censos Nacionales de **1869 y 1895** (el de 1895 incluye la familia Clemenzo en Colón).
 - Expedientes sucesorios y registros de propiedad.
 - Registros de inmigración (listas de pasajeros de buques).
+- **Fondos digitalizados:** cada vez más documentación del AGN está disponible en línea (colección en crecimiento).
+
+---
+
+### CEMLA — Centro de Estudios Migratorios Latinoamericanos
+**Web:** [cemla.com](https://cemla.com/)
+
+Buscador en línea de **arribos al puerto de Buenos Aires**. Permite rastrear la llegada de inmigrantes por nombre, barco y fecha — clave para ubicar el desembarco de los antepasados que llegaron por Buenos Aires antes de continuar a Entre Ríos.
+
+---
+
+### Genealogía Familiar
+**Web:** [genealogiafamiliar.net](https://www.genealogiafamiliar.net/)
+
+Base colaborativa argentina con buena cobertura de familias de **Entre Ríos**. Útil para cruzar datos con árboles ya cargados por otros investigadores.
 
 ---
 
@@ -86,9 +101,10 @@ Equivalente suizo del Centro de Genealogía de Entre Ríos, específico para el 
 **Dirección:** 45, rue de Lausanne, 1950 Sion, Suiza  
 **Tel:** 027/606 46 00  
 **Email:** archives@admin.vs.ch  
-**Horario:** lunes a viernes 8:30–12:00 y 13:00–18:00 / sábados 8:30–17:00
+**Horario:** lunes a viernes 8:30–12:00 y 13:00–18:00 / sábados 8:30–17:00  
+**Catálogo en línea:** [scopequery.vs.ch](https://scopequery.vs.ch)
 
-Archivo cantonal que conserva copias de registros parroquiales de toda la región del Valais. Los registros de más de 110 años están disponibles para consulta, pero se requiere **autorización escrita del párroco** de la parroquia correspondiente. Los registros están escritos mayormente en latín. Cubre las parroquias de Riddes y Conthey.
+Archivo cantonal que conserva copias de registros parroquiales de toda la región del Valais. Su catálogo en línea **Scopequery** permite buscar fondos y referencias antes de visitar la sala de consulta. Los registros de más de 110 años están disponibles para consulta, pero se requiere **autorización escrita del párroco** de la parroquia correspondiente. Los registros están escritos mayormente en latín. Cubre las parroquias de Riddes y Conthey.
 
 ---
 
@@ -98,6 +114,47 @@ Archivo cantonal que conserva copias de registros parroquiales de toda la regió
 Base de datos de censos históricos del Cantón del Valais. Permite consultar padrones y registros de población de las comunas vallesanas, útil para localizar a los antepasados Clemenzo y Roh en Riddes y Conthey antes de su emigración a Argentina.
 
 ---
+
+### Dictionnaire historique de la Suisse (DHS · HLS · DSS)
+**Web:** [hls-dhs-dss.ch/fr](https://hls-dhs-dss.ch/fr/)
+
+Enciclopedia histórica nacional, **trilingüe**: *HLS* en alemán, *DHS* en francés y *DSS* en italiano (de ahí el acrónimo del dominio). Para el Valais conviene la versión francesa, donde están los artículos sobre **Riddes, Ardon, Conthey** y la emigración valesana del siglo XIX. Útil para el contexto histórico de las comunas de origen.
+
+---
+
+### Valaisans du Monde
+**Web:** [valaisans.com/es](https://valaisans.com/es/)
+
+Iniciativa dedicada a la emigración valesana por el mundo. Su **base de datos de emigrantes** es el recurso en línea más específico para este caso: reúne fichas de valesanos que partieron a América, incluida Argentina.
+
+---
+
+### e-newspaperarchives.ch
+**Web:** [e-newspaperarchives.ch](https://www.e-newspaperarchives.ch/)
+
+Hemeroteca digital de prensa histórica suiza, buscable a texto completo. Incluye **Le Confédéré** y la **Gazette du Valais**. Para la emigración es muy valiosa: avisos de partida, ventas de bienes antes de emigrar y noticias de colonos.
+
+## Plataformas y directorios
+
+### FamilySearch — Wiki y catálogo
+**Wiki Valais:** [Valais, Switzerland Genealogy](https://www.familysearch.org/en/wiki/Valais,_Switzerland_Genealogy)  
+**Wiki Entre Ríos:** [Entre Ríos, Argentina Genealogy](https://www.familysearch.org/en/wiki/Entre_R%C3%ADos,_Argentina_Genealogy)
+
+Las páginas de la *Research Wiki* son guías de investigación en sí mismas, con enlaces directos a colecciones. El **catálogo** de FamilySearch, filtrando por *Entre Ríos*, lista registros parroquiales y civiles digitalizados, además de los censos de **1869 y 1895** indexados.
+
+---
+
+### GeneaNet
+**Web:** [geneanet.org](https://www.geneanet.org/)
+
+La plataforma francófona por excelencia. Muchos genealogistas suizos y franceses suben sus árboles ahí, así que es muy posible encontrar **Clemenzo** ya investigados o ramas conectadas.
+
+---
+
+### Cyndi's List
+**Web:** [cyndislist.com/switzerland](https://www.cyndislist.com/switzerland/)
+
+Meta-directorio clásico de recursos genealógicos. La categoría **Switzerland** reúne cientos de enlaces — algo desactualizada en partes, pero útil como punto de partida.
 
 ## Bibliografía relevante
 
@@ -114,4 +171,4 @@ Publicaciones con listados de familias, censos transcritos o historia de las col
 
 ---
 
-*Última actualización: 2026-05-08*
+*Última actualización: 2026-06-10*
