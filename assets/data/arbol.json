@@ -2377,8 +2377,8 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": null,
-      "notes": null,
-      "sources": null,
+      "notes": "Bajo consejo judicial a su propia solicitud desde el 13-02-1862 (art. 325 CC; consejero: abogado Etienne Gabioud, Sion) — doce días antes del nacimiento de su hijo Etienne. En septiembre de 1862 Gabioud vendió la herencia Cerisier de sus hijos (Praolavay y la Condemine, Riddes) y la granja conyugal de Turrin (Salins). Probable deudor insolvente en acto de carencia de 1866 (71,95 fr ante Jean-Baptiste Clemenzo; lectura no confirmada).",
+      "sources": "Censos: Riddes 1829 2ème cl. l.24 (laboureur, domicilio Ardon) · Ardon 1846 · Riddes 1870 · Gazette du Valais: 8-12-1861 · 23-02-1862 (consejo judicial) · 21-09-1862 (venta Turrin) · 14-01-1866 (acto de carencia)",
       "status": "en_proceso",
       "media": [
         {
@@ -2853,8 +2853,8 @@
       "sort_order": 6,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
+      "notes": "De Salins, como su marido. Apellido confirmado como «née Stolder» en la Gazette du Valais del 21-09-1862 (venta de la granja conyugal de Turrin, Salins) — primera fuente primaria del apellido.",
+      "sources": "Censo de Riddes 1870 (hogar familiar) · Gazette du Valais 21-09-1862 («appartenant à François Clémenzoz et à sa femme, née Stolder»)",
       "status": "en_proceso",
       "media": [
         {
@@ -3027,7 +3027,7 @@
       "gender": "F",
       "birth_date": "1786",
       "birth_place": null,
-      "death_date": "",
+      "death_date": "1851/1861",
       "death_place": null,
       "father_id": null,
       "mother_id": null,
@@ -3036,8 +3036,8 @@
       "sort_order": 18,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Catherine Fortunée Cerisier. Enviudó entre 1846 y 1850; viva en 1851 (documento S 77: «veuve de Joseph Clemenzoz de Riddes»).",
-      "sources": "Censos: Riddes 1829 2ème cl. l.22 (Clemenzo Cerisier, n.1786) · Ardon 1829 1re cl. p.84 l.1 (n.1786) · Riddes 1850 l.58 (cabeza de hogar, n.1786) · Doc. S 77 (1851)",
+      "notes": "Catherine Fortunée Cerisier. Enviudó entre 1846 y 1850; viva en 1851 (documento S 77: «veuve de Joseph Clemenzoz de Riddes»). Murió antes del 1-12-1861: su testamento legó bienes directamente a sus nietos (los hijos de François p36), saltándose a su hijo — diez semanas después él se colocó bajo consejo judicial. Sus inmuebles del hameau de la Vigne (Riddes) se subastaron en marzo de 1862.",
+      "sources": "Censos: Riddes 1829 2ème cl. l.22 (Clemenzo Cerisier, n.1786) · Ardon 1829 1re cl. p.84 l.1 (n.1786) · Riddes 1850 l.58 (cabeza de hogar, n.1786) · Doc. S 77 (1851) · Gazette du Valais 8-12-1861 (sucesión aceptada, testamento a los nietos) · Gazette 16-02-1862 (subasta, hameau de la Vigne)",
       "status": "en_proceso",
       "media": [
         {
