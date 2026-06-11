@@ -2468,8 +2468,8 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Hipótesis en estudio (2026-06-11): podría ser la «Elisabeth née Clementz» (n. censal 1822/1824) casada con Jean Antoine Lambiel (laboureur, d'Ardon, n. 1811), domiciliados en Riddes (Plan de Villy) desde 1840, con hijos Julie (1850), Jean (~1852), Louis (1855) y Joseph (1860) — los probables «cousins Lambiel» de la carta de 1904. Candidata alternativa: Anne-Marie-Elisabeth Clemenzo (n. 1820, †1890), hija de Jean-Baptiste, rama de Ardon (árbol de Jean-Yves). Discriminadores pendientes: acta de matrimonio Lambiel×Clemenzo (~1840-1850) y consulta a Jean-Yves sobre el matrimonio de su Elisabeth.",
-      "sources": "Censos Riddes y Ardon 1829 (n.1821; Riddes anota 1831, probable error del escriba) · Censo federal 1870, Riddes, Plan de Villy, bulletin 34 (hogar Lambiel, si la identificación es correcta)",
+      "notes": "Hipótesis en estudio (2026-06-11): podría ser la «Elisabeth née Clementz» casada con Jean (Antoine) Lambiel (laboureur, d'Ardon, n. 1811) — censos de Riddes 1850 (l.291, «Lambiel née Clementz», n.1822) y 1870 (Plan de Villy, n.1824). Hijos documentados: Josephine (1842), Rosalie (1848), Julie (1850), Jean (~1852), Louis (1855), Joseph (1860) — los probables «cousins Lambiel» de la carta de 1904. Primer hijo en 1842 → matrimonio ~1840-41, coherente con domicilio en Riddes desde 1840. Candidata alternativa: Anne-Marie-Elisabeth Clemenzo (n. 1820, †1890), rama de Jean-Baptiste/Ardon (árbol de Jean-Yves). Discriminadores pendientes: acta de matrimonio y consulta a Jean-Yves.",
+      "sources": "Censos Riddes y Ardon 1829 (n.1821; Riddes anota 1831, probable error del escriba) · Censo Riddes 1850 l.290-293 (hogar Lambiel, «née Clementz» n.1822) · Censo federal 1870, Riddes, Plan de Villy, bulletin 34 (n.1824) — si la identificación es correcta",
       "status": "en_proceso",
       "media": [
         {
@@ -2509,6 +2509,16 @@
           "caption": "Censo federal 1870, Riddes, Plan de Villy, bulletin 34 — hogar Lambiel: Jean Antoine (laboureur, d'Ardon, n.1811) y Elisabeth née Clementz (n. 5-05-1824), con hijos Julie, Jean, Louis y Joseph (n. 9-04-1860). HIPÓTESIS EN ESTUDIO: Elisabeth podría ser p76 (n.1821) o Anne-Marie-Elisabeth de la rama de Jean-Baptiste (n.1820, †1890).",
           "date": "1870",
           "source_label": "Censo federal suizo 1870",
+          "group_label": "Censos",
+          "group_order": 0
+        },
+        {
+          "id": "med128",
+          "type": "photo",
+          "url": "assets/images/personas/p76-1850-riddes-lambiel-censo.webp",
+          "caption": "Censo de Riddes 1850, l.290-293 — «Lambiel née Clementz, Elisabeth, n.1822» con Jean Lambiel (n.1811) e hijas Josephine (n.1842) y Rosalie (n.1848). Fuente del apellido de soltera. HIPÓTESIS EN ESTUDIO: ¿es p76 (n.1821) o la Elisabeth de la rama de Ardon (n.1820)?",
+          "date": "1850",
+          "source_label": "Censo de Riddes 1850",
           "group_label": "Censos",
           "group_order": 0
         },
