@@ -1,5 +1,23 @@
 [
   {
+    "id": "la-ruina-de-francois",
+    "title": "La ruina de François",
+    "description": "La prensa oficial del Valais registró, aviso a aviso, la desintegración del patrimonio de François Clemenzoz: un testamento que salta una generación, dos subastas, una curatela pedida por él mismo y un acto de insolvencia. Crónica documental de los años que precedieron a la emigración de su hijo a Argentina.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "investigacion",
+    "date": "2026-06-11",
+    "tags": [
+      "clemenzo",
+      "gazette du valais",
+      "salins",
+      "riddes",
+      "valais",
+      "investigacion"
+    ],
+    "featured": false,
+    "url": "dist/blog/la-ruina-de-francois.html"
+  },
+  {
     "id": "clan-clemenzo",
     "title": "Clan Clemenzo",
     "description": "Un recorrido por los censos del Valais entre 1802 y 1870 en busca de los Clemenzo de Ardon y Riddes — los ancestros directos de la rama argentina. Relaciones familiares, movimientos entre comunas e hipótesis sobre los orígenes.",
