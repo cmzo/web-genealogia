@@ -2377,7 +2377,7 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Bajo consejo judicial a su propia solicitud desde el 13-02-1862 (art. 325 CC; consejero: abogado Etienne Gabioud, Sion) — doce días antes del nacimiento de su hijo Etienne. En septiembre de 1862 Gabioud vendió la herencia Cerisier de sus hijos (Praolavay y la Condemine, Riddes) y la granja conyugal de Turrin (Salins). Probable deudor insolvente en acto de carencia de 1866 (71,95 fr ante Jean-Baptiste Clemenzo; lectura no confirmada).",
+      "notes": "Bajo consejo judicial a su propia solicitud desde el 13-02-1862 (art. 325 CC; consejero: abogado Etienne Gabioud, Sion) — doce días antes del nacimiento de su hijo Etienne. En septiembre de 1862 Gabioud vendió la herencia Cerisier de sus hijos (Praolavay y la Condemine, Riddes) y la granja conyugal de Turrin (Salins). Probable deudor insolvente en acto de carencia de 1866 (71,95 fr; lectura no confirmada) ante Jean-Baptiste Clemenzo — por eliminación, el primo n.1822 †1908 de la rama de Ardon (el tío homónimo murió en 1859, según árbol de Jean-Yves).",
       "sources": "Censos: Riddes 1829 2ème cl. l.24 (laboureur, domicilio Ardon) · Ardon 1846 · Riddes 1870 · Gazette du Valais: 8-12-1861 · 23-02-1862 (consejo judicial) · 21-09-1862 (venta Turrin) · 14-01-1866 (acto de carencia)",
       "status": "en_proceso",
       "media": [
@@ -2468,8 +2468,8 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": null,
-      "notes": null,
-      "sources": "Censos Riddes y Ardon 1829 (n.1821; Riddes anota 1831, probable error del escriba)",
+      "notes": "Hipótesis en estudio (2026-06-11): podría ser la «Elisabeth née Clementz» (n. censal 1822/1824) casada con Jean Antoine Lambiel (laboureur, d'Ardon, n. 1811), domiciliados en Riddes (Plan de Villy) desde 1840, con hijos Julie (1850), Jean (~1852), Louis (1855) y Joseph (1860) — los probables «cousins Lambiel» de la carta de 1904. Candidata alternativa: Anne-Marie-Elisabeth Clemenzo (n. 1820, †1890), hija de Jean-Baptiste, rama de Ardon (árbol de Jean-Yves). Discriminadores pendientes: acta de matrimonio Lambiel×Clemenzo (~1840-1850) y consulta a Jean-Yves sobre el matrimonio de su Elisabeth.",
+      "sources": "Censos Riddes y Ardon 1829 (n.1821; Riddes anota 1831, probable error del escriba) · Censo federal 1870, Riddes, Plan de Villy, bulletin 34 (hogar Lambiel, si la identificación es correcta)",
       "status": "en_proceso",
       "media": [
         {
@@ -2501,6 +2501,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 7
+        },
+        {
+          "id": "med127",
+          "type": "photo",
+          "url": "assets/images/personas/p76-1870-riddes-lambiel-censo.webp",
+          "caption": "Censo federal 1870, Riddes, Plan de Villy, bulletin 34 — hogar Lambiel: Jean Antoine (laboureur, d'Ardon, n.1811) y Elisabeth née Clementz (n. 5-05-1824), con hijos Julie, Jean, Louis y Joseph (n. 9-04-1860). HIPÓTESIS EN ESTUDIO: Elisabeth podría ser p76 (n.1821) o Anne-Marie-Elisabeth de la rama de Jean-Baptiste (n.1820, †1890).",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censos",
+          "group_order": 0
         },
         {
           "id": "med119",
