@@ -2691,8 +2691,8 @@
       "sort_order": 3,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Soltera toda la vida. En el hogar paterno en 1846 («fille majeure») y con su madre viuda en 1850 (anotada n.1820, probable error del censista). En el censo de 1880 es jefa de hogar en Riddes (bulletin 22, casa 18), con una sirvienta y un pensionista, Joseph Lambiel (n. 1859) — primer vínculo Clemenzo–Lambiel documentado, 24 años antes de la carta de los «cousins Lambiel» de 1904. Viva al 1-12-1880.",
-      "sources": "Censos Riddes y Ardon 1829 (n.1813) · Riddes 1846 l.46 · Riddes 1850 l.59 · Censo federal 1880, Riddes, bulletin de ménage N°22 (fecha exacta declarada: 22-09-1813)",
+      "notes": "Soltera toda la vida. En el hogar paterno en 1846 («fille majeure») y con su madre viuda en 1850 (anotada n.1820, probable error del censista). En 1870 y 1880 jefa de su propio hogar en el hameau de Vignes/la Vigne (Riddes) — el mismo caserío donde se subastaron los inmuebles de su madre en 1862. Convivió desde nov. 1849 con Geneviève Bessard (de Sembrancher), primero como inquilina de chambre garnie y en 1880 como sirvienta — más de 30 años juntas. El pensionista Joseph Lambiel (n. 1859) entró al hogar entre 1870 y 1880: primer vínculo Clemenzo–Lambiel documentado, 24 años antes de la carta de los «cousins Lambiel» de 1904. Cumpleaños 22 de septiembre (consistente en 1870 y 1880); el año oscila: 1812 (censo 1870) vs 1813 (censos 1829 y 1880). Viva al 1-12-1880.",
+      "sources": "Censos Riddes y Ardon 1829 (n.1813) · Riddes 1846 l.46 · Riddes 1850 l.59 · Censo federal 1870, Riddes, hameau Vignes (n. 22-09-1812) · Censo federal 1880, Riddes, bulletin de ménage N°22, casa 18 (n. 22-09-1813)",
       "status": "en_proceso",
       "media": [
         {
@@ -2732,6 +2732,16 @@
           "caption": "Censo federal 1880, Riddes — Bulletin de ménage N°22, casa 18: Jeanne Clemenzoz (n. 22-09-1813, soltera, jefa de hogar), con sirvienta Geneviève Bessard y pensionista Joseph Lambiel (n. 1859).",
           "date": "1880",
           "source_label": "Censo federal suizo 1880",
+          "group_label": "Censos",
+          "group_order": 0
+        },
+        {
+          "id": "med126",
+          "type": "photo",
+          "url": "assets/images/personas/p74-1870-riddes-censo.webp",
+          "caption": "Censo federal 1870, Riddes, hameau de Vignes — Jeanne Clemenzoz (n. 22-09-1812 declarada, soltera, jefa de hogar) con Geneviève Bessard (chambre garnie, en Riddes desde nov. 1849). Sin Lambiel todavía.",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
           "group_label": "Censos",
           "group_order": 0
         },
