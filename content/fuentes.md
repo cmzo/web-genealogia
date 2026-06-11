@@ -137,7 +137,6 @@ Hemeroteca digital de prensa histórica suiza, buscable a texto completo. Incluy
 ## Plataformas y directorios
 
 ### FamilySearch — Wiki y catálogo
-**Wiki Valais:** [Valais, Switzerland Genealogy](https://www.familysearch.org/en/wiki/Valais,_Switzerland_Genealogy)  
 **Wiki Entre Ríos:** [Entre Ríos, Argentina Genealogy](https://www.familysearch.org/en/wiki/Entre_R%C3%ADos,_Argentina_Genealogy)
 
 Las páginas de la *Research Wiki* son guías de investigación en sí mismas, con enlaces directos a colecciones. El **catálogo** de FamilySearch, filtrando por *Entre Ríos*, lista registros parroquiales y civiles digitalizados, además de los censos de **1869 y 1895** indexados.

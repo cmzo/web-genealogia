@@ -2680,7 +2680,7 @@
       "id": "p74",
       "name": "Janne Marie Clemenzo",
       "gender": "F",
-      "birth_date": "1813",
+      "birth_date": "1813-09-22",
       "birth_place": "Ardon, Valais, Suiza",
       "death_date": "",
       "death_place": null,
@@ -2691,8 +2691,8 @@
       "sort_order": 3,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Soltera; en el hogar materno en 1846 («fille majeure») y en 1850 (anotada n.1820, discrepancia sin resolver).",
-      "sources": "Censos Riddes y Ardon 1829 (n.1813) · Riddes 1846 l.46 · Riddes 1850 l.59",
+      "notes": "Soltera toda la vida. En el hogar paterno en 1846 («fille majeure») y con su madre viuda en 1850 (anotada n.1820, probable error del censista). En el censo de 1880 es jefa de hogar en Riddes (bulletin 22, casa 18), con una sirvienta y un pensionista, Joseph Lambiel (n. 1859) — primer vínculo Clemenzo–Lambiel documentado, 24 años antes de la carta de los «cousins Lambiel» de 1904. Viva al 1-12-1880.",
+      "sources": "Censos Riddes y Ardon 1829 (n.1813) · Riddes 1846 l.46 · Riddes 1850 l.59 · Censo federal 1880, Riddes, bulletin de ménage N°22 (fecha exacta declarada: 22-09-1813)",
       "status": "en_proceso",
       "media": [
         {
@@ -2724,6 +2724,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 5
+        },
+        {
+          "id": "med125",
+          "type": "photo",
+          "url": "assets/images/personas/p74-1880-riddes-censo.webp",
+          "caption": "Censo federal 1880, Riddes — Bulletin de ménage N°22, casa 18: Jeanne Clemenzoz (n. 22-09-1813, soltera, jefa de hogar), con sirvienta Geneviève Bessard y pensionista Joseph Lambiel (n. 1859).",
+          "date": "1880",
+          "source_label": "Censo federal suizo 1880",
+          "group_label": "Censos",
+          "group_order": 0
         },
         {
           "id": "med117",
