@@ -588,8 +588,8 @@
       "id": "p35",
       "name": "Rodolfo Ambrosio Clemenzo",
       "gender": "",
-      "birth_date": "1919-05-21",
-      "birth_place": "Concepción del Uruguay, Entre Rios, Argentina",
+      "birth_date": "1919-03-21",
+      "birth_place": "Concepción del Uruguay, Entre Ríos, Argentina",
       "death_date": "",
       "death_place": "",
       "father_id": "p20",
@@ -599,10 +599,21 @@
       "sort_order": 2,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
-      "status": "incompleto",
-      "media": []
+      "notes": "Nacido a las 2 AM en el domicilio familiar de calle Córdoba, C. del Uruguay — la misma casa donde moriría su abuelo Francisco (p26) en 1928. Inscripto al día siguiente como «Clemence, Rodolfo Ambrosio»: su padre León declaró con el apellido «Clemence» (también para los abuelos), variante que usó por un tiempo y cuyo origen se desconoce. La fecha 21-05-1919 que figuraba antes en el árbol era errónea: el acta es del 22-03 y dice «nacido el veintiuno del corriente».",
+      "sources": "Acta de nacimiento N° 97, Registro Civil de Concepción del Uruguay, 22-03-1919 (libro p. 49; jefe: Martín Gañi; testigos: Vicente Gaggino, 30, Jujuy 698, y José A. Guidobono, 24, Galarza 324)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med129",
+          "type": "photo",
+          "url": "assets/images/personas/p35-p20-p21-1919-nacimiento-acta.webp",
+          "caption": "Acta de nacimiento N° 97 (22-03-1919, C. del Uruguay): Rodolfo Ambrosio, inscripto como «Clemence». Nacido el 21-03-1919 a las 2 AM en calle Córdoba.",
+          "date": "1919-03-22",
+          "source_label": "Registro Civil de Concepción del Uruguay",
+          "group_label": "Actas",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p14",
@@ -779,7 +790,7 @@
       "id": "p21",
       "name": "Emiliana Elena Baster",
       "gender": "",
-      "birth_date": "1896-01-01",
+      "birth_date": "1895/1896",
       "birth_place": "Parana, Entre Rios, Argentina",
       "death_date": "",
       "death_place": "",
@@ -790,8 +801,8 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
+      "notes": "Edad 23 años en el acta de nacimiento de su hijo Rodolfo (22-03-1919) → nacida entre marzo de 1895 y marzo de 1896. Argentina. Hija de Tomás Baster y Francisca Guido según la misma acta. (Se eliminó el placeholder 1896-01-01.)",
+      "sources": "Acta de nacimiento de Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 (esposa del exponente, 23 años, argentina; abuelos maternos: Tomás Baster y Francisca Guido)",
       "status": "en_proceso",
       "media": [
         {
@@ -803,6 +814,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 1
+        },
+        {
+          "id": "med131",
+          "type": "photo",
+          "url": "assets/images/personas/p35-p20-p21-1919-nacimiento-acta.webp",
+          "caption": "Acta de nacimiento de su hijo Rodolfo (N° 97, 1919) — «su esposa Emiliana Elena Baster, de veintitrés años, Argentina».",
+          "date": "1919-03-22",
+          "source_label": "Registro Civil de Concepción del Uruguay",
+          "group_label": "Actas",
+          "group_order": 0
         }
       ]
     },
@@ -1004,8 +1025,8 @@
       "sort_order": 1,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
+      "notes": "En el acta de nacimiento de su hijo Rodolfo (1919) comparece y firma como «León F. Clemence», declarando también a sus padres como «Francisco Clemence y Celestina Roh» — un cambio de apellido temporal de origen desconocido. Edad declarada 27 años ✓ (n. 16-12-1891), casado, argentino, domiciliado en calle Córdoba, C. del Uruguay — donde moriría su padre Francisco en 1928.",
+      "sources": "Acta de nacimiento de Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 (comparece y firma «León F. Clemence»)",
       "status": "en_proceso",
       "media": [
         {
@@ -1046,6 +1067,16 @@
           "date": "1895-01-01",
           "source_label": null,
           "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med130",
+          "type": "photo",
+          "url": "assets/images/personas/p35-p20-p21-1919-nacimiento-acta.webp",
+          "caption": "Acta de nacimiento de su hijo Rodolfo (N° 97, 1919) — comparece y firma como «León F. Clemence», 27 años, domiciliado en calle Córdoba.",
+          "date": "1919-03-22",
+          "source_label": "Registro Civil de Concepción del Uruguay",
+          "group_label": "Actas",
           "group_order": 0
         }
       ]
@@ -2257,8 +2288,8 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "",
-      "sources": "",
-      "status": "incompleto",
+      "sources": "Acta de nacimiento de su nieto Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 («los abuelos maternos son: Tomás Baster y Francisca Guido»)",
+      "status": "en_proceso",
       "media": []
     },
     {
@@ -2277,8 +2308,8 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "",
-      "sources": "",
-      "status": "incompleto",
+      "sources": "Acta de nacimiento de su nieto Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 («los abuelos maternos son: Tomás Baster y Francisca Guido»)",
+      "status": "en_proceso",
       "media": []
     },
     {
