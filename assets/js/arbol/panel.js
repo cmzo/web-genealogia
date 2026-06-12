@@ -36,6 +36,14 @@ export function initPanel() {
 
   if (!_panel || !_body) return;
 
+  // Evita el barrido de apertura cuando la página carga ya enfocada (URL
+  // ?focus=…): el panel se abre sin transición y, una vez pintado, se
+  // rehabilita para que los despliegues por clic sí animen.
+  _panel.classList.add('tree-panel--preload');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    _panel.classList.remove('tree-panel--preload');
+  }));
+
   closeBtn?.addEventListener('click', () => setSelected(null));
 
   // ── Ampliar / reducir el panel ────────────────────────────────────────────

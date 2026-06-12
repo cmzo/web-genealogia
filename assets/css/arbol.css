@@ -215,6 +215,15 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
 
+/* Durante la carga inicial el panel puede abrirse ya enfocado (URL ?focus=…).
+   Esta clase suprime la animación para que aparezca abierto de entrada, sin el
+   barrido de los botones; panel.js la quita tras el primer frame, así los
+   despliegues posteriores (clic del usuario) sí animan. Cubre desktop (width)
+   y mobile (transform). */
+.tree-panel--preload {
+    transition: none !important;
+}
+
 /* Estado expandido: el panel ocupa todo el área dejando solo el gap de 5mm
    alrededor (el árbol detrás se intuye por el fondo de puntos del wrapper).
    Se quita el gap interno para que el panel quede centrado con gap uniforme. */
