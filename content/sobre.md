@@ -1,74 +1,23 @@
-## ¿Primera vez aquí?
+Los Clemenzo vienen de **Riddes** y **Ardon**, dos pueblos vecinos del valle del Ródano, en el cantón suizo del Valais. El apellido está documentado allí desde 1481. En 1873, Francisco Clemenzo —mi tatarabuelo— se subió a un barco rumbo a Buenos Aires: tenía quince años, había perdido a su padre poco antes, y la granja familiar ya se había vendido en los remates que siguieron a la ruina de la familia. Reaparece trece años después en las colonias suizas de Entre Ríos, casado con la hija de otros valesanos. De él desciende toda la rama argentina.
 
-Un archivo genealógico digital sobre la familia Clemenzo, originaria de **Riddes**, cantón de Valais, Suiza, y su rama emigrada a Entre Ríos, Argentina, a fines del siglo XIX.
+Este sitio es el archivo de esa investigación. Lo hago yo, Matías Clemenzo, desde hace años, juntando censos suizos digitalizados, prensa del siglo XIX, actas parroquiales y civiles de dos continentes, y la memoria dispersa de la familia. No es un árbol terminado sino un trabajo en curso: hay hechos probados con actas, fechas aproximadas, hipótesis y preguntas abiertas. Se actualiza cada vez que aparece algo nuevo.
 
-Este sitio documenta un proceso de investigación en curso: hay hallazgos confirmados, fechas aproximadas y preguntas sin respuesta. Los datos se actualizan a medida que aparecen nuevas fuentes.
+## Cómo leer el sitio
 
-> [!TIP] Por dónde empezar
-> Si llegás sin contexto previo, el **Árbol** es el mejor punto de entrada. Desde ahí podés saltar al Archivo y al Blog según lo que encontrés.
+El **[Árbol](arbol-matrimonios.html)** es el corazón del proyecto y el mejor punto de entrada. Muestra a la familia centrada en una persona; con un clic en cualquier tarjeta el árbol se reorganiza alrededor de ella. Cada persona tiene tres pestañas: sus datos vitales, sus notas de investigación (hipótesis, fuentes, tareas pendientes) y sus documentos. En celular funciona, pero la experiencia completa es en tablet o computadora.
 
----
+El **[Archivo](archivo.html)** es la vista tabular de lo mismo: todas las personas con sus fotos y documentos, buscables por nombre y filtrables por rama. El **[Blog](blog.html)** cuenta el proceso — qué documento apareció, qué hipótesis cayó, qué se concluyó y con qué fuentes. Y **[Fuentes](fuentes.html)** lista los archivos e instituciones de donde sale todo, con enlaces cuando existen.
 
-## Las secciones
+Cada persona del árbol lleva una etiqueta que indica cuánto se sabe de ella:
 
-### 🌳 Árbol
-
-El árbol genealógico interactivo. Muestra la familia centrada en una persona y se navega haciendo click en cualquier tarjeta. Cubre varias generaciones hacia arriba y hacia abajo.
-
-**Qué encontrás:** fechas y lugares de nacimiento y muerte, padres, matrimonios, hijos. Cada persona tiene una pestaña de investigación con notas y fuentes, y una pestaña de archivos con fotos y documentos.
-
-> [!WARNING] Mejor en tablet o computadora
-> En celular el árbol puede verse reducido y la navegación con teclado no aplica.
-
-### 📁 Archivo
-
-Vista tabular de todas las personas y sus archivos: fotos de época, actas, documentos. Permite buscar por nombre o ID de persona, y filtrar por rama familiar.
-
-**Qué encontrás:** el material documental asociado a cada persona, agrupado y etiquetado.
-
-### 📝 Blog
-
-Artículos de investigación sobre hallazgos, documentos encontrados e hipótesis. Cada entrada documenta el proceso y cita sus fuentes.
-
-**Qué encontrás:** contexto histórico, análisis de documentos, conclusiones provisionales.
-
-### 📚 Fuentes
-
-Repositorio de fuentes consultadas: archivos cantonales suizos, registros parroquiales, censos digitalizados, bibliografía heráldica. Con links directos cuando están disponibles.
-
-**Qué encontrás:** las referencias que sostienen los datos del árbol y los artículos.
-
----
-
-## Cómo se relacionan las secciones
-
-```mermaid
-flowchart TD
-    classDef root fill:#2563eb,stroke:#1d4ed8,color:#fff,font-weight:bold
-    classDef section fill:#ffffff,stroke:#e8e8e6,color:#1a1a1a
-    classDef leaf fill:#f6f6f4,stroke:#e8e8e6,color:#6b7280
-
-    A([Sobre el proyecto]):::root
-    A --> B[Arbol]:::section
-    A --> C[Archivo]:::section
-    A --> D[Blog]:::section
-    A --> E[Fuentes]:::section
-    B --> F[Personas y relaciones]:::leaf
-    C --> G[Documentos y fotos]:::leaf
-    D --> H[Hipotesis e investigaciones]:::leaf
-    E --> I[Verificacion documental]:::leaf
-```
-
----
-
-## Recorridos sugeridos
-
-| Si te interesa… | Empezá por… |
+| Estado | Qué significa |
 |---|---|
-| Explorar el árbol familiar | **Árbol** → click en cualquier persona → panel de detalle |
-| Ver fotos y documentos | **Archivo** → buscá un nombre o filtrá por rama |
-| Leer sobre la investigación | **Blog** → artículos ordenados por fecha |
-| Verificar una fuente | **Fuentes** → organizadas por país e institución |
+| Verificado | Sus hechos vitales están respaldados por acta o por dos fuentes primarias independientes |
+| En proceso | Hay material de investigación: documentos, ficha o fuentes citadas |
+| Incompleto | Se conoce alguna fecha o lugar, sin respaldo documental todavía |
+| Sin datos | Solo el nombre y sus relaciones familiares |
+
+Las fechas aproximadas se muestran con `~`, y cuando solo se conoce un rango (por ejemplo, una muerte ocurrida «entre 1851 y 1861») se indica así, sin inventar precisión.
 
 ### Atajos de teclado en el árbol
 
@@ -80,7 +29,15 @@ flowchart TD
 | Enter / Espacio | Abrir panel de detalle |
 | Escape | Cerrar panel |
 
----
+## Estado de la investigación
 
-> [!NOTE] Los datos son un trabajo en progreso
-> Algunas fechas son aproximadas y se muestran con `~`. Si encontrás un error o tenés información adicional, escribime desde [Contacto](contacto.html).
+Al momento de escribir esto, el árbol tiene **93 personas** en seis ramas —Clemenzo, Stalder, Roch, Queipo, Benegas y Arceo— y un archivo que va de los censos valesanos de 1802 a los registros argentinos del siglo XX. Del lado suizo, las fuentes principales son los censos digitalizados del Valais (1802–1880), la prensa histórica (la *Gazette du Valais* resultó una mina: avisos judiciales, subastas, herencias) y los fondos del Archivo del Estado del Valais. Del lado argentino, las actas de Entre Ríos, los censos nacionales de 1869 y 1895, y los registros militares. Una parte de los hallazgos del siglo XIX se confirmó cruzando datos con Jean-Yves, un primo lejano que vive en Suiza y desciende de la rama que no emigró.
+
+Las preguntas que hoy guían la investigación:
+
+- **El vacío 1873–1886.** Entre la partida de Francisco y su reaparición casado en Entre Ríos hay trece años sin un solo documento. ¿Dónde estuvo? ¿Llegó directo a la colonia?
+- **Dónde nació exactamente Francisco.** El árbol dice Riddes por el censo de 1870, pero en 1858 la familia aún tenía su granja en Salins. Falta el acta de bautismo.
+- **Los «primos Lambiel».** En 1904 unos primos de Riddes gestionaron la liquidación de los últimos bienes suizos de la familia. Ya sé que la madre de esos Lambiel era una Clemenzo — falta probar cuál de las dos candidatas del clan.
+- **Jeanne, la que se quedó.** La tía de Francisco siguió viviendo en Riddes al menos hasta 1880, soltera y con casa propia. No sé cuándo murió, y su herencia podría explicar el dinero que llegó a Argentina en 1905.
+
+Si llegaste hasta acá porque te suena un apellido, un pueblo o una foto —o si encontraste un error—, escribime desde [Contacto](contacto.html). Buena parte de lo que hay en este sitio empezó con un dato suelto que alguien se tomó el trabajo de mandar.
