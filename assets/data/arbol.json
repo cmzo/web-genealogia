@@ -1861,7 +1861,7 @@
       "id": "p27",
       "name": "Celestina Roh",
       "gender": "",
-      "birth_date": "1863-01-01",
+      "birth_date": "1862/1863",
       "birth_place": "Conthey,Suiza",
       "death_date": "1950-10-02",
       "death_place": "Santa Fe, Argentina",
@@ -1872,8 +1872,8 @@
       "sort_order": 0,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
+      "notes": "Nacida en Conthey, Valais. La licencia de inhumación (1950) le da 87 años → n. oct. 1862–oct. 1863; el censo de 1895 le daba 28 (~1867), error censal. Murió de neumonía el 2-10-1950 a las 13.30 en calle Suipacha 3939, ciudad de Santa Fe, como «Celestina Roch de Clemenceau», de estado VIUDA, suiza; sepultada en el cementerio de Barranquitas el 5-10. El apellido «Clemenceau» es otra mutación de la familia (León usaba «Clemence» en 1919). Sabía firmar (med59). Sospecha en investigación: la unión con Francisco (p26) podría no haberse formalizado nunca — la licencia la declara «viuda» (reconocimiento social), pero el acta de matrimonio no apareció.",
+      "sources": "Censo nacional 1895, Colón (28 años, err.) · Licencia de inhumación N° 616, Registro Civil de la Prov. de Santa Fe, 5-10-1950 (87 años, viuda, suiza, neumonía, Suipacha 3939)",
       "status": "en_proceso",
       "media": [
         {
@@ -1890,7 +1890,7 @@
           "id": "med60",
           "type": "photo",
           "url": "assets/images/personas/p27_defuncion.webp",
-          "caption": "Acta de defunción de Celestina Roh",
+          "caption": "Licencia de inhumación N° 616 (Santa Fe, 5-10-1950): «Celestina Roch de Clemenceau», 87 años, viuda, suiza, fallecida de neumonía en Suipacha 3939; sepultada en Barranquitas. (No es el acta de defunción completa.)",
           "date": null,
           "source_label": null,
           "group_label": "",
@@ -3390,7 +3390,7 @@
       "marriage_date": "1886",
       "marriage_place": "",
       "divorce_date": "",
-      "notes": "Año estimado: el censo de 1895 declara 9 años de matrimonio y 5 hijos. Lugar probable: San José/Colón, Entre Ríos (parroquia; el registro civil arranca 1887)."
+      "notes": "UNIÓN POSIBLEMENTE NUNCA FORMALIZADA (sospecha 2026-06-12): el año 1886 deriva de los «9 años de matrimonio» declarados en el censo 1895 — declaración social, no acta. Señales: María Celestina (p25) nacida 1885 con apellido Roh y sin padre registrado; Carlota declarada hija «civil» en 1900; bautismo de León corregido décadas después; acta de matrimonio nunca hallada. Contrapeso: la licencia de inhumación de Celestina (1950) la declara «viuda». La búsqueda negativa del acta es ahora una línea de investigación, no un trámite."
     },
     {
       "id": "m9",
