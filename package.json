@@ -14,12 +14,9 @@
     "update": "node scripts/update-and-deploy.js"
   },
   "dependencies": {
-    "marked": "^4.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.0"
+    "marked": "^16.0.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   }
 }

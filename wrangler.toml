@@ -1,0 +1,8 @@
+name = "web-genealogia"
+compatibility_date = "2025-09-01"
+
+# Sitio estático: Cloudflare sirve los archivos del repo tal cual (no hay
+# código de Worker). El sitio vive en la raíz, así que la carpeta de assets
+# es "./". Las exclusiones están en .assetsignore.
+[assets]
+directory = "./"

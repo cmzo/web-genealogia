@@ -1,0 +1,13 @@
+.git
+node_modules
+scripts
+data
+content/posts
+content/templates
+package.json
+package-lock.json
+wrangler.toml
+.assetsignore
+.gitignore
+.gitattributes
+.github
