@@ -2094,8 +2094,8 @@
       "sort_order": 1,
       "vivo": "no",
       "photo_url": null,
-      "notes": null,
-      "sources": null,
+      "notes": "Nacido el 14-06-1873 en Colonia Cullen (Reducción del Pueblo de San Javier), Santa Fe; bautizado el 29-06-1873. Hijo legítimo de Juan José Roch y María Putallaz, ambos del Valais. Padrinos: Serafín y Adela Marietan (otra familia valesana de la colonia). Es el primer hijo del matrimonio nacido en Argentina → marca la llegada de la familia Roch ~1872-73. NOTA: el árbol lo guarda como «Roh Blanco», pero el acta da la madre como Putallaz, no Blanco — origen de «Blanco» sin resolver (¿segundo apellido materno? ¿error de índice?).",
+      "sources": "Acta de bautismo, Colonia Cullen / San Javier, 29-06-1873 (imagen p80-bautismo.webp, entrada N°14)",
       "status": "en_proceso",
       "media": [
         {
@@ -2932,9 +2932,9 @@
     },
     {
       "id": "p38",
-      "name": "Jose Roh",
+      "name": "Juan José Roch",
       "gender": "",
-      "birth_date": "",
+      "birth_date": "1841",
       "birth_place": "Conthey, Ardon, Valais, Suiza",
       "death_date": "",
       "death_place": "",
@@ -2945,8 +2945,8 @@
       "sort_order": 7,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
+      "notes": "Nombre completo «Juan José Roch» (acta de bautismo de su hijo José Luciano, 1873) — el apellido se escribe «Roch» en las fuentes argentinas tempranas, no «Roh». Natural del Valais (Conthey). De oficio HERRERO (censo Colón 1895). Edad 54 en el censo de 1895 → n. ~1841. Casado con María Putallaz en Suiza (su hija mayor Celestina nace 1862/63 en Conthey). Emigró con la familia ~1872-73: el hijo José nació en Suiza (~1871, censo 1895) y José Luciano ya nació en Colonia Cullen, San Javier (jun. 1873). En 1895 toda la familia está en Colón, Entre Ríos.",
+      "sources": "Acta de bautismo de José Luciano, Colonia Cullen / Reducción de San Javier, 29-06-1873 («hijo legítimo de Juan José Roch y María Putal[laz], ambos naturales del Cantón Valais») · Censo nacional 1895, Colón, E.R. (José Roch, 54, suizo, herrero) · Censo de Conthey (referencia ficha p27)",
       "status": "en_proceso",
       "media": [
         {
@@ -2965,7 +2965,7 @@
       "id": "p39",
       "name": "Maria Putallaz",
       "gender": "",
-      "birth_date": "",
+      "birth_date": "1837",
       "birth_place": "Conthey, Ardon, Valais, Suiza",
       "death_date": "",
       "death_place": "",
@@ -2976,9 +2976,9 @@
       "sort_order": 8,
       "vivo": "no",
       "photo_url": "",
-      "notes": "",
-      "sources": "",
-      "status": "incompleto",
+      "notes": "María Putallaz — apellido clásico de Conthey, Valais. Edad 58 en el censo de Colón 1895 → n. ~1837. Casada con Juan José Roch en Suiza antes de 1862. Madre de Celestina (p27), Marianna (p85), José (~1871, n. Suiza) y José Luciano (n. 1873, Colonia Cullen), entre otros. Emigró con la familia ~1872-73.",
+      "sources": "Acta de bautismo de su hijo José Luciano, Colonia Cullen, 29-06-1873 (María Putal[laz], natural del Valais) · Censo nacional 1895, Colón (María Putallaz, 58, suiza)",
+      "status": "en_proceso",
       "media": []
     },
     {
