@@ -17,25 +17,10 @@
       "investigacion"
     ],
     "featured": false,
-    "url": "dist/blog/buscando-a-los-roh.html"
-  },
-  {
-    "id": "la-ruine-de-francois",
-    "title": "La ruine de François",
-    "description": "La presse officielle du Valais a enregistré, avis après avis, la désagrégation du patrimoine de François Clemenzoz : un testament qui saute une génération, deux ventes aux enchères, une mise sous conseil judiciaire qu'il a lui-même demandée et un acte de carence. Chronique documentaire des années qui ont précédé l'émigration de son fils en Argentine.",
-    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
-    "category": "investigacion",
-    "date": "2026-06-11",
-    "tags": [
-      "clemenzo",
-      "gazette du valais",
-      "salins",
-      "riddes",
-      "valais",
-      "généalogie"
-    ],
-    "featured": false,
-    "url": "dist/blog/la-ruine-de-francois.html"
+    "url": "dist/blog/buscando-a-los-roh.html",
+    "langs": [
+      "es"
+    ]
   },
   {
     "id": "la-ruina-de-francois",
@@ -53,7 +38,11 @@
       "investigacion"
     ],
     "featured": false,
-    "url": "dist/blog/la-ruina-de-francois.html"
+    "url": "dist/blog/la-ruina-de-francois.html",
+    "langs": [
+      "es",
+      "fr"
+    ]
   },
   {
     "id": "clan-clemenzo",
@@ -71,7 +60,10 @@
       "censos"
     ],
     "featured": true,
-    "url": "dist/blog/clan-clemenzo.html"
+    "url": "dist/blog/clan-clemenzo.html",
+    "langs": [
+      "es"
+    ]
   },
   {
     "id": "creacion-de-un-agente-de-investigacion-genealogica-con-claude",
@@ -87,24 +79,10 @@
       "tecnologia"
     ],
     "featured": true,
-    "url": "dist/blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html"
-  },
-  {
-    "id": "agenda-investigacion",
-    "title": "Agenda de investigación genealógica con Claude AI",
-    "description": "Estado actual de la investigación: qué falta, qué parece irrecuperable, y qué líneas concretas quedan por explorar en Suiza y Argentina.",
-    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
-    "category": "investigación",
-    "date": "2026-04-29",
-    "tags": [
-      "Clemenzo",
-      "Valais",
-      "Entre Ríos",
-      "metodología",
-      "fuentes"
-    ],
-    "featured": false,
-    "url": "dist/blog/agenda-investigacion.html"
+    "url": "dist/blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html",
+    "langs": [
+      "es"
+    ]
   },
   {
     "id": "documentar-fuentes",
@@ -121,25 +99,10 @@
       "archivo"
     ],
     "featured": true,
-    "url": "dist/blog/documentar-fuentes.html"
-  },
-  {
-    "id": "linea-de-tiempo-de-francisco",
-    "title": "Línea de tiempo de Francisco",
-    "description": "Recreando los pasos de Francisco",
-    "image": "/assets/images/cards/linea_tiempo_francisco.webp",
-    "category": "investigacion",
-    "date": "2025-09-15",
-    "tags": [
-      "francisco",
-      "cronologia",
-      "riddes",
-      "argentina",
-      "investigacion",
-      ""
-    ],
-    "featured": true,
-    "url": "dist/blog/linea-de-tiempo-de-francisco.html"
+    "url": "dist/blog/documentar-fuentes.html",
+    "langs": [
+      "es"
+    ]
   },
   {
     "id": "investigando-francisco",
@@ -158,6 +121,9 @@
       "francia"
     ],
     "featured": true,
-    "url": "dist/blog/investigando-francisco.html"
+    "url": "dist/blog/investigando-francisco.html",
+    "langs": [
+      "es"
+    ]
   }
 ]

@@ -526,60 +526,51 @@ function markdownToHtml(markdown) {
   return html;
 }
 
-// Función para procesar un archivo Markdown
-function processMarkdownFile(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
-  const { metadata, content: markdownContent } = extractFrontMatter(content);
-  
-  // Validar metadatos requeridos
-  if (!metadata.title || !metadata.kicker) {
-    console.warn(`⚠️  Archivo ${filePath} falta título o kicker`);
-    return null;
-  }
-  
-  // Generar slug si no existe
-  if (!metadata.slug) {
-    metadata.slug = path.basename(filePath, '.md');
-  }
-  
-  // Eliminar h1 inicial si duplica el título del front matter
-  const strippedContent = markdownContent.replace(/^\s*#\s+[^\n]+\n+/, '');
+// ── Internacionalización (i18n) ──────────────────────────────────────────────
+// Las traducciones son archivos `<slug>.<lang>.md` (ej. `la-ruina.fr.md`).
+// El idioma por defecto (es) conserva su URL `<slug>.html`; las traducciones
+// salen como `<slug>.<lang>.html`. No aparecen como entradas separadas en el índice.
+const LANGS = ['es', 'fr', 'en'];           // orden en el selector
+const DEFAULT_LANG = 'es';
+const LANG_LABEL = { es: 'ES', fr: 'FR', en: 'EN' };
+const LANG_NAME  = { es: 'Español', fr: 'Français', en: 'English' };
 
-  // Convertir Markdown a HTML
+// 'slug.fr.md' -> {baseName:'slug', lang:'fr'} · 'slug.md' -> {baseName:'slug', lang:'es'}
+function parseLang(file) {
+  const base = file.replace(/\.md$/, '');
+  const m = base.match(/^(.+)\.([a-z]{2})$/);
+  if (m && LANGS.includes(m[2]) && m[2] !== DEFAULT_LANG) return { baseName: m[1], lang: m[2] };
+  return { baseName: base, lang: DEFAULT_LANG };
+}
+
+// Selector de idioma para un grupo (vacío si el post existe en un solo idioma)
+function langSelectorHtml(group, currentLang) {
+  const present = LANGS.filter(l => group.out[l]);
+  if (present.length < 2) return '';
+  const items = present.map(l => l === currentLang
+    ? `<span class="lang-opt is-active" aria-current="true">${LANG_LABEL[l]}</span>`
+    : `<a class="lang-opt" href="${group.out[l]}" hreflang="${l}" title="${LANG_NAME[l]}">${LANG_LABEL[l]}</a>`
+  ).join('');
+  return `<nav class="lang-selector" aria-label="Idioma del artículo">${items}</nav>`;
+}
+
+// Renderiza un post (metadata + markdown ya extraídos) y lo escribe en disco
+function renderPost(metadata, markdownContent, ctx) {
+  const strippedContent = markdownContent.replace(/^\s*#\s+[^\n]+\n+/, '');
   const htmlContent = markdownToHtml(strippedContent);
-  
-  // Procesar aside si existe
-  let asideContent = '';
-  if (metadata.aside) {
-    // Convertir Markdown del aside a HTML
-    asideContent = markdownToHtml(metadata.aside);
-  }
-  
-  // Procesar template
-  let html = template
+  const asideContent = metadata.aside ? markdownToHtml(metadata.aside) : '';
+
+  const html = template
+    .replace(/\{\{lang\}\}/g, ctx.lang)
+    .replace(/\{\{langselector\}\}/g, ctx.langSelector)
     .replace(/\{\{title\}\}/g, metadata.title)
     .replace(/\{\{kicker\}\}/g, metadata.kicker)
     .replace(/\{\{date\}\}/g, metadata.date || '—')
     .replace(/\{\{content\}\}/g, htmlContent)
     .replace(/\{\{aside\}\}/g, asideContent);
-  
-  // Escribir archivo HTML
-  const outputPath = path.join(OUTPUT_DIR, `${metadata.slug}.html`);
-  fs.writeFileSync(outputPath, html);
-  
-  console.log(`✅ Generado: ${outputPath}`);
-  
-  return {
-    id: metadata.slug,
-    title: metadata.title,
-    description: metadata.description || '',
-    image: metadata.image || '/assets/images/cards/clemenzo-por-el-mundo.webp',
-    category: metadata.category || 'general',
-    date: metadata.date || '',
-    tags: metadata.tags ? metadata.tags.split(',').map(t => t.trim()) : [],
-    featured: metadata.featured === 'true',
-    url: `dist/blog/${metadata.slug}.html`
-  };
+
+  fs.writeFileSync(path.join(OUTPUT_DIR, ctx.outputName), html);
+  console.log(`✅ Generado: ${path.join(OUTPUT_DIR, ctx.outputName)}`);
 }
 
 function buildArbolData() {
@@ -595,27 +586,62 @@ function build() {
   console.log('🚀 Iniciando build del blog...');
   
   const blogEntries = [];
-  
+
   // Leer archivos Markdown
   if (fs.existsSync(POSTS_DIR)) {
-    const files = fs.readdirSync(POSTS_DIR)
-      .filter(file => file.endsWith('.md'));
-
+    const files = fs.readdirSync(POSTS_DIR).filter(file => file.endsWith('.md'));
     console.log(`📁 Archivos Markdown encontrados: ${files.length}`);
+
+    // Pass 1 — leer todos, extraer frontmatter, agrupar por nombre base + idioma
+    const posts = [];      // { file, lang, baseName, metadata, content }
+    const groups = {};     // baseName -> { defaultSlug, out: {lang: outputName} }
     files.forEach(file => {
-      console.log(`  - ${file}`);
+      const raw = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
+      const { metadata, content } = extractFrontMatter(raw);
+      if (!metadata.title || !metadata.kicker) {
+        console.warn(`⚠️  ${file} falta título o kicker — se omite`);
+        return;
+      }
+      const { baseName, lang } = parseLang(file);
+      posts.push({ file, lang, baseName, metadata, content });
+      groups[baseName] = groups[baseName] || { out: {} };
     });
 
-    files.forEach(file => {
-      const filePath = path.join(POSTS_DIR, file);
-      const entry = processMarkdownFile(filePath);
-      if (entry) {
-        blogEntries.push(entry);
-        console.log(`  ✅ Procesado: ${entry.title}`);
+    // Resolver slug por defecto y los nombres de salida por idioma de cada grupo
+    posts.forEach(p => { if (p.lang === DEFAULT_LANG) groups[p.baseName].defaultSlug = p.metadata.slug || p.baseName; });
+    posts.forEach(p => {
+      const g = groups[p.baseName];
+      const slug = g.defaultSlug || p.baseName;
+      g.out[p.lang] = p.lang === DEFAULT_LANG ? `${slug}.html` : `${slug}.${p.lang}.html`;
+    });
+
+    // Pass 2 — renderizar cada idioma; solo el idioma por defecto va al índice
+    posts.forEach(p => {
+      const g = groups[p.baseName];
+      const slug = g.defaultSlug || p.baseName;
+      renderPost(p.metadata, p.content, {
+        lang: p.lang,
+        outputName: g.out[p.lang],
+        langSelector: langSelectorHtml(g, p.lang),
+      });
+      console.log(`  ✅ Procesado: ${p.metadata.title} [${p.lang}]`);
+
+      if (p.lang === DEFAULT_LANG) {
+        blogEntries.push({
+          id: slug,
+          title: p.metadata.title,
+          description: p.metadata.description || '',
+          image: p.metadata.image || '/assets/images/cards/clemenzo-por-el-mundo.webp',
+          category: p.metadata.category || 'general',
+          date: p.metadata.date || '',
+          tags: p.metadata.tags ? p.metadata.tags.split(',').map(t => t.trim()) : [],
+          featured: p.metadata.featured === 'true',
+          url: `dist/blog/${slug}.html`,
+          langs: LANGS.filter(l => g.out[l]),
+        });
       }
     });
 
-    // Ordenar por fecha del front matter (más reciente primero)
     blogEntries.sort((a, b) => {
       if (!a.date) return 1;
       if (!b.date) return -1;
@@ -638,4 +664,4 @@ if (require.main === module) {
   build();
 }
 
-module.exports = { build, processMarkdownFile };
+module.exports = { build, renderPost };

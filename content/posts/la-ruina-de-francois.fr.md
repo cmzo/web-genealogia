@@ -7,7 +7,6 @@ date: "2026-06-11"
 tags: "clemenzo, gazette du valais, salins, riddes, valais, généalogie"
 featured: false
 lang: "fr"
-slug: "la-ruine-de-francois"
 ---
 
 # La ruine de François

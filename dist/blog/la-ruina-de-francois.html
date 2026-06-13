@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    .lang-selector { display: flex; gap: 4px; justify-content: flex-end; margin: 0 0 18px; font-family: 'Inter', sans-serif; }
+    .lang-selector .lang-opt { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px; text-decoration: none; border: 1px solid var(--border); color: var(--muted); transition: color .15s, border-color .15s, background .15s; }
+    .lang-selector a.lang-opt:hover { color: var(--text); border-color: var(--text); }
+    .lang-selector .lang-opt.is-active { background: var(--text); color: var(--bg); border-color: var(--text); cursor: default; }
+  </style>
 </head>
 <body>
 
@@ -48,6 +54,8 @@
             Blog
           </a>
         </div>
+
+        <nav class="lang-selector" aria-label="Idioma del artículo"><span class="lang-opt is-active" aria-current="true">ES</span><a class="lang-opt" href="la-ruina-de-francois.fr.html" hreflang="fr" title="Français">FR</a></nav>
 
         <header class="article-header">
           <p class="article-kicker">Cinco avisos en la Gazette du Valais (1861–1866)</p>
