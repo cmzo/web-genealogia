@@ -122,3 +122,97 @@ Si la teoría es correcta, no estoy yéndome por las ramas al dedicarle un esfue
 ## Actualizaciones
 
 *Este post es un documento vivo. Lo de arriba es el punto de partida, escrito el **13 de junio de 2026**. A medida que la investigación avance, los hallazgos se irán sumando acá abajo, cada uno con su fecha.*
+
+### 13 de junio de 2026 — La familia se multiplica
+
+Apareció un lote de partidas —civiles del Registro Civil de Entre Ríos y una del libro parroquial del Rosario del Tala— que hace estallar el árbol de los Roh. De una familia que conocíamos a grandes rasgos pasamos a tener nombres, fechas, oficios y un recorrido por media provincia. Lo ordeno acá.
+
+**Los patriarcas, con fechas.** Ahora sabemos que **Juan José Roch murió en Colón en 1897**, y que su viuda, **María Putallaz, seguía viva en 1905**, instalada en Rosario del Tala cerca de su hijo Mauricio. El camino de la familia por Argentina fue mucho más largo de lo que pensaba: de **Colonia Cullen** (San Javier, Santa Fe, donde llegaron en 1873) pasaron a **Diamante** (donde nació Mauricio hacia 1879), luego a **Colón / San José**, y de ahí varios hijos se desperdigaron por **Rosario del Tala, Villa Mantero y la Colonia Rocamora**, en el departamento Uruguay. Dos de los hijos varones fueron **herreros**, como el padre: un oficio que se heredó.
+
+**Los hijos de Juan José Roch y María Putallaz.**
+
+```mermaid
+flowchart TD
+    JJR["Juan José Roch\n✶c.1841 Conthey · herrero\n†Colón 1897"]
+    MP["María Putallaz\n✶c.1837 Conthey\n†después de 1905"]
+    m(( ))
+    JJR --- m
+    MP --- m
+
+    CEL["Celestina\n✶1862/63 · Conthey\n→ Francisco Clemenzo"]
+    MNA["Marianna\n✶c.1863 · Valais\n→ José Clemenzo,\nluego Domingo Mersilli"]
+    JL["José Luciano\n✶1873 · Colonia Cullen · herrero\n→ Manuela Locher (~1894)"]
+    MLU["María Luisa\n✶c.1876 · Santa Fe\n→ Anselmo L. Etchegorry"]
+    MAN["Manuela\n✶c.1877 · casada en 1895"]
+    MAU["Mauricio Francisco\n✶c.1879 · Diamante · herrero\n→ Rogelia Hernández (1905)\n†1964"]
+    LUI["Luisa (menor)\n✶c.1886 · sin datos aún"]
+
+    m --> CEL
+    m --> MNA
+    m --> JL
+    m --> MLU
+    m --> MAN
+    m --> MAU
+    m --> LUI
+
+    classDef sw fill:#eaf2fb,stroke:#9bb8da,color:#1a1a1a
+    classDef ar fill:#f6f6f4,stroke:#d8d8d4,color:#1a1a1a
+    class CEL,MNA,JL,JJR,MP sw
+    class MLU,MAN,MAU,LUI ar
+```
+
+**Los nietos que asoman en estos papeles.** Dos de los hijos —Mauricio y María Luisa— dejaron descendencia documentada en este lote. (Mauricio, según los índices de FamilySearch, tuvo varios hijos más de los que figuran acá.)
+
+```mermaid
+flowchart TD
+    MAU["Mauricio Francisco Roh\n✶c.1879 · †1964"]
+    RH["Rogelia Hernández\n✶c.1881 · Rocamora"]
+    mm(( ))
+    MAU --- mm
+    RH --- mm
+    PM["Pedro Mauricio\n✶24-03-1908"]
+    MAS["…y varios más"]
+    mm --> PM
+    mm --> MAS
+
+    MLU["María Luisa Roh\n✶c.1876"]
+    AE["Anselmo L. Etchegorry\n✶c.1876 · Colón · comerciante"]
+    me(( ))
+    MLU --- me
+    AE --- me
+    LR["Leopoldo Ramón\n✶c.1898 · reconocido en 1908"]
+    LO["Luisa Odila\n✶21-07-1908"]
+    IC["Irma Cirila\n✶09-03-1916"]
+    me --> LR
+    me --> LO
+    me --> IC
+
+    classDef g fill:#f6f6f4,stroke:#d8d8d4,color:#1a1a1a
+    class PM,MAS,LR,LO,IC,MAU,RH,MLU,AE g
+```
+
+**Los documentos.** Diez partidas, tres de ellas repartidas en dos páginas del libro:
+
+- **Casamiento de Mauricio Francisco Roh y Rogelia Hernández** (Rosario del Tala, 10 de julio de 1905). Aparece por partida doble: el acta civil y, el mismo día, la parroquial. Mauricio, herrero, hijo del *finado* Juan José Roch y de María Putallaz, viuda. Es la pieza que fija la muerte del patriarca y la supervivencia de la madre.
+
+![Acta civil de matrimonio de Mauricio Roh y Rogelia Hernández, 1905](../../assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp)
+
+- **Casamiento de Anselmo Leopoldo Etchegorry y María Luisa Roh** (Villa Mantero, 1908). El acta confirma que **Juan José Roch falleció en Colón en 1897**, y que María Luisa nació en Santa Fe. En el mismo acto la pareja reconoció como hijo a Leopoldo Ramón, de diez años.
+
+![Acta de matrimonio de Anselmo Etchegorry y María Luisa Roh, 1908 — parte 1](../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp)
+
+- **Nacimiento de Pedro Mauricio Roh** (Villa Mantero, 1908), hijo de Mauricio y Rogelia; nietos paternos: Juan José Roch y María Putallaz.
+
+- **Defunción de Mauricio Francisco Roh** (Concepción del Uruguay, 1964), a los 85 años, en el Hogar de Ancianos. Nacido en Diamante, viudo de Rogelia Hernández.
+
+![Acta de defunción de Mauricio Francisco Roh, 1964](../../assets/images/posts/roh-1964-def-mauricio-francisco-roh.webp)
+
+- Y, completando el cuadro: el **casamiento de José Luciano Roh con Manuela Locher** (~1894), y los nacimientos de **Luisa Odila** (1908) e **Irma Cirila Etchegorry** (1916), hijas de María Luisa.
+
+**Cabos sueltos, anotados con honestidad.**
+
+- En su casamiento, **José Luciano figura «nacido en el cantón del Valais»**, cuando su acta de bautismo lo da nacido en Colonia Cullen en 1873. Lo tomo como un error de pluma —del tipo que abunda en estos registros: en una partida de defunción, sin ir más lejos, a Juan José Roch y a María Putallaz los hacen «argentinos»—. Es el mismo José: el cura, sabiendo a los padres suizos, lo «devolvió» al Valais.
+- El censo de 1895 trae **dos Luisas**, una de ~1877 (María Luisa, la que se casó con Etchegorry) y otra de ~1886. No se contradicen: son dos hermanas. De la menor todavía no tengo nada.
+- Curiosidad: las suegras de dos de los hijos Roh —Catalina Imhoff y Sofía Imhoff— comparten apellido suizo. Posible parentesco entre las familias políticas, por confirmar.
+
+Falta todavía lo más importante para esta investigación: ninguno de estos papeles aclara aún el vínculo de **Celestina** con Francisco, ni el de **Marianna** con José Clemenzo. Pero el terreno donde buscar quedó mucho más firme.
