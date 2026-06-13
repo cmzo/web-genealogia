@@ -161,7 +161,21 @@ flowchart TD
     class MLU,MAN,MAU,LUI ar
 ```
 
-**Los nietos.** Dos de los hijos —Mauricio y María Luisa— dejaron una descendencia copiosa, y un segundo lote de partidas la documenta casi entera. Mauricio Francisco Roh (herrero, clase 1878, nacido en Diamante) y Rogelia Hernández tuvieron **al menos seis hijos** entre 1906 y 1917; María Luisa Roh y Anselmo Etchegorry, **otros seis** entre 1898 y 1916, los dos primeros nacidos antes de casarse y reconocidos después.
+**Cuatro de esos hijos dejaron rastro de sobra.** Los repaso uno por uno: cada quien con su historia, sus conclusiones y, al pie, una galería con sus registros (se abren en grande con un clic). Todo esto irá también al [Archivo](../../archivo.html) del sitio, asociado a cada persona, cuando actualice el árbol.
+
+#### Mariana Roh — tres uniones y dos hijos con un Clemenzo
+
+Es la hermana cuya vida se complica más, y la que más cerca toca a mi rama. Tuvo **al menos tres capítulos**. El primero, una unión con **José Clemenzo** —el hermano de Francisco— de la que nacieron dos hijos: **José Domingo** (bautizado en Santa Fe el 27 de julio de 1884, como «hijo de José Clemencia y Mariana Roh, suizos») y **María Luisa Clemenzo** (1885). José Domingo se bautizó en la **Iglesia Matriz de Todos los Santos**, la misma parroquia donde un año después llevaron a la hija de Celestina: las dos hermanas Roh, con los dos hermanos Clemenzo, criando hijos en Santa Fe a la vez.
+
+El segundo capítulo: el **19 de noviembre de 1896, en Colón, Marianna se casó con Francisco José Vergère**, un viudo de Conthey de 60 años —cuya madre, dato curioso, también era una Roh—. En esa acta declara *no haber estado casada antes*, lo que confirma que su unión con José Clemenzo nunca fue un matrimonio formal (aunque el cura, en 1884, había escrito «hijo legítimo»: palabra elástica cuando una pareja se presentaba como casada). El tercero: viuda de Vergère, se casó con **Domingo Mersilli en 1915**.
+
+**Conclusión:** la unión con José Clemenzo queda probada por dos bautismos; su primera boda formal fue en 1896. Las edades que le asignan los papeles bailan entre 1862 y 1871 —queda afinarlo con su bautismo de Conthey—.
+
+<details class="registros-galeria"><summary><strong>Registros de Mariana Roh</strong> (4)</summary><div class="galeria-grid"><img src="../../assets/images/posts/roh-1884-bautismo-jose-domingo-clemenzo.webp" alt="Bautismo de José Domingo, hijo de José Clemenzo y Mariana Roh, 1884"><img src="../../assets/images/posts/roh-1896-matr-vergere-marianna-roh-p1.webp" alt="Casamiento Vergère y Mariana Roh, 1896 (1)"><img src="../../assets/images/posts/roh-1896-matr-vergere-marianna-roh-p2.webp" alt="Casamiento Vergère y Mariana Roh, 1896 (2)"><img src="../../assets/images/posts/roh-1915-matr-religioso-mersilli-marianna-roh.webp" alt="Casamiento Mersilli y Mariana Roh, 1915"></div></details>
+
+#### Mauricio Francisco Roh — el herrero de Diamante y su prole de seis
+
+El más prolífico, y el de la vida mejor documentada de punta a punta. Nació en **Diamante hacia 1878** (lo fija su libreta de enrolamiento, clase 1878), fue **herrero** como el padre, y el 10 de julio de 1905 se casó en Rosario del Tala con **Rogelia Hernández** —por partida doble el mismo día: el acta civil y la parroquial—. Con ella tuvo **seis hijos** entre 1906 y 1917. Murió el 7 de febrero de 1964, a los 85 años, en el Hogar de Ancianos de Concepción del Uruguay.
 
 ```mermaid
 flowchart TD
@@ -182,6 +196,14 @@ flowchart TD
     class MAU,RH,G1,G2,G3,G4,G5,G6 g
 ```
 
+**Conclusión:** su rama es la más numerosa y la única que podemos seguir desde la cuna (Diamante, 1878) hasta la tumba (1964). Su casamiento es, además, la pieza que fija la **muerte del patriarca** (Juan José ya «finado» en 1905) y la **supervivencia de la madre** (María Putallaz, viuda, vivía cerca).
+
+<details class="registros-galeria"><summary><strong>Registros de Mauricio Francisco Roh</strong> (11)</summary><div class="galeria-grid"><img src="../../assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp" alt="Casamiento civil Mauricio Roh y Rogelia Hernández, 1905"><img src="../../assets/images/posts/roh-1905-matr-religioso-mauricio-rogelia-hernandez.webp" alt="Casamiento religioso Mauricio Roh y Rogelia Hernández, 1905"><img src="../../assets/images/posts/roh-enrolamiento-militar-mauricio-francisco.webp" alt="Enrolamiento militar de Mauricio Francisco Roh, clase 1878"><img src="../../assets/images/posts/roh-1964-def-mauricio-francisco-roh.webp" alt="Defunción de Mauricio Francisco Roh, 1964"><img src="../../assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p1.webp" alt="Nacimiento Gregoria Orfilia Roh, 1906 (1)"><img src="../../assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p2.webp" alt="Nacimiento Gregoria Orfilia Roh, 1906 (2)"><img src="../../assets/images/posts/roh-1908-nac-pedro-mauricio.webp" alt="Nacimiento Pedro Mauricio Roh, 1908"><img src="../../assets/images/posts/roh-1909-nac-rogelia-roh.webp" alt="Nacimiento Rogelia Roh, 1909"><img src="../../assets/images/posts/roh-1911-nac-antonio-ramon-roh.webp" alt="Nacimiento Antonio Ramón Roh, 1911"><img src="../../assets/images/posts/roh-1914-nac-hector-patricio-roh.webp" alt="Nacimiento Héctor Patricio Roh, 1914"><img src="../../assets/images/posts/roh-1918-nac-raul-roque-roh.webp" alt="Nacimiento Raúl Roque Roh, 1918"></div></details>
+
+#### María Luisa Roh — seis hijos Etchegorry, los dos primeros antes del «sí»
+
+Nacida en **Santa Fe hacia 1876**, formó pareja con **Anselmo Leopoldo Etchegorry**, comerciante de Colón. Tuvieron **seis hijos** entre 1898 y 1916 — y acá se repite el patrón de la familia: **los dos primeros nacieron antes del casamiento** (Leopoldo Ramón ~1898 y Laurindo Anselmo en 1902, reconocidos como hijos naturales) y la pareja recién se casó en **1908**, legitimándolos en el mismo acto.
+
 ```mermaid
 flowchart TD
     MLU["María Luisa Roh\n✶c.1876 · Santa Fe"]
@@ -201,45 +223,32 @@ flowchart TD
     class MLU,AE,E1,E2,E3,E4,E5,E6 g
 ```
 
-![Libreta de enrolamiento de Mauricio Francisco Roh, clase 1878, nacido en Diamante](../../assets/images/posts/roh-enrolamiento-militar-mauricio-francisco.webp)
+**Conclusión:** «hijos primero, papel después», igual que Celestina y que la propia Marianna. Tres hermanas, el mismo libreto. Su casamiento de 1908 es, de paso, la otra acta que confirma la muerte de Juan José Roch en Colón, 1897.
 
-**Y un hallazgo sobre Marianna.** Hasta ahora sabíamos que Marianna Roh había estado con José Clemenzo (el hermano de Francisco) y que, ya viuda, se casó con Domingo Mersilli en 1915. Apareció un eslabón intermedio: en **Colón, el 19 de noviembre de 1896, Marianna se casó con Francisco José Vergère**, un viudo de Conthey de 60 años —cuya madre, dato curioso, también era una Roh— enviudado en 1883. O sea que su vida tuvo al menos tres capítulos: la unión con José Clemenzo (de la que nacieron al menos **dos hijos**, José Domingo en 1884 y María Luisa en 1885), el matrimonio con Vergère (1896) y, viuda de éste, el casamiento con Mersilli (1915). En el acta de 1896 declara *no haber estado casada antes* —lo que confirma, una vez más, que su primera unión no fue un matrimonio formal—. Las edades que le asignan los distintos papeles bailan entre 1862 y 1871; queda por afinar.
+<details class="registros-galeria"><summary><strong>Registros de María Luisa Roh</strong> (8)</summary><div class="galeria-grid"><img src="../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp" alt="Casamiento Etchegorry y María Luisa Roh, 1908 (1)"><img src="../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p2.webp" alt="Casamiento Etchegorry y María Luisa Roh, 1908 (2)"><img src="../../assets/images/posts/roh-1902-nac-laurindo-anselmo-etchegorry.webp" alt="Nacimiento Laurindo Anselmo Etchegorry, 1902"><img src="../../assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p1.webp" alt="Nacimiento Luisa Odila Etchegorry, 1908 (1)"><img src="../../assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p2.webp" alt="Nacimiento Luisa Odila Etchegorry, 1908 (2)"><img src="../../assets/images/posts/roh-1911-nac-juan-hector-etchegorry.webp" alt="Nacimiento Juan Héctor Etchegorry, 1911"><img src="../../assets/images/posts/roh-1912-nac-maria-catalina-etchegorry.webp" alt="Nacimiento María Catalina Etchegorry, 1912"><img src="../../assets/images/posts/roh-1916-nac-irma-cirila-etchegorry.webp" alt="Nacimiento Irma Cirila Etchegorry, 1916"></div></details>
 
-![Casamiento religioso de Domingo Mersilli y Marianna Roh, viuda, 1915](../../assets/images/posts/roh-1915-matr-religioso-mersilli-marianna-roh.webp)
+#### José Luciano Roh — el herrero que se casó con una Locher
 
-**Las dos parejas, en el mismo pueblo y la misma pila bautismal.** El bautismo de José Domingo (Santa Fe, 27 de julio de 1884) nombra a sus padres «**José Clemencia y Mariana Roh, suizos**» —es José Clemenzo, con el apellido otra vez deformado—. Se bautizó en la **Iglesia Matriz de Todos los Santos** de Santa Fe, la misma parroquia donde, un año después, llevaron a bautizar a la hija de Celestina. Los dos hermanos Clemenzo con las dos hermanas Roh estaban en Santa Fe a mediados de la década de 1880, criando hijos al mismo tiempo. El cura escribió «hijo legítimo», aunque en 1896 Marianna declararía no haberse casado nunca: «legítimo» era palabra de uso elástico cuando una pareja se presentaba como matrimonio.
+Del primer varón documentado tenemos, por ahora, una sola pieza: su **casamiento con Manuela Locher**, hacia 1894. Herrero, como su padre y su hermano Mauricio. En el acta figura «nacido en el cantón del Valais», cuando su bautismo lo da nacido en **Colonia Cullen en 1873**: lo tomo como un error de pluma —de los que abundan acá; en otra partida a los propios Juan José y María Putallaz los hacen «argentinos»—. Es el mismo José: el cura, sabiendo suizos a los padres, lo «devolvió» al Valais.
 
-![Bautismo de José Domingo, hijo de José Clemenzo y Marianna Roh, Santa Fe 1884](../../assets/images/posts/roh-1884-bautismo-jose-domingo-clemenzo.webp)
+<details class="registros-galeria"><summary><strong>Registros de José Luciano Roh</strong> (1)</summary><div class="galeria-grid"><img src="../../assets/images/posts/roh-1894-matr-jose-roh-manuela-locher.webp" alt="Casamiento de José Luciano Roh y Manuela Locher, 1894"></div></details>
 
-**Las piezas que sostienen todo esto.** Más de veinte partidas civiles y parroquiales, varias repartidas en dos páginas del libro. Las centrales:
+#### Cabos sueltos
 
-- **Casamiento de Mauricio Francisco Roh y Rogelia Hernández** (Rosario del Tala, 10 de julio de 1905). Aparece por partida doble: el acta civil y, el mismo día, la parroquial. Mauricio, herrero, hijo del *finado* Juan José Roch y de María Putallaz, viuda. Es la pieza que fija la muerte del patriarca y la supervivencia de la madre.
+- El censo de 1895 trae **dos Luisas**: una de ~1877 (María Luisa, la de Etchegorry) y otra de ~1886. No se contradicen, son dos hermanas; de la menor todavía no tengo nada.
+- Las suegras de dos de los hijos Roh —**Catalina Imhoff** y **Sofía Imhoff**— comparten apellido suizo. Posible parentesco entre las familias políticas, por confirmar.
 
-![Acta civil de matrimonio de Mauricio Roh y Rogelia Hernández, 1905](../../assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp)
+#### Conclusión — buscábamos a Francisco y aparecieron todos menos él
 
-- **Casamiento de Anselmo Leopoldo Etchegorry y María Luisa Roh** (Villa Mantero, 1908). El acta confirma que **Juan José Roch falleció en Colón en 1897**, y que María Luisa nació en Santa Fe. En el mismo acto la pareja reconoció como hijo a Leopoldo Ramón, de diez años.
+La apuesta de este post era sencilla: si los hombres Clemenzo se mudaban a la casa de sus mujeres, para encontrar a Francisco había que buscar a Celestina, y para encontrarla, a los Roh. Funcionó casi demasiado bien. Aparecieron los patriarcas con sus fechas, seis hermanos, una veintena de nietos, las tres uniones de Marianna, el oficio de herrero repitiéndose de padre a hijos. Encontramos a la familia entera.
 
-![Acta de matrimonio de Anselmo Etchegorry y María Luisa Roh, 1908 — parte 1](../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp)
+A todos menos a los dos que de verdad buscaba.
 
-- **Nacimiento de Pedro Mauricio Roh** (Villa Mantero, 1908), hijo de Mauricio y Rogelia; nietos paternos: Juan José Roch y María Putallaz.
+Porque acá está lo que me deja pensando: **José Clemenzo —el hermano de Francisco— sí deja rastro en Santa Fe**, como padre de José Domingo en 1884. Los Roh estaban en Santa Fe desde 1873. Celestina aparece ahí en 1885, llevando a bautizar a su hija María Celestina —anotada con el apellido Roh, *sin padre en el acta*—. Marianna, sus hijos. Pero de **Francisco, en todos estos papeles de Santa Fe, no hay una sola línea**. Surge recién en Entre Ríos, en 1891.
 
-- **Defunción de Mauricio Francisco Roh** (Concepción del Uruguay, 1964), a los 85 años, en el Hogar de Ancianos. Nacido en Diamante, viudo de Rogelia Hernández.
+¿Por qué su hermano sí y él no? ¿Se adelantó a Entre Ríos mientras José se quedaba cerca de los Roh? ¿O el famoso vacío de Francisco —esos años que nunca pude llenar— se traga también a Celestina justo en la década en que su familia entera está documentada a metros de distancia? El acta de María Celestina, sin padre, deja abierta hasta la pregunta de cuándo empezó realmente lo de Francisco y Celestina.
 
-![Acta de defunción de Mauricio Francisco Roh, 1964](../../assets/images/posts/roh-1964-def-mauricio-francisco-roh.webp)
-
-- Y, completando el cuadro: el **casamiento de José Luciano Roh con Manuela Locher** (~1894), y los nacimientos de **Luisa Odila** (1908) e **Irma Cirila Etchegorry** (1916), hijas de María Luisa.
-
-**Cabos sueltos, anotados con honestidad.**
-
-- En su casamiento, **José Luciano figura «nacido en el cantón del Valais»**, cuando su acta de bautismo lo da nacido en Colonia Cullen en 1873. Lo tomo como un error de pluma —del tipo que abunda en estos registros: en una partida de defunción, sin ir más lejos, a Juan José Roch y a María Putallaz los hacen «argentinos»—. Es el mismo José: el cura, sabiendo a los padres suizos, lo «devolvió» al Valais.
-- El censo de 1895 trae **dos Luisas**, una de ~1877 (María Luisa, la que se casó con Etchegorry) y otra de ~1886. No se contradicen: son dos hermanas. De la menor todavía no tengo nada.
-- Curiosidad: las suegras de dos de los hijos Roh —Catalina Imhoff y Sofía Imhoff— comparten apellido suizo. Posible parentesco entre las familias políticas, por confirmar.
-
-Lo de Marianna con José Clemenzo ya tiene respaldo —dos hijos bautizados—. Lo que todavía falta es la pieza equivalente del lado de **Celestina y Francisco**: un bautismo, un acta, algo que ponga negro sobre blanco esa unión. Pero el terreno donde buscar quedó mucho más firme.
-
-Todos los documentos de este lote irán también al [Archivo](../../archivo.html) del sitio, asociados a cada persona, a medida que actualice el árbol. Por ahora quedan reunidos acá abajo —se abren en grande con un clic—:
-
-<details class="registros-galeria"><summary><strong>Ver los 24 registros de la familia Roh</strong></summary><div class="galeria-grid"><img src="../../assets/images/posts/roh-1884-bautismo-jose-domingo-clemenzo.webp" alt="Bautismo de José Domingo, 1884"><img src="../../assets/images/posts/roh-1894-matr-jose-roh-manuela-locher.webp" alt="Casamiento José Roh y Manuela Locher, 1894"><img src="../../assets/images/posts/roh-1896-matr-vergere-marianna-roh-p1.webp" alt="Casamiento Vergère y Marianna Roh, 1896 (1)"><img src="../../assets/images/posts/roh-1896-matr-vergere-marianna-roh-p2.webp" alt="Casamiento Vergère y Marianna Roh, 1896 (2)"><img src="../../assets/images/posts/roh-1902-nac-laurindo-anselmo-etchegorry.webp" alt="Nacimiento Laurindo Anselmo Etchegorry, 1902"><img src="../../assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp" alt="Casamiento civil Mauricio Roh y Rogelia Hernández, 1905"><img src="../../assets/images/posts/roh-1905-matr-religioso-mauricio-rogelia-hernandez.webp" alt="Casamiento religioso Mauricio Roh y Rogelia Hernández, 1905"><img src="../../assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p1.webp" alt="Nacimiento Gregoria Orfilia Roh, 1906 (1)"><img src="../../assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p2.webp" alt="Nacimiento Gregoria Orfilia Roh, 1906 (2)"><img src="../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp" alt="Casamiento Etchegorry y María Luisa Roh, 1908 (1)"><img src="../../assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p2.webp" alt="Casamiento Etchegorry y María Luisa Roh, 1908 (2)"><img src="../../assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p1.webp" alt="Nacimiento Luisa Odila Etchegorry, 1908 (1)"><img src="../../assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p2.webp" alt="Nacimiento Luisa Odila Etchegorry, 1908 (2)"><img src="../../assets/images/posts/roh-1908-nac-pedro-mauricio.webp" alt="Nacimiento Pedro Mauricio Roh, 1908"><img src="../../assets/images/posts/roh-1909-nac-rogelia-roh.webp" alt="Nacimiento Rogelia Roh, 1909"><img src="../../assets/images/posts/roh-1911-nac-antonio-ramon-roh.webp" alt="Nacimiento Antonio Ramón Roh, 1911"><img src="../../assets/images/posts/roh-1911-nac-juan-hector-etchegorry.webp" alt="Nacimiento Juan Héctor Etchegorry, 1911"><img src="../../assets/images/posts/roh-1912-nac-maria-catalina-etchegorry.webp" alt="Nacimiento María Catalina Etchegorry, 1912"><img src="../../assets/images/posts/roh-1914-nac-hector-patricio-roh.webp" alt="Nacimiento Héctor Patricio Roh, 1914"><img src="../../assets/images/posts/roh-1915-matr-religioso-mersilli-marianna-roh.webp" alt="Casamiento Mersilli y Marianna Roh, 1915"><img src="../../assets/images/posts/roh-1916-nac-irma-cirila-etchegorry.webp" alt="Nacimiento Irma Cirila Etchegorry, 1916"><img src="../../assets/images/posts/roh-1918-nac-raul-roque-roh.webp" alt="Nacimiento Raúl Roque Roh, 1918"><img src="../../assets/images/posts/roh-1964-def-mauricio-francisco-roh.webp" alt="Defunción Mauricio Francisco Roh, 1964"><img src="../../assets/images/posts/roh-enrolamiento-militar-mauricio-francisco.webp" alt="Enrolamiento militar Mauricio Francisco Roh"></div></details>
+La búsqueda de los Roh, que arrancó para encontrar a Francisco, terminó dibujándolo por ausencia: el único hueco en una foto de familia por lo demás completa. El próximo paso es obvio y concreto —peinar los bautismos de Todos los Santos de Santa Fe entre 1884 y 1891, buscando cualquier Clemenzo—. Si Francisco estuvo en Santa Fe, tiene que haber dejado al menos una firma. Y si no estuvo, esa ausencia también es una respuesta.
 
 <style>
 .registros-galeria { margin: 32px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }
