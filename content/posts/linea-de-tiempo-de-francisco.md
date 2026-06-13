@@ -136,9 +136,9 @@ Volviendo a los hijos de Francisco en Entre Rios, tenemos a:
 
 Francisca Clemenzo y Pedro Clemenzo figuran en el censo de Colón de 1895, dentro de los cinco hijos que declaraban tener Francisco y Celestina hasta ese momento:
 
-![[FJHC_1859_censo1895_1.jpg]]
+![FJHC 1859 censo 1895 1](../../assets/images/posts/FJHC_1859_censo1895_1.jpg)
 
-![[FJHC_1859_censo1895_2.jpg]]
+![FJHC 1859 censo 1895 2](../../assets/images/posts/FJHC_1859_censo1895_2.jpg)
 
 En dicho documento aparece un hijo llamado Francisco, que interpreto como **León Francisco Clemenzo**.
 
@@ -152,13 +152,13 @@ En conclusión, según lo que indican los documentos encontrados, Francisco se e
 
 La siguiente referencia documental corresponde al registro militar de 1919, que sitúa a Francisco en Santa Fe:
 
-![[FJHC_1859_militar_1.jpeg]]
+![FJHC 1859 militar 1](../../assets/images/posts/FJHC_1859_militar_1.jpeg)
 
-![[FJHC_1859_militar_2.jpeg]]
+![FJHC 1859 militar 2](../../assets/images/posts/FJHC_1859_militar_2.jpeg)
 
-![[FJHC_1859_militar_3.jpeg]]
+![FJHC 1859 militar 3](../../assets/images/posts/FJHC_1859_militar_3.jpeg)
 
-![[FJHC_1859_militar_4.jpeg]]
+![FJHC 1859 militar 4](../../assets/images/posts/FJHC_1859_militar_4.jpeg)
 
 ### Vuelta a Entre Rios
 
@@ -166,7 +166,7 @@ La siguiente referencia documental corresponde al registro militar de 1919, que 
 
 Finalmente, el acta de defunción de Francisco en 1928 confirma que se encontraba en **Concepción del Uruguay, Entre Ríos**.
 
-![[FJHC_1859_defuncion.jpg]]
+![FJHC 1859 defunción](../../assets/images/posts/\1
 
 Todos los documentos se pueden consultar en detalle haciendo click [acá](../../archivo.html#/francois-clemenzo).
 
