@@ -285,7 +285,7 @@ Lo que confirma y lo que corrige:
 - **Un enigma nuevo:** Marianne figura nacida en **febrero de 1860** y Célestine en **diciembre de 1860**. Dos hijas de la misma madre el mismo año es imposible. O hay un error de fecha, o **Marianne es hijastra** —hija de un matrimonio anterior de Jean Joseph—. Lo dejo abierto hasta dar con su bautismo.
 - Detalle: en Conthey la familia figura como **«Roch»** a secas, sin el «Blanc» que el cura argentino le agregó al pequeño José en 1873. La hipótesis del surnom «Roh-Blanc» pierde fuerza.
 
-Cuatro años preguntándome de qué parte de Conthey venían, y la respuesta era **Aven**. La rama suiza de mi familia tiene, por fin, una dirección.
+Cuatro años preguntándome de qué parte de Conthey venían los Roh, y la respuesta era **Aven**. Con esto, el mapa suizo de la familia queda con dos polos: los **Clemenzo** en Ardon, Riddes y Salins; los **Roh**, en Aven. Dos valles del Valais, dos apellidos, que terminaron cruzándose recién del otro lado del océano.
 
 <style>
 .registros-galeria { margin: 28px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }

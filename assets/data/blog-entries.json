@@ -20,6 +20,24 @@
     "url": "dist/blog/buscando-a-los-roh.html"
   },
   {
+    "id": "la-ruine-de-francois",
+    "title": "La ruine de François",
+    "description": "La presse officielle du Valais a enregistré, avis après avis, la désagrégation du patrimoine de François Clemenzoz : un testament qui saute une génération, deux ventes aux enchères, une mise sous conseil judiciaire qu'il a lui-même demandée et un acte de carence. Chronique documentaire des années qui ont précédé l'émigration de son fils en Argentine.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "investigacion",
+    "date": "2026-06-11",
+    "tags": [
+      "clemenzo",
+      "gazette du valais",
+      "salins",
+      "riddes",
+      "valais",
+      "généalogie"
+    ],
+    "featured": false,
+    "url": "dist/blog/la-ruine-de-francois.html"
+  },
+  {
     "id": "la-ruina-de-francois",
     "title": "La ruina de François",
     "description": "La prensa oficial del Valais registró, aviso a aviso, la desintegración del patrimonio de François Clemenzoz: un testamento que salta una generación, dos subastas, una curatela pedida por él mismo y un acto de insolvencia. Crónica documental de los años que precedieron a la emigración de su hijo a Argentina.",
