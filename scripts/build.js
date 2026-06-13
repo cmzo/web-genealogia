@@ -547,11 +547,12 @@ function parseLang(file) {
 function langSelectorHtml(group, currentLang) {
   const present = LANGS.filter(l => group.out[l]);
   if (present.length < 2) return '';
+  const globe = '<svg class="lang-globe" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>';
   const items = present.map(l => l === currentLang
     ? `<span class="lang-opt is-active" aria-current="true">${LANG_LABEL[l]}</span>`
     : `<a class="lang-opt" href="${group.out[l]}" hreflang="${l}" title="${LANG_NAME[l]}">${LANG_LABEL[l]}</a>`
   ).join('');
-  return `<nav class="lang-selector" aria-label="Idioma del artículo">${items}</nav>`;
+  return `<nav class="lang-selector" aria-label="Idioma del artículo"><span class="lang-pillbox">${globe}${items}</span></nav>`;
 }
 
 // Renderiza un post (metadata + markdown ya extraídos) y lo escribe en disco

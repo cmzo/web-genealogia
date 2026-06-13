@@ -10,10 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <style>
-    .lang-selector { display: flex; gap: 4px; justify-content: flex-end; margin: 0 0 18px; font-family: 'Inter', sans-serif; }
-    .lang-selector .lang-opt { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px; text-decoration: none; border: 1px solid var(--border); color: var(--muted); transition: color .15s, border-color .15s, background .15s; }
-    .lang-selector a.lang-opt:hover { color: var(--text); border-color: var(--text); }
-    .lang-selector .lang-opt.is-active { background: var(--text); color: var(--bg); border-color: var(--text); cursor: default; }
+    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; font-family: 'Inter', sans-serif; }
+    .lang-pillbox { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px 4px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .lang-globe { color: var(--muted); flex-shrink: 0; }
+    .lang-opt { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 999px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
+    .lang-opt + .lang-opt { margin-left: -1px; }
+    a.lang-opt:hover { color: var(--text); background: var(--border); }
+    .lang-opt.is-active { background: var(--text); color: var(--bg); cursor: default; }
   </style>
 </head>
 <body>

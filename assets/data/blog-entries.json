@@ -105,6 +105,27 @@
     ]
   },
   {
+    "id": "linea-de-tiempo-de-francisco",
+    "title": "Línea de tiempo de Francisco",
+    "description": "Recreando los pasos de Francisco",
+    "image": "/assets/images/cards/linea_tiempo_francisco.webp",
+    "category": "investigacion",
+    "date": "2025-09-15",
+    "tags": [
+      "francisco",
+      "cronologia",
+      "riddes",
+      "argentina",
+      "investigacion",
+      ""
+    ],
+    "featured": true,
+    "url": "dist/blog/linea-de-tiempo-de-francisco.html",
+    "langs": [
+      "es"
+    ]
+  },
+  {
     "id": "investigando-francisco",
     "title": "Investigando a Francisco Clemenzo",
     "description": "Un análisis completo del material que tengo sobre Francisco",
