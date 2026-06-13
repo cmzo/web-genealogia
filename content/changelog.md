@@ -1,3 +1,17 @@
+### 13 de junio de 2026
+
+#### Hosting: migración a Cloudflare Workers Assets
+
+El sitio migró de GitHub Pages a **Cloudflare Workers Assets**. La configuración vive en `wrangler.toml` (`directory = "./"`) y `.assetsignore` controla qué archivos se sirven al público (excluye fuentes: scripts, data, content/posts, templates). Todas las páginas, imágenes y assets se sirven ahora desde el CDN global de Cloudflare — sin cambios en las URLs ni en el proceso de edición. El deploy sigue siendo `npm run deploy`.
+
+#### Blog: traducciones automáticas al francés con DeepL
+
+Nuevo script `scripts/translate.js` que traduce los posts del blog de español a francés usando la API de DeepL. `npm run translate` detecta los posts sin versión `.fr.md` y los genera; `npm run translate-build` encadena traducción y build en un paso. Las traducciones se cachean en `content/.deepl-cache.json` para no llamar a la API dos veces con el mismo texto. Los bloques de código/mermaid, HTML (`<details>`, `<style>`) e imágenes `![[]]` de Obsidian se extraen con sentinelas antes de enviar a DeepL y se restauran después. Para excluir un post permanentemente: `notranslate: true` en el frontmatter. La clave de API va en `.env` (`DEEPL_API_KEY=xxx:fx` para el plan gratuito, 500k caracteres/mes).
+
+#### Sidebar: corrección de salto visual al cargar
+
+La barra lateral dejó de "moverse" al navegar o recargar. La causa era que `nav-drawer.js` se carga con `defer` e inyecta los spans de ícono después del primer paint, subiendo la altura de cada link de ~37px (texto plano) a ~44px (ícono 22px + texto). Con 7 links el salto acumulado era de ~49px visibles. Solución: `min-height: 44px` en `.sidebar-link` reserva el espacio final desde el inicio; `width: 22px; height: 22px; overflow: hidden` en `.sidebar-icon` fija las dimensiones del ícono independientemente de si la fuente Material Symbols ya cargó.
+
 ### 10 de junio de 2026
 
 #### Buscador global con ⌘ + K

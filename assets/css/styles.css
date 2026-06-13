@@ -129,13 +129,17 @@ body {
   border-radius: 8px;
   transition: color 0.15s, background 0.15s;
   line-height: 1.25;
+  min-height: 44px; /* evita CLS: JS defer inyecta íconos de 22px después del primer paint */
 }
 
 /* Ícono: oculto hasta que la fuente Material Symbols esté lista (evita el
-   flash del texto de la ligadura). Reserva su espacio para no saltar. */
+   flash del texto de la ligadura). Dimensiones fijas para no saltar. */
 .sidebar-icon {
   font-size: 22px;
   line-height: 1;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
   flex-shrink: 0;
   visibility: hidden;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'opsz' 24;
