@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <title>À la recherche des Roh · Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; font-family: 'Inter', sans-serif; }
+    .lang-pillbox { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px 4px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .lang-globe { color: var(--muted); flex-shrink: 0; }
+    .lang-opt { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 999px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
+    .lang-opt + .lang-opt { margin-left: -1px; }
+    a.lang-opt:hover { color: var(--text); background: var(--border); }
+    .lang-opt.is-active { background: var(--text); color: var(--bg); cursor: default; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="../../index.html" class="nav-brand">Clemenzo</a>
+    <nav class="nav-actions">
+      <a href="../../blog.html" class="nav-link nav-mobile-link">Blog</a>
+      <a href="../../sobre.html" class="nav-link nav-mobile-link">Sobre</a>
+      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <div class="site-body">
+    <aside class="site-sidebar">
+      <nav class="sidebar-nav">
+        <a href="../../sobre.html" class="sidebar-link">Sobre</a>
+        <a href="../../arbol-matrimonios.html" class="sidebar-link">Árbol</a>
+        <a href="../../archivo.html" class="sidebar-link">Archivo</a>
+        <a href="../../blog.html" class="sidebar-link is-active">Blog</a>
+        <a href="../../fuentes.html" class="sidebar-link">Fuentes</a>
+        <a href="../../contacto.html" class="sidebar-link sidebar-link--icon" title="Contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Contacto</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../../changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
+      </div>
+    </aside>
+
+    <main class="site-main">
+      <div class="article-container">
+        <div class="top-bar">
+          <a class="back-home" href="../../blog.html" aria-label="Volver al blog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Blog
+          </a>
+        </div>
+
+        <nav class="lang-selector" aria-label="Idioma del artículo"><span class="lang-pillbox"><svg class="lang-globe" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg><a class="lang-opt" href="buscando-a-los-roh.html" hreflang="es" title="Español">ES</a><span class="lang-opt is-active" aria-current="true">FR</span></span></nav>
+
+        <header class="article-header">
+          <p class="article-kicker">Pour trouver un Clemenzo, il faut chercher sa femme</p>
+          <h1 class="article-title">À la recherche des Roh</h1>
+          <div class="article-meta">
+            <div class="author-avatar"><img src="../../assets/images/avatars/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
+            <div class="meta-text">
+              <div><strong>Por Matías Clemenzo</strong></div>
+              <div id="meta-edition">Publicado 2026-06-13</div>
+            </div>
+          </div>
+        </header>
+
+        <section class="article-grid">
+          <article class="article-content">
+            <p>Il y a un moment dans toute recherche où il est bon de cesser de pousser la porte qui ne s&#39;ouvre pas et d&#39;essayer celle d&#39;à côté. Depuis des années, je poursuis <strong>Francisco Clemenzo</strong> par le côté des Clemenzo : ses parents à Riddes, son départ du Valais en 1873, sa trace en Entre Ríos. Et entre son émigration et sa réapparition déjà adulte et en couple, il y a un vide de treize ans que je n&#39;arrive pas à combler par ce chemin.</p>
+<p>Ce texte parle de changer de côté. Si je ne trouve pas Francisco en cherchant les Clemenzo, je vais chercher la femme avec laquelle il a formé une famille : <strong>Celestina Roh</strong>. Et pour la trouver, elle et toute sa famille.</p>
+<h2 id="le-changement-de-perspective-chercher-les-hommes-par-leurs-femmes">Le changement de perspective : chercher les hommes par leurs femmes</h2>
+<p>Il y a un schéma dans cette famille que j&#39;ai mis du temps à voir parce que je l&#39;avais trop proche. Depuis François Clemenzo, né en 1809, et pendant des générations, presque aucun homme de la ligne directe n&#39;a omis de s&#39;installer dans la maison de sa femme. L&#39;exception est récente et partielle : mon grand-père a acheté un appartement avec ma grand-mère via un prêt hypothécaire — et même avant cela, très probablement, ils ont aussi vécu un temps chez la mère d&#39;elle.</p>
+<p>Cela a un nom. Les anthropologues l&#39;appellent <strong>résidence uxorilocale</strong> : le couple s&#39;établit dans la maison ou le village de la famille de l&#39;épouse, pas du mari. L&#39;inverse — ce qu&#39;on attendrait en Europe rurale du XIXe siècle — est la résidence patrilocale, où la femme entre dans la maison de l&#39;homme. Chez les Clemenzo, c&#39;est l&#39;inverse qui s&#39;est produit, une fois après l&#39;autre.</p>
+<p>Ce n&#39;est pas une coutume héréditaire : c&#39;est ce qu&#39;on fait quand il n&#39;y a pas de patrimoine. Celui qui a une maison et une terre ramène l&#39;épouse ; celui qui n&#39;a rien, s&#39;installe où il y a. François a perdu la ferme familiale lors des ventes aux enchères de 1862. Son fils Francisco a émigré à quinze ans les mains vides. Chaque génération a recommencé de zéro, et tant qu&#39;il n&#39;y a rien d&#39;autre à offrir, le schéma s&#39;est répété de lui-même.</p>
+<p>Pour la recherche, cela cesse d&#39;être une curiosité et devient une méthode. Si les hommes se mutaient chez elles :</p>
+<ul>
+<li>les <strong>actes de mariage</strong> doivent être cherchés dans la paroisse de la mariée, pas du marié ;</li>
+<li>les <strong>adresses et les villes</strong> suivent les femmes, pas les hommes ;</li>
+<li>et le <strong>vide de Francisco</strong> entre 1873 et 1886 se résout probablement non dans les papiers des Clemenzo, mais dans ceux des <strong>Roh</strong>.</li>
+</ul>
+<p>D&#39;où ce virage. Allons aux Roh.</p>
+<h2 id="larbre-des-roh-avec-lequel-je-pars">L'arbre des Roh avec lequel je pars</h2>
+<p>En rassemblant ce qui était déjà dispersé dans les archives — un acte de baptême de 1873, un recensement de 1895, une licence d&#39;inhumation de 1950 — on reconstruit une famille assez complète. Et apparaît la première surprise : les Clemenzo et les Roh ne se sont croisés qu&#39;une fois, mais <strong>deux</strong>. Deux frères Clemenzo ont formé couple avec deux sœurs Roh.</p>
+<div class="mermaid" style="overflow-x:auto; margin: 32px 0;">flowchart TD
+    JJR["Jean José Roch\n✶v. 1841 · Conthey\nferronnier"]
+    MP["María Putallaz\n✶v. 1837 · Conthey"]
+    mR(( ))
+
+    JJR --- mR
+    MP --- mR
+
+    CEL["Celestina\n✶1862/63 · Conthey"]
+    MNA["Marianna\n✶v. 1863 · Valais"]
+    JOS["José\n✶v. 1871 · Suisse"]
+    JL["José Luciano\n✶1873 · Colonia Cullen"]
+    OTROS["Manuela ✶v.1877\nLuisa ✶v.1877\nMauricio ✶v.1879\nLuisa ✶v.1886\n(nés en Argentine)"]
+
+    mR --> CEL
+    mR --> MNA
+    mR --> JOS
+    mR --> JL
+    mR --> OTROS
+
+    FCO["Francisco Clemenzo\n✶1858 · Riddes"]
+    JOSE["José Clemenzo\n✶1856 · Riddes\n(frère de Francisco)"]
+
+    CEL -.->|couple| FCO
+    MNA -.->|couple| JOSE
+
+    classDef sw fill:#eaf2fb,stroke:#9bb8da,color:#1a1a1a
+    classDef ar fill:#f6f6f4,stroke:#d8d8d4,color:#1a1a1a
+    classDef cz fill:#fbeee6,stroke:#dcb79b,color:#1a1a1a
+    class JJR,MP,CEL,MNA,JOS sw
+    class JL,OTROS ar
+    class FCO,JOSE cz
+</div>
+<p>Le mariage fondateur est <strong>Jean José Roch</strong> (ferronnier, né vers 1841 à Conthey) et <strong>María Putallaz</strong> (vers 1837, aussi de Conthey) — deux noms classiques de cette commune du Valais. Ils se sont mariés en Suisse et leurs premiers enfants y sont nés, notamment Celestina (vers 1862) et Marianna (vers 1863). Ils ont émigré autour de <strong>1872-1873</strong> : le fils José y est encore né, mais José Luciano y est déjà né en <strong>Colonia Cullen</strong>, dans le département San Javier de Santa Fe. Le reste des enfants est né en Argentine.</p>
+<p>Et là l&#39;intrigue s&#39;emmêle, ce qui rend cette famille intéressante : <strong>Celestina a formé couple avec Francisco, et sa sœur Marianna avec José, le frère de Francisco.</strong> Deux Clemenzo, deux Roh. Plus tard, il faudra démêler qui a eu des enfants avec qui et quand — il y a un couple de nœuds que je n&#39;ai pas encore résolus — mais le squelette est celui-ci.</p>
+<h2 id="les-documents-dont-je-dispose">Les documents dont je dispose</h2>
+<p>Quatre pièces soutiennent tout ce qui précède. Aucune n&#39;est définitive par elle-même ; ensemble, elles dessinent la famille.</p>
+<p><strong>Le baptême de José Luciano (Colonia Cullen, 29 juin 1873).</strong> C&#39;est la pièce la plus précieuse, car elle ancre la famille dans le temps et le lieu. L&#39;acte dit que José Luciano est né le 14 juin 1873, <em>fils légitime de Juan José Roch et María Putallaz, tous deux originaires du canton du Valais en Suisse, et voisins de ladite Colonia</em>. Les parrains — Serafín et Adela Marietan — sont une autre famille valaisanne de la même colonie. Cela me donne trois certitudes : les Roch étaient déjà à Santa Fe en 1873, ils étaient mariés (fils <em>légitime</em>), et ils ne sont pas venus seuls mais au sein d&#39;un groupe de Valaisans.</p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/personas/p80-bautismo.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/personas/p80-bautismo.webp" alt="Acte de baptême de José Luciano Roh, Colonia Cullen, 1873" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p><strong>Le recensement national de 1895 (Colón, Entre Ríos).</strong> Plus de vingt ans plus tard, la famille entière apparaît ensemble dans le même foyer : José Roch (54, suisse, ferronnier), María Putallaz (58, suisse) et sept enfants, de Marianna jusqu&#39;à une Luisa de neuf ans. C&#39;est la photo de groupe qui confirme l&#39;arbre et révèle le fait du métier. Elle montre aussi qu&#39;entre 1873 et 1895, les Roch ont déménagé de Santa Fe à Entre Ríos.</p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/personas/p38-censo.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/personas/p38-censo.webp" alt="Recensement national de 1895, Colón — le foyer de José Roch et María Putallaz" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p><strong>La licence d&#39;inhumation de Celestina (Santa Fe, 1950).</strong> Celestina est morte de pneumonie le 2 octobre 1950, à 87 ans, rue Suipacha au 3900 de la ville de Santa Fe. Le document la nomme <em>Celestina Roch de Clemenceau</em> — le nom de famille était déjà mutée de Clemenzo à Clemence puis à Clemenceau — et la déclare <em>veuve</em>. Ce « veuve » est une des choses qu&#39;il faudra examiner de près.</p>
+<p><strong>Le baptême de María Celestina (1885).</strong> Une petite-fille — ou quelque chose de plus emmêlé — qui porte le nom de famille Roh et pose des questions que je ne ferme pas encore.</p>
+<h2 id="pourquoi-je-ne-les-avais-pas-trouvés">Pourquoi je ne les avais pas trouvés</h2>
+<p>C&#39;est bon de noter les erreurs, car elles représentent la moitié de l&#39;apprentissage. J&#39;ai cherché les Roh pendant longtemps sans succès, et maintenant je comprends pourquoi :</p>
+<ol>
+<li><strong>Je les cherchais à Entre Ríos, mais la famille a atterri à Santa Fe.</strong> Le premier sol argentin des Roch était Colonia Cullen, San Javier. Les actes les plus anciens sont là, pas à Colón.</li>
+<li><strong>Le nom de famille change de forme</strong> : Roh, Roch, Roz ; et Putallaz, Puthallaz, Putalaz. Chercher une seule graphie laisse de côté la moitié des registres.</li>
+<li><strong>En Suisse je visais le Valais en général</strong>, quand il fallait enfoncer la paroisse de <strong>Conthey</strong>, où Roh et Putallaz sont des noms très denses.</li>
+</ol>
+<h2 id="prochaines-étapes-concrètes">Prochaines étapes concrètes</h2>
+<p>Le plan se divise en deux rives.</p>
+<p><strong>En Suisse, tout passe par Conthey :</strong></p>
+<ul>
+<li>Chercher la famille Roch dans le <strong>Registre des émigrés</strong> du Valais (le document d&#39;archive <em>DI 358</em>, le même où j&#39;ai trouvé Francisco), en filtrant par Conthey et la fenêtre 1872-1873. Ce registre est reproduit et indexé dans le livre d&#39;Alexandre et Christophe Carron, <em><strong>Nos cousins d&#39;Amérique</strong></em> (Sierre, 1989-1990), et est consultable en ligne via la plateforme <a href="https://www.emigration-valais.ch">emigration-valais.ch</a>. C&#39;est la piste la plus forte.</li>
+<li>Retracer la famille dans les <strong>recensements du Valais de Conthey</strong> (1829-1880, numérisés sur <a href="https://recensements.vallesiana.ch">recensements.vallesiana.ch</a>) : le ménage Roch-Putallaz <em>avant</em> l&#39;émigration donnerait la composition complète, les âges et la confirmation de la commune et du quartier exacts.</li>
+<li>L&#39;<strong>acte de mariage de Juan José Roch et María Putallaz</strong> à Conthey, vers 1860-1862. Il nommerait les parents des deux et monterait une génération d&#39;un seul coup.</li>
+<li>Les <strong>baptêmes</strong> de Celestina, Marianna et José à Conthey, pour fixer les dates et la filiation.</li>
+</ul>
+<p><strong>En Argentine, Santa Fe d&#39;abord :</strong></p>
+<ul>
+<li>La <strong>paroisse de San Javier / Colonia Cullen</strong>, entre 1872 et 1885 : dans le même livre où se trouve José Luciano devraient apparaître les baptêmes de Manuela, Mauricio et les deux Luisas.</li>
+<li>Suivre la <strong>piste Marietan</strong> : les parrains de 1873 ont voyagé dans le même groupe de colons. Leur trace peut révéler avec qui les Roh ont émigré.</li>
+<li>Reconstruire le <strong>déplacement de Santa Fe à Entre Ríos</strong> : quand les Roch ont-ils déménagé à Colón, et l&#39;ont-ils fait en compagnie de Francisco ? Si la réponse est oui, le vide de treize ans commence à se remplir.</li>
+</ul>
+<p>Si la théorie est correcte, ce n&#39;est pas me perdre en explorant une famille qui ne porte pas mon nom. Je me dirige vers le lieu où la famille qui le porte a décidé, une fois après l&#39;autre, d&#39;aller vivre.</p>
+<hr>
+<p><em>Dernière mise à jour : 2026-06-13</em></p>
+
+  <style>
+    /* ── Hypothesis Cards ───────────────────────────────────────────── */
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #9ca3af;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 35px 0;
+      background: #f9fafb;
+    }
+    .hypothesis-card + hr { display: none; }
+    .hypothesis-card--confirmed       { border-left-color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--solida          { border-left-color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+    .hypothesis-card--plausible       { border-left-color: #d97706; background: #fffbeb; border-color: #fde68a; }
+    .hypothesis-card--speculative     { border-left-color: #9ca3af; background: #f9fafb; border-color: #e5e7eb; }
+    .hypothesis-card--directa         { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
+    .hypothesis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .hypothesis-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hypothesis-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6b7280;
+      background: #e5e7eb;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .hypothesis-badge-directa {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .hypothesis-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+    .hypothesis-status--confirmed,
+    .hypothesis-status--confirmed-informal { color: #15803d; background: #dcfce7; }
+    .hypothesis-status--solida             { color: #1d4ed8; background: #dbeafe; }
+    .hypothesis-status--plausible          { color: #92400e; background: #fef3c7; }
+    .hypothesis-status--speculative        { color: #374151; background: #f3f4f6; }
+    .hypothesis-title {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin: 0 0 14px 0;
+      color: #111827;
+      line-height: 1.4;
+    }
+    .hypothesis-body { font-size: 0.9rem; }
+    .hypothesis-body .table-wrapper { margin-top: 0; }
+    /* ──────────────────────────────────────────────────────────────── */
+
+    .image-clickable:hover {
+      transform: scale(1.02);
+    }
+    .image-clickable:hover .zoom-hint {
+      opacity: 1 !important;
+    }
+    .gallery-item .image-clickable img {
+      transition: all 0.2s ease;
+    }
+    .gallery-item .image-clickable:hover img {
+      filter: brightness(1.1);
+    }
+  </style>
+  
+  <!-- Lightbox Modal con zoom -->
+  <style>
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); overflow: auto; }
+    #lightbox .lb-stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+    #lightbox .lb-stage.is-zoomed { display: block; padding: 0; }
+    #lightbox-img { max-width: 95vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); cursor: zoom-in; }
+    #lightbox .lb-stage.is-zoomed #lightbox-img { max-width: none; max-height: none; width: auto; border-radius: 0; box-shadow: none; cursor: zoom-out; }
+    #lightbox .lb-close { position: fixed; top: 16px; right: 16px; z-index: 2; background: rgba(255,255,255,0.15); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; display: grid; place-items: center; line-height: 1; }
+    #lightbox .lb-hint { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 2; color: rgba(255,255,255,0.78); font-size: 13px; background: rgba(0,0,0,0.45); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
+  </style>
+  <div id="lightbox" onclick="closeLightbox()">
+    <button class="lb-close" onclick="event.stopPropagation(); closeLightbox();">✕</button>
+    <div class="lb-stage" id="lb-stage">
+      <img id="lightbox-img" onclick="event.stopPropagation(); toggleZoom();" alt="">
+    </div>
+    <div class="lb-hint">Clic en la imagen para acercar · Esc para cerrar</div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      var stage = document.getElementById('lb-stage');
+      stage.classList.remove('is-zoomed');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function toggleZoom() {
+      var lb = document.getElementById('lightbox');
+      document.getElementById('lb-stage').classList.toggle('is-zoomed');
+      lb.scrollTop = 0; lb.scrollLeft = 0;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+          </article>
+          <aside class="article-aside">
+            
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="document.querySelector('.site-main').scrollTo({top:0,behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <footer class="site-footer">
+    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <nav class="footer-mobile-nav">
+      <a href="../../contacto.html" class="footer-nav-link">Contacto</a>
+      <a href="../../changelog.html" class="footer-nav-link">Cambios</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function() {
+      const btn = document.getElementById('backToTop');
+      const scroller = document.querySelector('.site-main');
+      scroller.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', scroller.scrollTop > 400);
+      });
+    })();
+  </script>
+
+  <script src="../../assets/js/nav-drawer.js" defer></script>
+  <script src="../../assets/js/command-palette.js" defer></script>
+
+  <script>
+    (function() {
+      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const now = new Date();
+      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+      const metaEdition = document.getElementById('meta-edition');
+      if (metaEdition) metaEdition.textContent = `Publicado 2026-06-13 · Última edición ${dateStr}`;
+    })();
+  </script>
+
+</body>
+</html>

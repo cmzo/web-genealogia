@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <title>Clan Clemenzo · Matías Clemenzo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; font-family: 'Inter', sans-serif; }
+    .lang-pillbox { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px 4px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .lang-globe { color: var(--muted); flex-shrink: 0; }
+    .lang-opt { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 999px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
+    .lang-opt + .lang-opt { margin-left: -1px; }
+    a.lang-opt:hover { color: var(--text); background: var(--border); }
+    .lang-opt.is-active { background: var(--text); color: var(--bg); cursor: default; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <a href="../../index.html" class="nav-brand">Clemenzo</a>
+    <nav class="nav-actions">
+      <a href="../../blog.html" class="nav-link nav-mobile-link">Blog</a>
+      <a href="../../sobre.html" class="nav-link nav-mobile-link">Sobre</a>
+      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <div class="site-body">
+    <aside class="site-sidebar">
+      <nav class="sidebar-nav">
+        <a href="../../sobre.html" class="sidebar-link">Sobre</a>
+        <a href="../../arbol-matrimonios.html" class="sidebar-link">Árbol</a>
+        <a href="../../archivo.html" class="sidebar-link">Archivo</a>
+        <a href="../../blog.html" class="sidebar-link is-active">Blog</a>
+        <a href="../../fuentes.html" class="sidebar-link">Fuentes</a>
+        <a href="../../contacto.html" class="sidebar-link sidebar-link--icon" title="Contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Contacto</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../../changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
+      </div>
+    </aside>
+
+    <main class="site-main">
+      <div class="article-container">
+        <div class="top-bar">
+          <a class="back-home" href="../../blog.html" aria-label="Volver al blog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Blog
+          </a>
+        </div>
+
+        <nav class="lang-selector" aria-label="Idioma del artículo"><span class="lang-pillbox"><svg class="lang-globe" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg><a class="lang-opt" href="clan-clemenzo.html" hreflang="es" title="Español">ES</a><span class="lang-opt is-active" aria-current="true">FR</span></span></nav>
+
+        <header class="article-header">
+          <p class="article-kicker">Enquête sur les Clemenzo de Suisse</p>
+          <h1 class="article-title">Clan Clemenzo</h1>
+          <div class="article-meta">
+            <div class="author-avatar"><img src="../../assets/images/avatars/matias.png" alt="Avatar de Matías Clemenzo" loading="lazy"></div>
+            <div class="meta-text">
+              <div><strong>Por Matías Clemenzo</strong></div>
+              <div id="meta-edition">Publicado 2026-05-10</div>
+            </div>
+          </div>
+        </header>
+
+        <section class="article-grid">
+          <article class="article-content">
+            <p>Enquêter sur sa propre famille, c&#39;est découvrir des personnes derrière les noms écrits dans un registre. Ce document rassemble ce que les archives du canton du Valais racontent sur les Clemenzo d&#39;Ardon et Riddes : qui ils étaient, où ils vivaient, quand ils se sont installés, et quel lien ils entretiennent avec la branche qui est arrivée en Argentine il y a 150 ans.</p>
+<p>Les sources principales sont les recensements numérisés du Valais (1802–1870), l&#39;<em>Armorial Valaisan</em> en deux éditions, et les mémoires de l&#39;officier napoléonien Hyacinthe Clemenzo. L&#39;arbre généalogique de Jean-Yves — descendant de Jean-Baptiste Clemenzo qui vit en Suisse — a été déterminant pour confirmer les hypothèses sur le XIXe siècle.</p>
+<p>Les personnages centraux de cette histoire sont <strong>Baptiste Clemenzo</strong> (le plus ancien patriarche identifié, n.v. 1745–1755), ses fils <strong>Jean Baptiste</strong> (v. 1774) et <strong>Jean Joseph (p57, v. 1780)</strong>, et sa descendance qui a migré d&#39;Ardon à Riddes puis finalement en Argentine. Jean-Yves et l&#39;auteur de ce document descendent de ces deux frères — ils sont des cousins éloignés avec un ancêtre commun qui a vécu à Ardon il y a plus de 270 ans.</p>
+<hr>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/header_censo.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/header_censo.png" alt="" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p><strong>Dans ce document :</strong></p>
+<ul>
+<li><a href="#recensements">Recensements</a></li>
+<li><a href="#armorial-valaisan">Armorial</a></li>
+<li><a href="#les-m%C3%A9moires-de-hyacinthe-clemenzo">Mémoires de Hyacinthe</a></li>
+<li><a href="#larbre-de-jean-yves">Arbre de Jean-Yves</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#ligne-directe">Ligne directe</a></li>
+<li><a href="#arbre-du-clan-clemenzo">Arbre du clan</a></li>
+<li><a href="#hypoth%C3%A8ses">Hypothèses</a></li>
+<li><a href="#t%C3%A2ches">Tâches</a></li>
+</ul>
+<hr>
+<h2 id="principaux-résultats">Principaux résultats</h2>
+<ul>
+<li>Les Clemenzo d&#39;Ardon sont documentés depuis <strong>1481</strong> — cinq siècles avant la migration en Argentine.</li>
+<li><strong>Baptiste Clemenzo</strong> (Ardon, v. 1745–1755) avait au moins deux fils : <strong>Jean Baptiste</strong> (v. 1774) et <strong>Jean Joseph</strong> (v. 1780). C&#39;est l&#39;ancêtre commun des deux branches du clan.</li>
+<li><strong>Jean Joseph Clemenzo (p57)</strong> a migré d&#39;Ardon à Riddes. C&#39;est le grand-père direct de la branche argentine.</li>
+<li><strong>Jean Baptiste Clemenzo</strong> est resté à Ardon. Jean-Yves, son descendant vivant en Suisse, a confirmé cette branche en croisant le recensement de 1846 avec l&#39;<em>Armorial Valaisan</em>.</li>
+<li><strong>Joseph Florentin (p72)</strong>, fils de Jean Joseph, a étudié la médecine en Europe centrale et a exercé comme chirurgien à Naples entre 1837 et au moins 1846.</li>
+<li><strong>François / Francisco Clemenzo (p26)</strong>, petit-fils de Jean Joseph, a émigré en Argentine vers 1880. Au recensement de 1870, il avait environ 12 ans et vivait avec ses parents à Riddes.</li>
+<li>L&#39;identification de Baptiste comme père de Jean Joseph est une hypothèse solide mais <strong>non confirmée documentellement</strong> — l&#39;acte de baptême manque.</li>
+</ul>
+<hr>
+<div class="callout callout--info">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>Classes dans les recensements du Valais</span></div>
+  <div class="callout-body"><br>Les recensements valaisans du XIXe siècle divisaient la population en classes selon la relation entre le bourgeois et la commune :</p>
+<ul>
+<li><strong>1ère Classe</strong> — Bourgeois <em>résidents</em> dans la commune. Apparaissent avec domicile déclaré dans la même localité.</li>
+<li><strong>2ème Classe</strong> — Bourgeois de la commune <em>domiciliés dans une autre commune</em>. Apparaissent avec &quot;Lieu du domicile&quot; distinct et une note du type <em>&quot;porté à [autre commune]&quot;</em> indiquant double registre.</li>
+<li><strong>4me Classe</strong> — Bourgeois <em>absents du canton</em> (&quot;ressortissans absens du pays&quot;). Figure leur profession et le lieu où ils résident hors du Valais.</li>
+</ul>
+<p>Les Clemenzo apparaissent en 2ème Classe au recensement de Riddes 1829 (bourgeois de Riddes domiciliés à Ardon), et passent à 1ère Classe en 1837, quand la famille s&#39;installe définitivement à Riddes. Joseph Florentin (p72) figure en 4me Classe de Riddes 1837 et 1846 comme chirurgien à Naples.</p></div>
+</div>
+<h2 id="recensements">Recensements</h2>
+<p>Sept recensements valaisans numérisés couvrent la période 1802–1870. Chacun est une photographie de la famille à un moment distinct : où ils vivaient, quelle profession ils avaient, combien ils étaient. Ensemble, ils tracent le mouvement des Clemenzo entre Ardon et Riddes, et permettent d&#39;identifier les personnes concrètes qui apparaissent dans les documents avec les individus de l&#39;arbre.</p>
+<h3 id="1802-riddes">1802 — Riddes</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Riddes">Recensement de Riddes 1802 — Archives de l&#39;État du Valais</a></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1802_riddes.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1802_riddes.png" alt="Recensement de Riddes 1802" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Aucune entrée Clemenzo/Clemenzoz n&#39;a été trouvée à Riddes cette année-là. Cela est cohérent avec l&#39;hypothèse que la famille vivait à Ardon en 1802 et a migré à Riddes à un moment entre 1802 et 1829.</p>
+<div class="callout callout--note">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>🔎 Une Cerisier à Riddes — possible famille de p58</span></div>
+  <div class="callout-body"><br>L&#39;entrée de la famille Cerisier dans ce recensement présente un intérêt indirect. La fille &quot;cattherine fls.&quot; aurait environ 16 ans si elle est née en 1786, correspondant exactement à l&#39;année de naissance de <strong>Marie Catherine Cerisier (p58)</strong>, future épouse de Jean Joseph Clemenzo et grand-mère de la branche argentine. → Voir H10</p></div>
+</div>
+<p><strong>Entrée Cerisier — d&#39;intérêt pour p58 :</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Nom</th><th>Prénom</th><th>Rôle</th></tr></thead><tbody><tr><td>Cerisier</td><td>Jaque</td><td>Chef</td></tr>
+<tr><td>[Sillio?]</td><td>cattherine</td><td>sa fame</td></tr>
+<tr><td>—</td><td>marie José</td><td>fille</td></tr>
+<tr><td>—</td><td>cattherine</td><td>fls.</td></tr></tbody></table></div>
+<p>Crochet = <strong>4</strong> personnes.</p>
+<p>La famille apparaît identifiée avec double nom de famille selon le patron habituel valaisan : <strong>Cerisier</strong> (nom de famille du père) × <strong>Sillio</strong> (nom de jeune fille de la mère) :</p>
+<div class="table-wrapper"><table><thead><tr><th>Prénom</th><th>Rôle</th></tr></thead><tbody><tr><td>Jaque</td><td>Père (chef) — Cerisier</td></tr>
+<tr><td>cattherine</td><td>sa fame — Sillio</td></tr>
+<tr><td>marie José</td><td>fille</td></tr>
+<tr><td>cattherine</td><td>fls.</td></tr></tbody></table></div>
+<p>Total : 4 personnes. La <strong>fille &quot;cattherine fls.&quot;</strong> aurait environ 16 ans si elle est née en 1786, correspondant exactement à l&#39;année de naissance de p58 Marie Catherine Cerisier. → Voir H10.</p>
+<hr>
+<h3 id="1802-ardon">1802 — Ardon</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Ardon">Recensement d&#39;Ardon 1802 — Archives de l&#39;État du Valais</a></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1802_ardon.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1802_ardon.png" alt="Recensement de 1802 à Ardon" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<div class="callout callout--note">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>🔎 Première apparition des Clemenzo dans les recensements du Valais</span></div>
+  <div class="callout-body"><br>Ceci est l&#39;enregistrement nominatif le plus ancien disponible de la famille. Les Clemenzo sont à Ardon depuis 1481 (Armorial Valaisan), mais ce sont les premières données concrètes d&#39;individus : Baptiste Clemenzo, sa femme Marie, et ses deux fils. L&#39;un de ces fils, Jean Joseph, deviendra le grand-père direct de la branche argentine.</p></div>
+</div>
+<p>Première apparition des Clemenzo dans les registres censitaires. Deux ménages consécutifs apparentés sont identifiés :</p>
+<p><strong>Ménage 1 — Baptiste Clemenzo (4 personnes) :</strong></p>
+<blockquote>
+<p><em>&quot;Baptiste Clemenzo et sa fame Marie [al/ab?] et leur enfans jean Baptiste, et jean joseph&quot;</em></p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>Prénom</th><th>Rôle</th></tr></thead><tbody><tr><td>Baptiste Clemenzo</td><td>Père (chef) — patriarche du clan, n.v. 1745–1755</td></tr>
+<tr><td>Marie [?]</td><td>sa fame (épouse) — nom de famille illisible</td></tr>
+<tr><td>Jean Baptiste</td><td>fils — le frère qui restera à Ardon</td></tr>
+<tr><td>Jean Joseph</td><td>fils — celui qui migrera à Riddes et sera grand-père de la branche argentine</td></tr></tbody></table></div>
+<p>Le &quot;4&quot; en marge indique le total : Baptiste + Marie + Jean Baptiste + Jean Joseph = 4 personnes. Le nom de famille de l&#39;épouse Marie n&#39;est pas lisible avec certitude.</p>
+<div class="callout callout--note">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>🔎 Jean Joseph en 1802 : le lien avec la ligne argentine</span></div>
+  <div class="callout-body"><br><strong>Jean Joseph</strong> (fils de Baptiste, Ardon 1802) a environ 22 ans ici. C&#39;est le même <strong>Jean Joseph Clemenzo (p57, n.v. 1780)</strong> qui apparaîtra 27 ans plus tard comme chef de ménage à Riddes 1829 — déjà marié à Catherine Cerisier, avec six enfants, et établi dans la commune où naîtra Francisco l&#39;émigrant. → Voir H9</p></div>
+</div>
+<p><strong>Ménage 2 — Jaque [R?] / Anne Marie Clemenzo (7 personnes) :</strong></p>
+<blockquote>
+<p><em>&quot;jaque [R?] et sa Mere cattherine Frailain et sa favome anne Marie Clemenzo — ces enfants: jaquerie, Friderich, Marie victoire, anne [+ plus]&quot;</em></p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th>Prénom</th><th>Rôle</th></tr></thead><tbody><tr><td>Jaque [R?]</td><td>Chef</td></tr>
+<tr><td>cattherine Frailain</td><td>sa Mere (mère)</td></tr>
+<tr><td>anne Marie Clemenzo</td><td>sa favome (épouse)</td></tr>
+<tr><td>Jaquerie</td><td>enfant</td></tr>
+<tr><td>Friderich</td><td>enfant</td></tr>
+<tr><td>Marie victoire</td><td>enfant</td></tr>
+<tr><td>anne</td><td>enfant</td></tr>
+<tr><td>[3+ plus]</td><td>(total = 7)</td></tr></tbody></table></div>
+<p><strong>Anne Marie Clemenzo</strong> a épousé un homme de nom [R?] (Richard ?). C&#39;est une Clemenzo de naissance — probablement fille ou sœur de Baptiste. Les deux ménages figurent consécutifs dans le recensement, suggérant proximité et parenté.</p>
+<hr>
+<h3 id="1829-riddes-deuxième-classe">1829 — Riddes (Deuxième Classe)</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1829_Martigny_Riddes">Recensement de Riddes 1829 — Archives de l&#39;État du Valais</a><br><strong>Cote :</strong> CH AEV, DI 3090, 1829, Martigny, Riddes — Pages 7 et 8</p>
+<p>Ce recensement était divisé en deux sections :</p>
+<ul>
+<li><strong>Première Classe :</strong> Bourgeois résidents dans la commune de Riddes</li>
+<li><strong>Deuxième Classe :</strong> Bourgeois ou communiers établis <em>hors</em> de la commune (&quot;Seconde Classe — Contenant les Burgeois ou Communiers établis hors de la Commune&quot;)</li>
+</ul>
+<p>Les Clemenzo des lignes 21–34 appartiennent à la <strong>Deuxième Classe</strong> : ce sont des bourgeois de Riddes mais qui vivent à Ardon. C&#39;est pourquoi la colonne &quot;Lieu du domicile&quot; dit &quot;Ardon&quot; et les observations disent &quot;porté à ardon&quot; (aussi enregistrés au recensement d&#39;Ardon).</p>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1829_riddes_2clase_1.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1829_riddes_2clase_1.png" alt="Recensement de Riddes 1829 — 2ème Classe, lignes 21–31" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure><br><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1829_riddes_2clase_2.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1829_riddes_2clase_2.png" alt="Recensement de Riddes 1829 — 2ème Classe, lignes 32–34" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p><strong>Interprétation</strong></p>
+<h4 id="famille-jean-joseph-lignes-2128">Famille Jean Joseph (lignes 21–28)</h4>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Profession</th><th>Facultés</th><th>Domicile</th><th>Observations</th></tr></thead><tbody><tr><td>21</td><td>Clemenzo</td><td>Jean Joseph</td><td>1780</td><td>laboureur</td><td>bonnes</td><td>Ardon</td><td>porté à ardon 1ère Classe</td></tr>
+<tr><td>22</td><td>Clemenzo Cerisier</td><td>Catherine Fortunée</td><td>1786</td><td>&quot;</td><td>&quot;</td><td>&quot;</td><td>— à ardon</td></tr>
+<tr><td>23</td><td>Clemenzo</td><td>Joseph Florentin</td><td>1805</td><td>étudiant</td><td>&quot;</td><td>Vienne (Autriche)</td><td>— à la 1ère classe ardon</td></tr>
+<tr><td>24</td><td>Clemenzo</td><td>François</td><td>1809</td><td>laboureur</td><td>&quot;</td><td>Ardon</td><td>porté à ardon 1ère Classe</td></tr>
+<tr><td>25</td><td>Clemenzo</td><td>Joseph Marie</td><td>1818</td><td>&quot;</td><td>&quot;</td><td>&quot;</td><td>— à ardon 1ère classe</td></tr>
+<tr><td>26</td><td>Clemenzo</td><td>Jeanne Marie</td><td>1813</td><td>&quot;</td><td>&quot;</td><td>&quot;</td><td>— à ardon 1ère Classe</td></tr>
+<tr><td>27</td><td>Clemenzo</td><td>Marie Elizabeth</td><td>1821</td><td>&quot;</td><td>&quot;</td><td>&quot;</td><td>— à ardon [id]</td></tr>
+<tr><td>28</td><td>Clemenzo</td><td>Henriette</td><td>1815</td><td>&quot;</td><td>&quot;</td><td>&quot;</td><td>— à ardon [id]</td></tr></tbody></table></div>
+<p><strong>Correspondance avec l&#39;arbre :</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>ID</th><th>Nom dans l&#39;arbre</th><th>Qui est-ce dans l&#39;histoire familiale</th></tr></thead><tbody><tr><td>21</td><td>p57</td><td>Jean Joseph Clemenzo</td><td><strong>Grand-père de la branche argentine.</strong> Nom complet confirmé. Au recensement de 1846 figure abrégé comme &quot;Joseph&quot;.</td></tr>
+<tr><td>22</td><td>p58</td><td>Catherine Fortuneé &quot;Pirisier&quot;</td><td><strong>Grand-mère de la branche argentine.</strong> Vrai nom de famille confirmé : <strong>Cerisier</strong>. &quot;Pirisier&quot; dans l&#39;arbre est erreur de transcription.</td></tr>
+<tr><td>23</td><td>p72</td><td>Joseph Florentine Clemenzo</td><td>Fils aîné — en 1829 était <strong>étudiant à Vienne, Autriche</strong>. Donnée extraordinaire pour un fils de laboureur.</td></tr>
+<tr><td>24</td><td>p36</td><td>François Clemenzoz</td><td><strong>Père de Francisco l&#39;émigrant.</strong> ✓</td></tr>
+<tr><td>25</td><td>p73</td><td>Joseph Marie Clemenzo</td><td>✓</td></tr>
+<tr><td>26</td><td>p74</td><td>Janne Marie Clemenzo</td><td>✓</td></tr>
+<tr><td>27</td><td>p76</td><td>Marie Elizabet Clemenzo</td><td>✓</td></tr>
+<tr><td>28</td><td>p75</td><td>Marie Henriette Clemenzo</td><td>✓ — épousera en 1840 Jean-François Battnier et s&#39;installera à Saxon</td></tr></tbody></table></div>
+<p><strong>Notes :</strong></p>
+<ul>
+<li><strong>&quot;Jeanne&quot; (n.1820) n&#39;apparaît pas.</strong> Si elle était née en 1820, elle aurait 9 ans et devrait être listée. Son absence confirme qu&#39;elle est née <em>après</em> 1829 — le &quot;1820&quot; du recensement de 1850 est une erreur du recenseur.</li>
+<li>La colonne &quot;Observations&quot; avec <em>&quot;porté à ardon&quot;</em> indique double registre : bourgeois de Riddes avec résidence aussi registrés à Ardon.</li>
+</ul>
+<h4 id="famille-jean-claude-lignes-2934-immédiatement-en-dessous">Famille Jean Claude (lignes 29–34) — immédiatement en dessous</h4>
+<p>Listage consécutif à la famille de Jean Joseph, suggérant parenté. <strong>Jean Claude Clemenzo (n.1773, notaire)</strong> est un personnage clé : son éducation et position sociale le distinguent du reste du clan. → H6</p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Profession</th><th>Facultés</th><th>Domicile</th><th>Observations</th></tr></thead><tbody><tr><td>29</td><td>Clemenzo</td><td>Jean Claude</td><td>1773</td><td>notaire</td><td>..</td><td>..</td><td>= à ardon [id]</td></tr>
+<tr><td>30</td><td>Clemenzo</td><td>Marie Marguerite</td><td>1801</td><td>laboureure</td><td>..</td><td>..</td><td>— à ardon [id]</td></tr>
+<tr><td>31</td><td>Clemenzo</td><td>Marie Elizabeth</td><td>1804</td><td>..</td><td>..</td><td>..</td><td>— à ardon [id]</td></tr>
+<tr><td>32</td><td>+ Clemenzo</td><td>Anne Marie</td><td>1808</td><td>laboureure</td><td>bonnes</td><td>Ardon</td><td>portée à ardon 1re Classe</td></tr>
+<tr><td>33</td><td>× Clemenzo</td><td>Marie Catherine</td><td>1811</td><td>..</td><td>..</td><td>..</td><td>portée à ardon 1re Classe</td></tr>
+<tr><td>34</td><td>× Clemenzo</td><td>Marie Therese</td><td>1814</td><td>..</td><td>..</td><td>..</td><td>— à ardon 1er[?]</td></tr></tbody></table></div>
+<p>Jean Claude (notaire, n.1773) avec cinq filles : Marie Marguerite (1801), Marie Elizabeth (1804), Anne Marie (1808), Marie Catherine (1811), Marie Therese (1814). Son épouse n&#39;apparaît pas. Les symboles + et × aux lignes 32–34 indiquent probablement l&#39;état civil (mariée / veuve). Sa relation avec le ménage de Jean Joseph (n.1780) n&#39;est pas documentée.</p>
+<hr>
+<h3 id="1829-ardon-première-classe">1829 — Ardon (Première Classe)</h3>
+<p><strong>Source :</strong> Recensement d&#39;Ardon 1829 — Archives de l&#39;État du Valais (Première Classe : résidents d&#39;Ardon)</p>
+<p>Ce recensement est le miroir du précédent : tandis que celui de Riddes 1829 enregistrait la famille en Deuxième Classe (bourgeois de Riddes domiciliés à Ardon), celui-ci les montre comme résidents effectifs d&#39;Ardon.</p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1829_ardon_1clase_1.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1829_ardon_1clase_1.png" alt="Recensement d'Ardon 1829 — 1ère Classe, bloc Jean Joseph *1761 et Jean Joseph *1780" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<h4 id="jean-joseph-clemenzo-n1761-branche-différente">Jean Joseph Clemenzo n.1761 — branche différente</h4>
+<p>Un <strong>second Jean Joseph Clemenzo</strong> (n.1761), Conseiller. Ce n&#39;est pas p57. Les entrées avec nom de famille <strong>Balleij</strong> (l.23) et <strong>Loye</strong> (l.25) sont gendre et petit-fils respectivement — fruit de mariages de filles de ce Jean Joseph. Branche collatérale (voir H9).</p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Profession</th></tr></thead><tbody><tr><td>21</td><td>Clemenzo</td><td>Jean Joseph</td><td><strong>1761</strong></td><td>Conseiller</td></tr>
+<tr><td>22</td><td>[Clemenzo]</td><td>Marie Catherine</td><td>1769</td><td>Servante</td></tr>
+<tr><td>23</td><td>Balleij</td><td>François Joseph</td><td>1791</td><td>Laboureur</td></tr>
+<tr><td>24</td><td>Clemenzo</td><td>Anne Catherine</td><td>1784</td><td>—</td></tr>
+<tr><td>25</td><td>Loye</td><td>François Joseph</td><td>1820</td><td>—</td></tr>
+<tr><td>26</td><td>Clemenzo</td><td>Marie Crescenze</td><td>1819</td><td>—</td></tr>
+<tr><td>27</td><td>Clemenzo</td><td>Joseph Marie</td><td>1793</td><td>—</td></tr>
+<tr><td>28</td><td>Clemenzo</td><td>Joseph Marie fils</td><td>1819</td><td>—</td></tr></tbody></table></div>
+<h4 id="famille-jean-joseph-n1780-continuation-en-page-suivante">Famille Jean Joseph n.1780 — continuation en page suivante</h4>
+<p>Ceci est le ménage de <strong>Jean Joseph Clemenzo (p57, grand-père de la branche argentine)</strong>, avec son épouse Catherine et ses enfants. Le nom de family de Catherine apparaît ici comme <strong>&quot;Pirisier&quot;</strong> — écriture ambiguë que l&#39;acte de mariage de p75 (1840) et le recensement de Riddes 1850 confirment définitivement comme <strong>Cerisier</strong>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Profession</th><th>Observations</th></tr></thead><tbody><tr><td>[Cerisier]</td><td>Catherine Fortunée</td><td>1786</td><td>Laboureur</td><td>Ardon</td></tr>
+<tr><td>Clemenzo</td><td>Joseph Florentin</td><td>1805</td><td>Etudient</td><td><strong>à Fribourg en Breisgau</strong></td></tr>
+<tr><td>Clemenzo</td><td>François</td><td>1809</td><td>Laboureur</td><td>—</td></tr>
+<tr><td>Clemenzo</td><td>Joseph Marie</td><td>1818</td><td>—</td><td>—</td></tr>
+<tr><td>Clemenzo</td><td>Jonne Marie</td><td>1813</td><td>—</td><td>—</td></tr>
+<tr><td>Clemenzo</td><td>Enrijette</td><td>1815</td><td>—</td><td>—</td></tr>
+<tr><td>Clemenzo</td><td>Marie Helizabet</td><td>1821</td><td>—</td><td>—</td></tr></tbody></table></div>
+<p><strong>Discordance Joseph Florentin :</strong> le recensement de Riddes 1829 le place à &quot;Vienne (Autriche)&quot; tandis que celui-ci (Ardon 1829) dit &quot;Fribourg en Breisgau&quot; (Freiburg im Breisgau, Allemagne, ville universitaire depuis 1457). Explications possibles : les deux recensements ne sont pas exactement simultanés et il s&#39;est déplacé entre institutions, ou l&#39;un des recenseurs a commis une erreur. Freiburg im Breisgau est bien plus accessible depuis le Valais que Vienne.</p>
+<h4 id="jean-joseph-et-jean-baptiste-à-ardon-1829-premier-registre-conjoint">Jean Joseph et Jean Baptiste à Ardon 1829 — premier registre conjoint</h4>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1829_ardon_1clase_2.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1829_ardon_1clase_2.png" alt="Recensement d'Ardon 1829 — 1ère Classe : Jean Joseph, Jean Baptiste et Baptiste Père" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Ceci est le <strong>premier recensement où Jean Joseph (p57) et Jean Baptiste Clemenzo apparaissent ensemble</strong> dans le même document. En 1802 seul le ménage de Baptiste avec les deux fils nommés est visible ; ici, en 1829, chacun apparaît déjà comme adulte avec sa propre situation — et son père est toujours vivant, dans le ménage de son fils Jean Baptiste.</p>
+<div class="callout callout--warning">
+  <div class="callout-title"><span class="callout-icon">▲</span><span>⚠️ L&#39;année &quot;1765&quot; remet en question l&#39;hypothèse de parenté</span></div>
+  <div class="callout-body"><br>La ligne 13 enregistre &quot;Jn. Baptiste Père&quot; avec année de naissance <strong>1765</strong>. S&#39;il était correct, il aurait eu Jean Baptiste (v. 1774) à 9 ans et Jean Joseph (v. 1780) à 15 — âges impossibles pour être père. Mais il y a une autre lecture : peut-être les données sont correctes et la relation père-fils que j&#39;assume en H9 est forcée. Sans acte de baptême qui nomme explicitement le père, le lien entre Baptiste et Jean Joseph est une hypothèse de nom et proximité censitaire, pas un fait établi. Pour le résoudre, il faut : l&#39;acte de baptême de Jean Joseph (v. 1780) et celui de Jean Baptiste (v. 1774) dans les registres parroquiaux d&#39;Ardon, et l&#39;acte de baptême ou mariage du propre Baptiste pour connaître sa vraie année de naissance.</p></div>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>Entrée</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Notes</th></tr></thead><tbody><tr><td>—</td><td>Clemenzo</td><td><strong>Jean Joseph</strong></td><td><strong>1780</strong></td><td>p57 — grand-père de la branche argentine ; en 1829 est bourgeois de Riddes domicilié à Ardon</td></tr>
+<tr><td>—</td><td>Clemenzo + Galliard</td><td><strong>Jean Baptiste</strong></td><td>v. 1774</td><td>Le frère qui est resté à Ardon ; ancêtre de Jean-Yves</td></tr>
+<tr><td>—</td><td>Galliard</td><td>anne Marguerite</td><td>1797</td><td>Épouse de Jean Baptiste (nom de famille : <strong>Galliard</strong>, variante de Gaillard)</td></tr>
+<tr><td>9</td><td>Clemenzo</td><td>Jean Baptiste</td><td>1822</td><td>Fils ✓ arbre Jean-Yves</td></tr>
+<tr><td>10</td><td>Clemenzo</td><td>Jn. Jos. Danielle</td><td>1825</td><td>Fils — <strong>ne figure pas dans l&#39;arbre de Jean-Yves</strong> (probablement mort jeune)</td></tr>
+<tr><td>11</td><td>Clemenzo</td><td>Marie helizabet</td><td>1820</td><td>Fille ✓ arbre Jean-Yves</td></tr>
+<tr><td>12</td><td>Clemenzo</td><td>Marie Veronique</td><td>1828</td><td>Fille ✓ arbre Jean-Yves</td></tr>
+<tr><td>13</td><td>Clemenzo</td><td><strong>Jn. Baptiste Père</strong></td><td><strong>1765</strong></td><td>Baptiste Clemenzo du recensement 1802 — voir callout ci-dessus</td></tr></tbody></table></div>
+<p><strong>Note :</strong> Le nom de famille de l&#39;épouse de Jean Baptiste est <strong>Galliard</strong> (Jean-Yves l&#39;appelle &quot;Gaillard&quot; — variante orthographique de la même famille). Le nom &quot;anne Marguerite&quot; vs &quot;Anne-Marie&quot; dans l&#39;arbre de Jean-Yves est une discordance mineure, possiblement nom composé.</p>
+<h4 id="jean-claude-clemenzo-branche-notariale-ardon-1829">Jean Claude Clemenzo — branche notariale (Ardon 1829)</h4>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1829_ardon_1clase_3.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1829_ardon_1clase_3.png" alt="Recensement d'Ardon 1829 — 1ère Classe, famille Jean Claude Clemenzo" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Jean Claude apparaît ici comme n.1772 (vs n.1773 au recensement de Riddes 1829) — différence d&#39;une année, erreur habituelle de transcription. Le recensement d&#39;Ardon révèle une <strong>sixième fille</strong> (l.20, n.1810) non enregistrée dans celui de Riddes.</p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Profession</th></tr></thead><tbody><tr><td>14</td><td>Clemenzo</td><td>Jean Claude</td><td><strong>1772</strong></td><td>Notaire</td></tr>
+<tr><td>15</td><td>Clemenzo</td><td>Marie Marguerite</td><td>1801</td><td>Labr.</td></tr>
+<tr><td>16</td><td>Clemenzo</td><td>Marie helizaBet</td><td>1804</td><td>—</td></tr>
+<tr><td>17</td><td>Clemenzo</td><td>Anne Marie</td><td>1808</td><td>—</td></tr>
+<tr><td>18</td><td>Clemenzo</td><td>Marie Catherine</td><td>1811</td><td>—</td></tr>
+<tr><td>19</td><td>Clemenzo</td><td>Marie Therese</td><td>1814</td><td>—</td></tr>
+<tr><td>20</td><td>Clemenzo</td><td>[nom illisible]</td><td>1810</td><td>—</td></tr></tbody></table></div>
+<hr>
+<h3 id="1837-riddes">1837 — Riddes</h3>
+<p><strong>Source :</strong> Recensement de Riddes 1837 — Archives de l&#39;État du Valais (1ère Classe : résidents)<br><strong>Cote :</strong> CH AEV, DI 3090, 1837, Martigny, Riddes — Page 46</p>
+<div class="callout callout--note">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>Les Clemenzo s&#39;installent définitivement à Riddes</span></div>
+  <div class="callout-body"><br>En 1829, ils figuraient en 2ème Classe — bourgeois de Riddes mais vivant à Ardon. En 1837, ils passent à 1ère Classe : la famille s&#39;est établie à Riddes entre les deux dates. C&#39;est le moment où <strong>Jean Joseph (p57)</strong> et sa famille s&#39;enracinent dans la commune où naîtra <strong>François (p26)</strong>, le futur émigrant.</p></div>
+</div>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp" alt="Recensement de Riddes 1837" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<div class="table-wrapper"><table><thead><tr><th>Nom</th><th>Prénom</th><th>Sexe</th><th>Rôle</th><th>ID</th></tr></thead><tbody><tr><td>Clemenzo</td><td>Jean Joseph</td><td>M</td><td>père</td><td>p57</td></tr>
+<tr><td>Clemenzo</td><td>Marie Catherine</td><td>F</td><td>la femme</td><td>p58</td></tr>
+<tr><td>Clemenzo</td><td>Janne Marie</td><td>F</td><td>fille</td><td>p74</td></tr>
+<tr><td>Clemenzo</td><td>Marie Henriette</td><td>F</td><td>fille</td><td>p75</td></tr>
+<tr><td>Clemenzo</td><td>Marie Elisabeth</td><td>F</td><td>fille</td><td>p76</td></tr>
+<tr><td>Clemenzo</td><td>François</td><td>M</td><td>fils</td><td>p36</td></tr></tbody></table></div>
+<p><strong>Interprétation</strong></p>
+<p><strong>Notes :</strong></p>
+<ul>
+<li><strong>p73 Joseph Marie (n.1818)</strong> n&#39;apparaît pas — il ne vivait plus dans le ménage paternel.</li>
+<li><strong>p72 Joseph Florentin</strong> ne figure pas dans le ménage, mais apparaît en 4me Classe (voir ci-dessous).</li>
+<li>Ce format censal n&#39;inclut pas de colonne pour le nom de jeune fille, donc il ne permet pas de confirmer l&#39;orthographe de p58. La preuve définitive de <strong>Cerisier</strong> provient du recensement de Riddes 1829 et de l&#39;acte de mariage de p75 (1840).</li>
+<li>Une observation marginale sur la dernière ligne semble indiquer &quot;à Ardon&quot; — possiblement François était aussi enregistré à Ardon pour sa bourgeoisie.</li>
+</ul>
+<h4 id="4me-classe-absents-de-riddes-1837">4me Classe — absents de Riddes (1837)</h4>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo-1837-riddes-ausentes.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo-1837-riddes-ausentes.png" alt="Recensement de Riddes 1837 — 4me Classe, absents" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>La 4me Classe enregistre &quot;les ressortissans de la commune absens du pays&quot; — bourgeois de Riddes résidant hors du canton. La seule entrée Clemenzo :</p>
+<div class="table-wrapper"><table><thead><tr><th>Nom</th><th>Prénom</th><th>Profession</th><th>Lieu</th><th>Observations</th></tr></thead><tbody><tr><td>Clémenzo</td><td>Florentin</td><td>Chirurgien</td><td>à Naples</td><td>communier + NJ—</td></tr></tbody></table></div>
+<div class="callout callout--tip">
+  <div class="callout-title"><span class="callout-icon">✦</span><span>🔎 Joseph Florentin : du laboureur au chirurgien à Naples</span></div>
+  <div class="callout-body"><br><strong>Joseph Florentin (p72)</strong>, fils de Jean Joseph le laboureur, est passé de &quot;étudiant&quot; en 1829 à exercer la médecine en Italie en 1837. Une éducation médicale en Europe centrale dans la première moitié du XIXe siècle était coûteuse et peu commune pour la famille d&#39;un laboureur du Valais. L&#39;observation &quot;communier&quot; confirme qu&#39;il maintient ses droits de bourgeoisie à Riddes. → H6</p></div>
+</div>
+<hr>
+<h3 id="1846-riddes">1846 — Riddes</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1846_Martigny_Riddes">Recensement de Riddes 1846 — Archives de l&#39;État du Valais</a><br><strong>Cote :</strong> CH AEV, DI 3090, 1846, Martigny, Riddes — Pages 1 et 2</p>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1846_riddes_1.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1846_riddes_1.png" alt="Recensement de Riddes 1846 — lignes 44–45" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure><br><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1846_riddes_2.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1846_riddes_2.png" alt="Recensement de Riddes 1846 — ligne 46" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Origine</th><th>Observation</th></tr></thead><tbody><tr><td>44</td><td>Clemenzoz</td><td>Joseph</td><td>Riddes</td><td></td></tr>
+<tr><td>45</td><td>Clemenzoz</td><td>Catherine</td><td>Riddes</td><td>sa femme</td></tr>
+<tr><td>46</td><td>Clemenzo</td><td>Jeanne</td><td>Riddes</td><td>fille majeure</td></tr></tbody></table></div>
+<p><strong>Interprétation</strong></p>
+<p>Les trois entrées forment un ménage : Joseph (l.44) = <strong>p57 Jean Joseph Clemenzo</strong>, vivant en 1846. Catherine (l.45) = <strong>p58 Marie Catherine Cerisier</strong>, notée comme &quot;sa femme&quot;. Jeanne (l.46) = fille adulte célibataire, la même qui apparaît au recensement de Riddes 1850.</p>
+<p><strong>Remarque sur le nom de p57 :</strong> Il figure ici comme <strong>&quot;Joseph&quot;</strong> (sans &quot;Jean&quot;). Le document S 77 (1851) l&#39;appelle aussi &quot;Joseph Clemenzoz de Riddes&quot;. L&#39;arbre l&#39;enregistre comme &quot;Jean Joseph&quot; — le recensement de 1829 confirme le nom complet. Probable que le recenseur de 1846 l&#39;ait noté abrégé. À confirmer dans les registres parroquiaux.</p>
+<h4 id="4me-classe-absents-de-riddes-1846">4me Classe — absents de Riddes (1846)</h4>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo-1846-riddes-ausentes.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo-1846-riddes-ausentes.png" alt="Recensement de Riddes 1846 — 4me Classe, absents" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>La même 4me Classe du recensement de février 1846. Ligne 7 :</p>
+<div class="table-wrapper"><table><thead><tr><th>N°</th><th>Nom</th><th>Prénom</th><th>Profession</th><th>Lieu</th></tr></thead><tbody><tr><td>7</td><td>Clemenzoz</td><td>Florentin</td><td>Chirurgien</td><td>Naples</td></tr></tbody></table></div>
+<p><strong>Joseph Florentin (p72)</strong> était toujours à Naples en 1846. De 1837 jusqu&#39;en février 1846 au moins, il a exercé comme chirurgien en Italie — une période minimale de 9 ans hors de Riddes. Il n&#39;y a aucune trace de lui dans les recensements ultérieurs disponibles.</p>
+<hr>
+<h3 id="1846-ardon">1846 — Ardon</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1846_Conthey_Ardon">Recensement d&#39;Ardon 1846 — Archives de l&#39;État du Valais</a><br><strong>Cote :</strong> CH AEV, DI 3090, 1846, Conthey, Ardon</p>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1856_ardon_1.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1856_ardon_1.png" alt="Recensement d'Ardon 1846" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure><br><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1856_ardon_2.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1856_ardon_2.png" alt="Recensement d'Ardon 1846" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Toutes les entrées ont comme origine déclarée <strong>D&#39;Ardon</strong>.</p>
+<p><em>[Tableau de 23 entrées]</em> Voir le document original pour la liste complète des entrées du recensement d&#39;Ardon 1846.</p>
+<p><strong>Interprétation</strong></p>
+<h4 id="familles-identifiées-hypothèses-basées-sur-ce-recensement">Familles identifiées — hypothèses basées sur ce recensement</h4>
+<p>Les groupes se délimitent par les marqueurs de rôle (père/mère initient chaque unité domestique). Les attributions d&#39;identité sont des hypothèses, non des données confirmées.</p>
+<hr>
+<h3 id="1850-riddes">1850 — Riddes</h3>
+<p><strong>Source :</strong> <a href="https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1850_Martigny_Riddes">Recensement de Riddes 1850 — Archives de l&#39;État du Valais</a><br><strong>Cote :</strong> CH AEV, DI 3090, 1850, Martigny, Riddes — Page 3</p>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/censo_1850_riddes.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/censo_1850_riddes.png" alt="Recensement de Riddes 1850 — lignes 58–60" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<div class="table-wrapper"><table><thead><tr><th>Ligne</th><th>Nom</th><th>Prénom</th><th>Année naiss.</th><th>Sexe</th><th>Profession</th></tr></thead><tbody><tr><td>58</td><td>Clemenzoz Cerisier</td><td>Marie Catherine</td><td>1786</td><td>Femenino</td><td>Agricultrice</td></tr>
+<tr><td>59</td><td>Clemenzoz</td><td>Jeanne</td><td>1820</td><td>Femenino</td><td>Agricultrice</td></tr>
+<tr><td>60</td><td>Clemenzoz</td><td>Marie Josephine</td><td>1844</td><td>Femenino</td><td>—</td></tr></tbody></table></div>
+<p><strong>Interprétation</strong></p>
+<div class="callout callout--tip">
+  <div class="callout-title"><span class="callout-icon">✦</span><span>✓ Le nom de famille de p58 est finalement confirmé</span></div>
+  <div class="callout-body"><br>La ligne 58 utilise le double nom <strong>Clemenzoz Cerisier</strong> — le schéma valaisan de nom marié + nom de jeune fille. Ceci résout des décennies d&#39;ambiguïté : le nom de famille de <strong>Marie Catherine (p58)</strong>, grand-mère de la branche argentine, n&#39;était pas &quot;Pirisier&quot; mais <strong>Cerisier</strong>. Son mari p57 est décédé entre 1846 et 1850 — elle apparaît ici sans lui, comme veuve agricultrice.</p></div>
+</div>
+<hr>
+<h3 id="1870-riddes">1870 — Riddes</h3>
+<p><strong>Source :</strong> Recensement fédéral de la population au 1er décembre 1870 — Archives de l&#39;État du Valais<br><strong>Cote :</strong> CH AEV, DI 3090, 1870, Martigny, Riddes — Bulletin N.° 84</p>
+<p><strong>Enregistrement original</strong></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp" alt="Recensement de Riddes 1870" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Recensement fédéral suisse : photographie du ménage de <strong>p36 François Clemenzoz</strong> la nuit du 30 novembre au 1er décembre 1870.</p>
+<div class="table-wrapper"><table><thead><tr><th>N°</th><th>Nom</th><th>Prénom</th><th>Pos.</th><th>Naissance</th><th>E. civil</th><th>Origine</th><th>Sexe</th></tr></thead><tbody><tr><td>1</td><td>Clemenzo</td><td>François</td><td>Chef</td><td>9 Avril 1809</td><td>Marié</td><td>Ardon</td><td>M</td></tr>
+<tr><td>2</td><td>[Clemenzo]</td><td>Marie-Stalder</td><td>Femme</td><td>5 Mai 1828</td><td>Mariée</td><td>Riddes</td><td>F</td></tr>
+<tr><td>3</td><td>Clemenzo</td><td>[José?]</td><td>Fils</td><td>[v. 1855–1856]</td><td>Célibat.</td><td>Riddes</td><td>M</td></tr>
+<tr><td>4</td><td>Clemenzo</td><td>François</td><td>Fils</td><td>[v. 1858]</td><td>Célibat.</td><td>Riddes</td><td>M</td></tr>
+<tr><td>5</td><td>Clemenzo</td><td>[Etienne?]</td><td>Fils</td><td>[v. 1862]</td><td>Célibat.</td><td>Riddes</td><td>M</td></tr>
+<tr><td>6</td><td>Clemenzo</td><td>[Joséphine?]</td><td>Fille</td><td>[v. 1843]</td><td>Célibat.</td><td>Riddes</td><td>F</td></tr>
+<tr><td>7</td><td>Clemenzo</td><td>[?]</td><td>Fille</td><td>[?]</td><td>Célibat.</td><td>Riddes</td><td>F</td></tr></tbody></table></div>
+<p><strong>Interprétation</strong></p>
+<p><strong>Correspondance avec l&#39;arbre :</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Entrée</th><th>ID</th><th>Remarque</th></tr></thead><tbody><tr><td>François</td><td>p36</td><td>Naissance <strong>9 Avril 1809</strong> ✓ — origine Ardon ✓</td></tr>
+<tr><td>Marie-Stalder</td><td>p37</td><td><strong>5 Mai 1828</strong> ✓ — correspond avec l&#39;arbre</td></tr>
+<tr><td>[José?]</td><td>p28</td><td>José Clemenzo n.1856 — ici v. 14–15 ans</td></tr>
+<tr><td>François fils</td><td>p26</td><td><strong>François Clemenzo (n.1858)</strong> — le futur émigrant en Argentine, ici v. 12 ans</td></tr>
+<tr><td>[Etienne?]</td><td>p40</td><td>Etienne Clemenzo n.1862 — v. 8 ans</td></tr>
+<tr><td>[Joséphine?]</td><td>p77</td><td>Joséphine Clemenzo n.1843 — v. 27 ans, célibataire, vivant avec ses parents ✓</td></tr></tbody></table></div>
+<div class="callout callout--note">
+  <div class="callout-title"><span class="callout-icon">ℹ</span><span>🔎 François / Francisco a 12 ans à ce recensement</span></div>
+  <div class="callout-body"><br>L&#39;entrée 4 est <strong>p26 François Clemenzo (n.1858)</strong> — le même qui émigrera en Argentine vers 1880 et fondera la branche familiale à Entre Ríos sous le nom <strong>Francisco Clemenzo</strong>. Lors du dénombrement, il vivait à Riddes avec ses parents, avait environ 12 ans, et l&#39;Atlantique n&#39;était probablement qu&#39;une rumeur lointaine.</p></div>
+</div>
+<p><strong>Notes :</strong></p>
+<ul>
+<li><strong>p36 était vivant</strong> en décembre 1870. Le document D 10/86 (11/01/1874) le mentionne déjà au passé — il est décédé entre janvier 1871 et janvier 1874.</li>
+<li>La présence de <strong>p77 Joséphine</strong> au foyer paternel en 1870 confirme qu&#39;elle était fille de p36, cohérent avec H8.</li>
+<li>L&#39;année de naissance de <strong>p37 Marie Louise Stalder</strong> apparaît comme <strong>5 Mai 1828</strong> — correspond avec l&#39;arbre ✓.</li>
+<li>L&#39;entrée 7 correspond à un enfant supplémentaire non encore identifié (p78 ou p79 dans l&#39;arbre).</li>
+</ul>
+<hr>
+<h2 id="armorial-valaisan">Armorial Valaisan</h2>
+<p>L&#39;arbre généalogique de Jean-Yves cite l&#39;<em>Armorial Valaisan, Sion et Zurich, 1946, p. 63</em> comme source de base. Il existe deux éditions pertinentes avec des entrées distinctes pour la famille Clemenzo.</p>
+<div style="max-width: 320px; margin: 24px auto;">
+
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/clemenzo-def.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/clemenzo-def.png" alt="Armorial Valaisan de la famille Clemenzo" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+</div>
+
+<blockquote>
+<p><strong>Blason adopté en 1977. L&#39;ancre est un des attributs iconographiques de <em>saint Clément</em> ; la clé est tirée du blason d&#39;armes de la commune d&#39;Ardon et se souvient aussi de <em>Saint-Pierre-de-Clages</em>, où la famille est mentionnée au XVIe siècle</strong></p>
+</blockquote>
+<h3 id="édition-1946-entrée-clemenz-clemenzo">Édition 1946 — entrée CLEMENZ / CLEMENZO</h3>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/armorial-valaisan-1946-clemenz-clemenzo.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/armorial-valaisan-1946-clemenz-clemenzo.png" alt="Armorial Valaisan 1946 — entrée Clemenz/Clemenzo" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Édition bilingue (français / allemand). L&#39;entrée CLEMENZ/CLEMENZO couvre toutes les variantes du nom et distingue deux branches par bourgeoisie :</p>
+<blockquote>
+<p><em>&quot;B.: Clemenz: Staldenried, Viège, etc.; Clemenzo: <strong>Ardon, Riddes</strong>.&quot;</em></p>
+</blockquote>
+<p>Ceci confirme explicitement que la branche <strong>Clemenzo</strong> a sa bourgeoisie à <strong>Ardon</strong> et <strong>Riddes</strong> — exactement la branche que nous enquêtons.</p>
+<p><strong>Données historiques documentées :</strong></p>
+<ul>
+<li><strong>1481</strong> — Guillaume et Perrod <em>Clemenczoz</em> figurent comme habitants et bourgeois d&#39;Ardon-Chamoson. Première mention documentée de la famille à Ardon, 321 ans avant le recensement 1802.</li>
+<li><strong>1517</strong> — Jean <em>Clementii</em> figure à Riddes et Leytron (dans le cadre d&#39;une dispute avec les Supersaxo). Première mention à Riddes.</li>
+<li><strong>1500–1514</strong> — Diverses mentions de clercs Clemenz/Clemenzi à Leytron et Fully.</li>
+<li><strong>1569</strong> — André <em>Clemency</em>, fils d&#39;André, reconnaissance au Chapitre de Sion pour le prieuré de Saint-Pierre-de-Clages.</li>
+<li><strong>1652</strong> — André <em>Clemence</em>, syndic d&#39;Ardon.</li>
+<li><strong>1795</strong> — <strong>Claude-Antoine Clemenchoz, lieutenant vidomnal d&#39;Ardon.</strong> Charge de magistrat local à Ardon, sept ans avant le recensement 1802. Contemporain de Baptiste Clemenzo — possible parent direct ou même Baptiste sous variante de nom.</li>
+</ul>
+<h3 id="édition-ultérieure-post-1977-entrée-clemenzo-famille-dardon">Édition ultérieure (post-1977) — entrée CLEMENZO (Famille d'Ardon)</h3>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/armorial-valaisan-clemenzo-ardon.png')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/armorial-valaisan-clemenzo-ardon.png" alt="Armorial Valaisan — entrée Clemenzo, Famille d'Ardon" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      </figure></p>
+<p>Édition plus récente (les armes ont été adoptées en 1977). Article exclusif pour la branche Clemenzo d&#39;Ardon. Mentionne Hyacinthe Clemenzo (voir section suivante) et Frédéric Clemenzo (1893–1980), député 1925–1929 et 1933–1937, lieutenant-colonel, président cantonal de tireurs. Peut être descendant de Jean-André via Hyacinthe, ou de Jean-Baptiste *1774 via Frédéric *1832 — à vérifier.</p>
+<hr>
+<h2 id="les-mémoires-de-hyacinthe-clemenzo">Les mémoires de Hyacinthe Clemenzo</h2>
+<p>Hyacinthe Clemenzo a laissé ses mémoires écrits : <em>Souvenirs d&#39;un officier valaisan au service de France</em>, publiés dans les <em>Annales valaisannes</em> de 1957. C&#39;est une source exceptionnelle : elle enregistre sa filiation exacte et permet de contextualiser les Clemenzo d&#39;Ardon dans les générations avant les recensements.</p>
+<p>Une note au bas du Chapitre I confirme :</p>
+<blockquote>
+<p>*&quot;Fils de <strong>Jean-André Clemenzo (1716–1812)</strong> et de <strong>Marie-Marguerite Favre (1728–1813)</strong>.&quot;*</p>
+</blockquote>
+<p>Hyacinthe <strong>n&#39;est pas fils de Baptiste Clemenzo</strong> — il est fils de <strong>Jean-André Clemenzo *1716</strong>, un patriarche distinct du même endroit. Ceci écarte l&#39;hypothèse précédente que Hyacinthe était frère de Jean-Baptiste et Jean-Joseph.</p>
+<p>Jean-André est né en <strong>1716</strong> et a vécu jusqu&#39;à <strong>1812</strong> — il était vivant lors du recensement de 1802 (86 ans). Hyacinthe est né en 1781 quand Jean-André avait 65 ans — âge inhabituel mais documenté dans les familles longévives du Valais.</p>
+<p><strong>Données biographiques de Hyacinthe :</strong></p>
+<ul>
+<li>Est né le <strong>17 avril 1781</strong> à Ardon</li>
+<li>A étudié à l&#39;Abbaye de Saint-Maurice ; a obtenu le diplôme de notaire à l&#39;automne 1799 (le premier délivré sous le nouveau régime en Valais)</li>
+<li>S&#39;est marié en novembre 1801 à Sion ; enfants : <strong>Virginie</strong> et <strong>Patience</strong></li>
+<li>S&#39;est enlisté en 1806 dans le bataillon valaisan pour Napoléon ; 20 ans de campagne en Europe</li>
+<li>Veuf ; second mariage en 1821 ; enfants : <strong>Camille et Etienne</strong> (à qui il dédie les mémoires en 1854)</li>
+<li>Cousin germain de Nicolas Favre, chanoine, curé de Liddes (branche maternelle Favre)</li>
+<li>La famille possédait un <strong>mayen à Montot</strong> (alpage sur Ardon)</li>
+<li>Est mort le 11 juillet 1862 à Mâcon</li>
+</ul>
+<p>Les mémoires ont été préservés par <strong>M. Raymond de Laroche-Clémenso</strong> (Lyon), marié avec une arrière-petite-fille de Hyacinthe.</p>
+<p><strong>Remarque sur Jean-André et Baptiste :</strong> Les deux sont des patriarches Clemenzo coexistants à Ardon — Jean-André (n.1716, †1812) et Baptiste (n.v. 1745–1755, présent en 1802). Le fait qu&#39;ils partagent un nom et une localité suggère qu&#39;ils sont parents, mais il n&#39;y a pas de documentation établissant la relation exacte. À Ardon coexistaient plusieurs noyaux du nom Clemenzo depuis le XVe siècle ; que deux soient contemporains n&#39;implique pas un lien direct documenté.</p>
+<hr>
+<h2 id="larbre-de-jean-yves">L'arbre de Jean-Yves</h2>
+<p>Jean-Yves est un descendant de <strong>Jean-Baptiste Clemenzo *1774</strong>, le frère (probable) de Jean Joseph p57. Il vit en Suisse et a partagé son arbre généalogique, qui a été déterminant pour confirmer les hypothèses sur le XIXe siècle.</p>
+<p>Son arbre part de Jean-Baptiste *1774 comme première génération documentée, avec données de naissance et décès soutenues par l&#39;<em>Armorial Valaisan</em> de 1946.</p>
+<p><strong>Ce que l&#39;arbre de Jean-Yves a apporté :</strong></p>
+<ol>
+<li><p><strong>A confirmé l&#39;identité de la Famille Jean Baptiste × Elsabeth au recensement d&#39;Ardon 1846</strong> (H4 ✓) : Les quatre enfants listés aux lignes 104–107 correspondent par nom et âge calculé avec ceux de son arbre — quatre sur quatre, sans marge d&#39;erreur.</p>
+</li>
+<li><p><strong>A confirmé Baptiste Clemenzo comme ancêtre commun</strong> (H11 ✓) : Son arbre commence à Jean-Baptiste *1774, dont le père ne figure pas dans ses registres mais est implicite. Le recensement de 1802 le nomme : Baptiste Clemenzo. C&#39;est la génération &quot;zéro&quot; de Jean-Yves.</p>
+</li>
+<li><p><strong>A identifié un enfant non documenté :</strong> &quot;Jn. Jos. Danielle *1825&quot; apparaît au recensement de 1829 comme fils de Jean-Baptiste, mais ne figure pas dans l&#39;arbre de Jean-Yves — probablement mort en bas âge.</p>
+</li>
+</ol>
+<p><strong>Ce qui reste sans résolution :</strong></p>
+<ul>
+<li>L&#39;épouse &quot;Elsabeth&quot; (l.103, 1846) ne correspond pas à &quot;Anne-Marie Gaillard *1797&quot; de l&#39;arbre de Jean-Yves. Peut être un second mariage de Jean-Baptiste après veuvage, ou que le recenseur utilise le second nom. À vérifier par acte parroquial d&#39;Ardon.</li>
+<li>Jean-Yves ignore les données de Baptiste — son arbre ne monte pas à ce niveau.</li>
+</ul>
+<p><strong>En conséquence :</strong> Jean-Yves et l&#39;auteur de ce document sont des cousins éloignés, avec Baptiste Clemenzo comme ancêtre commun estimé autour de 1745–1755.</p>
+<hr>
+<h2 id="conclusions">Conclusions</h2>
+<p>Sept recensements entre 1802 et 1870, l&#39;<em>Armorial Valaisan</em> en deux éditions, les mémoires de Hyacinthe et l&#39;arbre de Jean-Yves permettent de tracer le panorama suivant :</p>
+<p><strong>Ce qui est documenté :</strong></p>
+<p>Les Clemenzo d&#39;Ardon ont une présence documentée depuis <strong>1481</strong> — cinq siècles avant que Francisco ne traverse l&#39;Atlantique. Ce ne sont pas des nouveaux venus en Valais ; c&#39;est une famille enracinée dont l&#39;histoire peut être suivie dans les archives depuis le Moyen Âge.</p>
+<p><strong>Baptiste Clemenzo</strong> (Ardon 1802) est le point de départ de l&#39;enquête. Il avait au moins deux fils — Jean Baptiste et Jean Joseph — et vivait avec son épouse Marie, dont le nom n&#39;a pas pu être lu avec certitude. Son année de naissance apparaît comme &quot;1765&quot; au recensement de 1829, mais cette donnée est presque certainement une erreur de transcription : l&#39;écrire ainsi rendrait les âges de ses fils impossibles. Il est plus probable qu&#39;il soit né entre 1745 et 1755.</p>
+<p><strong>Jean Joseph Clemenzo (p57, n.v. 1780)</strong> a migré à Riddes. En 1829, il était bourgeois de Riddes domicilié toujours à Ardon ; en 1837, il vivait déjà à Riddes avec son épouse Catherine Cerisier et six enfants. C&#39;est la ligne directe vers l&#39;Argentine.</p>
+<p><strong>Jean Baptiste Clemenzo (*1774)</strong> est resté à Ardon, où sa descendance apparaît au recensement de 1846 avec quatre enfants identifiés. Aujourd&#39;hui, Jean-Yves et la branche argentine sont des cousins éloignés qui partagent Baptiste comme ancêtre.</p>
+<p><strong>Joseph Florentin (p72)</strong> a étudié la médecine quelque part en Europe centrale (Vienne ou Freiburg) et a exercé comme chirurgien à Naples au moins entre 1837 et 1846 — une figure extraordinaire pour l&#39;époque, fils d&#39;un laboureur du Valais qui a fini par vivre en Italie.</p>
+<p><strong>François / Francisco Clemenzo (p26, n.1858)</strong> a émigré en Argentine vers 1880. Au recensement de 1870, il avait 12 ans et vivait avec ses parents à Riddes ; en 1895, il apparaît déjà à Colón, Entre Ríos. C&#39;est le fondateur de la branche argentine.</p>
+<p><strong>Ce qui est hypothèse :</strong></p>
+<p>L&#39;identification de Baptiste comme père de Jean Joseph (H9) est basée sur coïncidence de nom et d&#39;âge — non sur un acte de baptême. C&#39;est solide mais non confirmé documentellement.</p>
+<p>Jean-André Clemenzo (*1716) et Baptiste Clemenzo sont deux patriarches Clemenzo coexistants à Ardon, probablement parents, mais la relation exacte n&#39;est pas documentée.</p>
+<hr>
+<h2 id="ligne-directe">Ligne directe</h2>
+<p>De Juan Martín (génération actuelle) jusqu&#39;à Baptiste Clemenzo, l&#39;ancêtre le plus ancien identifié. La filiation entre Baptiste et Jean Joseph est hypothèse documentellement solide mais non confirmée par acte de baptême.</p>
+<div class="mermaid" style="overflow-x:auto; margin: 32px 0;">flowchart TD
+    BAP["Baptiste Clemenzo\n✶v. 1745–1755 (est.) · Ardon, Valais"]
+    JJC["Jean Joseph Clemenzo · p57\n✶v. 1780 · Ardon\n× Catherine Cerisier (p58, ✶1786)"]
+    FR2["François Clemenzoz · p36\n✶9 Avril 1809 · Ardon/Riddes\n† entre 1871 et 1874"]
+    FRA["François / Francisco Clemenzo · p26\n✶31 Mai 1858 · Riddes, Valais, Suisse\n† 17 Avril 1928 · Concepción del Uruguay\n⟶ a émigré en Argentine v. 1880"]
+    FEL["Félix Clemenzo · p18\n✶1894 · Villa Elisa, Entre Ríos\n† 24 Juin 1943 · Buenos Aires\n× Isabel María Queipo"]
+    FER["Félix Ricardo Clemenzo · p10\n✶13 Août 1926 · Bolívar, Buenos Aires"]
+    DAN["Daniel Jorge Clemenzo · p7\n✶7 Décembre 1959 · Buenos Aires"]
+    MAT["Matías Damián Clemenzo · p3\n✶7 Août 1986 · Buenos Aires"]
+    JM["Juan Martín Clemenzo · p1\n✶17 Mai 2016 · Buenos Aires"]
+
+    BAP -->|"H9 — hypothèse solide\n(acte de baptême en attente)"| JJC
+    JJC --> FR2
+    FR2 --> FRA
+    FRA --> FEL
+    FEL --> FER
+    FER --> DAN
+    DAN --> MAT
+    MAT --> JM
+</div>
+<hr>
+<h2 id="arbre-du-clan-clemenzo">Arbre du Clan Clemenzo</h2>
+<p>Relations documentées (lignes continues) et hypothétiques (lignes pointillées) des Clemenzo d&#39;Ardon et Riddes. Inclut la branche de Jean-Yves — descendants de Jean Baptiste *1774, cousins éloignés de la branche argentine.</p>
+<div class="mermaid" style="overflow-x:auto; margin: 32px 0;">flowchart TD
+    BAP["Baptiste Clemenzo\n✶v. 1745–1755? · Ardon"]
+    MUNK["Marie ?\n(nom illisible · Ardon 1802)"]
+    m1(( ))
+
+    JBC["Jean Baptiste Clemenzo\n✶v. 1774 · Ardon\n→ reste à Ardon"]
+    JJ["Jean Joseph Clemenzo · p57\n✶v. 1780 · Ardon\n→ migre à Riddes"]
+
+    AGG["Anne-Marie Gaillard\n✶1797 · Ardon"]
+    CC["Catherine Cerisier · p58\n✶1786 · Riddes"]
+
+    m2(( ))
+    m3(( ))
+
+    ELI["Elisabeth\n✶1820"]
+    JYB["Jean Baptiste\n✶1822"]
+    VER["Véronique\n✶1828"]
+    FRD["Frédéric\n✶1832"]
+    JY["→ branche Jean-Yves\n(Suisse · descendants actuels)"]
+
+    JF["Joseph Florentin · p72\n✶v. 1810\nChirurgien à Naples"]
+    JCL["Jean Claude · p73\n✶v. 1812"]
+    MAR["Marguerite · p74\n✶v. 1814"]
+    MH["Marie Henriette · p75\n✶1815\n→ Saxon (Battnier)"]
+    FR["François Clemenzoz · p36\n✶1809"]
+
+    MLS["Marie Louise Stalder · p37\n✶1828"]
+    m5(( ))
+
+    BAP --- m1
+    MUNK --- m1
+    m1 --> JBC
+    m1 -.->|"H9"| JJ
+
+    JBC --- m2
+    AGG --- m2
+    m2 --> ELI
+    m2 --> JYB
+    m2 --> VER
+    m2 --> FRD
+    JYB --> JY
+    FRD --> JY
+
+    JJ --- m3
+    CC --- m3
+    m3 --> JF
+    m3 --> JCL
+    m3 --> MAR
+    m3 --> MH
+    m3 --> FR
+
+    FR --- m5
+    MLS --- m5
+    m5 --> ARG["→ branche argentine\n(Francisco émigre v. 1880)"]
+</div>
+<hr>
+<h2 id="hypothèses">Hypothèses</h2>
+<div class="hypothesis-card hypothesis-card--plausible" id="h1-famille-françois-clémence-ardon-1846-p36-françois-clemenzoz-n-1809">
+  <div class="hypothesis-header">
+    <div class="hypothesis-meta">
+      <span class="hypothesis-number">H1</span>
+    </div>
+    <span class="hypothesis-status hypothesis-status--plausible">Hypothèse plausible</span>
+  </div>
+  <h3 class="hypothesis-title">H1 — Famille François × Clémence (Ardon 1846) = p36 François Clemenzoz (n. 1809)</h3>
+  <div class="hypothesis-body"><div class="table-wrapper"><table><thead><tr><th>État</th><th>Preuve principale</th><th>Manque pour confirmer</th></tr></thead><tbody><tr><td>Hypothèse plausible</td><td>François père v. 37 ans en 1846 ; fille Marie Josephine s&#39;accorde avec p77 (n.1843)</td><td>Acte de décès de Clémence (Ardon, 1846–1850) ; acte de mariage de p36 avec Stalder</td></tr></tbody></table></div>
+<p>[Détails complets dans le document original...]</p>
+<h3 id="h9-jean-joseph-fils-de-baptiste-ardon-1802-possiblement-p57">H9 — Jean Joseph fils de Baptiste (Ardon 1802) = possiblement p57</h3>
+<div class="table-wrapper"><table><thead><tr><th>État</th><th>Preuve principale</th><th>Manque pour confirmer</th></tr></thead><tbody><tr><td>Hypothèse solide</td><td>Coïncidence de nom + exclusion par âge de l&#39;autre Jean Joseph (n.1761, trop âgé pour être fils en 1802)</td><td>Acte de baptême de Jean Joseph (v. 1780) à Ardon, qui nomme le père</td></tr></tbody></table></div>
+</div>
+</div>
+<hr>
+<h2 id="tâches">Tâches</h2>
+<p><em>Dernière mise à jour : 2026-05-10</em></p>
+
+  <style>
+    /* ── Hypothesis Cards ───────────────────────────────────────────── */
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #9ca3af;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 35px 0;
+      background: #f9fafb;
+    }
+    .hypothesis-card + hr { display: none; }
+    .hypothesis-card--confirmed       { border-left-color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--solida          { border-left-color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+    .hypothesis-card--plausible       { border-left-color: #d97706; background: #fffbeb; border-color: #fde68a; }
+    .hypothesis-card--speculative     { border-left-color: #9ca3af; background: #f9fafb; border-color: #e5e7eb; }
+    .hypothesis-card--directa         { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
+    .hypothesis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .hypothesis-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hypothesis-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6b7280;
+      background: #e5e7eb;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .hypothesis-badge-directa {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .hypothesis-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+    .hypothesis-status--confirmed,
+    .hypothesis-status--confirmed-informal { color: #15803d; background: #dcfce7; }
+    .hypothesis-status--solida             { color: #1d4ed8; background: #dbeafe; }
+    .hypothesis-status--plausible          { color: #92400e; background: #fef3c7; }
+    .hypothesis-status--speculative        { color: #374151; background: #f3f4f6; }
+    .hypothesis-title {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin: 0 0 14px 0;
+      color: #111827;
+      line-height: 1.4;
+    }
+    .hypothesis-body { font-size: 0.9rem; }
+    .hypothesis-body .table-wrapper { margin-top: 0; }
+    /* ──────────────────────────────────────────────────────────────── */
+
+    .image-clickable:hover {
+      transform: scale(1.02);
+    }
+    .image-clickable:hover .zoom-hint {
+      opacity: 1 !important;
+    }
+    .gallery-item .image-clickable img {
+      transition: all 0.2s ease;
+    }
+    .gallery-item .image-clickable:hover img {
+      filter: brightness(1.1);
+    }
+  </style>
+  
+  <!-- Lightbox Modal con zoom -->
+  <style>
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); overflow: auto; }
+    #lightbox .lb-stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+    #lightbox .lb-stage.is-zoomed { display: block; padding: 0; }
+    #lightbox-img { max-width: 95vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); cursor: zoom-in; }
+    #lightbox .lb-stage.is-zoomed #lightbox-img { max-width: none; max-height: none; width: auto; border-radius: 0; box-shadow: none; cursor: zoom-out; }
+    #lightbox .lb-close { position: fixed; top: 16px; right: 16px; z-index: 2; background: rgba(255,255,255,0.15); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; display: grid; place-items: center; line-height: 1; }
+    #lightbox .lb-hint { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 2; color: rgba(255,255,255,0.78); font-size: 13px; background: rgba(0,0,0,0.45); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
+  </style>
+  <div id="lightbox" onclick="closeLightbox()">
+    <button class="lb-close" onclick="event.stopPropagation(); closeLightbox();">✕</button>
+    <div class="lb-stage" id="lb-stage">
+      <img id="lightbox-img" onclick="event.stopPropagation(); toggleZoom();" alt="">
+    </div>
+    <div class="lb-hint">Clic en la imagen para acercar · Esc para cerrar</div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      var stage = document.getElementById('lb-stage');
+      stage.classList.remove('is-zoomed');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function toggleZoom() {
+      var lb = document.getElementById('lightbox');
+      document.getElementById('lb-stage').classList.toggle('is-zoomed');
+      lb.scrollTop = 0; lb.scrollLeft = 0;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+  
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+          </article>
+          <aside class="article-aside">
+            
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="document.querySelector('.site-main').scrollTo({top:0,behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <footer class="site-footer">
+    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <nav class="footer-mobile-nav">
+      <a href="../../contacto.html" class="footer-nav-link">Contacto</a>
+      <a href="../../changelog.html" class="footer-nav-link">Cambios</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function() {
+      const btn = document.getElementById('backToTop');
+      const scroller = document.querySelector('.site-main');
+      scroller.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', scroller.scrollTop > 400);
+      });
+    })();
+  </script>
+
+  <script src="../../assets/js/nav-drawer.js" defer></script>
+  <script src="../../assets/js/command-palette.js" defer></script>
+
+  <script>
+    (function() {
+      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const now = new Date();
+      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+      const metaEdition = document.getElementById('meta-edition');
+      if (metaEdition) metaEdition.textContent = `Publicado 2026-05-10 · Última edición ${dateStr}`;
+    })();
+  </script>
+
+</body>
+</html>

@@ -19,7 +19,8 @@
     "featured": false,
     "url": "dist/blog/buscando-a-los-roh.html",
     "langs": [
-      "es"
+      "es",
+      "fr"
     ]
   },
   {
@@ -62,7 +63,8 @@
     "featured": true,
     "url": "dist/blog/clan-clemenzo.html",
     "langs": [
-      "es"
+      "es",
+      "fr"
     ]
   },
   {
@@ -122,7 +124,8 @@
     "featured": true,
     "url": "dist/blog/linea-de-tiempo-de-francisco.html",
     "langs": [
-      "es"
+      "es",
+      "fr"
     ]
   },
   {
@@ -144,7 +147,8 @@
     "featured": true,
     "url": "dist/blog/investigando-francisco.html",
     "langs": [
-      "es"
+      "es",
+      "fr"
     ]
   }
 ]
