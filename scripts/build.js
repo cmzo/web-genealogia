@@ -467,57 +467,41 @@ function markdownToHtml(markdown) {
     }
   </style>
   
-  <!-- Lightbox Modal -->
-  <div id="lightbox" style="
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    cursor: pointer;
-  " onclick="closeLightbox()">
-    <button onclick="event.stopPropagation(); closeLightbox();" style="
-      position: absolute;
-      top: 16px; right: 16px;
-      background: rgba(255,255,255,0.15);
-      border: none;
-      color: white;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      line-height: 1;
-    ">✕</button>
-    <div style="
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 95%; max-height: 90%;
-      text-align: center;
-    ">
-      <img id="lightbox-img" style="
-        max-width: 100%;
-        max-height: 90vh;
-        object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      ">
+  <!-- Lightbox Modal con zoom -->
+  <style>
+    #lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); overflow: auto; }
+    #lightbox .lb-stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+    #lightbox .lb-stage.is-zoomed { display: block; padding: 0; }
+    #lightbox-img { max-width: 95vw; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); cursor: zoom-in; }
+    #lightbox .lb-stage.is-zoomed #lightbox-img { max-width: none; max-height: none; width: auto; border-radius: 0; box-shadow: none; cursor: zoom-out; }
+    #lightbox .lb-close { position: fixed; top: 16px; right: 16px; z-index: 2; background: rgba(255,255,255,0.15); border: none; color: #fff; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; display: grid; place-items: center; line-height: 1; }
+    #lightbox .lb-hint { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 2; color: rgba(255,255,255,0.78); font-size: 13px; background: rgba(0,0,0,0.45); padding: 5px 14px; border-radius: 20px; pointer-events: none; }
+  </style>
+  <div id="lightbox" onclick="closeLightbox()">
+    <button class="lb-close" onclick="event.stopPropagation(); closeLightbox();">✕</button>
+    <div class="lb-stage" id="lb-stage">
+      <img id="lightbox-img" onclick="event.stopPropagation(); toggleZoom();" alt="">
     </div>
+    <div class="lb-hint">Clic en la imagen para acercar · Esc para cerrar</div>
   </div>
 
   <script>
     function openLightbox(src) {
+      var stage = document.getElementById('lb-stage');
+      stage.classList.remove('is-zoomed');
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').style.display = 'block';
+      document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
     }
-
+    function toggleZoom() {
+      var lb = document.getElementById('lightbox');
+      document.getElementById('lb-stage').classList.toggle('is-zoomed');
+      lb.scrollTop = 0; lb.scrollLeft = 0;
+    }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
     });
