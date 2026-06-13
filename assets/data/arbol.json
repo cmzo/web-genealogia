@@ -1011,6 +1011,67 @@
       "media": []
     },
     {
+      "id": "p105",
+      "name": "Gregoria Orfilia Roh",
+      "gender": "F",
+      "birth_date": "1906-05-09",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 0,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1906",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med150",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p1.webp",
+          "caption": "Acta de nacimiento de Gregoria Orfilia Roh, 1906 (1/2)",
+          "date": "1906-05-09",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Nacimiento Gregoria 1906",
+          "group_order": 0
+        },
+        {
+          "id": "med151",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1906-nac-gregoria-orfilia-roh-p2.webp",
+          "caption": "Acta de nacimiento de Gregoria Orfilia Roh, 1906 (2/2)",
+          "date": "1906-05-09",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Nacimiento Gregoria 1906",
+          "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p111",
+      "name": "Leopoldo Ramón Etchegorry",
+      "gender": "M",
+      "birth_date": "1898",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 0,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Anselmo Etchegorry y María Luisa Roh; nacido antes del casamiento y reconocido en el acta de 1908 (10 años).",
+      "sources": "Reconocido en el casamiento de sus padres, 1908",
+      "status": "en_proceso",
+      "media": []
+    },
+    {
       "id": "p20",
       "name": "Leon Francisco Clemenzo",
       "gender": "",
@@ -1154,6 +1215,99 @@
       ]
     },
     {
+      "id": "p104",
+      "name": "José Domingo Clemenzo",
+      "gender": "M",
+      "birth_date": "1884-07-25",
+      "birth_place": "Santa Fe, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p28",
+      "mother_id": "p85",
+      "branch": "clemenzo",
+      "generation": 4,
+      "sort_order": 1,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de José Clemenzo (p28) y Marianna Roh (p85), bautizado en la Iglesia Matriz de Todos los Santos de Santa Fe el 27-07-1884 («hijo de José Clemencia y Mariana Roh, suizos»). Hermano de María Luisa Clemenzo (p84). Prueba documental de la unión de p28 y p85.",
+      "sources": "Bautismo, Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med132",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1884-bautismo-jose-domingo-clemenzo.webp",
+          "caption": "Bautismo de José Domingo, Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884",
+          "date": "1884-07-27",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p106",
+      "name": "Pedro Mauricio Roh",
+      "gender": "M",
+      "birth_date": "1908-03-24",
+      "birth_place": "Villa Mantero, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 1,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento 1908",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med152",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-nac-pedro-mauricio.webp",
+          "caption": "Acta de nacimiento de Pedro Mauricio Roh, 1908",
+          "date": "1908-03-24",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p112",
+      "name": "Laurindo Anselmo Etchegorry",
+      "gender": "M",
+      "birth_date": "1902-11-30",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 1,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo natural de Anselmo Etchegorry y María Luisa Roh, reconocido por el padre en el acta de nacimiento de 1902.",
+      "sources": "Acta de nacimiento, Colonia Rocamora, 1902",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med157",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1902-nac-laurindo-anselmo-etchegorry.webp",
+          "caption": "Acta de nacimiento de Laurindo Anselmo Etchegorry, 1902",
+          "date": "1902-11-30",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
       "id": "p22",
       "name": "Pedro Clemenzo",
       "gender": "",
@@ -1212,6 +1366,78 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p107",
+      "name": "Rogelia Roh",
+      "gender": "F",
+      "birth_date": "1909-04-17",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 2,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1909",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med153",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1909-nac-rogelia-roh.webp",
+          "caption": "Acta de nacimiento de Rogelia Roh, 1909",
+          "date": "1909-04-17",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p113",
+      "name": "Luisa Odila Etchegorry",
+      "gender": "F",
+      "birth_date": "1908-07-21",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 2,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Anselmo Etchegorry y María Luisa Roh.",
+      "sources": "Acta de nacimiento, Distrito Rocamora, 1908",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med158",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p1.webp",
+          "caption": "Acta de nacimiento de Luisa Odila Etchegorry, 1908 (1/2)",
+          "date": "1908-07-21",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Nacimiento Luisa Odila 1908",
+          "group_order": 0
+        },
+        {
+          "id": "med159",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-nac-luisa-odila-etchegorry-p2.webp",
+          "caption": "Acta de nacimiento de Luisa Odila Etchegorry, 1908 (2/2)",
+          "date": "1908-07-21",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Nacimiento Luisa Odila 1908",
+          "group_order": 1
         }
       ]
     },
@@ -1339,6 +1565,68 @@
       ]
     },
     {
+      "id": "p108",
+      "name": "Antonio Ramón Roh",
+      "gender": "M",
+      "birth_date": "1911-01-08",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 3,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1911",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med154",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1911-nac-antonio-ramon-roh.webp",
+          "caption": "Acta de nacimiento de Antonio Ramón Roh, 1911",
+          "date": "1911-01-08",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p114",
+      "name": "Juan Héctor Etchegorry",
+      "gender": "M",
+      "birth_date": "1911-03-08",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 3,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Anselmo Etchegorry y María Luisa Roh.",
+      "sources": "Acta de nacimiento, Distrito Rocamora, 1911",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med160",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1911-nac-juan-hector-etchegorry.webp",
+          "caption": "Acta de nacimiento de Juan Héctor Etchegorry, 1911",
+          "date": "1911-03-08",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
       "id": "p25",
       "name": "Maria Celestina Roh",
       "gender": "F",
@@ -1405,6 +1693,68 @@
           "caption": "Bautismo de Angela Clemenzoz",
           "date": null,
           "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p109",
+      "name": "Héctor Patricio Roh",
+      "gender": "M",
+      "birth_date": "1914-05-17",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 4,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1914",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med155",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1914-nac-hector-patricio-roh.webp",
+          "caption": "Acta de nacimiento de Héctor Patricio Roh, 1914",
+          "date": "1914-05-17",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p115",
+      "name": "María Catalina Etchegorry",
+      "gender": "F",
+      "birth_date": "1912-05-30",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 4,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Anselmo Etchegorry y María Luisa Roh.",
+      "sources": "Acta de nacimiento, Distrito Rocamora, 1912",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med161",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1912-nac-maria-catalina-etchegorry.webp",
+          "caption": "Acta de nacimiento de María Catalina Etchegorry, 1912",
+          "date": "1912-05-30",
+          "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
         }
@@ -1487,6 +1837,68 @@
           "caption": "Bautismo de Petrona Estefania Clemenzoz",
           "date": null,
           "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p110",
+      "name": "Raúl Roque Roh",
+      "gender": "M",
+      "birth_date": "1917-12-30",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 5,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1918",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med156",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1918-nac-raul-roque-roh.webp",
+          "caption": "Acta de nacimiento de Raúl Roque Roh (1917, inscripto 1918)",
+          "date": "1917-12-30",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p116",
+      "name": "Irma Cirila Etchegorry",
+      "gender": "F",
+      "birth_date": "1916-03-09",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p100",
+      "mother_id": "p95",
+      "branch": "etchegorry",
+      "generation": 4,
+      "sort_order": 5,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Anselmo Etchegorry y María Luisa Roh.",
+      "sources": "Acta de nacimiento, Distrito Rocamora, 1916",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med162",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1916-nac-irma-cirila-etchegorry.webp",
+          "caption": "Acta de nacimiento de Irma Cirila Etchegorry, 1916",
+          "date": "1916-03-09",
+          "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
         }
@@ -1861,8 +2273,8 @@
       "id": "p27",
       "name": "Celestina Roh",
       "gender": "",
-      "birth_date": "1862/1863",
-      "birth_place": "Conthey,Suiza",
+      "birth_date": "1860-12-22",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
       "death_date": "1950-10-02",
       "death_place": "Santa Fe, Argentina",
       "father_id": "p38",
@@ -1873,7 +2285,7 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "Nacida en Conthey, Valais. La licencia de inhumación (1950) le da 87 años → n. oct. 1862–oct. 1863; el censo de 1895 le daba 28 (~1867), error censal. Murió de neumonía el 2-10-1950 a las 13.30 en calle Suipacha 3939, ciudad de Santa Fe, como «Celestina Roch de Clemenceau», de estado VIUDA, suiza; sepultada en el cementerio de Barranquitas el 5-10. El apellido «Clemenceau» es otra mutación de la familia (León usaba «Clemence» en 1919). Sabía firmar (med59). Sospecha en investigación: la unión con Francisco (p26) podría no haberse formalizado nunca — la licencia la declara «viuda» (reconocimiento social), pero el acta de matrimonio no apareció.",
-      "sources": "Censo nacional 1895, Colón (28 años, err.) · Licencia de inhumación N° 616, Registro Civil de la Prov. de Santa Fe, 5-10-1950 (87 años, viuda, suiza, neumonía, Suipacha 3939)",
+      "sources": "Censo nacional 1895, Colón (28 años, err.) · Licencia de inhumación N° 616, Registro Civil de la Prov. de Santa Fe, 5-10-1950 (87 años, viuda, suiza, neumonía, Suipacha 3939) · Censo federal suizo 1870, Conthey, village d'Aven (bulletin 38, casa 33)",
       "status": "en_proceso",
       "media": [
         {
@@ -1905,6 +2317,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 1
+        },
+        {
+          "id": "med163",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Célestine, hija, n. 22-12-1860 — con sus padres y hermanos",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
         }
       ]
     },
@@ -2084,7 +2506,7 @@
       "name": "Jose Luciano Roh Blanco",
       "gender": "M",
       "birth_date": "1873-06-14",
-      "birth_place": "Colonia Cullen, San Javier, Santa Fe",
+      "birth_place": "Colonia Cullen, San Javier, Santa Fe, Argentina",
       "death_date": "",
       "death_place": null,
       "father_id": "p38",
@@ -2094,7 +2516,7 @@
       "sort_order": 1,
       "vivo": "no",
       "photo_url": null,
-      "notes": "Nacido el 14-06-1873 en Colonia Cullen (Reducción del Pueblo de San Javier), Santa Fe; bautizado el 29-06-1873. Hijo legítimo de Juan José Roch y María Putallaz, ambos del Valais. Padrinos: Serafín y Adela Marietan. Es el primer hijo del matrimonio nacido en Argentina → marca la llegada de la familia Roch ~1872-73. SOBRE «BLANCO»: en el CUERPO del acta el padre es «Juan José Roch» a secas y la madre «María Putallaz»; «Blanco» aparece solo en el MARGEN, en el nombre registrado del bautizado: «José Luciano Roch Blanco». Hipótesis (2026-06-13): «Roh-Blanc» sería el surnom/sobrenombre de rama de esta familia Roh de Conthey — los apellidos muy comunes del Valais se desdoblaban así para distinguir líneas. Sería la llave de búsqueda fina en Conthey (buscar «Roh-Blanc» / «Roh dit Blanc», no «Roh» a secas).",
+      "notes": "Hijo de Juan José Roch y María Putallaz, nacido en Colonia Cullen (San Javier, Santa Fe) el 14-06-1873 — ya en Argentina, posterior a la emigración. NOTA: NO es quien se casó con Manuela Locher; ése es su hermano Joseph Marie (n. 1870 en Conthey), con quien antes lo habíamos confundido como una sola persona (el censo de Conthey 1870 los separó). El «Blanco» del margen de su bautismo no aparece en el censo de Conthey, donde la familia figura como «Roch» a secas — la hipótesis del surnom «Roh-Blanc» queda debilitada.",
       "sources": "Acta de bautismo, Colonia Cullen / San Javier, 29-06-1873 (imagen p80-bautismo.webp, entrada N°14): cuerpo «Juan José Roch y María Putal[laz]»; margen «José Luciano Roch Blanco»",
       "status": "en_proceso",
       "media": [
@@ -2205,8 +2627,8 @@
       "id": "p85",
       "name": "Marianna Roh",
       "gender": "F",
-      "birth_date": "",
-      "birth_place": "Valais, Suiza",
+      "birth_date": "1860-02-20",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
       "death_date": "",
       "death_place": null,
       "father_id": "p38",
@@ -2219,7 +2641,48 @@
       "notes": null,
       "sources": null,
       "status": "en_proceso",
-      "media": []
+      "media": [
+        {
+          "id": "med139",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1915-matr-religioso-mersilli-marianna-roh.webp",
+          "caption": "Casamiento de Marianna Roh (viuda) y Domingo Mersilli, 1915",
+          "date": "1915-06-21",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med135",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1896-matr-vergere-marianna-roh-p1.webp",
+          "caption": "Casamiento de Marianna Roh y Francisco José Vergère, Colón 1896 (1/2)",
+          "date": "1896-11-19",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Vergère 1896",
+          "group_order": 0
+        },
+        {
+          "id": "med136",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1896-matr-vergere-marianna-roh-p2.webp",
+          "caption": "Casamiento de Marianna Roh y Francisco José Vergère, Colón 1896 (2/2)",
+          "date": "1896-11-19",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Vergère 1896",
+          "group_order": 1
+        },
+        {
+          "id": "med166",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Marianne, n. 20-02-1860",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p77",
@@ -2273,6 +2736,47 @@
       ]
     },
     {
+      "id": "p95",
+      "name": "María Luisa Roh",
+      "gender": "F",
+      "birth_date": "1876",
+      "birth_place": "Santa Fe, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 3,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Juan José Roch y María Putallaz. Nacida en la provincia de Santa Fe. Formó pareja con Anselmo Leopoldo Etchegorry, comerciante de Colón; los dos primeros hijos (Leopoldo Ramón ~1898 y Laurindo Anselmo 1902) nacieron antes del casamiento (1908) y fueron reconocidos. Edad 32 en 1908, 36 en 1911-12, 40 en 1916 → n. ~1876.",
+      "sources": "Casamiento con A. Etchegorry, Villa Mantero 1908 · actas de nacimiento de sus hijos 1902-1916",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med146",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp",
+          "caption": "Casamiento con Anselmo Etchegorry, Villa Mantero 1908 (1/2)",
+          "date": "1908",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Etchegorry 1908",
+          "group_order": 0
+        },
+        {
+          "id": "med147",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p2.webp",
+          "caption": "Casamiento con Anselmo Etchegorry, Villa Mantero 1908 (2/2)",
+          "date": "1908",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Etchegorry 1908",
+          "group_order": 1
+        }
+      ]
+    },
+    {
       "id": "p31",
       "name": "Tomas Baster",
       "gender": "",
@@ -2289,6 +2793,26 @@
       "photo_url": "",
       "notes": "",
       "sources": "Acta de nacimiento de su nieto Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 («los abuelos maternos son: Tomás Baster y Francisca Guido»)",
+      "status": "en_proceso",
+      "media": []
+    },
+    {
+      "id": "p96",
+      "name": "Manuela Roh",
+      "gender": "F",
+      "birth_date": "1877",
+      "birth_place": "",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 4,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Juan José Roch y María Putallaz. En el censo de Colón de 1895 figura con 18 años y ya casada; cónyuge no identificado todavía.",
+      "sources": "Censo nacional 1895, Colón, E.R.",
       "status": "en_proceso",
       "media": []
     },
@@ -2311,6 +2835,159 @@
       "sources": "Acta de nacimiento de su nieto Rodolfo Ambrosio, N° 97, Reg. Civil de C. del Uruguay, 22-03-1919 («los abuelos maternos son: Tomás Baster y Francisca Guido»)",
       "status": "en_proceso",
       "media": []
+    },
+    {
+      "id": "p97",
+      "name": "Mauricio Francisco Roh",
+      "gender": "M",
+      "birth_date": "1878",
+      "birth_place": "Diamante, Entre Ríos, Argentina",
+      "death_date": "1964-02-07",
+      "death_place": "Concepción del Uruguay, Entre Ríos, Argentina",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 5,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Juan José Roch y María Putallaz. Nacido en Diamante (libreta de enrolamiento, clase 1878). Herrero, como su padre y su hermano José. Casó con Rogelia Hernández (Rosario del Tala, 10-07-1905, civil y religioso) y tuvo al menos seis hijos entre 1906 y 1917. Murió a los 85 años en el Hogar de Ancianos de Concepción del Uruguay.",
+      "sources": "Libreta de enrolamiento (clase 1878, DM 30, Villa Mantero) · casamiento Rosario del Tala 1905 · defunción C. del Uruguay 1964 · actas de nacimiento de sus hijos",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med143",
+          "type": "photo",
+          "url": "assets/images/posts/roh-enrolamiento-militar-mauricio-francisco.webp",
+          "caption": "Libreta de enrolamiento militar (clase 1878, nacido en Diamante)",
+          "date": "",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med144",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1964-def-mauricio-francisco-roh.webp",
+          "caption": "Acta de defunción, Concepción del Uruguay, 1964 (85 años)",
+          "date": "1964-02-07",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med141",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp",
+          "caption": "Casamiento con Rogelia Hernández — acta civil, Rosario del Tala 1905",
+          "date": "1905-07-10",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Mauricio 1905",
+          "group_order": 0
+        },
+        {
+          "id": "med142",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1905-matr-religioso-mauricio-rogelia-hernandez.webp",
+          "caption": "Casamiento con Rogelia Hernández — acta parroquial, 1905",
+          "date": "1905-07-10",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Mauricio 1905",
+          "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p98",
+      "name": "Luisa Roh",
+      "gender": "F",
+      "birth_date": "1886",
+      "birth_place": "",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 6,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija menor de Juan José Roch y María Putallaz; en el censo de Colón de 1895 figura con 9 años. Sin más datos por ahora (distinta de su hermana mayor María Luisa, ~1876).",
+      "sources": "Censo nacional 1895, Colón, E.R.",
+      "status": "en_proceso",
+      "media": []
+    },
+    {
+      "id": "p117",
+      "name": "Rosalie Roch",
+      "gender": "F",
+      "birth_date": "1863-10-12",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 7,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hija de Juan José Roch y María Putallaz, n. 12-10-1863 en Aven (censo de Conthey 1870). No figura en el censo de Colón de 1895 — ¿murió joven, o quedó/casó en otra parte? Pendiente.",
+      "sources": "Censo federal suizo 1870, Conthey, village d'Aven (bulletin 38, casa 33)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med167",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Rosalie, n. 12-10-1863",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p118",
+      "name": "Joseph Marie Roch",
+      "gender": "M",
+      "birth_date": "1870-09-27",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p38",
+      "mother_id": "p39",
+      "branch": "roh",
+      "generation": 5,
+      "sort_order": 8,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Juan José Roch y María Putallaz, n. 27-09-1870 en Aven (censo de Conthey 1870) — el último nacido en Suiza antes de emigrar. Herrero. Es el «José, 24, casado» del censo de Colón de 1895 y quien se casó con Manuela Locher (~1894): en el acta figura «nacido en el Valais», lo que ahora encaja. Distinto de su hermano José Luciano (n. 1873 en Cullen).",
+      "sources": "Censo federal suizo 1870, Conthey, village d'Aven (bulletin 38, casa 33) · casamiento con Manuela Locher ~1894 · censo Colón 1895",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med133",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1894-matr-jose-roh-manuela-locher.webp",
+          "caption": "Casamiento de Joseph Marie Roch y Manuela Locher (~1894)",
+          "date": "1894",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        },
+        {
+          "id": "med168",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Joseph Marie, n. 27-09-1870",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p41",
@@ -2350,6 +3027,181 @@
           "source_label": null,
           "group_label": "",
           "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p99",
+      "name": "Rogelia Hernández",
+      "gender": "F",
+      "birth_date": "1880",
+      "birth_place": "Colonia Rocamora, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "hernandez",
+      "generation": 5,
+      "sort_order": 10,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Esposa de Mauricio Francisco Roh. Argentina, nacida y domiciliada en Colonia Rocamora. Hija de Ignacio Hernández (oriental, ya difunto en 1905) e Isidora Arbelo (española, viuda, propietaria). Edad 24 en 1905, 34 en 1914 → n. ~1880.",
+      "sources": "Casamiento con Mauricio Roh, Rosario del Tala 1905",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med145",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp",
+          "caption": "Casamiento con Mauricio Roh — acta civil, 1905",
+          "date": "1905-07-10",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p100",
+      "name": "Anselmo Leopoldo Etchegorry",
+      "gender": "M",
+      "birth_date": "1876",
+      "birth_place": "Colón, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "etchegorry",
+      "generation": 5,
+      "sort_order": 11,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Esposo de María Luisa Roh. Argentino, nacido en Colón, comerciante, domiciliado en Colonia Rocamora. Hijo de Pedro Etchegorry (francés, fallecido en Concepción del Uruguay en 1888) y Catalina Imhoff (suiza/alemana, viuda).",
+      "sources": "Casamiento con María Luisa Roh, Villa Mantero 1908 · actas de sus hijos",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med148",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp",
+          "caption": "Casamiento con María Luisa Roh, 1908 (1/2)",
+          "date": "1908",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Etchegorry 1908",
+          "group_order": 0
+        },
+        {
+          "id": "med149",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1908-matr-etchegorry-maria-luisa-roh-p2.webp",
+          "caption": "Casamiento con María Luisa Roh, 1908 (2/2)",
+          "date": "1908",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Etchegorry 1908",
+          "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p101",
+      "name": "Manuela Locher",
+      "gender": "F",
+      "birth_date": "1876",
+      "birth_place": "Departamento Colón, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "locher",
+      "generation": 5,
+      "sort_order": 12,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Esposa de José Luciano Roh. Argentina, nacida en el departamento Colón. Hija de Juan Locher y Sofía Imhoff (suizos, agricultores de la colonia San José; él †1891, ella †~1894). Edad 18 al casarse (~1894).",
+      "sources": "Casamiento con José Luciano Roh, ~1894",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med134",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1894-matr-jose-roh-manuela-locher.webp",
+          "caption": "Casamiento con José Luciano Roh (~1894)",
+          "date": "1894",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p102",
+      "name": "Francisco José Vergère",
+      "gender": "M",
+      "birth_date": "1836",
+      "birth_place": "Conthey, Valais, Suiza",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "vergere",
+      "generation": 5,
+      "sort_order": 13,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Segundo esposo de Marianna Roh (Colón, 19-11-1896). Suizo, nacido en el distrito de Conthey, agricultor en la colonia San José. Hijo de Juan Pedro Vergère y Ana María Roh (ambos de Conthey) — su madre era, también, una Roh. Viudo: su primera mujer, María Catalina Filomena Rudaz, murió en Conthey el 26-08-1883. Tenía 60 años al casarse con Marianna.",
+      "sources": "Casamiento con Marianna Roh, Colón 1896",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med137",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1896-matr-vergere-marianna-roh-p1.webp",
+          "caption": "Casamiento con Marianna Roh, Colón 1896 (1/2)",
+          "date": "1896-11-19",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Vergère 1896",
+          "group_order": 0
+        },
+        {
+          "id": "med138",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1896-matr-vergere-marianna-roh-p2.webp",
+          "caption": "Casamiento con Marianna Roh, Colón 1896 (2/2)",
+          "date": "1896-11-19",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "Casamiento Vergère 1896",
+          "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p103",
+      "name": "Domingo Mersilli",
+      "gender": "M",
+      "birth_date": "1860",
+      "birth_place": "Italia",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "",
+      "branch": "mersilli",
+      "generation": 5,
+      "sort_order": 14,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Tercer esposo de Marianna Roh (1915), cuando ella ya era viuda de Vergère. Italiano, 55 años al casarse, soltero. Hijo de Santo Mersilli y Mariana Viva (ambos de Italia). Figura como padrastro de María Luisa Clemenzo (p84) en el acta de matrimonio de ésta.",
+      "sources": "Casamiento con Marianna Roh, 1915 · matrimonio de María Luisa Clemenzo (testigos)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med140",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1915-matr-religioso-mersilli-marianna-roh.webp",
+          "caption": "Casamiento con Marianna Roh, 1915",
+          "date": "1915-06-21",
+          "source_label": "Registro Civil / parroquial",
+          "group_label": "",
+          "group_order": 0
         }
       ]
     },
@@ -2934,10 +3786,10 @@
       "id": "p38",
       "name": "Juan José Roch",
       "gender": "",
-      "birth_date": "1841",
-      "birth_place": "Conthey, Ardon, Valais, Suiza",
-      "death_date": "",
-      "death_place": "",
+      "birth_date": "1841-10-04",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
+      "death_date": "1897",
+      "death_place": "Colón, Entre Ríos, Argentina",
       "father_id": "",
       "mother_id": "",
       "branch": "roh",
@@ -2946,7 +3798,7 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "Nombre completo «Juan José Roch» (acta de bautismo de su hijo José Luciano, 1873) — el apellido se escribe «Roch» en las fuentes argentinas tempranas, no «Roh». Natural del Valais (Conthey). De oficio HERRERO (censo Colón 1895). Edad 54 en el censo de 1895 → n. ~1841. Casado con María Putallaz en Suiza (su hija mayor Celestina nace 1862/63 en Conthey). Emigró con la familia ~1872-73: el hijo José nació en Suiza (~1871, censo 1895) y José Luciano ya nació en Colonia Cullen, San Javier (jun. 1873). En 1895 toda la familia está en Colón, Entre Ríos.",
-      "sources": "Acta de bautismo de José Luciano, Colonia Cullen / Reducción de San Javier, 29-06-1873 («hijo legítimo de Juan José Roch y María Putal[laz], ambos naturales del Cantón Valais») · Censo nacional 1895, Colón, E.R. (José Roch, 54, suizo, herrero) · Censo de Conthey (referencia ficha p27)",
+      "sources": "Acta de bautismo de José Luciano, Colonia Cullen / Reducción de San Javier, 29-06-1873 («hijo legítimo de Juan José Roch y María Putal[laz], ambos naturales del Cantón Valais») · Censo nacional 1895, Colón, E.R. (José Roch, 54, suizo, herrero) · Censo de Conthey (referencia ficha p27) · Censo federal suizo 1870, Conthey, village d'Aven (bulletin 38, casa 33)",
       "status": "en_proceso",
       "media": [
         {
@@ -2958,6 +3810,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med164",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Jean Joseph Roch, jefe de hogar, n. 4-10-1841",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
         }
       ]
     },
@@ -2965,8 +3827,8 @@
       "id": "p39",
       "name": "Maria Putallaz",
       "gender": "",
-      "birth_date": "1837",
-      "birth_place": "Conthey, Ardon, Valais, Suiza",
+      "birth_date": "1835-11-01",
+      "birth_place": "Conthey (Aven), Valais, Suiza",
       "death_date": "",
       "death_place": "",
       "father_id": "",
@@ -2977,9 +3839,20 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "María Putallaz — apellido clásico de Conthey, Valais. Edad 58 en el censo de Colón 1895 → n. ~1837. Casada con Juan José Roch en Suiza antes de 1862. Madre de Celestina (p27), Marianna (p85), José (~1871, n. Suiza) y José Luciano (n. 1873, Colonia Cullen), entre otros. Emigró con la familia ~1872-73.",
-      "sources": "Acta de bautismo de su hijo José Luciano, Colonia Cullen, 29-06-1873 (María Putal[laz], natural del Valais) · Censo nacional 1895, Colón (María Putallaz, 58, suiza)",
+      "sources": "Acta de bautismo de su hijo José Luciano, Colonia Cullen, 29-06-1873 (María Putal[laz], natural del Valais) · Censo nacional 1895, Colón (María Putallaz, 58, suiza) · Censo federal suizo 1870, Conthey, village d'Aven (bulletin 38, casa 33)",
       "status": "en_proceso",
-      "media": []
+      "media": [
+        {
+          "id": "med165",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1870-censo-conthey-aven.webp",
+          "caption": "Censo de Conthey 1870 (Aven): Marie (Putallaz), n. 1-11-1835",
+          "date": "1870",
+          "source_label": "Censo federal suizo 1870",
+          "group_label": "Censo Conthey 1870",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p94",
@@ -3337,6 +4210,51 @@
       "marriage_place": "Vallorcine, Francia",
       "divorce_date": null,
       "notes": null
+    },
+    {
+      "id": "m25",
+      "spouse1_id": "p97",
+      "spouse2_id": "p99",
+      "marriage_date": "1905-07-10",
+      "marriage_place": "Rosario del Tala, Entre Ríos, Argentina",
+      "divorce_date": "",
+      "notes": "Acta civil y religiosa el mismo día. Mauricio, herrero; Rogelia de Colonia Rocamora."
+    },
+    {
+      "id": "m26",
+      "spouse1_id": "p95",
+      "spouse2_id": "p100",
+      "marriage_date": "1908",
+      "marriage_place": "Villa Mantero, Entre Ríos, Argentina",
+      "divorce_date": "",
+      "notes": "En el mismo acto reconocieron como hijo a Leopoldo Ramón (10 años). El acta confirma †Juan José Roch en Colón, 1897."
+    },
+    {
+      "id": "m27",
+      "spouse1_id": "p118",
+      "spouse2_id": "p101",
+      "marriage_date": "1894",
+      "marriage_place": "Colonia San José, Colón, Entre Ríos, Argentina",
+      "divorce_date": "",
+      "notes": "Año aproximado (José figura «casado» en el censo de 1895). En el acta José aparece «nacido en el Valais» — error: nació en Colonia Cullen, 1873."
+    },
+    {
+      "id": "m28",
+      "spouse1_id": "p85",
+      "spouse2_id": "p102",
+      "marriage_date": "1896-11-19",
+      "marriage_place": "Colón, Entre Ríos, Argentina",
+      "divorce_date": "",
+      "notes": "Marianna declara no haber estado casada antes (su unión con José Clemenzo no fue matrimonio formal). Vergère, viudo de M.C.F. Rudaz (†1883 Conthey)."
+    },
+    {
+      "id": "m29",
+      "spouse1_id": "p85",
+      "spouse2_id": "p103",
+      "marriage_date": "1915-06-21",
+      "marriage_place": "Entre Ríos, Argentina",
+      "divorce_date": "",
+      "notes": "Marianna, viuda de Vergère, se casa con Domingo Mersilli (acta parroquial, Libro de Matrimonio N°242)."
     },
     {
       "id": "m3",

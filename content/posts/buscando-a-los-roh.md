@@ -252,6 +252,41 @@ Porque acá está lo que me deja pensando: **José Clemenzo —el hermano de Fra
 
 La búsqueda de los Roh, que arrancó para encontrar a Francisco, terminó dibujándolo por ausencia: el único hueco en una foto de familia por lo demás completa. El próximo paso es obvio y concreto —peinar los bautismos de Todos los Santos de Santa Fe entre 1884 y 1891, buscando cualquier Clemenzo—. Si Francisco estuvo en Santa Fe, tiene que haber dejado al menos una firma. Y si no estuvo, esa ausencia también es una respuesta.
 
+### 13 de junio de 2026 (más tarde) — Y aparecieron en Aven
+
+El mismo día que cerré lo de arriba preguntándome por Francisco, llegó —por otro camino— la pieza que esta investigación perseguía desde el primer párrafo: **la familia Roch en el censo federal suizo de 1870, en el pueblo de Aven, comuna de Conthey.** Sin discusión, son ellos.
+
+![Censo federal suizo de 1870 — la familia Roch en Aven, Conthey](../../assets/images/posts/roh-1870-censo-conthey-aven.webp)
+
+El hogar, la noche del 30 de noviembre de 1870:
+
+```mermaid
+flowchart TD
+    JJR["Jean Joseph Roch\n✶04-10-1841 · Aven"]
+    MP["Marie Putallaz\n✶01-11-1835 · Aven"]
+    m(( ))
+    JJR --- m
+    MP --- m
+    MAR["Marianne\n✶20-02-1860"]
+    CEL["Célestine\n✶22-12-1860"]
+    ROS["Rosalie\n✶12-10-1863"]
+    JM["Joseph Marie\n✶27-09-1870"]
+    m --> MAR & CEL & ROS & JM
+    classDef sw fill:#eaf2fb,stroke:#9bb8da,color:#1a1a1a
+    class JJR,MP,MAR,CEL,ROS,JM sw
+```
+
+Lo que confirma y lo que corrige:
+
+- **Célestine —mi tatarabuela— nació el 22 de diciembre de 1860, en Aven.** Fecha y lugar exactos. (Antes la tenía como «1862/63, Suiza».)
+- **El hamlet es Aven**, comuna de Conthey: el dato que faltaba para saber dónde mirar.
+- **Aparece una hermana que no conocía: Rosalie** (1863). No está en el censo argentino de 1895 — habrá que ver qué fue de ella.
+- **Eran dos Josés, no uno.** Acá está **Joseph Marie, nacido en Aven en septiembre de 1870** —el último hijo suizo, justo antes de emigrar—, que es quien después se casó con Manuela Locher (por eso el acta lo daba «nacido en el Valais», que no me cerraba). Su hermano **José Luciano nació ya en Argentina, en Cullen, en 1873**. En la entrada anterior los había tratado como una sola persona; el censo los separa.
+- **Un enigma nuevo:** Marianne figura nacida en **febrero de 1860** y Célestine en **diciembre de 1860**. Dos hijas de la misma madre el mismo año es imposible. O hay un error de fecha, o **Marianne es hijastra** —hija de un matrimonio anterior de Jean Joseph—. Lo dejo abierto hasta dar con su bautismo.
+- Detalle: en Conthey la familia figura como **«Roch»** a secas, sin el «Blanc» que el cura argentino le agregó al pequeño José en 1873. La hipótesis del surnom «Roh-Blanc» pierde fuerza.
+
+Cuatro años preguntándome de qué parte de Conthey venían, y la respuesta era **Aven**. La rama suiza de mi familia tiene, por fin, una dirección.
+
 <style>
 .registros-galeria { margin: 28px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }
 .registros-galeria summary { cursor: pointer; font-size: 0.95rem; color: #374151; padding: 6px 0; user-select: none; }
