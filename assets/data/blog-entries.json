@@ -1,5 +1,25 @@
 [
   {
+    "id": "buscando-a-los-roh",
+    "title": "Buscando a los Roh",
+    "description": "Un cambio de método en la investigación: durante siete generaciones, los hombres de la familia se instalaron en la casa de sus esposas. Si el patrón es real, la pista de Francisco Clemenzo no está en los Clemenzo — está en los Roh. Punto de partida, documentos y próximos pasos.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "investigacion",
+    "date": "2026-06-13",
+    "tags": [
+      "roh",
+      "putallaz",
+      "clemenzo",
+      "conthey",
+      "santa fe",
+      "colonia cullen",
+      "uxorilocalidad",
+      "investigacion"
+    ],
+    "featured": false,
+    "url": "dist/blog/buscando-a-los-roh.html"
+  },
+  {
     "id": "la-ruina-de-francois",
     "title": "La ruina de François",
     "description": "La prensa oficial del Valais registró, aviso a aviso, la desintegración del patrimonio de François Clemenzoz: un testamento que salta una generación, dos subastas, una curatela pedida por él mismo y un acto de insolvencia. Crónica documental de los años que precedieron a la emigración de su hijo a Argentina.",
