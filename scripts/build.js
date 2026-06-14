@@ -7,7 +7,7 @@ const { execFileSync } = require('child_process');
 
 // Configuración
 const BASE_URL = 'https://web-genealogia.cmzo.workers.dev';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/cards/vallee-du-rhone.webp`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/cards/og-banner.webp`;
 const POSTS_DIR = './content/posts';
 const TEMPLATE_FILE = './content/templates/post-template.html';
 const OUTPUT_DIR = './dist/blog';
