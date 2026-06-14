@@ -81,10 +81,12 @@ Cuatro piezas sostienen todo lo anterior. Ninguna es definitiva por sí sola; ju
 **El bautismo de José Luciano (Colonia Cullen, 29 de junio de 1873).** Es la pieza más valiosa, porque ancla a la familia en el tiempo y el lugar. El acta dice que José Luciano nació el 14 de junio de 1873, *hijo legítimo de Juan José Roch y María Putallaz, ambos naturales del Cantón Valais en Suiza, y vecinos de dicha Colonia*. Los padrinos —Serafín y Adela Marietan— son otra familia valesana de la misma colonia. Esto me da tres certezas: los Roch ya estaban en Santa Fe en 1873, estaban casados (hijo *legítimo*), y no llegaron solos sino dentro de un grupo de valesanos.
 
 ![Acta de bautismo de José Luciano Roh, Colonia Cullen, 1873](../../assets/images/personas/p80-bautismo.webp)
+_Acta de bautismo de José Luciano Roh, Colonia Cullen, 1873_
 
 **El censo nacional de 1895 (Colón, Entre Ríos).** Más de veinte años después, la familia entera aparece junta en un mismo hogar: José Roch (54, suizo, herrero), María Putallaz (58, suiza) y siete hijos, desde Marianna hasta una Luisa de nueve años. Es la foto de grupo que confirma el árbol y revela el dato del oficio. También muestra que, entre 1873 y 1895, los Roch se mudaron de Santa Fe a Entre Ríos.
 
 ![Censo nacional de 1895, Colón — el hogar de José Roch y María Putallaz](../../assets/images/personas/p38-censo.webp)
+_Censo nacional de 1895, Colón — el hogar de José Roch y María Putallaz_
 
 **La licencia de inhumación de Celestina (Santa Fe, 1950).** Celestina murió de neumonía el 2 de octubre de 1950, a los 87 años, en la calle Suipacha al 3900 de la ciudad de Santa Fe. El documento la nombra *Celestina Roch de Clemenceau* —el apellido familiar ya había mutado de Clemenzo a Clemence y de ahí a Clemenceau— y la declara *viuda*. Ese «viuda» es una de las cosas que habrá que mirar de cerca.
 
@@ -257,6 +259,7 @@ La búsqueda de los Roh, que arrancó para encontrar a Francisco, terminó dibuj
 El mismo día que cerré lo de arriba preguntándome por Francisco, llegó —por otro camino— la pieza que esta investigación perseguía desde el primer párrafo: **la familia Roch en el censo federal suizo de 1870, en el pueblo de Aven, comuna de Conthey.** Sin discusión, son ellos.
 
 ![Censo federal suizo de 1870 — la familia Roch en Aven, Conthey](../../assets/images/posts/roh-1870-censo-conthey-aven.webp)
+_Censo federal suizo de 1870 — la familia Roch en Aven, Conthey_
 
 El hogar, la noche del 30 de noviembre de 1870:
 

@@ -11,7 +11,7 @@ kicker: "Un vistazo al método con el que registro las fuentes, registros y docu
 ---
 
 ![Archivo](../../assets/images/posts/foto_post_archivo.jpg)
-
+_Archivo_
 ## F-CH-VS-CEN-1870-Riddes-PlanVilly
 
 **Plataforma:** recensements.vallesiana.ch  

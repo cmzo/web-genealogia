@@ -383,6 +383,14 @@ function markdownToHtml(markdown) {
     }
   );
 
+  // Los pies de imagen (figcaption) suelen quedar FUERA del <figure> y con
+  // estilos inline. Los movemos adentro y les quitamos los estilos para que
+  // los maneje styles.css (y para que el lightbox los detecte como ficha).
+  html = html.replace(
+    /<\/figure>\s*<figcaption[^>]*>([\s\S]*?)<\/figcaption>/g,
+    '<figcaption class="article-caption">$1</figcaption></figure>'
+  );
+
   // Agregar lightbox HTML, CSS y scripts al final
   html += `
   <style>

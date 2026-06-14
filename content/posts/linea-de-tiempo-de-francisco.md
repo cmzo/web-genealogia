@@ -17,7 +17,7 @@ slug: "linea-de-tiempo-de-francisco"
 Francisco, junto a sus hermanos José y Esteban, aparecen en el censo de 1870, registrados como residentes en **Riddes** (específicamente en la aldea de Villy), junto a sus padres François Clemenzoz y Marie Stalder.
 
 ![Censo de 1870 - Francisco Clemenzo](../../assets/images/posts/FJHC_1859_censo1870.png)
-
+_Censo de 1870 - Francisco Clemenzo_
 A partir de este censo se pueden extraer algunas fechas importantes:
 
 - **François Clemenzoz**: 9 de abril de 1809
@@ -40,7 +40,7 @@ Además, aparece **Josephine Clemenzo**, nacida el 19 de marzo de 1843, registr
 Las comunas de origen son:
 
 ![Comuna de origen - Censo 1870](../../assets/images/posts/FJHC_1859_censo1870_comuna.png)
-
+_Comuna de origen - Censo 1870_
 **Villy, Riddes**
 
 La parte superior de la planilla del censo nos da la localización de la familia:
@@ -57,7 +57,7 @@ La parte superior de la planilla del censo nos da la localización de la familia
 **Documentos en Argentina**. Existen diversos censos, actas y registros con su firma, disponibles [aquí](../../archivo.html). Entre ellos destaco el siguiente:
 
 ![Documento militar de Francisco](../../assets/images/posts/FJHC_1859_militar_2.jpeg)
-
+_Documento militar de Francisco_
 En este documento se verifican los nombres de los padres: François Clemenzoz y **Maria Luisa Stalder** (en algunas fuentes aparece como Stardi). El documento está fechado en 1919 y Francisco figura como soltero.
 
 ## Años en Argentina
@@ -74,20 +74,20 @@ Según el libro *Valaisans émigrés au XIXe siècle* de Maurice Carron
 Por otro lado, en _La Colonia San José y la Inmigración Europea_ de Celia A. Vernaz aparece un Clemenzoz llegado desde **Riddes, Valais**, que es el origen exacto de la familia Clemenzoz. Sin embargo, no consta el año.
 
 ![Clemenzoz desde Riddes, Valais](../../assets/images/posts/FJHC_1859_Riddes.png)
-
+_Clemenzoz desde Riddes, Valais_
 ¿Podría tratarse de la misma persona? Tal vez Francisco nació en Conthey y vivió en Riddes, o viceversa.
 
 Según Google Maps, Ardon se encuentra a solo una hora de Riddes, por lo que no sería extraño que en distintos documentos se mencionara uno u otro lugar:
 
 ![Distancia entre Ardon y Riddes](../../assets/images/posts/FJHC_1858_ArdonRiddes.png)
-
+_Distancia entre Ardon y Riddes_
 
 **1892**
 
 La primera evidencia documental con firma de Francisco en Argentina corresponde al acta de nacimiento de su hijo **León Francisco**, nacido en 1891:
 
 ![Acta de bautismo de León Francisco](../../assets/images/archive/p20/LFC_1891_bautismo.jpg)
-
+_Acta de bautismo de León Francisco_
 
 Esto nos deja algunas cuestiones:
 
@@ -114,14 +114,14 @@ A partir de esto surgen varias preguntas:
 En relación a la familia de Francisco, existe una carta de 1905 del Tribunal de Conthey, referida a una herencia, donde se nombra a **Etienne**, un hermano de Francisco:
 
 ![Carta del Tribunal de Conthey - Página 1](../../assets/images/posts/FJHC_1859_cartaConthey_1.JPG)
-
+_Carta del Tribunal de Conthey - Página 1_
 ![Carta del Tribunal de Conthey - Página 2](../../assets/images/posts/FJHC_1859_cartaConthey_2.JPG)
-
+_Carta del Tribunal de Conthey - Página 2_
 
 Esto llevó a la hipótesis de que Etienne Clemenzo podría ser **Esteban Clemenzoz**, quien tiene varios registros en FamilySearch. Entre ellos se encontré el siguiente:
 
 ![Matrimonio de Esteban Clemenzoz](../../assets/images/posts/EC_1864_matrimonio1.jpg)
-
+_Matrimonio de Esteban Clemenzoz_
 Esto confirma que **Esteban Clemenzoz y Francisco Clemenzo eran hermanos**, ambos hijos de François Clemenzoz y Marie Luisa Stalder.
 
 Volviendo a los hijos de Francisco en Entre Rios, tenemos a:

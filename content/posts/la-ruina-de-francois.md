@@ -24,7 +24,7 @@ Los avisos aparecieron buscando el apellido en [e-newspaperarchives.ch](https://
 *Gazette du Valais, 8 de diciembre de 1861.*
 
 ![Gazette du Valais, 8-12-1861: la cámara pupilar de Salins acepta la sucesión de Catherine Cerisier](../../assets/images/posts/gazette-1861-12-08-sucesion.webp)
-
+_Gazette du Valais, 8-12-1861: la cámara pupilar de Salins acepta la sucesión de Catherine Cerisier_
 > *La cámara pupilar de Salins hace saber que en sesión del 1.° de diciembre corriente, a propuesta del consejo de familia, ha decidido aceptar pura y simplemente la herencia, en la parte que le corresponde, de Catherine Cerisier, viuda Clemenzoz, de Riddes, legada por testamento **a los hijos de François Clemenzoz**, de esta comuna. Ha nombrado curador ad hoc de dichos hijos al abogado Etienne Gabioud, de Sion.*
 
 Catherine Cerisier, la viuda de Jean Joseph, había muerto. Y su testamento hace algo llamativo: no deja sus bienes a su hijo François, sino que **salta una generación** y los lega directamente a los nietos — que en ese momento eran tres: Josephine (18 años), José (5) y Francisco (3).
@@ -38,7 +38,7 @@ Como los herederos eran menores, la cámara pupilar de Salins —el órgano comu
 *Gazette du Valais, 16 de febrero de 1862.*
 
 ![Gazette du Valais, 16-02-1862: subasta de los inmuebles de Marie-Catherine Clemenzoz née Cerisier](../../assets/images/posts/gazette-1862-02-16-subasta-vigne.webp)
-
+_Gazette du Valais, 16-02-1862: subasta de los inmuebles de Marie-Catherine Clemenzoz née Cerisier_
 > *Los herederos menores, legalmente representados, conjuntamente con los herederos mayores, de Marie-Catherine Clemenzoz, nacida Cerisier, de Riddes, expondrán en venta por subasta [...] los inmuebles siguientes, sitos en el caserío de la Vigne, en Riddes: 1.° una parte de granero para cereales, llamada* raccard*; 2.° una sala llamada granero, en la casa Gaillard; 3.° una bodega, ídem.*
 
 La liquidación de la herencia. Los «herederos mayores» son los seis hijos adultos de Catherine; los «menores, legalmente representados» son los nietos del testamento, con Gabioud como representante.
@@ -50,7 +50,7 @@ El inventario merece una pausa, porque retrata la propiedad rural valesana del s
 *Gazette du Valais, 23 de febrero de 1862.*
 
 ![Gazette du Valais, 23-02-1862: François Clemenzoz colocado bajo consejo judicial a su propia solicitud](../../assets/images/posts/gazette-1862-02-23-consejo-judicial.webp)
-
+_Gazette du Valais, 23-02-1862: François Clemenzoz colocado bajo consejo judicial a su propia solicitud_
 > *La cámara pupilar de Salins hace saber que en sesión del día de hoy, François Clémenzoz, de esta comuna, ha sido, **a su propia solicitud**, colocado bajo consejo judicial, en el sentido del artículo 325 del código civil; el abogado Etienne Gabioud, de Sion, ha sido designado para desempeñar esta función.*
 
 Este es el documento central de la serie. El 13 de febrero de 1862 —diez semanas después de la muerte de su madre, dos días después de que se anunciara la subasta de la herencia— François se presentó ante la cámara pupilar de Salins y pidió que lo pusieran bajo **consejo judicial**: una curatela de asistencia por la cual no podía firmar contratos ni disponer de bienes sin la aprobación de un consejero. El artículo 325 del código civil valesano la preveía para pródigos y malos administradores. Es menos severa que la interdicción total, pero su efecto es claro: François perdía el manejo de su economía. Y el consejero designado fue el mismo Gabioud que ya cuidaba la herencia de sus hijos — todo el patrimonio familiar quedaba bajo el control de un solo abogado de Sion.
@@ -64,7 +64,7 @@ Un detalle humano que sí está documentado: **doce días después de ese trámi
 *Gazette du Valais, 21 de septiembre de 1862.*
 
 ![Gazette du Valais, 21-09-1862: venta de la herencia de los niños y de la granja de Turrin](../../assets/images/posts/gazette-1862-09-21-venta-turrin.webp)
-
+_Gazette du Valais, 21-09-1862: venta de la herencia de los niños y de la granja de Turrin_
 > *El abogado Gabioud, de Sion, curador de los hijos de François Clémenzoz, de esta comuna, expone en venta: 1.° un vergel situado en Praolavay, término de Riddes, de unas 122 toesas locales, procedente de Catherine Cerisier; 2.° un campo en la Condemine, misma tierra, de la misma procedencia, de unas 114 toesas. [...] Venderá además, por trato directo, **una granja sita en Turrin, término de Salins, consistente en edificio, prado, campo y jardines, perteneciente a François Clémenzoz y a su mujer, nacida Stolder**.*
 
 Siete meses después del consejo judicial, Gabioud liquida en un solo aviso dos patrimonios distintos:
@@ -79,7 +79,7 @@ Para el rastreo genealógico, esa frase final vale oro. Para la historia familia
 *Gazette du Valais, 14 de enero de 1866.*
 
 ![Gazette du Valais, 14-01-1866: acto de carencia entre François y Jean-Baptiste Clemenzo](../../assets/images/posts/gazette-1866-01-14-carencia.webp)
-
+_Gazette du Valais, 14-01-1866: acto de carencia entre François y Jean-Baptiste Clemenzo_
 > *El juez de la ciudad de Sion da a conocer los siguientes actos de carencia: 1.° François Clemenzo dio acto de carencia en perjuicio de Jean-Baptiste Clemenzo, por fr. 71,95 [...]*
 
 Cuatro años después, el epílogo. Un «acto de carencia» certifica que un embargo fracasó: se buscaron bienes para cobrar una deuda y no se encontró nada embargable. La fórmula del aviso es ambigua sobre quién debía a quién — la lectura más coherente con todo lo anterior es que François era el deudor insolvente, aunque queda pendiente confirmar la convención de la época. En cualquier caso, el monto habla solo: el conflicto judicial es por **71 francos con 95 céntimos**. De la granja con prado, campo y jardines a un embargo infructuoso por el precio de unas semanas de jornal.

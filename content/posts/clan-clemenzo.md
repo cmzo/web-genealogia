@@ -20,7 +20,7 @@ Los personajes centrales de esta historia son **Baptiste Clemenzo** (el patriarc
 ---
 
 ![](../../assets/images/posts/header_censo.png)
-
+_Encabezado del censo valesano_
 
 **En este documento:**
 - [Censos](#censos)
@@ -101,7 +101,7 @@ Total: 4 personas. La **hija "cattherine fls."** tendría c. 16 años si nació 
 **Fuente:** [Censo de Ardon 1802 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Ardon)
 
 ![Censo de 1802 en Ardon](../../assets/images/posts/censo_1802_ardon.png)
-
+_Censo de 1802 en Ardon_
 > [!NOTE] 🔎 Primera aparición de los Clemenzo en los censos del Valais
 > Este es el registro nominativo más antiguo disponible de la familia. Los Clemenzo están en Ardon desde 1481 (Armorial Valaisan), pero estos son los primeros datos concretos de individuos: Baptiste Clemenzo, su esposa Marie, y sus dos hijos. Uno de esos hijos, Jean Joseph, se convertirá en el abuelo directo de la rama argentina.
 
@@ -156,8 +156,8 @@ Los Clemenzo de las líneas 21–34 pertenecen a la **Segunda Clase**: son burgu
 **Registro original**
 
 ![Censo de Riddes 1829 — 2ème Classe, líneas 21–31](../../assets/images/posts/censo_1829_riddes_2clase_1.png)
-![Censo de Riddes 1829 — 2ème Classe, líneas 32–34](../../assets/images/posts/censo_1829_riddes_2clase_2.png)
-
+_Censo de Riddes 1829 — 2ème Classe, líneas 21–31_![Censo de Riddes 1829 — 2ème Classe, líneas 32–34](../../assets/images/posts/censo_1829_riddes_2clase_2.png)
+_Censo de Riddes 1829 — 2ème Classe, líneas 32–34_
 **Interpretación**
 
 #### Familia Jean Joseph (líneas 21–28)
@@ -214,7 +214,7 @@ Jean Claude (notario, n.1773) con cinco hijas: Marie Marguerite (1801), Marie El
 Este censo es el espejo del anterior: mientras el de Riddes 1829 registraba a la familia en Segunda Clase (burgueses de Riddes domiciliados en Ardon), este los muestra como residentes efectivos de Ardon.
 
 ![Censo de Ardon 1829 — 1ère Classe, bloque Jean Joseph *1761 y Jean Joseph *1780](../../assets/images/posts/censo_1829_ardon_1clase_1.png)
-
+_Censo de Ardon 1829 — 1ère Classe, bloque Jean Joseph *1761 y Jean Joseph *1780_
 #### Jean Joseph Clemenzo n.1761 — rama diferente
 
 Un **segundo Jean Joseph Clemenzo** (n.1761), Conseiller. No es p57. Las entradas con apellido **Balleij** (l.23) y **Loye** (l.25) son yerno y nieto respectivamente — fruto de matrimonios de hijas de este Jean Joseph. Rama colateral (ver H9).
@@ -249,7 +249,7 @@ Este es el hogar de **Jean Joseph Clemenzo (p57, abuelo de la rama argentina)**,
 #### Jean Joseph y Jean Baptiste en Ardon 1829 — primer registro conjunto
 
 ![Censo de Ardon 1829 — 1ère Classe: Jean Joseph, Jean Baptiste y Baptiste Père](../../assets/images/posts/censo_1829_ardon_1clase_2.png)
-
+_Censo de Ardon 1829 — 1ère Classe: Jean Joseph, Jean Baptiste y Baptiste Père_
 Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo aparecen juntos** en el mismo documento. En 1802 solo se ve el hogar de Baptiste con ambos hijos nombrados; acá, en 1829, cada uno aparece ya como adulto con su propia situación — y su padre sigue vivo, en el hogar de su hijo Jean Baptiste.
 
 > [!WARNING] ⚠️ El año "1765" pone en duda la hipótesis de parentesco
@@ -271,7 +271,7 @@ Este es el **primer censo en que Jean Joseph (p57) y Jean Baptiste Clemenzo apar
 #### Jean Claude Clemenzo — rama notarial (Ardon 1829)
 
 ![Censo de Ardon 1829 — 1ère Classe, familia Jean Claude Clemenzo](../../assets/images/posts/censo_1829_ardon_1clase_3.png)
-
+_Censo de Ardon 1829 — 1ère Classe, familia Jean Claude Clemenzo_
 Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) — diferencia de un año, error habitual de transcripción. El censo de Ardon revela una **sexta hija** (l.20, n.1810) no registrada en el de Riddes.
 
 | Línea | Apellido | Nombre | Año nac. | Profesión |
@@ -297,7 +297,7 @@ Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) —
 **Registro original**
 
 ![Censo de Riddes 1837](../../assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp)
-
+_Censo de Riddes 1837_
 | Apellido  | Nombre          | Sexo | Rol       | ID  |
 |-----------|-----------------|------|-----------|-----|
 | Clemenzo  | Jean Joseph     | M    | père      | p57 |
@@ -318,7 +318,7 @@ Jean Claude aparece aquí como n.1772 (vs n.1773 en el censo de Riddes 1829) —
 #### 4me Classe — ausentes de Riddes (1837)
 
 ![Censo de Riddes 1837 — 4me Classe, ausentes](../../assets/images/posts/censo-1837-riddes-ausentes.png)
-
+_Censo de Riddes 1837 — 4me Classe, ausentes_
 La 4me Clase registra "les ressortissans de la commune absens du pays" — burgueses de Riddes que residen fuera del cantón. La única entrada Clemenzo:
 
 | Apellido | Nombre | Profesión | Lugar | Observaciones |
@@ -338,8 +338,8 @@ La 4me Clase registra "les ressortissans de la commune absens du pays" — burgu
 **Registro original**
 
 ![Censo de Riddes 1846 — líneas 44–45](../../assets/images/posts/censo_1846_riddes_1.png)
-![Censo de Riddes 1846 — línea 46](../../assets/images/posts/censo_1846_riddes_2.png)
-
+_Censo de Riddes 1846 — líneas 44–45_![Censo de Riddes 1846 — línea 46](../../assets/images/posts/censo_1846_riddes_2.png)
+_Censo de Riddes 1846 — línea 46_
 | Línea | Apellido  | Nombre    | Origen | Observación   |
 |-------|-----------|-----------|--------|---------------|
 | 44    | Clemenzoz | Joseph    | Riddes |               |
@@ -355,7 +355,7 @@ Las tres entradas forman un hogar: Joseph (l.44) = **p57 Jean Joseph Clemenzo**,
 #### 4me Classe — ausentes de Riddes (1846)
 
 ![Censo de Riddes 1846 — 4me Classe, ausentes](../../assets/images/posts/censo-1846-riddes-ausentes.png)
-
+_Censo de Riddes 1846 — 4me Classe, ausentes_
 La misma 4me Clase del censo de febrero de 1846. Línea 7:
 
 | Nº | Apellido | Nombre | Profesión | Lugar |
@@ -374,8 +374,8 @@ La misma 4me Clase del censo de febrero de 1846. Línea 7:
 **Registro original**
 
 ![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_1.png)
-![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_2.png)
-
+_Censo de Ardon 1846_![Censo de Ardon 1846](../../assets/images/posts/censo_1856_ardon_2.png)
+_Censo de Ardon 1846_
 Todas las entradas tienen origen declarado **D'Ardon**.
 
 | Línea | Apellido | Nombre          | Origen  | Sexo      | Rol / Profesión   |
@@ -485,7 +485,7 @@ El último grupo abre una pregunta directa sobre la línea principal hacia Argen
 **Registro original**
 
 ![Censo de Riddes 1850 — líneas 58–60](../../assets/images/posts/censo_1850_riddes.png)
-
+_Censo de Riddes 1850 — líneas 58–60_
 | Línea | Apellido           | Nombre          | Año nac. | Sexo     | Profesión   |
 |-------|--------------------|-----------------|----------|----------|-------------|
 | 58    | Clemenzoz Cerisier | Marie Catherine | 1786     | Femenino | Agricultora |
@@ -507,7 +507,7 @@ El último grupo abre una pregunta directa sobre la línea principal hacia Argen
 **Registro original**
 
 ![Censo de Riddes 1870](../../assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp)
-
+_Censo de Riddes 1870_
 Censo federal suizo: fotografía del hogar de **p36 François Clemenzoz** en la noche del 30 de noviembre al 1 de diciembre de 1870.
 
 | N° | Apellido  | Nombre          | Pos.      | Nacimiento     | E. civil  | Origen | Sexo |
@@ -551,7 +551,7 @@ El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 
 <div style="max-width: 320px; margin: 24px auto;">
 
 ![Armorial Valesano de la familia Clemenzo](../../assets/images/posts/clemenzo-def.png)
-
+_Armorial Valesano de la familia Clemenzo_
 </div>
 
 > **Escudo adoptado en 1977. El ancla es uno de los atributos iconográficos de *saint Clément*; la llave está tomada del escudo de armas de la comuna de Ardon y también recuerda a *Saint-Pierre-de-Clages*, donde la familia es mencionada en el siglo XVI**
@@ -559,7 +559,7 @@ El árbol genealógico de Jean-Yves cita el *Armorial Valaisan, Sion et Zurich, 
 ### Edición 1946 — entrada CLEMENZ / CLEMENZO
 
 ![Armorial Valaisan 1946 — entrada Clemenz/Clemenzo](../../assets/images/posts/armorial-valaisan-1946-clemenz-clemenzo.png)
-
+_Armorial Valaisan 1946 — entrada Clemenz/Clemenzo_
 Edición bilingüe (francés / alemán). La entrada CLEMENZ/CLEMENZO cubre todas las variantes del apellido y distingue dos ramas por burguesía:
 
 > *"B.: Clemenz: Staldenried, Viège, etc.; Clemenzo: **Ardon, Riddes**."*
@@ -577,7 +577,7 @@ Esto confirma explícitamente que la rama **Clemenzo** tiene su burguesía en **
 ### Edición posterior (post-1977) — entrada CLEMENZO (Famille d'Ardon)
 
 ![Armorial Valaisan — entrada Clemenzo, Famille d'Ardon](../../assets/images/posts/armorial-valaisan-clemenzo-ardon.png)
-
+_Armorial Valaisan — entrada Clemenzo, Famille d'Ardon_
 Edición más reciente (las armas fueron adoptadas en 1977). Artículo exclusivo para la rama Clemenzo de Ardon. Menciona a Hyacinthe Clemenzo (ver sección siguiente) y a Frédéric Clemenzo (1893–1980), diputado 1925–1929 y 1933–1937, teniente-coronel, presidente cantonal de tiradores. Puede ser descendiente de Jean-André vía Hyacinthe, o de Jean-Baptiste \*1774 vía Frédéric \*1832 — pendiente de verificación.
 
 

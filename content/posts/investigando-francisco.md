@@ -13,11 +13,11 @@ kicker: "Un análisis completo del material que tengo sobre Francisco"
 El nombre de Francisco Clemenzo aparece por primera vez en el acta de nacimiento de su nieto Félix Ricardo Clemenzo.
 
 ![Francisco y Celestina, abuelos de Felix Ricardo Clemenzo](../../assets/images/posts/nacimiento_FRC.png)
-
+_Francisco y Celestina, abuelos de Felix Ricardo Clemenzo_
 A partir de ese dato logré identificarlo en el censo de 1895 en la provincia de Entre Ríos, donde figura junto a algunos de sus hijos.
 
 ![Francisco en Entre Rios](../../assets/images/posts/censo_francisco.png)
-
+_Francisco en Entre Ríos_
 De ese registro se desprenden algunos puntos:
 - Era de origen suizo.
 - Declaraba tener 36 años en 1895 (aunque esa edad no coincide en todos los documentos).
@@ -44,13 +44,13 @@ Todavía no logré encontrar un registro de su llegada a la Argentina. En la bas
 Si tomamos como válido el registro de Ardon, Francisco habría nacido el 22 de julio de 1859. Eso lo ubicaría con 11 años en el censo suizo de 1870 y con 14 años al llegar a Argentina en 1873.
 
 ![Francisco en Ardon](../../assets/images/posts/valais_francisco.png)
-
+_Francisco en Ardon_
 En el libro Valaisans émigrés au 19ème siècle de Maurice Carron aparece mencionado un François Clémensoz, originario de Ardon, que habría partido hacia Argentina en 1873.
 Si aceptamos que se trata de Francisco, eso significaría que llegó al país con 14 años. Este dato encajaría con la fecha de nacimiento de 1859 y con la edad que declaró en algunos documentos posteriores.
 Sin embargo, todavía no encontré un registro de embarque o llegada que confirme este dato, por lo que lo considero una hipótesis probable pero pendiente de verificación.
 
 ![¿Francisco en Argentina?](../../assets/images/posts/francisco_llegada_argentina.png)
-
+_¿Francisco en Argentina?_
 El siguiente documento donde vuelve a aparecer es la partida de bautismo de León Francisco Clemenzo en 1892, lo que deja un vacío de casi veinte años sin registros.
 
 En el censo de 1895, Francisco declara tener 36 años, lo que coincide con un nacimiento alrededor de 1859. Sin embargo, en 1897, con el nacimiento de su hija Luisa, vuelve a declarar tener 36 años.
@@ -74,7 +74,7 @@ Otro punto llamativo son las variaciones del apellido en distintos registros:
 A pesar de estas formas, Francisco firmaba como Clemenzoz.
 
 ![¿Francisco y su firma?](../../assets/images/posts/FJHC_1859_firma.png)
-
+_¿Francisco y su firma?_
 En francés, la z final se pronuncia muy suavemente, casi como una s, lo que puede explicar la confusión. Sin embargo, en el censo suizo de 1870 el apellido aparece claramente como Clemenzo.
 
 En una charla que tuve con un posible pariente lejano, él mencionó que un antepasado suyo nacido en Valais había cambiado su apellido a Clemenso tras vivir en Francia. Esto me sirvió como ejemplo de que las variaciones en los apellidos no eran algo excepcional.
