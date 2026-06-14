@@ -749,7 +749,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .back-home svg { width: 14px; height: 14px; }
 
-.article-header { padding: 40px 0 24px; }
+.article-header { padding: 40px 0 24px; max-width: 720px; margin-left: auto; margin-right: auto; }
 
 .article-kicker {
   color: var(--muted);
@@ -817,6 +817,9 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .article-content {
   min-width: 0;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .article-content .mermaid {
@@ -829,10 +832,10 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .article-content p {
-  margin: 0 0 24px 0;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(15px, 1.2vw, 16px);
-  line-height: 1.75;
+  margin: 0 0 26px 0;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
   color: var(--text);
 }
 
@@ -859,27 +862,79 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .article-content ol {
   margin: 16px 0 24px 0;
   padding-left: 24px;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(15px, 1.2vw, 16px);
-  line-height: 1.75;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
   color: var(--text);
 }
 
-.article-content li { margin: 6px 0; line-height: 1.75; }
+.article-content li { margin: 6px 0; line-height: 1.8; }
 .article-content ul li { list-style-type: disc; }
 .article-content ol li { list-style-type: decimal; }
 
 .article-content figure {
-  margin: 32px 0;
+  margin: 44px 0;
   text-align: center;
 }
+
+/* Imágenes apiladas: no sumar márgenes, usar uno solo.
+   El build separa figuras consecutivas con un <br> dentro de un <p>. */
+.article-content figure + figure,
+.article-content figure + br + figure { margin-top: 0; }
+.article-content figure + br { display: none; }
 
 .article-content figure img {
   max-width: 100%;
   height: auto;
-  border-radius: 2px;
-  border: 1px solid var(--border);
-  background: var(--bg);
+  /* !important: el build emite estilos inline en cada <img> que hay que pisar */
+  border-radius: 2px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg) !important;
+  margin: 0 !important;
+}
+
+/* Galería de imágenes: encuadre sobrio (el build emite una caja gris inline) */
+.article-content .image-gallery {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  gap: 14px !important;
+  margin: 44px 0 !important;
+}
+
+/* ── Lightbox editorial ─────────────────────────────── */
+.lbx { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
+       padding: 3vh 2vw; background: rgba(10,10,12,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.lbx[hidden] { display: none; }
+.lbx-modal { position: relative; display: flex; width: min(1320px, 96vw); height: min(88vh, 840px);
+             background: var(--surface); border-radius: 10px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.lbx-stage { position: relative; flex: 1; display: flex; align-items: center; justify-content: center;
+             overflow: hidden; background: #141416; cursor: zoom-in; }
+.lbx-stage.zoomed { cursor: grab; }
+.lbx-img { max-width: 100%; max-height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none;
+           transition: transform .12s ease; will-change: transform; }
+.lbx-stage.zoomed .lbx-img { transition: none; }
+.lbx-panel { width: 320px; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border);
+             padding: 48px 26px 26px; overflow-y: auto; }
+.lbx-panel[hidden] { display: none; }
+.lbx-count { font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: .05em; color: var(--muted); margin-bottom: 14px; }
+.lbx-cap { font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; line-height: 1.7; color: var(--text); }
+.lbx-cap em { color: var(--muted); }
+.lbx-btn { position: absolute; z-index: 3; background: rgba(0,0,0,0.45); border: none; color: #fff; cursor: pointer;
+           display: grid; place-items: center; border-radius: 50%; transition: background .15s; }
+.lbx-btn:hover { background: rgba(0,0,0,0.72); }
+.lbx-close { top: 12px; right: 12px; width: 36px; height: 36px; font-size: 18px; }
+.lbx-nav { top: 50%; transform: translateY(-50%); width: 42px; height: 42px; font-size: 24px; }
+.lbx-prev { left: 12px; }
+.lbx-next { right: 12px; }
+.lbx-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 3; color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 12px; background: rgba(0,0,0,0.5); padding: 5px 13px;
+            border-radius: 20px; pointer-events: none; white-space: nowrap; }
+@media (max-width: 760px) {
+  .lbx { padding: 0; }
+  .lbx-modal { width: 100vw; height: 100vh; border-radius: 0; flex-direction: column; }
+  .lbx-panel { width: auto; max-height: 38%; border-left: none; border-top: 1px solid var(--border); padding: 20px; }
 }
 
 .article-content figure figcaption {
@@ -957,7 +1012,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .article-content .table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 16px 0 24px;
+  margin: 44px 0;
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: hidden;
@@ -1511,7 +1566,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   .article-content p,
   .article-content ul,
   .article-content ol,
-  .article-content blockquote { font-size: 14px; }
+  .article-content blockquote { font-size: 16px; }
   .places-grid { grid-template-columns: 1fr; }
   .migration-timeline::before { left: 14px; }
 }

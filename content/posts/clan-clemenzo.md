@@ -21,6 +21,7 @@ Los personajes centrales de esta historia son **Baptiste Clemenzo** (el patriarc
 
 ![](../../assets/images/posts/header_censo.png)
 
+
 **En este documento:**
 - [Censos](#censos)
 - [Armorial](#armorial-valaisan)
@@ -64,6 +65,7 @@ Siete censos valaisanos digitalizados cubren el período 1802–1870. Cada uno e
 **Fuente:** [Censo de Riddes 1802 — Archivo del Estado del Valais](https://recensements.vallesiana.ch/iiif/CH-AEV_3090_1802_Martigny_Riddes)
 
 ![Censo de Riddes 1802](../../assets/images/posts/censo_1802_riddes.png)
+_Censo de Riddes de 1802_
 
 No se encontraron entradas Clemenzo/Clemenzoz en Riddes en este año. Consistente con la hipótesis de que la familia vivía en Ardon en 1802 y migró a Riddes en algún momento entre 1802 y 1829.
 
