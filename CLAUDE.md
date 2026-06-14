@@ -177,6 +177,8 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 - Motion should be meaningful: one well-directed sequence beats scattered micro-interactions
 - Preserve the existing design system when working inside an existing page
 
+**Visual consistency is mandatory.** Every page must use the same fonts, color tokens, spacing values, and component patterns documented in `design-system.html`. When a visual change deviates from what's documented (new color, new font size, new spacing, new component variant), **update `design-system.html` immediately** — it is the single source of truth for the site's visual language. Never introduce ad-hoc styles that aren't reflected there.
+
 ## Site design system
 
 All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Archivo / Blog / Fuentes / Colaborar, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
@@ -189,9 +191,9 @@ All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Ár
 | `--surface` | `#ffffff` | Content surface (site-main) |
 | `--border` | `#e8e8e6` | Borders and dividers |
 | `--text` | `#1a1a1a` | Body text |
-| `--muted` | `#8a8a88` | Secondary text, metadata |
+| `--muted` | `#5a5040` | Secondary text, metadata (warm brown-gray) |
 | `--accent` | `#2d4a3e` | Emphasis, hover, links (verde botella) |
-| `--on-accent` | `#ffffff` | Text on accent-colored backgrounds |
+| `--on-accent` | `#cad7d0` | Text on accent-colored backgrounds |
 
 **Dark mode** (`[data-theme="dark"]`) overrides all tokens: `--bg: #16181a`, `--surface: #1f2225`, `--border: #33373b`, `--text: #e8eaec`, `--muted: #9aa3a8`, `--accent: #5fb389`, `--on-accent: #0f1f17`. Applied via:
 - Anti-flash init script inline in `<head>` of every page (reads `localStorage["theme"]`, falls back to `prefers-color-scheme`)
