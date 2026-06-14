@@ -1,3 +1,41 @@
+### 14 de junio de 2026
+
+#### Colaborar: nueva página con formulario de aportes (reemplaza Contacto)
+
+La antigua página de Contacto se reemplazó por **Colaborar**, con dos modos. *Dejar un comentario* (nombre, email opcional, mensaje) y *Tengo información sobre alguien*: este último trae un **selector de personas del árbol** con búsqueda y chips (lee `arbol.json`), opción para personas que **no** están en el árbol pero se relacionan con alguien que sí, tipo de dato (checkboxes), anécdota y enlace. Anti-spam con honeypot y traba de tiempo. Los envíos se guardan en una **Google Sheet** propia mediante Google Apps Script y llega un mail de aviso — sin servicios pagos ni dependencias que puedan dejar de ser gratis. Todos los enlaces del sitio apuntan ahora a Colaborar; `contacto.html` quedó como redirección.
+
+#### Colaborar: selector de idioma ES / FR / EN
+
+La página tiene su propio selector de idioma que cambia todos los textos de la interfaz al instante, recuerda la elección y la refleja en la URL (`?lang=fr`). El español está completo; francés e inglés quedan preparados para traducir.
+
+#### Archivo: buscador, columnas ordenables, navegación familiar y enlaces compartibles
+
+El Archivo sumó **buscador por nombre**, **encabezados que ordenan** la tabla (nombre, años, generación, ítems), **navegación familiar** en la ficha (padre, madre, cónyuge e hijos clickeables para saltar entre fichas sin cerrar), filtro **«solo con documentos»** y **enlaces compartibles** (`archivo.html?focus=p38` abre una ficha directa). Además, el modal de ficha dejó de usar el color saturado de cada rama y adoptó el verde de la paleta (la rama quedó como un punto de color), y **⌘ + K ya no te saca del Archivo**: elegir una persona abre su ficha ahí mismo.
+
+#### Inicio: estadísticas del árbol y acceso destacado
+
+La portada muestra **estadísticas reales** calculadas en vivo desde el árbol (personas, fechas documentadas, lugares, generaciones) y un botón **«Explorá el árbol interactivo»**. Se aumentó el espaciado entre secciones.
+
+#### Blog: indicador de traducción en las tarjetas
+
+Las tarjetas del blog muestran un globo con los chips **ES / FR** cuando el post tiene traducción disponible.
+
+#### Blog en francés
+
+Cinco posts se tradujeron al francés —Clan Clemenzo, Buscando a los Roh, Línea de tiempo de Francisco, Investigando a Francisco y Documentar fuentes—, con selector ES/FR en cada artículo.
+
+#### Accesibilidad y SEO
+
+Se agregaron meta descripciones, etiquetas Open Graph y URLs canónicas en todas las páginas; un enlace **«Saltar al contenido»**, un `<h1>` accesible en la portada y se oscureció el gris del texto secundario para cumplir el contraste AA.
+
+#### Investigación Roh: nuevos datos y fuente
+
+A partir de la nómina *Émigrés de Conthey* (Gabriel Antonin, vía valais-argentine.ch) se corrigieron y completaron fechas y nombres de la familia Roch–Putallaz, se sumaron cuatro ancestros al árbol y se incorporó la nueva fuente —con su PDF— a la página de Fuentes. El detalle está en el post «Buscando a los Roh».
+
+#### Mantenimiento
+
+Se silenciaron los mensajes de consola del build (detección de galerías y conversión de imágenes Obsidian), disponibles con `--verbose`. La carpeta `docs/` dejó de servirse públicamente.
+
 ### 13 de junio de 2026
 
 #### Hosting: migración a Cloudflare Workers Assets
