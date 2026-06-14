@@ -60,7 +60,7 @@ There is no test suite and no linter configured.
 
 ## Architecture
 
-This is a **static site** deployed to GitHub Pages (`cmzo.github.io/web-genealogia`). There is no build framework — everything is plain HTML/CSS/JS with a small Node.js build pipeline.
+This is a **static site** deployed to **Cloudflare Workers Assets** (`web-genealogia.cmzo.workers.dev`). Configuration in `wrangler.toml`. There is no build framework — everything is plain HTML/CSS/JS with a small Node.js build pipeline.
 
 ### Blog pipeline
 
@@ -100,7 +100,7 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 ### Global command palette (`assets/js/command-palette.js`)
 
-Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol.html`) when already on the tree, otherwise navigates to `arbol.html?focus=<id>`. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Contacto, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
+Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol.html`) when already on the tree, otherwise navigates to `arbol.html?focus=<id>`. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
 
 ### Family tree (`arbol.html`)
 
@@ -153,7 +153,7 @@ Run `npm run optimize-personas` to convert images to WebP before committing.
 
 `scripts/update-and-deploy.js` runs `build()` then stages and pushes:
 ```
-git add dist/ assets/data/ assets/css/ assets/js/ assets/images/ *.html docs/ content/
+git add dist/ assets/data/ assets/css/ assets/js/ assets/images/ assets/fonts/ *.html docs/ content/
 ```
 Raw image files (`.jpg`, `.png` originals) are **not** staged by the deploy script — optimize them to WebP first.
 
@@ -179,9 +179,9 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 
 ## Site design system
 
-All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Archivo / Blog / Fuentes / Contacto, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
+All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Archivo / Blog / Fuentes / Colaborar, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
 
-**Color palette:**
+**Color palette (light mode):**
 
 | Token | Value | Use |
 |---|---|---|
@@ -191,14 +191,21 @@ All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Ár
 | `--text` | `#1a1a1a` | Body text |
 | `--muted` | `#8a8a88` | Secondary text, metadata |
 | `--accent` | `#2d4a3e` | Emphasis, hover, links (verde botella) |
+| `--on-accent` | `#ffffff` | Text on accent-colored backgrounds |
+
+**Dark mode** (`[data-theme="dark"]`) overrides all tokens: `--bg: #16181a`, `--surface: #1f2225`, `--border: #33373b`, `--text: #e8eaec`, `--muted: #9aa3a8`, `--accent: #5fb389`, `--on-accent: #0f1f17`. Applied via:
+- Anti-flash init script inline in `<head>` of every page (reads `localStorage["theme"]`, falls back to `prefers-color-scheme`)
+- `assets/js/theme.js` — injects the sun/moon toggle button into `.nav-actions`; persists choice to `localStorage`; listens to `matchMedia` change events for system-preference tracking
 
 **Typography:**
 
+All fonts are **self-hosted** in `assets/fonts/*.woff2` (latin + latin-ext subsets). Loaded via `assets/css/fonts.css`, imported at the top of `styles.css` — no Google Fonts dependency.
+
 | Font | Weights | Use |
 |---|---|---|
-| Source Serif 4 | 400, 600, 700 | Nav brand (`.nav-brand`) |
-| Playfair Display | 700 (normal + italic) | Article titles, H2/H3 in blog posts |
-| Inter | 400, 500, 600, 700 | UI, navigation, body text in posts, metadata |
+| Hanken Grotesk | 500, 600, 700, 800 | Titles (h1, h2, h3), nav brand, UI headings |
+| Source Serif 4 | 400, 400i, 600, 700 | Body text in blog posts, subtitles, blog card descriptions |
+| Inter | 400, 500, 600, 700 | UI, navigation, metadata, table content |
 | JetBrains Mono | 400, 500 | Code blocks |
 
 **Layout constants:** nav `height: 52px` sticky; sidebar `width: 160px` sticky; grid `160px 1fr`. Mobile (≤960px): sidebar hidden, footer hidden, hamburger button opens a slide-in drawer with all nav links. Article grid switches to two columns when `aside` content is present.
