@@ -287,6 +287,46 @@ Lo que confirma y lo que corrige:
 
 Cuatro años preguntándome de qué parte de Conthey venían los Roh, y la respuesta era **Aven**. Con esto, el mapa suizo de la familia queda con dos polos: los **Clemenzo** en Ardon, Riddes y Salins; los **Roh**, en Aven. Dos valles del Valais, dos apellidos, que terminaron cruzándose recién del otro lado del océano.
 
+### 14 de junio de 2026 — El genealogista de Conthey pone nombres y fechas
+
+Tenía el censo de Aven de 1870 y, sin saberlo, otra pieza esperando en mi propia carpeta: un PDF llamado *Émigrés de Conthey*, descargado tiempo atrás de [valais-argentine.ch](https://www.valais-argentine.ch/) y que nunca había leído con atención. Es una nómina de los contheysanos que emigraron a la Argentina entre 1859 y 1875, compilada por **Gabriel Antonin**, genealogista de Conthey, que para cada emigrado fue a buscar la fecha de nacimiento y la filiación en las partidas. En el grupo **«1873 — Amérique du Sud»** está esto:
+
+> **Roh Jean Joseph**, (5.10.1840), *maréchal*, de Jean Joseph et d'Anne Marie Papilloud; **Putallaz Marie**, (01.11.1835), de Jean François et de Catherine Roh, épouse du précédent depuis le 01.05.1859. Ils ont eu 4 enfants : Marianne (19.02.1862), Marie Rosalie (24.10.1864), Marie Célestine (22.12.1867) et Joseph Marie (27.02.1870).
+
+Un solo párrafo, y resuelve casi todo lo que venía arrastrando. La familia, ahora con fechas y padres confirmados:
+
+```mermaid
+flowchart TD
+    AB["Jean Joseph Roch (padre)\n× Anne Marie Papilloud"]
+    PB["Jean François Putallaz\n× Catherine Roh"]
+    JJR["Jean Joseph Roch\n✶05-10-1840 · Aven · maréchal"]
+    MP["Marie Putallaz\n✶01-11-1835 · Aven"]
+    m(("m. 01-05-1859"))
+    AB --> JJR
+    PB --> MP
+    JJR --- m
+    MP --- m
+    MAR["Marianne\n✶19-02-1862"]
+    ROS["Marie Rosalie\n✶24-10-1864"]
+    CEL["Marie Célestine\n✶22-12-1867"]
+    JM["Joseph Marie\n✶27-02-1870"]
+    m --> MAR & ROS & CEL & JM
+    classDef sw fill:#eaf2fb,stroke:#9bb8da,color:#1a1a1a
+    classDef an fill:#f0ece4,stroke:#c9bca6,color:#1a1a1a
+    class JJR,MP,MAR,ROS,CEL,JM sw
+    class AB,PB an
+```
+
+Lo que corrige y lo que cierra:
+
+- **El enigma de «dos hijas en 1860» era un fantasma.** Marianne nació en **1862** y Célestine en **1867** —las dos después del casamiento de 1859, las dos hijas legítimas del matrimonio—. No hay hijastra: la mala lectura del censo de 1870 me había hecho amontonar fechas que no eran.
+- **Célestine —mi tatarabuela— nació el 22 de diciembre de 1867, no en 1860.** El día y el mes ya los tenía bien; el año estaba mal. Y no es un dato aislado: el censo argentino de 1895 también le calculaba ~1867. Dos fuentes independientes contra una sola lectura dudosa.
+- **Jean Joseph nació el 5 de octubre de 1840** (no 1841) **y era *maréchal* —herrero—**, el oficio que después heredarían sus hijos José Luciano y Mauricio. La columna «profesión» del censo, que lo daba como agricultor, no servía: en el Valais rural casi todos se anotaban así.
+- **Aparecen sus padres y los de su mujer.** Él, hijo de otro **Jean Joseph Roch** y de **Anne Marie Papilloud**; ella, hija de **Jean François Putallaz** y **Catherine Roh** (otra Roh: la endogamia de Aven, de nuevo). Cuatro ancestros que hasta ayer eran un casillero en blanco.
+- **Se confirma de qué familia de Aven venía.** En el censo de 1850 había tres «Jean Joseph Roh» nacidos hacia 1840, imposibles de distinguir a ojo. El nombre de la madre —Anne Marie Papilloud— lo ubica sin dudas en el hogar donde ella corresidía.
+
+Lo más lindo es de dónde salió: no de un archivo en Sion ni de un viaje, sino de un PDF que tuve guardado todo este tiempo. A veces la fuente que falta ya está en casa. El documento queda ahora en las [Fuentes](../../fuentes.html) del sitio, con mi agradecimiento a Gabriel Antonin, que hizo el trabajo de ir partida por partida.
+
 <style>
 .registros-galeria { margin: 28px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }
 .registros-galeria summary { cursor: pointer; font-size: 0.95rem; color: #374151; padding: 6px 0; user-select: none; }
