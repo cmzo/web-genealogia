@@ -300,7 +300,7 @@ Un solo párrafo, y resuelve casi todo lo que venía arrastrando. La familia, ah
 
 ```mermaid
 flowchart TD
-    AB["Pierre Joseph Roh (padre)\n× Anne Marie Putallaz"]
+    AB["Pierre Joseph Roh (padre)\n× Anne Marie Papilloud"]
     PB["Jean François Putallaz\n× Catherine Roh"]
     JJR["Jean Joseph Roch\n✶05-10-1840 · Aven · maréchal"]
     MP["Marie Putallaz\n✶01-11-1835 · Aven"]
@@ -325,7 +325,7 @@ Lo que corrige y lo que cierra:
 - **El enigma de «dos hijas en 1860» era un fantasma.** Marianne nació en **1862** y Célestine en **1867** —las dos después del casamiento de 1859, las dos hijas legítimas del matrimonio—. No hay hijastra: la mala lectura del censo de 1870 me había hecho amontonar fechas que no eran.
 - **Célestine —mi tatarabuela— nació el 22 de diciembre de 1867, no en 1860.** El día y el mes ya los tenía bien; el año estaba mal. Y no es un dato aislado: el censo argentino de 1895 también le calculaba ~1867. Dos fuentes independientes contra una sola lectura dudosa.
 - **Jean Joseph nació el 5 de octubre de 1840** (no 1841) **y era *maréchal* —herrero—**, el oficio que después heredarían sus hijos José Luciano y Mauricio. La columna «profesión» del censo, que lo daba como agricultor, no servía: en el Valais rural casi todos se anotaban así.
-- **Aparecen sus padres y los de su mujer.** Él, hijo de **Pierre Joseph Roh** y de **Anne Marie Putallaz** (ver abajo); ella, hija de **Jean François Putallaz** y **Catherine Roh** (otra Roh: la endogamia de Aven, de nuevo). Cuatro ancestros que hasta ayer eran un casillero en blanco.
+- **Aparecen sus padres y los de su mujer.** Él, hijo de **Pierre Joseph Roh** y de **Anne Marie Papilloud** (ver abajo); ella, hija de **Jean François Putallaz** y **Catherine Roh** (otra Roh: la endogamia de Aven, de nuevo). Cuatro ancestros que hasta ayer eran un casillero en blanco.
 - **Se confirma de qué familia de Aven venía.** El censo de 1850 de Aven ubica al jean Joseph nacido en 1840 como hijo de **Pierre Joseph Roh** (herrero, 1804) y **Anne Marie Putallaz** (1806) — ver la sección siguiente.
 
 Lo más lindo es de dónde salió: no de un archivo en Sion ni de un viaje, sino de un PDF que tuve guardado todo este tiempo. A veces la fuente que falta ya está en casa. El documento queda ahora en las [Fuentes](../../fuentes.html) del sitio, con mi agradecimiento a Gabriel Antonin, que hizo el trabajo de ir partida por partida.
@@ -345,14 +345,14 @@ El hogar completo, entradas 213 a 217:
 | Serie | Apellido | Nombre | Nacimiento |
 |-------|----------|--------|------------|
 | 213 | Roh | Pierre Joseph (dit Marechal) | 1804 |
-| 214 | Putallaz | Anne Marie | 1806 |
+| 214 | Papilloud | Anne Marie | 1806 |
 | 215 | Roh | Marie Anne | 1836 |
 | 216 | Roh | Jean Joseph | 1840 |
 | 217 | Roh | Marguerite | ~1847 |
 
-**El padre de Jean Joseph se llama Pierre Joseph, no Jean Joseph.** El documento de Antonin lo había atribuido a «Jean Joseph et Anne Marie Papilloud» —probablemente confundió al emigrante con otro de los varios Jean Joseph Roh que había en Aven alrededor de 1840—. La fuente primaria del 1850 da el nombre correcto y también el apellido materno: **Putallaz**, no Papilloud. (Detalle que llama la atención: Jean Joseph emigró y se casó con una Marie Putallaz —el apellido de su propia madre. Endogamia de aldea, o la Putallaz que llevó a Argentina ya la conocía de Aven.)
+**El padre de Jean Joseph se llama Pierre Joseph, no Jean Joseph.** El documento de Antonin acertó en el nombre de la madre —Anne Marie Papilloud, presente aquí en el renglón 214—, pero se equivocó en el del padre: en el censo es **Pierre Joseph**, no Jean Joseph. Probablemente confundió al emigrante con otro de los varios Jean Joseph Roh de Aven.
 
-**Y hay hermanos que no emigraron.** En 1850, aparte de Jean Joseph (10 años), vivían en la casa **Marie Anne** (nacida en 1836) y probablemente **Marguerite** (cuyo año de nacimiento en el censo es difícil de leer con certeza; lo más coherente con la progresión del hogar es ~1847). Ninguna aparece en los registros argentinos: lo más probable es que se hayan quedado en Suiza. Son los Roh de Aven que no cruzaron el océano.
+**Y hay hermanos que no emigraron.** En 1850, aparte de Jean Joseph (10 años), vivían en la casa **Marie Anne** (nacida en 1836) y **Marguerite** (cuyo año de nacimiento en el censo es difícil de leer con certeza, pero coherente con ser la menor del hogar). Ninguna aparece en los registros argentinos: lo más probable es que se hayan quedado en Suiza. Son los Roh de Aven que no cruzaron el océano.
 
 <style>
 .registros-galeria { margin: 28px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }
