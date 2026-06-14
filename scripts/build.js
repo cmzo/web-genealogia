@@ -6,6 +6,8 @@ const { marked } = require('marked');
 const { execFileSync } = require('child_process');
 
 // Configuración
+const BASE_URL = 'https://web-genealogia.cmzo.workers.dev';
+const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/cards/vallee-du-rhone.webp`;
 const POSTS_DIR = './content/posts';
 const TEMPLATE_FILE = './content/templates/post-template.html';
 const OUTPUT_DIR = './dist/blog';
@@ -561,11 +563,21 @@ function renderPost(metadata, markdownContent, ctx) {
   const htmlContent = markdownToHtml(strippedContent);
   const asideContent = metadata.aside ? markdownToHtml(metadata.aside) : '';
 
+  const description = metadata.description || '';
+  const rawImage = metadata.image || '';
+  const ogImage = rawImage
+    ? (rawImage.startsWith('http') ? rawImage : `${BASE_URL}/${rawImage.replace(/^\//, '')}`)
+    : DEFAULT_OG_IMAGE;
+  const canonical = `${BASE_URL}/dist/blog/${ctx.outputName}`;
+
   const html = template
     .replace(/\{\{lang\}\}/g, ctx.lang)
     .replace(/\{\{langselector\}\}/g, ctx.langSelector)
     .replace(/\{\{title\}\}/g, metadata.title)
     .replace(/\{\{kicker\}\}/g, metadata.kicker)
+    .replace(/\{\{description\}\}/g, description)
+    .replace(/\{\{canonical\}\}/g, canonical)
+    .replace(/\{\{ogimage\}\}/g, ogImage)
     .replace(/\{\{date\}\}/g, metadata.date || '—')
     .replace(/\{\{content\}\}/g, htmlContent)
     .replace(/\{\{aside\}\}/g, asideContent);

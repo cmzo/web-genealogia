@@ -121,9 +121,9 @@ Revenant aux enfants de Francisco à Entre Ríos, nous avons :
 
 Francisca Clemenzo et Pedro Clemenzo figurent au recensement de Colón de 1895, parmi les cinq enfants que Francisco et Celestina déclaraient avoir jusqu'à ce moment :
 
-![[FJHC_1859_censo1895_1.jpg]]
+![FJHC 1859 censo 1895 1](../../assets/images/posts/FJHC_1859_censo1895_1.jpg)
 
-![[FJHC_1859_censo1895_2.jpg]]
+![FJHC 1859 censo 1895 2](../../assets/images/posts/FJHC_1859_censo1895_2.jpg)
 
 Dans ce document apparaît un fils nommé Francisco, que j'interprète comme **León Francisco Clemenzo**.
 
@@ -137,13 +137,13 @@ En conclusion, selon les documents trouvés, Francisco s'est établi à Entre R�
 
 La référence documentaire suivante correspond au registre militaire de 1919, qui situe Francisco à Santa Fe :
 
-![[FJHC_1859_militar_1.jpeg]]
+![FJHC 1859 militar 1](../../assets/images/posts/FJHC_1859_militar_1.jpeg)
 
-![[FJHC_1859_militar_2.jpeg]]
+![FJHC 1859 militar 2](../../assets/images/posts/FJHC_1859_militar_2.jpeg)
 
-![[FJHC_1859_militar_3.jpeg]]
+![FJHC 1859 militar 3](../../assets/images/posts/FJHC_1859_militar_3.jpeg)
 
-![[FJHC_1859_militar_4.jpeg]]
+![FJHC 1859 militar 4](../../assets/images/posts/FJHC_1859_militar_4.jpeg)
 
 ### Retour à Entre Ríos
 
@@ -151,7 +151,7 @@ La référence documentaire suivante correspond au registre militaire de 1919, q
 
 Enfin, l'acte de décès de Francisco en 1928 confirme qu'il était à **Concepción del Uruguay, Entre Ríos**.
 
-![[FJHC_1859_defuncion.jpg]]
+![FJHC 1859 defunción](../../assets/images/posts/FJHC_1859_defuncion.jpg)
 
 Tous les documents peuvent être consultés en détail en cliquant [ici](../../archivo.html#/francois-clemenzo).
 
