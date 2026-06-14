@@ -32,14 +32,18 @@
     .lang-opt:hover { color: var(--text); }
     .lang-opt.is-active { background: var(--accent); color: var(--surface); }
 
+    /* Centrar todo el contenido en una columna de 600px */
+    .article-header { max-width: 600px; margin-left: auto; margin-right: auto; text-align: center; }
+    .lang-selector { max-width: 600px; margin-left: auto; margin-right: auto; }
+
     .colab-intro {
       font-family: 'Source Serif 4', serif;
       font-size: 17px; line-height: 1.75; color: var(--text);
-      margin: 0 0 32px; max-width: 600px;
+      margin: 0 auto 32px; max-width: 600px; text-align: center;
     }
 
     /* ── Toggle de modo ─────────────────────────────── */
-    .colab-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid var(--border); max-width: 600px; }
+    .colab-tabs { display: flex; gap: 0; margin: 0 auto 32px; border-bottom: 1px solid var(--border); max-width: 600px; }
     .colab-tab {
       font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
       color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent;
@@ -50,7 +54,7 @@
     .colab-tab.is-active { color: var(--accent); border-bottom-color: var(--accent); }
 
     /* ── Formulario ─────────────────────────────────── */
-    .colab-form { max-width: 600px; }
+    .colab-form { max-width: 600px; margin: 0 auto; }
 
     .form-field { display: flex; flex-direction: column; gap: 9px; margin-bottom: 26px; }
 
@@ -120,7 +124,7 @@
     .form-status {
       display: none; font-family: 'Source Serif 4', serif; font-size: 16px; line-height: 1.7;
       color: var(--text); padding: 24px; text-align: center; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 6px; max-width: 600px;
+      border: 1px solid var(--border); border-radius: 6px; max-width: 600px; margin: 0 auto;
     }
     .form-status.is-visible { display: block; }
 

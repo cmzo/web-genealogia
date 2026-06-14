@@ -28,8 +28,78 @@
       margin-bottom: 0;
     }
 
+    /* Índice de secciones (autogenerado) */
+    .fuentes-toc {
+      margin: 28px 0 24px;
+      padding: 22px 24px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .fuentes-toc-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .fuentes-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px 18px;
+    }
+
+    .fuentes-toc-link {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .fuentes-toc-link:hover {
+      background: var(--bg);
+      border-left-color: var(--accent);
+    }
+
+    .fuentes-toc-name {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+      transition: color 0.15s;
+    }
+
+    .fuentes-toc-link:hover .fuentes-toc-name { color: var(--accent); }
+
+    .fuentes-toc-count {
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 10px;
+      padding: 1px 8px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .fuentes-toc-list { grid-template-columns: 1fr; }
+    }
+
     /* Sección país/región */
     .fuentes-content h2 {
+      scroll-margin-top: 20px;
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(24px, 3vw, 32px);
       font-weight: 700;
@@ -51,7 +121,7 @@
     }
 
     .fuentes-content h2:first-of-type {
-      margin-top: 32px;
+      margin-top: 76px;
     }
 
     /* Tarjeta de institución */
@@ -283,6 +353,57 @@
       container.appendChild(fragment);
     }
 
+    function buildTOC(container) {
+      const headings = Array.from(container.querySelectorAll('h2'));
+      if (headings.length < 2) return;
+
+      const slugify = s => s.toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+      const toc = document.createElement('nav');
+      toc.className = 'fuentes-toc';
+      toc.setAttribute('aria-label', 'Índice de secciones');
+
+      const label = document.createElement('p');
+      label.className = 'fuentes-toc-label';
+      label.textContent = 'En esta página';
+      toc.appendChild(label);
+
+      const list = document.createElement('div');
+      list.className = 'fuentes-toc-list';
+
+      headings.forEach(h => {
+        h.id = 'sec-' + slugify(h.textContent);
+
+        // Contar fuentes (tarjetas) hasta la próxima sección
+        let count = 0;
+        let el = h.nextElementSibling;
+        while (el && el.tagName !== 'H2') {
+          if (el.classList && el.classList.contains('fuente-entry')) count++;
+          el = el.nextElementSibling;
+        }
+
+        const a = document.createElement('a');
+        a.className = 'fuentes-toc-link';
+        a.href = '#' + h.id;
+        const name = document.createElement('span');
+        name.className = 'fuentes-toc-name';
+        name.textContent = h.textContent;
+        a.appendChild(name);
+        if (count) {
+          const badge = document.createElement('span');
+          badge.className = 'fuentes-toc-count';
+          badge.textContent = count;
+          a.appendChild(badge);
+        }
+        list.appendChild(a);
+      });
+
+      toc.appendChild(list);
+      container.prepend(toc);
+    }
+
     marked.use({ renderer: {
       table(header, body) {
         return `<div class="table-wrapper"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>\n`;
@@ -297,6 +418,7 @@
         const container = document.querySelector('.fuentes-content');
         container.innerHTML = html;
         postProcess(container);
+        buildTOC(container);
         // Los enlaces externos se abren en una pestaña nueva
         container.querySelectorAll('a[href^="http"]').forEach(a => {
           a.target = '_blank';
