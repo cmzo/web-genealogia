@@ -1,5 +1,25 @@
 ### 14 de junio de 2026
 
+#### Modo oscuro en todo el sitio
+
+El sitio sumó **modo oscuro** con una paleta neutra gris-azulada («Pizarra neutra»). Un botón **sol/luna** en la barra superior alterna el tema; si no elegís nada, sigue la preferencia de tu sistema operativo en vivo, y si lo tocás, recuerda tu elección. Un script mínimo en el `<head>` fija el tema antes de pintar la página, así no hay parpadeo al cargar. Se ajustaron los detalles para que todo se lea bien en oscuro: la grilla de puntos del árbol se aclaró, el avatar del autor recibe fondo claro para no perderse y los enlaces del panel lateral ganaron contraste.
+
+#### Tipografía: títulos en grotesca suiza y cuerpo en serif
+
+Los títulos del sitio pasaron de Playfair Display a **Hanken Grotesk**, una grotesca de estilo suizo, y el cuerpo de los artículos adoptó **Source Serif 4** a mayor tamaño (18 px) e interlineado más amplio, con una **medida de lectura más contenida y centrada** (≈720 px). El cambio se unificó en todo el sitio —posts, Sobre, Fuentes, Cambios y Colaborar— para lograr el mismo lenguaje editorial: título en grotesca + lectura en serif. De paso, las **tarjetas del blog** corrigieron una inversión: ahora el título va en grotesca y el resumen en serif.
+
+#### Imágenes: nuevo visor con ficha y zoom
+
+Al hacer clic en una imagen de un artículo se abre un **visor** que no ocupa toda la pantalla (el artículo se ve atenuado detrás): imagen grande sobre fondo oscuro, **panel lateral con el pie y la fuente**, **zoom** (clic, rueda o doble clic) con arrastre para desplazarse, **navegación** entre las imágenes del post (flechas ‹ › o teclado) y cierre con Esc. La presentación de las imágenes dentro del texto se volvió más sobria y respeta la paleta y el modo oscuro. Además se corrigió el pie de imagen para que se muestre prolijo y aparezca en el visor, y se agregaron pies a las imágenes de los posts.
+
+#### Fuentes propias (sin Google Fonts)
+
+Las cuatro tipografías del sitio (Hanken Grotesk, Inter, Source Serif 4 y JetBrains Mono) dejaron de cargarse desde Google y ahora se sirven **desde el propio dominio** (`assets/fonts/`). Esto mejora la privacidad —ningún visitante envía su IP a Google al abrir el sitio, lo que evita el problema de RGPD del Google Fonts embebido—, elimina la dependencia de un tercero y acelera la carga. Se incluyen solo los subconjuntos latin y latin-ext, suficientes para español y francés.
+
+#### El Árbol ahora vive en `arbol.html`
+
+La página del árbol genealógico se renombró de `arbol-matrimonios.html` (un nombre heredado de una versión vieja) a **`arbol.html`**. Se actualizaron todos los enlaces internos del sitio y la URL anterior quedó como **redirección**, para no romper enlaces ya compartidos o indexados.
+
 #### Colaborar: nueva página con formulario de aportes (reemplaza Contacto)
 
 La antigua página de Contacto se reemplazó por **Colaborar**, con dos modos. *Dejar un comentario* (nombre, email opcional, mensaje) y *Tengo información sobre alguien*: este último trae un **selector de personas del árbol** con búsqueda y chips (lee `arbol.json`), opción para personas que **no** están en el árbol pero se relacionan con alguien que sí, tipo de dato (checkboxes), anécdota y enlace. Anti-spam con honeypot y traba de tiempo. Los envíos se guardan en una **Google Sheet** propia mediante Google Apps Script y llega un mail de aviso — sin servicios pagos ni dependencias que puedan dejar de ser gratis. Todos los enlaces del sitio apuntan ahora a Colaborar; `contacto.html` quedó como redirección.
