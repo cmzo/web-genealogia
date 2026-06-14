@@ -186,9 +186,19 @@
 
     <main id="main-content" class="site-main">
       <div class="article-container">
+
+        <div class="lang-selector" role="group" aria-label="Idioma / Langue / Language">
+          <span class="lang-pillbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
+            <button type="button" class="lang-opt" data-lang="es">ES</button>
+            <button type="button" class="lang-opt" data-lang="fr">FR</button>
+            <button type="button" class="lang-opt" data-lang="en">EN</button>
+          </span>
+        </div>
+
         <header class="article-header">
-          <p class="article-kicker">Proyecto de investigación</p>
-          <h1 class="article-title">Sobre el proyecto</h1>
+          <p class="article-kicker" id="sobreKicker">Proyecto de investigación</p>
+          <h1 class="article-title" id="sobreTitle">Sobre el proyecto</h1>
         </header>
         <div class="sobre-content">
           <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;">Cargando…</p>
@@ -232,37 +242,78 @@
       }
     }});
 
-    const url = window.getContentPath?.('sobre.md') ?? './content/sobre.md';
-    fetch(url)
-      .then(r => r.text())
-      .then(md => {
-        md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
-        let html = marked.parse(md);
-        html = processCallouts(html);
-        const container = document.querySelector('.sobre-content');
-        container.innerHTML = html;
+    // Chrome de la página (título y bajada). ES completo; traducir fr/en.
+    const CHROME = {
+      es: { kicker: 'Proyecto de investigación', title: 'Sobre el proyecto' },
+      fr: { kicker: 'Projet de recherche', title: 'À propos du projet' },
+      en: { kicker: 'Research project', title: 'About the project' },
+    };
 
-        // Convertir bloques mermaid y cargar la librería
-        const mermaidBlocks = container.querySelectorAll('pre code.language-mermaid');
-        if (mermaidBlocks.length) {
-          mermaidBlocks.forEach(el => {
-            const div = document.createElement('div');
-            div.className = 'mermaid';
-            div.textContent = el.textContent;
-            el.parentElement.replaceWith(div);
-          });
-          const s = document.createElement('script');
-          s.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
-          s.onload = () => {
-            mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
-            mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
-          };
-          document.head.appendChild(s);
-        }
-      })
-      .catch(() => {
-        document.querySelector('.sobre-content').innerHTML = '<p>No se pudo cargar el contenido.</p>';
-      });
+    function renderContent(md) {
+      md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+      let html = marked.parse(md);
+      html = processCallouts(html);
+      const container = document.querySelector('.sobre-content');
+      container.innerHTML = html;
+
+      // Convertir bloques mermaid y cargar la librería
+      const mermaidBlocks = container.querySelectorAll('pre code.language-mermaid');
+      if (mermaidBlocks.length) {
+        mermaidBlocks.forEach(el => {
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = el.textContent;
+          el.parentElement.replaceWith(div);
+        });
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+        s.onload = () => {
+          mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+          mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+        };
+        document.head.appendChild(s);
+      }
+    }
+
+    function sobreFile(lang) {
+      const name = lang === 'es' ? 'sobre.md' : `sobre.${lang}.md`;
+      return window.getContentPath?.(name) ?? ('./content/' + name);
+    }
+
+    function loadSobre(lang) {
+      fetch(sobreFile(lang))
+        .then(r => { if (!r.ok) throw new Error('missing'); return r.text(); })
+        .then(renderContent)
+        .catch(() => {
+          if (lang !== 'es') { loadSobre('es'); return; }  // respaldo si falta la traducción
+          document.querySelector('.sobre-content').innerHTML = '<p>No se pudo cargar el contenido.</p>';
+        });
+    }
+
+    // ── Idioma ──────────────────────────────────────────
+    let curLang = (new URLSearchParams(location.search).get('lang') || localStorage.getItem('site_lang') || 'es').toLowerCase();
+    if (!['es', 'fr', 'en'].includes(curLang)) curLang = 'es';
+
+    function applyChrome(lang) {
+      const c = CHROME[lang] || CHROME.es;
+      document.getElementById('sobreKicker').textContent = c.kicker;
+      document.getElementById('sobreTitle').textContent = c.title;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('is-active', o.dataset.lang === lang));
+    }
+
+    function setLang(lang) {
+      curLang = lang;
+      localStorage.setItem('site_lang', lang);
+      const u = new URL(location); u.searchParams.set('lang', lang); history.replaceState(null, '', u);
+      applyChrome(lang);
+      loadSobre(lang);
+    }
+
+    document.querySelectorAll('.lang-opt').forEach(o => o.addEventListener('click', () => setLang(o.dataset.lang)));
+
+    applyChrome(curLang);
+    loadSobre(curLang);
   </script>
 
   <script src="assets/js/nav-drawer.js" defer></script>

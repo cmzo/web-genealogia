@@ -39,11 +39,12 @@
     }
 
     /* ── Toggle de modo ─────────────────────────────── */
-    .colab-tabs { display: flex; gap: 6px; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .colab-tabs { display: flex; gap: 0; margin-bottom: 32px; border-bottom: 1px solid var(--border); max-width: 600px; }
     .colab-tab {
       font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
       color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent;
       padding: 10px 4px; margin-bottom: -1px; cursor: pointer; transition: color 0.15s, border-color 0.15s;
+      flex: 1; text-align: center;
     }
     .colab-tab:hover { color: var(--text); }
     .colab-tab.is-active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -183,9 +184,10 @@
         </header>
 
         <p class="colab-intro" data-i18n="intro">
-          Toda esta investigación se nutre de lo que aportan otros. Si tenés un recuerdo,
-          una corrección, un documento o el dato de alguien relacionado con la familia,
-          contámelo acá. También podés simplemente dejar un comentario.
+          Más de un avance decisivo de esta investigación —de esos que destraban un nudo
+          y permiten subir otra generación— salió del aporte de otra persona. Si tenés un
+          recuerdo, una corrección, un documento o el dato de alguien relacionado con la
+          familia, escribime. También podés dejar un comentario, sin más.
         </p>
 
         <div class="colab-tabs" role="tablist">
@@ -312,7 +314,7 @@
     const I18N = {
       es: {
         title: 'Colaborar',
-        intro: 'Toda esta investigación se nutre de lo que aportan otros. Si tenés un recuerdo, una corrección, un documento o el dato de alguien relacionado con la familia, contámelo acá. También podés simplemente dejar un comentario.',
+        intro: 'Más de un avance decisivo de esta investigación —de esos que destraban un nudo y permiten subir otra generación— salió del aporte de otra persona. Si tenés un recuerdo, una corrección, un documento o el dato de alguien relacionado con la familia, escribime. También podés dejar un comentario, sin más.',
         tab_comment: 'Dejar un comentario',
         tab_info: 'Tengo información sobre alguien',
         f_name: 'Nombre',
@@ -348,87 +350,85 @@
         err_not_config: 'El formulario todavía no está configurado. Escribime a mdclemenzo@gmail.com.',
       },
 
-      // TODO: traducir al francés (reemplazar los valores; las claves NO se tocan).
       fr: {
-        title: 'Colaborar',
-        intro: 'Toda esta investigación se nutre de lo que aportan otros. Si tenés un recuerdo, una corrección, un documento o el dato de alguien relacionado con la familia, contámelo acá. También podés simplemente dejar un comentario.',
-        tab_comment: 'Dejar un comentario',
-        tab_info: 'Tengo información sobre alguien',
-        f_name: 'Nombre',
-        f_email_opt: 'Email <span class="opt">(opcional, si querés que te responda)</span>',
-        f_message: 'Mensaje',
-        q_in_tree: '¿La persona está en el árbol?',
-        opt_in_tree: 'Sí, está en el árbol',
-        opt_out_tree: 'No, pero se relaciona con alguien',
-        l_persons: 'Persona(s) del árbol',
-        hint_persons: 'Buscá y elegí una o varias personas del árbol.',
-        ph_search: 'Escribí un nombre para buscar…',
-        l_ext_name: 'Nombre de la persona',
-        ph_ext_name: 'Nombre y apellido',
-        l_rel_with: '¿Con quién del árbol se relaciona? <span class="opt">(opcional)</span>',
-        l_type: 'Tipo de información <span class="opt">(opcional)</span>',
-        t_date: 'Fecha', t_place: 'Lugar', t_doc: 'Foto/documento',
-        t_anec: 'Anécdota', t_corr: 'Corrección', t_link: 'Vínculo familiar',
-        l_tellus: 'Contanos',
-        ph_tellus: 'El dato, la anécdota, la corrección…',
-        l_link: 'Enlace <span class="opt">(opcional)</span>',
-        l_your_name: 'Tu nombre <span class="opt">(opcional)</span>',
-        l_your_email: 'Tu email <span class="opt">(opcional, si querés que te responda)</span>',
-        btn_send: 'Enviar',
-        btn_sending: 'Enviando…',
-        status_ok: '¡Gracias! Recibí tu mensaje. Si dejaste tu email, te escribo.',
-        err_generic: 'Algo salió mal. Intentá de nuevo o escribime a mdclemenzo@gmail.com.',
-        err_wait: 'Esperá un momento antes de enviar.',
-        err_name: 'Por favor, dejá tu nombre.',
-        err_message: 'Por favor, escribí un mensaje.',
-        err_message_info: 'Contanos algo en el mensaje.',
-        err_pick: 'Elegí al menos una persona del árbol.',
-        err_ext: 'Escribí el nombre de la persona.',
-        err_not_config: 'El formulario todavía no está configurado. Escribime a mdclemenzo@gmail.com.',
+        title: "Collaborer",
+        intro: "Plus d'une avancée décisive de cette recherche —de celles qui débloquent un nœud et permettent de remonter une génération— a résulté de la contribution d'une autre personne. Si tu as un souvenir, une correction, un document ou l'information sur quelqu'un lié à la famille, écris-moi. Tu peux aussi simplement laisser un commentaire.",
+        tab_comment: "Laisser un commentaire",
+        tab_info: "J'ai des informations sur quelqu'un",
+        f_name: "Nom",
+        f_email_opt: "Email <span class=\"opt\">(optionnel, si tu veux une réponse)</span>",
+        f_message: "Message",
+        q_in_tree: "Cette personne est-elle dans l'arbre ?",
+        opt_in_tree: "Oui, elle est dans l'arbre",
+        opt_out_tree: "Non, mais elle se relie à quelqu'un",
+        l_persons: "Personne(s) de l'arbre",
+        hint_persons: "Cherche et sélectionne une ou plusieurs personnes de l'arbre.",
+        ph_search: "Tape un nom pour chercher…",
+        l_ext_name: "Nom de la personne",
+        ph_ext_name: "Prénom et nom",
+        l_rel_with: "Liée à qui dans l'arbre ? <span class=\"opt\">(optionnel)</span>",
+        l_type: "Type d'information <span class=\"opt\">(optionnel)</span>",
+        t_date: "Date", t_place: "Lieu", t_doc: "Photo/document",
+        t_anec: "Anecdote", t_corr: "Correction", t_link: "Lien familial",
+        l_tellus: "Dis-nous",
+        ph_tellus: "Le fait, l'anecdote, la correction…",
+        l_link: "Lien <span class=\"opt\">(optionnel)</span>",
+        l_your_name: "Ton nom <span class=\"opt\">(optionnel)</span>",
+        l_your_email: "Ton email <span class=\"opt\">(optionnel, si tu veux une réponse)</span>",
+        btn_send: "Envoyer",
+        btn_sending: "Envoi en cours…",
+        status_ok: "Merci ! J'ai reçu ton message. Si tu as laissé ton email, je t'écris.",
+        err_generic: "Quelque chose s'est mal passé. Réessaie ou écris-moi à mdclemenzo@gmail.com.",
+        err_wait: "Attends un moment avant d'envoyer.",
+        err_name: "Laisse-moi ton nom, s'il te plaît.",
+        err_message: "Écris un message, s'il te plaît.",
+        err_message_info: "Dis-nous quelque chose dans le message.",
+        err_pick: "Sélectionne au moins une personne de l'arbre.",
+        err_ext: "Écris le nom de la personne.",
+        err_not_config: "Le formulaire n'est pas encore configuré. Écris-moi à mdclemenzo@gmail.com.",
       },
 
-      // TODO: traducir al inglés (reemplazar los valores; las claves NO se tocan).
       en: {
-        title: 'Colaborar',
-        intro: 'Toda esta investigación se nutre de lo que aportan otros. Si tenés un recuerdo, una corrección, un documento o el dato de alguien relacionado con la familia, contámelo acá. También podés simplemente dejar un comentario.',
-        tab_comment: 'Dejar un comentario',
-        tab_info: 'Tengo información sobre alguien',
-        f_name: 'Nombre',
-        f_email_opt: 'Email <span class="opt">(opcional, si querés que te responda)</span>',
-        f_message: 'Mensaje',
-        q_in_tree: '¿La persona está en el árbol?',
-        opt_in_tree: 'Sí, está en el árbol',
-        opt_out_tree: 'No, pero se relaciona con alguien',
-        l_persons: 'Persona(s) del árbol',
-        hint_persons: 'Buscá y elegí una o varias personas del árbol.',
-        ph_search: 'Escribí un nombre para buscar…',
-        l_ext_name: 'Nombre de la persona',
-        ph_ext_name: 'Nombre y apellido',
-        l_rel_with: '¿Con quién del árbol se relaciona? <span class="opt">(opcional)</span>',
-        l_type: 'Tipo de información <span class="opt">(opcional)</span>',
-        t_date: 'Fecha', t_place: 'Lugar', t_doc: 'Foto/documento',
-        t_anec: 'Anécdota', t_corr: 'Corrección', t_link: 'Vínculo familiar',
-        l_tellus: 'Contanos',
-        ph_tellus: 'El dato, la anécdota, la corrección…',
-        l_link: 'Enlace <span class="opt">(opcional)</span>',
-        l_your_name: 'Tu nombre <span class="opt">(opcional)</span>',
-        l_your_email: 'Tu email <span class="opt">(opcional, si querés que te responda)</span>',
-        btn_send: 'Enviar',
-        btn_sending: 'Enviando…',
-        status_ok: '¡Gracias! Recibí tu mensaje. Si dejaste tu email, te escribo.',
-        err_generic: 'Algo salió mal. Intentá de nuevo o escribime a mdclemenzo@gmail.com.',
-        err_wait: 'Esperá un momento antes de enviar.',
-        err_name: 'Por favor, dejá tu nombre.',
-        err_message: 'Por favor, escribí un mensaje.',
-        err_message_info: 'Contanos algo en el mensaje.',
-        err_pick: 'Elegí al menos una persona del árbol.',
-        err_ext: 'Escribí el nombre de la persona.',
-        err_not_config: 'El formulario todavía no está configurado. Escribime a mdclemenzo@gmail.com.',
+        title: "Contribute",
+        intro: "More than one decisive breakthrough in this research —those that unlock a puzzle and let us go back another generation— came from someone else's contribution. If you have a memory, a correction, a document, or information about someone connected to the family, write me. You can also simply leave a comment.",
+        tab_comment: "Leave a comment",
+        tab_info: "I have information about someone",
+        f_name: "Name",
+        f_email_opt: "Email <span class=\"opt\">(optional, if you want a reply)</span>",
+        f_message: "Message",
+        q_in_tree: "Is this person in the tree?",
+        opt_in_tree: "Yes, they're in the tree",
+        opt_out_tree: "No, but they're connected to someone",
+        l_persons: "Person/people from the tree",
+        hint_persons: "Search and select one or more people from the tree.",
+        ph_search: "Type a name to search…",
+        l_ext_name: "Person's name",
+        ph_ext_name: "First and last name",
+        l_rel_with: "Related to whom in the tree? <span class=\"opt\">(optional)</span>",
+        l_type: "Information type <span class=\"opt\">(optional)</span>",
+        t_date: "Date", t_place: "Place", t_doc: "Photo/document",
+        t_anec: "Anecdote", t_corr: "Correction", t_link: "Family connection",
+        l_tellus: "Tell us",
+        ph_tellus: "The fact, the anecdote, the correction…",
+        l_link: "Link <span class=\"opt\">(optional)</span>",
+        l_your_name: "Your name <span class=\"opt\">(optional)</span>",
+        l_your_email: "Your email <span class=\"opt\">(optional, if you want a reply)</span>",
+        btn_send: "Send",
+        btn_sending: "Sending…",
+        status_ok: "Thank you! I received your message. If you left your email, I'll get back to you.",
+        err_generic: "Something went wrong. Try again or email me at mdclemenzo@gmail.com.",
+        err_wait: "Wait a moment before sending.",
+        err_name: "Please leave your name.",
+        err_message: "Please write a message.",
+        err_message_info: "Tell us something in the message.",
+        err_pick: "Choose at least one person from the tree.",
+        err_ext: "Write the person's name.",
+        err_not_config: "The form is not yet configured. Email me at mdclemenzo@gmail.com.",
       },
     };
 
     let currentLang = (new URLSearchParams(location.search).get('lang')
-      || localStorage.getItem('colab_lang') || 'es').toLowerCase();
+      || localStorage.getItem('site_lang') || 'es').toLowerCase();
     if (!I18N[currentLang]) currentLang = 'es';
 
     const t = k => (I18N[currentLang] || I18N.es)[k] ?? (I18N.es[k] || '');
@@ -602,7 +602,7 @@
       o.addEventListener('click', () => {
         const lang = o.dataset.lang;
         applyLang(lang);
-        localStorage.setItem('colab_lang', lang);
+        localStorage.setItem('site_lang', lang);
         const u = new URL(location); u.searchParams.set('lang', lang); history.replaceState(null, '', u);
       });
     });

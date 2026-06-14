@@ -21,7 +21,7 @@
 
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
-  <h1 class="sr-only">Genealogía Clemenzo — investigación familiar desde el Valais, Suiza, hasta Argentina</h1>
+  <h1 class="sr-only" data-i18n="home_h1">Genealogía Clemenzo — investigación familiar desde el Valais, Suiza, hasta Argentina</h1>
 
   <header class="site-nav">
     <a href="index.html" class="nav-brand">Clemenzo</a>
@@ -57,44 +57,53 @@
     <main class="site-main" id="main-content">
       <div class="home-doc">
 
+        <div class="lang-selector" role="group" aria-label="Idioma / Langue / Language">
+          <span class="lang-pillbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
+            <button type="button" class="lang-opt" data-lang="es">ES</button>
+            <button type="button" class="lang-opt" data-lang="fr">FR</button>
+            <button type="button" class="lang-opt" data-lang="en">EN</button>
+          </span>
+        </div>
+
         <header class="home-doc-header">
-          <p class="home-doc-tagline">Investigación genealógica sobre la familia Clemenzo, originaria de Ardon, en el cantón de Valais, Suiza. Documentamos su emigración a la Argentina a fines del siglo XIX y los vínculos familiares a lo largo de generaciones.</p>
+          <p class="home-doc-tagline" data-i18n="tagline">Investigación genealógica sobre la familia Clemenzo, originaria de Ardon, en el cantón de Valais, Suiza. Documentamos su emigración a la Argentina a fines del siglo XIX y los vínculos familiares a lo largo de generaciones.</p>
         </header>
 
         <figure class="home-cover">
           <img src="./assets/images/cards/vallee-du-rhone.webp"
                alt="Valle del Ródano, Valais, Suiza" loading="eager">
-          <figcaption>Valle del Ródano, Valais, Suiza</figcaption>
+          <figcaption data-i18n="fig_hero">Valle del Ródano, Valais, Suiza</figcaption>
         </figure>
 
         <div class="home-section" id="homeStatsSection">
-          <h2 class="home-section-label">El árbol genealógico</h2>
+          <h2 class="home-section-label" data-i18n="label_tree">El árbol genealógico</h2>
           <div class="home-stats" id="homeStats"></div>
           <a href="arbol-matrimonios.html" class="home-cta-btn">
-            Explorá el árbol interactivo
+            <span data-i18n="cta_tree">Explorá el árbol interactivo</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
 
         <div class="home-section" id="homeLatestSection">
-          <h2 class="home-section-label">Última entrada</h2>
+          <h2 class="home-section-label" data-i18n="label_latest">Última entrada</h2>
           <div id="homeLatest"></div>
         </div>
 
         <div class="home-section home-section--spacious">
-          <h2 class="home-section-label">Heráldica</h2>
+          <h2 class="home-section-label" data-i18n="label_heraldry">Heráldica</h2>
           <div class="home-herald-row">
             <figure class="home-herald-item">
               <img src="./assets/images/valais.webp" alt="Escudo de Valais" width="788" height="1016" loading="lazy">
-              <figcaption>Escudo de Valais</figcaption>
+              <figcaption data-i18n="fig_valais">Escudo de Valais</figcaption>
             </figure>
             <figure class="home-herald-item">
               <img src="./assets/images/clemenzo-def.webp" alt="Armorial valesano, familia Clemenzo de Ardon" width="768" height="959" loading="lazy">
-              <figcaption>Armorial valesano<br>familia Clemenzo</figcaption>
+              <figcaption data-i18n="fig_clemenzo">Armorial valesano<br>familia Clemenzo</figcaption>
             </figure>
             <figure class="home-herald-item">
               <img src="./assets/images/ardon.webp" alt="Escudo de Ardon" width="810" height="1033" loading="lazy">
-              <figcaption>Escudo de Ardon</figcaption>
+              <figcaption data-i18n="fig_ardon">Escudo de Ardon</figcaption>
             </figure>
           </div>
         </div>
@@ -111,7 +120,91 @@
     </nav>
   </footer>
 
+  <!-- Diccionario de la portada. ES completo; traducir los valores de fr y en. -->
   <script>
+    window.I18N = {
+      es: {
+        home_h1: 'Genealogía Clemenzo — investigación familiar desde el Valais, Suiza, hasta Argentina',
+        tagline: 'Investigación genealógica sobre la familia Clemenzo, originaria de Ardon, en el cantón de Valais, Suiza. Documentamos su emigración a la Argentina a fines del siglo XIX y los vínculos familiares a lo largo de generaciones.',
+        fig_hero: 'Valle del Ródano, Valais, Suiza',
+        label_tree: 'El árbol genealógico',
+        cta_tree: 'Explorá el árbol interactivo',
+        label_latest: 'Última entrada',
+        label_heraldry: 'Heráldica',
+        fig_valais: 'Escudo de Valais',
+        fig_clemenzo: 'Armorial valesano<br>familia Clemenzo',
+        fig_ardon: 'Escudo de Ardon',
+        stat_people: 'Personas',
+        stat_dates: 'Fechas documentadas',
+        stat_places: 'Lugares',
+        stat_generations: 'Generaciones',
+        read: 'Leer →',
+      },
+      fr: {
+        home_h1: "Généalogie Clemenzo — recherche familiale du Valais, Suisse, vers l’Argentine",
+        tagline: "Recherche généalogique sur la famille Clemenzo, originaire d’Ardon, dans le canton du Valais, Suisse. Nous documentons son émigration en Argentine à la fin du XIXe siècle et les liens familiaux au fil des générations.",
+        fig_hero: "Vallée du Rhône, Valais, Suisse",
+        label_tree: "L’arbre généalogique",
+        cta_tree: "Explore l’arbre interactif",
+        label_latest: "Dernier article",
+        label_heraldry: "Héraldique",
+        fig_valais: "Blason du Valais",
+        fig_clemenzo: "Armorial valaisan<br>famille Clemenzo",
+        fig_ardon: "Blason d’Ardon",
+        stat_people: "Personnes",
+        stat_dates: "Dates documentées",
+        stat_places: "Lieux",
+        stat_generations: "Générations",
+        read: "Lire →",
+      },
+      en: {
+        home_h1: "Clemenzo Genealogy — family research from Valais, Switzerland, to Argentina",
+        tagline: "Genealogical research on the Clemenzo family, originally from Ardon, in the canton of Valais, Switzerland. We document their emigration to Argentina at the end of the 19th century and family connections across generations.",
+        fig_hero: "Rhône Valley, Valais, Switzerland",
+        label_tree: "The family tree",
+        cta_tree: "Explore the interactive tree",
+        label_latest: "Latest entry",
+        label_heraldry: "Heraldry",
+        fig_valais: "Coat of arms of Valais",
+        fig_clemenzo: "Valaisan heraldry<br>Clemenzo family",
+        fig_ardon: "Coat of arms of Ardon",
+        stat_people: "People",
+        stat_dates: "Documented dates",
+        stat_places: "Places",
+        stat_generations: "Generations",
+        read: "Read →",
+      },
+    };
+  </script>
+  <script>
+    let _stats = null, _latest = null;
+    const tt = k => (window.t ? window.t(k) : '');
+
+    function renderStats() {
+      if (!_stats) return;
+      const items = [
+        { n: _stats.people,      l: tt('stat_people') },
+        { n: _stats.dates,       l: tt('stat_dates') },
+        { n: _stats.places,      l: tt('stat_places') },
+        { n: _stats.generations, l: tt('stat_generations') },
+      ];
+      document.getElementById('homeStats').innerHTML = items.map(s =>
+        `<div class="home-stat"><div class="home-stat-num">${s.n}</div><div class="home-stat-label">${s.l}</div></div>`
+      ).join('');
+    }
+
+    function renderLatest() {
+      if (!_latest) return;
+      document.getElementById('homeLatest').innerHTML = `
+        <a href="${_latest.url}" class="home-latest-link">
+          <h2 class="home-latest-title">${_latest.title}</h2>
+          <p class="home-latest-desc">${_latest.description}</p>
+          <span class="home-latest-read">${tt('read')}</span>
+        </a>`;
+    }
+
+    document.addEventListener('langchange', () => { renderStats(); renderLatest(); });
+
     fetch('./assets/data/arbol.json')
       .then(r => r.json())
       .then(data => {
@@ -123,21 +216,14 @@
           if (p.birth_date) dates++;
           if (p.death_date) dates++;
           [p.birth_place, p.death_place].forEach(pl => {
-            const t = (pl || '').trim().toLowerCase();
-            if (t) places.add(t);
+            const v = (pl || '').trim().toLowerCase();
+            if (v) places.add(v);
           });
           const g = p.generation;
           if (typeof g === 'number') { if (g < gmin) gmin = g; if (g > gmax) gmax = g; }
         });
-        const stats = [
-          { n: arr.length,                              l: 'Personas' },
-          { n: dates,                                   l: 'Fechas documentadas' },
-          { n: places.size,                             l: 'Lugares' },
-          { n: isFinite(gmin) ? (gmax - gmin + 1) : 0,  l: 'Generaciones' },
-        ];
-        document.getElementById('homeStats').innerHTML = stats.map(s =>
-          `<div class="home-stat"><div class="home-stat-num">${s.n}</div><div class="home-stat-label">${s.l}</div></div>`
-        ).join('');
+        _stats = { people: arr.length, dates, places: places.size, generations: isFinite(gmin) ? (gmax - gmin + 1) : 0 };
+        renderStats();
       })
       .catch(() => {
         const el = document.getElementById('homeStatsSection');
@@ -151,18 +237,14 @@
           document.getElementById('homeLatestSection').style.display = 'none';
           return;
         }
-        const post = posts[0];
-        document.getElementById('homeLatest').innerHTML = `
-          <a href="${post.url}" class="home-latest-link">
-            <h2 class="home-latest-title">${post.title}</h2>
-            <p class="home-latest-desc">${post.description}</p>
-            <span class="home-latest-read">Leer →</span>
-          </a>
-        `;
+        _latest = posts[0];
+        renderLatest();
       })
       .catch(() => {
         document.getElementById('homeLatestSection').style.display = 'none';
       });
+  </script>
+  <script src="assets/js/i18n.js" defer></script>
   </script>
 <script src="assets/js/nav-drawer.js" defer></script>
 <script src="assets/js/command-palette.js" defer></script>

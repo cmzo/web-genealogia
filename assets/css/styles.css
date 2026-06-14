@@ -433,6 +433,21 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   color: var(--accent);
 }
 
+/* ── Selector de idioma (Home, Sobre) ────────────────── */
+.lang-selector { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.lang-pillbox {
+  display: inline-flex; align-items: center; gap: 2px;
+  border: 1px solid var(--border); border-radius: 20px; padding: 3px 8px;
+}
+.lang-pillbox > svg { width: 14px; height: 14px; color: var(--muted); margin-right: 4px; }
+.lang-opt {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--muted); background: none; border: none; border-radius: 12px;
+  padding: 3px 9px; cursor: pointer; transition: color 0.12s, background 0.12s;
+}
+.lang-opt:hover { color: var(--text); }
+.lang-opt.is-active { background: var(--accent); color: var(--surface); }
+
 /* ── Tree stats + CTA ────────────────────────────────── */
 .home-section--spacious {
   margin-top: 60px;
