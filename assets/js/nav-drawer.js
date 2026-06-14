@@ -13,7 +13,7 @@
   ];
 
   const secondaryLinks = [
-    { href: 'contacto.html',  label: 'Contacto' },
+    { href: 'colaborar.html', label: 'Colaborar' },
     { href: 'changelog.html', label: 'Cambios' },
   ];
 
@@ -87,7 +87,7 @@
     'archivo.html':           'folder',
     'blog.html':              'edit_note',
     'fuentes.html':           'description',
-    'contacto.html':          'mail',
+    'colaborar.html':         'forum',
     'changelog.html':         'history',
   };
 

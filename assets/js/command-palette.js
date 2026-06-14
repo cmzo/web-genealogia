@@ -28,7 +28,7 @@
     { title: 'Blog',              url: 'blog.html',             desc: 'Entradas de investigación' },
     { title: 'Fuentes',           url: 'fuentes.html',          desc: 'Archivos y repositorios consultados' },
     { title: 'Sobre el proyecto', url: 'sobre.html',            desc: 'Qué es y cómo se construyó' },
-    { title: 'Contacto',          url: 'contacto.html',         desc: 'Escribir un mensaje' },
+    { title: 'Colaborar',         url: 'colaborar.html',        desc: 'Dejar un comentario o aportar datos' },
     { title: 'Cambios',           url: 'changelog.html',        desc: 'Historial del sitio' },
   ];
 
@@ -283,8 +283,10 @@
     const it = _visible[_active];
     if (!it) return;
     if (it.type === 'persona') {
-      // Si estamos en el árbol, enfocar sin recargar; si no, navegar con ?focus=
-      if (typeof window.__treeFocus === 'function') { window.__treeFocus(it.id); close(); return; }
+      // Si la página define un handler propio (árbol o archivo), enfocar sin salir;
+      // si no, navegar al árbol con ?focus=
+      const focusFn = window.__personaFocus || window.__treeFocus;
+      if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
       window.location.href = ROOT + 'arbol-matrimonios.html?focus=' + encodeURIComponent(it.id);
       return;
     }

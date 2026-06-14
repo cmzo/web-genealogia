@@ -44,7 +44,7 @@
         <a href="archivo.html" class="sidebar-link">Archivo</a>
         <a href="blog.html" class="sidebar-link is-active">Blog</a>
         <a href="fuentes.html" class="sidebar-link">Fuentes</a>
-        <a href="contacto.html" class="sidebar-link sidebar-link--icon" title="Contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Contacto</a>
+        <a href="colaborar.html" class="sidebar-link sidebar-link--icon" title="Colaborar" aria-label="Colaborar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Colaborar</a>
       </nav>
       <div class="sidebar-bottom">
 
@@ -70,7 +70,7 @@
   <footer class="site-footer">
     <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
     <nav class="footer-mobile-nav">
-      <a href="contacto.html" class="footer-nav-link">Contacto</a>
+      <a href="colaborar.html" class="footer-nav-link">Colaborar</a>
       <a href="changelog.html" class="footer-nav-link">Cambios</a>
     </nav>
   </footer>
@@ -93,16 +93,22 @@
         grid.innerHTML = '<p class="no-results">No hay posts disponibles.</p>';
         return;
       }
-      grid.innerHTML = posts.map(post => `
+      const globe = '<svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>';
+      grid.innerHTML = posts.map(post => {
+        const langs = post.langs || [];
+        const langBadge = langs.length > 1
+          ? `<span class="blog-card-langs" title="Disponible en ${langs.map(l => l.toUpperCase()).join(', ')}">${globe}${langs.map(l => `<span class="lang-chip">${l}</span>`).join('')}</span>`
+          : '';
+        return `
         <a href="${post.url}" class="blog-card">
           <div class="blog-card-content">
             <div class="blog-card-category">${post.category}</div>
             <h2 class="blog-card-title">${post.title}</h2>
             <p class="blog-card-desc">${post.description}</p>
-            <div class="blog-card-meta">${post.date}</div>
+            <div class="blog-card-meta"><span>${post.date}</span>${langBadge}</div>
           </div>
-        </a>
-      `).join('');
+        </a>`;
+      }).join('');
     }
 
     loadBlogPosts();

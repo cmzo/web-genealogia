@@ -120,6 +120,84 @@
 
 .pill-extra-hidden { display: none; }
 
+/* ── Buscador de texto ──────────────────────────────────── */
+.filter-search {
+  flex: 1 1 200px;
+  min-width: 160px;
+  gap: 7px;
+}
+
+.filter-search > svg {
+  width: 15px;
+  height: 15px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.archivo-search-input {
+  flex: 1;
+  min-width: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  outline: none;
+  -webkit-appearance: none;
+  transition: border-color 0.15s;
+}
+
+.archivo-search-input:focus { border-color: var(--accent); }
+
+/* ── Orden por columnas ─────────────────────────────────── */
+.archivo-table thead th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.archivo-table thead th[data-sort]:hover { color: var(--accent); }
+
+.th-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 9px;
+  opacity: 0;
+  vertical-align: middle;
+}
+
+.archivo-table thead th.is-sorted { color: var(--accent); }
+.archivo-table thead th.is-sorted .th-arrow { opacity: 1; }
+
+/* ── Enlaces familiares en el modal ─────────────────────── */
+.modal-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.modal-link-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  vertical-align: top;
+}
+
+.modal-link-chip {
+  text-decoration: none;
+  font-size: 12px;
+  color: var(--accent);
+  background: rgba(45, 74, 62, 0.07);
+  border: 1px solid rgba(45, 74, 62, 0.18);
+  border-radius: 5px;
+  padding: 2px 8px;
+  line-height: 1.5;
+}
+
+.modal-link-chip:hover { background: rgba(45, 74, 62, 0.14); }
+
 /* ── Tabla ─────────────────────────────────────────────── */
 
 .archivo-table-wrap {
@@ -203,7 +281,7 @@
   position: relative;
   overflow: hidden;
   padding: 24px;
-  background-color: var(--muted);
+  background: linear-gradient(160deg, #35564a 0%, var(--accent) 100%);
 }
 
 .archivo-modal-hero-content {
@@ -226,6 +304,16 @@
   color: rgba(255,255,255,0.78);
   margin: 0;
   letter-spacing: 0.02em;
+}
+
+.modal-branch-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+  border: 1px solid rgba(255,255,255,0.55);
 }
 
 .archivo-modal-close {

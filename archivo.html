@@ -45,7 +45,7 @@
         <a href="archivo.html" class="sidebar-link is-active">Archivo</a>
         <a href="blog.html" class="sidebar-link">Blog</a>
         <a href="fuentes.html" class="sidebar-link">Fuentes</a>
-        <a href="contacto.html" class="sidebar-link sidebar-link--icon" title="Contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Contacto</a>
+        <a href="colaborar.html" class="sidebar-link sidebar-link--icon" title="Colaborar" aria-label="Colaborar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Colaborar</a>
       </nav>
       <div class="sidebar-bottom">
 
@@ -55,6 +55,10 @@
 
     <main id="main-content" class="site-main" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
       <div class="archivo-filter-bar">
+        <div class="filter-group filter-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="archivoSearch" class="archivo-search-input" placeholder="Buscar por nombre…" autocomplete="off" aria-label="Buscar persona por nombre">
+        </div>
         <div class="filter-group">
           <span class="filter-label">Rama</span>
           <div class="filter-pills" id="branchPills"></div>
@@ -63,6 +67,10 @@
           <span class="filter-label">País</span>
           <div class="filter-pills" id="countryPills"></div>
         </div>
+        <div class="filter-group">
+          <span class="filter-label">Documentos</span>
+          <div class="filter-pills"><button class="filter-pill" id="docsToggle" type="button">Solo con documentos</button></div>
+        </div>
       </div>
       <div class="archivo-results" id="archivoCount"></div>
 
@@ -70,11 +78,11 @@
         <table class="archivo-table" id="archivoTable" aria-label="Índice de personas">
           <thead>
             <tr>
-              <th>Nombre</th>
-              <th>Años</th>
-              <th>Rama</th>
-              <th>Gen.</th>
-              <th>Ítems</th>
+              <th data-sort="name">Nombre<span class="th-arrow">▲</span></th>
+              <th data-sort="year">Años<span class="th-arrow">▲</span></th>
+              <th data-sort="branch">Rama<span class="th-arrow">▲</span></th>
+              <th data-sort="generation">Gen.<span class="th-arrow">▲</span></th>
+              <th data-sort="items">Ítems<span class="th-arrow">▲</span></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -111,7 +119,7 @@
   <footer class="site-footer">
     <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
     <nav class="footer-mobile-nav">
-      <a href="contacto.html" class="footer-nav-link">Contacto</a>
+      <a href="colaborar.html" class="footer-nav-link">Colaborar</a>
       <a href="changelog.html" class="footer-nav-link">Cambios</a>
     </nav>
   </footer>
@@ -120,8 +128,15 @@
   <script>
     let allPersonas  = [];
     let personasMap  = new Map();
+    let marriages    = [];
     let sorted       = [];
     let activeFilters = { branch: null, country: null };
+    let searchQuery  = '';
+    let onlyWithDocs = false;
+    let sortState    = { key: null, dir: 'asc' };  // key null → orden por defecto (gen ↓, sort_order ↑)
+
+    const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    const docCount = p => (p.media || []).length;
 
     const _branchColors = {
       'clemenzo':'#1e40af','roh':'#16a34a','roch':'#16a34a',
@@ -152,7 +167,34 @@
       let result = sorted;
       if (activeFilters.branch)  result = result.filter(p => p.branch === activeFilters.branch);
       if (activeFilters.country) result = result.filter(p => getCountry(p) === activeFilters.country);
+      if (onlyWithDocs)          result = result.filter(p => docCount(p) > 0);
+      if (searchQuery) {
+        const q = norm(searchQuery);
+        result = result.filter(p => norm(p.name).includes(q) || norm(p.branch).includes(q));
+      }
+      if (sortState.key) result = sortResult(result);
       renderTable(result);
+    }
+
+    function sortResult(list) {
+      const { key, dir } = sortState;
+      const mul = dir === 'asc' ? 1 : -1;
+      const val = p => {
+        switch (key) {
+          case 'name':       return norm(p.name);
+          case 'branch':     return norm(p.branch);
+          case 'year':       return Number(yearOf(p.birth_date).slice(0, 4)) || 0;
+          case 'generation': return p.generation ?? -1;
+          case 'items':      return docCount(p);
+          default:           return 0;
+        }
+      };
+      return [...list].sort((a, b) => {
+        const va = val(a), vb = val(b);
+        if (va < vb) return -1 * mul;
+        if (va > vb) return  1 * mul;
+        return 0;
+      });
     }
 
     function buildPills(containerId, values, filterKey, maxVisible = 99) {
@@ -260,11 +302,15 @@
 
     function openModal(p) {
       const color = getBranchColor(p.branch);
-      document.getElementById('modalHero').style.background =
-        `linear-gradient(160deg, ${color}dd 0%, ${color}aa 100%)`;
       document.getElementById('modalName').textContent = p.name;
-      document.getElementById('modalSub').textContent =
-        [yearsText(p), p.branch].filter(Boolean).join(' · ');
+      const subEl = document.getElementById('modalSub');
+      subEl.textContent = [yearsText(p), p.branch].filter(Boolean).join(' · ');
+      if (p.branch) {
+        const dot = document.createElement('span');
+        dot.className = 'modal-branch-dot';
+        dot.style.background = color;
+        subEl.prepend(dot);
+      }
 
       const body = document.getElementById('modalBody');
       body.innerHTML = '';
@@ -284,10 +330,16 @@
       // Familia
       const father = p.father_id ? personasMap.get(p.father_id) : null;
       const mother = p.mother_id ? personasMap.get(p.mother_id) : null;
-      if (father || mother) {
+      const spouses = getSpouses(p);
+      const children = allPersonas
+        .filter(x => x.father_id === p.id || x.mother_id === p.id)
+        .sort((a, b) => (Number(yearOf(a.birth_date).slice(0, 4)) || 0) - (Number(yearOf(b.birth_date).slice(0, 4)) || 0));
+      if (father || mother || spouses.length || children.length) {
         const s = makeSection('Familia');
-        if (father) s.appendChild(makeRow('Padre', father.name));
-        if (mother) s.appendChild(makeRow('Madre', mother.name));
+        if (father) s.appendChild(makePersonRow('Padre', father));
+        if (mother) s.appendChild(makePersonRow('Madre', mother));
+        if (spouses.length)  s.appendChild(makeChipRow(spouses.length > 1 ? 'Cónyuges' : 'Cónyuge', spouses));
+        if (children.length) s.appendChild(makeChipRow(children.length > 1 ? 'Hijos' : 'Hijo', children));
         body.appendChild(s);
       }
 
@@ -319,15 +371,22 @@
         body.appendChild(s);
       }
 
+      document.getElementById('modalBody').scrollTop = 0;
       document.getElementById('archivoOverlay').classList.add('is-open');
       document.getElementById('archivoOverlay').setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      syncFocusURL(p.id);
     }
 
     function closeModal() {
       document.getElementById('archivoOverlay').classList.remove('is-open');
       document.getElementById('archivoOverlay').setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      syncFocusURL(null);
+    }
+
+    function syncFocusURL(id) {
+      history.replaceState(null, '', id ? `?focus=${encodeURIComponent(id)}` : location.pathname);
     }
 
     function renderMediaUnits(media, container, allPhotos) {
@@ -406,6 +465,65 @@
       return p;
     }
 
+    // ── Navegación familiar ────────────────────────────
+
+    function getSpouses(p) {
+      const ids = new Set();
+      marriages.forEach(m => {
+        if (m.spouse1_id === p.id && m.spouse2_id) ids.add(m.spouse2_id);
+        if (m.spouse2_id === p.id && m.spouse1_id) ids.add(m.spouse1_id);
+      });
+      // Respaldo: el otro progenitor de cada hijo
+      allPersonas.forEach(c => {
+        if (c.father_id === p.id && c.mother_id) ids.add(c.mother_id);
+        if (c.mother_id === p.id && c.father_id) ids.add(c.father_id);
+      });
+      ids.delete(p.id);
+      return [...ids].map(id => personasMap.get(id)).filter(Boolean);
+    }
+
+    function makePersonLink(person) {
+      const a = document.createElement('a');
+      a.className = 'modal-link';
+      a.textContent = person.name;
+      a.setAttribute('role', 'button');
+      a.tabIndex = 0;
+      a.addEventListener('click', () => openModal(person));
+      a.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(person); }
+      });
+      return a;
+    }
+
+    function makePersonRow(label, person) {
+      const row = document.createElement('p');
+      row.className = 'modal-row';
+      const lab = document.createElement('span');
+      lab.className = 'modal-label';
+      lab.textContent = label;
+      row.appendChild(lab);
+      row.appendChild(makePersonLink(person));
+      return row;
+    }
+
+    function makeChipRow(label, people) {
+      const row = document.createElement('p');
+      row.className = 'modal-row';
+      const lab = document.createElement('span');
+      lab.className = 'modal-label';
+      lab.textContent = label;
+      row.appendChild(lab);
+      const list = document.createElement('span');
+      list.className = 'modal-link-list';
+      people.forEach(pp => {
+        const chip = makePersonLink(pp);
+        chip.classList.add('modal-link-chip');
+        list.appendChild(chip);
+      });
+      row.appendChild(list);
+      return row;
+    }
+
     // ── Lightbox ───────────────────────────────────────
 
     let lbState = { items: [], index: 0 };
@@ -439,7 +557,11 @@
       const res  = await fetch(url);
       const json = await res.json();
       allPersonas  = json.personas || [];
+      marriages    = json.matrimonios || [];
       personasMap  = new Map(allPersonas.map(p => [p.id, p]));
+
+      // Permite que el buscador global (cmd+K) abra la ficha acá, sin salir del archivo
+      window.__personaFocus = (id) => { const p = personasMap.get(id); if (p) openModal(p); };
 
       sorted = [...allPersonas].sort((a, b) => {
         const gd = (b.generation ?? 0) - (a.generation ?? 0);
@@ -456,7 +578,42 @@
       const countries = [...new Set(sorted.map(getCountry).filter(Boolean))].sort();
       buildPills('countryPills', countries, 'country');
 
+      // Buscador por texto
+      const searchInput = document.getElementById('archivoSearch');
+      searchInput.addEventListener('input', () => { searchQuery = searchInput.value; applyFilters(); });
+
+      // Toggle «solo con documentos»
+      const docsBtn = document.getElementById('docsToggle');
+      docsBtn.addEventListener('click', () => {
+        onlyWithDocs = !onlyWithDocs;
+        docsBtn.classList.toggle('is-active', onlyWithDocs);
+        applyFilters();
+      });
+
+      // Orden por columnas
+      document.querySelectorAll('#archivoTable thead th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+          const key = th.dataset.sort;
+          if (sortState.key === key) {
+            sortState.dir = sortState.dir === 'asc' ? 'desc' : 'asc';
+          } else {
+            sortState.key = key;
+            sortState.dir = (key === 'name' || key === 'branch') ? 'asc' : 'desc';
+          }
+          document.querySelectorAll('#archivoTable thead th[data-sort]').forEach(h => {
+            h.classList.toggle('is-sorted', h === th);
+            const arrow = h.querySelector('.th-arrow');
+            if (arrow) arrow.textContent = (h === th && sortState.dir === 'asc') ? '▲' : '▼';
+          });
+          applyFilters();
+        });
+      });
+
       applyFilters();
+
+      // Apertura directa por URL (?focus=p38) — enlaces compartibles
+      const focusId = new URLSearchParams(location.search).get('focus');
+      if (focusId && personasMap.has(focusId)) openModal(personasMap.get(focusId));
 
       // Modal
       document.getElementById('modalClose').addEventListener('click', closeModal);
