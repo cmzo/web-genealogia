@@ -13,6 +13,9 @@ const TEMPLATE_FILE = './content/templates/post-template.html';
 const OUTPUT_DIR = './dist/blog';
 const BLOG_ENTRIES_FILE = './assets/data/blog-entries.json';
 
+// Logs de diagnóstico (galerías, etc.) solo con --verbose / -v
+const VERBOSE = process.argv.includes('--verbose') || process.argv.includes('-v');
+
 // Asegurar que existe el directorio de salida
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -230,7 +233,7 @@ function markdownToHtml(markdown) {
   markdown = markdown.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
     // Extraer solo el nombre del archivo sin extensión para el alt text
     const altText = filename.replace(/\.[^/.]+$/, "").replace(/[_-]/g, ' ');
-    console.log(`🔄 Convirtiendo Obsidian: ${match} → ![${altText}](../../assets/images/posts/${filename})`);
+    if (VERBOSE) console.log(`🔄 Convirtiendo Obsidian: ${match} → ![${altText}](../../assets/images/posts/${filename})`);
     return `![${altText}](../../assets/images/posts/${filename})`;
   });
   
@@ -285,13 +288,13 @@ function markdownToHtml(markdown) {
   html = html.replace(
     /(<p><img[^>]+><\/p>\s*){2,}/gs,
     (match) => {
-      console.log(`🔍 Posible galería encontrada: ${match.substring(0, 100)}...`);
+      if (VERBOSE) console.log(`🔍 Posible galería encontrada: ${match.substring(0, 100)}...`);
       
       // Extraer todas las imágenes del grupo
       const images = match.match(/<img[^>]+>/gs) || [];
       
       if (images.length >= 2) {
-        console.log(`📸 Galería detectada con ${images.length} imágenes`);
+        if (VERBOSE) console.log(`📸 Galería detectada con ${images.length} imágenes`);
         
         // Envolver cada imagen en figure y crear grid con funcionalidad clickable
         const galleryItems = images.map(img => {
