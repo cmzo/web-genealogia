@@ -20,7 +20,7 @@ Dirección: **Editorial + Documental mínimo**
 - `index.html` — epígrafe editorial centrado, panorámica Valle del Ródano (B&W), escudos heráldicos de Clemenzo y Ardon, sección "Última entrada" dinámica (fetch de blog-entries.json)
 - `blog.html` — tarjetas puramente tipográficas (sin imagen), búsqueda y filtro eliminados; corregido JSON roto por comillas tipográficas
 - `archivo.html` — nuevo layout, funcionalidad conservada
-- `arbol-matrimonios.html` — nuevo layout, D3 zoom corregido (Ctrl+scroll); modularización completa: JS dividido en 5 módulos ES (`assets/js/arbol/`), CSS extraído a `assets/css/arbol.css`, HTML reducido a 81 líneas sin código inline
+- `arbol.html` — nuevo layout, D3 zoom corregido (Ctrl+scroll); modularización completa: JS dividido en 5 módulos ES (`assets/js/arbol/`), CSS extraído a `assets/css/arbol.css`, HTML reducido a 81 líneas sin código inline
 - `content/templates/post-template.html` — todos los posts del blog usan el nuevo template
 - `changelog.html` — completado con historial real y detallado
 - Páginas eliminadas (no estaban en uso): `clemenzo-por-el-mundo.html`, `trama-mexicana.html`, `mapa-clemenzos.html`
@@ -77,14 +77,14 @@ El renderizado dibuja:
 **Implementación:**
 - `layout.js` reescrito: árbol de personas (sin nodos matrimonio) → `d3.tree().nodeSize()` para posiciones X, Y invertido para ancestros. Nodos matrimonio computados como punto medio entre cónyuges a mitad del espacio vertical (y = parent_y + VGAP/2). Constante `VGAP = 160px`.
 - `render.js` reescrito: SVG con `d3.zoom()` (Ctrl+scroll), tarjetas 160×80 con franja de rama, nombre en 2 líneas, años de vida. Curvas cúbicas via `d3.linkVertical()` por tipo de arista (`spouse`, `marriage-child`, `focus-marriage`, `direct`). Click en tarjeta → `store.setFocus(id)` + recentrado de 600ms.
-- `arbol-matrimonios.html` actualizado: listener `focusChange` → `computeLayout + render + recenterOn`. Botones zoom conectados.
+- `arbol.html` actualizado: listener `focusChange` → `computeLayout + render + recenterOn`. Botones zoom conectados.
 
 **Al terminar:** el árbol funciona en el browser. Se puede navegar haciendo click en personas y el árbol se recentra. El zoom y el pan funcionan. Las tarjetas muestran nombre y fechas. El árbol muestra 3 generaciones hacia arriba y 1 hacia abajo desde la persona foco.
 
 ---
 
 ### ✅ Fase 5 — Panel lateral y navegación
-**Trabajo:** Crear `panel.js` y `search.js`, actualizar `arbol-matrimonios.html`.
+**Trabajo:** Crear `panel.js` y `search.js`, actualizar `arbol.html`.
 
 El panel lateral (300px, superpuesto al árbol) se abre al hacer click en una persona y muestra:
 - Nombre completo, fechas y lugares de nacimiento/fallecimiento
@@ -101,7 +101,7 @@ La barra de herramientas encima del árbol incluye:
 - `panel.js`: `initPanel()` escucha `selectionChange`; `_renderContent()` genera HTML para nombre, fechas/lugares, padres con links, matrimonios con hijos, notas, fuentes, media. Slide-in desde la derecha con CSS transform.
 - `search.js`: `initSearch()` puebla un `<datalist>` con todos los nombres; al seleccionar → `setFocus(id) + setSelected(id)`.
 - `render.js` actualizado: click en tarjeta llama `setFocus(id) + setSelected(id)`.
-- `arbol-matrimonios.html` actualizado: toolbar con `#searchInput`, panel `#treePanel` con `#treePanelBody` y `#treePanelClose`.
+- `arbol.html` actualizado: toolbar con `#searchInput`, panel `#treePanel` con `#treePanelBody` y `#treePanelClose`.
 - `arbol.css` actualizado: estilos de toolbar, panel (translate transition 300ms), zoom-controls movido a esquina inferior izquierda.
 
 **Al terminar:** la experiencia es comparable a FamilySearch en interactividad. Click en persona → panel lateral con toda la información disponible. Búsqueda por nombre funcional.
@@ -127,7 +127,7 @@ Dirección: **documental mínimo con densidad controlada**. El árbol es una can
 
 ### ✅ Fase 7 — Wiring final, limpieza y documentación
 
-- `arbol-matrimonios.html` reescrito con el HTML completo (toolbar, panel lateral, SVG container)
+- `arbol.html` reescrito con el HTML completo (toolbar, panel lateral, SVG container)
 - Módulos viejos eliminados: `structure.js`, y las versiones anteriores de `layout.js` y `render.js`
 - `CLAUDE.md` actualizado con el nuevo schema, módulos y flujo de datos
 - `data/README.md` actualizado

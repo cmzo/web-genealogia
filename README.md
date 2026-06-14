@@ -204,7 +204,7 @@ Tras cualquier modificación a la base de datos, correr `python3 scripts/export_
 
 ## Árbol genealógico
 
-La fuente de verdad es `data/arbol.db` (SQLite). El frontend (`arbol-matrimonios.html`) solo lee el JSON estático generado en build; nunca accede a la base de datos directamente.
+La fuente de verdad es `data/arbol.db` (SQLite). El frontend (`arbol.html`) solo lee el JSON estático generado en build; nunca accede a la base de datos directamente.
 
 ### Módulos JS (`assets/js/arbol/`)
 
@@ -275,6 +275,6 @@ web-genealogia/
 ├── index.html
 ├── blog.html
 ├── archivo.html                # Archivo familiar (datos desde arbol.json)
-├── arbol-matrimonios.html      # Árbol genealógico interactivo (D3.js)
+├── arbol.html      # Árbol genealógico interactivo (D3.js)
 └── changelog.html
 ```

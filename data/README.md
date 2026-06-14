@@ -9,7 +9,7 @@ data/arbol.db
     ↓  scripts/export_arbol.py  (automático en cada npm run build)
 assets/data/arbol.json
     ↓  fetch() en el browser
-arbol-matrimonios.html  /  archivo.html
+arbol.html  /  archivo.html
 ```
 
 El frontend solo lee `arbol.json`. Nunca accede a la base de datos directamente.

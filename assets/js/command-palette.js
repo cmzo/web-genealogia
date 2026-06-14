@@ -23,7 +23,7 @@
   // ── Páginas del sitio (índice estático) ─────────────────────────────────────
   const PAGES = [
     { title: 'Inicio',            url: 'index.html',            desc: 'Portada del proyecto' },
-    { title: 'Árbol genealógico', url: 'arbol-matrimonios.html', desc: 'Explorar el árbol y los matrimonios' },
+    { title: 'Árbol genealógico', url: 'arbol.html', desc: 'Explorar el árbol y los matrimonios' },
     { title: 'Archivo',           url: 'archivo.html',          desc: 'Documentos y fotografías' },
     { title: 'Blog',              url: 'blog.html',             desc: 'Entradas de investigación' },
     { title: 'Fuentes',           url: 'fuentes.html',          desc: 'Archivos y repositorios consultados' },
@@ -287,7 +287,7 @@
       // si no, navegar al árbol con ?focus=
       const focusFn = window.__personaFocus || window.__treeFocus;
       if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
-      window.location.href = ROOT + 'arbol-matrimonios.html?focus=' + encodeURIComponent(it.id);
+      window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
       return;
     }
     window.location.href = ROOT + it.url;

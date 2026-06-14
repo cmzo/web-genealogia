@@ -129,6 +129,6 @@ Francisco emigró sin patrimonio: todo lo que su abuela había intentado preserv
 ## Fuentes
 
 - *Gazette du Valais*, Vol. 7 N.° 98 (8-12-1861); Vol. 8 N.° 14 (16-02-1862), N.° 16 (23-02-1862), N.° 76 (21-09-1862); Vol. 12 N.° 4 (14-01-1866). Digitalizadas en [e-newspaperarchives.ch](https://www.e-newspaperarchives.ch/).
-- Censos del Valais 1829–1880 (recensements.vallesiana.ch) y árbol genealógico del sitio — fichas de [François p36](../../arbol-matrimonios.html?focus=p36), [Catherine Cerisier p58](../../arbol-matrimonios.html?focus=p58) y [Francisco p26](../../arbol-matrimonios.html?focus=p26).
+- Censos del Valais 1829–1880 (recensements.vallesiana.ch) y árbol genealógico del sitio — fichas de [François p36](../../arbol.html?focus=p36), [Catherine Cerisier p58](../../arbol.html?focus=p58) y [Francisco p26](../../arbol.html?focus=p26).
 - Carta del Tribunal de Conthey, 4-02-1905 (archivo familiar).
 - Transcripciones completas y análisis documental en la ficha de investigación `gazette-valais-1861-1866.md`.

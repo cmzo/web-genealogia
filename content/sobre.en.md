@@ -4,7 +4,7 @@ This site is the archive of that research. I have been conducting it myself, Mat
 
 ## How to read the site
 
-The **[Tree](arbol-matrimonios.html)** is the heart of the project and the best entry point. It displays the family centered on one person; clicking on any card reorganizes the tree around that person. Each person has three tabs: their vital data, their research notes (hypotheses, sources, pending tasks), and their documents. It works on mobile, but the full experience is on tablet or computer.
+The **[Tree](arbol.html)** is the heart of the project and the best entry point. It displays the family centered on one person; clicking on any card reorganizes the tree around that person. Each person has three tabs: their vital data, their research notes (hypotheses, sources, pending tasks), and their documents. It works on mobile, but the full experience is on tablet or computer.
 
 The **[Archive](archivo.html)** is the tabular view of the same thing: all people with their photos and documents, searchable by name and filterable by branch. The **[Blog](blog.html)** tells the story — what document appeared, what hypothesis fell apart, what was concluded and with what sources. And **[Sources](fuentes.html)** lists the archives and institutions where everything comes from, with links when available.
 

@@ -4,7 +4,7 @@ Ce site est l'archive de cette recherche. Je la mène moi-même, Matías Clemenz
 
 ## Comment lire le site
 
-L'**[Arbre](arbol-matrimonios.html)** est le cœur du projet et le meilleur point d'entrée. Il affiche la famille centrée sur une personne ; en cliquant sur n'importe quelle carte, l'arbre se réorganise autour d'elle. Chaque personne a trois onglets : ses données vitales, ses notes de recherche (hypothèses, sources, tâches en cours) et ses documents. Cela fonctionne sur téléphone, mais l'expérience complète est sur tablette ou ordinateur.
+L'**[Arbre](arbol.html)** est le cœur du projet et le meilleur point d'entrée. Il affiche la famille centrée sur une personne ; en cliquant sur n'importe quelle carte, l'arbre se réorganise autour d'elle. Chaque personne a trois onglets : ses données vitales, ses notes de recherche (hypothèses, sources, tâches en cours) et ses documents. Cela fonctionne sur téléphone, mais l'expérience complète est sur tablette ou ordinateur.
 
 L'**[Archive](archivo.html)** est la vue tabulaire de la même chose : toutes les personnes avec leurs photos et documents, recherchables par nom et filtrables par branche. Le **[Blog](blog.html)** raconte le processus — quel document est apparu, quelle hypothèse s'est effondrée, ce qui a été conclu et avec quelles sources. Et **[Sources](fuentes.html)** liste les archives et institutions d'où tout provient, avec des liens quand ils existent.
 

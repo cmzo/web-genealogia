@@ -95,14 +95,14 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 - `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
-- `arbol-matrimonios.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
+- `arbol.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
 - `archivo.html` — document/photo archive viewer; faceted filters by branch/country (the name search bar was removed in favor of the global ⌘+K palette)
 
 ### Global command palette (`assets/js/command-palette.js`)
 
-Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol-matrimonios.html`) when already on the tree, otherwise navigates to `arbol-matrimonios.html?focus=<id>`. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Contacto, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
+Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol.html`) when already on the tree, otherwise navigates to `arbol.html?focus=<id>`. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Contacto, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
 
-### Family tree (`arbol-matrimonios.html`)
+### Family tree (`arbol.html`)
 
 The tree is modularized into ES modules under `assets/js/arbol/` and uses **D3.js v7** for SVG rendering with zoom/pan:
 
@@ -119,7 +119,7 @@ assets/js/arbol/
   └── keyboard.js  — keyboard shortcuts
 ```
 
-Styles are in `assets/css/arbol.css`. The HTML (`arbol-matrimonios.html`) has no inline CSS or JS.
+Styles are in `assets/css/arbol.css`. The HTML (`arbol.html`) has no inline CSS or JS.
 
 **Panel inspector (`panel.js` + `.tree-panel`):** lenguaje editorial coherente con el blog — hero sobre superficie clara (nombre en Source Serif 4, años en serif cursiva), badge de estado tipo chip, secciones en cards blancas. En desktop el panel flota como tarjeta con **gaps de 5mm tipo i3** (el fondo de puntos vive en `.tree-wrapper` y se ve en los gaps). El botón "Ampliar panel" del footer alterna el estado `.is-expanded`, que hace que el panel ocupe todo el área dejando solo el gap de 5mm (toggle a "Volver al árbol"). **Esta expansión y los gaps son solo desktop** (`@media max-width: 960px` los desactiva: el panel vuelve a ser un drawer overlay a pantalla completa y el footer se oculta).
 

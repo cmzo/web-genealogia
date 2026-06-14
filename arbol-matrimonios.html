@@ -1,159 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
-    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Árbol genealógico · Matías Clemenzo</title>
-    <meta name="description" content="Árbol genealógico interactivo de la familia Clemenzo: personas, matrimonios y relaciones familiares desde el Valais suizo hasta Argentina." />
-    <link rel="canonical" href="https://web-genealogia.cmzo.workers.dev/arbol-matrimonios" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Árbol genealógico · Matías Clemenzo" />
-    <meta property="og:description" content="Árbol genealógico interactivo de la familia Clemenzo: personas, matrimonios y relaciones familiares desde el Valais suizo hasta Argentina." />
-    <meta property="og:url" content="https://web-genealogia.cmzo.workers.dev/arbol-matrimonios" />
-    <meta property="og:image" content="https://web-genealogia.cmzo.workers.dev/assets/images/cards/vallee-du-rhone.webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <link rel="stylesheet" href="./assets/css/arbol.css" />
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
+  <meta charset="utf-8" />
+  <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Árbol genealógico · Matías Clemenzo</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://web-genealogia.cmzo.workers.dev/arbol" />
+  <meta http-equiv="refresh" content="0; url=arbol.html" />
+  <script>location.replace('arbol.html' + location.search + location.hash);</script>
 </head>
 <body>
-
-  <a href="#main-content" class="skip-link">Saltar al contenido</a>
-
-  <header class="site-nav">
-    <a href="index.html" class="nav-brand">Clemenzo</a>
-    <nav class="nav-actions">
-      <a href="arbol-matrimonios.html" class="nav-link nav-mobile-link">Árbol</a>
-      <a href="archivo.html" class="nav-link nav-mobile-link">Archivo</a>
-      <a href="blog.html" class="nav-link nav-mobile-link">Blog</a>
-      <a href="sobre.html" class="nav-link nav-mobile-link">Sobre el proyecto</a>
-      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-      </a>
-    </nav>
-  </header>
-
-  <div class="site-body">
-    <aside class="site-sidebar">
-      <nav class="sidebar-nav">
-        <a href="sobre.html" class="sidebar-link">Sobre el proyecto</a>
-        <a href="arbol-matrimonios.html" class="sidebar-link is-active">Árbol</a>
-        <a href="archivo.html" class="sidebar-link">Archivo</a>
-        <a href="blog.html" class="sidebar-link">Blog</a>
-        <a href="fuentes.html" class="sidebar-link">Fuentes</a>
-        <a href="colaborar.html" class="sidebar-link sidebar-link--icon" title="Colaborar" aria-label="Colaborar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Colaborar</a>
-      </nav>
-      <div class="sidebar-bottom">
-
-        <a href="changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
-      </div>
-    </aside>
-
-    <main id="main-content" class="site-main" style="padding: 0; display: flex; flex-direction: column;">
-      <div class="tree-toolbar">
-        <span class="tree-toolbar-hint">Buscá cualquier persona con <kbd class="tree-toolbar-key" data-cmdk-key>⌘K</kbd></span>
-        <div class="zoom-controls">
-          <button id="zoomInBtn"  class="zoom-btn" title="Acercar (+)">+</button>
-          <button id="zoomOutBtn" class="zoom-btn" title="Alejar (-)">−</button>
-        </div>
-      </div>
-
-      <div class="tree-wrapper">
-        <div class="tree-container" id="tree-container"></div>
-
-        <div class="panel-peek" id="panelPeek">
-          <span class="panel-peek-name" id="panelPeekName"></span>
-          <span class="panel-peek-cta">Abrir ficha</span>
-        </div>
-
-        <div class="tree-panel" id="treePanel">
-          <button class="tree-panel-close" id="treePanelClose" title="Cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-          <div class="panel-hero" id="treePanelHero"></div>
-          <div class="panel-tabs" id="panelTabs">
-            <button class="panel-tab is-active" data-tab="persona">Persona</button>
-            <button class="panel-tab" data-tab="investigacion">Investigación</button>
-            <button class="panel-tab" data-tab="archivos">Archivos</button>
-          </div>
-          <div class="tree-panel-body" id="treePanelBody"></div>
-          <div class="panel-footer">
-            <button class="panel-expand-btn" id="panelExpandBtn" type="button" aria-expanded="false" title="Ampliar el panel">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
-              <span class="panel-expand-label">Ampliar panel</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <footer class="site-footer">
-    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
-    <nav class="footer-mobile-nav">
-      <a href="colaborar.html" class="footer-nav-link">Colaborar</a>
-      <a href="changelog.html" class="footer-nav-link">Cambios</a>
-    </nav>
-  </footer>
-
-    <script src="./assets/js/path-config.js"></script>
-    <script type="module">
-        import { loadData, getAllPersonas }                              from './assets/js/arbol/data.js';
-        import { setFocus, setSelected, on }                            from './assets/js/arbol/store.js';
-        import { computeLayout }                                        from './assets/js/arbol/layout.js';
-        import { initTree, render, rerender, recenterOn, zoomIn, zoomOut } from './assets/js/arbol/render.js';
-        import { initPanel }                                            from './assets/js/arbol/panel.js';
-        import { initKeyboard }                                         from './assets/js/arbol/keyboard.js';
-
-        async function init() {
-            await loadData();
-
-            initTree('tree-container');
-            initPanel();
-            initKeyboard();
-
-            on('focusChange', id => {
-                const layout = computeLayout(id);
-                render(layout);
-                recenterOn();
-            });
-
-            // Redibuja al cambiar selección para aplicar el halo en la tarjeta correcta.
-            // setSelected se llama justo después de setFocus, de ahí el setTimeout(0).
-            on('selectionChange', () => setTimeout(rerender, 0));
-
-            document.getElementById('zoomInBtn') .addEventListener('click', zoomIn);
-            document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
-
-            // Permite que el command palette enfoque una persona sin recargar
-            window.__treeFocus = (id) => {
-                if (!getAllPersonas().has(id)) return;
-                setFocus(id);
-                setSelected(id);
-            };
-
-            const personas = getAllPersonas();
-            const wanted   = new URLSearchParams(location.search).get('focus');
-            const target   = wanted && personas.get(wanted);
-            const initial  = target
-                          || personas.get('p93')
-                          || [...personas.values()].find(p => p.generation === 1)
-                          || [...personas.values()][0];
-            if (initial) {
-                setFocus(initial.id);
-                if (target) setSelected(initial.id); // llega desde el buscador → abre su ficha
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
-<script src="assets/js/nav-drawer.js" defer></script>
-<script src="assets/js/theme.js" defer></script>
-<script src="assets/js/command-palette.js" defer></script>
+  <p style="font-family:sans-serif;padding:24px;">
+    Esta página se movió a <a href="arbol.html">Árbol genealógico</a>. Redirigiendo…
+  </p>
 </body>
 </html>

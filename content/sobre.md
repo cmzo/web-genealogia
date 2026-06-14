@@ -4,7 +4,7 @@ Este sitio es el archivo de esa investigación. Lo hago yo, Matías Clemenzo, de
 
 ## Cómo leer el sitio
 
-El **[Árbol](arbol-matrimonios.html)** es el corazón del proyecto y el mejor punto de entrada. Muestra a la familia centrada en una persona; con un clic en cualquier tarjeta el árbol se reorganiza alrededor de ella. Cada persona tiene tres pestañas: sus datos vitales, sus notas de investigación (hipótesis, fuentes, tareas pendientes) y sus documentos. En celular funciona, pero la experiencia completa es en tablet o computadora.
+El **[Árbol](arbol.html)** es el corazón del proyecto y el mejor punto de entrada. Muestra a la familia centrada en una persona; con un clic en cualquier tarjeta el árbol se reorganiza alrededor de ella. Cada persona tiene tres pestañas: sus datos vitales, sus notas de investigación (hipótesis, fuentes, tareas pendientes) y sus documentos. En celular funciona, pero la experiencia completa es en tablet o computadora.
 
 El **[Archivo](archivo.html)** es la vista tabular de lo mismo: todas las personas con sus fotos y documentos, buscables por nombre y filtrables por rama. El **[Blog](blog.html)** cuenta el proceso — qué documento apareció, qué hipótesis cayó, qué se concluyó y con qué fuentes. Y **[Fuentes](fuentes.html)** lista los archivos e instituciones de donde sale todo, con enlaces cuando existen.
 

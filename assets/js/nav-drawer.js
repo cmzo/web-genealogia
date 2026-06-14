@@ -6,7 +6,7 @@
 
   const mainLinks = [
     { href: 'sobre.html',             label: 'Sobre el proyecto' },
-    { href: 'arbol-matrimonios.html', label: 'Árbol' },
+    { href: 'arbol.html', label: 'Árbol' },
     { href: 'archivo.html',           label: 'Archivo' },
     { href: 'blog.html',              label: 'Blog' },
     { href: 'fuentes.html',           label: 'Fuentes' },
@@ -83,7 +83,7 @@
   // ── Iconos Material Symbols en la sidebar de escritorio ──────────────────────
   const SIDEBAR_ICONS = {
     'sobre.html':             'info',
-    'arbol-matrimonios.html': 'account_tree',
+    'arbol.html': 'account_tree',
     'archivo.html':           'folder',
     'blog.html':              'edit_note',
     'fuentes.html':           'description',
