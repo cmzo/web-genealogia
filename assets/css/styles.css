@@ -11,9 +11,47 @@
   --text:      #1a1a1a;
   --muted:     #5a5040;
   --accent:    #2d4a3e;
+  --on-accent: #cad7d0;
   --sidebar-w: 200px;
   --nav-h:     52px;
+  color-scheme: light;
 }
+
+/* ─── MODO OSCURO · paleta «Pizarra neutra» ───────────── */
+[data-theme="dark"] {
+  --bg:        #16181a;
+  --surface:   #1f2225;
+  --border:    #33373b;
+  --text:      #e8eaec;
+  --muted:     #9aa3a8;
+  --accent:    #5fb389;
+  --on-accent: #0f1f17;
+  color-scheme: dark;
+}
+
+/* Resaltado (==texto==) legible en oscuro */
+html[data-theme="dark"] mark {
+  background: #4a4424;
+  color: #f1e9c8;
+}
+
+/* Botón de cambio de tema (sol/luna) en el nav */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.theme-toggle:hover { color: var(--text); background: rgba(127, 127, 127, 0.12); }
+.theme-toggle svg { width: 18px; height: 18px; }
 
 /* ─── SKIP LINK + SR-ONLY ─────────────────────────────── */
 .skip-link {
@@ -187,11 +225,11 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .sidebar-link.is-active,
 .sidebar-link.is-active:hover {
   background: var(--accent);
-  color: #cad7d0;
+  color: var(--on-accent);
   font-weight: 700;
 }
 
-.sidebar-link.is-active .sidebar-icon { color: #cad7d0; }
+.sidebar-link.is-active .sidebar-icon { color: var(--on-accent); }
 
 /* Cambios — secundario, al pie */
 .sidebar-link--minor {

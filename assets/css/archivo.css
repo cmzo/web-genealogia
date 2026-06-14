@@ -32,7 +32,7 @@
 
 .archivo-search:focus {
   border-color: var(--accent);
-  background: white;
+  background: var(--surface);
 }
 
 .archivo-search::placeholder { color: var(--muted); }
@@ -106,7 +106,7 @@
 .filter-pill.is-active {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--surface);
 }
 
 .filter-pill-more {
@@ -281,7 +281,7 @@
   position: relative;
   overflow: hidden;
   padding: 24px;
-  background: linear-gradient(160deg, #35564a 0%, var(--accent) 100%);
+  background: linear-gradient(160deg, #35564a 0%, #2d4a3e 100%);
 }
 
 .archivo-modal-hero-content {
