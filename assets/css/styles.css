@@ -231,6 +231,16 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .sidebar-link.is-active .sidebar-icon { color: var(--on-accent); }
 
+/* El color base del sidebar está pensado para fondo claro; en oscuro
+   necesita aclararse para tener contraste suficiente. */
+[data-theme="dark"] .sidebar-link { color: #aeb6bc; }
+[data-theme="dark"] .sidebar-link--minor { color: #8b939a; }
+
+/* El ítem activo conserva el texto oscuro sobre la píldora verde. */
+[data-theme="dark"] .sidebar-link.is-active,
+[data-theme="dark"] .sidebar-link.is-active:hover { color: var(--on-accent); }
+[data-theme="dark"] .sidebar-link.is-active .sidebar-icon { color: var(--on-accent); }
+
 /* Cambios — secundario, al pie */
 .sidebar-link--minor {
   font-size: 10px;
@@ -785,6 +795,13 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   object-fit: cover;
   border-radius: 50%;
   display: block;
+}
+
+/* El avatar es un dibujo de líneas negras sobre fondo transparente:
+   en modo oscuro necesita fondo claro para no perderse. */
+[data-theme="dark"] .author-avatar {
+  background: #e8eaec;
+  border-color: #e8eaec;
 }
 
 .meta-text { line-height: 1.35; font-size: 13px; }
