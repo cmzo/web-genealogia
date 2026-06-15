@@ -14,9 +14,9 @@ lang: "fr"
 
 Enquêter sur sa propre famille, c'est découvrir des personnes derrière les noms écrits dans un registre. Ce document rassemble ce que les archives du canton du Valais racontent sur les Clemenzo d'Ardon et Riddes : qui ils étaient, où ils vivaient, quand ils se sont installés, et quel lien ils entretiennent avec la branche qui est arrivée en Argentine il y a 150 ans.
 
-Les sources principales sont les recensements numérisés du Valais (1802–1870), l'*Armorial Valaisan* en deux éditions, et les mémoires de l'officier napoléonien Hyacinthe Clemenzo. L'arbre généalogique de Jean-Yves — descendant de Jean-Baptiste Clemenzo qui vit en Suisse — a été déterminant pour confirmer les hypothèses sur le XIXe siècle.
+Les sources principales sont les recensements numérisés du Valais (1802–1870), l'*Armorial Valaisan* en deux éditions, et les mémoires de l'officier napoléonien Hyacinthe Clemenzo. L'arbre généalogique de Jean-Yves — descendant de Jean-Baptiste Clemenzo qui vit en Suisse — a été utile pour orienter les hypothèses sur le XIXe siècle — mais son arbre seul ne confirme rien par lui-même.
 
-Les personnages centraux de cette histoire sont **Baptiste Clemenzo** (le plus ancien patriarche identifié, n.v. 1745–1755), ses fils **Jean Baptiste** (v. 1774) et **Jean Joseph (p57, v. 1780)**, et sa descendance qui a migré d'Ardon à Riddes puis finalement en Argentine. Jean-Yves et l'auteur de ce document descendent de ces deux frères — ils sont des cousins éloignés avec un ancêtre commun qui a vécu à Ardon il y a plus de 270 ans.
+Les personnages centraux de cette histoire sont **Baptiste Clemenzo** (le plus ancien patriarche identifié, n.v. 1745–1755), ses fils **Jean Baptiste** (v. 1774) et **Jean Joseph (p57, v. 1780)**, et sa descendance qui a migré d'Ardon à Riddes puis finalement en Argentine. Jean-Yves et l'auteur de ce document descendent de ces deux frères — ils sont probablement des cousins éloignés partageant un possible ancêtre commun qui aurait vécu à Ardon il y a plus de 270 ans — hypothèse solide, mais non confirmée par acte de baptême.
 
 ---
 
@@ -40,7 +40,7 @@ Les personnages centraux de cette histoire sont **Baptiste Clemenzo** (le plus a
 - Les Clemenzo d'Ardon sont documentés depuis **1481** — cinq siècles avant la migration en Argentine.
 - **Baptiste Clemenzo** (Ardon, v. 1745–1755) avait au moins deux fils : **Jean Baptiste** (v. 1774) et **Jean Joseph** (v. 1780). C'est l'ancêtre commun des deux branches du clan.
 - **Jean Joseph Clemenzo (p57)** a migré d'Ardon à Riddes. C'est le grand-père direct de la branche argentine.
-- **Jean Baptiste Clemenzo** est resté à Ardon. Jean-Yves, son descendant vivant en Suisse, a confirmé cette branche en croisant le recensement de 1846 avec l'*Armorial Valaisan*.
+- **Jean Baptiste Clemenzo** est resté à Ardon. Jean-Yves, son descendant vivant en Suisse, a orienté l'identification de cette branche en croisant le recensement de 1846 avec l'*Armorial Valaisan* — hypothèse qui reste à documenter par actes paroissiaux.
 - **Joseph Florentin (p72)**, fils de Jean Joseph, a étudié la médecine en Europe centrale et a exercé comme chirurgien à Naples entre 1837 et au moins 1846.
 - **François / Francisco Clemenzo (p26)**, petit-fils de Jean Joseph, a émigré en Argentine vers 1880. Au recensement de 1870, il avait environ 12 ans et vivait avec ses parents à Riddes.
 - L'identification de Baptiste comme père de Jean Joseph est une hypothèse solide mais **non confirmée documentellement** — l'acte de baptême manque.
@@ -176,8 +176,8 @@ Les Clemenzo des lignes 21–34 appartiennent à la **Deuxième Classe** : ce so
 
 | Ligne | ID  | Nom dans l'arbre              | Qui est-ce dans l'histoire familiale |
 |-------|-----|-------------------------------|-------------------------------------|
-| 21    | p57 | Jean Joseph Clemenzo          | **Grand-père de la branche argentine.** Nom complet confirmé. Au recensement de 1846 figure abrégé comme "Joseph". |
-| 22    | p58 | Catherine Fortuneé "Pirisier"| **Grand-mère de la branche argentine.** Vrai nom de famille confirmé : **Cerisier**. "Pirisier" dans l'arbre est erreur de transcription. |
+| 21    | p57 | Jean Joseph Clemenzo          | **Grand-père de la branche argentine.** Le recensement de 1829 l'enregistre comme « Jean Joseph ». Au recensement de 1846 figure abrégé comme "Joseph". |
+| 22    | p58 | Catherine Fortuneé "Pirisier"| **Grand-mère de la branche argentine.** Le recensement de 1829 l'enregistre comme **Cerisier**. "Pirisier" dans l'arbre est une erreur de transcription. |
 | 23    | p72 | Joseph Florentine Clemenzo    | Fils aîné — en 1829 était **étudiant à Vienne, Autriche**. Donnée extraordinaire pour un fils de laboureur. |
 | 24    | p36 | François Clemenzoz            | **Père de Francisco l'émigrant.** ✓ |
 | 25    | p73 | Joseph Marie Clemenzo         | ✓ |
@@ -186,7 +186,7 @@ Les Clemenzo des lignes 21–34 appartiennent à la **Deuxième Classe** : ce so
 | 28    | p75 | Marie Henriette Clemenzo      | ✓ — épousera en 1840 Jean-François Battnier et s'installera à Saxon |
 
 **Notes :**
-- **"Jeanne" (n.1820) n'apparaît pas.** Si elle était née en 1820, elle aurait 9 ans et devrait être listée. Son absence confirme qu'elle est née *après* 1829 — le "1820" du recensement de 1850 est une erreur du recenseur.
+- **"Jeanne" (n.1820) n'apparaît pas.** Si elle était née en 1820, elle aurait 9 ans et devrait être listée. Son absence appuie l'hypothèse qu'elle est née *après* 1829 — le "1820" du recensement de 1850 est une erreur du recenseur.
 - La colonne "Observations" avec *"porté à ardon"* indique double registre : bourgeois de Riddes avec résidence aussi registrés à Ardon.
 
 #### Famille Jean Claude (lignes 29–34) — immédiatement en dessous
@@ -231,7 +231,7 @@ Un **second Jean Joseph Clemenzo** (n.1761), Conseiller. Ce n'est pas p57. Les e
 
 #### Famille Jean Joseph n.1780 — continuation en page suivante
 
-Ceci est le ménage de **Jean Joseph Clemenzo (p57, grand-père de la branche argentine)**, avec son épouse Catherine et ses enfants. Le nom de family de Catherine apparaît ici comme **"Pirisier"** — écriture ambiguë que l'acte de mariage de p75 (1840) et le recensement de Riddes 1850 confirment définitivement comme **Cerisier**.
+Ceci est le ménage de **Jean Joseph Clemenzo (p57, grand-père de la branche argentine)**, avec son épouse Catherine et ses enfants. Le nom de family de Catherine apparaît ici comme **"Pirisier"** — écriture ambiguë que l'acte de mariage de p75 (1840) établit comme **Cerisier** ; le recensement de Riddes 1850 le corrobore.
 
 | Nom      | Prénom | Année naiss. | Profession | Observations |
 |----------|--------|--------------|-----------|--------------|
@@ -325,7 +325,7 @@ La 4me Classe enregistre "les ressortissans de la commune absens du pays" — bo
 | Clémenzo  | Florentin  | Chirurgien | à Naples   | communier + NJ— |
 
 > [!TIP] 🔎 Joseph Florentin : du laboureur au chirurgien à Naples
-> **Joseph Florentin (p72)**, fils de Jean Joseph le laboureur, est passé de "étudiant" en 1829 à exercer la médecine en Italie en 1837. Une éducation médicale en Europe centrale dans la première moitié du XIXe siècle était coûteuse et peu commune pour la famille d'un laboureur du Valais. L'observation "communier" confirme qu'il maintient ses droits de bourgeoisie à Riddes. → H6
+> **Joseph Florentin (p72)**, fils de Jean Joseph le laboureur, est passé de "étudiant" en 1829 à exercer la médecine en Italie en 1837. Une éducation médicale en Europe centrale dans la première moitié du XIXe siècle était coûteuse et peu commune pour la famille d'un laboureur du Valais. L'observation « communier » indique qu'il maintenait ses droits de bourgeoisie à Riddes. → H6
 
 ---
 
@@ -349,7 +349,7 @@ La 4me Classe enregistre "les ressortissans de la commune absens du pays" — bo
 
 Les trois entrées forment un ménage : Joseph (l.44) = **p57 Jean Joseph Clemenzo**, vivant en 1846. Catherine (l.45) = **p58 Marie Catherine Cerisier**, notée comme "sa femme". Jeanne (l.46) = fille adulte célibataire, la même qui apparaît au recensement de Riddes 1850.
 
-**Remarque sur le nom de p57 :** Il figure ici comme **"Joseph"** (sans "Jean"). Le document S 77 (1851) l'appelle aussi "Joseph Clemenzoz de Riddes". L'arbre l'enregistre comme "Jean Joseph" — le recensement de 1829 confirme le nom complet. Probable que le recenseur de 1846 l'ait noté abrégé. À confirmer dans les registres parroquiaux.
+**Remarque sur le nom de p57 :** Il figure ici comme **"Joseph"** (sans "Jean"). Le document S 77 (1851) l'appelle aussi "Joseph Clemenzoz de Riddes". L'arbre l'enregistre comme "Jean Joseph", et le recensement de 1829 le nomme de même. Probable que le recenseur de 1846 l'ait noté abrégé. À confirmer dans les registres parroquiaux.
 
 #### 4me Classe — absents de Riddes (1846)
 
@@ -404,7 +404,7 @@ Les groupes se délimitent par les marqueurs de rôle (père/mère initient chaq
 
 **Interprétation**
 
-> [!TIP] ✓ Le nom de famille de p58 est finalement confirmé
+> [!TIP] Le nom de famille de p58 apparaît comme Cerisier — appuyé par acte et recensement
 > La ligne 58 utilise le double nom **Clemenzoz Cerisier** — le schéma valaisan de nom marié + nom de jeune fille. Ceci résout des décennies d'ambiguïté : le nom de famille de **Marie Catherine (p58)**, grand-mère de la branche argentine, n'était pas "Pirisier" mais **Cerisier**. Son mari p57 est décédé entre 1846 et 1850 — elle apparaît ici sans lui, comme veuve agricultrice.
 
 ---
@@ -448,7 +448,7 @@ Recensement fédéral suisse : photographie du ménage de **p36 François Clemen
 
 **Notes :**
 - **p36 était vivant** en décembre 1870. Le document D 10/86 (11/01/1874) le mentionne déjà au passé — il est décédé entre janvier 1871 et janvier 1874.
-- La présence de **p77 Joséphine** au foyer paternel en 1870 confirme qu'elle était fille de p36, cohérent avec H8.
+- La présence de **p77 Joséphine** au foyer paternel en 1870 appuie l'hypothèse qu'elle était fille de p36, cohérent avec H8.
 - L'année de naissance de **p37 Marie Louise Stalder** apparaît comme **5 Mai 1828** — correspond avec l'arbre ✓.
 - L'entrée 7 correspond à un enfant supplémentaire non encore identifié (p78 ou p79 dans l'arbre).
 
@@ -474,7 +474,7 @@ L'arbre généalogique de Jean-Yves cite l'*Armorial Valaisan, Sion et Zurich, 1
 
 > *"B.: Clemenz: Staldenried, Viège, etc.; Clemenzo: **Ardon, Riddes**."*
 
-Ceci confirme explicitement que la branche **Clemenzo** a sa bourgeoisie à **Ardon** et **Riddes** — exactement la branche que nous enquêtons.
+L'Armorial enregistre explicitement que la branche **Clemenzo** a sa bourgeoisie à **Ardon** et **Riddes** — exactement la branche que nous enquêtons.
 
 **Données historiques documentées :**
 - **1481** — Guillaume et Perrod *Clemenczoz* figurent comme habitants et bourgeois d'Ardon-Chamoson. Première mention documentée de la famille à Ardon, 321 ans avant le recensement 1802.
@@ -496,7 +496,7 @@ Ceci confirme explicitement que la branche **Clemenzo** a sa bourgeoisie à **Ar
 
 Hyacinthe Clemenzo a laissé ses mémoires écrits : *Souvenirs d'un officier valaisan au service de France*, publiés dans les *Annales valaisannes* de 1957. C'est une source exceptionnelle : elle enregistre sa filiation exacte et permet de contextualiser les Clemenzo d'Ardon dans les générations avant les recensements.
 
-Une note au bas du Chapitre I confirme :
+Une note au bas du Chapitre I indique :
 
 > *"Fils de **Jean-André Clemenzo (1716–1812)** et de **Marie-Marguerite Favre (1728–1813)**."*
 
@@ -522,15 +522,15 @@ Les mémoires ont été préservés par **M. Raymond de Laroche-Clémenso** (Lyo
 
 ## L'arbre de Jean-Yves
 
-Jean-Yves est un descendant de **Jean-Baptiste Clemenzo \*1774**, le frère (probable) de Jean Joseph p57. Il vit en Suisse et a partagé son arbre généalogique, qui a été déterminant pour confirmer les hypothèses sur le XIXe siècle.
+Jean-Yves est un descendant de **Jean-Baptiste Clemenzo \*1774**, le frère (probable) de Jean Joseph p57. Il vit en Suisse et a partagé son arbre généalogique, qui a été utile pour orienter les hypothèses sur le XIXe siècle — mais son arbre seul ne confirme rien par lui-même.
 
 Son arbre part de Jean-Baptiste \*1774 comme première génération documentée, avec données de naissance et décès soutenues par l'*Armorial Valaisan* de 1946.
 
 **Ce que l'arbre de Jean-Yves a apporté :**
 
-1. **A confirmé l'identité de la Famille Jean Baptiste × Elsabeth au recensement d'Ardon 1846** (H4 ✓) : Les quatre enfants listés aux lignes 104–107 correspondent par nom et âge calculé avec ceux de son arbre — quatre sur quatre, sans marge d'erreur.
+1. **A renforcé l'hypothèse d'identité de la Famille Jean Baptiste × Elsabeth au recensement d'Ardon 1846** : Les quatre enfants listés aux lignes 104–107 correspondent par nom et âge calculé avec ceux de son arbre — quatre sur quatre, sans marge d'erreur.
 
-2. **A confirmé Baptiste Clemenzo comme ancêtre commun** (H11 ✓) : Son arbre commence à Jean-Baptiste \*1774, dont le père ne figure pas dans ses registres mais est implicite. Le recensement de 1802 le nomme : Baptiste Clemenzo. C'est la génération "zéro" de Jean-Yves.
+2. **A indiqué Baptiste Clemenzo comme probable ancêtre commun** : Son arbre commence à Jean-Baptiste \*1774, dont le père ne figure pas dans ses registres mais est implicite. Le recensement de 1802 le nomme : Baptiste Clemenzo. C'est la génération "zéro" de Jean-Yves.
 
 3. **A identifié un enfant non documenté :** "Jn. Jos. Danielle \*1825" apparaît au recensement de 1829 comme fils de Jean-Baptiste, mais ne figure pas dans l'arbre de Jean-Yves — probablement mort en bas âge.
 
@@ -539,7 +539,7 @@ Son arbre part de Jean-Baptiste \*1774 comme première génération documentée,
 - L'épouse "Elsabeth" (l.103, 1846) ne correspond pas à "Anne-Marie Gaillard \*1797" de l'arbre de Jean-Yves. Peut être un second mariage de Jean-Baptiste après veuvage, ou que le recenseur utilise le second nom. À vérifier par acte parroquial d'Ardon.
 - Jean-Yves ignore les données de Baptiste — son arbre ne monte pas à ce niveau.
 
-**En conséquence :** Jean-Yves et l'auteur de ce document sont des cousins éloignés, avec Baptiste Clemenzo comme ancêtre commun estimé autour de 1745–1755.
+**En conséquence :** Jean-Yves et l'auteur de ce document sont probablement des cousins éloignés, avec Baptiste Clemenzo comme probable ancêtre commun estimé autour de 1745–1755 — hypothèse solide, mais un acte de baptême manque pour l'établir.
 
 ---
 
@@ -555,7 +555,7 @@ Les Clemenzo d'Ardon ont une présence documentée depuis **1481** — cinq siè
 
 **Jean Joseph Clemenzo (p57, n.v. 1780)** a migré à Riddes. En 1829, il était bourgeois de Riddes domicilié toujours à Ardon ; en 1837, il vivait déjà à Riddes avec son épouse Catherine Cerisier et six enfants. C'est la ligne directe vers l'Argentine.
 
-**Jean Baptiste Clemenzo (\*1774)** est resté à Ardon, où sa descendance apparaît au recensement de 1846 avec quatre enfants identifiés. Aujourd'hui, Jean-Yves et la branche argentine sont des cousins éloignés qui partagent Baptiste comme ancêtre.
+**Jean Baptiste Clemenzo (\*1774)** est resté à Ardon, où sa descendance apparaît au recensement de 1846 avec quatre enfants identifiés. Aujourd'hui, Jean-Yves et la branche argentine pourraient être des cousins éloignés partageant Baptiste comme ancêtre — si l'hypothèse H11 se confirme par acte.
 
 **Joseph Florentin (p72)** a étudié la médecine quelque part en Europe centrale (Vienne ou Freiburg) et a exercé comme chirurgien à Naples au moins entre 1837 et 1846 — une figure extraordinaire pour l'époque, fils d'un laboureur du Valais qui a fini par vivre en Italie.
 

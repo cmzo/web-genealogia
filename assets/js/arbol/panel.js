@@ -15,6 +15,7 @@ import {
 import { setFocus, setSelected, on } from './store.js';
 import { recenterOn } from './render.js';
 import { getBranchColor } from './config.js';
+import { openTimeline } from './timeline.js';
 
 let _panel    = null;
 let _hero     = null;
@@ -153,7 +154,18 @@ function _renderHero(personaId) {
         ${statusBadge}
       </div>
       ${yearsStr ? `<p class="panel-years">${yearsStr}</p>` : ''}
+      <button class="panel-timeline-btn" type="button" title="Ver línea de tiempo">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Línea de tiempo
+      </button>
     </div>`;
+
+  _hero.querySelector('.panel-timeline-btn')
+       ?.addEventListener('click', e => { e.stopPropagation(); openTimeline(p.id); });
 }
 
 // ── Body dispatcher ───────────────────────────────────────────────────────────
