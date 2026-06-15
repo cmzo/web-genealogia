@@ -957,12 +957,18 @@
   border-radius: 10px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.08);
   width: 100%;
-  max-width: 960px;
+  max-width: 1200px;
   height: 88vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   animation: tl-up 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Cuerpo: columna de línea de tiempo (izq, ancho fijo) + panel de detalle (der) */
+.tl-body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
 }
 @keyframes tl-up {
   from { transform: translateY(18px); opacity: 0; }
@@ -1018,7 +1024,7 @@
 
 /* Área con scroll */
 .tl-scroll {
-  flex: 1;
+  flex: 0 0 780px;
   overflow-y: auto;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -1032,9 +1038,9 @@
 /* Canvas: todos los hijos se posicionan absolute, la altura la pone JS */
 /* --cl = posición x donde empieza el contenido (zona izquierda libre para popup) */
 .tl-canvas {
-  --cl: 300px;
+  --cl: 40px;
   position: relative;
-  min-width: 800px;
+  min-width: 740px;
   padding: 0 48px;
 }
 
@@ -1093,7 +1099,7 @@
   gap: 0;
   justify-content: flex-end;
   pointer-events: auto;
-  cursor: default;
+  cursor: pointer;
 }
 .tl-event-inner {
   display: flex;
@@ -1181,8 +1187,8 @@
 .tl-nodes-col {
   position: absolute;
   top: 0;
-  left: calc(var(--cl) + 198px);
-  right: 250px;
+  left: calc(var(--cl) + 198px);   /* = 238px */
+  width: 262px;                    /* termina ~500px, antes de la franja de banderas (540px) */
   bottom: 0;
 }
 
@@ -1277,66 +1283,116 @@
 .tl-node--sel  { opacity: 1; }
 
 /* Popup unificado — eventos y personas */
-.tl-popup {
-  position: fixed;
-  z-index: 1100;
-  width: 260px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 11px 14px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.28), 0 2px 6px rgba(0,0,0,0.10);
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+/* ── Panel de detalle (master-detail): columna fija a la derecha ── */
+.tl-detail {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 22px 24px 26px;
+  border-left: 1px solid var(--border);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  animation: tl-detail-in 0.18s ease;
 }
-.tl-popup--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Popup de evento */
-.tl-popup-event {
+.tl-detail::-webkit-scrollbar { width: 5px; }
+.tl-detail::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+@keyframes tl-detail-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Bloque de documentos dentro del panel de persona */
+.tl-detail-block { margin-top: 14px; }
+.tl-detail-subhead {
+  margin: 0 0 6px;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--text);
-  margin: 0;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
 }
-/* Popup de persona */
-.tl-popup-name {
+.tl-detail-doc {
   display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; line-height: 1.5; color: var(--text);
+  padding-left: 14px; position: relative;
+}
+.tl-detail-doc::before {
+  content: '·'; position: absolute; left: 2px; color: var(--muted);
+}
+.tl-detail-more { color: var(--muted); font-style: italic; }
+
+/* Encabezado común (compartido por evento y persona) */
+.tl-popup-eyebrow {
+  margin: 0 0 3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--muted);
+}
+.tl-popup-title {
+  margin: 0 0 9px;
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 16px; font-weight: 600; line-height: 1.25;
   color: var(--text);
-  line-height: 1.3;
-  margin-bottom: 3px;
 }
+
+/* ── Variante evento ── */
+.tl-popup-body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px; line-height: 1.55; color: var(--text);
+}
+.tl-popup-media {
+  margin: 0 0 10px;
+  border-radius: 8px; overflow: hidden;
+  background: color-mix(in srgb, var(--border) 35%, transparent);
+}
+.tl-popup-media img { display: block; width: 100%; height: 150px; object-fit: cover; }
+.tl-popup-link {
+  display: inline-block; margin-top: 10px;
+  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  color: var(--accent); text-decoration: none;
+}
+.tl-popup-link:hover { text-decoration: underline; }
+
+/* ── Variante persona ── */
+.tl-popup-rows { display: flex; flex-direction: column; gap: 4px; }
 .tl-popup-row {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.4;
+  font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.4; color: var(--text);
 }
-.tl-popup-alive {
-  color: var(--accent);
-  font-weight: 500;
+.tl-popup-k { display: inline-block; width: 15px; color: var(--muted); }
+.tl-popup-alive { color: var(--accent); font-weight: 600; }
+.tl-popup-note {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  font-family: 'Inter', sans-serif; font-size: 11.5px; line-height: 1.5;
+  color: var(--muted); font-style: italic;
 }
-.tl-popup-branch {
-  display: inline-block;
-  margin-top: 5px;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.7;
+.tl-popup-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 12px;
+}
+.tl-popup-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.tl-popup-branch, .tl-popup-docs, .tl-popup-verified {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+}
+.tl-popup-verified { color: var(--accent); }
+.tl-popup-action {
+  flex-shrink: 0;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: transparent; color: var(--text);
+  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  padding: 6px 10px; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+.tl-popup-action:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: var(--accent);
+}
+
+/* Pantallas medianas: sin lugar para el panel lateral → ocultarlo, la línea de tiempo ocupa todo */
+@media (max-width: 1080px) {
+  .tl-scroll { flex: 1; }
+  .tl-detail { display: none; }
 }
 
 /* Responsive: en pantallas muy pequeñas, fullscreen */
