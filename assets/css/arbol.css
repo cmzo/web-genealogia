@@ -1318,6 +1318,13 @@
 }
 .tl-detail-more { color: var(--muted); font-style: italic; }
 
+/* Resumen de Wikipedia en el panel de evento */
+.tl-popup-wiki-text {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px; line-height: 1.55; color: var(--muted);
+}
+
 /* Encabezado común (compartido por evento y persona) */
 .tl-popup-eyebrow {
   margin: 0 0 3px;

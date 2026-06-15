@@ -197,12 +197,12 @@ function separateNodes(nodes, minGap = MIN_GAP) {
 
 /* ── Wikipedia (resumen + miniatura, cliente, con caché) ─────────────────────── */
 
-const _wikiCache = new Map();   // título -> { thumb, url } | null
+const _wikiCache = new Map();   // título -> { thumb, url, extract } | null
 
 async function fetchWiki(title) {
   if (!title) return null;
   if (_wikiCache.has(title)) return _wikiCache.get(title);
-  const ssKey = 'tlwiki:' + title;
+  const ssKey = 'tlwiki2:' + title;   // v2: la forma cacheada ahora incluye extract
   try {
     const cached = sessionStorage.getItem(ssKey);
     if (cached) { const v = JSON.parse(cached); _wikiCache.set(title, v); return v; }
@@ -215,8 +215,9 @@ async function fetchWiki(title) {
     if (!r.ok) throw new Error('wiki ' + r.status);
     const j = await r.json();
     const v = {
-      thumb: j.thumbnail?.source || null,
-      url:   j.content_urls?.desktop?.page || `https://es.wikipedia.org/wiki/${encodeURIComponent(title)}`,
+      thumb:   j.thumbnail?.source || null,
+      url:     j.content_urls?.desktop?.page || `https://es.wikipedia.org/wiki/${encodeURIComponent(title)}`,
+      extract: j.extract || null,
     };
     _wikiCache.set(title, v);
     try { sessionStorage.setItem(ssKey, JSON.stringify(v)); } catch { /* ignore */ }
@@ -268,11 +269,15 @@ function relationLabel(role, dist, gender, rootFirst) {
 /* ── Builders de contenido del panel ─────────────────────────────────────────── */
 
 function buildEventHTML(ev) {
-  return `<p class="tl-popup-eyebrow">${esc(ev.year)}</p>
+  return `<p class="tl-popup-eyebrow">${esc(ev.year)} · Contexto histórico</p>
     <h3 class="tl-popup-title">${esc(ev.text)}</h3>
     <div class="tl-popup-media" hidden></div>
     <p class="tl-popup-body">${esc(ev.desc)}</p>
-    ${ev.wiki ? `<a class="tl-popup-link" href="${esc(wikiUrl(ev.wiki))}" target="_blank" rel="noopener noreferrer">Leer en Wikipedia ↗</a>` : ''}`;
+    ${ev.wiki ? `<div class="tl-detail-block tl-popup-wiki" hidden>
+       <p class="tl-detail-subhead">Según Wikipedia</p>
+       <p class="tl-popup-wiki-text"></p>
+     </div>
+     <a class="tl-popup-link" href="${esc(wikiUrl(ev.wiki))}" target="_blank" rel="noopener noreferrer">Leer en Wikipedia ↗</a>` : ''}`;
 }
 
 function buildPersonHTML(nodeData, rootFirst) {
@@ -566,6 +571,11 @@ export function openTimeline(personId) {
           media.replaceChildren(img);
           img.src = w.thumb;
         }
+      }
+      if (w.extract) {
+        const block = detailEl.querySelector('.tl-popup-wiki');
+        const text  = detailEl.querySelector('.tl-popup-wiki-text');
+        if (block && text) { text.textContent = w.extract; block.hidden = false; }
       }
       const link = detailEl.querySelector('.tl-popup-link');
       if (link && w.url) link.href = w.url;
