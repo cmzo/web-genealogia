@@ -565,10 +565,9 @@ export function openTimeline(personId) {
         if (media) {
           const img = new Image();
           img.alt = '';
-          img.loading = 'lazy';
-          img.onload  = () => { media.hidden = false; };
-          img.onerror = () => { media.hidden = true; };
+          img.onerror = () => { media.hidden = true; };  // si falla la imagen, ocultar
           media.replaceChildren(img);
+          media.hidden = false;        // visible ANTES de asignar src (si no, no se difiere bien)
           img.src = w.thumb;
         }
       }
