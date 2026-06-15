@@ -957,7 +957,7 @@
   border-radius: 10px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.08);
   width: 100%;
-  max-width: 820px;
+  max-width: 960px;
   height: 88vh;
   display: flex;
   flex-direction: column;
@@ -1030,37 +1030,38 @@
 .tl-scroll::-webkit-scrollbar-track { background: transparent; }
 
 /* Canvas: todos los hijos se posicionan absolute, la altura la pone JS */
+/* --cl = posición x donde empieza el contenido (zona izquierda libre para popup) */
 .tl-canvas {
+  --cl: 300px;
   position: relative;
-  min-width: 700px;
-  padding: 0 48px;          /* margen lateral para que el texto no toque el borde */
+  min-width: 800px;
+  padding: 0 48px;
 }
 
-/* Línea vertical del eje */
-/* Eje a 300px del borde izquierdo del contenido (= 348px del canvas con el padding de 48px) */
+/* Línea vertical del eje — a 180px del inicio del contenido (var(--cl)) */
 .tl-axis-line {
   position: absolute;
-  left: calc(48px + 300px);
+  left: calc(var(--cl) + 180px);
   top: 0; bottom: 0;
   width: 1px;
   background: var(--border);
   pointer-events: none;
 }
 
-/* Espina SVG ancestral (ocupa todo el canvas) */
+/* Espina SVG ancestral */
 .tl-spine {
   position: absolute;
   top: 0;
-  left: 48px;               /* alineado con el inicio del contenido */
-  width: calc(100% - 96px);
+  left: var(--cl);
+  width: calc(100% - var(--cl) - 48px);
   pointer-events: none;
 }
 
 /* Ticks de año */
 .tl-ticks {
   position: absolute;
-  top: 0; left: 48px; bottom: 0;
-  width: 295px;             /* ticks llegan hasta 5px antes del eje */
+  top: 0; left: var(--cl); bottom: 0;
+  width: 175px;
   pointer-events: none;
 }
 .tl-tick {
@@ -1079,8 +1080,8 @@
 /* Columna de eventos mundiales (izquierda del eje) */
 .tl-events-col {
   position: absolute;
-  top: 0; left: 48px; bottom: 0;
-  width: 282px;             /* eje (300px) menos 18px de separación */
+  top: 0; left: var(--cl); bottom: 0;
+  width: 180px;
   pointer-events: none;
 }
 .tl-event {
@@ -1091,6 +1092,8 @@
   align-items: center;
   gap: 0;
   justify-content: flex-end;
+  pointer-events: auto;
+  cursor: default;
 }
 .tl-event-inner {
   display: flex;
@@ -1098,7 +1101,7 @@
   align-items: flex-end;
   gap: 2px;
   padding-right: 9px;
-  max-width: 210px;
+  max-width: 155px;
 }
 .tl-event-text {
   font-family: 'Inter', sans-serif;
@@ -1116,24 +1119,94 @@
   letter-spacing: 0.04em;
   font-style: normal;
 }
-/* pip de evento: borde derecho en 282px, margen negativo para cruzar hasta el eje (300px) */
+/* pip de evento: borde derecho en 180px = eje, margen solo para centrar el cuerpo del pip */
 .tl-event-pip {
   flex-shrink: 0;
   width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--border);
-  margin-right: -20.5px;   /* 282 + 20.5 - 2.5 (radio) = 300px = eje ✓ */
+  margin-right: -2.5px;   /* radio del pip: centro = 180 + 0 = eje ✓ */
   position: relative;
   z-index: 1;
+}
+
+/* Sticky reader — vive DENTRO del scroll, pegado al tope.
+   FONDO TRANSPARENTE sobre la columna de nombres: el nombre nunca se oculta, viaja
+   visible a través de la barra y se pone en negrita cuando queda a la altura de las
+   banderas. Sólo las banderas (derecha) tienen fondo sólido (chips). */
+.tl-sticky-reader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 54px;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 8px 14px -8px color-mix(in srgb, var(--bg) 65%, transparent);
+  overflow: visible;
+}
+/* Cada bandera vive en un "chip" sólido para leerse siempre, pase lo que pase debajo */
+.tl-sr-cell {
+  position: absolute;
+  top: 6px; bottom: 6px;
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transform: translateX(-50%);
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--bg) 45%, transparent);
+  animation: tl-flag-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes tl-flag-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.7); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0)   scale(1);   }
+}
+.tl-sr-flag { font-size: 19px; line-height: 1; }
+.tl-sr-empty { font-size: 13px; color: var(--muted); opacity: 0.4; }
+.tl-sr-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+  line-height: 1;
 }
 
 /* Columna de nodos familiares (derecha del eje) */
 .tl-nodes-col {
   position: absolute;
   top: 0;
-  left: calc(48px + 318px); /* eje (300px) + 18px de separación + padding izq */
-  right: 48px;
+  left: calc(var(--cl) + 198px);
+  right: 250px;
   bottom: 0;
+}
+
+/* Slot-machine: el activo encaja en la línea de lectura; el resto se atenúa */
+.tl-node-text {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform-origin: left center;
+}
+.tl-node:not(.tl-node--active) .tl-node-text {
+  opacity: 0.45;
+}
+.tl-node--active .tl-node-text {
+  opacity: 1;
+  /* El nombre activo crece un poco al encajar, como en un selector iOS */
+  animation: tl-snap-in 0.3s cubic-bezier(0.34, 1.4, 0.5, 1) both;
+}
+.tl-node--active .tl-node-name {
+  font-weight: 700;
+  color: var(--text);
+}
+@keyframes tl-snap-in {
+  0%   { opacity: 0.35; transform: translateY(10px) scale(0.92); }
+  60%  { opacity: 1;    transform: translateY(-1px) scale(1.06); }
+  100% { opacity: 1;    transform: translateY(0)    scale(1.04); }
 }
 
 .tl-node {
@@ -1202,6 +1275,69 @@
 .tl-node--anc  { opacity: 0.82; }
 .tl-node--desc { opacity: 0.88; }
 .tl-node--sel  { opacity: 1; }
+
+/* Popup unificado — eventos y personas */
+.tl-popup {
+  position: fixed;
+  z-index: 1100;
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.28), 0 2px 6px rgba(0,0,0,0.10);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tl-popup--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Popup de evento */
+.tl-popup-event {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+/* Popup de persona */
+.tl-popup-name {
+  display: block;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.tl-popup-row {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.tl-popup-alive {
+  color: var(--accent);
+  font-weight: 500;
+}
+.tl-popup-branch {
+  display: inline-block;
+  margin-top: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+}
 
 /* Responsive: en pantallas muy pequeñas, fullscreen */
 @media (max-width: 600px) {
