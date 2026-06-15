@@ -352,7 +352,34 @@ El hogar completo, entradas 213 a 217:
 
 **El padre de Jean Joseph se llama Pierre Joseph, no Jean Joseph.** El documento de Antonin acertó en el nombre de la madre —Anne Marie Papilloud, presente aquí en el renglón 214—, pero se equivocó en el del padre: en el censo es **Pierre Joseph**, no Jean Joseph. Probablemente confundió al emigrante con otro de los varios Jean Joseph Roh de Aven.
 
-**Y hay hermanos que no emigraron.** En 1850, aparte de Jean Joseph (10 años), vivían en la casa **Marie Anne** (nacida en 1836) y **Marguerite** (cuyo año de nacimiento en el censo es difícil de leer con certeza, pero coherente con ser la menor del hogar). Ninguna aparece en los registros argentinos: lo más probable es que se hayan quedado en Suiza. Son los Roh de Aven que no cruzaron el océano.
+**Y hay hermanos que no emigraron.** En 1850, aparte de Jean Joseph (10 años), vivían en la casa **Marie Anne** (nacida en 1836) y **Marguerite** (nacida antes de 1846 — ver sección siguiente). Ninguna aparece en los registros argentinos: lo más probable es que se hayan quedado en Suiza. Son los Roh de Aven que no cruzaron el océano.
+
+### 15 de junio de 2026 — El censo de 1846
+
+Cuatro años antes del censo de 1850 hay otro: el relevamiento de Conthey de **1846**, con el mismo hogar, más el de un vecino que probablemente sea pariente.
+
+![Censo de Conthey de 1846 — hogar de Pierre Joseph Roh y Anne Marie Papilloud](../../assets/images/posts/roh-1846-censo-conthey-pierre-joseph.webp)
+_Censo de Conthey · 1846 · entradas 783–795_
+
+El bloque muestra dos grupos. El primero es inequívoco:
+
+| Serie | Apellido | Nombre | Nota |
+|-------|----------|--------|------|
+| 783 | Roh | Pierre Joseph | padre |
+| 784 | Papilloud | Anne Marie | madre |
+| 785 | Roh | Jean Joseph | hijo (el futuro emigrante, ~6 años) |
+| 786 | Roh | Marianne | hija (= «Marie Anne» en el censo de 1850) |
+| 787 | Roh | Marguerite | hija |
+
+El segundo grupo empieza en el 788 y aquí la lectura es menos segura. La entrada 788 es **Roh, Pierre François**; a continuación, con un salto de numeración al 790 (posiblemente un error del copista), aparece una mujer de apellido distinto —parece **Aldy**, Anne Marie— seguida de más Roh: Pierre Joseph, Severin, Jean Joseph, Anne Marie, Jean Grégoire. La hipótesis más coherente es que Pierre François sea el **jefe de un segundo hogar**, con Anne Marie Aldy como su mujer y los siguientes como sus hijos. Sería un pariente de la familia, probablemente un tío o primo de Jean Joseph, no un hermano.
+
+Lo que este censo confirma con certeza:
+
+**Marguerite nació antes de 1846**, no hacia 1847 como estimé del censo de 1850. Probablemente nació entre 1841 y 1845.
+
+**«Marianne» y «Marie Anne» son la misma persona**: distinta grafía en cada relevamiento.
+
+**El segundo grupo tiene otro Jean Joseph Roh** nacido alrededor de 1840 en el mismo pueblo. Eso explica por qué el documento de Antonin pudo confundir al padre del emigrante: en Aven había al menos dos familias Roh con ese nombre en la misma generación.
 
 <style>
 .registros-galeria { margin: 28px 0; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 18px; background: #f9fafb; }
