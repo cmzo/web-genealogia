@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Cuando el usuario diga **«Actualiza todo»**, ejecutar en orden:
 
 1. **TODO.md** (`/Users/matias/genealogia/TODO.md`) — revisar cada tarea abierta y marcar `[x]` las que se resolvieron durante la sesión; moverlas a `## Completadas` con fecha y resultado breve. No inventar resoluciones: solo marcar lo que efectivamente ocurrió.
-2. **`content/changelog.md`** — añadir una entrada `####` por cada cambio significativo hecho al sitio durante la sesión (UI, contenido, estructura, correcciones). Insertar bajo el encabezado `### <fecha de hoy>` (crear la sección si no existe).
+2. **`content/changelog.md`** — añadir una entrada `####` por cada cambio significativo hecho al sitio durante la sesión (UI, contenido, estructura, correcciones). Insertar bajo el encabezado `### <fecha de hoy>` (crear la sección **solo si no existe**; **no** renombrar la de otra fecha — los cambios viejos conservan su fecha). Marcar el tipo de cambio con una etiqueta al inicio del `####`: nueva funcionalidad → `<span class="changelog-tag">Novedad</span>`; mejora de algo existente → `<span class="changelog-tag changelog-tag--mejora">Mejora</span>`; corrección → `<span class="changelog-tag changelog-tag--fix">Arreglo</span>`. Estilos en `changelog.html`.
 3. **`CLAUDE.md`** (este archivo) — revisar si algo documentado aquí quedó desactualizado por los cambios de la sesión (rutas, nombres de archivos, tipografía, comandos, descripción de componentes) y corregirlo.
 
 ## Commands
