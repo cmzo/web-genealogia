@@ -1,5 +1,9 @@
 ### 16 de junio de 2026
 
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El sitio tiene dominio propio: cmzo.net
+
+El sitio ahora vive en **[cmzo.net](https://cmzo.net)**, un dominio propio más corto y fácil de recordar. `www.cmzo.net` redirige solo al dominio principal, así que no hay enlaces rotos.
+
 #### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Un panel de contexto fijo en la línea de tiempo
 
 La línea de tiempo se ensanchó y sumó un **panel de detalle fijo a la derecha** que reemplaza a los globos chiquitos que aparecían al pasar el mouse. Se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…», «chozno de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para **abrir la ficha completa**.

@@ -62,7 +62,7 @@ uv run scripts/gestionar_web.py create-post        # crear nuevo post interactiv
 # Regenerar arbol.json manualmente (sin hacer build completo)
 uv run scripts/export_arbol.py
 
-# Deploy to GitHub Pages (build + git add + commit + push)
+# Deploy (build + git add + commit + push; Cloudflare auto-deploya desde el repo)
 npm run deploy
 
 # Remove dist/
@@ -80,7 +80,7 @@ This is a **static site** deployed to **Cloudflare Workers Assets**, served at *
 1. Write a post in `content/posts/<slug>.md` with YAML front matter
 2. Run `npm run build` → `scripts/build.js` converts each `.md` to `dist/blog/<slug>.html` using the template at `content/templates/post-template.html`
 3. The build also regenerates `assets/data/blog-entries.json`, which is the index that `blog.html` reads at runtime via `fetch()`
-4. **`dist/` is committed** to the repo — GitHub Pages serves it directly, so always commit `dist/` after a build
+4. **`dist/` is committed** to the repo — Cloudflare sirve esos archivos directamente, so always commit `dist/` after a build
 
 ### Front matter fields
 
