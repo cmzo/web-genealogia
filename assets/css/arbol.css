@@ -1144,7 +1144,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  height: 54px;
+  height: 56px;   /* = MIN_GAP → margen interno (fecha↔borde) igual al gap con los vecinos */
   background: transparent;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 8px 14px -8px color-mix(in srgb, var(--bg) 65%, transparent);
@@ -1153,25 +1153,55 @@
 /* Cada bandera vive en un "chip" sólido para leerse siempre, pase lo que pase debajo */
 .tl-sr-cell {
   position: absolute;
-  top: 6px; bottom: 6px;
+  top: 0; bottom: 0;        /* alto completo del header → mismo centrado que el nombre */
   width: 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 6px;
   transform: translateX(-50%);
-  background: var(--surface);
-  border-radius: 10px;
-  box-shadow: 0 1px 4px color-mix(in srgb, var(--bg) 45%, transparent);
   animation: tl-flag-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 @keyframes tl-flag-in {
   from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.7); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0)   scale(1);   }
 }
-.tl-sr-flag { font-size: 19px; line-height: 1; }
-.tl-sr-empty { font-size: 13px; color: var(--muted); opacity: 0.4; }
+.tl-sr-flag { display: flex; align-items: center; justify-content: center; line-height: 1; }
+
+/* Banderas circulares (dibujadas en CSS) */
+.tl-flag {
+  display: inline-block;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.18);
+}
+/* Suiza: círculo rojo con cruz blanca (chica, con margen) */
+.tl-flag--ch { background: #d52b1e; }
+.tl-flag--ch::before, .tl-flag--ch::after { content: ''; position: absolute; background: #fff; border-radius: 0.5px; }
+.tl-flag--ch::before { left: 50%; top: 24%; width: 2.6px; height: 52%; transform: translateX(-50%); }  /* vertical */
+.tl-flag--ch::after  { top: 50%; left: 24%; height: 2.6px; width: 52%; transform: translateY(-50%); }  /* horizontal */
+/* Argentina: franjas celeste/blanco/celeste + sol */
+.tl-flag--ar {
+  background: linear-gradient(to bottom, #74acdf 0 33%, #fff 33% 67%, #74acdf 67% 100%);
+}
+.tl-flag--ar::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: #f6b40e; box-shadow: 0 0 0 0.5px #e0a000;
+  transform: translate(-50%, -50%);
+}
+/* España: rojo / amarillo (doble) / rojo */
+.tl-flag--es {
+  background: linear-gradient(to bottom, #c60b1e 0 25%, #ffc400 25% 75%, #c60b1e 75% 100%);
+}
+/* Sin dato: contorno tenue */
+.tl-flag--none {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--muted) 45%, transparent);
+}
 .tl-sr-label {
   font-family: 'Inter', sans-serif;
   font-size: 8px;

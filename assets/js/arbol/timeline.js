@@ -9,7 +9,7 @@ import { setSelected } from './store.js';
 const PX            = 20;
 const YEAR_PAD      = 6;
 const AXIS_X        = 180;  // x del eje dentro del SVG/eventos (relativo al inicio --cl)
-const MIN_GAP       = 34;
+const MIN_GAP       = 56;   // separación entre nombres = alto del header → espaciado parejo en todo
 const EVENT_MIN_GAP = 34;
 const GEN_GAP       = 28;
 
@@ -32,8 +32,10 @@ const WORLD_EVENTS = [
     desc: 'Napoleón Bonaparte proclamó el Primer Imperio francés y dominó gran parte de Europa continental durante una década.' },
   { year: 1815, text: 'Congreso de Viena', wiki: 'Congreso de Viena',
     desc: 'Reorganizó Europa tras las guerras napoleónicas y restauró el equilibrio entre potencias que perduró casi un siglo.' },
-  { year: 1848, text: 'Constitución Federal Suiza', wiki: 'Constitución Federal Suiza',
+  { year: 1848, text: 'Constitución Federal Suiza', wiki: 'Constitución de Suiza',
     desc: 'Transformó la Confederación de cantones en un Estado federal moderno, unificando el sistema político, jurídico y monetario suizo.' },
+  { year: 1853, text: 'Constitución Argentina', wiki: 'Constitución argentina de 1853',
+    desc: 'Organizó a la Argentina como república federal y sentó las bases institucionales que rigen el país hasta hoy.' },
   { year: 1859, text: 'El origen de las especies', wiki: 'El origen de las especies',
     desc: 'Charles Darwin explicó la diversidad de la vida mediante la selección natural, sentando las bases de la biología evolutiva.' },
   { year: 1869, text: 'Canal de Suez', wiki: 'Canal de Suez',
@@ -44,20 +46,30 @@ const WORLD_EVENTS = [
     desc: 'Entre 1880 y 1930, cerca de 60 millones de europeos emigraron a América. Suizos e italianos llegaron masivamente a Argentina.' },
   { year: 1903, text: 'Primer vuelo en avión', wiki: 'Hermanos Wright',
     desc: 'Los hermanos Wright realizaron el primer vuelo motorizado controlado de la historia, en Kitty Hawk, Carolina del Norte.' },
+  { year: 1912, text: 'Ley Sáenz Peña', wiki: 'Ley Sáenz Peña',
+    desc: 'Estableció en Argentina el voto secreto, universal (masculino) y obligatorio, abriendo paso a la democracia moderna.' },
+  { year: 1916, text: 'Yrigoyen presidente', wiki: 'Hipólito Yrigoyen',
+    desc: 'Hipólito Yrigoyen fue el primer presidente argentino elegido por voto popular según la nueva ley electoral.' },
   { year: 1914, text: '1.ª Guerra Mundial', wiki: 'Primera Guerra Mundial',
     desc: 'Conflicto armado que involucró a la mayoría de las potencias mundiales. Causó más de 17 millones de muertos entre 1914 y 1918.' },
   { year: 1918, text: 'Fin WWI · Gripe española', wiki: 'Gripe de 1918',
     desc: 'La pandemia de gripe española infectó a 500 millones de personas en todo el mundo, causando entre 50 y 100 millones de muertes.' },
   { year: 1929, text: 'Gran Depresión', wiki: 'Gran Depresión',
     desc: 'El crack bursátil de Wall Street desencadenó la mayor crisis económica del siglo XX, con desempleo masivo en todo el mundo.' },
+  { year: 1930, text: 'Golpe de Estado de 1930', wiki: 'Golpe de Estado en Argentina de 1930',
+    desc: 'El derrocamiento de Hipólito Yrigoyen inauguró en Argentina una etapa de golpes militares e inestabilidad institucional.' },
   { year: 1939, text: '2.ª Guerra Mundial', wiki: 'Segunda Guerra Mundial',
     desc: 'Conflicto global entre 1939 y 1945 que causó entre 70 y 85 millones de muertos, incluyendo el Holocausto.' },
   { year: 1945, text: 'Fin WWII · ONU fundada', wiki: 'Organización de las Naciones Unidas',
     desc: 'La ONU fue fundada el 26 de junio de 1945 para mantener la paz y la cooperación entre naciones tras la Segunda Guerra Mundial.' },
+  { year: 1946, text: 'Perón presidente', wiki: 'Juan Domingo Perón',
+    desc: 'Juan Domingo Perón asumió la presidencia argentina e impulsó un movimiento que marcó la política del país por décadas.' },
   { year: 1957, text: 'Sputnik', wiki: 'Sputnik 1',
     desc: 'Primer satélite artificial de la historia, lanzado por la URSS. Inició la carrera espacial entre las superpotencias.' },
   { year: 1969, text: 'Hombre en la Luna', wiki: 'Apolo 11',
     desc: 'La misión Apolo 11 llevó a Neil Armstrong y Buzz Aldrin a la superficie lunar el 20 de julio de 1969.' },
+  { year: 1983, text: 'Retorno a la democracia', wiki: 'Elecciones presidenciales de Argentina de 1983',
+    desc: 'Tras la última dictadura, Raúl Alfonsín fue elegido presidente y Argentina recuperó la democracia, vigente hasta hoy.' },
   { year: 1989, text: 'Caída del Muro de Berlín', wiki: 'Caída del Muro de Berlín',
     desc: 'El Muro de Berlín cayó el 9 de noviembre de 1989, marcando el fin de la Guerra Fría y el camino a la reunificación alemana.' },
   { year: 1991, text: 'World Wide Web', wiki: 'World Wide Web',
@@ -113,43 +125,75 @@ function getCountry(p) {
   return null;
 }
 
-function getPhases(p, estimatedBirth, toY) {
-  const country = getCountry(p);
-  const birthYr = estimatedBirth ?? parseYear(p.birth_date);
-  const deathYr = parseYear(p.death_date);
-  const endYr   = p.vivo === 'si' ? new Date().getFullYear() : deathYr;
-  if (!birthYr) return null;
+/* Nacido antes de este año y sin dato de defunción → se asume fallecido. */
+const DEAD_CUTOFF = 1941;
 
-  const migrYr = (country === 'MIGR' && endYr)
-    ? Math.round(birthYr + (endYr - birthYr) * 0.45)
-    : null;
-  const countryAt = yr => {
-    if (!country) return null;
-    if (country === 'MIGR') return (migrYr && yr < migrYr) ? 'CH' : 'AR';
-    return country;
-  };
+/* Geografía hardcodeada por persona (faltan datos de residencia). [nació, creció, vivió, murió] */
+const HARDCODED_GEO = {
+  p1: ['AR', 'ES', 'ES', null],   // Juan Martin Clemenzo Vargas Yegros
+  p3: ['AR', 'AR', 'ES', null],   // Matias Damian Clemenzo
+  p4: ['AR', 'AR', 'ES', null],   // Maria Cecilia Vargas Yegros
+};
+
+function getPhases(p, estimatedBirth, toY) {
+  const birthYr = estimatedBirth ?? parseYear(p.birth_date);
+  if (!birthYr) return null;
+  const deathYr = parseYear(p.death_date);
+  /* Vivo si está marcado, o si no hay defunción y nació después del corte. */
+  const isAlive = p.vivo === 'si' || (!deathYr && birthYr >= DEAD_CUTOFF);
+  const endYr   = deathYr ?? (isAlive ? new Date().getFullYear() : null);
 
   const p2yr = birthYr + 20;
   const p3yr = birthYr + 40;
+
+  let countries;
+  const hc = HARDCODED_GEO[p.id];
+  if (hc) {
+    countries = hc;
+  } else {
+    const country = getCountry(p);
+    const migrYr  = (country === 'MIGR' && endYr)
+      ? Math.round(birthYr + (endYr - birthYr) * 0.45) : null;
+    const countryAt = yr => {
+      if (!country) return null;
+      if (country === 'MIGR') return (migrYr && yr < migrYr) ? 'CH' : 'AR';
+      return country;
+    };
+    countries = [
+      countryAt(birthYr),
+      countryAt(p2yr),
+      countryAt(p3yr),
+      isAlive ? null : countryAt(endYr ?? 9999),   // "murió" vacío si sigue vivo
+    ];
+  }
+
   return [
-    { label: 'nació',  yr: birthYr, y: toY(birthYr),                                 country: countryAt(birthYr)      },
-    { label: 'creció', yr: p2yr,    y: (!endYr || p2yr <= endYr) ? toY(p2yr) : null, country: countryAt(p2yr)         },
-    { label: 'vivió',  yr: p3yr,    y: (!endYr || p3yr <= endYr) ? toY(p3yr) : null, country: countryAt(p3yr)         },
-    { label: 'murió',  yr: endYr,   y: endYr ? toY(endYr) : null,                    country: countryAt(endYr ?? 9999) },
+    { label: 'nació',  yr: birthYr,         country: countries[0], alive: isAlive },
+    { label: 'creció', yr: p2yr,            country: countries[1], alive: isAlive },
+    { label: isAlive ? 'vive' : 'vivió',
+                       yr: p3yr,            country: countries[2], alive: isAlive },
+    { label: 'murió',  yr: endYr,           country: countries[3], alive: isAlive },
   ];
 }
 
 function renderStickyReader(el, n, toY) {
   if (!el || !n) return;
   const phases = getPhases(n.p, n.estimatedBirth, toY);
-  const geoFlag = c => c === 'CH' ? '🇨🇭' : c === 'AR' ? '🇦🇷' : '';
-  /* Solo banderas — el nombre ya está en el canvas y "pasa" por debajo del reader */
-  const cellsHTML = (phases || []).map((ph, i) =>
-    `<span class="tl-sr-cell" style="left:${PHASE_CANVAS_XS[i]}px">
-       <span class="tl-sr-flag">${ph.country ? geoFlag(ph.country) : '<span class="tl-sr-empty">·</span>'}</span>
-       <span class="tl-sr-label">${PHASE_LABELS[i]}</span>
-     </span>`
-  ).join('');
+  /* Banderas circulares dibujadas en CSS (más nítidas y consistentes que los emoji) */
+  const geoFlag = c =>
+    c === 'CH' ? '<span class="tl-flag tl-flag--ch" title="Suiza"></span>'
+  : c === 'AR' ? '<span class="tl-flag tl-flag--ar" title="Argentina"></span>'
+  : c === 'ES' ? '<span class="tl-flag tl-flag--es" title="España"></span>'
+  :              '<span class="tl-flag tl-flag--none" title="Sin dato"></span>';
+  /* Solo banderas — el nombre ya está en el canvas y "pasa" por debajo del reader.
+     Si la persona está viva, se omite la columna "murió". */
+  const cellsHTML = (phases || []).map((ph, i) => {
+    if (ph.label === 'murió' && ph.alive) return '';
+    return `<span class="tl-sr-cell" style="left:${PHASE_CANVAS_XS[i]}px">
+       <span class="tl-sr-flag">${geoFlag(ph.country)}</span>
+       <span class="tl-sr-label">${ph.label}</span>
+     </span>`;
+  }).join('');
   el.innerHTML = cellsHTML;
 }
 
@@ -437,15 +481,21 @@ export function openTimeline(personId) {
   /* ── Eventos mundiales ── */
   const eventObjects = WORLD_EVENTS
     .filter(e => e.year > minY && e.year < maxY)
-    .map(e => ({ ...e, y: toY(e.year) }));
+    .map(e => ({ ...e, y: toY(e.year) }))
+    .sort((a, b) => a.year - b.year);
   for (let i = 1; i < eventObjects.length; i++) {
     if (eventObjects[i].y - eventObjects[i - 1].y < EVENT_MIN_GAP)
       eventObjects[i].y = eventObjects[i - 1].y + EVENT_MIN_GAP;
   }
 
-  /* ── Ticks ── */
+  /* ── Ticks (décadas) — se omiten los que caen pegados a un hito (que ya muestra su año) ── */
+  const TICK_EVENT_MIN = 24;
   const ticks = [];
-  for (let y = Math.ceil(minY / 25) * 25; y <= maxY; y += 25) ticks.push(y);
+  for (let y = Math.ceil(minY / 25) * 25; y <= maxY; y += 25) {
+    const ty = toY(y);
+    if (eventObjects.some(e => Math.abs(e.y - ty) < TICK_EVENT_MIN)) continue;
+    ticks.push(y);
+  }
 
   /* ── HTML ── */
   const ticksHTML = ticks.map(y =>
@@ -635,25 +685,25 @@ export function openTimeline(personId) {
     if (el) nodeEls.set(n, el);
   }
 
-  /* Calibrar el desfase real pip→nombre con un nodo sin animar (auto-deriva el "número mágico"). */
-  let NAME_PIP_OFFSET = 10;
+  /* Calibrar el desfase real pip→bloque(nombre+fecha) con un nodo sin animar.
+     Centramos el BLOQUE entero (no solo la línea del nombre) para que quede centrado
+     en el header y la línea del nombre coincida con el círculo de la bandera. */
+  let NAME_PIP_OFFSET = 0;
   {
     const sample = nodesColEl.querySelector('.tl-node:not(.tl-node--active)') || nodesColEl.querySelector('.tl-node');
     const sPip  = sample?.querySelector('.tl-node-pip');
-    const sName = sample?.querySelector('.tl-node-name');
-    if (sPip && sName) NAME_PIP_OFFSET = rectCenter(sPip) - rectCenter(sName);
+    const sText = sample?.querySelector('.tl-node-text');
+    if (sPip && sText) NAME_PIP_OFFSET = rectCenter(sPip) - rectCenter(sText);
   }
 
-  /* Objetivo = altura del pip cuyo NOMBRE queda alineado con el centro de las banderas. */
+  /* Objetivo = altura del pip cuyo BLOQUE queda centrado en la fila de banderas. */
   const readingTarget = () => {
     const r = srEl.getBoundingClientRect();
     return r.top + r.height / 2 + NAME_PIP_OFFSET;
   };
 
-  let srLastId = initial ? initial.p.id : null;
-  let rafPending = false;
-  const updateActive = () => {
-    rafPending = false;
+  /* nodo cuyo pip está más cerca de la línea de lectura */
+  const nearestNode = () => {
     const target = readingTarget();
     let best = null, bestDist = Infinity;
     for (const [n, el] of nodeEls) {
@@ -661,18 +711,48 @@ export function openTimeline(personId) {
       const d = Math.abs(rectCenter(pip) - target);
       if (d < bestDist) { bestDist = d; best = n; }
     }
+    return best;
+  };
+
+  let srLastId = initial ? initial.p.id : null;
+  let rafPending = false;
+  const updateActive = () => {
+    rafPending = false;
+    const best = nearestNode();
     if (best && best.p.id !== srLastId) {
       srLastId = best.p.id;
-      renderStickyReader(srEl, best, toY);
-      setActiveNode(best);
+      renderStickyReader(srEl, best, toY);   // banderas
+      setActiveNode(best);                   // negrita en el canvas
+      renderPersonDetail(best);              // panel derecho sigue al scroll
     }
   };
+
+  /* Snap tipo selector de iOS: al soltar, encaja el nombre más cercano en la fila
+     de banderas con un pequeño tirón ("inercia que hay que vencer"). */
+  let snapTimer = null;
+  const snapToNearest = () => {
+    const best = nearestNode();
+    if (!best) return;
+    const pip = nodeEls.get(best)?.querySelector('.tl-node-pip');
+    if (!pip) return;
+    const delta = rectCenter(pip) - readingTarget();
+    if (Math.abs(delta) > 1.5) scroll.scrollBy({ top: delta, behavior: 'smooth' });
+  };
+
   scroll.addEventListener('scroll', () => {
     if (!rafPending) { rafPending = true; requestAnimationFrame(updateActive); }
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(snapToNearest, 90);
   }, { passive: true });
 
-  /* Scroll inicial: alinear el nombre del root con la fila de banderas (midiendo el DOM real). */
+  /* Pista de scroll: dar lugar debajo del último nodo para que TODOS (incluso los más
+     jóvenes, abajo de todo) puedan subir hasta la fila de banderas. */
+  const canvasEl = modal.querySelector('.tl-canvas');
   requestAnimationFrame(() => {
+    const lastY = nodeObjects.length ? nodeObjects[nodeObjects.length - 1].y : 0;
+    canvasEl.style.height = `${Math.max(H, lastY + scroll.clientHeight)}px`;
+
+    /* Scroll inicial: alinear el nombre del root con la fila de banderas (midiendo el DOM real). */
     const rootEl = nodeEls.get(rootNode) || nodeEls.get(nodeObjects[0]);
     const rootPip = rootEl?.querySelector('.tl-node-pip') || rootEl;
     if (rootPip) scroll.scrollTop += rectCenter(rootPip) - readingTarget();
