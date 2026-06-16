@@ -432,11 +432,14 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   flex: 1;
 }
 
+/* Escudos con fondo transparente (el blanco exterior se quitó por flood-fill).
+   Una sombra suave con la forma del escudo les da profundidad en claro y oscuro. */
 .home-herald-item img {
   height: 130px;
   width: auto;
   max-width: 100%;
   display: block;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
 }
 
 .home-herald-item figcaption {

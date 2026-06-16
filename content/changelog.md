@@ -20,6 +20,10 @@ El acceso dejó de pasar desapercibido: el botón **«Línea de tiempo»** en la
 
 La relación de cada persona con la que estás mirando se nombra con más precisión: hijo, nieto, bisnieto, tataranieto y **chozno** (la 5.ª generación). De ahí en adelante, en vez del genérico «descendiente», se indica la **generación exacta** (por ejemplo «Descendiente · 7.ª generación»).
 
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Escudos heráldicos en modo oscuro
+
+Los escudos de la portada (Valais, armorial Clemenzo, Ardon) tenían un fondo blanco que en modo oscuro se veía como un recuadro fuera de lugar. Ahora tienen **fondo transparente** —recortado respetando los blancos propios del escudo— con una sombra suave, así se ven prolijos sobre cualquier fondo.
+
 ### 15 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Línea de tiempo de cada persona

@@ -2,7 +2,7 @@
 
 Sitio web personal de investigación genealógica — historias, documentos y árbol familiar.
 
-**→ [cmzo.github.io/web-genealogia](https://cmzo.github.io/web-genealogia/index.html)**
+**→ [cmzo.net](https://cmzo.net)**
 
 ---
 

@@ -6,7 +6,7 @@ const { marked } = require('marked');
 const { execFileSync } = require('child_process');
 
 // Configuración
-const BASE_URL = 'https://web-genealogia.cmzo.workers.dev';
+const BASE_URL = 'https://cmzo.net';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/assets/images/cards/og-banner.webp`;
 const POSTS_DIR = './content/posts';
 const TEMPLATE_FILE = './content/templates/post-template.html';

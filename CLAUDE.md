@@ -73,7 +73,7 @@ There is no test suite and no linter configured.
 
 ## Architecture
 
-This is a **static site** deployed to **Cloudflare Workers Assets** (`web-genealogia.cmzo.workers.dev`). Configuration in `wrangler.toml`. There is no build framework — everything is plain HTML/CSS/JS with a small Node.js build pipeline.
+This is a **static site** deployed to **Cloudflare Workers Assets**, served at **`cmzo.net`** (también accesible vía `web-genealogia.cmzo.workers.dev`). Configuration in `wrangler.toml`. There is no build framework — everything is plain HTML/CSS/JS with a small Node.js build pipeline.
 
 ### Blog pipeline
 
@@ -100,7 +100,7 @@ aside: |               # optional sidebar content (supports Markdown)
 
 ### Path handling
 
-`assets/js/path-config.js` runs on every page and exposes `window.PATH_CONFIG` plus helpers (`getAssetPath`, `getImagePath`, `getDataPath`, etc.) that resolve paths correctly for both local dev (`./`) and GitHub Pages (`/web-genealogia/`). Pages that fetch data at runtime (like `index.html` and `blog.html`) use these helpers.
+`assets/js/path-config.js` runs on every page and exposes `window.PATH_CONFIG` plus helpers (`getAssetPath`, `getImagePath`, `getDataPath`, etc.) that resolve paths correctly for both local dev (`./`) and producción (`cmzo.net`, raíz `/`; constantes `DEPLOY_HOST`/`DEPLOY_SUBPATH`). Pages that fetch data at runtime (like `index.html` and `blog.html`) use these helpers.
 
 Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`, `../../index.html`) to reach root-level resources — this is handled automatically by `scripts/build.js`.
 

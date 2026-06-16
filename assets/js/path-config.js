@@ -1,7 +1,7 @@
 // ── Configuración de despliegue ──────────────────────────────────────────────
 // Para cambiar de hosting, editar solo estas dos constantes:
-const DEPLOY_HOST    = 'cmzo.github.io';   // hostname en producción
-const DEPLOY_SUBPATH = '/web-genealogia/'; // subpath (usar '/' si el sitio está en la raíz)
+const DEPLOY_HOST    = 'cmzo.net';   // hostname en producción
+const DEPLOY_SUBPATH = '/';          // subpath (usar '/' si el sitio está en la raíz)
 // ─────────────────────────────────────────────────────────────────────────────
 
 (function() {
