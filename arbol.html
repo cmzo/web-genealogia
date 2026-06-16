@@ -145,6 +145,14 @@
                 setFocus(initial.id);
                 if (target) setSelected(initial.id); // llega desde el buscador → abre su ficha
             }
+
+            // Apertura directa de la línea de tiempo por URL (?timeline=p26)
+            const wantTimeline = new URLSearchParams(location.search).get('timeline');
+            if (wantTimeline && personas.get(wantTimeline)) {
+                setFocus(wantTimeline);
+                setSelected(wantTimeline);
+                requestAnimationFrame(() => window.__openTimeline?.(wantTimeline));
+            }
         }
 
         document.addEventListener('DOMContentLoaded', init);

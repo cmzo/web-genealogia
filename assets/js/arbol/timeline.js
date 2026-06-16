@@ -290,6 +290,7 @@ const DESC_TERMS = [
   { m: 'Nieto',       f: 'Nieta',       n: 'Nieto/a'       },
   { m: 'Bisnieto',    f: 'Bisnieta',    n: 'Bisnieto/a'    },
   { m: 'Tataranieto', f: 'Tataranieta', n: 'Tataranieto/a' },
+  { m: 'Chozno',      f: 'Chozna',      n: 'Chozno/a'      },   // 5.ª generación (palabra real)
 ];
 
 function genderTerm(t, gender) {
@@ -299,15 +300,13 @@ function genderTerm(t, gender) {
 /** role: 'sel'|'anc'|'desc' · dist: distancia generacional · gender · rootFirst: nombre de pila raíz */
 function relationLabel(role, dist, gender, rootFirst) {
   if (role === 'sel') return 'Persona en foco';
-  if (role === 'anc') {
-    const t = ANC_TERMS[dist];
-    return t ? `${genderTerm(t, gender)} de ${rootFirst}` : `Ascendiente de ${rootFirst}`;
-  }
-  if (role === 'desc') {
-    const t = DESC_TERMS[dist];
-    return t ? `${genderTerm(t, gender)} de ${rootFirst}` : `Descendiente de ${rootFirst}`;
-  }
-  return '';
+  const arr = role === 'anc' ? ANC_TERMS : role === 'desc' ? DESC_TERMS : null;
+  if (!arr) return '';
+  const t = arr[dist];
+  if (t) return `${genderTerm(t, gender)} de ${rootFirst}`;
+  /* Más allá de los términos con nombre: indicar la generación exacta en vez del genérico. */
+  const word = role === 'anc' ? 'Ascendiente' : 'Descendiente';
+  return `${word} de ${rootFirst} · ${dist}.ª generación`;
 }
 
 /* ── Builders de contenido del panel ─────────────────────────────────────────── */
@@ -385,7 +384,11 @@ function buildPersonHTML(nodeData, rootFirst) {
 
 /* ── API pública ─────────────────────────────────────────────────────────────── */
 
+/* Ancho mínimo para la línea de tiempo: el master-detail no entra en pantallas chicas. */
+export const TIMELINE_MIN_WIDTH = 960;
+
 export function openTimeline(personId) {
+  if (window.innerWidth <= TIMELINE_MIN_WIDTH) return;   // no disponible en mobile
   const root = getPersona(personId);
   if (!root) return;
   document.querySelector('.tl-modal')?.remove();

@@ -27,6 +27,8 @@ let _activeTab = 'persona';
 let _currentId = null;
 
 export function initPanel() {
+  // Permite que el command palette / la URL abran la línea de tiempo de una persona
+  window.__openTimeline = openTimeline;
   _panel    = document.getElementById('treePanel');
   _hero     = document.getElementById('treePanelHero');
   _tabs     = document.getElementById('panelTabs');

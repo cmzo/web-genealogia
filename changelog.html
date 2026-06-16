@@ -77,10 +77,13 @@
       position: relative;
       top: -2px;
     }
-    /* Paleta coolors: terracota / verde salvia / arena, texto azul pizarra */
-    .changelog-tag         { background: #e07a5f; color: #f4f1de; }  /* Novedad */
-    .changelog-tag--mejora { background: #81b29a; color: #3d405b; }  /* Mejora  */
-    .changelog-tag--fix    { background: #f2cc8f; color: #3d405b; }  /* Arreglo */
+    /* Paleta coolors. Tipos de cambio:
+       Función nueva = herramienta/sección entirely new · Novedad = feature nueva en algo existente */
+    .changelog-tag          { background: #3d405b; color: #f4f1de; }  /* (por defecto) Novedad */
+    .changelog-tag--nueva   { background: #e07a5f; color: #f4f1de; }  /* Función nueva (terracota) */
+    .changelog-tag--novedad { background: #3d405b; color: #f4f1de; }  /* Novedad (azul pizarra)    */
+    .changelog-tag--mejora  { background: #81b29a; color: #3d405b; }  /* Mejora (verde salvia)     */
+    .changelog-tag--fix     { background: #f2cc8f; color: #3d405b; }  /* Arreglo (arena)           */
 
     .changelog-entry p {
       font-family: 'Inter', sans-serif;

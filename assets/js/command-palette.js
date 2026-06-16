@@ -38,7 +38,11 @@
     persona: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/></svg>',
     post:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
     search:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
+    timeline:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   };
+
+  // La línea de tiempo (master-detail) no entra en pantallas chicas
+  const TIMELINE_OK = () => window.innerWidth > 960;
 
   // ── Estilos (inyectados) ────────────────────────────────────────────────────
   const CSS = `
@@ -219,10 +223,16 @@
       ].filter(g => g.items.length);
     }
 
+    const tl = TIMELINE_OK()
+      ? rank(personas, q, 4).map(p => ({ ...p, type: 'timeline', tl: true,
+          sub: 'Ver línea de tiempo' }))
+      : [];
+
     return [
-      { label: 'Páginas',  items: rank(pages, q, 6) },
-      { label: 'Personas', items: rank(personas, q, 7) },
-      { label: 'Posts',    items: rank(posts, q, 6) },
+      { label: 'Páginas',         items: rank(pages, q, 6) },
+      { label: 'Personas',        items: rank(personas, q, 7) },
+      { label: 'Línea de tiempo', items: tl },
+      { label: 'Posts',           items: rank(posts, q, 6) },
     ].filter(g => g.items.length);
   }
 
@@ -282,6 +292,12 @@
   function activate() {
     const it = _visible[_active];
     if (!it) return;
+    if (it.tl) {
+      // Abrir la línea de tiempo: directo si estamos en el árbol, si no navegar con ?timeline=
+      if (typeof window.__openTimeline === 'function') { window.__openTimeline(it.id); close(); return; }
+      window.location.href = ROOT + 'arbol.html?timeline=' + encodeURIComponent(it.id);
+      return;
+    }
     if (it.type === 'persona') {
       // Si la página define un handler propio (árbol o archivo), enfocar sin salir;
       // si no, navegar al árbol con ?focus=

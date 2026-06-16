@@ -911,26 +911,32 @@
 .panel-timeline-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   margin-top: 14px;
-  padding: 6px 12px;
+  padding: 9px 15px;
   font-family: 'Inter', sans-serif;
-  font-size: 11.5px;
-  font-weight: 500;
-  color: var(--muted);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 9px;
   cursor: pointer;
-  transition: color 0.14s, background 0.14s, border-color 0.14s;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: transform 0.14s, box-shadow 0.14s, filter 0.14s;
   letter-spacing: 0.01em;
 }
 .panel-timeline-btn:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--surface);
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 48%, transparent);
 }
-.panel-timeline-btn svg { opacity: 0.7; flex-shrink: 0; }
+.panel-timeline-btn svg { opacity: 1; flex-shrink: 0; }
+
+/* La línea de tiempo no está disponible en pantallas chicas (master-detail no entra) */
+@media (max-width: 960px) {
+  .panel-timeline-btn { display: none; }
+}
 
 /* Fondo oscurecido */
 .tl-modal {

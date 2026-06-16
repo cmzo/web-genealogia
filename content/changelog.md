@@ -1,16 +1,30 @@
 ### 16 de junio de 2026
 
-#### <span class="changelog-tag">Novedad</span> La «Línea de tiempo» de cada persona, rediseñada
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Un panel de contexto fijo en la línea de tiempo
 
-El modal de **Línea de tiempo** (el botón que aparece al elegir a alguien en el árbol) se rehízo de punta a punta. Antes la información de contexto aparecía en globos chiquitos al pasar el mouse; ahora el modal es más ancho y suma un **panel de detalle fijo a la derecha** que se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para **abrir la ficha completa**.
+La línea de tiempo se ensanchó y sumó un **panel de detalle fijo a la derecha** que reemplaza a los globos chiquitos que aparecían al pasar el mouse. Se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…», «chozno de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para **abrir la ficha completa**.
 
-#### <span class="changelog-tag">Novedad</span> Los hitos históricos ahora traen imagen y resumen de Wikipedia
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los hitos históricos ahora traen imagen y resumen de Wikipedia
 
 Cada hito mundial de la línea (Revolución Francesa, llegada del hombre a la Luna, etc.) abre en ese panel con una **imagen y un resumen traídos en vivo de Wikipedia**, además del texto propio y un enlace para leer más. Se sumaron **hitos argentinos** (Constitución de 1853, Ley Sáenz Peña, Yrigoyen, el golpe de 1930, Perón, el retorno a la democracia en 1983), que aparecen cuando la vida de la persona los abarca, y se corrigieron enlaces rotos.
 
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Geografía más clara y un desplazamiento que «encaja»
 
 La franja superior muestra con **banderas circulares** dónde **nació, creció, vivió y murió** cada persona (incluida España para quienes emigraron allá). Al desplazar la línea, el nombre se resalta y **encaja en su lugar** como en un selector de fecha del celular, y el panel de la derecha acompaña. Si la persona vive, ya no aparece la columna «murió» y se muestra «vive». También se afinó el espaciado para que los nombres no se solapen y se puede llegar con el scroll hasta los integrantes más jóvenes del árbol.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La línea de tiempo, más a mano
+
+El acceso dejó de pasar desapercibido: el botón **«Línea de tiempo»** en la ficha de cada persona ahora es **verde y destacado**, y además se puede abrir desde el buscador **⌘ + K** (escribís un nombre y elegís «Línea de tiempo»). En pantallas chicas, donde la vista no entra cómoda, el acceso se oculta.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Parentescos con nombre propio
+
+La relación de cada persona con la que estás mirando se nombra con más precisión: hijo, nieto, bisnieto, tataranieto y **chozno** (la 5.ª generación). De ahí en adelante, en vez del genérico «descendiente», se indica la **generación exacta** (por ejemplo «Descendiente · 7.ª generación»).
+
+### 15 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Línea de tiempo de cada persona
+
+Al elegir a alguien en el **Árbol** aparece un botón **«Línea de tiempo»** que abre una vista nueva: ubica a la persona —junto a sus ancestros y descendientes— sobre un eje temporal, enfrentada a los **hitos históricos** del mundo de cada época (de la Revolución Francesa a la llegada del hombre a la Luna). Una franja superior muestra **dónde nació, creció, vivió y murió** cada quien, y al recorrer la línea se va resaltando cada nombre con su contexto. Es una forma de ver la historia familiar situada en el tiempo: qué pasaba en el mundo cuando vivió cada antepasado.
 
 ### 14 de junio de 2026
 
