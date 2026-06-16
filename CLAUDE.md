@@ -124,6 +124,7 @@ assets/js/arbol/
   ├── layout.js    — calculateLayout(): positions nodes by generation/order, exports VGAP
   ├── render.js    — initTree(), render(), recenterOn(), zoomIn/Out() — D3 SVG rendering
   ├── panel.js     — side panel that shows person details and media when a node is selected
+  ├── timeline.js  — modal «Línea de tiempo» por persona (se abre desde el botón del hero de panel.js)
   ├── search.js    — name search UI
   └── keyboard.js  — keyboard shortcuts
 ```
@@ -131,6 +132,8 @@ assets/js/arbol/
 Styles are in `assets/css/arbol.css`. The HTML (`arbol.html`) has no inline CSS or JS.
 
 **Panel inspector (`panel.js` + `.tree-panel`):** lenguaje editorial coherente con el blog — hero sobre superficie clara (nombre en Source Serif 4, años en serif cursiva), badge de estado tipo chip, secciones en cards blancas. En desktop el panel flota como tarjeta con **gaps de 5mm tipo i3** (el fondo de puntos vive en `.tree-wrapper` y se ve en los gaps). El botón "Ampliar panel" del footer alterna el estado `.is-expanded`, que hace que el panel ocupe todo el área dejando solo el gap de 5mm (toggle a "Volver al árbol"). **Esta expansión y los gaps son solo desktop** (`@media max-width: 960px` los desactiva: el panel vuelve a ser un drawer overlay a pantalla completa y el footer se oculta).
+
+**Modal «Línea de tiempo» (`timeline.js`):** abre desde el botón del hero del panel y ubica a la persona —con su ascendencia y descendencia— en una columna central (eje temporal vertical) contra hitos históricos a la izquierda. A la derecha, un **panel de detalle fijo** (master-detail) que sigue al hover/scroll. Los hitos viven en el array `WORLD_EVENTS` (cada uno con `wiki` = título de artículo) y traen imagen + resumen en vivo vía `fetchWiki()` (REST de es.wikipedia, con caché en `sessionStorage`). La franja superior («slot-machine») muestra banderas de dónde nació/creció/vivió/murió cada persona; el país sale de `getCountry()` por regex sobre los lugares, con un mapa `HARDCODED_GEO` (por id) para personas sin datos de residencia (hoy p1/p3/p4 → España). Regla vivo/muerto: `DEAD_CUTOFF = 1941` (sin defunción y nacido antes → fallecido).
 
 **Data source:** `data/arbol.db` (SQLite) is the source of truth. At build time, `scripts/build.js` calls `scripts/export_arbol.py`, which reads the DB and writes `assets/data/arbol.json`. The tree page only ever reads the static JSON — it never touches the DB directly.
 

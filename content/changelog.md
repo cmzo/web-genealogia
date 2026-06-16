@@ -1,4 +1,16 @@
-### 14 de junio de 2026
+### 16 de junio de 2026
+
+#### La «Línea de tiempo» de cada persona, rediseñada
+
+El modal de **Línea de tiempo** (el botón que aparece al elegir a alguien en el árbol) se rehízo de punta a punta. Antes la información de contexto aparecía en globos chiquitos al pasar el mouse; ahora el modal es más ancho y suma un **panel de detalle fijo a la derecha** que se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para **abrir la ficha completa**.
+
+#### Los hitos históricos ahora traen imagen y resumen de Wikipedia
+
+Cada hito mundial de la línea (Revolución Francesa, llegada del hombre a la Luna, etc.) abre en ese panel con una **imagen y un resumen traídos en vivo de Wikipedia**, además del texto propio y un enlace para leer más. Se sumaron **hitos argentinos** (Constitución de 1853, Ley Sáenz Peña, Yrigoyen, el golpe de 1930, Perón, el retorno a la democracia en 1983), que aparecen cuando la vida de la persona los abarca, y se corrigieron enlaces rotos.
+
+#### Geografía más clara y un desplazamiento que «encaja»
+
+La franja superior muestra con **banderas circulares** dónde **nació, creció, vivió y murió** cada persona (incluida España para quienes emigraron allá). Al desplazar la línea, el nombre se resalta y **encaja en su lugar** como en un selector de fecha del celular, y el panel de la derecha acompaña. Si la persona vive, ya no aparece la columna «murió» y se muestra «vive». También se afinó el espaciado para que los nombres no se solapen y se puede llegar con el scroll hasta los integrantes más jóvenes del árbol.
 
 #### Modo oscuro en todo el sitio
 

@@ -634,7 +634,7 @@ export function openTimeline(personId) {
   /* Estado inicial: la persona en foco */
   renderPersonDetail(rootNode || nodeObjects[0]);
 
-  /* Hover y clic actualizan el panel persistente */
+  /* Hover actualiza el panel; el clic sobre una persona la lleva al header (ver más abajo). */
   const onEvtPoint  = e => { const el = e.target.closest('.tl-event[data-ev]'); if (el) renderEventDetail(el); };
   const onNodePoint = e => {
     const el = e.target.closest('.tl-node[data-id]');
@@ -643,7 +643,6 @@ export function openTimeline(personId) {
   evCol.addEventListener('mouseover', onEvtPoint);
   evCol.addEventListener('click', onEvtPoint);
   ndCol.addEventListener('mouseover', onNodePoint);
-  ndCol.addEventListener('click', onNodePoint);
 
   /* "Abrir ficha" dentro del panel */
   detailEl.addEventListener('click', e => {
@@ -744,6 +743,15 @@ export function openTimeline(personId) {
     clearTimeout(snapTimer);
     snapTimer = setTimeout(snapToNearest, 90);
   }, { passive: true });
+
+  /* Clic en una persona → la lleva al header (mismo efecto que scrollear hasta ella). */
+  ndCol.addEventListener('click', e => {
+    const el = e.target.closest('.tl-node[data-id]');
+    if (!el) return;
+    const pip = el.querySelector('.tl-node-pip') || el;
+    const delta = rectCenter(pip) - readingTarget();
+    if (Math.abs(delta) > 1) scroll.scrollBy({ top: delta, behavior: 'smooth' });
+  });
 
   /* Pista de scroll: dar lugar debajo del último nodo para que TODOS (incluso los más
      jóvenes, abajo de todo) puedan subir hasta la fila de banderas. */
