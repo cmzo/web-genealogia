@@ -115,6 +115,10 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol.html`) when already on the tree, otherwise navigates to `arbol.html?focus=<id>`. En desktop (ancho > 960px) hay además un grupo **«Línea de tiempo»** que abre el modal de la persona: directo vía `window.__openTimeline` (expuesto por `panel.js`) si ya estás en el árbol, o navegando a `arbol.html?timeline=<id>` (el init de `arbol.html` lee ese parámetro y lo abre). En mobile no aparece. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
 
+### Formulario Colaborar (`colaborar.html`)
+
+Formulario de comentarios/aportes que **POSTea a un Google Apps Script** (`ENDPOINT` en el `<script>`; `mode: 'no-cors'`, así que el cliente no lee la respuesta). El Apps Script guarda en una Google Sheet y manda mail de aviso. Anti-spam en capas: **honeypot** (`_gotcha`) + **traba de tiempo** (2.5 s) + **Cloudflare Turnstile**. La **Site Key** de Turnstile es pública y vive en el HTML (`data-sitekey`); la **Secret Key** se verifica server-side en el Apps Script (`siteverify`), guardada en **Script Properties** (`TURNSTILE_SECRET`) — nunca en el repo. La verificación es *fail-open* (ante error técnico no bloquea). **Gotcha:** el Apps Script necesita autorizar el scope de `UrlFetchApp`, y tras editarlo hay que re-deployar (**Manage deployments → New version**) para que la URL `/exec` corra el código nuevo.
+
 ### Family tree (`arbol.html`)
 
 The tree is modularized into ES modules under `assets/js/arbol/` and uses **D3.js v7** for SVG rendering with zoom/pan:

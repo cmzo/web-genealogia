@@ -1,3 +1,9 @@
+### 17 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Más protección contra spam y bots
+
+El formulario de **Colaborar** sumó **Cloudflare Turnstile**: una verificación anti-spam que confirma que sos una persona **sin cookies ni "elegí los semáforos"** (la mayoría de las veces es invisible). Se valida del lado del servidor, así los envíos automatizados se descartan y solo llegan los reales. Se suma al honeypot y la traba de tiempo que ya tenía. Además se reforzó la protección anti-bots del sitio con herramientas de Cloudflare (AI Labyrinth).
+
 ### 16 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El sitio tiene dominio propio: cmzo.net
