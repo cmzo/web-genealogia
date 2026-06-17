@@ -286,6 +286,10 @@
             </div>
           </fieldset>
 
+          <!-- Anti-spam: Cloudflare Turnstile (sin cookies). Site Key pública del widget de cmzo.net.
+               La Secret Key se verifica en el Google Apps Script (siteverify), no va en el repo. -->
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADmnR8vPjTDeyiJY" data-theme="auto" style="margin-bottom: 20px;"></div>
+
           <p class="form-error" id="form-error" data-i18n="err_generic">Algo salió mal. Intentá de nuevo o escribime a mdclemenzo@gmail.com.</p>
           <button type="submit" class="form-submit" id="form-submit" data-i18n="btn_send">Enviar</button>
         </form>
@@ -344,6 +348,7 @@
         status_ok: '¡Gracias! Recibí tu mensaje. Si dejaste tu email, te escribo.',
         err_generic: 'Algo salió mal. Intentá de nuevo o escribime a mdclemenzo@gmail.com.',
         err_wait: 'Esperá un momento antes de enviar.',
+        err_captcha: 'Completá la verificación de seguridad e intentá de nuevo.',
         err_name: 'Por favor, dejá tu nombre.',
         err_message: 'Por favor, escribí un mensaje.',
         err_message_info: 'Contanos algo en el mensaje.',
@@ -382,6 +387,7 @@
         status_ok: "Merci ! J'ai reçu ton message. Si tu as laissé ton email, je t'écris.",
         err_generic: "Quelque chose s'est mal passé. Réessaie ou écris-moi à mdclemenzo@gmail.com.",
         err_wait: "Attends un moment avant d'envoyer.",
+        err_captcha: "Complète la vérification de sécurité et réessaie.",
         err_name: "Laisse-moi ton nom, s'il te plaît.",
         err_message: "Écris un message, s'il te plaît.",
         err_message_info: "Dis-nous quelque chose dans le message.",
@@ -420,6 +426,7 @@
         status_ok: "Thank you! I received your message. If you left your email, I'll get back to you.",
         err_generic: "Something went wrong. Try again or email me at mdclemenzo@gmail.com.",
         err_wait: "Wait a moment before sending.",
+        err_captcha: 'Complete the security check and try again.',
         err_name: "Please leave your name.",
         err_message: "Please write a message.",
         err_message_info: "Tell us something in the message.",
@@ -554,8 +561,12 @@
       if (form.querySelector('[name="_gotcha"]').value) return;
       if (Date.now() - startTime < 2500) { showError('err_wait'); return; }
 
+      // Anti-spam: token de Cloudflare Turnstile (lo verifica el servidor)
+      const tsToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+      if (!tsToken) { showError('err_captcha'); if (window.turnstile) turnstile.reset(); return; }
+
       const mode = tipoField.value;
-      const data = { tipo: mode, idioma: currentLang, enviado: new Date().toISOString() };
+      const data = { tipo: mode, idioma: currentLang, enviado: new Date().toISOString(), turnstile_token: tsToken };
 
       if (mode === 'comentario') {
         data.nombre  = document.getElementById('c-nombre').value.trim();
@@ -596,6 +607,7 @@
         status.classList.add('is-visible');
       } catch {
         showError('err_generic');
+        if (window.turnstile) turnstile.reset();
       }
     });
 
@@ -611,6 +623,7 @@
     applyLang(currentLang);
   </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="assets/js/nav-drawer.js" defer></script>
 <script src="assets/js/theme.js" defer></script>
 <script src="assets/js/command-palette.js" defer></script>
