@@ -296,6 +296,9 @@ Tenía el censo de Aven de 1870 y, sin saberlo, otra pieza esperando en mi propi
 
 > **Roh Jean Joseph**, (5.10.1840), *maréchal*, de Jean Joseph et d'Anne Marie Papilloud; **Putallaz Marie**, (01.11.1835), de Jean François et de Catherine Roh, épouse du précédent depuis le 01.05.1859. Ils ont eu 4 enfants : Marianne (19.02.1862), Marie Rosalie (24.10.1864), Marie Célestine (22.12.1867) et Joseph Marie (27.02.1870).
 
+![La entrada «1873 — Amérique du Sud» en la nómina de émigrés de Conthey de Gabriel Antonin, con la familia Roh-Putallaz](../../assets/images/posts/roh-1873-emigres-conthey.webp)
+_La entrada «1873 — Amérique du Sud» en la nómina de émigrés de Conthey de Gabriel Antonin._
+
 Un solo párrafo, y resuelve casi todo lo que venía arrastrando. La familia, ahora con fechas y padres confirmados:
 
 ```mermaid
@@ -328,7 +331,7 @@ Lo que corrige y lo que cierra:
 - **Aparecen sus padres y los de su mujer.** Él, hijo de **Pierre Joseph Roh** y de **Anne Marie Papilloud** (ver abajo); ella, hija de **Jean François Putallaz** y **Catherine Roh** (otra Roh: la endogamia de Aven, de nuevo). Cuatro ancestros que hasta ayer eran un casillero en blanco.
 - **Se confirma de qué familia de Aven venía.** El censo de 1850 de Aven ubica al jean Joseph nacido en 1840 como hijo de **Pierre Joseph Roh** (herrero, 1804) y **Anne Marie Putallaz** (1806) — ver la sección siguiente.
 
-Lo más lindo es de dónde salió: no de un archivo en Sion ni de un viaje, sino de un PDF que tuve guardado todo este tiempo. A veces la fuente que falta ya está en casa. El documento queda ahora en las [Fuentes](../../fuentes.html) del sitio, con mi agradecimiento a Gabriel Antonin, que hizo el trabajo de ir partida por partida.
+Lo más lindo es de dónde salió: no de un archivo en Sion ni de un viaje, sino de un PDF que tuve guardado todo este tiempo. A veces la fuente que falta ya está en casa. Mi agradecimiento a **Gabriel Antonin**, que hizo el trabajo de ir partida por partida.
 
 ### 14 de junio de 2026 (II) — El censo de 1850 y los hermanos que se quedaron
 

@@ -23,7 +23,7 @@ if (!hasChanges()) {
 }
 
 const date = new Date().toISOString().slice(0, 10);
-run('git add dist/ assets/data/ assets/css/ assets/js/ assets/images/ assets/fonts/ *.html docs/ content/ data/ scripts/ CLAUDE.md README.md package.json package-lock.json wrangler.toml .assetsignore');
+run('git add -A');   // stagea todo (borrados y archivos nuevos incluidos), respetando .gitignore
 run(`git commit -m "build: actualizar posts y dist (${date})"`);
 run('git push');
 

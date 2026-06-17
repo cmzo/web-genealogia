@@ -47,3 +47,16 @@ temp/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Caché de traducciones DeepL (los .fr.md generados sí se commitean)
+content/.deepl-cache.json
+
+# Documentos fuente de investigación (locales, no se sirven en el sitio)
+assets/docs/
+
+# Basura accidental de la terminal
+-quality
+
+# Capturas de pantalla sueltas (macOS)
+SCR-*.png
+Screenshot *.png
