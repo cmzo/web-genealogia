@@ -6,6 +6,7 @@ category: "investigacion"
 date: "2026-06-11"
 tags: "clemenzo, gazette du valais, salins, riddes, valais, investigacion"
 featured: false
+wiki: "p36, p26, p37, p57, p58"
 slug: "la-ruina-de-francois"
 ---
 

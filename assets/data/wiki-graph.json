@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-19T13:02:11.234Z",
+  "generated": "2026-06-19T21:07:04.916Z",
   "nodes": [
     {
       "id": "censo-valais-1870",
@@ -43,7 +43,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p10.html",
-      "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
+      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en 1926.",
       "hasContent": true
     },
     {
@@ -88,7 +88,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p104.html",
-      "summary": "n. 1884-07-25, Santa Fe, Argentina",
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en 1884.",
       "hasContent": true
     },
     {
@@ -97,7 +97,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p105.html",
-      "summary": "n. 1906-05-09, Genacito, Entre Ríos, Argentina",
+      "summary": "Hija de la familia Roh establecida en Argentina, nacida en 1906.",
       "hasContent": true
     },
     {
@@ -106,7 +106,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p106.html",
-      "summary": "n. 1908-03-24, Villa Mantero, Entre Ríos, Argentina",
+      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1908.",
       "hasContent": true
     },
     {
@@ -115,7 +115,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p107.html",
-      "summary": "n. 1909-04-17, Genacito, Entre Ríos, Argentina",
+      "summary": "Hija de la familia Roh establecida en Argentina, nacida en 1909.",
       "hasContent": true
     },
     {
@@ -124,7 +124,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p108.html",
-      "summary": "n. 1911-01-08, Genacito, Entre Ríos, Argentina",
+      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1911.",
       "hasContent": true
     },
     {
@@ -133,7 +133,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p109.html",
-      "summary": "n. 1914-05-17, Genacito, Entre Ríos, Argentina",
+      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1914.",
       "hasContent": true
     },
     {
@@ -142,7 +142,7 @@
       "type": "persona",
       "branch": "carvallo",
       "url": "dist/wiki/p11.html",
-      "summary": "n. CABA",
+      "summary": "Casada en la familia Clemenzo; figura en la generación 3 de la rama junto a Felix Ricardo Clemenzo (p10).",
       "hasContent": true
     },
     {
@@ -151,7 +151,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p110.html",
-      "summary": "n. 1917-12-30, Genacito, Entre Ríos, Argentina",
+      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1917.",
       "hasContent": true
     },
     {
@@ -214,7 +214,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p117.html",
-      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
+      "summary": "Hija de Juan José Roch (p38) y Marie Putallaz, nacida en Conthey en 1864. Emigró a Argentina con la familia en 1873. La grafía «Roch» (vs. «Roh» argentina) sugiere que nació en Suiza.",
       "hasContent": true
     },
     {
@@ -223,7 +223,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p118.html",
-      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
+      "summary": "Hijo menor de Juan José Roch (p38) y Marie Putallaz, nacido en Conthey en 1870. Emigró a Argentina con su familia en 1873, siendo un niño de tres años. La grafía «Roch» indica nacimiento en Suiza.",
       "hasContent": true
     },
     {
@@ -232,7 +232,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p119.html",
-      "summary": "n. Conthey, Valais, Suiza",
+      "summary": "Padre de Juan José Roch (p38) y abuelo de María Celestina Roh (p27). Natural de Aven, Conthey, Valais. Su identificación cerró el enigma de las tres familias candidatas del censo de 1850.",
       "hasContent": true
     },
     {
@@ -241,7 +241,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p12.html",
-      "summary": "n. Bs As",
+      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27).",
       "hasContent": true
     },
     {
@@ -250,7 +250,7 @@
       "type": "persona",
       "branch": "papilloud",
       "url": "dist/wiki/p120.html",
-      "summary": "n. 1796, Conthey (Aven), Valais, Suiza",
+      "summary": "Madre de Juan José Roch (p38). Casada con Jean Joseph Roch (p119) en Conthey, Valais. Su presencia en el censo de Aven de 1850 (Familia A) fue clave para identificar la familia de origen de su hijo.",
       "hasContent": true
     },
     {
@@ -259,7 +259,7 @@
       "type": "persona",
       "branch": "putallaz",
       "url": "dist/wiki/p121.html",
-      "summary": "n. Conthey, Valais, Suiza",
+      "summary": "Padre de Marie Putallaz (esposa de Juan José Roch p38). Casado con Catherine Roh (p122) en Conthey, Valais. Su hija Marie unió las familias Putallaz y Roh, que ya convergían desde generaciones en Aven.",
       "hasContent": true
     },
     {
@@ -268,7 +268,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p122.html",
-      "summary": "n. Conthey, Valais, Suiza",
+      "summary": "Madre de Marie Putallaz (esposa de Juan José Roch p38). Casada con Jean François Putallaz (p121) en Conthey, Valais. Su apellido Roh revela el entrelazamiento familiar típico de Aven.",
       "hasContent": true
     },
     {
@@ -277,7 +277,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p13.html",
-      "summary": "n. Bs As",
+      "summary": "Nieta de Francisco Clemenzo (p26) y María Celestina Roh (p27).",
       "hasContent": true
     },
     {
@@ -286,7 +286,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p14.html",
-      "summary": "n. Bs As",
+      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
       "hasContent": true
     },
     {
@@ -295,7 +295,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p15.html",
-      "summary": "n. Bs As",
+      "summary": "Hijo de la unión Clemenzo-Queipo; nieto de Francisco Clemenzo (p26) por línea paterna e hijo de Isabel Queipo (p19).",
       "hasContent": true
     },
     {
@@ -304,7 +304,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p16.html",
-      "summary": "n. Bs As",
+      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
       "hasContent": true
     },
     {
@@ -313,7 +313,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p17.html",
-      "summary": "n. Bs As",
+      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
       "hasContent": true
     },
     {
@@ -322,7 +322,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p18.html",
-      "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Entre Ríos en 1894.",
       "hasContent": true
     },
     {
@@ -331,7 +331,7 @@
       "type": "persona",
       "branch": "queipo",
       "url": "dist/wiki/p19.html",
-      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
+      "summary": "Natural de Entre Ríos, nacida en 1897. Casada en la familia Clemenzo; madre de los Clemenzo Queipo (Margot, Eduardo, Yolanda, Olga).",
       "hasContent": true
     },
     {
@@ -349,7 +349,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p20.html",
-      "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en San José, Entre Ríos, en 1891. Francisco Clemenzo falleció en su domicilio de Concepción del Uruguay en 1928.",
       "hasContent": true
     },
     {
@@ -358,7 +358,7 @@
       "type": "persona",
       "branch": "baster",
       "url": "dist/wiki/p21.html",
-      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
+      "summary": "Casada en la familia Clemenzo en Argentina; figura en la generación 4 de la rama.",
       "hasContent": true
     },
     {
@@ -367,7 +367,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p22.html",
-      "summary": "n. Entre Rios",
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27). Sin fecha de nacimiento documentada; podría ser uno de los hijos mencionados en el censo de 1895.",
       "hasContent": true
     },
     {
@@ -376,7 +376,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p23.html",
-      "summary": "n. Entre Rios",
+      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Sin fecha documentada; posiblemente la hija de 8 años registrada como «Celestina» en el censo de 1895.",
       "hasContent": true
     },
     {
@@ -385,7 +385,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p25.html",
-      "summary": "n. 1885-06-27, Santa Fe, Argentina",
+      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), registrada con el apellido materno. Nació en Santa Fe en 1885, antes del establecimiento definitivo de la familia en Entre Ríos; su existencia figura en el censo de 1895.",
       "hasContent": true
     },
     {
@@ -394,7 +394,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p26.html",
-      "summary": "n. 1858-05-31, Riddes, Valais, Suiza · f. 1928-04-17, Concepción del Uruguay, Entre Rios, Argentina",
+      "summary": "El emigrante fundador. Huérfano de padre a los 14, partió de Riddes en 1873 y se radicó en Entre Ríos, donde fundó la rama argentina de los Clemenzo.",
       "hasContent": true
     },
     {
@@ -403,7 +403,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p27.html",
-      "summary": "n. 1867-12-22, Conthey (Aven), Valais, Suiza · f. 1950-10-02, Santa Fe, Argentina",
+      "summary": "Hija de Juan José Roch, llegó de Conthey a los seis años en la corriente migratoria de 1873. Su unión con Francisco Clemenzo unió las dos principales familias valesanas de la colonia.",
       "hasContent": true
     },
     {
@@ -412,7 +412,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p28.html",
-      "summary": "n. 1856-05-05, Riddes, Valais, Suiza · f. 1899-01-20, Colonia Yerua, Concordia, Entre Rios, Argentina",
+      "summary": "Hermano mayor de François (p26), nacido en Riddes en 1856. Emigró a Argentina y falleció en Colonia Yeruá, Entre Ríos, en 1899.",
       "hasContent": true
     },
     {
@@ -421,7 +421,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p29.html",
-      "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
+      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Colonia Yeruá, Entre Ríos, en 1897.",
       "hasContent": true
     },
     {
@@ -439,7 +439,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p30.html",
-      "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
+      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Colonia Yeruá en 1899. Su acta la declara hija «civil» en lugar de «legítima», señal de la unión posiblemente no formalizada de sus padres.",
       "hasContent": true
     },
     {
@@ -466,7 +466,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p33.html",
-      "summary": "n. 1914-08-10, Concepción del Uruguay, Entre Rios, Argentina · f. 1989-03-27, Gualeguaychu, Entre Rios, Argentina",
+      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Entre Ríos en 1914.",
       "hasContent": true
     },
     {
@@ -475,7 +475,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p34.html",
-      "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
+      "summary": "Nieta de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Argentina en 1917.",
       "hasContent": true
     },
     {
@@ -484,7 +484,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p35.html",
-      "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
+      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Argentina en 1919.",
       "hasContent": true
     },
     {
@@ -493,7 +493,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p36.html",
-      "summary": "n. 1809-04-09, Ardon, Valais, Suiza",
+      "summary": "Padre de François (p26), José y Etienne Clemenzo. Natural de Ardon, burgués de Riddes. Vivió en el Valais hasta su muerte entre 1870 y 1874; sus hijos emigraron a Argentina poco después.",
       "hasContent": true
     },
     {
@@ -502,7 +502,7 @@
       "type": "persona",
       "branch": "stalder",
       "url": "dist/wiki/p37.html",
-      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
+      "summary": "Madre de François (p26), José y Etienne Clemenzo. Natural de Salins, Valais. Tras enviudar hacia 1871–74, sus hijos emigraron a Argentina; ella no aparece en los registros argentinos.",
       "hasContent": true
     },
     {
@@ -511,7 +511,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p38.html",
-      "summary": "n. 1840-10-05, Conthey (Aven), Valais, Suiza · f. 1897, Colón, Entre Ríos, Argentina",
+      "summary": "Herrero de Aven (Conthey), emigró con su familia a Argentina en 1873. Sus hijos se establecieron en Entre Ríos y Santa Fe; su hija María Celestina (p27) se unió a Francisco Clemenzo.",
       "hasContent": true
     },
     {
@@ -520,7 +520,7 @@
       "type": "persona",
       "branch": "putallaz",
       "url": "dist/wiki/p39.html",
-      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
+      "summary": "Esposa de Juan José Roch (p38), hija de Jean François Putallaz (p121) y Catherine Roh (p122). Nacida en Aven, Conthey, en 1835. Emigró a Argentina con su familia en 1873; el censo de 1895 la registra en Colón, Entre Ríos, como suiza.",
       "hasContent": true
     },
     {
@@ -538,7 +538,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p40.html",
-      "summary": "n. 1862-02-25, Riddes, Valais, Suiza · f. 1938-12-22, Ciudad de Buenos Aires, Argentina",
+      "summary": "Hermano de François (p26), nacido en Riddes en 1862. Emigró a Argentina; en 1905 liquidó junto a François los bienes familiares en Riddes vía el Consulado de Suiza. Falleció en 1938.",
       "hasContent": true
     },
     {
@@ -637,7 +637,7 @@
       "type": "persona",
       "branch": "arceo",
       "url": "dist/wiki/p50.html",
-      "summary": "",
+      "summary": "Familiar de Cristina Magdalena Arceo (p8), de la familia Arceo radicada en Argentina.",
       "hasContent": true
     },
     {
@@ -646,7 +646,7 @@
       "type": "persona",
       "branch": "arceo",
       "url": "dist/wiki/p51.html",
-      "summary": "",
+      "summary": "Familiar de Cristina Magdalena Arceo (p8), de la familia Arceo radicada en Argentina.",
       "hasContent": true
     },
     {
@@ -700,7 +700,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p57.html",
-      "summary": "n. 1780, Valais, Suiza · f. 1846/1850",
+      "summary": "Labrador de Ardon y Riddes, abuelo del emigrante François Clemenzo (p26). Documentado en censos del Valais de 1829 a 1846; fallece entre ese año y 1850.",
       "hasContent": true
     },
     {
@@ -709,7 +709,7 @@
       "type": "persona",
       "branch": "cerisier",
       "url": "dist/wiki/p58.html",
-      "summary": "n. 1786 · f. 1851/1861",
+      "summary": "Esposa de Jean Joseph Clemenzo (p57) y abuela del emigrante François Clemenzo (p26). Natural de Ardon/Riddes, Valais. Encabezó el hogar como viuda en el censo de Riddes de 1850.",
       "hasContent": true
     },
     {
@@ -718,7 +718,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p59.html",
-      "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
+      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1887. Lleva el apellido «Clemenzoz», grafía usada en los registros argentinos de la rama de José.",
       "hasContent": true
     },
     {
@@ -736,7 +736,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p60.html",
-      "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
+      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1889.",
       "hasContent": true
     },
     {
@@ -745,7 +745,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p61.html",
-      "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
+      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1891.",
       "hasContent": true
     },
     {
@@ -754,7 +754,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p62.html",
-      "summary": "n. 1893-11-13, Partido de San Nicolas",
+      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1893.",
       "hasContent": true
     },
     {
@@ -763,7 +763,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p63.html",
-      "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
+      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1895.",
       "hasContent": true
     },
     {
@@ -772,7 +772,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p64.html",
-      "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
+      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1897.",
       "hasContent": true
     },
     {
@@ -781,7 +781,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p65.html",
-      "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
+      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1902.",
       "hasContent": true
     },
     {
@@ -790,7 +790,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p66.html",
-      "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
+      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1904.",
       "hasContent": true
     },
     {
@@ -799,7 +799,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p67.html",
-      "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
+      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1906. El último de los hijos registrados de la rama Clemenzoz.",
       "hasContent": true
     },
     {
@@ -808,7 +808,7 @@
       "type": "persona",
       "branch": "queipo",
       "url": "dist/wiki/p68.html",
-      "summary": "",
+      "summary": "Familiar de Isabel María Queipo (p19), de la familia Queipo radicada en Entre Ríos.",
       "hasContent": true
     },
     {
@@ -853,7 +853,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p72.html",
-      "summary": "n. 1805, Ardon",
+      "summary": "Hijo mayor de Jean Joseph Clemenzo (p57), hermano de François Clemenzoz (p36). Los censos de 1829 lo ubican como estudiante en Friburgo de Brisgovia y con domicilio en Viena.",
       "hasContent": true
     },
     {
@@ -862,7 +862,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p73.html",
-      "summary": "n. 1818, Ardon, Valais, Suiza",
+      "summary": "Hijo de Jean Joseph Clemenzo (p57), hermano de François Clemenzoz (p36). Natural de Ardon, Valais.",
       "hasContent": true
     },
     {
@@ -871,7 +871,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p74.html",
-      "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
+      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Aparece en los censos del Valais hasta 1850, cuando acompañaba a su madre viuda.",
       "hasContent": true
     },
     {
@@ -880,7 +880,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p75.html",
-      "summary": "n. 1815, Ardon, Valais, Suiza",
+      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Natural de Ardon, Valais. Es la única persona de esta generación con estado «verificado» en el árbol.",
       "hasContent": true
     },
     {
@@ -889,7 +889,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p76.html",
-      "summary": "n. 1821, Ardon, Valais, Suiza",
+      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Posiblemente emparentada con los Lambiel de Riddes, que mediaron en la liquidación de bienes de los Clemenzo en 1905 (carta de Conthey).",
       "hasContent": true
     },
     {
@@ -898,7 +898,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p77.html",
-      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
+      "summary": "Hermana mayor de François Clemenzo (p26), nacida en Riddes en 1843. La mayor diferencia de edad con François (15 años) sugiere que fue adulta cuando emigró o que no emigró.",
       "hasContent": true
     },
     {
@@ -907,7 +907,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p78.html",
-      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
+      "summary": "Hermana de François Clemenzo (p26), nacida en Riddes en 1864 y documentada en el censo suizo de 1870. Tenía 9 años al partir la familia a Argentina en 1873.",
       "hasContent": true
     },
     {
@@ -916,7 +916,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p79.html",
-      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
+      "summary": "Hermana de François Clemenzo (p26), nacida en Riddes en 1870 y documentada en el censo suizo de ese mismo año. Tenía apenas 3 años al emigrar la familia.",
       "hasContent": true
     },
     {
@@ -925,7 +925,7 @@
       "type": "persona",
       "branch": "arceo",
       "url": "dist/wiki/p8.html",
-      "summary": "n. 1965-03-28, CABA",
+      "summary": "Nacida en Entre Ríos en 1965. Casada con Daniel Jorge Clemenzo (p7), bisnieto de Francisco Clemenzo (p26).",
       "hasContent": true
     },
     {
@@ -934,7 +934,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p80.html",
-      "summary": "n. 1873-06-14, Colonia Cullen, San Javier, Santa Fe, Argentina",
+      "summary": "Hijo de Juan José Roch (p38) y Marie Putallaz, nacido en Colonia Cullen, San Javier, Santa Fe, en junio de 1873 —recién llegada la familia a Argentina. Primer miembro de la generación nacido en el nuevo país.",
       "hasContent": true
     },
     {
@@ -970,7 +970,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p84.html",
-      "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
+      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.",
       "hasContent": true
     },
     {
@@ -979,7 +979,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p85.html",
-      "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
+      "summary": "Hija mayor de Juan José Roch (p38) y Marie Putallaz, nacida en Conthey en 1862. Emigró a Argentina en 1873 con 11 años. El censo de 1895 la registra como suiza, en el hogar de sus padres en Colón, Entre Ríos.",
       "hasContent": true
     },
     {
@@ -1060,7 +1060,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p93.html",
-      "summary": "n. 1750, Ardon, Valais, Suiza",
+      "summary": "Ancestro más antiguo documentado de la familia Clemenzo, natural de Ardon, Valais. Bisabuelo del emigrante François Clemenzo (p26).",
       "hasContent": true
     },
     {
@@ -1069,7 +1069,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p94.html",
-      "summary": "n. 1774, Ardon, Valais, Suiza",
+      "summary": "Hijo de Baptiste Clemenzo (p93), hermano de Jean Joseph (p57). Natural de Ardon o Riddes, Valais. Bisabuelo probable del emigrante François Clemenzo (p26).",
       "hasContent": true
     },
     {
@@ -1078,7 +1078,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p95.html",
-      "summary": "n. 1876, Santa Fe, Argentina",
+      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1876.",
       "hasContent": true
     },
     {
@@ -1087,7 +1087,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p96.html",
-      "summary": "n. 1877",
+      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1877. El censo de 1895 la registra como argentina, casada, en Colón, Entre Ríos.",
       "hasContent": true
     },
     {
@@ -1096,7 +1096,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p97.html",
-      "summary": "n. 1878, Diamante, Entre Ríos, Argentina · f. 1964-02-07, Concepción del Uruguay, Entre Ríos, Argentina",
+      "summary": "Hijo de Juan José Roch (p38), nacido en Argentina en 1878. Heredó el oficio de herrero de su padre; el censo de 1895 lo registra en Colón, Entre Ríos.",
       "hasContent": true
     },
     {
@@ -1105,7 +1105,7 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p98.html",
-      "summary": "n. 1886",
+      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1886. La menor de los hijos registrados en el censo de 1895.",
       "hasContent": true
     },
     {
@@ -1188,7 +1188,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 5
+      "weight": 32
     },
     {
       "id": "tag:suiza",
@@ -1198,7 +1198,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 3
+      "weight": 30
     },
     {
       "id": "tag:censo",
@@ -1228,7 +1228,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 10
     },
     {
       "id": "tag:entre-rios",
@@ -1238,7 +1238,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 5
     },
     {
       "id": "tag:argentina",
@@ -1248,31 +1248,11 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 3
+      "weight": 4
     },
     {
       "id": "tag:lugar",
       "title": "#lugar",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:roh",
-      "title": "#roh",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:putallaz",
-      "title": "#putallaz",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1288,7 +1268,17 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 3
+      "weight": 53
+    },
+    {
+      "id": "tag:roh",
+      "title": "#roh",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 23
     },
     {
       "id": "tag:conthey",
@@ -1298,17 +1288,87 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 11
     },
     {
-      "id": "tag:santa-fe",
-      "title": "#santa fe",
+      "id": "tag:putallaz",
+      "title": "#putallaz",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:queipo",
+      "title": "#queipo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 6
+    },
+    {
+      "id": "tag:riddes",
+      "title": "#riddes",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 11
+    },
+    {
+      "id": "tag:ardon",
+      "title": "#ardon",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 10
+    },
+    {
+      "id": "tag:stalder",
+      "title": "#stalder",
       "type": "tag",
       "branch": "",
       "url": "",
       "summary": "",
       "hasContent": false,
       "weight": 1
+    },
+    {
+      "id": "tag:salins",
+      "title": "#salins",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:arceo",
+      "title": "#arceo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:santa-fe",
+      "title": "#santa-fe",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
     },
     {
       "id": "tag:colonia-cullen",
@@ -1343,36 +1403,6 @@
     {
       "id": "tag:gazette-du-valais",
       "title": "#gazette du valais",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:salins",
-      "title": "#salins",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:riddes",
-      "title": "#riddes",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 3
-    },
-    {
-      "id": "tag:ardon",
-      "title": "#ardon",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1535,34 +1565,6 @@
       "target": "p27"
     },
     {
-      "source": "p10",
-      "target": "p18"
-    },
-    {
-      "source": "p10",
-      "target": "p19"
-    },
-    {
-      "source": "p10",
-      "target": "p26"
-    },
-    {
-      "source": "p10",
-      "target": "p27"
-    },
-    {
-      "source": "p10",
-      "target": "p7"
-    },
-    {
-      "source": "p10",
-      "target": "p9"
-    },
-    {
-      "source": "p10",
-      "target": "p11"
-    },
-    {
       "source": "p119",
       "target": "p38"
     },
@@ -1576,63 +1578,19 @@
     },
     {
       "source": "p121",
-      "target": "p39"
-    },
-    {
-      "source": "p121",
       "target": "p122"
     },
     {
-      "source": "p122",
-      "target": "p39"
-    },
-    {
-      "source": "p122",
+      "source": "p121",
       "target": "p38"
     },
     {
-      "source": "p20",
+      "source": "p23",
       "target": "p26"
     },
     {
-      "source": "p20",
-      "target": "p27"
-    },
-    {
-      "source": "p20",
-      "target": "p21"
-    },
-    {
-      "source": "p20",
-      "target": "p25"
-    },
-    {
-      "source": "p20",
-      "target": "p22"
-    },
-    {
-      "source": "p20",
-      "target": "p23"
-    },
-    {
-      "source": "p22",
-      "target": "p18"
-    },
-    {
-      "source": "p22",
+      "source": "p25",
       "target": "p26"
-    },
-    {
-      "source": "p22",
-      "target": "p27"
-    },
-    {
-      "source": "p22",
-      "target": "p25"
-    },
-    {
-      "source": "p22",
-      "target": "p23"
     },
     {
       "source": "p26",
@@ -1648,7 +1606,7 @@
     },
     {
       "source": "p26",
-      "target": "p23"
+      "target": "p22"
     },
     {
       "source": "p26",
@@ -1673,10 +1631,6 @@
     {
       "source": "p26",
       "target": "p79"
-    },
-    {
-      "source": "p26",
-      "target": "p25"
     },
     {
       "source": "p36",
@@ -1759,48 +1713,20 @@
       "target": "p93"
     },
     {
-      "source": "p58",
-      "target": "p77"
-    },
-    {
-      "source": "p58",
-      "target": "p73"
-    },
-    {
-      "source": "p58",
-      "target": "p76"
-    },
-    {
-      "source": "p58",
-      "target": "p72"
-    },
-    {
-      "source": "p58",
-      "target": "p74"
-    },
-    {
-      "source": "p58",
-      "target": "p75"
-    },
-    {
       "source": "p74",
-      "target": "p26"
+      "target": "p58"
     },
     {
-      "source": "p74",
-      "target": "p36"
+      "source": "p78",
+      "target": "p37"
     },
     {
-      "source": "p74",
-      "target": "p76"
+      "source": "p94",
+      "target": "p93"
     },
     {
-      "source": "p76",
-      "target": "p36"
-    },
-    {
-      "source": "p76",
-      "target": "p77"
+      "source": "p94",
+      "target": "p57"
     },
     {
       "source": "p1",
@@ -1810,6 +1736,21 @@
     {
       "source": "p1",
       "target": "p4",
+      "rel": "familia"
+    },
+    {
+      "source": "p10",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p10",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p10",
+      "target": "p11",
       "rel": "familia"
     },
     {
@@ -2073,6 +2014,21 @@
       "rel": "familia"
     },
     {
+      "source": "p20",
+      "target": "p26",
+      "rel": "familia"
+    },
+    {
+      "source": "p20",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p20",
+      "target": "p21",
+      "rel": "familia"
+    },
+    {
       "source": "p21",
       "target": "p31",
       "rel": "familia"
@@ -2080,6 +2036,11 @@
     {
       "source": "p21",
       "target": "p32",
+      "rel": "familia"
+    },
+    {
+      "source": "p22",
+      "target": "p27",
       "rel": "familia"
     },
     {
@@ -2180,6 +2141,16 @@
     {
       "source": "p35",
       "target": "p21",
+      "rel": "familia"
+    },
+    {
+      "source": "p39",
+      "target": "p121",
+      "rel": "familia"
+    },
+    {
+      "source": "p39",
+      "target": "p122",
       "rel": "familia"
     },
     {
@@ -2419,6 +2390,11 @@
     },
     {
       "source": "p7",
+      "target": "p10",
+      "rel": "familia"
+    },
+    {
+      "source": "p7",
       "target": "p11",
       "rel": "familia"
     },
@@ -2438,8 +2414,28 @@
       "rel": "familia"
     },
     {
+      "source": "p72",
+      "target": "p58",
+      "rel": "familia"
+    },
+    {
+      "source": "p73",
+      "target": "p58",
+      "rel": "familia"
+    },
+    {
+      "source": "p75",
+      "target": "p58",
+      "rel": "familia"
+    },
+    {
       "source": "p75",
       "target": "p92",
+      "rel": "familia"
+    },
+    {
+      "source": "p76",
+      "target": "p58",
       "rel": "familia"
     },
     {
@@ -2524,17 +2520,17 @@
     },
     {
       "source": "p9",
+      "target": "p10",
+      "rel": "familia"
+    },
+    {
+      "source": "p9",
       "target": "p11",
       "rel": "familia"
     },
     {
       "source": "p91",
       "target": "p17",
-      "rel": "familia"
-    },
-    {
-      "source": "p94",
-      "target": "p93",
       "rel": "familia"
     },
     {
@@ -2581,6 +2577,62 @@
       "source": "p98",
       "target": "p39",
       "rel": "familia"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "p38"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "p39"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "p27"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "p26"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "p36"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "p26"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "p37"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "p57"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "p58"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "p57"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "p58"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "p36"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "p26"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "p26"
     },
     {
       "source": "censo-valais-1870",
@@ -2635,6 +2687,911 @@
     {
       "source": "riddes-valais",
       "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
+      "source": "p10",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p104",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p105",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p106",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p107",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p108",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p109",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p11",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p110",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p118",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p118",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p118",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p118",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p118",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p119",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p119",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p119",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p119",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p12",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p120",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p120",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p120",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p120",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p121",
+      "target": "tag:putallaz",
+      "rel": "tag"
+    },
+    {
+      "source": "p121",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p121",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p121",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p122",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p122",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p122",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p122",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p13",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p14",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p14",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p15",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p15",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p16",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p16",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p17",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p17",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p18",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p19",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p19",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p20",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p21",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p22",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p23",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p25",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p25",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p26",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p27",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p28",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p29",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p30",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p33",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p34",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p35",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p36",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p36",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p36",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p36",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p36",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:stalder",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:salins",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p38",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:putallaz",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p40",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p40",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p40",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p40",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p40",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p50",
+      "target": "tag:arceo",
+      "rel": "tag"
+    },
+    {
+      "source": "p51",
+      "target": "tag:arceo",
+      "rel": "tag"
+    },
+    {
+      "source": "p57",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p57",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p57",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p57",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p57",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p59",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p60",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p61",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p62",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p63",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p64",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p65",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p66",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p67",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p68",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p73",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p73",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p73",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p73",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p74",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p74",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p74",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p74",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p76",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p76",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p76",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p76",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p77",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p77",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p77",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p77",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p78",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p78",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p78",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p78",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p8",
+      "target": "tag:arceo",
+      "rel": "tag"
+    },
+    {
+      "source": "p8",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p80",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p80",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p80",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p84",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p84",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p85",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p85",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p85",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p85",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p85",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p93",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p93",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p93",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p93",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p94",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p94",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p94",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p95",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p96",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p97",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p98",
+      "target": "tag:roh",
       "rel": "tag"
     },
     {

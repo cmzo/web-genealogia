@@ -6,6 +6,7 @@ category: "investigacion"
 date: "2026-06-13"
 tags: "roh, putallaz, clemenzo, conthey, santa fe, colonia cullen, uxorilocalidad, investigacion"
 featured: false
+wiki: "p38, p39, p27, p26"
 slug: "buscando-a-los-roh"
 ---
 

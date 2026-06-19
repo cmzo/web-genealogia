@@ -55,16 +55,17 @@
 /* Aristas */
 .wiki-graph-link {
   stroke: var(--border);
-  stroke-width: 1.4px;
+  stroke-width: 0.8px;
+  opacity: 0.65;
   transition: opacity .2s, stroke .2s;
 }
-.wiki-graph-link.is-dim { opacity: 0.12; }
+.wiki-graph-link.is-dim { opacity: 0.07; }
 /* Aristas de parentesco (backbone familiar): más tenues y punteadas que los enlaces temáticos */
-.wiki-graph-link--familia { stroke-dasharray: 4 4; opacity: 0.5; }
-.wiki-graph-link--familia.is-dim { opacity: 0.08; }
+.wiki-graph-link--familia { stroke-dasharray: 4 4; opacity: 0.28; }
+.wiki-graph-link--familia.is-dim { opacity: 0.06; }
 /* Aristas hacia un tag: tenues y con el color del tag, para que los hubs «tiren» sin saturar */
-.wiki-graph-link--tag { stroke: #64748b; opacity: 0.35; }
-.wiki-graph-link--tag.is-dim { opacity: 0.07; }
+.wiki-graph-link--tag { stroke: #64748b; opacity: 0.32; }
+.wiki-graph-link--tag.is-dim { opacity: 0.06; }
 .wiki-graph-link.is-filtered-out { display: none; }
 
 /* Nodos */
@@ -87,8 +88,15 @@
   stroke: var(--surface);
   stroke-width: 3px;
   stroke-linejoin: round;
-  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s;
 }
+/* Nombres ocultos por defecto (disco limpio); aparecen al acercar el zoom… */
+.wiki-graph-svg.is-zoomed-in .wiki-graph-label { opacity: 1; }
+/* …o sobre el nodo en foco y sus vecinos al hacer hover/seleccionar */
+.wiki-graph-node.is-focus .wiki-graph-label { opacity: 1; }
+.wiki-graph-svg:has(.wiki-graph-node.is-focus) .wiki-graph-node:not(.is-dim) .wiki-graph-label { opacity: 1; }
 .wiki-graph-node.is-dim .wiki-graph-label { opacity: 0.3; }
 
 /* ── Leyenda ──────────────────────────────────────────────────────────────── */

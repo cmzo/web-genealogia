@@ -265,6 +265,10 @@ function build() {
       url: e.url, summary: e.description || '', hasContent: false,
     });
     postTags.set(id, parseTags(e.tags));
+    // Enlazar el post con las personas que trata (frontmatter `wiki:`) → aristas reales en el grafo
+    (e.wiki || []).forEach(pid => {
+      if (personaById.has(pid)) { ensurePersonaNode(pid); addEdge(id, pid); }
+    });
   });
 
   // ── Tags como nodos (transversales: personas, páginas y posts) ────────────

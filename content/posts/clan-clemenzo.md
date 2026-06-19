@@ -6,6 +6,7 @@ category: "investigacion"
 date: "2026-05-10"
 tags: "clemenzo, investigacion, valais, ardon, riddes, censos"
 featured: true
+wiki: "p57, p58, p36"
 slug: "clan-clemenzo"
 ---
 

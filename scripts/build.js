@@ -671,6 +671,8 @@ function build() {
           tags: p.metadata.tags ? p.metadata.tags.split(',').map(t => t.trim()) : [],
           featured: p.metadata.featured === 'true',
           url: `dist/blog/${slug}.html`,
+          // ids de personas que trata el post (frontmatter `wiki:`), para enlazarlas en el grafo de la wiki
+          wiki: p.metadata.wiki ? p.metadata.wiki.split(',').map(t => t.trim()).filter(Boolean) : [],
           langs: LANGS.filter(l => g.out[l]),
         });
       }

@@ -7,6 +7,7 @@ date: "2025-09-15"
 tags: "francisco, cronologia, riddes, argentina, investigacion,"
 featured: true
 kicker: "Una cronología detallada de la vida de Francisco Clemenzo desde Suiza hasta Argentina"
+wiki: "p26"
 slug: "linea-de-tiempo-de-francisco"
 ---
 

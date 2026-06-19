@@ -6,6 +6,7 @@ category: "investigacion"
 date: "2025-08-10"
 tags: "genealogia, investigacion, documentos, registros, suiza, argentina, francia"
 featured: true
+wiki: "p26"
 slug: "investigando-francisco"
 kicker: "Un análisis completo del material que tengo sobre Francisco"
 ---
