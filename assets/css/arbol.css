@@ -548,6 +548,26 @@
     line-height: 1.6;
 }
 
+/* Enlace a la investigación consolidada en la Wiki */
+.panel-wiki-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 11px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    transition: border-color .15s, background .15s;
+}
+.panel-wiki-link:hover { border-color: var(--accent); }
+.panel-wiki-link svg { flex-shrink: 0; }
+
 .panel-empty-hint {
     font-style: normal;
     font-size: 12px;

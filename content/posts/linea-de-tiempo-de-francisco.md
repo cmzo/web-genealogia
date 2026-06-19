@@ -54,7 +54,7 @@ La parte superior de la planilla del censo nos da la localización de la familia
 ![Superposición del antiguo mapa de Villy con Google Maps](../../assets/images/posts/VillysSpuerpuesto.jpeg)
 *Superposción del antiguo mapa de Villy con Google Maps*
 
-**Documentos en Argentina**. Existen diversos censos, actas y registros con su firma, disponibles [aquí](../../archivo.html). Entre ellos destaco el siguiente:
+**Documentos en Argentina**. Existen diversos censos, actas y registros con su firma, disponibles [aquí](../../wiki.html?focus=p26). Entre ellos destaco el siguiente:
 
 ![Documento militar de Francisco](../../assets/images/posts/FJHC_1859_militar_2.jpeg)
 _Documento militar de Francisco_
@@ -168,7 +168,7 @@ Finalmente, el acta de defunción de Francisco en 1928 confirma que se encontrab
 
 ![FJHC 1859 defunción](../../assets/images/posts/\1
 
-Todos los documentos se pueden consultar en detalle haciendo click [acá](../../archivo.html#/francois-clemenzo).
+Todos los documentos se pueden consultar en detalle haciendo click [acá](../../wiki.html?focus=p26).
 
 ## Observaciones
 

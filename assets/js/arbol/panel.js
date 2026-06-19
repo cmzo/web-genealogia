@@ -1,5 +1,6 @@
 /**
- * panel.js — panel lateral con pestañas: Persona | Investigación | Archivos.
+ * panel.js — panel lateral con pestañas: Persona | Archivos.
+ * (La investigación se movió a la Wiki; la pestaña Persona enlaza allí.)
  *
  * Escucha 'selectionChange' del store. Los links de navegación llaman a
  * setFocus + setSelected. El estado de pestaña activa persiste entre cambios
@@ -177,8 +178,6 @@ function _renderBody(personaId) {
   if (_activeTab === 'persona') {
     _tabPersona(personaId);
     _bindNavLinks();
-  } else if (_activeTab === 'investigacion') {
-    _tabInvestigacion(personaId); // async — manages its own content
   } else if (_activeTab === 'archivos') {
     _tabArchivos(personaId);
   }
@@ -267,52 +266,16 @@ function _tabPersona(personaId) {
     html = `<p class="panel-empty">Sin datos biográficos registrados.</p>`;
   }
 
+  const wikiBase = window.PATH_CONFIG ? window.PATH_CONFIG.base : './';
+  html += `<a class="panel-wiki-link" href="${wikiBase}wiki.html?focus=${personaId}">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6.5 10 10M17 6.5 14 10M7 17.5 10 14M17 17.5 14 14"/></svg>
+    Ver investigación en la wiki</a>`;
+
   _body.innerHTML = html;
 }
 
-// ── Tab: Investigación ────────────────────────────────────────────────────────
-
-async function _tabInvestigacion(personaId) {
-  const p = getPersona(personaId);
-  if (!p) return;
-
-  _body.innerHTML = `<p class="panel-empty">Cargando…</p>`;
-
-  const url = window.getContentPath(`personas/${personaId}.md`);
-  try {
-    const res = await fetch(url);
-    if (_currentId !== personaId) return; // navegó a otra persona mientras cargaba
-    if (res.ok) {
-      const md = await res.text();
-      if (_currentId !== personaId) return;
-      _body.innerHTML = `<div class="panel-section"><div class="panel-markdown">${window.marked.parse(md)}</div></div>`;
-      return;
-    }
-  } catch { /* sin archivo — continúa al fallback */ }
-
-  if (_currentId !== personaId) return;
-
-  // Fallback: notas y fuentes del DB
-  let html = '';
-  if (p.notes?.trim()) {
-    html += `<section class="panel-section">
-      <h3 class="panel-section-title">Notas</h3>
-      <p class="panel-text">${p.notes.trim()}</p>
-    </section>`;
-  }
-  if (p.sources?.trim()) {
-    html += `<section class="panel-section">
-      <h3 class="panel-section-title">Fuentes</h3>
-      <p class="panel-text">${p.sources.trim()}</p>
-    </section>`;
-  }
-  if (!html) {
-    html = `<p class="panel-empty">Sin notas de investigación.<br>
-      <span class="panel-empty-hint">Crea <code>content/personas/${personaId}.md</code> para agregar contenido.</span>
-    </p>`;
-  }
-  _body.innerHTML = html;
-}
+// La investigación por persona ya no vive en el árbol: se consolidó en la Wiki
+// (content/personas/p{id}.md → grafo + modal). La ficha enlaza allí vía _tabPersona.
 
 // ── Tab: Archivos ─────────────────────────────────────────────────────────────
 

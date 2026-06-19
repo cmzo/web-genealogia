@@ -163,7 +163,7 @@ flowchart TD
     class MLU,MAN,MAU,LUI ar
 ```
 
-**Cuatro de esos hijos dejaron rastro de sobra.** Los repaso uno por uno: cada quien con su historia, sus conclusiones y, al pie, una galería con sus registros (se abren en grande con un clic). Todo esto irá también al [Archivo](../../archivo.html) del sitio, asociado a cada persona, cuando actualice el árbol.
+**Cuatro de esos hijos dejaron rastro de sobra.** Los repaso uno por uno: cada quien con su historia, sus conclusiones y, al pie, una galería con sus registros (se abren en grande con un clic). Todo esto irá también a la [Wiki](../../wiki.html) del sitio, asociado a cada persona, cuando actualice el árbol.
 
 #### Mariana Roh — tres uniones y dos hijos con un Clemenzo
 

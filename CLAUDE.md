@@ -109,11 +109,25 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 - `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
 - `arbol.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
-- `archivo.html` — document/photo archive viewer; faceted filters by branch/country (the name search bar was removed in favor of the global ⌘+K palette)
+- `wiki.html` — **knowledge graph** (Obsidian-style, D3 force layout) que reemplazó al antiguo Archivo; fetches `assets/data/wiki-graph.json` + `arbol.json`. Clic en un nodo abre un panel lateral con relaciones/enlaces; el botón "Leer" abre un modal que carga el markdown renderizado de `dist/wiki/<id>.html`. Ver la sección **Wiki** más abajo.
+- `archivo.html` — **retirado**: ahora es solo un redirect a `wiki.html` (preserva la URL para marcadores y posts viejos)
 
 ### Global command palette (`assets/js/command-palette.js`)
 
-Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it in the tree via `window.__treeFocus` (defined in `arbol.html`) when already on the tree, otherwise navigates to `arbol.html?focus=<id>`. En desktop (ancho > 960px) hay además un grupo **«Línea de tiempo»** que abre el modal de la persona: directo vía `window.__openTimeline` (expuesto por `panel.js`) si ya estás en el árbol, o navegando a `arbol.html?timeline=<id>` (el init de `arbol.html` lee ese parámetro y lo abre). En mobile no aparece. Included on Inicio, Árbol, Archivo, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
+Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it sin salir vía `window.__personaFocus || window.__treeFocus` (el árbol expone `__treeFocus`; la wiki expone `__personaFocus` para enfocar el nodo en el grafo); si la página no define handler, navega a `arbol.html?focus=<id>`. En desktop (ancho > 960px) hay además un grupo **«Línea de tiempo»** que abre el modal de la persona: directo vía `window.__openTimeline` (expuesto por `panel.js`) si ya estás en el árbol, o navegando a `arbol.html?timeline=<id>` (el init de `arbol.html` lee ese parámetro y lo abre). En mobile no aparece. Included on Inicio, Árbol, Wiki, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
+
+### Wiki — grafo de conocimiento (`wiki.html`)
+
+Reemplaza al antiguo Archivo. Es un **grafo estilo Obsidian** (D3 force layout) donde el grafo es el hub: nodos = **personas** + **páginas** de lugar/fuente/evento/tema; aristas = enlaces. Todo ocurre in-page (panel lateral + modal), sin navegar.
+
+**Pipeline (`scripts/build-wiki.js`, llamado por `build.js` después de generar `arbol.json`):**
+1. Lee `content/wiki/*.md` (páginas autoradas, con frontmatter `title`/`type`/`summary` y enlaces `[[destino]]`/`[[destino|alias]]`) + `content/personas/p{id}.md` (las **notas de investigación**, que se consolidaron acá desde el árbol) + `arbol.json` (personas).
+2. Resuelve enlaces: en páginas, `[[p26]]` / `[[slug]]` / `[[Título]]`; en notas de persona, las **menciones en prosa tipo `p36`** se linkifican y generan aristas.
+3. Emite **`assets/data/wiki-graph.json`** `{ nodes:[{id,title,type,branch,url,summary,hasContent}], edges:[{source,target}] }` y renderiza cada nodo con contenido a **`dist/wiki/<id>.html`** (páginas: slug; personas: `p<n>`), usando `content/templates/wiki-template.html`.
+
+**Front-end (`assets/js/wiki/graph.js`, ES module; estilos en `assets/css/wiki.css`):** fuerza D3, color por rama (personas, vía `getBranchColor` de `arbol/config.js`) o por tipo (páginas). Clic en un nodo → **panel lateral** (`#wikiPanel`) con relaciones (Padres/Cónyuge/Hijos desde `arbol.json` para personas; Enlaza con/Mencionada en para páginas) + botones "Leer …" y "Ver en árbol". El botón **Leer abre un modal** (`#wikiModal`) que hace `fetch` de `dist/wiki/<id>.html` y extrae `.wiki-page-content`. Los chips del panel y los `[[enlaces]]` del modal **re-centran el grafo** (`recenterOn`) sobre el nodo destino. Filtro por rama (pills), leyenda, zoom. Lee `?focus=<id>` de la URL y expone `window.__personaFocus` para el ⌘K.
+
+Para agregar contenido: crear `content/wiki/<slug>.md` (lugar/fuente/evento) o editar `content/personas/p{id}.md`, usar `[[…]]` para enlazar, y correr `npm run build`.
 
 ### Formulario Colaborar (`colaborar.html`)
 
@@ -131,7 +145,7 @@ assets/js/arbol/
   ├── structure.js — buildMarriageStructure(): parses personas+matrimonios into nodes
   ├── layout.js    — calculateLayout(): positions nodes by generation/order, exports VGAP
   ├── render.js    — initTree(), render(), recenterOn(), zoomIn/Out() — D3 SVG rendering
-  ├── panel.js     — side panel that shows person details and media when a node is selected
+  ├── panel.js     — side panel con pestañas **Persona | Archivos** (la pestaña Investigación se quitó: la investigación vive en la Wiki, y la pestaña Persona enlaza allí vía `wiki.html?focus=<id>`)
   ├── timeline.js  — modal «Línea de tiempo» por persona (se abre desde el botón del hero de panel.js)
   ├── search.js    — name search UI
   └── keyboard.js  — keyboard shortcuts
@@ -201,7 +215,7 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 
 ## Site design system
 
-All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Archivo / Blog / Fuentes / Colaborar, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
+All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Wiki / Blog / Fuentes / Colaborar, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
 
 **Color palette (light mode):**
 

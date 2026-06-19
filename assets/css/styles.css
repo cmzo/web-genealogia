@@ -382,6 +382,16 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   margin: 0 0 24px;
 }
 
+/* Texto descriptivo bajo un section-label (ej. invite a la wiki en la home) */
+.home-section-desc {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: -8px 0 24px;
+  max-width: 46ch;
+}
+
 /* ── Chapter / navigation links ─────────────────────── */
 .home-chapter-nav {
   display: flex;

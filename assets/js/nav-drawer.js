@@ -7,7 +7,7 @@
   const mainLinks = [
     { href: 'sobre.html',             label: 'Sobre el proyecto' },
     { href: 'arbol.html', label: 'Árbol' },
-    { href: 'archivo.html',           label: 'Archivo' },
+    { href: 'wiki.html',              label: 'Wiki' },
     { href: 'blog.html',              label: 'Blog' },
     { href: 'fuentes.html',           label: 'Fuentes' },
   ];
@@ -84,7 +84,7 @@
   const SIDEBAR_ICONS = {
     'sobre.html':             'info',
     'arbol.html': 'account_tree',
-    'archivo.html':           'folder',
+    'wiki.html':              'hub',
     'blog.html':              'edit_note',
     'fuentes.html':           'description',
     'colaborar.html':         'forum',

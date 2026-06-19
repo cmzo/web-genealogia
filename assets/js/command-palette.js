@@ -24,7 +24,7 @@
   const PAGES = [
     { title: 'Inicio',            url: 'index.html',            desc: 'Portada del proyecto' },
     { title: 'Árbol genealógico', url: 'arbol.html', desc: 'Explorar el árbol y los matrimonios' },
-    { title: 'Archivo',           url: 'archivo.html',          desc: 'Documentos y fotografías' },
+    { title: 'Wiki',              url: 'wiki.html',             desc: 'Grafo de personas, lugares y fuentes' },
     { title: 'Blog',              url: 'blog.html',             desc: 'Entradas de investigación' },
     { title: 'Fuentes',           url: 'fuentes.html',          desc: 'Archivos y repositorios consultados' },
     { title: 'Sobre el proyecto', url: 'sobre.html',            desc: 'Qué es y cómo se construyó' },
@@ -299,7 +299,7 @@
       return;
     }
     if (it.type === 'persona') {
-      // Si la página define un handler propio (árbol o archivo), enfocar sin salir;
+      // Si la página define un handler propio (árbol o wiki), enfocar sin salir;
       // si no, navegar al árbol con ?focus=
       const focusFn = window.__personaFocus || window.__treeFocus;
       if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }

@@ -1,0 +1,888 @@
+{
+  "generated": "2026-06-19T09:37:19.047Z",
+  "nodes": [
+    {
+      "id": "censo-valais-1870",
+      "title": "Censo del Valais de 1870",
+      "type": "fuente",
+      "branch": "",
+      "url": "dist/wiki/censo-valais-1870.html",
+      "summary": "Recensement cantonal de 1870, digitalizado por Vallesiana: fuente primaria para ubicar a los Clemenzo en Riddes antes de emigrar.",
+      "hasContent": true
+    },
+    {
+      "id": "emigracion-valais-entrerios",
+      "title": "Emigración Valais → Entre Ríos",
+      "type": "evento",
+      "branch": "",
+      "url": "dist/wiki/emigracion-valais-entrerios.html",
+      "summary": "El traslado de la familia Clemenzo desde el cantón del Valais (Suiza) a Entre Ríos (Argentina) a fines del siglo XIX.",
+      "hasContent": true
+    },
+    {
+      "id": "riddes-valais",
+      "title": "Riddes (Valais)",
+      "type": "lugar",
+      "branch": "",
+      "url": "dist/wiki/riddes-valais.html",
+      "summary": "Comuna del valle del Ródano, en el cantón del Valais, Suiza: cuna de la rama Clemenzo antes de la emigración a Argentina.",
+      "hasContent": true
+    },
+    {
+      "id": "p1",
+      "title": "Juan Martin Clemenzo Vargas Yegros",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p1.html",
+      "summary": "n. 2016-05-17, CABA",
+      "hasContent": true
+    },
+    {
+      "id": "p10",
+      "title": "Felix Ricardo Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p10.html",
+      "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p119",
+      "title": "Jean Joseph Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p119.html",
+      "summary": "n. Conthey, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p120",
+      "title": "Anne Marie Papilloud",
+      "type": "persona",
+      "branch": "papilloud",
+      "url": "dist/wiki/p120.html",
+      "summary": "n. 1796, Conthey (Aven), Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p121",
+      "title": "Jean François Putallaz",
+      "type": "persona",
+      "branch": "putallaz",
+      "url": "dist/wiki/p121.html",
+      "summary": "n. Conthey, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p122",
+      "title": "Catherine Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p122.html",
+      "summary": "n. Conthey, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p18",
+      "title": "Felix Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p18.html",
+      "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p20",
+      "title": "Leon Francisco Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p20.html",
+      "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p22",
+      "title": "Pedro Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p22.html",
+      "summary": "n. Entre Rios",
+      "hasContent": true
+    },
+    {
+      "id": "p26",
+      "title": "François Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p26.html",
+      "summary": "n. 1858-05-31, Riddes, Valais, Suiza · f. 1928-04-17, Concepción del Uruguay, Entre Rios, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p27",
+      "title": "María Celestina Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p27.html",
+      "summary": "n. 1867-12-22, Conthey (Aven), Valais, Suiza · f. 1950-10-02, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p28",
+      "title": "Jose Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p28.html",
+      "summary": "n. 1856-05-05, Riddes, Valais, Suiza · f. 1899-01-20, Colonia Yerua, Concordia, Entre Rios, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p30",
+      "title": "Carlota Julia Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p30.html",
+      "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p34",
+      "title": "Elena Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p34.html",
+      "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p36",
+      "title": "François Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p36.html",
+      "summary": "n. 1809-04-09, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p38",
+      "title": "Juan José Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p38.html",
+      "summary": "n. 1840-10-05, Conthey (Aven), Valais, Suiza · f. 1897, Colón, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p40",
+      "title": "Etienne Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p40.html",
+      "summary": "n. 1862-02-25, Riddes, Valais, Suiza · f. 1938-12-22, Ciudad de Buenos Aires, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p57",
+      "title": "Jean Joseph Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p57.html",
+      "summary": "n. 1780, Valais, Suiza · f. 1846/1850",
+      "hasContent": true
+    },
+    {
+      "id": "p58",
+      "title": "Marie Catherine Cerisier",
+      "type": "persona",
+      "branch": "cerisier",
+      "url": "dist/wiki/p58.html",
+      "summary": "n. 1786 · f. 1851/1861",
+      "hasContent": true
+    },
+    {
+      "id": "p59",
+      "title": "Maria Luisa Perceveranda Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p59.html",
+      "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p60",
+      "title": "Fortunato Abelardo Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p60.html",
+      "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p61",
+      "title": "Juan Francisco Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p61.html",
+      "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p62",
+      "title": "German Cipriano Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p62.html",
+      "summary": "n. 1893-11-13, Partido de San Nicolas",
+      "hasContent": true
+    },
+    {
+      "id": "p63",
+      "title": "Angela Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p63.html",
+      "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p64",
+      "title": "Petrona Estefania Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p64.html",
+      "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p65",
+      "title": "Modesta Damiana Clemencia Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p65.html",
+      "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p66",
+      "title": "Felisa Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p66.html",
+      "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p67",
+      "title": "Esteban Clemenzoz",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p67.html",
+      "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p71",
+      "title": "Angélica Elvira Fonteine",
+      "type": "persona",
+      "branch": "fonteine",
+      "url": "dist/wiki/p71.html",
+      "summary": "n. 1918-07-28, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p72",
+      "title": "Joseph Florentine Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p72.html",
+      "summary": "n. 1805, Ardon",
+      "hasContent": true
+    },
+    {
+      "id": "p74",
+      "title": "Janne Marie Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p74.html",
+      "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p75",
+      "title": "Marie Henriette Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p75.html",
+      "summary": "n. 1815, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p76",
+      "title": "Marie Elizabet Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p76.html",
+      "summary": "n. 1821, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p85",
+      "title": "Marianna Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p85.html",
+      "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p78",
+      "title": "Anaiis Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p78",
+      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p79",
+      "title": "Edwige Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p79",
+      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p19",
+      "title": "Isabel Maria Queipo",
+      "type": "persona",
+      "branch": "queipo",
+      "url": "arbol.html?focus=p19",
+      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
+      "hasContent": false
+    },
+    {
+      "id": "p7",
+      "title": "Daniel Jorge Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p7",
+      "summary": "n. 1959-12-07, CABA",
+      "hasContent": false
+    },
+    {
+      "id": "p9",
+      "title": "Guillermo Alejandro Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p9",
+      "summary": "n. 1964-04-04, CABA",
+      "hasContent": false
+    },
+    {
+      "id": "p11",
+      "title": "Raquel Noemi Carvallo",
+      "type": "persona",
+      "branch": "carvallo",
+      "url": "arbol.html?focus=p11",
+      "summary": "n. CABA",
+      "hasContent": false
+    },
+    {
+      "id": "p39",
+      "title": "Maria Putallaz",
+      "type": "persona",
+      "branch": "putallaz",
+      "url": "arbol.html?focus=p39",
+      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p21",
+      "title": "Emiliana Elena Baster",
+      "type": "persona",
+      "branch": "baster",
+      "url": "arbol.html?focus=p21",
+      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
+      "hasContent": false
+    },
+    {
+      "id": "p25",
+      "title": "Maria Celestina Roh",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p25",
+      "summary": "n. 1885-06-27, Santa Fe, Argentina",
+      "hasContent": false
+    },
+    {
+      "id": "p23",
+      "title": "Francisca Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p23",
+      "summary": "n. Entre Rios",
+      "hasContent": false
+    },
+    {
+      "id": "p37",
+      "title": "Marie Louise Stalder",
+      "type": "persona",
+      "branch": "stalder",
+      "url": "arbol.html?focus=p37",
+      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p77",
+      "title": "Josephine Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p77",
+      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p117",
+      "title": "Marie Rosalie Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "arbol.html?focus=p117",
+      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p118",
+      "title": "Joseph Marie Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "arbol.html?focus=p118",
+      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p73",
+      "title": "Joseph Marie Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p73",
+      "summary": "n. 1818, Ardon, Valais, Suiza",
+      "hasContent": false
+    },
+    {
+      "id": "p93",
+      "title": "Baptiste Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "arbol.html?focus=p93",
+      "summary": "n. 1750, Ardon, Valais, Suiza",
+      "hasContent": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "censo-valais-1870",
+      "target": "p26"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "emigracion-valais-entrerios"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "p26"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "p27"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "censo-valais-1870"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p26"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p28"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p40"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p78"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p79"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p36"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "p27"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "emigracion-valais-entrerios"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "censo-valais-1870"
+    },
+    {
+      "source": "p10",
+      "target": "p18"
+    },
+    {
+      "source": "p10",
+      "target": "p19"
+    },
+    {
+      "source": "p10",
+      "target": "p26"
+    },
+    {
+      "source": "p10",
+      "target": "p27"
+    },
+    {
+      "source": "p10",
+      "target": "p7"
+    },
+    {
+      "source": "p10",
+      "target": "p9"
+    },
+    {
+      "source": "p10",
+      "target": "p11"
+    },
+    {
+      "source": "p119",
+      "target": "p38"
+    },
+    {
+      "source": "p119",
+      "target": "p120"
+    },
+    {
+      "source": "p120",
+      "target": "p38"
+    },
+    {
+      "source": "p120",
+      "target": "p119"
+    },
+    {
+      "source": "p121",
+      "target": "p39"
+    },
+    {
+      "source": "p121",
+      "target": "p122"
+    },
+    {
+      "source": "p122",
+      "target": "p39"
+    },
+    {
+      "source": "p122",
+      "target": "p121"
+    },
+    {
+      "source": "p122",
+      "target": "p38"
+    },
+    {
+      "source": "p20",
+      "target": "p26"
+    },
+    {
+      "source": "p20",
+      "target": "p27"
+    },
+    {
+      "source": "p20",
+      "target": "p21"
+    },
+    {
+      "source": "p20",
+      "target": "p25"
+    },
+    {
+      "source": "p20",
+      "target": "p22"
+    },
+    {
+      "source": "p20",
+      "target": "p23"
+    },
+    {
+      "source": "p22",
+      "target": "p18"
+    },
+    {
+      "source": "p22",
+      "target": "p26"
+    },
+    {
+      "source": "p22",
+      "target": "p27"
+    },
+    {
+      "source": "p22",
+      "target": "p25"
+    },
+    {
+      "source": "p22",
+      "target": "p20"
+    },
+    {
+      "source": "p22",
+      "target": "p23"
+    },
+    {
+      "source": "p26",
+      "target": "p36"
+    },
+    {
+      "source": "p26",
+      "target": "p37"
+    },
+    {
+      "source": "p26",
+      "target": "p28"
+    },
+    {
+      "source": "p26",
+      "target": "p22"
+    },
+    {
+      "source": "p26",
+      "target": "p23"
+    },
+    {
+      "source": "p26",
+      "target": "p40"
+    },
+    {
+      "source": "p26",
+      "target": "p77"
+    },
+    {
+      "source": "p26",
+      "target": "p76"
+    },
+    {
+      "source": "p26",
+      "target": "p27"
+    },
+    {
+      "source": "p26",
+      "target": "p78"
+    },
+    {
+      "source": "p26",
+      "target": "p79"
+    },
+    {
+      "source": "p26",
+      "target": "p25"
+    },
+    {
+      "source": "p36",
+      "target": "p26"
+    },
+    {
+      "source": "p36",
+      "target": "p28"
+    },
+    {
+      "source": "p36",
+      "target": "p40"
+    },
+    {
+      "source": "p36",
+      "target": "p77"
+    },
+    {
+      "source": "p36",
+      "target": "p37"
+    },
+    {
+      "source": "p36",
+      "target": "p57"
+    },
+    {
+      "source": "p36",
+      "target": "p58"
+    },
+    {
+      "source": "p36",
+      "target": "p78"
+    },
+    {
+      "source": "p36",
+      "target": "p79"
+    },
+    {
+      "source": "p38",
+      "target": "p39"
+    },
+    {
+      "source": "p38",
+      "target": "p85"
+    },
+    {
+      "source": "p38",
+      "target": "p117"
+    },
+    {
+      "source": "p38",
+      "target": "p27"
+    },
+    {
+      "source": "p38",
+      "target": "p118"
+    },
+    {
+      "source": "p57",
+      "target": "p36"
+    },
+    {
+      "source": "p57",
+      "target": "p58"
+    },
+    {
+      "source": "p57",
+      "target": "p72"
+    },
+    {
+      "source": "p57",
+      "target": "p73"
+    },
+    {
+      "source": "p57",
+      "target": "p74"
+    },
+    {
+      "source": "p57",
+      "target": "p75"
+    },
+    {
+      "source": "p57",
+      "target": "p76"
+    },
+    {
+      "source": "p57",
+      "target": "p93"
+    },
+    {
+      "source": "p58",
+      "target": "p77"
+    },
+    {
+      "source": "p58",
+      "target": "p57"
+    },
+    {
+      "source": "p58",
+      "target": "p73"
+    },
+    {
+      "source": "p58",
+      "target": "p76"
+    },
+    {
+      "source": "p58",
+      "target": "p72"
+    },
+    {
+      "source": "p58",
+      "target": "p36"
+    },
+    {
+      "source": "p58",
+      "target": "p74"
+    },
+    {
+      "source": "p58",
+      "target": "p75"
+    },
+    {
+      "source": "p72",
+      "target": "p57"
+    },
+    {
+      "source": "p72",
+      "target": "p58"
+    },
+    {
+      "source": "p74",
+      "target": "p57"
+    },
+    {
+      "source": "p74",
+      "target": "p58"
+    },
+    {
+      "source": "p74",
+      "target": "p26"
+    },
+    {
+      "source": "p74",
+      "target": "p36"
+    },
+    {
+      "source": "p74",
+      "target": "p76"
+    },
+    {
+      "source": "p75",
+      "target": "p57"
+    },
+    {
+      "source": "p75",
+      "target": "p58"
+    },
+    {
+      "source": "p76",
+      "target": "p57"
+    },
+    {
+      "source": "p76",
+      "target": "p58"
+    },
+    {
+      "source": "p76",
+      "target": "p26"
+    },
+    {
+      "source": "p76",
+      "target": "p36"
+    },
+    {
+      "source": "p76",
+      "target": "p74"
+    },
+    {
+      "source": "p76",
+      "target": "p77"
+    }
+  ]
+}

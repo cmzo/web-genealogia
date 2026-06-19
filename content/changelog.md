@@ -1,3 +1,17 @@
+### 19 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> La Wiki: un mapa navegable de la familia
+
+El **Archivo** se transformó en la **Wiki**, una forma nueva de recorrer la investigación. En lugar de una tabla, ahora hay un **grafo interactivo** —al estilo de las wikis de fans— donde las **personas, los lugares y las fuentes** son puntos conectados entre sí: se ve de un vistazo qué se relaciona con qué. Al tocar un punto se abre un **panel** con sus vínculos (padres, cónyuge, hijos) y los lugares y documentos donde aparece, y el botón **Leer** abre, sin salir de la página, un recuadro grande con la investigación o la ficha completa. Podés saltar de una persona a otra siguiendo las conexiones, y filtrar por rama familiar con las pastillas de arriba.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La investigación de cada persona ahora se lee mejor
+
+Las notas de investigación que antes vivían en una pestaña del árbol se mudaron a la Wiki, donde se ven **más grandes y mejor maquetadas** (con sus tablas, cronologías y citas). Desde la ficha de una persona en el árbol, el botón **«Ver investigación en la wiki»** lleva directo a su página.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Acceso a la Wiki desde la portada
+
+La página de inicio suma una invitación para **entrar a la Wiki**, igual que la que ya existía para el árbol genealógico.
+
 ### 17 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Más protección contra spam y bots

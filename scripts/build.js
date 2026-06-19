@@ -690,6 +690,13 @@ function build() {
   // Generar arbol.json desde data/arbol.db
   buildArbolData();
 
+  // Generar la wiki (grafo + páginas) — depende de arbol.json ya actualizado
+  try {
+    require('./build-wiki.js').build();
+  } catch (e) {
+    console.warn('⚠️  build-wiki.js falló:', e.message);
+  }
+
   console.log('🎉 Build completado!');
 }
 

@@ -6,7 +6,7 @@ This site is the archive of that research. I have been conducting it myself, Mat
 
 The **[Tree](arbol.html)** is the heart of the project and the best entry point. It displays the family centered on one person; clicking on any card reorganizes the tree around that person. Each person has three tabs: their vital data, their research notes (hypotheses, sources, pending tasks), and their documents. It works on mobile, but the full experience is on tablet or computer.
 
-The **[Archive](archivo.html)** is the tabular view of the same thing: all people with their photos and documents, searchable by name and filterable by branch. The **[Blog](blog.html)** tells the story — what document appeared, what hypothesis fell apart, what was concluded and with what sources. And **[Sources](fuentes.html)** lists the archives and institutions where everything comes from, with links when available.
+The **[Wiki](wiki.html)** is a navigable graph of the same thing: people, places and sources connected to each other. Each node opens a card with its relations and links, and each person's research —with its documents and conclusions— reads right there. The **[Blog](blog.html)** tells the story — what document appeared, what hypothesis fell apart, what was concluded and with what sources. And **[Sources](fuentes.html)** lists the archives and institutions where everything comes from, with links when available.
 
 Each person in the tree carries a label that indicates how much is known about them:
 
