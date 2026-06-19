@@ -94,6 +94,7 @@ date: "2024-08-17"
 tags: "tag1, tag2"
 featured: true
 slug: "my-slug"        # defaults to filename without .md
+wiki: "p36, p26"       # optional — ids de personas que trata el post; las enlaza en el grafo de la wiki
 aside: |               # optional sidebar content (supports Markdown)
   Some sidebar text
 ```
@@ -109,7 +110,7 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 - `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
 - `arbol.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
-- `wiki.html` — **knowledge graph** (Obsidian-style, D3 force layout) que reemplazó al antiguo Archivo; fetches `assets/data/wiki-graph.json` + `arbol.json`. Clic en un nodo abre un panel lateral con relaciones/enlaces; el botón "Leer" abre un modal que carga el markdown renderizado de `dist/wiki/<id>.html`. Ver la sección **Wiki** más abajo.
+- `wiki.html` — **knowledge graph** (Obsidian-style, **Cytoscape.js + física propia**) que reemplazó al antiguo Archivo; fetches `assets/data/wiki-graph.json` + `arbol.json`. Clic en un nodo abre un panel lateral con relaciones/enlaces; el botón "Leer" abre un modal que carga el markdown renderizado de `dist/wiki/<id>.html`. Ver la sección **Wiki** más abajo.
 - `archivo.html` — **retirado**: ahora es solo un redirect a `wiki.html` (preserva la URL para marcadores y posts viejos)
 
 ### Global command palette (`assets/js/command-palette.js`)
@@ -118,16 +119,18 @@ Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl 
 
 ### Wiki — grafo de conocimiento (`wiki.html`)
 
-Reemplaza al antiguo Archivo. Es un **grafo estilo Obsidian** (D3 force layout) donde el grafo es el hub: nodos = **personas** + **páginas** de lugar/fuente/evento/tema; aristas = enlaces. Todo ocurre in-page (panel lateral + modal), sin navegar.
+Reemplaza al antiguo Archivo. Es un **grafo estilo Obsidian** donde el grafo es el hub: nodos = **personas** + **páginas** de lugar/fuente/evento + **posts** del blog; aristas = familia + menciones/enlaces. Todo ocurre in-page (panel lateral + modal), sin navegar.
+
+**Tags fuera del grafo visual:** los tags existen en `wiki-graph.json` (aristas `rel:"tag"`) y alimentan el **panel** («Etiquetas») y el **resaltado temático** (clic en un chip de tag ilumina a toda su gente), pero **no se dibujan como nodos** — eran el ~51% de las aristas y enmarañaban el disco. El lienzo solo muestra personas + páginas + posts con aristas de familia (`rel:"familia"`) y enlaces/menciones.
 
 **Pipeline (`scripts/build-wiki.js`, llamado por `build.js` después de generar `arbol.json`):**
-1. Lee `content/wiki/*.md` (páginas autoradas, con frontmatter `title`/`type`/`summary` y enlaces `[[destino]]`/`[[destino|alias]]`) + `content/personas/p{id}.md` (las **notas de investigación**, que se consolidaron acá desde el árbol) + `arbol.json` (personas).
-2. Resuelve enlaces: en páginas, `[[p26]]` / `[[slug]]` / `[[Título]]`; en notas de persona, las **menciones en prosa tipo `p36`** se linkifican y generan aristas.
-3. Emite **`assets/data/wiki-graph.json`** `{ nodes:[{id,title,type,branch,url,summary,hasContent}], edges:[{source,target}] }` y renderiza cada nodo con contenido a **`dist/wiki/<id>.html`** (páginas: slug; personas: `p<n>`), usando `content/templates/wiki-template.html`.
+1. Lee `content/wiki/*.md` (páginas autoradas, con frontmatter `title`/`type`/`summary`/`tags` y enlaces `[[destino]]`/`[[destino|alias]]`) + `content/personas/p{id}.md` (las **notas de investigación**) + `arbol.json` (personas + backbone familiar) + `blog-entries.json` (posts).
+2. Resuelve enlaces: en páginas, `[[p26]]` / `[[slug]]` / `[[Título]]`; en notas de persona, las **menciones en prosa tipo `p36`** generan aristas; cada **post** se enlaza a las personas de su frontmatter `wiki: "p36, p26, …"`; los `tags:` (de páginas, notas y posts) generan aristas `rel:"tag"`.
+3. Emite **`assets/data/wiki-graph.json`** `{ nodes:[{id,title,type,branch,url,summary,hasContent}], edges:[{source,target,rel}] }` y renderiza cada nodo con contenido a **`dist/wiki/<id>.html`** usando `content/templates/wiki-template.html`.
 
-**Front-end (`assets/js/wiki/graph.js`, ES module; estilos en `assets/css/wiki.css`):** fuerza D3, color por rama (personas, vía `getBranchColor` de `arbol/config.js`) o por tipo (páginas). Clic en un nodo → **panel lateral** (`#wikiPanel`) con relaciones (Padres/Cónyuge/Hijos desde `arbol.json` para personas; Enlaza con/Mencionada en para páginas) + botones "Leer …" y "Ver en árbol". El botón **Leer abre un modal** (`#wikiModal`) que hace `fetch` de `dist/wiki/<id>.html` y extrae `.wiki-page-content`. Los chips del panel y los `[[enlaces]]` del modal **re-centran el grafo** (`recenterOn`) sobre el nodo destino. Filtro por rama (pills), leyenda, zoom. Lee `?focus=<id>` de la URL y expone `window.__personaFocus` para el ⌘K.
+**Front-end (`assets/js/wiki/graph.js`, ES module; importa `cytoscape` por ESM de jsdelivr; estilos en `assets/css/wiki.css`):** render con **Cytoscape.js** y una **física propia** estilo Obsidian — repulsión entre todos los nodos + centrado + resortes de enlace, **confinados en un borde circular** → el disco redondo emerge de la física (no de post-procesos). El armado son ~300 pasos síncronos con el lienzo oculto (fade-in al terminar). La **misma simulación maneja el arrastre**: agarrar un nodo arrastra a sus vecinos; al soltar todo vuelve al círculo. Constantes ajustables al inicio del bloque de física (`K_REPEL`, `K_CENTER`, `K_LINK`, `K_BOUND`, `DAMP`, `DISC_R`). Color por rama (`getBranchColor` de `arbol/config.js`) o por tipo; nombres **ocultos salvo hover** y con **tamaño fijo en pantalla** (se recalcula `font-size` inverso al zoom); hover ilumina las aristas del nodo. Clic → **panel lateral** (`#wikiPanel`) con relaciones + botones "Leer …"/"Ver en árbol"; el botón **Leer abre un modal** (`#wikiModal`). Filtro por rama (vía ⌘K), leyenda, zoom. Lee `?focus=<id>` y expone `window.__personaFocus`.
 
-Para agregar contenido: crear `content/wiki/<slug>.md` (lugar/fuente/evento) o editar `content/personas/p{id}.md`, usar `[[…]]` para enlazar, y correr `npm run build`.
+Para agregar contenido: crear `content/wiki/<slug>.md` (lugar/fuente/evento), editar `content/personas/p{id}.md`, o poner `wiki: "p…"` en el frontmatter de un post; usar `[[…]]`/menciones para enlazar y correr `npm run build`.
 
 ### Formulario Colaborar (`colaborar.html`)
 

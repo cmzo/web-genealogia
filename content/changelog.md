@@ -1,3 +1,17 @@
+### 20 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El mapa de la Wiki ahora es un círculo navegable
+
+El grafo de la Wiki pasó de ser una maraña a un **disco ordenado**: las personas y sus documentos se acomodan solos en un círculo, agrupados por familia, igual que los mapas de conocimiento de apps como Obsidian. Los nombres aparecen **al pasar el mouse** (en reposo se ven solo los puntos, más limpio) y, al apuntar a alguien, **se iluminan las líneas** que lo conectan con su familia. El conjunto aparece con una animación suave en lugar de saltar al cargar.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Mover los nodos del mapa
+
+Ahora podés **agarrar cualquier punto y arrastrarlo**: los parientes conectados lo siguen, y al soltar todo vuelve lentamente a su lugar en el círculo, con una sensación elástica. Sirve para explorar quién está unido a quién.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los posts del blog, conectados con su gente
+
+Las entradas del blog ahora aparecen en el mapa **unidas a las personas que cuentan**: «La ruina de François» queda pegado a François Clemenzo y su familia, «Buscando a los Roh» entre los Roh, y así. Tocá un post para ver de quién habla, o una persona para ver en qué posts aparece.
+
 ### 19 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> La Wiki: un mapa navegable de la familia
