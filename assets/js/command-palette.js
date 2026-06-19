@@ -39,6 +39,7 @@
     post:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
     search:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
     timeline:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    filter:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>',
   };
 
   // La línea de tiempo (master-detail) no entra en pantallas chicas
@@ -191,6 +192,23 @@
       _t: norm(p.title), _h: norm(p.title + ' ' + p.desc) }));
   }
 
+  // Filtros por rama de la wiki — solo existen cuando el grafo los expone (estás en la wiki)
+  function wikiFilterItems() {
+    const branches = window.__wikiBranches;
+    if (!Array.isArray(branches) || !branches.length) return [];
+    const active = typeof window.__wikiActiveBranch === 'function' ? window.__wikiActiveBranch() : null;
+    const items = [];
+    if (active) items.push({ type: 'filter', branch: null, title: 'Quitar filtro de rama',
+      sub: 'Mostrar todas las ramas', _t: norm('quitar filtro ramas'), _h: norm('quitar filtro todas las ramas mostrar') });
+    branches.forEach(b => {
+      const label = cap(b);
+      items.push({ type: 'filter', branch: b, title: `Rama: ${label}`,
+        sub: active === b ? 'Filtro activo' : 'Filtrar el grafo por esta rama',
+        _t: norm(label), _h: norm('rama ' + label + ' filtro') });
+    });
+    return items;
+  }
+
   function rank(items, q, limit) {
     return items
       .map(it => {
@@ -215,9 +233,10 @@
     const posts = (_index && _index.posts) || [];
 
     if (!q) {
-      // Estado vacío: sugerencias — páginas + posts recientes
+      // Estado vacío: sugerencias — filtros de la wiki (si aplica) + páginas + posts recientes
       const recent = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 4);
       return [
+        { label: 'Filtrar la wiki', items: wikiFilterItems() },
         { label: 'Páginas', items: pages },
         { label: 'Posts recientes', items: recent },
       ].filter(g => g.items.length);
@@ -229,6 +248,7 @@
       : [];
 
     return [
+      { label: 'Filtrar la wiki', items: rank(wikiFilterItems(), q, 5) },
       { label: 'Páginas',         items: rank(pages, q, 6) },
       { label: 'Personas',        items: rank(personas, q, 7) },
       { label: 'Línea de tiempo', items: tl },
@@ -292,6 +312,12 @@
   function activate() {
     const it = _visible[_active];
     if (!it) return;
+    if (it.type === 'filter') {
+      // Filtra el grafo de la wiki sin salir de la página
+      if (typeof window.__wikiFilterBranch === 'function') window.__wikiFilterBranch(it.branch);
+      close();
+      return;
+    }
     if (it.tl) {
       // Abrir la línea de tiempo: directo si estamos en el árbol, si no navegar con ?timeline=
       if (typeof window.__openTimeline === 'function') { window.__openTimeline(it.id); close(); return; }

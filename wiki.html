@@ -52,17 +52,13 @@
     </aside>
 
     <main id="main-content" class="site-main" style="padding: 0; display: flex; flex-direction: column;">
-      <div class="wiki-toolbar">
-        <span class="wiki-toolbar-hint">Grafo de conocimiento · clic en un nodo para abrirlo</span>
-        <div class="wiki-filter-pills" id="wikiBranchPills"></div>
-        <div class="zoom-controls">
+      <div class="wiki-graph-wrapper">
+        <div class="wiki-graph" id="wikiGraph"></div>
+
+        <div class="wiki-graph-zoom">
           <button id="wikiZoomIn"  class="zoom-btn" title="Acercar (+)">+</button>
           <button id="wikiZoomOut" class="zoom-btn" title="Alejar (−)">−</button>
         </div>
-      </div>
-
-      <div class="wiki-graph-wrapper">
-        <div class="wiki-graph" id="wikiGraph"></div>
 
         <div class="wiki-legend" id="wikiLegend"></div>
 

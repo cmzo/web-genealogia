@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-19T09:37:19.047Z",
+  "generated": "2026-06-19T13:02:11.234Z",
   "nodes": [
     {
       "id": "censo-valais-1870",
@@ -47,12 +47,201 @@
       "hasContent": true
     },
     {
+      "id": "p100",
+      "title": "Anselmo Leopoldo Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p100.html",
+      "summary": "n. 1876, Colón, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p101",
+      "title": "Manuela Locher",
+      "type": "persona",
+      "branch": "locher",
+      "url": "dist/wiki/p101.html",
+      "summary": "n. 1876, Departamento Colón, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p102",
+      "title": "Francisco José Vergère",
+      "type": "persona",
+      "branch": "vergere",
+      "url": "dist/wiki/p102.html",
+      "summary": "n. 1836, Conthey, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p103",
+      "title": "Domingo Mersilli",
+      "type": "persona",
+      "branch": "mersilli",
+      "url": "dist/wiki/p103.html",
+      "summary": "n. 1860, Italia",
+      "hasContent": true
+    },
+    {
+      "id": "p104",
+      "title": "José Domingo Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p104.html",
+      "summary": "n. 1884-07-25, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p105",
+      "title": "Gregoria Orfilia Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p105.html",
+      "summary": "n. 1906-05-09, Genacito, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p106",
+      "title": "Pedro Mauricio Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p106.html",
+      "summary": "n. 1908-03-24, Villa Mantero, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p107",
+      "title": "Rogelia Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p107.html",
+      "summary": "n. 1909-04-17, Genacito, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p108",
+      "title": "Antonio Ramón Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p108.html",
+      "summary": "n. 1911-01-08, Genacito, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p109",
+      "title": "Héctor Patricio Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p109.html",
+      "summary": "n. 1914-05-17, Genacito, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p11",
+      "title": "Raquel Noemi Carvallo",
+      "type": "persona",
+      "branch": "carvallo",
+      "url": "dist/wiki/p11.html",
+      "summary": "n. CABA",
+      "hasContent": true
+    },
+    {
+      "id": "p110",
+      "title": "Raúl Roque Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p110.html",
+      "summary": "n. 1917-12-30, Genacito, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p111",
+      "title": "Leopoldo Ramón Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p111.html",
+      "summary": "n. 1898, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p112",
+      "title": "Laurindo Anselmo Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p112.html",
+      "summary": "n. 1902-11-30, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p113",
+      "title": "Luisa Odila Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p113.html",
+      "summary": "n. 1908-07-21, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p114",
+      "title": "Juan Héctor Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p114.html",
+      "summary": "n. 1911-03-08, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p115",
+      "title": "María Catalina Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p115.html",
+      "summary": "n. 1912-05-30, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p116",
+      "title": "Irma Cirila Etchegorry",
+      "type": "persona",
+      "branch": "etchegorry",
+      "url": "dist/wiki/p116.html",
+      "summary": "n. 1916-03-09, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p117",
+      "title": "Marie Rosalie Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p117.html",
+      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p118",
+      "title": "Joseph Marie Roch",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p118.html",
+      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
+      "hasContent": true
+    },
+    {
       "id": "p119",
       "title": "Jean Joseph Roch",
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p119.html",
       "summary": "n. Conthey, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p12",
+      "title": "Jorge Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p12.html",
+      "summary": "n. Bs As",
       "hasContent": true
     },
     {
@@ -83,12 +272,75 @@
       "hasContent": true
     },
     {
+      "id": "p13",
+      "title": "Ana Mary Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p13.html",
+      "summary": "n. Bs As",
+      "hasContent": true
+    },
+    {
+      "id": "p14",
+      "title": "Margot Celestina Clemenzo Queipo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p14.html",
+      "summary": "n. Bs As",
+      "hasContent": true
+    },
+    {
+      "id": "p15",
+      "title": "Eduardo Clemenzo Queipo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p15.html",
+      "summary": "n. Bs As",
+      "hasContent": true
+    },
+    {
+      "id": "p16",
+      "title": "Yolanda Isabel Clemenzo Queipo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p16.html",
+      "summary": "n. Bs As",
+      "hasContent": true
+    },
+    {
+      "id": "p17",
+      "title": "Olga Hemilce Clemenzo Queipo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p17.html",
+      "summary": "n. Bs As",
+      "hasContent": true
+    },
+    {
       "id": "p18",
       "title": "Felix Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p18.html",
       "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p19",
+      "title": "Isabel Maria Queipo",
+      "type": "persona",
+      "branch": "queipo",
+      "url": "dist/wiki/p19.html",
+      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p2",
+      "title": "Manuel Fernandez Clemenzo",
+      "type": "persona",
+      "branch": "fernandez",
+      "url": "dist/wiki/p2.html",
+      "summary": "n. 2023-08-03, CABA",
       "hasContent": true
     },
     {
@@ -101,12 +353,39 @@
       "hasContent": true
     },
     {
+      "id": "p21",
+      "title": "Emiliana Elena Baster",
+      "type": "persona",
+      "branch": "baster",
+      "url": "dist/wiki/p21.html",
+      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
+      "hasContent": true
+    },
+    {
       "id": "p22",
       "title": "Pedro Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p22.html",
       "summary": "n. Entre Rios",
+      "hasContent": true
+    },
+    {
+      "id": "p23",
+      "title": "Francisca Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p23.html",
+      "summary": "n. Entre Rios",
+      "hasContent": true
+    },
+    {
+      "id": "p25",
+      "title": "Maria Celestina Roh",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p25.html",
+      "summary": "n. 1885-06-27, Santa Fe, Argentina",
       "hasContent": true
     },
     {
@@ -137,12 +416,57 @@
       "hasContent": true
     },
     {
+      "id": "p29",
+      "title": "Maria Luisa Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p29.html",
+      "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p3",
+      "title": "Matias Damian Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p3.html",
+      "summary": "n. 1986-08-07, CABA",
+      "hasContent": true
+    },
+    {
       "id": "p30",
       "title": "Carlota Julia Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p30.html",
       "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p31",
+      "title": "Tomas Baster",
+      "type": "persona",
+      "branch": "baster",
+      "url": "dist/wiki/p31.html",
+      "summary": "n. Inglaterra",
+      "hasContent": true
+    },
+    {
+      "id": "p32",
+      "title": "Francisca Guido",
+      "type": "persona",
+      "branch": "guido",
+      "url": "dist/wiki/p32.html",
+      "summary": "n. Uruguay",
+      "hasContent": true
+    },
+    {
+      "id": "p33",
+      "title": "Horacio Lorenzo Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p33.html",
+      "summary": "n. 1914-08-10, Concepción del Uruguay, Entre Rios, Argentina · f. 1989-03-27, Gualeguaychu, Entre Rios, Argentina",
       "hasContent": true
     },
     {
@@ -155,12 +479,30 @@
       "hasContent": true
     },
     {
+      "id": "p35",
+      "title": "Rodolfo Ambrosio Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p35.html",
+      "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
       "id": "p36",
       "title": "François Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p36.html",
       "summary": "n. 1809-04-09, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p37",
+      "title": "Marie Louise Stalder",
+      "type": "persona",
+      "branch": "stalder",
+      "url": "dist/wiki/p37.html",
+      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
       "hasContent": true
     },
     {
@@ -173,12 +515,183 @@
       "hasContent": true
     },
     {
+      "id": "p39",
+      "title": "Maria Putallaz",
+      "type": "persona",
+      "branch": "putallaz",
+      "url": "dist/wiki/p39.html",
+      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p4",
+      "title": "Maria Cecilia Vargas Yegros",
+      "type": "persona",
+      "branch": "vargas yegros",
+      "url": "dist/wiki/p4.html",
+      "summary": "n. 1983-12-20, CABA",
+      "hasContent": true
+    },
+    {
       "id": "p40",
       "title": "Etienne Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p40.html",
       "summary": "n. 1862-02-25, Riddes, Valais, Suiza · f. 1938-12-22, Ciudad de Buenos Aires, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p41",
+      "title": "Estefania Venegas",
+      "type": "persona",
+      "branch": "venegas",
+      "url": "dist/wiki/p41.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p42",
+      "title": "Gustavo Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p42.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p43",
+      "title": "Jorge Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p43.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p44",
+      "title": "Pablo Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p44.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p45",
+      "title": "Sylvia Alina Lantz",
+      "type": "persona",
+      "branch": "Lantz",
+      "url": "dist/wiki/p45.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p46",
+      "title": "Maria Alejandra Cybulski",
+      "type": "persona",
+      "branch": "cybulski",
+      "url": "dist/wiki/p46.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p47",
+      "title": "Sofia Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p47.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p48",
+      "title": "Josefina Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p48.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p49",
+      "title": "Elida Vasquez",
+      "type": "persona",
+      "branch": "vasquez",
+      "url": "dist/wiki/p49.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p5",
+      "title": "Micaela Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p5.html",
+      "summary": "n. 1991-07-06, CABA",
+      "hasContent": true
+    },
+    {
+      "id": "p50",
+      "title": "Oscar Edgar Arceo",
+      "type": "persona",
+      "branch": "arceo",
+      "url": "dist/wiki/p50.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p51",
+      "title": "Benito Arceo",
+      "type": "persona",
+      "branch": "arceo",
+      "url": "dist/wiki/p51.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p52",
+      "title": "Antonia Yanitelli",
+      "type": "persona",
+      "branch": "yanitelli",
+      "url": "dist/wiki/p52.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p53",
+      "title": "Enrique Alfredo Vasquez",
+      "type": "persona",
+      "branch": "vasquez",
+      "url": "dist/wiki/p53.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p54",
+      "title": "Maria Luisa Fracchia",
+      "type": "persona",
+      "branch": "fracchia",
+      "url": "dist/wiki/p54.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p55",
+      "title": "Pablo Martin Vasquez",
+      "type": "persona",
+      "branch": "vasquez",
+      "url": "dist/wiki/p55.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p56",
+      "title": "Elvira Garrido",
+      "type": "persona",
+      "branch": "",
+      "url": "dist/wiki/p56.html",
+      "summary": "",
       "hasContent": true
     },
     {
@@ -206,6 +719,15 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p59.html",
       "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
+      "hasContent": true
+    },
+    {
+      "id": "p6",
+      "title": "Gustavo Fernandez",
+      "type": "persona",
+      "branch": "fernandez",
+      "url": "dist/wiki/p6.html",
+      "summary": "n. 1991-05-30, CABA",
       "hasContent": true
     },
     {
@@ -281,6 +803,42 @@
       "hasContent": true
     },
     {
+      "id": "p68",
+      "title": "Ricardo Queipo",
+      "type": "persona",
+      "branch": "queipo",
+      "url": "dist/wiki/p68.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p69",
+      "title": "Isabel Teresa Viñales",
+      "type": "persona",
+      "branch": "viñales",
+      "url": "dist/wiki/p69.html",
+      "summary": "",
+      "hasContent": true
+    },
+    {
+      "id": "p7",
+      "title": "Daniel Jorge Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p7.html",
+      "summary": "n. 1959-12-07, CABA",
+      "hasContent": true
+    },
+    {
+      "id": "p70",
+      "title": "Antonio Fonteine",
+      "type": "persona",
+      "branch": "fonteine",
+      "url": "dist/wiki/p70.html",
+      "summary": "n. Argentina",
+      "hasContent": true
+    },
+    {
       "id": "p71",
       "title": "Angélica Elvira Fonteine",
       "type": "persona",
@@ -296,6 +854,15 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p72.html",
       "summary": "n. 1805, Ardon",
+      "hasContent": true
+    },
+    {
+      "id": "p73",
+      "title": "Joseph Marie Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p73.html",
+      "summary": "n. 1818, Ardon, Valais, Suiza",
       "hasContent": true
     },
     {
@@ -326,6 +893,87 @@
       "hasContent": true
     },
     {
+      "id": "p77",
+      "title": "Josephine Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p77.html",
+      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p78",
+      "title": "Anaiis Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p78.html",
+      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p79",
+      "title": "Edwige Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p79.html",
+      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p8",
+      "title": "Cristina Magdalena Arceo",
+      "type": "persona",
+      "branch": "arceo",
+      "url": "dist/wiki/p8.html",
+      "summary": "n. 1965-03-28, CABA",
+      "hasContent": true
+    },
+    {
+      "id": "p80",
+      "title": "Jose Luciano Roh Blanco",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p80.html",
+      "summary": "n. 1873-06-14, Colonia Cullen, San Javier, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p81",
+      "title": "Agustin Costabile",
+      "type": "persona",
+      "branch": "costabile",
+      "url": "dist/wiki/p81.html",
+      "summary": "n. Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p82",
+      "title": "Teresa Lidia Costabile",
+      "type": "persona",
+      "branch": "costabile",
+      "url": "dist/wiki/p82.html",
+      "summary": "n. 1917-11-20, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p83",
+      "title": "Angel Carmelo Magallanes",
+      "type": "persona",
+      "branch": "magallanes",
+      "url": "dist/wiki/p83.html",
+      "summary": "n. Catamarca, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p84",
+      "title": "Maria Luisa Clemenzo Roh",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p84.html",
+      "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
       "id": "p85",
       "title": "Marianna Roh",
       "type": "persona",
@@ -335,148 +983,502 @@
       "hasContent": true
     },
     {
-      "id": "p78",
-      "title": "Anaiis Clemenzo",
+      "id": "p86",
+      "title": "Eleuterio Troncoso",
       "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p78",
-      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
-      "hasContent": false
+      "branch": "troncoso",
+      "url": "dist/wiki/p86.html",
+      "summary": "n. Argentina",
+      "hasContent": true
     },
     {
-      "id": "p79",
-      "title": "Edwige Clemenzo",
+      "id": "p87",
+      "title": "Nicanor Troncoso",
       "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p79",
-      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
-      "hasContent": false
+      "branch": "troncoso",
+      "url": "dist/wiki/p87.html",
+      "summary": "n. Argentina",
+      "hasContent": true
     },
     {
-      "id": "p19",
-      "title": "Isabel Maria Queipo",
+      "id": "p88",
+      "title": "Francisca Ruiz",
       "type": "persona",
-      "branch": "queipo",
-      "url": "arbol.html?focus=p19",
-      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
-      "hasContent": false
+      "branch": "ruiz",
+      "url": "dist/wiki/p88.html",
+      "summary": "",
+      "hasContent": true
     },
     {
-      "id": "p7",
-      "title": "Daniel Jorge Clemenzo",
+      "id": "p89",
+      "title": "Dalmaso Fracchia",
       "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p7",
-      "summary": "n. 1959-12-07, CABA",
-      "hasContent": false
+      "branch": "fracchia",
+      "url": "dist/wiki/p89.html",
+      "summary": "n. Italia",
+      "hasContent": true
     },
     {
       "id": "p9",
       "title": "Guillermo Alejandro Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p9",
+      "url": "dist/wiki/p9.html",
       "summary": "n. 1964-04-04, CABA",
-      "hasContent": false
+      "hasContent": true
     },
     {
-      "id": "p11",
-      "title": "Raquel Noemi Carvallo",
+      "id": "p90",
+      "title": "Magdalena Rivero",
       "type": "persona",
-      "branch": "carvallo",
-      "url": "arbol.html?focus=p11",
-      "summary": "n. CABA",
-      "hasContent": false
+      "branch": "rivero",
+      "url": "dist/wiki/p90.html",
+      "summary": "",
+      "hasContent": true
     },
     {
-      "id": "p39",
-      "title": "Maria Putallaz",
-      "type": "persona",
-      "branch": "putallaz",
-      "url": "arbol.html?focus=p39",
-      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
-    },
-    {
-      "id": "p21",
-      "title": "Emiliana Elena Baster",
-      "type": "persona",
-      "branch": "baster",
-      "url": "arbol.html?focus=p21",
-      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
-      "hasContent": false
-    },
-    {
-      "id": "p25",
-      "title": "Maria Celestina Roh",
+      "id": "p91",
+      "title": "Mónica Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p25",
-      "summary": "n. 1885-06-27, Santa Fe, Argentina",
-      "hasContent": false
+      "url": "dist/wiki/p91.html",
+      "summary": "n. México",
+      "hasContent": true
     },
     {
-      "id": "p23",
-      "title": "Francisca Clemenzo",
+      "id": "p92",
+      "title": "Jean-François Battnier",
       "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p23",
-      "summary": "n. Entre Rios",
-      "hasContent": false
-    },
-    {
-      "id": "p37",
-      "title": "Marie Louise Stalder",
-      "type": "persona",
-      "branch": "stalder",
-      "url": "arbol.html?focus=p37",
-      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
-      "hasContent": false
-    },
-    {
-      "id": "p77",
-      "title": "Josephine Clemenzo",
-      "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p77",
-      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
-      "hasContent": false
-    },
-    {
-      "id": "p117",
-      "title": "Marie Rosalie Roch",
-      "type": "persona",
-      "branch": "roh",
-      "url": "arbol.html?focus=p117",
-      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
-    },
-    {
-      "id": "p118",
-      "title": "Joseph Marie Roch",
-      "type": "persona",
-      "branch": "roh",
-      "url": "arbol.html?focus=p118",
-      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
-    },
-    {
-      "id": "p73",
-      "title": "Joseph Marie Clemenzo",
-      "type": "persona",
-      "branch": "clemenzo",
-      "url": "arbol.html?focus=p73",
-      "summary": "n. 1818, Ardon, Valais, Suiza",
-      "hasContent": false
+      "branch": "Battnier",
+      "url": "dist/wiki/p92.html",
+      "summary": "n. 1817, Saint-Jean-d'Aulph, Haute-Savoie, Francia",
+      "hasContent": true
     },
     {
       "id": "p93",
       "title": "Baptiste Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p93",
+      "url": "dist/wiki/p93.html",
       "summary": "n. 1750, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p94",
+      "title": "Jean Baptiste Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p94.html",
+      "summary": "n. 1774, Ardon, Valais, Suiza",
+      "hasContent": true
+    },
+    {
+      "id": "p95",
+      "title": "María Luisa Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p95.html",
+      "summary": "n. 1876, Santa Fe, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p96",
+      "title": "Manuela Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p96.html",
+      "summary": "n. 1877",
+      "hasContent": true
+    },
+    {
+      "id": "p97",
+      "title": "Mauricio Francisco Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p97.html",
+      "summary": "n. 1878, Diamante, Entre Ríos, Argentina · f. 1964-02-07, Concepción del Uruguay, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "p98",
+      "title": "Luisa Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p98.html",
+      "summary": "n. 1886",
+      "hasContent": true
+    },
+    {
+      "id": "p99",
+      "title": "Rogelia Hernández",
+      "type": "persona",
+      "branch": "hernandez",
+      "url": "dist/wiki/p99.html",
+      "summary": "n. 1880, Colonia Rocamora, Entre Ríos, Argentina",
+      "hasContent": true
+    },
+    {
+      "id": "post:buscando-a-los-roh",
+      "title": "Buscando a los Roh",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/buscando-a-los-roh.html",
+      "summary": "Un cambio de método en la investigación: por generaciones, casi todos los hombres de la familia se instalaron en la casa de sus esposas. Si el patrón es real, la pista de Francisco Clemenzo no está en los Clemenzo — está en los Roh. Punto de partida, documentos y próximos pasos.",
       "hasContent": false
+    },
+    {
+      "id": "post:la-ruina-de-francois",
+      "title": "La ruina de François",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/la-ruina-de-francois.html",
+      "summary": "La prensa oficial del Valais registró, aviso a aviso, la desintegración del patrimonio de François Clemenzoz: un testamento que salta una generación, dos subastas, una curatela pedida por él mismo y un acto de insolvencia. Crónica documental de los años que precedieron a la emigración de su hijo a Argentina.",
+      "hasContent": false
+    },
+    {
+      "id": "post:clan-clemenzo",
+      "title": "Clan Clemenzo",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/clan-clemenzo.html",
+      "summary": "Un recorrido por los censos del Valais entre 1802 y 1870 en busca de los Clemenzo de Ardon y Riddes — los ancestros directos de la rama argentina. Relaciones familiares, movimientos entre comunas e hipótesis sobre los orígenes.",
+      "hasContent": false
+    },
+    {
+      "id": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "title": "Creación de un agente de investigación genealógica con CLAUDE",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html",
+      "summary": "Este es el proceso (con errores, aciertos y fracasos) para crear un agente que me asista en la investigación de mis antepasa",
+      "hasContent": false
+    },
+    {
+      "id": "post:documentar-fuentes",
+      "title": "Ideas para documentar bien las fuentes",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/documentar-fuentes.html",
+      "summary": "Un vistazo al método con el que registro las fuentes, registros y documentos hoy en día",
+      "hasContent": false
+    },
+    {
+      "id": "post:linea-de-tiempo-de-francisco",
+      "title": "Línea de tiempo de Francisco",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/linea-de-tiempo-de-francisco.html",
+      "summary": "Recreando los pasos de Francisco",
+      "hasContent": false
+    },
+    {
+      "id": "post:investigando-francisco",
+      "title": "Investigando a Francisco Clemenzo",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/investigando-francisco.html",
+      "summary": "Un análisis completo del material que tengo sobre Francisco",
+      "hasContent": false
+    },
+    {
+      "id": "tag:valais",
+      "title": "#valais",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 5
+    },
+    {
+      "id": "tag:suiza",
+      "title": "#suiza",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:censo",
+      "title": "#censo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:fuente",
+      "title": "#fuente",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:emigracion",
+      "title": "#emigracion",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:entre-rios",
+      "title": "#entre-rios",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:argentina",
+      "title": "#argentina",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:lugar",
+      "title": "#lugar",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:roh",
+      "title": "#roh",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:putallaz",
+      "title": "#putallaz",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:clemenzo",
+      "title": "#clemenzo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:conthey",
+      "title": "#conthey",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:santa-fe",
+      "title": "#santa fe",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:colonia-cullen",
+      "title": "#colonia cullen",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:uxorilocalidad",
+      "title": "#uxorilocalidad",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:investigacion",
+      "title": "#investigacion",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 7
+    },
+    {
+      "id": "tag:gazette-du-valais",
+      "title": "#gazette du valais",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:salins",
+      "title": "#salins",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:riddes",
+      "title": "#riddes",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:ardon",
+      "title": "#ardon",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:censos",
+      "title": "#censos",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:ia",
+      "title": "#ia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:genealogia",
+      "title": "#genealogia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:tecnologia",
+      "title": "#tecnologia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:documentos",
+      "title": "#documentos",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:registros",
+      "title": "#registros",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:archivo",
+      "title": "#archivo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:francisco",
+      "title": "#francisco",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:cronologia",
+      "title": "#cronologia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:francia",
+      "title": "#francia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     }
   ],
   "edges": [
@@ -505,10 +1507,6 @@
       "target": "p27"
     },
     {
-      "source": "emigracion-valais-entrerios",
-      "target": "censo-valais-1870"
-    },
-    {
       "source": "riddes-valais",
       "target": "p26"
     },
@@ -535,14 +1533,6 @@
     {
       "source": "riddes-valais",
       "target": "p27"
-    },
-    {
-      "source": "riddes-valais",
-      "target": "emigracion-valais-entrerios"
-    },
-    {
-      "source": "riddes-valais",
-      "target": "censo-valais-1870"
     },
     {
       "source": "p10",
@@ -585,10 +1575,6 @@
       "target": "p38"
     },
     {
-      "source": "p120",
-      "target": "p119"
-    },
-    {
       "source": "p121",
       "target": "p39"
     },
@@ -599,10 +1585,6 @@
     {
       "source": "p122",
       "target": "p39"
-    },
-    {
-      "source": "p122",
-      "target": "p121"
     },
     {
       "source": "p122",
@@ -650,10 +1632,6 @@
     },
     {
       "source": "p22",
-      "target": "p20"
-    },
-    {
-      "source": "p22",
       "target": "p23"
     },
     {
@@ -667,10 +1645,6 @@
     {
       "source": "p26",
       "target": "p28"
-    },
-    {
-      "source": "p26",
-      "target": "p22"
     },
     {
       "source": "p26",
@@ -703,10 +1677,6 @@
     {
       "source": "p26",
       "target": "p25"
-    },
-    {
-      "source": "p36",
-      "target": "p26"
     },
     {
       "source": "p36",
@@ -762,10 +1732,6 @@
     },
     {
       "source": "p57",
-      "target": "p36"
-    },
-    {
-      "source": "p57",
       "target": "p58"
     },
     {
@@ -798,10 +1764,6 @@
     },
     {
       "source": "p58",
-      "target": "p57"
-    },
-    {
-      "source": "p58",
       "target": "p73"
     },
     {
@@ -814,31 +1776,11 @@
     },
     {
       "source": "p58",
-      "target": "p36"
-    },
-    {
-      "source": "p58",
       "target": "p74"
     },
     {
       "source": "p58",
       "target": "p75"
-    },
-    {
-      "source": "p72",
-      "target": "p57"
-    },
-    {
-      "source": "p72",
-      "target": "p58"
-    },
-    {
-      "source": "p74",
-      "target": "p57"
-    },
-    {
-      "source": "p74",
-      "target": "p58"
     },
     {
       "source": "p74",
@@ -853,36 +1795,1052 @@
       "target": "p76"
     },
     {
-      "source": "p75",
-      "target": "p57"
-    },
-    {
-      "source": "p75",
-      "target": "p58"
-    },
-    {
-      "source": "p76",
-      "target": "p57"
-    },
-    {
-      "source": "p76",
-      "target": "p58"
-    },
-    {
-      "source": "p76",
-      "target": "p26"
-    },
-    {
       "source": "p76",
       "target": "p36"
     },
     {
       "source": "p76",
-      "target": "p74"
+      "target": "p77"
     },
     {
-      "source": "p76",
-      "target": "p77"
+      "source": "p1",
+      "target": "p3",
+      "rel": "familia"
+    },
+    {
+      "source": "p1",
+      "target": "p4",
+      "rel": "familia"
+    },
+    {
+      "source": "p100",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p101",
+      "target": "p118",
+      "rel": "familia"
+    },
+    {
+      "source": "p102",
+      "target": "p85",
+      "rel": "familia"
+    },
+    {
+      "source": "p103",
+      "target": "p85",
+      "rel": "familia"
+    },
+    {
+      "source": "p104",
+      "target": "p28",
+      "rel": "familia"
+    },
+    {
+      "source": "p104",
+      "target": "p85",
+      "rel": "familia"
+    },
+    {
+      "source": "p105",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p105",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p106",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p106",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p107",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p107",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p108",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p108",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p109",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p109",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p110",
+      "target": "p97",
+      "rel": "familia"
+    },
+    {
+      "source": "p110",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p111",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p111",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p112",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p112",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p113",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p113",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p114",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p114",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p115",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p115",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p116",
+      "target": "p100",
+      "rel": "familia"
+    },
+    {
+      "source": "p116",
+      "target": "p95",
+      "rel": "familia"
+    },
+    {
+      "source": "p117",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p118",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p12",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p12",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p13",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p13",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p14",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p14",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p15",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p15",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p15",
+      "target": "p45",
+      "rel": "familia"
+    },
+    {
+      "source": "p16",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p16",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p17",
+      "target": "p18",
+      "rel": "familia"
+    },
+    {
+      "source": "p17",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p18",
+      "target": "p26",
+      "rel": "familia"
+    },
+    {
+      "source": "p18",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p18",
+      "target": "p19",
+      "rel": "familia"
+    },
+    {
+      "source": "p19",
+      "target": "p68",
+      "rel": "familia"
+    },
+    {
+      "source": "p19",
+      "target": "p69",
+      "rel": "familia"
+    },
+    {
+      "source": "p2",
+      "target": "p6",
+      "rel": "familia"
+    },
+    {
+      "source": "p2",
+      "target": "p5",
+      "rel": "familia"
+    },
+    {
+      "source": "p21",
+      "target": "p31",
+      "rel": "familia"
+    },
+    {
+      "source": "p21",
+      "target": "p32",
+      "rel": "familia"
+    },
+    {
+      "source": "p23",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p25",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p27",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p28",
+      "target": "p37",
+      "rel": "familia"
+    },
+    {
+      "source": "p29",
+      "target": "p26",
+      "rel": "familia"
+    },
+    {
+      "source": "p29",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p29",
+      "target": "p81",
+      "rel": "familia"
+    },
+    {
+      "source": "p3",
+      "target": "p7",
+      "rel": "familia"
+    },
+    {
+      "source": "p3",
+      "target": "p8",
+      "rel": "familia"
+    },
+    {
+      "source": "p3",
+      "target": "p4",
+      "rel": "familia"
+    },
+    {
+      "source": "p30",
+      "target": "p26",
+      "rel": "familia"
+    },
+    {
+      "source": "p30",
+      "target": "p27",
+      "rel": "familia"
+    },
+    {
+      "source": "p30",
+      "target": "p70",
+      "rel": "familia"
+    },
+    {
+      "source": "p31",
+      "target": "p32",
+      "rel": "familia"
+    },
+    {
+      "source": "p33",
+      "target": "p20",
+      "rel": "familia"
+    },
+    {
+      "source": "p33",
+      "target": "p21",
+      "rel": "familia"
+    },
+    {
+      "source": "p34",
+      "target": "p20",
+      "rel": "familia"
+    },
+    {
+      "source": "p34",
+      "target": "p21",
+      "rel": "familia"
+    },
+    {
+      "source": "p35",
+      "target": "p20",
+      "rel": "familia"
+    },
+    {
+      "source": "p35",
+      "target": "p21",
+      "rel": "familia"
+    },
+    {
+      "source": "p40",
+      "target": "p37",
+      "rel": "familia"
+    },
+    {
+      "source": "p40",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p42",
+      "target": "p15",
+      "rel": "familia"
+    },
+    {
+      "source": "p42",
+      "target": "p45",
+      "rel": "familia"
+    },
+    {
+      "source": "p42",
+      "target": "p46",
+      "rel": "familia"
+    },
+    {
+      "source": "p43",
+      "target": "p15",
+      "rel": "familia"
+    },
+    {
+      "source": "p43",
+      "target": "p45",
+      "rel": "familia"
+    },
+    {
+      "source": "p44",
+      "target": "p15",
+      "rel": "familia"
+    },
+    {
+      "source": "p44",
+      "target": "p45",
+      "rel": "familia"
+    },
+    {
+      "source": "p47",
+      "target": "p42",
+      "rel": "familia"
+    },
+    {
+      "source": "p47",
+      "target": "p46",
+      "rel": "familia"
+    },
+    {
+      "source": "p48",
+      "target": "p42",
+      "rel": "familia"
+    },
+    {
+      "source": "p48",
+      "target": "p46",
+      "rel": "familia"
+    },
+    {
+      "source": "p49",
+      "target": "p53",
+      "rel": "familia"
+    },
+    {
+      "source": "p49",
+      "target": "p54",
+      "rel": "familia"
+    },
+    {
+      "source": "p49",
+      "target": "p50",
+      "rel": "familia"
+    },
+    {
+      "source": "p5",
+      "target": "p7",
+      "rel": "familia"
+    },
+    {
+      "source": "p5",
+      "target": "p8",
+      "rel": "familia"
+    },
+    {
+      "source": "p5",
+      "target": "p6",
+      "rel": "familia"
+    },
+    {
+      "source": "p50",
+      "target": "p51",
+      "rel": "familia"
+    },
+    {
+      "source": "p50",
+      "target": "p52",
+      "rel": "familia"
+    },
+    {
+      "source": "p51",
+      "target": "p52",
+      "rel": "familia"
+    },
+    {
+      "source": "p53",
+      "target": "p55",
+      "rel": "familia"
+    },
+    {
+      "source": "p53",
+      "target": "p56",
+      "rel": "familia"
+    },
+    {
+      "source": "p53",
+      "target": "p54",
+      "rel": "familia"
+    },
+    {
+      "source": "p54",
+      "target": "p89",
+      "rel": "familia"
+    },
+    {
+      "source": "p54",
+      "target": "p90",
+      "rel": "familia"
+    },
+    {
+      "source": "p55",
+      "target": "p56",
+      "rel": "familia"
+    },
+    {
+      "source": "p59",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p59",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p60",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p60",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p61",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p61",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p62",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p62",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p63",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p63",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p64",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p64",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p65",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p65",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p66",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p66",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p67",
+      "target": "p40",
+      "rel": "familia"
+    },
+    {
+      "source": "p67",
+      "target": "p41",
+      "rel": "familia"
+    },
+    {
+      "source": "p68",
+      "target": "p69",
+      "rel": "familia"
+    },
+    {
+      "source": "p7",
+      "target": "p11",
+      "rel": "familia"
+    },
+    {
+      "source": "p7",
+      "target": "p8",
+      "rel": "familia"
+    },
+    {
+      "source": "p71",
+      "target": "p70",
+      "rel": "familia"
+    },
+    {
+      "source": "p71",
+      "target": "p30",
+      "rel": "familia"
+    },
+    {
+      "source": "p75",
+      "target": "p92",
+      "rel": "familia"
+    },
+    {
+      "source": "p77",
+      "target": "p37",
+      "rel": "familia"
+    },
+    {
+      "source": "p78",
+      "target": "p77",
+      "rel": "familia"
+    },
+    {
+      "source": "p79",
+      "target": "p77",
+      "rel": "familia"
+    },
+    {
+      "source": "p8",
+      "target": "p50",
+      "rel": "familia"
+    },
+    {
+      "source": "p8",
+      "target": "p49",
+      "rel": "familia"
+    },
+    {
+      "source": "p80",
+      "target": "p38",
+      "rel": "familia"
+    },
+    {
+      "source": "p80",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p82",
+      "target": "p81",
+      "rel": "familia"
+    },
+    {
+      "source": "p82",
+      "target": "p29",
+      "rel": "familia"
+    },
+    {
+      "source": "p82",
+      "target": "p83",
+      "rel": "familia"
+    },
+    {
+      "source": "p84",
+      "target": "p28",
+      "rel": "familia"
+    },
+    {
+      "source": "p84",
+      "target": "p85",
+      "rel": "familia"
+    },
+    {
+      "source": "p84",
+      "target": "p86",
+      "rel": "familia"
+    },
+    {
+      "source": "p85",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p86",
+      "target": "p87",
+      "rel": "familia"
+    },
+    {
+      "source": "p86",
+      "target": "p88",
+      "rel": "familia"
+    },
+    {
+      "source": "p9",
+      "target": "p11",
+      "rel": "familia"
+    },
+    {
+      "source": "p91",
+      "target": "p17",
+      "rel": "familia"
+    },
+    {
+      "source": "p94",
+      "target": "p93",
+      "rel": "familia"
+    },
+    {
+      "source": "p95",
+      "target": "p38",
+      "rel": "familia"
+    },
+    {
+      "source": "p95",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p96",
+      "target": "p38",
+      "rel": "familia"
+    },
+    {
+      "source": "p96",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p97",
+      "target": "p38",
+      "rel": "familia"
+    },
+    {
+      "source": "p97",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "p97",
+      "target": "p99",
+      "rel": "familia"
+    },
+    {
+      "source": "p98",
+      "target": "p38",
+      "rel": "familia"
+    },
+    {
+      "source": "p98",
+      "target": "p39",
+      "rel": "familia"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "tag:censo",
+      "rel": "tag"
+    },
+    {
+      "source": "censo-valais-1870",
+      "target": "tag:fuente",
+      "rel": "tag"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "emigracion-valais-entrerios",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "riddes-valais",
+      "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:putallaz",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:colonia-cullen",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:uxorilocalidad",
+      "rel": "tag"
+    },
+    {
+      "source": "post:buscando-a-los-roh",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:gazette-du-valais",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:salins",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "post:clan-clemenzo",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "target": "tag:ia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "target": "tag:genealogia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "target": "tag:tecnologia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "tag:genealogia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "tag:documentos",
+      "rel": "tag"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "tag:registros",
+      "rel": "tag"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "tag:archivo",
+      "rel": "tag"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "tag:francisco",
+      "rel": "tag"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "tag:cronologia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "post:linea-de-tiempo-de-francisco",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:genealogia",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:documentos",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:registros",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "post:investigando-francisco",
+      "target": "tag:francia",
+      "rel": "tag"
     }
   ]
 }

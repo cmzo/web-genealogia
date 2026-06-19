@@ -2,6 +2,7 @@
 title: "Riddes (Valais)"
 type: lugar
 summary: "Comuna del valle del Ródano, en el cantón del Valais, Suiza: cuna de la rama Clemenzo antes de la emigración a Argentina."
+tags: valais, suiza, lugar
 ---
 
 # Riddes (Valais)

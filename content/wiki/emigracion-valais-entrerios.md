@@ -2,6 +2,7 @@
 title: "Emigración Valais → Entre Ríos"
 type: evento
 summary: "El traslado de la familia Clemenzo desde el cantón del Valais (Suiza) a Entre Ríos (Argentina) a fines del siglo XIX."
+tags: valais, emigracion, entre-rios, argentina
 ---
 
 # Emigración Valais → Entre Ríos

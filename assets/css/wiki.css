@@ -3,46 +3,36 @@
    Reusa los tokens de styles.css. Estética coherente con el árbol.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Toolbar ──────────────────────────────────────────────────────────────── */
-.wiki-toolbar {
+/* Los filtros por rama viven ahora en el command palette (⌘K), solo en la wiki.
+   El zoom flota sobre el lienzo; la barra superior se eliminó para ganar espacio. */
+.wiki-graph-zoom {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 3;
+}
+.wiki-graph-zoom .zoom-btn {
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 18px;
-  border-bottom: 1px solid var(--border);
+  justify-content: center;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--muted);
   background: var(--surface);
-  flex-wrap: wrap;
-}
-.wiki-toolbar-hint {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: var(--muted);
-}
-.wiki-filter-pills {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-left: auto;
-}
-.wiki-filter-pill {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 4px 11px;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--muted);
+  border-radius: 7px;
   cursor: pointer;
-  transition: color .15s, background .15s, border-color .15s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: color .15s, border-color .15s;
 }
-.wiki-filter-pill:hover { color: var(--text); }
-.wiki-filter-pill.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
-}
+.wiki-graph-zoom .zoom-btn:hover { color: var(--text); border-color: var(--accent); }
 
 /* ── Lienzo del grafo ─────────────────────────────────────────────────────── */
 .wiki-graph-wrapper {
@@ -69,6 +59,13 @@
   transition: opacity .2s, stroke .2s;
 }
 .wiki-graph-link.is-dim { opacity: 0.12; }
+/* Aristas de parentesco (backbone familiar): más tenues y punteadas que los enlaces temáticos */
+.wiki-graph-link--familia { stroke-dasharray: 4 4; opacity: 0.5; }
+.wiki-graph-link--familia.is-dim { opacity: 0.08; }
+/* Aristas hacia un tag: tenues y con el color del tag, para que los hubs «tiren» sin saturar */
+.wiki-graph-link--tag { stroke: #64748b; opacity: 0.35; }
+.wiki-graph-link--tag.is-dim { opacity: 0.07; }
+.wiki-graph-link.is-filtered-out { display: none; }
 
 /* Nodos */
 .wiki-graph-node { cursor: pointer; }
@@ -90,7 +87,7 @@
   stroke: var(--surface);
   stroke-width: 3px;
   stroke-linejoin: round;
-  pointer-events: none;
+  cursor: pointer;
 }
 .wiki-graph-node.is-dim .wiki-graph-label { opacity: 0.3; }
 
@@ -158,6 +155,8 @@
 .wiki-panel-type--lugar   { background: #0d9488; }
 .wiki-panel-type--fuente  { background: #b45309; }
 .wiki-panel-type--evento  { background: #9333ea; }
+.wiki-panel-type--post    { background: #0891b2; }
+.wiki-panel-type--tag     { background: #64748b; }
 .wiki-panel-title {
   font-family: 'Source Serif 4', serif; font-size: 1.3rem; font-weight: 600;
   line-height: 1.2; margin: 0 0 8px; color: var(--text);
@@ -166,11 +165,11 @@
   font-family: 'Source Serif 4', serif; font-size: 0.9rem; line-height: 1.5;
   color: var(--muted); margin: 0;
 }
-.wiki-panel-group { margin-bottom: 16px; }
+.wiki-panel-group { margin-bottom: 18px; }
 .wiki-panel-group-title {
-  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
-  margin: 0 0 8px;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--text);
+  margin: 0 0 9px;
 }
 .wiki-panel-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
 .wiki-panel-btn {
@@ -188,6 +187,19 @@
 .wiki-chips button.wiki-chip { font: inherit; }
 button.wiki-chip { background: var(--bg); }
 .wiki-chip--out { opacity: 0.7; }
+
+/* En el panel lateral los chips van compactos y subordinados al título del grupo */
+.wiki-panel .wiki-chips { gap: 5px; }
+.wiki-panel .wiki-chip {
+  font-size: 10.5px;
+  font-weight: 400;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: var(--muted);
+}
+.wiki-panel .wiki-chip:hover { color: var(--text); border-color: var(--accent); }
+.wiki-panel .wiki-chip--persona { color: #1e40af; }
+[data-theme="dark"] .wiki-panel .wiki-chip--persona { color: #93b4ff; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Páginas wiki (dist/wiki/*.html)
@@ -216,6 +228,8 @@ button.wiki-chip { background: var(--bg); }
 .wiki-type-badge--evento  { background: #9333ea; }
 .wiki-type-badge--persona { background: #1e40af; }
 .wiki-type-badge--tema    { background: var(--accent); }
+.wiki-type-badge--post    { background: #0891b2; }
+.wiki-type-badge--tag     { background: #64748b; }
 .wiki-page-title {
   font-family: 'Source Serif 4', serif;
   font-size: 2.1rem;
@@ -292,6 +306,12 @@ button.wiki-chip { background: var(--bg); }
 .wiki-chip:hover { border-color: var(--accent); background: var(--surface); }
 .wiki-chip--persona { color: #1e40af; }
 [data-theme="dark"] .wiki-chip--persona { color: #93b4ff; }
+.wiki-chip--post { color: #0891b2; }
+.wiki-chip--tag {
+  color: #64748b;
+  background: color-mix(in srgb, #64748b 8%, transparent);
+  border-color: color-mix(in srgb, #64748b 25%, transparent);
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Modal de lectura (markdown renderizado sobre el grafo)

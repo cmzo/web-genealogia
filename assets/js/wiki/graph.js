@@ -4,11 +4,16 @@
 
 import { getBranchColor } from '../arbol/config.js';
 
-const TYPE_COLOR = { lugar: '#0d9488', fuente: '#b45309', evento: '#9333ea', tema: '#2d4a3e' };
-const TYPE_LABEL = { persona: 'Persona', lugar: 'Lugar', fuente: 'Fuente', evento: 'Evento', tema: 'Tema' };
+const TYPE_COLOR = { lugar: '#0d9488', fuente: '#b45309', evento: '#9333ea', tema: '#2d4a3e', post: '#0891b2', tag: '#64748b' };
+const TYPE_LABEL = { persona: 'Persona', lugar: 'Lugar', fuente: 'Fuente', evento: 'Evento', tema: 'Tema', post: 'Post', tag: 'Etiqueta' };
 
 const nodeColor = n => n.type === 'persona' ? getBranchColor(n.branch) : (TYPE_COLOR[n.type] || TYPE_COLOR.tema);
-const nodeRadius = n => n.type === 'persona' ? 7 : 11;
+const nodeRadius = n => {
+  if (n.type === 'persona') return 7;
+  if (n.type === 'tag') return 6 + Math.min(n.weight || 1, 16) * 0.55;  // crece con cuántos lo usan
+  if (n.type === 'post') return 8;
+  return 11;
+};
 const isPersona = id => /^p\d+$/.test(id);
 
 const dataPath = f => (window.getDataPath ? window.getDataPath(f) : `./assets/data/${f}`);
@@ -66,17 +71,21 @@ async function init() {
   const zoom = d3.zoom().scaleExtent([0.2, 4]).on('zoom', e => rootG.attr('transform', e.transform));
   svg.call(zoom);
 
-  const link = rootG.append('g').selectAll('line').data(links).join('line').attr('class', 'wiki-graph-link');
+  const link = rootG.append('g').selectAll('line').data(links).join('line')
+    .attr('class', d => 'wiki-graph-link' + (d.rel ? ' wiki-graph-link--' + d.rel : ''));
   const node = rootG.append('g').selectAll('g').data(nodes).join('g').attr('class', 'wiki-graph-node').call(drag());
   node.append('circle').attr('r', nodeRadius).attr('fill', nodeColor)
     .attr('class', d => 'wiki-graph-dot' + (d.type === 'persona' ? ' wiki-graph-dot--persona' : ''));
   node.append('text').attr('class', 'wiki-graph-label').attr('x', d => nodeRadius(d) + 4).attr('y', 4).text(d => d.title);
 
   const sim = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(links).id(d => d.id).distance(95).strength(0.35))
-    .force('charge', d3.forceManyBody().strength(-280))
+    .force('link', d3.forceLink(links).id(d => d.id).distance(80).strength(0.3))
+    .force('charge', d3.forceManyBody().strength(-230))
     .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collide', d3.forceCollide().radius(d => nodeRadius(d) + 16))
+    // Gravedad suave hacia el centro: redondea el conjunto (forma circular tipo Obsidian)
+    .force('x', d3.forceX(width / 2).strength(0.06))
+    .force('y', d3.forceY(height / 2).strength(0.06))
+    .force('collide', d3.forceCollide().radius(d => nodeRadius(d) + 14))
     .on('tick', () => {
       link.attr('x1', d => d.source.x).attr('y1', d => d.source.y).attr('x2', d => d.target.x).attr('y2', d => d.target.y);
       node.attr('transform', d => `translate(${d.x},${d.y})`);
@@ -137,23 +146,34 @@ async function init() {
       ${n.summary ? `<p class="wiki-panel-summary">${escapeHtml(n.summary)}</p>` : ''}
     </header>`;
 
+    const typeOf = id => nodeById.get(id)?.type;
+    const tagNbrs = [...(neighbors.get(n.id) || [])].filter(id => typeOf(id) === 'tag');
+    const notTag = ids => [...ids].filter(id => typeOf(id) !== 'tag');
+
     if (n.type === 'persona') {
       const p = personaById.get(n.id) || {};
       const parents = [p.father_id, p.mother_id].filter(Boolean);
-      const pageNeighbors = [...(neighbors.get(n.id) || [])].filter(id => id !== n.id && nodeById.get(id) && !isPersona(id));
+      const pageNeighbors = [...(neighbors.get(n.id) || [])].filter(id => {
+        const t = typeOf(id); return id !== n.id && t && t !== 'persona' && t !== 'tag';
+      });
       html += chipGroup('Padres', parents);
       html += chipGroup('Cónyuge', spousesOf.get(n.id) || []);
       html += chipGroup('Hijos', childrenOf.get(n.id) || []);
       html += chipGroup('Aparece en', pageNeighbors);
-    } else {
-      html += chipGroup('Enlaza con', [...(outOf.get(n.id) || [])]);
-      html += chipGroup('Mencionada en', [...(inOf.get(n.id) || [])]);
+      html += chipGroup('Etiquetas', tagNbrs);
+    } else if (n.type === 'tag') {
+      html += chipGroup('Etiquetado en', [...(neighbors.get(n.id) || [])].filter(id => id !== n.id));
+    } else { // página o post
+      html += chipGroup('Enlaza con', notTag(outOf.get(n.id) || []));
+      html += chipGroup('Mencionada en', notTag(inOf.get(n.id) || []));
+      html += chipGroup('Etiquetas', tagNbrs);
     }
 
-    html += `<div class="wiki-panel-actions">`;
-    if (n.hasContent) html += `<button class="wiki-panel-btn wiki-panel-btn--primary" data-read="${n.id}">${n.type === 'persona' ? 'Leer investigación' : 'Leer página'}</button>`;
-    if (n.type === 'persona') html += `<a class="wiki-panel-btn wiki-panel-btn--ghost" href="${rootBase()}arbol.html?focus=${n.id}">Ver en árbol</a>`;
-    html += `</div>`;
+    let actions = '';
+    if (n.type === 'post') actions += `<a class="wiki-panel-btn wiki-panel-btn--primary" href="${rootBase()}${n.url}">Leer post →</a>`;
+    else if (n.hasContent) actions += `<button class="wiki-panel-btn wiki-panel-btn--primary" data-read="${n.id}">${n.type === 'persona' ? 'Leer investigación' : 'Leer página'}</button>`;
+    if (n.type === 'persona') actions += `<a class="wiki-panel-btn wiki-panel-btn--ghost" href="${rootBase()}arbol.html?focus=${n.id}">Ver en árbol</a>`;
+    if (actions) html += `<div class="wiki-panel-actions">${actions}</div>`;
 
     panelBody.innerHTML = html;
     panel.classList.add('is-open');
@@ -207,30 +227,26 @@ async function init() {
     else location.href = `${rootBase()}arbol.html?focus=${id}`;
   });
 
-  // ── Filtro por rama ─────────────────────────────────────────────────────────
-  const branches = [...new Set(nodes.filter(n => n.type === 'persona' && n.branch).map(n => n.branch))].sort();
-  const pillBox = document.getElementById('wikiBranchPills');
+  // ── Filtro por rama (expuesto al command palette ⌘K) ────────────────────────
   let activeBranch = null;
-  const mkPill = (label, value) => {
-    const b = document.createElement('button');
-    b.className = 'wiki-filter-pill' + (value === activeBranch ? ' is-active' : '');
-    b.textContent = label;
-    b.onclick = () => {
-      activeBranch = value;
-      [...pillBox.children].forEach(c => c.classList.remove('is-active'));
-      b.classList.add('is-active');
-      node.classed('is-filtered-out', d => activeBranch && d.type === 'persona' && d.branch !== activeBranch);
-    };
-    return b;
-  };
-  if (branches.length) {
-    pillBox.appendChild(mkPill('Todas', null));
-    branches.forEach(br => pillBox.appendChild(mkPill(br.charAt(0).toUpperCase() + br.slice(1), br)));
+  function applyBranchFilter() {
+    node.classed('is-filtered-out', d => activeBranch && d.type === 'persona' && d.branch !== activeBranch);
+    link.classed('is-filtered-out', d =>
+      activeBranch && (d.source.branch === undefined ? false :
+        (d.source.type === 'persona' && d.source.branch !== activeBranch) ||
+        (d.target.type === 'persona' && d.target.branch !== activeBranch)));
   }
+  window.__wikiBranches = [...new Set(nodes.filter(n => n.type === 'persona' && n.branch).map(n => n.branch))].sort();
+  window.__wikiActiveBranch = () => activeBranch;
+  window.__wikiFilterBranch = (branch) => {
+    activeBranch = branch || null;
+    applyBranchFilter();
+    if (activeBranch) sim.alpha(0.2).restart();
+  };
 
   // ── Leyenda + zoom ──────────────────────────────────────────────────────────
   const legend = document.getElementById('wikiLegend');
-  ['persona', 'lugar', 'fuente', 'evento'].forEach(t => {
+  ['persona', 'lugar', 'fuente', 'evento', 'post', 'tag'].forEach(t => {
     const color = t === 'persona' ? getBranchColor('clemenzo') : TYPE_COLOR[t];
     const s = document.createElement('span');
     s.className = 'wiki-legend-item';

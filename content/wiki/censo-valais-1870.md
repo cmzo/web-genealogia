@@ -2,6 +2,7 @@
 title: "Censo del Valais de 1870"
 type: fuente
 summary: "Recensement cantonal de 1870, digitalizado por Vallesiana: fuente primaria para ubicar a los Clemenzo en Riddes antes de emigrar."
+tags: valais, suiza, censo, fuente
 ---
 
 # Censo del Valais de 1870
