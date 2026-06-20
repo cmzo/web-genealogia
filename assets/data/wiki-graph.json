@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-20T09:55:10.752Z",
+  "generated": "2026-06-20T11:40:57.357Z",
   "nodes": [
     {
       "id": "censo-valais-1870",
@@ -1118,6 +1118,15 @@
       "hasContent": true
     },
     {
+      "id": "post:llm-wiki-genealogia",
+      "title": "Una LLM Wiki para mi genealogía",
+      "type": "post",
+      "branch": "",
+      "url": "dist/blog/llm-wiki-genealogia.html",
+      "summary": "En abril de 2026 Andrej Karpathy describió un patrón —la 'LLM Wiki'— donde un agente mantiene una base de conocimiento en markdown en vez de redescubrirla en cada consulta. Lo implementé sobre el archivo de mi investigación genealógica: cómo encaja en la tradición del PKM, cómo quedó el pipeline, y la parte difícil, que fue el grafo.",
+      "hasContent": false
+    },
+    {
       "id": "post:buscando-a-los-roh",
       "title": "Buscando a los Roh",
       "type": "post",
@@ -1369,6 +1378,86 @@
       "summary": "",
       "hasContent": false,
       "weight": 2
+    },
+    {
+      "id": "tag:wiki",
+      "title": "#wiki",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:pkm",
+      "title": "#pkm",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:llm",
+      "title": "#llm",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:zettelkasten",
+      "title": "#zettelkasten",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:obsidian",
+      "title": "#obsidian",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:karpathy",
+      "title": "#karpathy",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:okf",
+      "title": "#okf",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:grafo",
+      "title": "#grafo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     },
     {
       "id": "tag:colonia-cullen",
@@ -3592,6 +3681,46 @@
     {
       "source": "p98",
       "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:wiki",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:pkm",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:llm",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:zettelkasten",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:obsidian",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:karpathy",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:okf",
+      "rel": "tag"
+    },
+    {
+      "source": "post:llm-wiki-genealogia",
+      "target": "tag:grafo",
       "rel": "tag"
     },
     {

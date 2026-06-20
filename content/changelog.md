@@ -1,5 +1,17 @@
 ### 20 de junio de 2026
 
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Un laboratorio para jugar con el grafo
+
+Hay una página nueva, el **Laboratorio del grafo**, para experimentar con el mapa: elegís cuántos puntos y cuántas conexiones, y con una serie de controles cambiás la física —cómo se repelen los nodos, cuánto se agrupan, qué tan redondo queda el conjunto, el grosor de las líneas, el brillo de los puntos— viendo el resultado al instante. Sirve para entender cómo está hecho el mapa de la Wiki y para poder reproducirlo: incluye una "receta" copiable con todos los valores.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los nombres de las personas más conectadas, siempre a la vista
+
+En el mapa de la Wiki ahora se ven por defecto los nombres de los nodos con más conexiones (los centros de cada familia), y al acercar el zoom aparecen todos. Antes los nombres solo salían al pasar el mouse y daba la sensación de que faltaba algo.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Los enlaces a documentos llevan al lugar correcto
+
+Algunos enlaces de los posts que invitaban a ver los documentos llevaban a la Wiki; ahora llevan al **Árbol**, que es donde está la galería de documentos de cada persona. La Wiki guarda la investigación; el árbol, los documentos.
+
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El mapa de la Wiki ahora es un círculo navegable
 
 El grafo de la Wiki pasó de ser una maraña a un **disco ordenado**: las personas y sus documentos se acomodan solos en un círculo, agrupados por familia, igual que los mapas de conocimiento de apps como Obsidian. Los nombres aparecen **al pasar el mouse** (en reposo se ven solo los puntos, más limpio) y, al apuntar a alguien, **se iluminan las líneas** que lo conectan con su familia. El conjunto aparece con una animación suave en lugar de saltar al cargar.

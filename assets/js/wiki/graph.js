@@ -80,12 +80,12 @@ async function init() {
   // Radio por grado (√): nodos chicos, los más conectados apenas más grandes (estilo Obsidian)
   const nodeRadius = n => {
     const deg = degreeMap.get(n.id) || 0;
-    return Math.max(3, Math.min(13, 3 + Math.sqrt(deg) * 1.9));
+    return Math.max(3, Math.min(13, 3 + Math.sqrt(deg) * 1.6));
   };
 
   // ── Construcción de elementos Cytoscape ─────────────────────────────────────
   // Los "hubs" (nodos con muchas conexiones) muestran el nombre siempre, como en Obsidian.
-  const HUB_DEG = 6;
+  const HUB_DEG = 8;
   const elements = [];
   visNodes.forEach(n => {
     const data = { id: n.id, title: n.title, type: n.type, branch: n.branch || '', color: nodeColor(n), r: nodeRadius(n) };
@@ -114,7 +114,7 @@ async function init() {
       {
         selector: 'node',
         style: {
-          'background-color': 'data(color)',
+          'background-color': 'data(color)', 'background-blacken': -0.15,
           width: 'data(r)', height: 'data(r)',
           'border-width': 0,
           // Nombres tenues y livianos (no dominan), apagados salvo en hubs / hover / zoom.
@@ -128,7 +128,7 @@ async function init() {
       {
         selector: 'edge',
         style: {
-          width: 0.9, 'line-color': C.muted, 'curve-style': 'straight', opacity: 0.4,
+          width: 0.3, 'line-color': C.muted, 'curve-style': 'straight', opacity: 0.4,
           'transition-property': 'opacity', 'transition-duration': '0.15s',
         },
       },
@@ -149,14 +149,14 @@ async function init() {
   //    el centro; el borde lo cierra el confinamiento. La misma física sirve para el arrastre.
   const W0 = host.clientWidth || 900, H0 = host.clientHeight || 700;
   const CX = W0 / 2, CY = H0 / 2;
-  const DISC_R = Math.min(W0, H0) * 0.46;   // radio del disco
+  const DISC_R = Math.min(W0, H0) * 0.25;   // radio del disco
 
   const K_REPEL  = 13000;   // repulsión entre nodos (más alto = más separados, disco más lleno)
-  const K_CENTER = 0.012;   // elástico al centro (ayuda a llenar el interior)
+  const K_CENTER = 0.038;   // elástico al centro (ayuda a llenar el interior)
   const K_LINK   = 0.04;    // resortes de enlace (vecinos juntos / se siguen al arrastrar)
-  const REST     = 38;      // distancia de reposo de un enlace
-  const K_BOUND  = 0.2;     // fuerza del borde circular (más alto = contorno más nítido)
-  const DAMP     = 0.55;    // amortiguación
+  const REST     = 64;      // distancia de reposo de un enlace
+  const K_BOUND  = 0.5;     // fuerza del borde circular (más alto = contorno más nítido)
+  const DAMP     = 0.4;     // amortiguación
 
   const vel = new Map();
   let simRunning = false, grabbedId = null, revealed = false;

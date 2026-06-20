@@ -1,5 +1,29 @@
 [
   {
+    "id": "llm-wiki-genealogia",
+    "title": "Una LLM Wiki para mi genealogía",
+    "description": "En abril de 2026 Andrej Karpathy describió un patrón —la 'LLM Wiki'— donde un agente mantiene una base de conocimiento en markdown en vez de redescubrirla en cada consulta. Lo implementé sobre el archivo de mi investigación genealógica: cómo encaja en la tradición del PKM, cómo quedó el pipeline, y la parte difícil, que fue el grafo.",
+    "image": "/assets/images/cards/clemenzo-por-el-mundo.webp",
+    "category": "tecnologia",
+    "date": "2026-06-20",
+    "tags": [
+      "wiki",
+      "pkm",
+      "llm",
+      "zettelkasten",
+      "obsidian",
+      "karpathy",
+      "okf",
+      "grafo"
+    ],
+    "featured": false,
+    "url": "dist/blog/llm-wiki-genealogia.html",
+    "wiki": [],
+    "langs": [
+      "es"
+    ]
+  },
+  {
     "id": "buscando-a-los-roh",
     "title": "Buscando a los Roh",
     "description": "Un cambio de método en la investigación: por generaciones, casi todos los hombres de la familia se instalaron en la casa de sus esposas. Si el patrón es real, la pista de Francisco Clemenzo no está en los Clemenzo — está en los Roh. Punto de partida, documentos y próximos pasos.",

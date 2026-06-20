@@ -391,7 +391,6 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   line-height: 1.6;
   color: var(--muted);
   margin: -8px 0 24px;
-  max-width: 46ch;
 }
 
 /* ── Chapter / navigation links ─────────────────────── */
@@ -568,6 +567,10 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .home-cta-btn:hover { opacity: 0.9; transform: translateX(2px); }
 .home-cta-btn svg { width: 16px; height: 16px; }
+/* Fila de CTAs + variante secundaria (contorno) para un segundo enlace */
+.home-cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.home-cta-btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--border); padding: 10px 19px; }
+.home-cta-btn--ghost:hover { border-color: var(--accent); opacity: 1; }
 
 @media (max-width: 640px) {
   .home-doc-title { font-size: 28px; }

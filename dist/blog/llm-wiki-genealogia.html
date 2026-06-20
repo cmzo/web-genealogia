@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
+  <title>Una LLM Wiki para mi genealogía · Matías Clemenzo</title>
+  <meta name="description" content="En abril de 2026 Andrej Karpathy describió un patrón —la 'LLM Wiki'— donde un agente mantiene una base de conocimiento en markdown en vez de redescubrirla en cada consulta. Lo implementé sobre el archivo de mi investigación genealógica: cómo encaja en la tradición del PKM, cómo quedó el pipeline, y la parte difícil, que fue el grafo." />
+  <link rel="canonical" href="https://cmzo.net/dist/blog/llm-wiki-genealogia.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Una LLM Wiki para mi genealogía · Matías Clemenzo" />
+  <meta property="og:description" content="En abril de 2026 Andrej Karpathy describió un patrón —la 'LLM Wiki'— donde un agente mantiene una base de conocimiento en markdown en vez de redescubrirla en cada consulta. Lo implementé sobre el archivo de mi investigación genealógica: cómo encaja en la tradición del PKM, cómo quedó el pipeline, y la parte difícil, que fue el grafo." />
+  <meta property="og:url" content="https://cmzo.net/dist/blog/llm-wiki-genealogia.html" />
+  <meta property="og:image" content="https://cmzo.net/assets/images/cards/og-banner.webp" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <style>
+    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; font-family: 'Inter', sans-serif; }
+    .lang-pillbox { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px 4px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .lang-globe { color: var(--muted); flex-shrink: 0; }
+    .lang-opt { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 999px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
+    .lang-opt + .lang-opt { margin-left: -1px; }
+    a.lang-opt:hover { color: var(--text); background: var(--border); }
+    .lang-opt.is-active { background: var(--text); color: var(--bg); cursor: default; }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <header class="site-nav">
+    <a href="../../index.html" class="nav-brand">Clemenzo</a>
+    <nav class="nav-actions">
+      <a href="../../blog.html" class="nav-link nav-mobile-link">Blog</a>
+      <a href="../../sobre.html" class="nav-link nav-mobile-link">Sobre</a>
+      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <div class="site-body">
+    <aside class="site-sidebar">
+      <nav class="sidebar-nav">
+        <a href="../../sobre.html" class="sidebar-link">Sobre</a>
+        <a href="../../arbol.html" class="sidebar-link">Árbol</a>
+        <a href="../../wiki.html" class="sidebar-link">Wiki</a>
+        <a href="../../blog.html" class="sidebar-link is-active">Blog</a>
+        <a href="../../fuentes.html" class="sidebar-link">Fuentes</a>
+        <a href="../../colaborar.html" class="sidebar-link sidebar-link--icon" title="Colaborar" aria-label="Colaborar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Colaborar</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="../../changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
+      </div>
+    </aside>
+
+    <main class="site-main" id="main-content">
+      <div class="article-container">
+        <div class="top-bar">
+          <a class="back-home" href="../../blog.html" aria-label="Volver al blog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            Blog
+          </a>
+        </div>
+
+        
+
+        <header class="article-header">
+          <p class="article-kicker">Poniendo a prueba la idea de Karpathy: de Zettelkasten a OKF, y un grafo que costó más de lo que parecía</p>
+          <h1 class="article-title">Una LLM Wiki para mi genealogía</h1>
+          <div class="article-meta">
+            <div class="author-avatar"><img src="../../assets/images/avatars/matias.png" alt="Avatar de Matías Clemenzo" width="40" height="40" loading="lazy"></div>
+            <div class="meta-text">
+              <div><strong>Por Matías Clemenzo</strong></div>
+              <div id="meta-edition">Publicado 2026-06-20</div>
+            </div>
+          </div>
+        </header>
+
+        <section class="article-grid">
+          <article class="article-content">
+            <p>En abril de 2026, Andrej Karpathy publicó un <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">gist</a> describiendo un patrón que venía usando para gestionar su propia investigación. Lo llamó <strong>LLM Wiki</strong>: en lugar de que un modelo redescubra la información en cada consulta, un agente la <strong>compila una vez</strong> en una base de markdown y la <strong>mantiene actualizada</strong>. El gist juntó más de cinco mil estrellas en días.</p>
+<p>Me interesó porque describía, con nombre y forma, algo que yo estaba haciendo a mano. Así que lo puse a prueba sobre un corpus que ya tenía: el archivo de mi investigación genealógica —censos, actas, prensa del siglo XIX, notas. Este post documenta esa prueba: de dónde viene la idea, cómo la implementé, y la parte que más trabajo me dio, que no fue la IA sino el grafo.</p>
+<h2 id="la-idea-es-vieja-zettelkasten">La idea es vieja: Zettelkasten</h2>
+<p>Mucho antes de los LLM, el sociólogo <strong>Niklas Luhmann</strong> construyó un sistema de fichas de papel —el <em>Zettelkasten</em>— con unas 90.000 notas enlazadas entre sí por un sistema de identificadores. Con eso produjo más de 70 libros. <strong>Sönke Ahrens</strong> lo popularizó en 2017 con <em>How to Take Smart Notes</em>.</p>
+<p>Lo central del Zettelkasten no son las notas: son los <strong>enlaces</strong>. Cada nota es atómica (una idea), y en lugar de archivarse en carpetas se conecta a otras. No hay jerarquía rígida; la estructura <strong>emerge</strong> de las conexiones. Es, literalmente, un grafo de conocimiento hecho con fichas y referencias cruzadas.</p>
+<h2 id="la-era-digital-second-brain-y-obsidian">La era digital: Second Brain y Obsidian</h2>
+<p>La versión digital de esta idea es el PKM (<em>personal knowledge management</em>). <strong>Tiago Forte</strong> la sistematizó en <em>Building a Second Brain</em> con dos siglas: <strong>CODE</strong> (Capturar, Organizar, Destilar, Expresar) y <strong>PARA</strong> (Projects, Areas, Resources, Archives). La tesis: descargá tu memoria a un sistema externo confiable y producí a partir de ahí.</p>
+<p>La herramienta que llevó esto al mainstream fue <strong>Obsidian</strong>: notas en markdown plano, enlaces <code>[[wiki-style]]</code>, y —lo que más se ve— una <strong>vista de grafo</strong> donde cada nota es un nodo y cada enlace una arista. <strong>Zsolt Viczián</strong> (canal <em>Visual PKM</em>, autor del plugin Excalidraw para Obsidian) llevó esto un paso más allá: el conocimiento no solo se escribe, se <strong>dibuja y se navega</strong>.</p>
+<p>Yo uso Obsidian desde hace años para organizar mis notas personales, las de investigación y todo aquello que implique guardar conocimiento que pueda llegar a necesitar en el futuro. Cuando la relación entre dos notas es obvia, las enlazo —y lo mismo con los tags—, pero nunca logré incorporar ese proceso con naturalidad. Ahí es donde entra Claude…</p>
+<h2 id="el-salto-de-2026-la-ia-mantiene-el-cerebro">El salto de 2026: la IA mantiene el cerebro</h2>
+<p>Todo lo anterior asume un autor humano que escribe y enlaza las notas. La propuesta de Karpathy cambia quién hace el mantenimiento: <strong>el agente</strong>.</p>
+<p>La distinción importante es con <strong>RAG</strong> (<em>retrieval-augmented generation</em>), el patrón habitual para darle conocimiento a un LLM. RAG <strong>recupera</strong> fragmentos relevantes en cada consulta y los descarta después: no acumula nada. La LLM Wiki hace lo contrario —<strong>compila</strong> el conocimiento en artefactos persistentes (markdown con referencias cruzadas) y los mantiene. Karpathy lo resume así: <em>&quot;los LLM no se aburren, no se olvidan de actualizar una referencia cruzada, y pueden tocar 15 archivos de una pasada&quot;</em>.</p>
+<p>La estructura que propone son tres capas: <strong>fuentes crudas</strong> (inmutables), <strong>wiki</strong> (markdown sintetizado y enlazado, mantenido por la IA) y <strong>schema</strong> (las convenciones y los flujos). Y tres operaciones: <strong>ingerir</strong> fuentes nuevas, <strong>consultar</strong> sintetizando lo compilado, y <strong>mantener</strong> —detectar contradicciones y páginas huérfanas.</p>
+<h2 id="se-vuelve-estándar-okf-de-google">Se vuelve estándar: OKF de Google</h2>
+<p>Dos meses después, el 12 de junio de 2026, Google Cloud anunció el <strong>Open Knowledge Format (OKF)</strong>, que formaliza exactamente este patrón como estándar abierto: una forma estandarizada de que los agentes lean, escriban e intercambien conocimiento en markdown, sin lock-in.</p>
+<p>La forma más clara de ubicarlo es contra <strong>MCP</strong> (el otro estándar de agentes): MCP gobierna <em>cómo</em> un agente se conecta a herramientas y datos en vivo; OKF gobierna <em>qué sabe</em> el agente —la capa de conocimiento curada y estable, antes de tocar las fuentes. Conexión vs. conocimiento.</p>
+<h2 id="mi-implementación">Mi implementación</h2>
+<p>Apliqué el patrón con tres capas, igual que el gist:</p>
+<ul>
+<li><strong>Fuentes crudas</strong>: los documentos —censos del Valais, actas de Entre Ríos, prensa, fotos—. Inmutables.</li>
+<li><strong>Wiki (markdown mantenido por un agente)</strong>: una nota por persona (<code>content/personas/p*.md</code>) y páginas de lugar/fuente/evento (<code>content/wiki/*.md</code>). No las escribo a mano: las crea y actualiza un <strong>agente</strong> a través de un servidor MCP, con herramientas como <code>crear_archivo_investigacion</code> y <code>crear_pagina_wiki</code>.</li>
+<li><strong>Schema</strong>: una plantilla fija para las notas más un par de <code>CLAUDE.md</code> que documentan las convenciones y el flujo. Y una herramienta de <em>mantenimiento</em> (<code>estado_wiki</code>) que hace de lint: marca personas sin etiquetar, notas huérfanas, etc. —el &quot;detectar contradicciones&quot; de Karpathy.</li>
+</ul>
+<p>Sobre eso construí una <strong><a href="wiki.html">Wiki navegable</a></strong>: un grafo donde las personas, los lugares, las fuentes y los posts del blog son puntos conectados. Hay tres tipos de arista:</p>
+<ol>
+<li><strong>Familia</strong> — padre/madre/cónyuge, derivadas de la base de datos del árbol.</li>
+<li><strong>Enlace</strong> — menciones explícitas entre notas (<code>[[p26]]</code>, o el id en prosa).</li>
+<li><strong>Tag</strong> — etiquetas temáticas. No son nodos del grafo, pero funcionan como <strong>hubs transversales</strong>: un tag como <code>#emigracion</code> conecta personas con posts y con páginas, cruzando dominios que el parentesco no toca.</li>
+</ol>
+<p>Esto deja dos vistas complementarias del mismo material: el <strong><a href="arbol.html">Árbol</a></strong> muestra la <em>estructura</em> (genealogía, datos, documentos), y la <strong>Wiki</strong> muestra el <em>conocimiento</em> (cómo se entrelaza todo lo demás).</p>
+<h2 id="el-grafo-lo-que-costó">El grafo: lo que costó</h2>
+<p>Quería que el grafo se viera como el de Obsidian: un disco redondo, ordenado, que invitara a explorarse. Conseguirlo me llevó bastantes más horas de las que esperaba, y el camino fue de frustración y descarte.</p>
+<p><strong>Primer problema: una maraña.</strong> Empecé con D3 y un layout de fuerzas clásico. El resultado era un ovillo. Medí el grafo y encontré la causa: de las ~460 aristas, <strong>el 51% eran de tags</strong>, y unos pocos tags gigantes (uno tocaba un tercio de los nodos) se solapaban entre sí, amarrando todo al centro. La solución fue sacar los tags del lienzo —siguen vivos en el panel y el resaltado, pero no se dibujan—. El grafo pasó a ser disperso, casi un árbol.</p>
+<p><strong>Segundo problema: no era un círculo.</strong> Con pocos nodos (≈130), ningún layout de fuerzas daba la forma redonda de Obsidian. Probé de todo: clusters por familia, nodos compuestos, layouts deterministas (anillos por grado, un &quot;mandala&quot; por generación), y un post-proceso que reasignaba los radios a mano. Todo quedaba a medias —o muy rígido, o con el borde dentado.</p>
+<p><strong>La solución fue dejar de inventar y copiar el modelo real.</strong> Obsidian no usa ningún truco: es física continua con tres fuerzas —repulsión entre todos los nodos, un resorte al centro, y resortes en los enlaces—. El círculo no se dibuja; <em>emerge</em> de la repulsión empujando hacia afuera contra el centro. Lo reimplementé sobre <a href="https://js.cytoscape.org/">Cytoscape.js</a> y le agregué lo único que faltaba para garantizar la forma con tan pocos nodos: un <strong>borde circular</strong> que confina los nodos dentro de un disco. La misma simulación maneja el arrastre: agarrás un nodo, los conectados lo siguen, lo soltás y todo vuelve al círculo.</p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/grafo-antes.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/grafo-antes.webp" alt="El grafo antes: una maraña sin forma." loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      <figcaption class="article-caption">El primer intento, con los tags como nodos del grafo: una maraña donde unos pocos hubs gigantes amarran todo al centro.</figcaption></figure></p>
+<p><figure class="article-image">
+        <div class="image-clickable" onclick="openLightbox('../../assets/images/posts/grafo-despues.webp')" style="cursor: pointer;">
+          <img src="../../assets/images/posts/grafo-despues.webp" alt="El grafo después: un disco ordenado." loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;">
+        </div>
+      <figcaption class="article-caption">El mismo grafo con los tags fuera del lienzo y la física de Obsidian con borde circular: un disco donde se distinguen las familias.</figcaption></figure></p>
+<h2 id="un-laboratorio-para-reproducirlo">Un laboratorio para reproducirlo</h2>
+<p>Para que esto no quedara como una caja negra —y para poder reproducirlo yo mismo más adelante— armé un <strong><a href="lab-grafo.html">laboratorio del grafo</a></strong>: un sandbox donde elegís cuántos nodos y conexiones, movés cada parámetro de la física en vivo, y ves el resultado al instante. Genera un grafo sintético con <em>preferential attachment</em> (el modelo que hace emerger hubs), así que se parece a un grafo de conocimiento real.</p>
+<p>Incluye una <strong>receta copiable</strong>: el listado de todos los parámetros más una explicación de la técnica, lista para pegar a un LLM y reconstruir cualquier configuración. De hecho, los valores con los que quedó la Wiki salieron de jugar ahí y copiar la receta.</p>
+<h2 id="cierre">Cierre</h2>
+<p>Lo que aprendí poniendo a prueba la idea: la parte de IA fue la más directa —el agente mantiene el markdown bien y sin quejarse—. Lo difícil fue la representación. Y el patrón de fondo no es nuevo: Luhmann ya enlazaba fichas en los años 60. Lo que cambió en 2026 es <strong>quién mantiene los enlaces</strong>.</p>
+<h2 id="para-consultar">Para consultar</h2>
+<ul>
+<li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f">El gist original de Karpathy — <em>LLM Wiki</em></a></li>
+<li><a href="https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing">Open Knowledge Format — Google Cloud</a></li>
+<li>Sönke Ahrens, <em>How to Take Smart Notes</em> — la puerta de entrada moderna al Zettelkasten de Luhmann.</li>
+<li><a href="https://www.buildingasecondbrain.com/">Building a Second Brain — Tiago Forte</a></li>
+<li><a href="https://www.youtube.com/@VisualPKM">Visual PKM — Zsolt Viczián (YouTube)</a></li>
+<li><a href="https://js.cytoscape.org/">Cytoscape.js</a> — la librería con la que está dibujado el grafo.</li>
+<li>Este sitio: la <strong><a href="wiki.html">Wiki</a></strong>, el <strong><a href="arbol.html">Árbol</a></strong> y el <strong><a href="lab-grafo.html">laboratorio del grafo</a></strong>. El código está en el <a href="https://github.com/cmzo/web-genealogia">repositorio</a>.</li>
+</ul>
+
+  <style>
+    /* ── Hypothesis Cards ───────────────────────────────────────────── */
+    .hypothesis-card {
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #9ca3af;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 35px 0;
+      background: #f9fafb;
+    }
+    .hypothesis-card + hr { display: none; }
+    .hypothesis-card--confirmed       { border-left-color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: #f0fdf4; border-color: #bbf7d0; }
+    .hypothesis-card--solida          { border-left-color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
+    .hypothesis-card--plausible       { border-left-color: #d97706; background: #fffbeb; border-color: #fde68a; }
+    .hypothesis-card--speculative     { border-left-color: #9ca3af; background: #f9fafb; border-color: #e5e7eb; }
+    .hypothesis-card--directa         { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
+    .hypothesis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .hypothesis-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hypothesis-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #6b7280;
+      background: #e5e7eb;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .hypothesis-badge-directa {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #b91c1c;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .hypothesis-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+    .hypothesis-status--confirmed,
+    .hypothesis-status--confirmed-informal { color: #15803d; background: #dcfce7; }
+    .hypothesis-status--solida             { color: #1d4ed8; background: #dbeafe; }
+    .hypothesis-status--plausible          { color: #92400e; background: #fef3c7; }
+    .hypothesis-status--speculative        { color: #374151; background: #f3f4f6; }
+    .hypothesis-title {
+      font-size: 0.97rem;
+      font-weight: 600;
+      margin: 0 0 14px 0;
+      color: #111827;
+      line-height: 1.4;
+    }
+    .hypothesis-body { font-size: 0.9rem; }
+    .hypothesis-body .table-wrapper { margin-top: 0; }
+    /* ──────────────────────────────────────────────────────────────── */
+
+    .image-clickable:hover {
+      transform: scale(1.02);
+    }
+    .image-clickable:hover .zoom-hint {
+      opacity: 1 !important;
+    }
+    .gallery-item .image-clickable img {
+      transition: all 0.2s ease;
+    }
+    .gallery-item .image-clickable:hover img {
+      filter: brightness(1.1);
+    }
+  </style>
+  
+  <!-- Lightbox editorial (estilos en styles.css) -->
+  <div class="lbx" id="lbx" hidden>
+    <div class="lbx-modal">
+      <div class="lbx-stage" id="lbxStage">
+        <img class="lbx-img" id="lbxImg" alt="">
+        <button class="lbx-btn lbx-nav lbx-prev" id="lbxPrev" aria-label="Anterior">‹</button>
+        <button class="lbx-btn lbx-nav lbx-next" id="lbxNext" aria-label="Siguiente">›</button>
+        <div class="lbx-hint">Clic para acercar · ← → navegar · Esc cerrar</div>
+      </div>
+      <aside class="lbx-panel" id="lbxPanel" hidden>
+        <div class="lbx-count" id="lbxCount"></div>
+        <div class="lbx-cap" id="lbxCap"></div>
+      </aside>
+      <button class="lbx-btn lbx-close" id="lbxClose" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var boxes = [].slice.call(document.querySelectorAll('.article-content .image-clickable'));
+    var items = boxes.map(function(b){
+      var img = b.querySelector('img'); var fig = b.closest('figure'); var cap = fig ? fig.querySelector('figcaption') : null;
+      return { src: img.getAttribute('src')||'', alt: img.getAttribute('alt')||'', caption: cap ? cap.innerHTML.trim() : '' };
+    });
+    var lbx=document.getElementById('lbx'), stage=document.getElementById('lbxStage'), imgEl=document.getElementById('lbxImg'),
+        panel=document.getElementById('lbxPanel'), capEl=document.getElementById('lbxCap'), countEl=document.getElementById('lbxCount');
+    var idx=0, scale=1, tx=0, ty=0, drag=false, moved=false, sx=0, sy=0, px=0, py=0;
+    function apply(){ imgEl.style.transform='translate('+tx+'px,'+ty+'px) scale('+scale+')'; }
+    function reset(){ scale=1; tx=0; ty=0; stage.classList.remove('zoomed'); apply(); }
+    function zoomTo(s){ scale=Math.max(1,Math.min(6,s)); if(scale===1){tx=0;ty=0;} stage.classList.toggle('zoomed',scale>1); apply(); }
+    function render(){ var it=items[idx]; imgEl.src=it.src; imgEl.alt=it.alt;
+      if(it.caption){ capEl.innerHTML=it.caption; countEl.textContent=(idx+1)+' / '+items.length; panel.hidden=false; } else { panel.hidden=true; }
+      reset(); }
+    function openLB(i){ idx=i; lbx.hidden=false; document.body.style.overflow='hidden'; render(); }
+    function closeLB(){ lbx.hidden=true; document.body.style.overflow=''; }
+    function go(d){ idx=(idx+d+items.length)%items.length; render(); }
+    window.openLightbox = function(src){ var i=-1; items.forEach(function(it,j){ if(it.src===src) i=j; }); openLB(i<0?0:i); };
+    window.closeLightbox = closeLB;
+    document.getElementById('lbxClose').onclick=closeLB;
+    document.getElementById('lbxPrev').onclick=function(e){ e.stopPropagation(); go(-1); };
+    document.getElementById('lbxNext').onclick=function(e){ e.stopPropagation(); go(1); };
+    lbx.addEventListener('click', function(e){ if(e.target===lbx) closeLB(); });
+    imgEl.addEventListener('click', function(e){ e.stopPropagation(); if(moved){ moved=false; return; } zoomTo(scale>1?1:2.2); });
+    stage.addEventListener('wheel', function(e){ e.preventDefault(); zoomTo(scale*(e.deltaY<0?1.2:1/1.2)); }, {passive:false});
+    imgEl.addEventListener('pointerdown', function(e){ if(scale<=1) return; drag=true; moved=false; sx=e.clientX; sy=e.clientY; px=tx; py=ty; try{imgEl.setPointerCapture(e.pointerId);}catch(_){} });
+    imgEl.addEventListener('pointermove', function(e){ if(!drag) return; var dx=e.clientX-sx, dy=e.clientY-sy; if(Math.abs(dx)+Math.abs(dy)>3) moved=true; tx=px+dx; ty=py+dy; apply(); });
+    window.addEventListener('pointerup', function(){ drag=false; });
+    document.addEventListener('keydown', function(e){ if(lbx.hidden) return; if(e.key==='Escape') closeLB(); else if(e.key==='ArrowLeft') go(-1); else if(e.key==='ArrowRight') go(1); });
+  })();
+  </script>
+  
+          </article>
+          <aside class="article-aside">
+            
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="document.querySelector('.site-main').scrollTo({top:0,behavior:'smooth'})">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <footer class="site-footer">
+    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
+    <nav class="footer-mobile-nav">
+      <a href="../../colaborar.html" class="footer-nav-link">Colaborar</a>
+      <a href="../../changelog.html" class="footer-nav-link">Cambios</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function() {
+      const btn = document.getElementById('backToTop');
+      const scroller = document.querySelector('.site-main');
+      scroller.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', scroller.scrollTop > 400);
+      });
+    })();
+  </script>
+
+  <script src="../../assets/js/nav-drawer.js" defer></script>
+  <script src="../../assets/js/theme.js" defer></script>
+  <script src="../../assets/js/command-palette.js" defer></script>
+
+  <script>
+    (function() {
+      const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const now = new Date();
+      const dateStr = `${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}`;
+      const metaEdition = document.getElementById('meta-edition');
+      if (metaEdition) metaEdition.textContent = `Publicado 2026-06-20 · Última edición ${dateStr}`;
+    })();
+  </script>
+
+</body>
+</html>
