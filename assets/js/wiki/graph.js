@@ -84,16 +84,20 @@ async function init() {
   };
 
   // ── Construcción de elementos Cytoscape ─────────────────────────────────────
+  // Los "hubs" (nodos con muchas conexiones) muestran el nombre siempre, como en Obsidian.
+  const HUB_DEG = 6;
   const elements = [];
   visNodes.forEach(n => {
-    elements.push({ data: { id: n.id, title: n.title, type: n.type, branch: n.branch || '', color: nodeColor(n), r: nodeRadius(n) } });
+    const data = { id: n.id, title: n.title, type: n.type, branch: n.branch || '', color: nodeColor(n), r: nodeRadius(n) };
+    if ((degreeMap.get(n.id) || 0) >= HUB_DEG) data.hub = 1;
+    elements.push({ data });
   });
   visLinks.forEach((l, i) => elements.push({ data: { id: `e${i}`, source: l.source, target: l.target, rel: l.rel || '' } }));
 
   // Tokens de color según tema (se leen una vez al iniciar)
   const css = getComputedStyle(document.documentElement);
   const tok = (name, fb) => (css.getPropertyValue(name).trim() || fb);
-  const C = { text: tok('--text', '#1a1a1a'), surface: tok('--surface', '#ffffff'), border: tok('--border', '#e8e8e6'), accent: tok('--accent', '#2d4a3e') };
+  const C = { text: tok('--text', '#1a1a1a'), surface: tok('--surface', '#ffffff'), border: tok('--border', '#e8e8e6'), accent: tok('--accent', '#2d4a3e'), muted: tok('--muted', '#5a5040') };
 
   // Ocultar el lienzo ANTES del primer render, SIN transición (oculto instantáneo). La transición
   // se agrega recién al revelar — si se pusiera acá, el grafo se desvanecería a la vista (visible).
@@ -113,18 +117,18 @@ async function init() {
           'background-color': 'data(color)',
           width: 'data(r)', height: 'data(r)',
           'border-width': 0,
-          // Nombres APAGADOS en la vista general (como Obsidian); aparecen solo al pasar el mouse.
-          label: 'data(title)', color: C.text, 'text-opacity': 0,
-          'font-family': 'Inter, sans-serif', 'font-size': 11, 'font-weight': 600,
+          // Nombres tenues y livianos (no dominan), apagados salvo en hubs / hover / zoom.
+          label: 'data(title)', color: C.muted, 'text-opacity': 0,
+          'font-family': 'Inter, sans-serif', 'font-size': 11, 'font-weight': 500,
           'text-valign': 'center', 'text-halign': 'right', 'text-margin-x': 4,
-          'text-outline-color': C.surface, 'text-outline-width': 3,
+          'text-outline-color': C.surface, 'text-outline-width': 1.5,
           'transition-property': 'opacity, text-opacity, border-width', 'transition-duration': '0.15s',
         },
       },
       {
         selector: 'edge',
         style: {
-          width: 0.6, 'line-color': C.border, 'curve-style': 'straight', opacity: 0.5,
+          width: 0.9, 'line-color': C.muted, 'curve-style': 'straight', opacity: 0.4,
           'transition-property': 'opacity', 'transition-duration': '0.15s',
         },
       },
@@ -132,7 +136,9 @@ async function init() {
       { selector: '.dim', style: { opacity: 0.08 } },
       { selector: 'edge.hl', style: { 'line-color': C.accent, opacity: 1, width: 1.8, 'z-index': 20 } },  // líneas del nodo en hover
       { selector: 'node.show', style: { 'text-opacity': 1 } },   // nombre visible (hover / vecinos / selección)
-      { selector: 'node.focus', style: { 'border-width': 2.5, 'border-color': C.text, 'font-weight': 700, 'z-index': 30 } },
+      { selector: 'node.focus', style: { 'border-width': 2.5, 'border-color': C.text, color: C.text, 'font-weight': 700, 'z-index': 30 } },
+      // Nombre visible siempre en los hubs, y en todos los nodos al acercar el zoom
+      { selector: 'node[?hub], node.zoomed', style: { 'text-opacity': 1 } },
       { selector: '.hidden', style: { display: 'none' } },
     ],
     layout: { name: 'preset' },   // las posiciones las pone la física de abajo
@@ -220,9 +226,15 @@ async function init() {
   for (let i = 0; i < 300; i++) step();
   reveal();
 
-  // Tamaño de los nombres FIJO en pantalla (no escala con el zoom)
-  const LABEL_PX = 14;
-  const fixLabelSize = () => cy.nodes().style('font-size', LABEL_PX / cy.zoom());
+  // Tamaño de los nombres FIJO en pantalla (no escala con el zoom). Además, al acercar lo
+  // suficiente se muestran TODOS los nombres (no solo los hubs) → invita a explorar.
+  const LABEL_PX = 13, ZOOM_LABELS = 1.6;
+  let labelsExpanded = false;
+  const fixLabelSize = () => {
+    cy.nodes().style('font-size', LABEL_PX / cy.zoom());
+    const expand = cy.zoom() > ZOOM_LABELS;
+    if (expand !== labelsExpanded) { labelsExpanded = expand; cy.nodes().toggleClass('zoomed', expand); }
+  };
   cy.on('zoom', fixLabelSize);
   fixLabelSize();
 

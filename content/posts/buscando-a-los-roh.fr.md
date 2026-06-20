@@ -161,7 +161,7 @@ flowchart TD
     class MLU,MAN,MAU,LUI ar
 ```
 
-**Quatre de ces enfants ont laissé suffisamment de traces.** Je les passe en revue un par un, avec leurs registres en galerie (clic pour agrandir). Tout cela ira aussi dans le [Wiki](../../wiki.html) du site quand je mettrai l'arbre à jour.
+**Quatre de ces enfants ont laissé suffisamment de traces.** Je les passe en revue un par un, avec leurs registres en galerie (clic pour agrandir). Tout cela viendra aussi enrichir le site —la recherche de chacun dans le [Wiki](../../wiki.html), ses documents dans la fiche de l'[arbre](../../arbol.html)— au fur et à mesure que je le mettrai à jour.
 
 #### Mariana Roh — trois unions et deux enfants avec un Clemenzo
 

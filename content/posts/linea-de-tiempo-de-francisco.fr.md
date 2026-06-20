@@ -49,7 +49,7 @@ La partie supérieure de la feuille du recensement nous donne la localisation de
 ![Superposition de l'ancienne carte de Villy sur Google Maps](../../assets/images/posts/VillysSpuerpuesto.jpeg)
 *Superposition de l'ancienne carte de Villy sur Google Maps*
 
-**Documents en Argentine**. Il existe divers recensements, actes et registres avec sa signature, disponibles [ici](../../wiki.html?focus=p26). Parmi eux, je mets en avant le suivant :
+**Documents en Argentine**. Il existe divers recensements, actes et registres avec sa signature, disponibles [ici](../../arbol.html?focus=p26). Parmi eux, je mets en avant le suivant :
 
 ![Document militaire de Francisco](../../assets/images/posts/FJHC_1859_militar_2.jpeg)
 
@@ -153,7 +153,7 @@ Enfin, l'acte de décès de Francisco en 1928 confirme qu'il était à **Concepc
 
 ![FJHC 1859 defunción](../../assets/images/posts/FJHC_1859_defuncion.jpg)
 
-Tous les documents peuvent être consultés en détail en cliquant [ici](../../wiki.html?focus=p26).
+Tous les documents peuvent être consultés en détail en cliquant [ici](../../arbol.html?focus=p26).
 
 ## Observations
 
