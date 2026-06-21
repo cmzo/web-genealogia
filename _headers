@@ -1,0 +1,18 @@
+# Política de caché para Cloudflare (Workers Assets sirve este archivo desde la raíz).
+#
+# Problema que resuelve: tras un deploy, los navegadores —sobre todo móviles— seguían
+# usando versiones VIEJAS cacheadas del HTML y de los ES modules (p. ej. el grafo de la
+# wiki cargaba el layout deforme anterior). Como los assets se servían sin Cache-Control,
+# el navegador aplicaba caché heurística y no revalidaba.
+#
+# `no-cache` no significa "no cachear": significa "cachear, pero revalidar con el origen
+# antes de usar la copia". Cloudflare responde con ETag → si el archivo no cambió devuelve
+# un 304 barato; si cambió, baja la versión nueva. Así el sitio siempre refleja el deploy.
+
+/*
+  Cache-Control: no-cache
+
+# Las fuentes self-hosted son inmutables (su contenido no cambia para una misma URL):
+# se pueden cachear a largo plazo. Regla más específica → gana sobre la de arriba.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
