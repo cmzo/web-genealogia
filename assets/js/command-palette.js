@@ -40,6 +40,8 @@
     search:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
     timeline:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
     filter:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>',
+    command: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 3 3-3 3M13 15h5"/></svg>',
+    theme:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>',
   };
 
   // La línea de tiempo (master-detail) no entra en pantallas chicas
@@ -209,6 +211,35 @@
     return items;
   }
 
+  // ── Comandos (acciones ejecutables, no navegación) ────────────────────────────
+  // Cada comando: { type:'command', icon, title, sub, run }. `run()` ejecuta la acción
+  // y, si devuelve truthy, el palette queda ABIERTO y se re-renderiza (útil para toggles).
+  // Para sumar comandos nuevos, agregá un objeto en commandItems().
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme')
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function toggleTheme() {
+    // Reusar el botón de tema (theme.js) mantiene en sync su ícono y el localStorage;
+    // si no está (alguna página sin theme.js), alternar a mano.
+    const btn = document.querySelector('.theme-toggle');
+    if (btn) { btn.click(); return true; }
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    document.documentElement.setAttribute('data-theme', next);
+    return true;   // mantener abierto y re-render → la etiqueta del comando se actualiza
+  }
+
+  function commandItems() {
+    const dark = currentTheme() === 'dark';
+    return [
+      { type: 'command', icon: 'theme', run: toggleTheme,
+        title: dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro', sub: 'Tema del sitio',
+        _t: norm('tema modo dia noche claro oscuro'),
+        _h: norm('tema theme modo dia noche claro oscuro light dark apariencia cambiar') },
+    ];
+  }
+
   function rank(items, q, limit) {
     return items
       .map(it => {
@@ -233,10 +264,11 @@
     const posts = (_index && _index.posts) || [];
 
     if (!q) {
-      // Estado vacío: sugerencias — filtros de la wiki (si aplica) + páginas + posts recientes
+      // Estado vacío: sugerencias — filtros de la wiki (si aplica) + comandos + páginas + posts recientes
       const recent = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 4);
       return [
         { label: 'Filtrar la wiki', items: wikiFilterItems() },
+        { label: 'Comandos', items: commandItems() },
         { label: 'Páginas', items: pages },
         { label: 'Posts recientes', items: recent },
       ].filter(g => g.items.length);
@@ -249,6 +281,7 @@
 
     return [
       { label: 'Filtrar la wiki', items: rank(wikiFilterItems(), q, 5) },
+      { label: 'Comandos',        items: rank(commandItems(), q, 5) },
       { label: 'Páginas',         items: rank(pages, q, 6) },
       { label: 'Personas',        items: rank(personas, q, 7) },
       { label: 'Línea de tiempo', items: tl },
@@ -275,7 +308,7 @@
         _visible.push(it);
         html += `
           <div class="cmdk-item" role="option" data-i="${i}">
-            <div class="cmdk-item-icon">${ICONS[it.type] || ICONS.page}</div>
+            <div class="cmdk-item-icon">${ICONS[it.icon] || ICONS[it.type] || ICONS.page}</div>
             <div class="cmdk-item-text">
               <div class="cmdk-item-title">${highlight(it.title, q)}</div>
               ${it.sub ? `<div class="cmdk-item-sub">${esc(it.sub)}</div>` : ''}
@@ -312,6 +345,13 @@
   function activate() {
     const it = _visible[_active];
     if (!it) return;
+    if (it.type === 'command') {
+      // Ejecuta la acción. Si run() devuelve truthy, el palette sigue abierto y se
+      // re-renderiza (p. ej. el toggle de tema actualiza su etiqueta in situ).
+      const keepOpen = typeof it.run === 'function' ? it.run() : false;
+      if (keepOpen) renderResults(_input.value); else close();
+      return;
+    }
     if (it.type === 'filter') {
       // Filtra el grafo de la wiki sin salir de la página
       if (typeof window.__wikiFilterBranch === 'function') window.__wikiFilterBranch(it.branch);
@@ -373,17 +413,17 @@
     _overlay.hidden = true;
     _overlay.innerHTML = `
       <div class="cmdk-backdrop" data-close></div>
-      <div class="cmdk-modal" role="dialog" aria-modal="true" aria-label="Buscador">
+      <div class="cmdk-modal" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
         <div class="cmdk-input-row">
-          ${ICONS.search}
-          <input class="cmdk-input" type="text" placeholder="Buscar personas, posts, páginas…"
-                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Buscar">
+          ${ICONS.command}
+          <input class="cmdk-input" type="text" placeholder="Buscar o ejecutar un comando…"
+                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Buscar o ejecutar un comando">
           <span class="cmdk-kbd">esc</span>
         </div>
         <div class="cmdk-results" role="listbox"></div>
         <div class="cmdk-footer">
           <span><span class="cmdk-kbd">↑</span><span class="cmdk-kbd">↓</span> navegar</span>
-          <span><span class="cmdk-kbd">↵</span> abrir</span>
+          <span><span class="cmdk-kbd">↵</span> abrir / ejecutar</span>
           <span class="cmdk-footer-spacer"></span>
           <span><span class="cmdk-kbd">esc</span> cerrar</span>
         </div>

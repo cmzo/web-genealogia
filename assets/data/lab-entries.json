@@ -1,0 +1,10 @@
+[
+  {
+    "id": "laboratorio-del-grafo",
+    "title": "Laboratorio del grafo",
+    "summary": "Sandbox de la física del grafo de la wiki: elegí nodos y conexiones, movés cada parámetro en vivo y copiás la receta para reproducirlo.",
+    "date": "2026-06-20",
+    "kind": "tool",
+    "url": "lab-grafo.html"
+  }
+]

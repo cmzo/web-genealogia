@@ -233,8 +233,78 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-card-go { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 4px; }
 .cmzo-card:hover .cmzo-card-go { color: var(--accent); }
 
+/* ════ Home dirección A: 01 Áreas + 02 Bitácora ════════════════════════════ */
+/* Meta a la derecha del encabezado de sección (ej. «3 directorios») */
+.cmzo-mod-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+
+/* 01 — Áreas: tres paneles-directorio en grilla */
+.cmzo-areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+.cmzo-area { height: 100%; }
+.cmzo-area-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.cmzo-area-route { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.cmzo-area .cmzo-btn { margin-top: auto; align-self: flex-start; }   /* botón siempre al pie */
+.cmzo-area-viz { display: flex; align-items: center; justify-content: center; padding: 4px 0; }
+.cmzo-area-viz svg { width: 100%; height: auto; max-height: 104px; }
+
+/* Filas de peek (últimas entradas / experimentos) */
+.cmzo-area-list { display: flex; flex-direction: column; }
+.cmzo-line { display: flex; flex-direction: column; gap: 2px; padding: 9px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
+.cmzo-line:last-child { border-bottom: 0; }
+.cmzo-line .m { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.02em; }
+.cmzo-line .t { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.35; }
+.cmzo-line:hover .t { color: var(--accent); }
+
+/* Mini-stats del área gen */
+.cmzo-areastats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.cmzo-areastat .v { font-family: var(--mono); font-size: 22px; font-weight: 500; line-height: 1; color: var(--text); }
+.cmzo-areastat .k { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+/* 02 — Bitácora */
+.cmzo-stream-note { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 0 0 14px; }
+.cmzo-filterbar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.cmzo-fpill { font-family: var(--mono); font-size: 12px; color: var(--muted); background: transparent; border: 1px solid var(--border); border-radius: 6px; padding: 5px 11px; cursor: pointer; transition: .15s; }
+.cmzo-fpill:hover { color: var(--text); border-color: var(--muted); }
+.cmzo-fpill.is-on { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+
+.cmzo-stream { display: flex; flex-direction: column; }
+.cmzo-s-item { display: grid; grid-template-columns: 90px 60px 1fr auto; gap: 14px; align-items: baseline; padding: 13px 6px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background .12s; }
+.cmzo-s-item:hover { background: var(--bg); }
+.cmzo-s-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.cmzo-s-type { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 4px; text-align: center; align-self: center; }
+.cmzo-s-title { font-family: var(--sans); font-size: 14.5px; color: var(--text); line-height: 1.45; }
+.cmzo-s-item:hover .cmzo-s-title { color: var(--accent); }
+.cmzo-s-cat { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+/* Tono por tipo: contenido (post/lab) en accent; efímeros (nota/imagen/enlace/cambio) en neutro */
+.t-post, .t-lab { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.t-nota, .t-imagen, .t-enlace, .t-cambio { color: var(--muted); background: var(--bg); }
+
+/* «ver más» del stream */
+.cmzo-more { display: inline-flex; margin-top: 16px; font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+  background: transparent; border: 1px solid var(--border); border-radius: 7px; padding: 8px 14px; cursor: pointer; transition: .15s; }
+.cmzo-more:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Modal de la bitácora */
+.cmzo-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.cmzo-modal[hidden] { display: none; }
+.cmzo-modal-backdrop { position: absolute; inset: 0; background: rgba(20,20,18,0.42); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.cmzo-modal-card { position: relative; width: min(560px, 94vw); max-height: 82vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 24px 64px rgba(20,20,18,0.28); }
+.cmzo-modal-head { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: lowercase; }
+.cmzo-modal-close { background: none; border: 0; color: var(--muted); font-size: 16px; cursor: pointer; line-height: 1; padding: 2px 4px; }
+.cmzo-modal-close:hover { color: var(--accent); }
+.cmzo-modal-body { padding: 20px 22px 24px; font-family: var(--sans); font-size: 15px; line-height: 1.62; color: var(--text); }
+.cmzo-modal-body p { margin: 0 0 12px; }
+.cmzo-modal-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 0 0 12px; display: block; }
+.cmzo-modal-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.cmzo-modal-body code { font-family: var(--mono); font-size: 0.92em; background: var(--bg); padding: 1px 5px; border-radius: 4px; }
+.cmzo-modal-link { font-family: var(--mono); font-size: 13px; }
+
 @media (max-width: 760px) {
   .cmzo-wrap, .cmzo-top-inner, .cmzo-foot-inner { padding-left: 22px; padding-right: 22px; }
-  .cmzo-two, .cmzo-cards { grid-template-columns: 1fr; }
+  .cmzo-two, .cmzo-cards, .cmzo-areas { grid-template-columns: 1fr; }
   .cmzo-mainnav { display: none; }   /* en mobile, el menú vive en el drawer (nav-drawer.js) */
+  .cmzo-s-item { grid-template-columns: 56px 1fr; grid-template-areas: "date title" "type title"; gap: 4px 12px; row-gap: 2px; }
+  .cmzo-s-item .cmzo-s-date { grid-area: date; }
+  .cmzo-s-item .cmzo-s-type { grid-area: type; justify-self: start; }
+  .cmzo-s-item .cmzo-s-title { grid-area: title; }
+  .cmzo-s-item .cmzo-s-cat { display: none; }
 }

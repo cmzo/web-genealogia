@@ -13,6 +13,20 @@ const TEMPLATE_FILE = './content/templates/post-template.html';
 const OUTPUT_DIR = './dist/blog';
 const BLOG_ENTRIES_FILE = './assets/data/blog-entries.json';
 
+// Área "lab" (experimentos / writeups). Mismo patrón que el blog.
+const LAB_DIR = './content/lab';
+const LAB_OUTPUT_DIR = './dist/lab';
+const LAB_ENTRIES_FILE = './assets/data/lab-entries.json';
+
+// Notas / momentos: entradas cortas (texto, foto o enlace) que NO generan página;
+// se renderizan en un modal desde la bitácora de la home.
+const NOTAS_DIR = './content/notas';
+const NOTAS_FILE = './assets/data/notas.json';
+
+// La bitácora también consume el changelog (la página changelog.html queda igual).
+const CHANGELOG_MD = './content/changelog.md';
+const CHANGELOG_ENTRIES_FILE = './assets/data/changelog-entries.json';
+
 // Logs de diagnóstico (galerías, etc.) solo con --verbose / -v
 const VERBOSE = process.argv.includes('--verbose') || process.argv.includes('-v');
 
@@ -622,6 +636,132 @@ function buildArbolData() {
   }
 }
 
+// ── Lab (área de experimentos) ───────────────────────────────────────────────
+// Cada `content/lab/*.md` es una entrada del área. `kind: tool` (o con `url:`) solo
+// indexa apuntando a una página existente (ej. lab-grafo.html); `kind: writeup` genera
+// su propia página en dist/lab/ con el template de post. Emite lab-entries.json.
+function buildLab() {
+  const entries = [];
+  if (fs.existsSync(LAB_DIR)) {
+    if (!fs.existsSync(LAB_OUTPUT_DIR)) fs.mkdirSync(LAB_OUTPUT_DIR, { recursive: true });
+    fs.readdirSync(LAB_DIR).filter(f => f.endsWith('.md')).forEach(file => {
+      const raw = fs.readFileSync(path.join(LAB_DIR, file), 'utf8');
+      const { metadata, content } = extractFrontMatter(raw);
+      if (!metadata.title) { console.warn(`⚠️  lab/${file} sin título — se omite`); return; }
+      const slug = metadata.slug || file.replace(/\.md$/, '');
+      const kind = metadata.kind || (metadata.url ? 'tool' : 'writeup');
+      let url = metadata.url || '';
+
+      if (kind === 'writeup' && !url) {
+        const outName = `${slug}.html`;
+        const htmlContent = markdownToHtml(content.replace(/^\s*#\s+[^\n]+\n+/, ''));
+        const ogImage = metadata.image
+          ? (metadata.image.startsWith('http') ? metadata.image : `${BASE_URL}/${metadata.image.replace(/^\//, '')}`)
+          : DEFAULT_OG_IMAGE;
+        const page = template
+          .replace(/\{\{lang\}\}/g, 'es')
+          .replace(/\{\{langselector\}\}/g, '')
+          .replace(/\{\{title\}\}/g, metadata.title)
+          .replace(/\{\{kicker\}\}/g, metadata.kicker || 'lab')
+          .replace(/\{\{description\}\}/g, metadata.summary || metadata.description || '')
+          .replace(/\{\{canonical\}\}/g, `${BASE_URL}/dist/lab/${outName}`)
+          .replace(/\{\{ogimage\}\}/g, ogImage)
+          .replace(/\{\{date\}\}/g, metadata.date || '—')
+          .replace(/\{\{content\}\}/g, htmlContent)
+          .replace(/\{\{aside\}\}/g, metadata.aside ? markdownToHtml(metadata.aside) : '');
+        fs.writeFileSync(path.join(LAB_OUTPUT_DIR, outName), page);
+        url = `dist/lab/${outName}`;
+        console.log(`✅ Generado: ${path.join(LAB_OUTPUT_DIR, outName)}`);
+      }
+
+      entries.push({
+        id: slug,
+        title: metadata.title,
+        summary: metadata.summary || metadata.description || '',
+        date: metadata.date || '',
+        kind,
+        url,
+      });
+    });
+  }
+  entries.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  fs.writeFileSync(LAB_ENTRIES_FILE, JSON.stringify(entries, null, 2));
+  console.log(`✅ Generado: ${LAB_ENTRIES_FILE} (${entries.length} entradas)`);
+}
+
+// ── Notas / momentos (entradas cortas, solo datos → modal) ───────────────────
+function plainText(html) { return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
+
+function buildNotas() {
+  const notas = [];
+  if (fs.existsSync(NOTAS_DIR)) {
+    fs.readdirSync(NOTAS_DIR).filter(f => f.endsWith('.md')).forEach(file => {
+      const raw = fs.readFileSync(path.join(NOTAS_DIR, file), 'utf8');
+      const { metadata, content } = extractFrontMatter(raw);
+      const html = marked.parse(content.trim());
+      notas.push({
+        id: file.replace(/\.md$/, ''),
+        date: metadata.date || '',
+        type: metadata.type || 'nota',     // nota | imagen | enlace
+        image: metadata.image || '',
+        link: metadata.link || '',
+        html,
+        text: plainText(html),
+      });
+    });
+  }
+  notas.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  fs.writeFileSync(NOTAS_FILE, JSON.stringify(notas, null, 2));
+  console.log(`✅ Generado: ${NOTAS_FILE} (${notas.length} notas)`);
+}
+
+// ── Changelog → ítems de la bitácora ─────────────────────────────────────────
+const MESES = {
+  enero: '01', febrero: '02', marzo: '03', abril: '04', mayo: '05', junio: '06',
+  julio: '07', agosto: '08', septiembre: '09', setiembre: '09', octubre: '10',
+  noviembre: '11', diciembre: '12',
+};
+function fechaEsToIso(s) {
+  const m = s.match(/(\d{1,2})\s+de\s+([a-záéíóú]+)\s+de\s+(\d{4})/i);
+  if (!m) return '';
+  const dd = m[1].padStart(2, '0');
+  const mm = MESES[m[2].toLowerCase()] || '01';
+  return `${m[3]}-${mm}-${dd}`;
+}
+function buildChangelogFeed() {
+  const items = [];
+  if (fs.existsSync(CHANGELOG_MD)) {
+    const lines = fs.readFileSync(CHANGELOG_MD, 'utf8').split('\n');
+    let curDate = '';
+    let i = 0;
+    while (i < lines.length) {
+      const dm = lines[i].match(/^###\s+(.+)/);
+      if (dm) { curDate = fechaEsToIso(dm[1]); i++; continue; }
+      const hm = lines[i].match(/^####\s+(.+)/);
+      if (hm) {
+        const tagM = hm[1].match(/changelog-tag--(\w+)/);
+        const tag = tagM ? tagM[1] : '';
+        const title = hm[1].replace(/<span[^>]*>[\s\S]*?<\/span>/g, '').trim();
+        const body = [];
+        i++;
+        while (i < lines.length && !/^####\s/.test(lines[i]) && !/^###\s/.test(lines[i])) {
+          body.push(lines[i]); i++;
+        }
+        items.push({
+          id: `${curDate}-${headingId(title)}`,
+          date: curDate, type: 'cambio', tag, title,
+          html: marked.parse(body.join('\n').trim()),
+        });
+        continue;
+      }
+      i++;
+    }
+  }
+  const recent = items.slice(0, 40);   // ya vienen recientes-primero
+  fs.writeFileSync(CHANGELOG_ENTRIES_FILE, JSON.stringify(recent, null, 2));
+  console.log(`✅ Generado: ${CHANGELOG_ENTRIES_FILE} (${recent.length} de ${items.length})`);
+}
+
 // Función principal
 function build() {
   console.log('🚀 Iniciando build del blog...');
@@ -695,6 +835,11 @@ function build() {
   // Escribir JSON de entradas
   fs.writeFileSync(BLOG_ENTRIES_FILE, JSON.stringify(blogEntries, null, 2));
   console.log(`✅ Generado: ${BLOG_ENTRIES_FILE} (${blogEntries.length} entradas)`);
+
+  // Área lab, notas/momentos y feed del changelog (alimentan la bitácora de la home)
+  buildLab();
+  buildNotas();
+  buildChangelogFeed();
 
   // Generar arbol.json desde data/arbol.db
   buildArbolData();

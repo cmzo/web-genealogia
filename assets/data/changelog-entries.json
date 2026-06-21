@@ -1,0 +1,322 @@
+[
+  {
+    "id": "2026-06-21-fuentes-y-colaborar-al-mismo-lenguaje-visual",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Fuentes y Colaborar, al mismo lenguaje visual",
+    "html": "<p>Las páginas de <strong>Fuentes</strong> y <strong>Colaborar</strong>, que seguían con el diseño viejo, ahora hablan el mismo idioma que el resto del sitio: secciones numeradas, paneles y tipografía monoespaciada. Fuentes agrupa los archivos por región en paneles ordenados, con un índice arriba; Colaborar conserva el formulario y todo lo que hacía, pero con la piel nueva.</p>\n"
+  },
+  {
+    "id": "2026-06-21-el-tablero-de-genealogía-muestra-más",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "El tablero de genealogía muestra más",
+    "html": "<p>En la portada de genealogía (<code>/gen</code>), las secciones de Fuentes y Colaborar ahora traen una vista previa: un índice de archivos y un formulario de ejemplo, para dar una idea de lo que hay del otro lado antes de entrar.</p>\n"
+  },
+  {
+    "id": "2026-06-21-una-marca-con-más-identidad",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Una marca con más identidad",
+    "html": "<p>El nombre del sitio en la barra pasó de un punto verde suelto a <strong><code>~/cmzo</code></strong> —un guiño a las rutas de carpetas—, con «cmzo» en negrita. Chico, pero le da carácter.</p>\n"
+  },
+  {
+    "id": "2026-06-21-un-rectángulo-fantasma-al-hacer-scroll",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Un rectángulo fantasma al hacer scroll",
+    "html": "<p>Al frenar el scroll por encima del inicio (ese rebote elástico), asomaba un rectángulo claro arriba a la izquierda: era un atajo de accesibilidad oculto que se dejaba ver de más. Ahora queda invisible salvo cuando corresponde.</p>\n"
+  },
+  {
+    "id": "2026-06-21-una-navegación-nueva-en-todo-el-sitio",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Una navegación nueva en todo el sitio",
+    "html": "<p>La barra de arriba cambió de fondo. En lugar del menú lateral, ahora hay una <strong>ruta tipo carpetas</strong> (<code>cmzo / gen / árbol</code>) que muestra dónde estás parado y te deja volver a cualquier nivel con un clic. Las secciones principales quedaron en <strong>inicio</strong>, <strong>blog</strong> y <strong>genealogía</strong>, y la barra se adapta según dónde estés. Es el primer paso de un cambio de enfoque: el sitio deja de ser solo «genealogía Clemenzo» para volverse una página personal donde la genealogía es uno de los temas, no el único.</p>\n"
+  },
+  {
+    "id": "2026-06-21-la-genealogía-ahora-tiene-su-propia-portada",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "La genealogía ahora tiene su propia portada",
+    "html": "<p>Todo lo genealógico se reunió en una <strong>página-tablero</strong> (<code>/gen</code>): desde ahí entrás al <strong>árbol</strong> —con un resumen de cuántas personas, fechas, lugares y generaciones hay documentadas—, a la <strong>wiki</strong>, a las <strong>fuentes</strong> y a <strong>colaborar</strong>. Antes esos accesos estaban repartidos en el menú lateral; ahora viven juntos y con más contexto.</p>\n"
+  },
+  {
+    "id": "2026-06-21-una-portada-más-enfocada",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Una portada más enfocada",
+    "html": "<p>La página de inicio se replanteó: una presentación breve del sitio, dos accesos claros —<strong>genealogía</strong> y <strong>blog</strong>— y la última entrada publicada. Menos cosas, más dirección.</p>\n"
+  },
+  {
+    "id": "2026-06-21-la-barra-de-arriba-más-ordenada",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La barra de arriba, más ordenada",
+    "html": "<p>El buscador (⌘ + K), el selector de idioma, el modo claro/oscuro y el enlace al código quedaron <strong>agrupados a la derecha</strong>, separados por líneas finas, mientras las secciones se alinean a la izquierda junto al nombre del sitio. Se ve más prolija y con menos elementos compitiendo por el centro.</p>\n"
+  },
+  {
+    "id": "2026-06-21-el-mapa-de-la-wiki-aparece-centrado",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "El mapa de la Wiki aparece centrado",
+    "html": "<p>El grafo de la Wiki (y el del Laboratorio) ahora se <strong>centra en la pantalla</strong> al abrirse, en vez de quedar corrido hacia un costado.</p>\n"
+  },
+  {
+    "id": "2026-06-21-enlaces-de-los-posts-que-no-funcionaban",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Enlaces de los posts que no funcionaban",
+    "html": "<p>Algunos enlaces dentro de los posts del blog —al árbol, la wiki y el laboratorio— estaban rotos y daban error de página inexistente. Ahora <strong>llevan bien</strong> a su destino.</p>\n"
+  },
+  {
+    "id": "2026-06-20-un-laboratorio-para-jugar-con-el-grafo",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Un laboratorio para jugar con el grafo",
+    "html": "<p>Hay una página nueva, el <strong>Laboratorio del grafo</strong>, para experimentar con el mapa: elegís cuántos puntos y cuántas conexiones, y con una serie de controles cambiás la física —cómo se repelen los nodos, cuánto se agrupan, qué tan redondo queda el conjunto, el grosor de las líneas, el brillo de los puntos— viendo el resultado al instante. Sirve para entender cómo está hecho el mapa de la Wiki y para poder reproducirlo: incluye una &quot;receta&quot; copiable con todos los valores.</p>\n"
+  },
+  {
+    "id": "2026-06-20-los-nombres-de-las-personas-más-conectadas-siempre-a-la-vista",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Los nombres de las personas más conectadas, siempre a la vista",
+    "html": "<p>En el mapa de la Wiki ahora se ven por defecto los nombres de los nodos con más conexiones (los centros de cada familia), y al acercar el zoom aparecen todos. Antes los nombres solo salían al pasar el mouse y daba la sensación de que faltaba algo.</p>\n"
+  },
+  {
+    "id": "2026-06-20-los-enlaces-a-documentos-llevan-al-lugar-correcto",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Los enlaces a documentos llevan al lugar correcto",
+    "html": "<p>Algunos enlaces de los posts que invitaban a ver los documentos llevaban a la Wiki; ahora llevan al <strong>Árbol</strong>, que es donde está la galería de documentos de cada persona. La Wiki guarda la investigación; el árbol, los documentos.</p>\n"
+  },
+  {
+    "id": "2026-06-20-el-mapa-de-la-wiki-ahora-es-un-círculo-navegable",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El mapa de la Wiki ahora es un círculo navegable",
+    "html": "<p>El grafo de la Wiki pasó de ser una maraña a un <strong>disco ordenado</strong>: las personas y sus documentos se acomodan solos en un círculo, agrupados por familia, igual que los mapas de conocimiento de apps como Obsidian. Los nombres aparecen <strong>al pasar el mouse</strong> (en reposo se ven solo los puntos, más limpio) y, al apuntar a alguien, <strong>se iluminan las líneas</strong> que lo conectan con su familia. El conjunto aparece con una animación suave en lugar de saltar al cargar.</p>\n"
+  },
+  {
+    "id": "2026-06-20-mover-los-nodos-del-mapa",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Mover los nodos del mapa",
+    "html": "<p>Ahora podés <strong>agarrar cualquier punto y arrastrarlo</strong>: los parientes conectados lo siguen, y al soltar todo vuelve lentamente a su lugar en el círculo, con una sensación elástica. Sirve para explorar quién está unido a quién.</p>\n"
+  },
+  {
+    "id": "2026-06-20-los-posts-del-blog-conectados-con-su-gente",
+    "date": "2026-06-20",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Los posts del blog, conectados con su gente",
+    "html": "<p>Las entradas del blog ahora aparecen en el mapa <strong>unidas a las personas que cuentan</strong>: «La ruina de François» queda pegado a François Clemenzo y su familia, «Buscando a los Roh» entre los Roh, y así. Tocá un post para ver de quién habla, o una persona para ver en qué posts aparece.</p>\n"
+  },
+  {
+    "id": "2026-06-19-la-wiki-un-mapa-navegable-de-la-familia",
+    "date": "2026-06-19",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "La Wiki: un mapa navegable de la familia",
+    "html": "<p>El <strong>Archivo</strong> se transformó en la <strong>Wiki</strong>, una forma nueva de recorrer la investigación. En lugar de una tabla, ahora hay un <strong>grafo interactivo</strong> —al estilo de las wikis de fans— donde las <strong>personas, los lugares y las fuentes</strong> son puntos conectados entre sí: se ve de un vistazo qué se relaciona con qué. Al tocar un punto se abre un <strong>panel</strong> con sus vínculos (padres, cónyuge, hijos) y los lugares y documentos donde aparece, y el botón <strong>Leer</strong> abre, sin salir de la página, un recuadro grande con la investigación o la ficha completa. Podés saltar de una persona a otra siguiendo las conexiones, y filtrar por rama familiar con las pastillas de arriba.</p>\n"
+  },
+  {
+    "id": "2026-06-19-la-investigación-de-cada-persona-ahora-se-lee-mejor",
+    "date": "2026-06-19",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La investigación de cada persona ahora se lee mejor",
+    "html": "<p>Las notas de investigación que antes vivían en una pestaña del árbol se mudaron a la Wiki, donde se ven <strong>más grandes y mejor maquetadas</strong> (con sus tablas, cronologías y citas). Desde la ficha de una persona en el árbol, el botón <strong>«Ver investigación en la wiki»</strong> lleva directo a su página.</p>\n"
+  },
+  {
+    "id": "2026-06-19-acceso-a-la-wiki-desde-la-portada",
+    "date": "2026-06-19",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Acceso a la Wiki desde la portada",
+    "html": "<p>La página de inicio suma una invitación para <strong>entrar a la Wiki</strong>, igual que la que ya existía para el árbol genealógico.</p>\n"
+  },
+  {
+    "id": "2026-06-17-más-protección-contra-spam-y-bots",
+    "date": "2026-06-17",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Más protección contra spam y bots",
+    "html": "<p>El formulario de <strong>Colaborar</strong> sumó <strong>Cloudflare Turnstile</strong>: una verificación anti-spam que confirma que sos una persona <strong>sin cookies ni &quot;elegí los semáforos&quot;</strong> (la mayoría de las veces es invisible). Se valida del lado del servidor, así los envíos automatizados se descartan y solo llegan los reales. Se suma al honeypot y la traba de tiempo que ya tenía. Además se reforzó la protección anti-bots del sitio con herramientas de Cloudflare (AI Labyrinth).</p>\n"
+  },
+  {
+    "id": "2026-06-16-el-sitio-tiene-dominio-propio-cmzonet",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El sitio tiene dominio propio: cmzo.net",
+    "html": "<p>El sitio ahora vive en <strong><a href=\"https://cmzo.net\">cmzo.net</a></strong>, un dominio propio más corto y fácil de recordar. <code>www.cmzo.net</code> redirige solo al dominio principal, así que no hay enlaces rotos.</p>\n"
+  },
+  {
+    "id": "2026-06-16-un-panel-de-contexto-fijo-en-la-línea-de-tiempo",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Un panel de contexto fijo en la línea de tiempo",
+    "html": "<p>La línea de tiempo se ensanchó y sumó un <strong>panel de detalle fijo a la derecha</strong> que reemplaza a los globos chiquitos que aparecían al pasar el mouse. Se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…», «chozno de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para <strong>abrir la ficha completa</strong>.</p>\n"
+  },
+  {
+    "id": "2026-06-16-los-hitos-históricos-ahora-traen-imagen-y-resumen-de-wikipedia",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Los hitos históricos ahora traen imagen y resumen de Wikipedia",
+    "html": "<p>Cada hito mundial de la línea (Revolución Francesa, llegada del hombre a la Luna, etc.) abre en ese panel con una <strong>imagen y un resumen traídos en vivo de Wikipedia</strong>, además del texto propio y un enlace para leer más. Se sumaron <strong>hitos argentinos</strong> (Constitución de 1853, Ley Sáenz Peña, Yrigoyen, el golpe de 1930, Perón, el retorno a la democracia en 1983), que aparecen cuando la vida de la persona los abarca, y se corrigieron enlaces rotos.</p>\n"
+  },
+  {
+    "id": "2026-06-16-geografía-más-clara-y-un-desplazamiento-que-encaja",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Geografía más clara y un desplazamiento que «encaja»",
+    "html": "<p>La franja superior muestra con <strong>banderas circulares</strong> dónde <strong>nació, creció, vivió y murió</strong> cada persona (incluida España para quienes emigraron allá). Al desplazar la línea, el nombre se resalta y <strong>encaja en su lugar</strong> como en un selector de fecha del celular, y el panel de la derecha acompaña. Si la persona vive, ya no aparece la columna «murió» y se muestra «vive». También se afinó el espaciado para que los nombres no se solapen y se puede llegar con el scroll hasta los integrantes más jóvenes del árbol.</p>\n"
+  },
+  {
+    "id": "2026-06-16-la-línea-de-tiempo-más-a-mano",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La línea de tiempo, más a mano",
+    "html": "<p>El acceso dejó de pasar desapercibido: el botón <strong>«Línea de tiempo»</strong> en la ficha de cada persona ahora es <strong>verde y destacado</strong>, y además se puede abrir desde el buscador <strong>⌘ + K</strong> (escribís un nombre y elegís «Línea de tiempo»). En pantallas chicas, donde la vista no entra cómoda, el acceso se oculta.</p>\n"
+  },
+  {
+    "id": "2026-06-16-parentescos-con-nombre-propio",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Parentescos con nombre propio",
+    "html": "<p>La relación de cada persona con la que estás mirando se nombra con más precisión: hijo, nieto, bisnieto, tataranieto y <strong>chozno</strong> (la 5.ª generación). De ahí en adelante, en vez del genérico «descendiente», se indica la <strong>generación exacta</strong> (por ejemplo «Descendiente · 7.ª generación»).</p>\n"
+  },
+  {
+    "id": "2026-06-16-escudos-heráldicos-en-modo-oscuro",
+    "date": "2026-06-16",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Escudos heráldicos en modo oscuro",
+    "html": "<p>Los escudos de la portada (Valais, armorial Clemenzo, Ardon) tenían un fondo blanco que en modo oscuro se veía como un recuadro fuera de lugar. Ahora tienen <strong>fondo transparente</strong> —recortado respetando los blancos propios del escudo— con una sombra suave, así se ven prolijos sobre cualquier fondo.</p>\n"
+  },
+  {
+    "id": "2026-06-15-línea-de-tiempo-de-cada-persona",
+    "date": "2026-06-15",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Línea de tiempo de cada persona",
+    "html": "<p>Al elegir a alguien en el <strong>Árbol</strong> aparece un botón <strong>«Línea de tiempo»</strong> que abre una vista nueva: ubica a la persona —junto a sus ancestros y descendientes— sobre un eje temporal, enfrentada a los <strong>hitos históricos</strong> del mundo de cada época (de la Revolución Francesa a la llegada del hombre a la Luna). Una franja superior muestra <strong>dónde nació, creció, vivió y murió</strong> cada quien, y al recorrer la línea se va resaltando cada nombre con su contexto. Es una forma de ver la historia familiar situada en el tiempo: qué pasaba en el mundo cuando vivió cada antepasado.</p>\n"
+  },
+  {
+    "id": "2026-06-14-modo-oscuro-en-todo-el-sitio",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Modo oscuro en todo el sitio",
+    "html": "<p>El sitio sumó <strong>modo oscuro</strong> con una paleta neutra gris-azulada («Pizarra neutra»). Un botón <strong>sol/luna</strong> en la barra superior alterna el tema; si no elegís nada, sigue la preferencia de tu sistema operativo en vivo, y si lo tocás, recuerda tu elección. Un script mínimo en el <code>&lt;head&gt;</code> fija el tema antes de pintar la página, así no hay parpadeo al cargar. Se ajustaron los detalles para que todo se lea bien en oscuro: la grilla de puntos del árbol se aclaró, el avatar del autor recibe fondo claro para no perderse y los enlaces del panel lateral ganaron contraste.</p>\n"
+  },
+  {
+    "id": "2026-06-14-tipografía-títulos-en-grotesca-suiza-y-cuerpo-en-serif",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Tipografía: títulos en grotesca suiza y cuerpo en serif",
+    "html": "<p>Los títulos del sitio pasaron de Playfair Display a <strong>Hanken Grotesk</strong>, una grotesca de estilo suizo, y el cuerpo de los artículos adoptó <strong>Source Serif 4</strong> a mayor tamaño (18 px) e interlineado más amplio, con una <strong>medida de lectura más contenida y centrada</strong> (≈720 px). El cambio se unificó en todo el sitio —posts, Sobre, Fuentes, Cambios y Colaborar— para lograr el mismo lenguaje editorial: título en grotesca + lectura en serif. De paso, las <strong>tarjetas del blog</strong> corrigieron una inversión: ahora el título va en grotesca y el resumen en serif.</p>\n"
+  },
+  {
+    "id": "2026-06-14-imágenes-nuevo-visor-con-ficha-y-zoom",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Imágenes: nuevo visor con ficha y zoom",
+    "html": "<p>Al hacer clic en una imagen de un artículo se abre un <strong>visor</strong> que no ocupa toda la pantalla (el artículo se ve atenuado detrás): imagen grande sobre fondo oscuro, <strong>panel lateral con el pie y la fuente</strong>, <strong>zoom</strong> (clic, rueda o doble clic) con arrastre para desplazarse, <strong>navegación</strong> entre las imágenes del post (flechas ‹ › o teclado) y cierre con Esc. La presentación de las imágenes dentro del texto se volvió más sobria y respeta la paleta y el modo oscuro. Además se corrigió el pie de imagen para que se muestre prolijo y aparezca en el visor, y se agregaron pies a las imágenes de los posts.</p>\n"
+  },
+  {
+    "id": "2026-06-14-fuentes-propias-sin-google-fonts",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Fuentes propias (sin Google Fonts)",
+    "html": "<p>Las cuatro tipografías del sitio (Hanken Grotesk, Inter, Source Serif 4 y JetBrains Mono) dejaron de cargarse desde Google y ahora se sirven <strong>desde el propio dominio</strong> (<code>assets/fonts/</code>). Esto mejora la privacidad —ningún visitante envía su IP a Google al abrir el sitio, lo que evita el problema de RGPD del Google Fonts embebido—, elimina la dependencia de un tercero y acelera la carga. Se incluyen solo los subconjuntos latin y latin-ext, suficientes para español y francés.</p>\n"
+  },
+  {
+    "id": "2026-06-14-el-árbol-ahora-vive-en-arbolhtml",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "El Árbol ahora vive en `arbol.html`",
+    "html": "<p>La página del árbol genealógico se renombró de <code>arbol-matrimonios.html</code> (un nombre heredado de una versión vieja) a <strong><code>arbol.html</code></strong>. Se actualizaron todos los enlaces internos del sitio y la URL anterior quedó como <strong>redirección</strong>, para no romper enlaces ya compartidos o indexados.</p>\n"
+  },
+  {
+    "id": "2026-06-14-colaborar-nueva-página-con-formulario-de-aportes-reemplaza-contacto",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Colaborar: nueva página con formulario de aportes (reemplaza Contacto)",
+    "html": "<p>La antigua página de Contacto se reemplazó por <strong>Colaborar</strong>, con dos modos. <em>Dejar un comentario</em> (nombre, email opcional, mensaje) y <em>Tengo información sobre alguien</em>: este último trae un <strong>selector de personas del árbol</strong> con búsqueda y chips (lee <code>arbol.json</code>), opción para personas que <strong>no</strong> están en el árbol pero se relacionan con alguien que sí, tipo de dato (checkboxes), anécdota y enlace. Anti-spam con honeypot y traba de tiempo. Los envíos se guardan en una <strong>Google Sheet</strong> propia mediante Google Apps Script y llega un mail de aviso — sin servicios pagos ni dependencias que puedan dejar de ser gratis. Todos los enlaces del sitio apuntan ahora a Colaborar; <code>contacto.html</code> quedó como redirección.</p>\n"
+  },
+  {
+    "id": "2026-06-14-colaborar-selector-de-idioma-es-fr-en",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Colaborar: selector de idioma ES / FR / EN",
+    "html": "<p>La página tiene su propio selector de idioma que cambia todos los textos de la interfaz al instante, recuerda la elección y la refleja en la URL (<code>?lang=fr</code>). El español está completo; francés e inglés quedan preparados para traducir.</p>\n"
+  },
+  {
+    "id": "2026-06-14-archivo-buscador-columnas-ordenables-navegación-familiar-y-enlaces-compartibles",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Archivo: buscador, columnas ordenables, navegación familiar y enlaces compartibles",
+    "html": "<p>El Archivo sumó <strong>buscador por nombre</strong>, <strong>encabezados que ordenan</strong> la tabla (nombre, años, generación, ítems), <strong>navegación familiar</strong> en la ficha (padre, madre, cónyuge e hijos clickeables para saltar entre fichas sin cerrar), filtro <strong>«solo con documentos»</strong> y <strong>enlaces compartibles</strong> (<code>archivo.html?focus=p38</code> abre una ficha directa). Además, el modal de ficha dejó de usar el color saturado de cada rama y adoptó el verde de la paleta (la rama quedó como un punto de color), y <strong>⌘ + K ya no te saca del Archivo</strong>: elegir una persona abre su ficha ahí mismo.</p>\n"
+  },
+  {
+    "id": "2026-06-14-inicio-estadísticas-del-árbol-y-acceso-destacado",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Inicio: estadísticas del árbol y acceso destacado",
+    "html": "<p>La portada muestra <strong>estadísticas reales</strong> calculadas en vivo desde el árbol (personas, fechas documentadas, lugares, generaciones) y un botón <strong>«Explorá el árbol interactivo»</strong>. Se aumentó el espaciado entre secciones.</p>\n"
+  },
+  {
+    "id": "2026-06-14-blog-indicador-de-traducción-en-las-tarjetas",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Blog: indicador de traducción en las tarjetas",
+    "html": "<p>Las tarjetas del blog muestran un globo con los chips <strong>ES / FR</strong> cuando el post tiene traducción disponible.</p>\n"
+  },
+  {
+    "id": "2026-06-14-blog-en-francés",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Blog en francés",
+    "html": "<p>Cinco posts se tradujeron al francés —Clan Clemenzo, Buscando a los Roh, Línea de tiempo de Francisco, Investigando a Francisco y Documentar fuentes—, con selector ES/FR en cada artículo.</p>\n"
+  },
+  {
+    "id": "2026-06-14-accesibilidad-y-seo",
+    "date": "2026-06-14",
+    "type": "cambio",
+    "tag": "",
+    "title": "Accesibilidad y SEO",
+    "html": "<p>Se agregaron meta descripciones, etiquetas Open Graph y URLs canónicas en todas las páginas; un enlace <strong>«Saltar al contenido»</strong>, un <code>&lt;h1&gt;</code> accesible en la portada y se oscureció el gris del texto secundario para cumplir el contraste AA.</p>\n"
+  }
+]

@@ -6,58 +6,112 @@
   <link rel="icon" href="./assets/images/favicon.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CMZO · El sitio de Matías Clemenzo</title>
-  <meta name="description" content="El sitio personal de Matías Clemenzo: un cuaderno público de investigación. Un árbol genealógico de seis generaciones —de Suiza a la Argentina— y notas y ensayos sobre tecnología y lo que valga la pena dejar escrito." />
+  <meta name="description" content="El sitio personal de Matías Clemenzo: genealogía, tecnología, agentes y notas sueltas. Posts largos cuando hay algo que contar, notas cortas el resto del tiempo." />
   <link rel="canonical" href="https://cmzo.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="CMZO · El sitio de Matías Clemenzo" />
-  <meta property="og:description" content="El sitio personal de Matías Clemenzo: un cuaderno público de investigación. Un árbol genealógico de seis generaciones —de Suiza a la Argentina— y notas y ensayos sobre tecnología y lo que valga la pena dejar escrito." />
+  <meta property="og:description" content="El sitio personal de Matías Clemenzo: genealogía, tecnología, agentes y notas sueltas." />
   <meta property="og:url" content="https://cmzo.net/" />
   <meta property="og:image" content="https://cmzo.net/assets/images/cards/og-banner.webp" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/home.css" />
 </head>
-<body data-section="home" data-lang-switch>
+<body data-section="home">
 
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
-  <h1 class="sr-only" data-i18n="home_h1">CMZO — el sitio personal de Matías Clemenzo: genealogía, tecnología e investigación</h1>
+  <h1 class="sr-only">CMZO — el sitio personal de Matías Clemenzo: genealogía, tecnología e investigación</h1>
 
   <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
 
   <main class="cmzo cmzo-wrap" id="main-content">
     <section class="cmzo-hero">
-      <div class="cmzo-kicker" data-i18n="kicker">Cuaderno público de investigación</div>
-      <p class="cmzo-lede" data-i18n="tagline">CMZO es el sitio personal de Matías Clemenzo: un cuaderno público de investigación. Acá conviven un árbol genealógico de seis generaciones —de Suiza a la Argentina— con notas y ensayos sobre tecnología y lo que valga la pena dejar escrito.</p>
+      <p class="cmzo-lede"><strong>Soy Matías Clemenzo.</strong> Genealogía, tecnología, agentes y otras cosas que rondan mi cabeza. Es lo que hay: posts <span class="soft">"largos"</span> cuando hay algo que contar, notas cortas el resto del tiempo.</p>
     </section>
 
+    <!-- 01 ÁREAS -->
     <section class="cmzo-mod">
       <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-num">01</span><h2 data-i18n="label_explore">Explorar</h2><span class="rule"></span></div>
-        <div class="cmzo-cards">
-          <a href="gen.html" class="cmzo-card">
-            <div class="cmzo-card-head">/gen</div>
-            <p data-i18n="card_gen">La investigación genealógica: un árbol de seis generaciones de Ardon (Valais) a Entre Ríos, una wiki que conecta personas, lugares y fuentes, y formas de colaborar.</p>
-            <span class="cmzo-card-go" data-i18n="card_open">abrir →</span>
-          </a>
-          <a href="blog.html" class="cmzo-card">
-            <div class="cmzo-card-head">/blog</div>
-            <p data-i18n="card_blog">Notas y ensayos: genealogía, tecnología, las herramientas que construyo y lo que valga la pena dejar escrito.</p>
-            <span class="cmzo-card-go" data-i18n="card_open">abrir →</span>
-          </a>
+        <div class="cmzo-mod-head"><span class="cmzo-mod-num">01</span><h2>Áreas</h2><span class="rule"></span><span class="cmzo-mod-meta">3 directorios</span></div>
+        <div class="cmzo-areas">
+
+          <!-- /blog -->
+          <article class="cmzo-viz cmzo-area">
+            <div class="cmzo-viz-head"><span>blog/latest</span><span>cmzo / blog</span></div>
+            <div class="cmzo-area-body">
+              <div class="cmzo-area-route">~/blog — últimas entradas</div>
+              <div id="homeBlogList" class="cmzo-area-list"></div>
+              <a href="blog.html" class="cmzo-btn"><span>Ver el blog</span><span>→</span></a>
+            </div>
+          </article>
+
+          <!-- /lab -->
+          <article class="cmzo-viz cmzo-area">
+            <div class="cmzo-viz-head"><span>graph.lab</span><span>cmzo / lab</span></div>
+            <div class="cmzo-area-body">
+              <div class="cmzo-area-route">~/lab — experimentos</div>
+              <div class="cmzo-area-viz">
+                <svg viewBox="0 0 140 108" role="img" aria-label="Grafo de la wiki (esquema)">
+                  <line class="act" x1="70" y1="54" x2="108" y2="54"/><line class="act" x1="70" y1="54" x2="89" y2="21"/><line class="act" x1="70" y1="54" x2="51" y2="21"/><line class="act" x1="70" y1="54" x2="32" y2="54"/><line class="act" x1="70" y1="54" x2="51" y2="87"/><line class="act" x1="70" y1="54" x2="89" y2="87"/>
+                  <line x1="108" y1="54" x2="89" y2="21"/><line x1="89" y1="21" x2="51" y2="21"/><line x1="51" y1="21" x2="32" y2="54"/><line x1="32" y1="54" x2="51" y2="87"/><line x1="51" y1="87" x2="89" y2="87"/><line x1="89" y1="87" x2="108" y2="54"/>
+                  <circle class="hl" cx="70" cy="54" r="6"/>
+                  <circle cx="108" cy="54" r="4"/><circle cx="89" cy="21" r="4"/><circle cx="51" cy="21" r="4"/><circle cx="32" cy="54" r="4"/><circle cx="51" cy="87" r="4"/><circle cx="89" cy="87" r="4"/>
+                </svg>
+              </div>
+              <div id="homeLabList" class="cmzo-area-list"></div>
+              <a href="lab-grafo.html" class="cmzo-btn"><span>Abrí el laboratorio</span><span>→</span></a>
+            </div>
+          </article>
+
+          <!-- /gen -->
+          <article class="cmzo-viz cmzo-area">
+            <div class="cmzo-viz-head"><span>tree.render</span><span>cmzo / gen</span></div>
+            <div class="cmzo-area-body">
+              <div class="cmzo-area-route">~/gen — árbol genealógico</div>
+              <div class="cmzo-area-viz">
+                <svg viewBox="0 0 280 96" role="img" aria-label="Árbol genealógico (esquema)">
+                  <line class="act" x1="140" y1="14" x2="64" y2="50"/><line x1="140" y1="14" x2="140" y2="50"/><line x1="140" y1="14" x2="216" y2="50"/>
+                  <line x1="64" y1="50" x2="36" y2="84"/><line x1="64" y1="50" x2="92" y2="84"/><line x1="216" y1="50" x2="188" y2="84"/><line x1="216" y1="50" x2="244" y2="84"/>
+                  <circle class="hl" cx="140" cy="14" r="6"/>
+                  <circle cx="64" cy="50" r="5"/><circle cx="140" cy="50" r="5"/><circle cx="216" cy="50" r="5"/>
+                  <circle cx="36" cy="84" r="4"/><circle cx="92" cy="84" r="4"/><circle cx="188" cy="84" r="4"/><circle cx="244" cy="84" r="4"/>
+                </svg>
+              </div>
+              <div id="homeGenStats" class="cmzo-areastats"></div>
+              <a href="gen.html" class="cmzo-btn"><span>Explorá la genealogía</span><span>→</span></a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
+    <!-- 02 LOG -->
     <section class="cmzo-mod">
       <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-num">02</span><h2 data-i18n="label_latest">Última entrada</h2><span class="rule"></span></div>
-        <div id="homeLatestSection" class="cmzo-entry">
-          <div class="cmzo-viz-head"><span>blog/latest</span><span>●</span></div>
-          <div id="homeLatest"></div>
+        <div class="cmzo-mod-head"><span class="cmzo-mod-num">02</span><h2>log</h2><span class="rule"></span></div>
+        <p class="cmzo-stream-note">posts, notas y cambios — todo en un mismo hilo</p>
+        <div class="cmzo-filterbar" id="streamFilters">
+          <button class="cmzo-fpill is-on" data-f="all">todos</button>
+          <button class="cmzo-fpill" data-f="post">post</button>
+          <button class="cmzo-fpill" data-f="lab">lab</button>
+          <button class="cmzo-fpill" data-f="nota">nota</button>
+          <button class="cmzo-fpill" data-f="cambio">cambio</button>
         </div>
+        <div class="cmzo-stream" id="stream"></div>
+        <button class="cmzo-more" id="streamMore" type="button" hidden></button>
       </div>
     </section>
   </main>
+
+  <!-- Modal de la bitácora (notas / imágenes / enlaces / cambios) -->
+  <div class="cmzo-modal" id="streamModal" hidden>
+    <div class="cmzo-modal-backdrop" data-close></div>
+    <div class="cmzo-modal-card" role="dialog" aria-modal="true" aria-label="Entrada de la bitácora">
+      <div class="cmzo-modal-head"><span id="streamModalHead"></span><button class="cmzo-modal-close" data-close aria-label="Cerrar">✕</button></div>
+      <div class="cmzo-modal-body" id="streamModalBody"></div>
+    </div>
+  </div>
 
   <footer class="cmzo-foot">
     <div class="cmzo-foot-inner">
@@ -66,76 +120,113 @@
     </div>
   </footer>
 
-  <!-- Diccionario de la portada. ES completo; traducir los valores de fr y en. -->
   <script>
-    window.I18N = {
-      es: {
-        home_h1: 'CMZO — el sitio personal de Matías Clemenzo: genealogía, tecnología e investigación',
-        kicker: 'Cuaderno público de investigación',
-        tagline: 'CMZO es el sitio personal de Matías Clemenzo: un cuaderno público de investigación. Acá conviven un árbol genealógico de seis generaciones —de Suiza a la Argentina— con notas y ensayos sobre tecnología y lo que valga la pena dejar escrito.',
-        label_explore: 'Explorar',
-        card_gen: 'La investigación genealógica: un árbol de seis generaciones de Ardon (Valais) a Entre Ríos, una wiki que conecta personas, lugares y fuentes, y formas de colaborar.',
-        card_blog: 'Notas y ensayos: genealogía, tecnología, las herramientas que construyo y lo que valga la pena dejar escrito.',
-        card_open: 'abrir →',
-        label_latest: 'Última entrada',
-        read: 'Leer →',
-      },
-      fr: {
-        home_h1: "CMZO — le site personnel de Matías Clemenzo : généalogie, technologie et recherche",
-        kicker: "Carnet de recherche public",
-        tagline: "CMZO est le site personnel de Matías Clemenzo : un carnet de recherche public. Un arbre généalogique de six générations —de la Suisse à l’Argentine— y côtoie des notes et des essais sur la technologie et tout ce qui mérite d’être écrit.",
-        label_explore: "Explorer",
-        card_gen: "La recherche généalogique : un arbre de six générations d’Ardon (Valais) à Entre Ríos, un wiki qui relie personnes, lieux et sources, et des façons de contribuer.",
-        card_blog: "Notes et essais : généalogie, technologie, les outils que je construis et tout ce qui mérite d’être écrit.",
-        card_open: "ouvrir →",
-        label_latest: "Dernier article",
-        read: "Lire →",
-      },
-      en: {
-        home_h1: "CMZO — Matías Clemenzo’s personal site: genealogy, technology and research",
-        kicker: "Public research notebook",
-        tagline: "CMZO is Matías Clemenzo’s personal site: a public research notebook. A six-generation family tree —from Switzerland to Argentina— sits alongside notes and essays on technology and whatever’s worth writing down.",
-        label_explore: "Explore",
-        card_gen: "The genealogical research: a six-generation tree from Ardon (Valais) to Entre Ríos, a wiki connecting people, places and sources, and ways to contribute.",
-        card_blog: "Notes and essays: genealogy, technology, the tools I build and whatever’s worth writing down.",
-        card_open: "open →",
-        label_latest: "Latest entry",
-        read: "Read →",
-      },
-    };
-  </script>
-  <script>
-    let _latest = null;
-    const tt = k => (window.t ? window.t(k) : '');
+    (function () {
+      const D = './assets/data/';
+      const fetchJSON = f => fetch(D + f).then(r => r.ok ? r.json() : null).catch(() => null);
+      const esc = s => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-    function renderLatest() {
-      if (!_latest) return;
-      document.getElementById('homeLatest').innerHTML = `
-        <a href="${_latest.url}" class="home-latest-link">
-          <h2 class="home-latest-title">${_latest.title}</h2>
-          <p class="home-latest-desc">${_latest.description}</p>
-          <span class="home-latest-read">${tt('read')}</span>
-        </a>`;
-    }
+      // ── Áreas: peeks ──────────────────────────────────────────────────────
+      function renderBlogPeek(posts) {
+        const el = document.getElementById('homeBlogList');
+        if (!posts || !posts.length) { el.innerHTML = '<p class="cmzo-area-route">Sin entradas aún.</p>'; return; }
+        el.innerHTML = posts.slice(0, 3).map(p =>
+          `<a class="cmzo-line" href="${p.url}"><span class="m">${p.date || ''} · ${esc(p.category || '')}</span><span class="t">${esc(p.title)}</span></a>`).join('');
+      }
+      function renderLabPeek(lab) {
+        const el = document.getElementById('homeLabList');
+        if (!lab || !lab.length) { el.innerHTML = '<p class="cmzo-area-route">Sin experimentos aún.</p>'; return; }
+        el.innerHTML = lab.slice(0, 3).map(l =>
+          `<a class="cmzo-line" href="${l.url}"><span class="m">${l.kind === 'tool' ? 'herramienta' : 'writeup'}</span><span class="t">${esc(l.title)}</span></a>`).join('');
+      }
+      function renderGenStats(arbol) {
+        const el = document.getElementById('homeGenStats');
+        if (!arbol) { el.innerHTML = ''; return; }
+        const arr = arbol.personas || [];
+        let dates = 0; const places = new Set(); let gmin = Infinity, gmax = -Infinity;
+        arr.forEach(p => {
+          if (p.birth_date) dates++; if (p.death_date) dates++;
+          [p.birth_place, p.death_place].forEach(pl => { const v = (pl || '').trim().toLowerCase(); if (v) places.add(v); });
+          const g = p.generation; if (typeof g === 'number') { if (g < gmin) gmin = g; if (g > gmax) gmax = g; }
+        });
+        const stats = [['Personas', arr.length], ['Generaciones', isFinite(gmin) ? (gmax - gmin + 1) : 0], ['Lugares', places.size], ['Fechas docs.', dates]];
+        el.innerHTML = stats.map(([k, v]) => `<div class="cmzo-areastat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join('');
+      }
 
-    document.addEventListener('langchange', renderLatest);
+      // ── Bitácora: stream unificado ────────────────────────────────────────
+      let STREAM = [], FILTER = 'all', SHOWN = 10;
+      function buildStream(blog, lab, notas, cambios) {
+        const items = [];
+        (blog || []).forEach(p => items.push({ date: p.date, type: 'post', filter: 'post', title: p.title, cat: p.category || '', url: p.url }));
+        (lab || []).forEach(l => items.push({ date: l.date, type: 'lab', filter: 'lab', title: l.title, cat: 'lab', url: l.url }));
+        (notas || []).forEach(n => items.push({ date: n.date, type: n.type, filter: 'nota', title: n.text, cat: '', modal: { head: n.type, html: n.html, image: n.image, link: n.link } }));
+        (cambios || []).forEach(c => items.push({ date: c.date, type: 'cambio', filter: 'cambio', title: c.title, cat: 'sitio', modal: { head: 'cambio' + (c.tag ? ' · ' + c.tag : ''), html: c.html } }));
+        items.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+        STREAM = items;
+        renderStream();
+      }
+      function renderStream() {
+        const matches = [];
+        STREAM.forEach((it, idx) => { if (FILTER === 'all' || it.filter === FILTER) matches.push([it, idx]); });
+        let html = '';
+        matches.slice(0, SHOWN).forEach(([it, idx]) => {
+          const cat = `<span class="cmzo-s-cat">${esc(it.cat || '')}</span>`;
+          const inner = `<span class="cmzo-s-date">${it.date || ''}</span><span class="cmzo-s-type t-${it.type}">${it.type}</span><span class="cmzo-s-title">${esc(it.title)}</span>${cat}`;
+          html += it.modal
+            ? `<a class="cmzo-s-item" href="#" data-modal="${idx}">${inner}</a>`
+            : `<a class="cmzo-s-item" href="${it.url}">${inner}</a>`;
+        });
+        document.getElementById('stream').innerHTML = html || '<p class="cmzo-area-route">Nada por acá todavía.</p>';
+        const more = document.getElementById('streamMore');
+        const rest = matches.length - SHOWN;
+        if (rest > 0) { more.hidden = false; more.textContent = `ver más · ${rest} más`; } else { more.hidden = true; }
+      }
 
-    fetch('./assets/data/blog-entries.json')
-      .then(r => r.json())
-      .then(posts => {
-        if (!posts.length) {
-          document.getElementById('homeLatestSection').style.display = 'none';
+      // ── Modal ─────────────────────────────────────────────────────────────
+      function openModal(it) {
+        // Imágenes → visor lightbox (zoom/pan), con el pie en sans
+        if (it.type === 'imagen' && it.modal.image && window.openLightbox) {
+          window.openLightbox(it.modal.image, it.modal.html || '', { sans: true });
           return;
         }
-        _latest = posts[0];
-        renderLatest();
-      })
-      .catch(() => {
-        document.getElementById('homeLatestSection').style.display = 'none';
+        document.getElementById('streamModalHead').textContent = it.modal.head || it.type;
+        let h = '';
+        if (it.modal.image) h += `<img src="${it.modal.image}" alt="">`;
+        h += it.modal.html || '';
+        if (it.modal.link) h += `<p class="cmzo-modal-link"><a href="${it.modal.link}" target="_blank" rel="noopener noreferrer">${esc(it.modal.link)} →</a></p>`;
+        document.getElementById('streamModalBody').innerHTML = h;
+        document.getElementById('streamModal').hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() { document.getElementById('streamModal').hidden = true; document.body.style.overflow = ''; }
+
+      document.getElementById('stream').addEventListener('click', e => {
+        const a = e.target.closest('[data-modal]');
+        if (a) { e.preventDefault(); openModal(STREAM[+a.dataset.modal]); }
       });
+      document.getElementById('streamFilters').addEventListener('click', e => {
+        const b = e.target.closest('.cmzo-fpill'); if (!b) return;
+        FILTER = b.dataset.f; SHOWN = 10;
+        document.querySelectorAll('#streamFilters .cmzo-fpill').forEach(p => p.classList.toggle('is-on', p === b));
+        renderStream();
+      });
+      document.getElementById('streamMore').addEventListener('click', () => { SHOWN += 10; renderStream(); });
+      const modalEl = document.getElementById('streamModal');
+      modalEl.addEventListener('click', e => { if (e.target.hasAttribute('data-close')) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalEl.hidden) closeModal(); });
+
+      // ── Carga ─────────────────────────────────────────────────────────────
+      Promise.all([
+        fetchJSON('blog-entries.json'), fetchJSON('lab-entries.json'),
+        fetchJSON('notas.json'), fetchJSON('changelog-entries.json'), fetchJSON('arbol.json'),
+      ]).then(([blog, lab, notas, cambios, arbol]) => {
+        renderBlogPeek(blog); renderLabPeek(lab); renderGenStats(arbol);
+        buildStream(blog, lab, notas, cambios);
+      });
+    })();
   </script>
+  <script src="assets/js/lightbox.js" defer></script>
   <script src="assets/js/nav.js" defer></script>
-  <script src="assets/js/i18n.js" defer></script>
   <script src="assets/js/nav-drawer.js" defer></script>
   <script src="assets/js/theme.js" defer></script>
   <script src="assets/js/command-palette.js" defer></script>
