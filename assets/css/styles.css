@@ -1633,8 +1633,8 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   position: fixed;
   top: 0; left: 0;
   height: 100%;
-  width: 260px;
-  background: var(--bg);
+  width: 264px;
+  background: var(--surface);
   z-index: 301;
   display: flex;
   flex-direction: column;
@@ -1657,13 +1657,13 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .nav-drawer-brand {
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 22px;
+  font-family: var(--mono, 'IBM Plex Mono', monospace);
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.02em;
   color: var(--text);
   text-decoration: none;
 }
+.nav-drawer-brand .tilde { color: var(--muted); font-weight: 400; }
 
 .nav-drawer-close {
   background: none;
@@ -1686,29 +1686,31 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .nav-drawer-link {
-  display: block;
-  font-size: 15px;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono, 'IBM Plex Mono', monospace);
+  font-size: 13.5px;
+  text-transform: lowercase;
   color: var(--muted);
   text-decoration: none;
   padding: 9px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: color 0.15s, background 0.15s;
 }
 
 .nav-drawer-link:hover {
   color: var(--text);
-  background: rgba(0,0,0,0.05);
+  background: var(--bg);
 }
 
 .nav-drawer-link.is-active {
-  color: var(--text);
+  color: var(--accent);
   font-weight: 600;
-  border-left: 2px solid var(--accent);
-  padding-left: 10px;
-  border-radius: 0;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
 }
 
+.nav-drawer-link--gh svg { flex-shrink: 0; }
 .nav-drawer-link--minor { font-size: 13px; }
 
 .nav-drawer-divider {
