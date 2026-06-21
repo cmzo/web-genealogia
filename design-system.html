@@ -1008,34 +1008,30 @@
             <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Título: Hanken Grotesk 17px/600 · Desc: Source Serif 4 13px/1.5 · Categoría: Inter 10px/700 uppercase --accent · Meta: Inter 12px --muted.</p>
           </div>
 
-          <!-- Stats cards -->
+          <!-- Estadísticas (CMZO) -->
           <div class="comp-block">
-            <p class="comp-label">Estadísticas + CTA (home)</p>
-            <div class="ds-box ds-box--surface" style="padding:24px;">
-              <div class="home-stats" style="margin-bottom:20px;">
-                <div class="home-stat">
-                  <div class="home-stat-num">118</div>
-                  <div class="home-stat-label">Personas</div>
-                </div>
-                <div class="home-stat">
-                  <div class="home-stat-num">84</div>
-                  <div class="home-stat-label">Fechas documentadas</div>
-                </div>
-                <div class="home-stat">
-                  <div class="home-stat-num">23</div>
-                  <div class="home-stat-label">Lugares</div>
-                </div>
-                <div class="home-stat">
-                  <div class="home-stat-num">6</div>
-                  <div class="home-stat-label">Generaciones</div>
+            <p class="comp-label">Estadísticas · CMZO (.cmzo-stats / .cmzo-areastats)</p>
+            <div class="ds-row" style="gap:24px;flex-wrap:wrap;align-items:flex-start;">
+              <div class="ds-box ds-box--surface" style="flex:1;min-width:280px;">
+                <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 14px;">.cmzo-stats — dashboard /gen (sin cajas, separadores finos)</p>
+                <div class="cmzo-stats">
+                  <div class="home-stat"><div class="home-stat-num">173</div><div class="home-stat-label">Personas</div></div>
+                  <div class="home-stat"><div class="home-stat-num">128</div><div class="home-stat-label">Fechas documentadas</div></div>
+                  <div class="home-stat"><div class="home-stat-num">37</div><div class="home-stat-label">Lugares</div></div>
+                  <div class="home-stat"><div class="home-stat-num">6</div><div class="home-stat-label">Generaciones</div></div>
                 </div>
               </div>
-              <a href="#" class="home-cta-btn" onclick="return false;" style="pointer-events:none;">
-                Explorá el árbol interactivo
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
+              <div class="ds-box ds-box--surface" style="min-width:240px;">
+                <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 14px;">.cmzo-areastats — panel del área /gen (mini)</p>
+                <div class="cmzo-areastats">
+                  <div class="cmzo-areastat"><div class="v">173</div><div class="k">Personas</div></div>
+                  <div class="cmzo-areastat"><div class="v">6</div><div class="k">Generaciones</div></div>
+                  <div class="cmzo-areastat"><div class="v">37</div><div class="k">Lugares</div></div>
+                  <div class="cmzo-areastat"><div class="v">128</div><div class="k">Fechas docs.</div></div>
+                </div>
+              </div>
             </div>
-            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Número: Source Serif 4 30px/700 --accent · Etiqueta: Inter 11px --muted · Grid: 4 col, gap 12px, padding 18px 8px.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Números en IBM Plex Mono. Reemplaza al viejo <code class="td-mono">.home-stat</code> boxed + <code class="td-mono">.home-cta-btn</code> (Source Serif), retirados de la home en el rediseño CMZO.</p>
           </div>
 
           <!-- Callouts -->
@@ -1061,22 +1057,18 @@
             </div>
           </div>
 
-          <!-- Lang pills -->
+          <!-- Idioma -->
           <div class="comp-block">
-            <p class="comp-label">Pills de idioma</p>
+            <p class="comp-label">Idioma — chip de blog card (.lang-chip)</p>
             <div class="ds-box ds-box--surface">
-              <div class="ds-row" style="gap:20px;flex-wrap:wrap;align-items:center;">
-                <span class="lang-pillbox">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;color:var(--muted);margin-right:4px;"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
-                  <button type="button" class="lang-opt is-active">ES</button>
-                  <button type="button" class="lang-opt">FR</button>
-                  <button type="button" class="lang-opt">EN</button>
+              <div class="ds-row" style="gap:14px;align-items:center;">
+                <span class="blog-card-langs">
+                  <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg>
+                  <span class="lang-chip">ES</span><span class="lang-chip">FR</span>
                 </span>
-                <span class="lang-chip">ES</span>
-                <span class="lang-chip">FR</span>
               </div>
-              <div style="margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);">
-                .lang-pillbox (selector de página) · .lang-chip (badge en blog cards) · Inter 10–12px/600 uppercase
+              <div style="margin-top:12px;font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.6;">
+                <code class="td-mono">.lang-chip</code> — badge de idiomas en las blog cards (Inter 10px/600 uppercase). <strong>El selector de idioma se retiró del nav</strong>; sobrevive solo in-page en <code class="td-mono">colaborar.html</code> (y en los posts), ahí restilado en IBM Plex Mono cuadrado — ya no la píldora redondeada vieja (<code class="td-mono">.lang-pillbox</code>, retirada).
               </div>
             </div>
           </div>
@@ -1172,7 +1164,7 @@
                   </div>
                   <figcaption class="article-caption">Gazette du Valais, 8 de diciembre de 1861 — aviso de subasta de los bienes Cerisier en Salins.</figcaption>
                 </figure>
-                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Figure: margin 44px 0 · figcaption: Inter 13px/italic/muted, margin-top 8px · Lightbox: click abre .lbx modal (fondo #141416, panel lateral 320px con Source Serif 4 15px/1.7)</p>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Figure: margin 44px 0 · figcaption: Inter 13px/italic/muted. Lightbox: ahora componente compartido <code class="td-mono">assets/js/lightbox.js</code> (CSS en styles.css). Click abre <code class="td-mono">.lbx</code> (panel lateral 320px). Pie en Source Serif en los posts; la bitácora de la home lo abre con <code class="td-mono">.lbx--sans</code> (IBM Plex).</p>
               </div>
             </div>
 

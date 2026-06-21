@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-06-19-ejemplo-imagen",
+    "date": "2026-06-21",
+    "type": "imagen",
+    "image": "assets/images/notas/tony1.png",
+    "link": "",
+    "html": "<p>Tony imitándome</p>\n",
+    "text": "Tony imitándome"
+  },
+  {
     "id": "2026-06-21-arranca-la-bitacora",
     "date": "2026-06-21",
     "type": "nota",
@@ -16,14 +25,5 @@
     "link": "https://gwern.net",
     "html": "<p><a href=\"https://gwern.net\">gwern.net</a> — la referencia de &quot;sitio personal no encasillado&quot; que inspiró este rediseño. Índice denso, con personalidad y aura de genio.</p>\n",
     "text": "gwern.net — la referencia de &quot;sitio personal no encasillado&quot; que inspiró este rediseño. Índice denso, con personalidad y aura de genio."
-  },
-  {
-    "id": "2026-06-19-ejemplo-imagen",
-    "date": "2026-06-19",
-    "type": "imagen",
-    "image": "assets/images/cards/og-banner.webp",
-    "link": "",
-    "html": "<p>Ejemplo de nota tipo <strong>imagen</strong> (placeholder). Las fotos reales van en <code>assets/images/notas/</code>; ésta apunta a un asset que ya existe solo para probar el render. Reemplazar.</p>\n",
-    "text": "Ejemplo de nota tipo imagen (placeholder). Las fotos reales van en assets/images/notas/; ésta apunta a un asset que ya existe solo para probar el render. Reemplazar."
   }
 ]
