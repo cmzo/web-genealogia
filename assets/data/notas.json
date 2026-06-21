@@ -1,12 +1,12 @@
 [
   {
-    "id": "2026-06-21-arranca-la-bitacora",
+    "id": "2026-06-21-blogs",
     "date": "2026-06-21",
     "type": "nota",
     "image": "",
     "link": "",
-    "html": "<p>Arranca la bitácora: acá van cosas cortas —una idea, un hallazgo, algo que me llamó la atención— que no ameritan un post largo. Se abren en un <strong>modal</strong>, sin página dedicada. Para sumar una, tiro un <code>.md</code> en <code>content/notas/</code>.</p>\n",
-    "text": "Arranca la bitácora: acá van cosas cortas —una idea, un hallazgo, algo que me llamó la atención— que no ameritan un post largo. Se abren en un modal, sin página dedicada. Para sumar una, tiro un .md en content/notas/."
+    "html": "<p>Algunos sitios a los que siempre entro a ver cómo están las cosas:</p>\n<ul>\n<li><a href=\"https://jvns.ca/\">https://jvns.ca/</a></li>\n<li><a href=\"https://kevinlynagh.com/\">https://kevinlynagh.com/</a></li>\n<li><a href=\"https://simonwillison.net/\">https://simonwillison.net/</a></li>\n<li><a href=\"https://gwern.net/\">https://gwern.net/</a></li>\n<li><a href=\"https://maggieappleton.com/\">https://maggieappleton.com/</a></li>\n<li><a href=\"https://macwright.com/\">https://macwright.com/</a></li>\n<li><a href=\"https://andymatuschak.org/\">https://andymatuschak.org/</a></li>\n</ul>\n",
+    "text": "Algunos sitios a los que siempre entro a ver cómo están las cosas: https://jvns.ca/ https://kevinlynagh.com/ https://simonwillison.net/ https://gwern.net/ https://maggieappleton.com/ https://macwright.com/ https://andymatuschak.org/"
   },
   {
     "id": "2026-06-21-tony",
