@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-06-21-la-versión-mobile-más-prolija",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La versión mobile, más prolija",
+    "html": "<p>En el teléfono, la barra de arriba quedó minimal —solo el buscador (como lupa) y el modo día/noche—, y el resto de la navegación —todas las secciones y el GitHub— se mudó al <strong>menú lateral</strong>, ahora con el estilo del sitio. Colaborar y Cambios salieron del pie de página y viven en ese menú.</p>\n"
+  },
+  {
+    "id": "2026-06-21-la-tarjeta-al-compartir-sin-foto",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La tarjeta al compartir, sin foto",
+    "html": "<p>Al compartir el sitio (por WhatsApp y demás) ya no aparece esa imagen que no terminaba de quedar bien: la tarjeta muestra solo título y descripción, más limpio.</p>\n"
+  },
+  {
+    "id": "2026-06-21-las-notas-del-log-mejor-ordenadas-y-más-limpias",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Las notas del log, mejor ordenadas y más limpias",
+    "html": "<p>Las notas del mismo día ahora se ordenan por la más reciente (la última que escribo aparece arriba), y en el hilo se muestra solo la primera línea, limpia; el contenido completo —con sus listas y formato— queda en el recuadro que se abre al tocarla.</p>\n"
+  },
+  {
+    "id": "2026-06-21-una-presentación-más-honesta",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Una presentación más honesta",
+    "html": "<p>Cambié el texto de bienvenida de la portada por algo más personal y directo.</p>\n"
+  },
+  {
     "id": "2026-06-21-una-home-nueva-índice-y-bitácora",
     "date": "2026-06-21",
     "type": "cambio",
@@ -286,37 +318,5 @@
     "tag": "",
     "title": "Modo oscuro en todo el sitio",
     "html": "<p>El sitio sumó <strong>modo oscuro</strong> con una paleta neutra gris-azulada («Pizarra neutra»). Un botón <strong>sol/luna</strong> en la barra superior alterna el tema; si no elegís nada, sigue la preferencia de tu sistema operativo en vivo, y si lo tocás, recuerda tu elección. Un script mínimo en el <code>&lt;head&gt;</code> fija el tema antes de pintar la página, así no hay parpadeo al cargar. Se ajustaron los detalles para que todo se lea bien en oscuro: la grilla de puntos del árbol se aclaró, el avatar del autor recibe fondo claro para no perderse y los enlaces del panel lateral ganaron contraste.</p>\n"
-  },
-  {
-    "id": "2026-06-14-tipografía-títulos-en-grotesca-suiza-y-cuerpo-en-serif",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Tipografía: títulos en grotesca suiza y cuerpo en serif",
-    "html": "<p>Los títulos del sitio pasaron de Playfair Display a <strong>Hanken Grotesk</strong>, una grotesca de estilo suizo, y el cuerpo de los artículos adoptó <strong>Source Serif 4</strong> a mayor tamaño (18 px) e interlineado más amplio, con una <strong>medida de lectura más contenida y centrada</strong> (≈720 px). El cambio se unificó en todo el sitio —posts, Sobre, Fuentes, Cambios y Colaborar— para lograr el mismo lenguaje editorial: título en grotesca + lectura en serif. De paso, las <strong>tarjetas del blog</strong> corrigieron una inversión: ahora el título va en grotesca y el resumen en serif.</p>\n"
-  },
-  {
-    "id": "2026-06-14-imágenes-nuevo-visor-con-ficha-y-zoom",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Imágenes: nuevo visor con ficha y zoom",
-    "html": "<p>Al hacer clic en una imagen de un artículo se abre un <strong>visor</strong> que no ocupa toda la pantalla (el artículo se ve atenuado detrás): imagen grande sobre fondo oscuro, <strong>panel lateral con el pie y la fuente</strong>, <strong>zoom</strong> (clic, rueda o doble clic) con arrastre para desplazarse, <strong>navegación</strong> entre las imágenes del post (flechas ‹ › o teclado) y cierre con Esc. La presentación de las imágenes dentro del texto se volvió más sobria y respeta la paleta y el modo oscuro. Además se corrigió el pie de imagen para que se muestre prolijo y aparezca en el visor, y se agregaron pies a las imágenes de los posts.</p>\n"
-  },
-  {
-    "id": "2026-06-14-fuentes-propias-sin-google-fonts",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Fuentes propias (sin Google Fonts)",
-    "html": "<p>Las cuatro tipografías del sitio (Hanken Grotesk, Inter, Source Serif 4 y JetBrains Mono) dejaron de cargarse desde Google y ahora se sirven <strong>desde el propio dominio</strong> (<code>assets/fonts/</code>). Esto mejora la privacidad —ningún visitante envía su IP a Google al abrir el sitio, lo que evita el problema de RGPD del Google Fonts embebido—, elimina la dependencia de un tercero y acelera la carga. Se incluyen solo los subconjuntos latin y latin-ext, suficientes para español y francés.</p>\n"
-  },
-  {
-    "id": "2026-06-14-el-árbol-ahora-vive-en-arbolhtml",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "El Árbol ahora vive en `arbol.html`",
-    "html": "<p>La página del árbol genealógico se renombró de <code>arbol-matrimonios.html</code> (un nombre heredado de una versión vieja) a <strong><code>arbol.html</code></strong>. Se actualizaron todos los enlaces internos del sitio y la URL anterior quedó como <strong>redirección</strong>, para no romper enlaces ya compartidos o indexados.</p>\n"
   }
 ]

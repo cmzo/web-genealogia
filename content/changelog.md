@@ -1,5 +1,21 @@
 ### 21 de junio de 2026
 
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La versión mobile, más prolija
+
+En el teléfono, la barra de arriba quedó minimal —solo el buscador (como lupa) y el modo día/noche—, y el resto de la navegación —todas las secciones y el GitHub— se mudó al **menú lateral**, ahora con el estilo del sitio. Colaborar y Cambios salieron del pie de página y viven en ese menú.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La tarjeta al compartir, sin foto
+
+Al compartir el sitio (por WhatsApp y demás) ya no aparece esa imagen que no terminaba de quedar bien: la tarjeta muestra solo título y descripción, más limpio.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Las notas del log, mejor ordenadas y más limpias
+
+Las notas del mismo día ahora se ordenan por la más reciente (la última que escribo aparece arriba), y en el hilo se muestra solo la primera línea, limpia; el contenido completo —con sus listas y formato— queda en el recuadro que se abre al tocarla.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Una presentación más honesta
+
+Cambié el texto de bienvenida de la portada por algo más personal y directo.
+
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Una home nueva: índice y bitácora
 
 La portada se rehízo de cero. Arriba, una presentación corta y tres áreas —<strong>blog</strong>, <strong>lab</strong> y <strong>genealogía</strong>— como "directorios", cada una con una vista previa en vivo (las últimas entradas, los experimentos, el estado del árbol). Abajo, un <strong>log</strong>: un hilo cronológico que mezcla posts, notas cortas y cambios del sitio, filtrable por tipo. La idea es que el sitio se sienta vivo aunque pase tiempo entre un post largo y otro.
