@@ -108,7 +108,9 @@ a.cmzo-seg:hover { color: var(--accent); }
   .cmzo-top .cmdk-trigger .cmdk-trigger-label, .cmzo-top .cmdk-trigger .cmdk-kbd { display: none; }
   .cmzo-tools { border: 0; padding: 0; background: transparent; gap: 0; }
   .cmzo-tools .nav-link { display: none; }   /* github → drawer */
-  .cmzo-foot-links { display: none; }         /* colaborar / cambios → drawer */
+  /* especificidad extra: la regla base .cmzo-foot-links (display:flex) está más abajo en el
+     archivo, así que con igual especificidad ganaría; .cmzo-foot .cmzo-foot-links la supera. */
+  .cmzo-foot .cmzo-foot-links { display: none; }   /* colaborar / cambios → drawer */
 }
 
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
