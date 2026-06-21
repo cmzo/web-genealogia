@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-06-21-tony",
+    "date": "2026-06-21",
+    "type": "nota",
+    "image": "",
+    "link": "",
+    "html": "<p>Tony tirando factos #1</p>\n<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p><img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n<p>The Sopranos E05 S02 “Big Girls Don&#39;t Cry”</p>\n",
+    "text": "Tony tirando factos #1 The Sopranos E05 S02 “Big Girls Don't Cry”",
+    "preview": "Tony tirando factos #1"
+  },
+  {
     "id": "2026-06-21-lecturas",
     "date": "2026-06-21",
     "type": "nota",
@@ -18,16 +28,6 @@
     "html": "<p>Algunos sitios a los que siempre entro a ver cómo están las cosas:</p>\n<ul>\n<li><a href=\"https://jvns.ca/\">https://jvns.ca/</a></li>\n<li><a href=\"https://kevinlynagh.com/\">https://kevinlynagh.com/</a></li>\n<li><a href=\"https://simonwillison.net/\">https://simonwillison.net/</a></li>\n<li><a href=\"https://gwern.net/\">https://gwern.net/</a></li>\n<li><a href=\"https://maggieappleton.com/\">https://maggieappleton.com/</a></li>\n<li><a href=\"https://macwright.com/\">https://macwright.com/</a></li>\n<li><a href=\"https://andymatuschak.org/\">https://andymatuschak.org/</a></li>\n</ul>\n",
     "text": "Algunos sitios a los que siempre entro a ver cómo están las cosas: https://jvns.ca/ https://kevinlynagh.com/ https://simonwillison.net/ https://gwern.net/ https://maggieappleton.com/ https://macwright.com/ https://andymatuschak.org/",
     "preview": "Algunos sitios a los que siempre entro a ver cómo están las cosas:"
-  },
-  {
-    "id": "2026-06-21-tony",
-    "date": "2026-06-21",
-    "type": "nota",
-    "image": "",
-    "link": "",
-    "html": "<p>Tony imitándome. - </p>\n<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p><img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n<p>fuente: The Sopranos E05 S02 “Big Girls Don&#39;t Cry”</p>\n",
-    "text": "Tony imitándome. - fuente: The Sopranos E05 S02 “Big Girls Don't Cry”",
-    "preview": "Tony imitándome. -"
   },
   {
     "id": "2026-06-20-gwern",
