@@ -14,8 +14,8 @@
     "type": "nota",
     "image": "",
     "link": "",
-    "html": "<p>Tony imitándome</p>\n<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p><img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n<ul>\n<li>fuente: The Sopranos E05 S02 “Big Girls Don&#39;t Cry”</li>\n</ul>\n",
-    "text": "Tony imitándome fuente: The Sopranos E05 S02 “Big Girls Don't Cry”"
+    "html": "<p>Tony imitándome. - </p>\n<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p><img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n<p>fuente: The Sopranos E05 S02 “Big Girls Don&#39;t Cry”</p>\n",
+    "text": "Tony imitándome. - fuente: The Sopranos E05 S02 “Big Girls Don't Cry”"
   },
   {
     "id": "2026-06-20-gwern",
