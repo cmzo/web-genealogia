@@ -159,7 +159,7 @@
         const items = [];
         (blog || []).forEach(p => items.push({ date: p.date, type: 'post', filter: 'post', title: p.title, cat: p.category || '', url: p.url }));
         (lab || []).forEach(l => items.push({ date: l.date, type: 'lab', filter: 'lab', title: l.title, cat: 'lab', url: l.url }));
-        (notas || []).forEach(n => items.push({ date: n.date, type: n.type, filter: 'nota', title: n.text, cat: '', modal: { head: n.type, html: n.html, image: n.image, link: n.link } }));
+        (notas || []).forEach(n => items.push({ id: n.id, date: n.date, type: n.type, filter: 'nota', title: n.text, cat: '', modal: { head: n.type, html: n.html, image: n.image, link: n.link } }));
         (cambios || []).forEach(c => items.push({ date: c.date, type: 'cambio', filter: 'cambio', title: c.title, cat: 'sitio', modal: { head: 'cambio' + (c.tag ? ' · ' + c.tag : ''), html: c.html } }));
         items.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
         STREAM = items;
@@ -200,6 +200,12 @@
       }
       function closeModal() { document.getElementById('streamModal').hidden = true; document.body.style.overflow = ''; }
 
+      // Abrir una nota por id (lo usa la command palette: ⌘K → nota → abre su modal acá)
+      window.__openNota = function (id) {
+        const it = STREAM.find(x => x.id === id && x.modal);
+        if (it) openModal(it);
+      };
+
       document.getElementById('stream').addEventListener('click', e => {
         const a = e.target.closest('[data-modal]');
         if (a) { e.preventDefault(); openModal(STREAM[+a.dataset.modal]); }
@@ -222,6 +228,9 @@
       ]).then(([blog, lab, notas, cambios, arbol]) => {
         renderBlogPeek(blog); renderLabPeek(lab); renderGenStats(arbol);
         buildStream(blog, lab, notas, cambios);
+        // Apertura directa de una nota por URL (?nota=<id>), p. ej. desde ⌘K en otra página
+        const wantNota = new URLSearchParams(location.search).get('nota');
+        if (wantNota) window.__openNota(wantNota);
       });
     })();
   </script>

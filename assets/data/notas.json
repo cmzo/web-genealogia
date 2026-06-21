@@ -9,6 +9,15 @@
     "text": "Arranca la bitácora: acá van cosas cortas —una idea, un hallazgo, algo que me llamó la atención— que no ameritan un post largo. Se abren en un modal, sin página dedicada. Para sumar una, tiro un .md en content/notas/."
   },
   {
+    "id": "2026-06-21-prueba_tony",
+    "date": "2026-06-21",
+    "type": "nota",
+    "image": "",
+    "link": "",
+    "html": "<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p>  <img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n",
+    "text": ""
+  },
+  {
     "id": "2026-06-21-tony",
     "date": "2026-06-21",
     "type": "imagen",

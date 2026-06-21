@@ -933,6 +933,51 @@
             <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Labels en IBM Plex Mono mayúsculas, inputs sobre fondo cálido (<code class="td-mono">--bg</code>), foco en accent. Pie <code class="td-mono">.cmzo-form-foot</code> con hint mono + botón. (La página real de Colaborar conserva su propio markup/lógica; esta es la piel compartida.)</p>
           </div>
 
+          <!-- Área de la home -->
+          <div class="comp-block">
+            <p class="comp-label">Área de la home (.cmzo-area · panel con peek)</p>
+            <div class="cmzo-area cmzo-viz" style="max-width:300px;">
+              <div class="cmzo-viz-head"><span>tree.render</span><span>cmzo / gen</span></div>
+              <div class="cmzo-area-body">
+                <div class="cmzo-area-route">~/gen — árbol genealógico</div>
+                <div class="cmzo-areastats">
+                  <div class="cmzo-areastat"><div class="v">173</div><div class="k">Personas</div></div>
+                  <div class="cmzo-areastat"><div class="v">6</div><div class="k">Generaciones</div></div>
+                  <div class="cmzo-areastat"><div class="v">37</div><div class="k">Lugares</div></div>
+                  <div class="cmzo-areastat"><div class="v">128</div><div class="k">Fechas docs.</div></div>
+                </div>
+                <a class="cmzo-btn" style="pointer-events:none;"><span>Explorá la genealogía</span><span>→</span></a>
+              </div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Sección 01 de la home: 3 paneles-directorio (<code class="td-mono">.cmzo-areas</code>, grilla) blog/lab/gen, cada uno un <code class="td-mono">.cmzo-viz</code> con peek en vivo (últimas entradas / lista del lab / stats del árbol) y botón al pie.</p>
+          </div>
+
+          <!-- log / bitácora -->
+          <div class="comp-block">
+            <p class="comp-label">log — stream + filtros (.cmzo-stream · .cmzo-fpill)</p>
+            <div class="ds-box ds-box--surface">
+              <div class="cmzo-filterbar" style="pointer-events:none;">
+                <button class="cmzo-fpill is-on">todos</button><button class="cmzo-fpill">post</button><button class="cmzo-fpill">lab</button><button class="cmzo-fpill">nota</button><button class="cmzo-fpill">cambio</button>
+              </div>
+              <div class="cmzo-stream">
+                <a class="cmzo-s-item" style="pointer-events:none;"><span class="cmzo-s-date">2026-06-20</span><span class="cmzo-s-type t-post">post</span><span class="cmzo-s-title">Una LLM Wiki para mi genealogía</span><span class="cmzo-s-cat">tecnología</span></a>
+                <a class="cmzo-s-item" style="pointer-events:none;"><span class="cmzo-s-date">2026-06-20</span><span class="cmzo-s-type t-imagen">imagen</span><span class="cmzo-s-title">The Sopranos — Tony imitándome</span><span class="cmzo-s-cat"></span></a>
+                <a class="cmzo-s-item" style="pointer-events:none;"><span class="cmzo-s-date">2026-06-21</span><span class="cmzo-s-type t-cambio">cambio</span><span class="cmzo-s-title">Una home nueva: índice y bitácora</span><span class="cmzo-s-cat">sitio</span></a>
+              </div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Sección 02 de la home. Pills de tipo: contenido (<code class="td-mono">.t-post/.t-lab</code>) en accent, efímeros (<code class="td-mono">.t-nota/.t-imagen/.t-enlace/.t-cambio</code>) en neutro. Límite 10 + botón <code class="td-mono">.cmzo-more</code> ("ver más").</p>
+          </div>
+
+          <!-- Modal de la bitácora -->
+          <div class="comp-block">
+            <p class="comp-label">Modal del log (.cmzo-modal-card)</p>
+            <div class="cmzo-modal-card" style="position:relative;width:auto;max-width:440px;box-shadow:none;">
+              <div class="cmzo-modal-head"><span>nota</span><button class="cmzo-modal-close" style="pointer-events:none;">✕</button></div>
+              <div class="cmzo-modal-body" style="font-size:15px;">Una nota corta —idea, hallazgo, enlace— se abre acá, sin página dedicada. Soporta markdown completo: listas, <code>code</code>, citas, imágenes.</div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Notas tipo texto/enlace/cambio abren <code class="td-mono">.cmzo-modal</code> (820px, cuerpo en IBM Plex Sans con estilos de markdown). Las tipo <code class="td-mono">imagen</code> abren el lightbox compartido con pie en sans (<code class="td-mono">.lbx--sans</code>).</p>
+          </div>
+
           <!-- Botones (legacy) -->
           <div class="comp-block">
             <p class="comp-label">Botones · legacy (posts / páginas viejas)</p>

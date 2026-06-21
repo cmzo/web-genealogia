@@ -290,11 +290,11 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 24px; }
 .cmzo-modal[hidden] { display: none; }
 .cmzo-modal-backdrop { position: absolute; inset: 0; background: rgba(20,20,18,0.42); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
-.cmzo-modal-card { position: relative; width: min(680px, 94vw); max-height: 86vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 24px 64px rgba(20,20,18,0.28); }
+.cmzo-modal-card { position: relative; width: min(820px, 92vw); max-height: 88vh; overflow-y: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 24px 64px rgba(20,20,18,0.28); }
 .cmzo-modal-head { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: lowercase; }
 .cmzo-modal-close { background: none; border: 0; color: var(--muted); font-size: 16px; cursor: pointer; line-height: 1; padding: 2px 4px; }
 .cmzo-modal-close:hover { color: var(--accent); }
-.cmzo-modal-body { padding: 20px 22px 24px; font-family: var(--sans); font-size: 15px; line-height: 1.62; color: var(--text); }
+.cmzo-modal-body { padding: 26px 30px 32px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--text); }
 .cmzo-modal-body p { margin: 0 0 12px; }
 .cmzo-modal-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 0 0 12px; display: block; }
 .cmzo-modal-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }

@@ -42,6 +42,7 @@
     filter:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>',
     command: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 3 3-3 3M13 15h5"/></svg>',
     theme:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>',
+    nota:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
   };
 
   // La línea de tiempo (master-detail) no entra en pantallas chicas
@@ -164,9 +165,10 @@
   async function loadIndex() {
     if (_index || _loading) return;
     _loading = true;
-    const [arbol, posts] = await Promise.all([
+    const [arbol, posts, notasRaw] = await Promise.all([
       fetch(ROOT + 'assets/data/arbol.json').then(r => r.ok ? r.json() : { personas: [] }).catch(() => ({ personas: [] })),
       fetch(ROOT + 'assets/data/blog-entries.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch(ROOT + 'assets/data/notas.json').then(r => r.ok ? r.json() : []).catch(() => []),
     ]);
 
     const personas = (arbol.personas || []).map(p => {
@@ -184,7 +186,15 @@
                _t: norm(e.title), _h: norm([e.title, e.category, (e.tags || []).join(' '), e.description].join(' ')) };
     });
 
-    _index = { personas, posts: list };
+    const notas = (Array.isArray(notasRaw) ? notasRaw : []).map(n => {
+      const t = (n.text || '').trim();
+      const title = t.length > 90 ? t.slice(0, 90) + '…' : (t || '(nota sin texto)');
+      return { type: 'nota', id: n.id, title,
+               sub: [cap(n.type || 'nota'), n.date].filter(Boolean).join(' · '),
+               _t: norm(title), _h: norm(t) };
+    });
+
+    _index = { personas, posts: list, notas };
     _loading = false;
   }
 
@@ -262,6 +272,7 @@
     const pages = pagesItems();
     const personas = (_index && _index.personas) || [];
     const posts = (_index && _index.posts) || [];
+    const notas = (_index && _index.notas) || [];
 
     if (!q) {
       // Estado vacío: sugerencias — filtros de la wiki (si aplica) + comandos + páginas + posts recientes
@@ -286,6 +297,7 @@
       { label: 'Personas',        items: rank(personas, q, 7) },
       { label: 'Línea de tiempo', items: tl },
       { label: 'Posts',           items: rank(posts, q, 6) },
+      { label: 'Notas',           items: rank(notas, q, 6) },
     ].filter(g => g.items.length);
   }
 
@@ -370,6 +382,13 @@
       const focusFn = window.__personaFocus || window.__treeFocus;
       if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
       window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+      return;
+    }
+    if (it.type === 'nota') {
+      // Las notas no tienen página: abren el modal en la home. Si estamos ahí, directo;
+      // si no, navegar a la home con ?nota= para que lo abra al cargar.
+      if (typeof window.__openNota === 'function') { window.__openNota(it.id); close(); return; }
+      window.location.href = ROOT + 'index.html?nota=' + encodeURIComponent(it.id);
       return;
     }
     window.location.href = ROOT + it.url;

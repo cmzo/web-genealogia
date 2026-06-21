@@ -1,5 +1,61 @@
 [
   {
+    "id": "2026-06-21-una-home-nueva-índice-y-bitácora",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Una home nueva: índice y bitácora",
+    "html": "<p>La portada se rehízo de cero. Arriba, una presentación corta y tres áreas —<strong>blog</strong>, <strong>lab</strong> y <strong>genealogía</strong>— como &quot;directorios&quot;, cada una con una vista previa en vivo (las últimas entradas, los experimentos, el estado del árbol). Abajo, un <strong>log</strong>: un hilo cronológico que mezcla posts, notas cortas y cambios del sitio, filtrable por tipo. La idea es que el sitio se sienta vivo aunque pase tiempo entre un post largo y otro.</p>\n"
+  },
+  {
+    "id": "2026-06-21-notas-sueltas",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Notas sueltas",
+    "html": "<p>Ahora puedo publicar <strong>cosas cortas</strong> —una idea, un enlace, una foto que me llamó la atención— sin escribir un post entero. Aparecen en el log y se abren en un recuadro ahí mismo, sin página aparte; las fotos abren en el visor con zoom.</p>\n"
+  },
+  {
+    "id": "2026-06-21-un-área-para-experimentos-lab",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Un área para experimentos (lab)",
+    "html": "<p>El <strong>laboratorio del grafo</strong> dejó de ser una página suelta: ahora vive en un área propia, <code>lab</code>, pensada para experimentos y cosas técnicas. Sumar una nueva es tirar un archivo y listo.</p>\n"
+  },
+  {
+    "id": "2026-06-21-los-posts-del-blog-estrenan-el-diseño-nuevo",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Los posts del blog estrenan el diseño nuevo",
+    "html": "<p>Las entradas del blog se actualizaron al mismo diseño que el resto del sitio: la barra de arriba con la ruta (<code>~/cmzo / blog / …</code>), el pie nuevo y el selector de idioma más prolijo. La lectura del artículo queda igual.</p>\n"
+  },
+  {
+    "id": "2026-06-21-el-buscador-hace-más",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "El buscador hace más",
+    "html": "<p>El <strong>⌘ + K</strong> dejó de ser solo búsqueda: ahora también <strong>ejecuta acciones</strong> (por ejemplo, cambiar entre modo día y noche) y <strong>encuentra las notas</strong> por su contenido, no solo posts y personas.</p>\n"
+  },
+  {
+    "id": "2026-06-21-el-mapa-de-la-wiki-en-el-celular",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "El mapa de la wiki en el celular",
+    "html": "<p>En el teléfono —sobre todo en vertical— el grafo de la wiki se veía amontonado, como la maraña vieja. Ahora se arma igual de prolijo que en la computadora, en cualquier pantalla.</p>\n"
+  },
+  {
+    "id": "2026-06-21-favicon-nuevo",
+    "date": "2026-06-21",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Favicon nuevo",
+    "html": "<p>El sitio estrena ícono en la pestaña.</p>\n"
+  },
+  {
     "id": "2026-06-21-fuentes-y-colaborar-al-mismo-lenguaje-visual",
     "date": "2026-06-21",
     "type": "cambio",
@@ -262,61 +318,5 @@
     "tag": "",
     "title": "El Árbol ahora vive en `arbol.html`",
     "html": "<p>La página del árbol genealógico se renombró de <code>arbol-matrimonios.html</code> (un nombre heredado de una versión vieja) a <strong><code>arbol.html</code></strong>. Se actualizaron todos los enlaces internos del sitio y la URL anterior quedó como <strong>redirección</strong>, para no romper enlaces ya compartidos o indexados.</p>\n"
-  },
-  {
-    "id": "2026-06-14-colaborar-nueva-página-con-formulario-de-aportes-reemplaza-contacto",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Colaborar: nueva página con formulario de aportes (reemplaza Contacto)",
-    "html": "<p>La antigua página de Contacto se reemplazó por <strong>Colaborar</strong>, con dos modos. <em>Dejar un comentario</em> (nombre, email opcional, mensaje) y <em>Tengo información sobre alguien</em>: este último trae un <strong>selector de personas del árbol</strong> con búsqueda y chips (lee <code>arbol.json</code>), opción para personas que <strong>no</strong> están en el árbol pero se relacionan con alguien que sí, tipo de dato (checkboxes), anécdota y enlace. Anti-spam con honeypot y traba de tiempo. Los envíos se guardan en una <strong>Google Sheet</strong> propia mediante Google Apps Script y llega un mail de aviso — sin servicios pagos ni dependencias que puedan dejar de ser gratis. Todos los enlaces del sitio apuntan ahora a Colaborar; <code>contacto.html</code> quedó como redirección.</p>\n"
-  },
-  {
-    "id": "2026-06-14-colaborar-selector-de-idioma-es-fr-en",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Colaborar: selector de idioma ES / FR / EN",
-    "html": "<p>La página tiene su propio selector de idioma que cambia todos los textos de la interfaz al instante, recuerda la elección y la refleja en la URL (<code>?lang=fr</code>). El español está completo; francés e inglés quedan preparados para traducir.</p>\n"
-  },
-  {
-    "id": "2026-06-14-archivo-buscador-columnas-ordenables-navegación-familiar-y-enlaces-compartibles",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Archivo: buscador, columnas ordenables, navegación familiar y enlaces compartibles",
-    "html": "<p>El Archivo sumó <strong>buscador por nombre</strong>, <strong>encabezados que ordenan</strong> la tabla (nombre, años, generación, ítems), <strong>navegación familiar</strong> en la ficha (padre, madre, cónyuge e hijos clickeables para saltar entre fichas sin cerrar), filtro <strong>«solo con documentos»</strong> y <strong>enlaces compartibles</strong> (<code>archivo.html?focus=p38</code> abre una ficha directa). Además, el modal de ficha dejó de usar el color saturado de cada rama y adoptó el verde de la paleta (la rama quedó como un punto de color), y <strong>⌘ + K ya no te saca del Archivo</strong>: elegir una persona abre su ficha ahí mismo.</p>\n"
-  },
-  {
-    "id": "2026-06-14-inicio-estadísticas-del-árbol-y-acceso-destacado",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Inicio: estadísticas del árbol y acceso destacado",
-    "html": "<p>La portada muestra <strong>estadísticas reales</strong> calculadas en vivo desde el árbol (personas, fechas documentadas, lugares, generaciones) y un botón <strong>«Explorá el árbol interactivo»</strong>. Se aumentó el espaciado entre secciones.</p>\n"
-  },
-  {
-    "id": "2026-06-14-blog-indicador-de-traducción-en-las-tarjetas",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Blog: indicador de traducción en las tarjetas",
-    "html": "<p>Las tarjetas del blog muestran un globo con los chips <strong>ES / FR</strong> cuando el post tiene traducción disponible.</p>\n"
-  },
-  {
-    "id": "2026-06-14-blog-en-francés",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Blog en francés",
-    "html": "<p>Cinco posts se tradujeron al francés —Clan Clemenzo, Buscando a los Roh, Línea de tiempo de Francisco, Investigando a Francisco y Documentar fuentes—, con selector ES/FR en cada artículo.</p>\n"
-  },
-  {
-    "id": "2026-06-14-accesibilidad-y-seo",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Accesibilidad y SEO",
-    "html": "<p>Se agregaron meta descripciones, etiquetas Open Graph y URLs canónicas en todas las páginas; un enlace <strong>«Saltar al contenido»</strong>, un <code>&lt;h1&gt;</code> accesible en la portada y se oscureció el gris del texto secundario para cumplir el contraste AA.</p>\n"
   }
 ]

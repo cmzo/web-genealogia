@@ -79,9 +79,16 @@ This is a **static site** deployed to **Cloudflare Workers Assets**, served at *
 ### Blog pipeline
 
 1. Write a post in `content/posts/<slug>.md` with YAML front matter
-2. Run `npm run build` → `scripts/build.js` converts each `.md` to `dist/blog/<slug>.html` using the template at `content/templates/post-template.html`
-3. The build also regenerates `assets/data/blog-entries.json`, which is the index that `blog.html` reads at runtime via `fetch()`
+2. Run `npm run build` → `scripts/build.js` converts each `.md` to `dist/blog/<slug>.html` using the template at `content/templates/post-template.html`. El shell del post usa la **nav/footer nuevos** (`cmzo-top` con breadcrumb `~/cmzo / blog / <título>` que arma `nav.js` con `data-nav-prefix="../../"` + `data-page-label`; footer `cmzo-foot`); el cuerpo editorial del artículo conserva Source Serif + el lightbox.
+3. The build also regenerates `assets/data/blog-entries.json`, which is the index that `blog.html` **y el `log` de la home** read at runtime via `fetch()`
 4. **`dist/` is committed** to the repo — Cloudflare sirve esos archivos directamente, so always commit `dist/` after a build
+
+### Otros feeds de contenido (generados en build)
+
+Además del blog, `build.js` emite:
+- **Lab** (`content/lab/*.md` → `assets/data/lab-entries.json`): área de experimentos. Cada entrada `kind: tool` (con `url:`, solo indexa una página existente como `lab-grafo.html`) o `kind: writeup` (genera `dist/lab/<slug>.html` con el mismo template de post).
+- **Notas / momentos** (`content/notas/*.md` → `assets/data/notas.json`): entradas cortas (`type: nota|imagen|enlace`, `image:`/`link:` opcionales) que **no generan página** — se abren en un modal desde el `log` de la home (las `imagen` en el lightbox). Fotos en `assets/images/notas/`.
+- **Changelog feed** (`content/changelog.md` → `assets/data/changelog-entries.json`): el build parsea cada `### fecha` + `#### entrada` para alimentar el `log`; la página `changelog.html` queda igual.
 
 ### Front matter fields
 
@@ -108,7 +115,7 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 ### Key data flow
 
-- `index.html` — home page with editorial layout; fetches `assets/data/blog-entries.json` at runtime to render the "Última entrada" section dynamically
+- `index.html` — **home "Índice + log"**: hero + **01 Áreas** (paneles blog/lab/gen con peeks en vivo) + **02 log** (bitácora que fusiona `blog-entries.json` + `lab-entries.json` + `notas.json` + `changelog-entries.json` por fecha; `post`/`lab` navegan a su página, `nota`/`imagen`/`enlace`/`cambio` abren modal; `imagen` usa el lightbox compartido `assets/js/lightbox.js`). Límite 10 + "ver más". Solo-ES (sin i18n). Expone `window.__openNota(id)` y lee `?nota=<id>`
 - `blog.html` — fetches `assets/data/blog-entries.json` and renders cards dynamically; cards are purely typographic (no image); search and filter were intentionally removed
 - `arbol.html` — interactive family tree; fetches `assets/data/arbol.json` at runtime; uses D3.js and ES modules from `assets/js/arbol/`
 - `wiki.html` — **knowledge graph** (Obsidian-style, **Cytoscape.js + física propia**) que reemplazó al antiguo Archivo; fetches `assets/data/wiki-graph.json` + `arbol.json`. Clic en un nodo abre un panel lateral con relaciones/enlaces; el botón "Leer" abre un modal que carga el markdown renderizado de `dist/wiki/<id>.html`. Ver la sección **Wiki** más abajo.
@@ -117,7 +124,7 @@ Generated posts in `dist/blog/` use hardcoded relative paths (`../../assets/…`
 
 ### Global command palette (`assets/js/command-palette.js`)
 
-Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Indexes **pages**, **personas** (from `arbol.json`) and **blog posts** (from `blog-entries.json`), fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it sin salir vía `window.__personaFocus || window.__treeFocus` (el árbol expone `__treeFocus`; la wiki expone `__personaFocus` para enfocar el nodo en el grafo); si la página no define handler, navega a `arbol.html?focus=<id>`. En desktop (ancho > 960px) hay además un grupo **«Línea de tiempo»** que abre el modal de la persona: directo vía `window.__openTimeline` (expuesto por `panel.js`) si ya estás en el árbol, o navegando a `arbol.html?timeline=<id>` (el init de `arbol.html` lee ese parámetro y lo abre). En mobile no aparece. Included on Inicio, Árbol, Wiki, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
+Self-contained command palette (Spotlight/Raycast style) opened with **⌘/Ctrl + K**. Injects its own CSS + DOM and a "Buscar ⌘ + K" trigger button into `.nav-actions`. Busca **y ejecuta**: indexa **pages**, **personas** (`arbol.json`), **blog posts** (`blog-entries.json`) y **notas** (`notas.json`, busca su contenido; al elegir una abre el modal vía `window.__openNota` o navega a `index.html?nota=<id>`), y suma un grupo **«Comandos»** con acciones (p. ej. alternar tema día/noche, reusando el botón de `theme.js`). Datos fetched lazily and cached. Fuzzy, accent-insensitive search; grouped results; keyboard nav. Selecting a persona focuses it sin salir vía `window.__personaFocus || window.__treeFocus` (el árbol expone `__treeFocus`; la wiki expone `__personaFocus` para enfocar el nodo en el grafo); si la página no define handler, navega a `arbol.html?focus=<id>`. En desktop (ancho > 960px) hay además un grupo **«Línea de tiempo»** que abre el modal de la persona: directo vía `window.__openTimeline` (expuesto por `panel.js`) si ya estás en el árbol, o navegando a `arbol.html?timeline=<id>` (el init de `arbol.html` lee ese parámetro y lo abre). En mobile no aparece. Included on Inicio, Árbol, Wiki, Blog, Cambios and blog posts — **not** on Colaborar, Fuentes, Sobre. Paths are relative; `ROOT` is `../../` inside `dist/blog/` posts, `''` elsewhere.
 
 ### Wiki — grafo de conocimiento (`wiki.html`)
 

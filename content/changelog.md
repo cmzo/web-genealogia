@@ -1,5 +1,33 @@
 ### 21 de junio de 2026
 
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Una home nueva: índice y bitácora
+
+La portada se rehízo de cero. Arriba, una presentación corta y tres áreas —<strong>blog</strong>, <strong>lab</strong> y <strong>genealogía</strong>— como "directorios", cada una con una vista previa en vivo (las últimas entradas, los experimentos, el estado del árbol). Abajo, un <strong>log</strong>: un hilo cronológico que mezcla posts, notas cortas y cambios del sitio, filtrable por tipo. La idea es que el sitio se sienta vivo aunque pase tiempo entre un post largo y otro.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Notas sueltas
+
+Ahora puedo publicar <strong>cosas cortas</strong> —una idea, un enlace, una foto que me llamó la atención— sin escribir un post entero. Aparecen en el log y se abren en un recuadro ahí mismo, sin página aparte; las fotos abren en el visor con zoom.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Un área para experimentos (lab)
+
+El <strong>laboratorio del grafo</strong> dejó de ser una página suelta: ahora vive en un área propia, <code>lab</code>, pensada para experimentos y cosas técnicas. Sumar una nueva es tirar un archivo y listo.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Los posts del blog estrenan el diseño nuevo
+
+Las entradas del blog se actualizaron al mismo diseño que el resto del sitio: la barra de arriba con la ruta (<code>~/cmzo / blog / …</code>), el pie nuevo y el selector de idioma más prolijo. La lectura del artículo queda igual.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> El buscador hace más
+
+El <strong>⌘ + K</strong> dejó de ser solo búsqueda: ahora también <strong>ejecuta acciones</strong> (por ejemplo, cambiar entre modo día y noche) y <strong>encuentra las notas</strong> por su contenido, no solo posts y personas.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> El mapa de la wiki en el celular
+
+En el teléfono —sobre todo en vertical— el grafo de la wiki se veía amontonado, como la maraña vieja. Ahora se arma igual de prolijo que en la computadora, en cualquier pantalla.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Favicon nuevo
+
+El sitio estrena ícono en la pestaña.
+
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Fuentes y Colaborar, al mismo lenguaje visual
 
 Las páginas de <strong>Fuentes</strong> y <strong>Colaborar</strong>, que seguían con el diseño viejo, ahora hablan el mismo idioma que el resto del sitio: secciones numeradas, paneles y tipografía monoespaciada. Fuentes agrupa los archivos por región en paneles ordenados, con un índice arriba; Colaborar conserva el formulario y todo lo que hacía, pero con la piel nueva.
