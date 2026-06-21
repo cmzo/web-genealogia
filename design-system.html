@@ -867,7 +867,7 @@
             <p class="comp-label">Top-nav · CMZO · height 58px · build en runtime por nav.js</p>
             <div class="cmzo-top" style="border-radius:10px;border:1px solid var(--border);">
               <div class="cmzo-top-inner" style="max-width:none;">
-                <span class="cmzo-brand"><span class="dot"></span><span class="cmzo-seg" style="color:var(--text);">cmzo</span><span class="cmzo-sep">/</span><span class="cmzo-seg">gen</span><span class="cmzo-sep">/</span><span class="cmzo-seg is-current">árbol</span></span>
+                <span class="cmzo-brand"><a class="cmzo-seg cmzo-wordmark" style="pointer-events:none;"><span class="cmzo-tilde">~/</span>cmzo</a><span class="cmzo-sep">/</span><span class="cmzo-seg">gen</span><span class="cmzo-sep">/</span><span class="cmzo-seg is-current">árbol</span></span>
                 <span class="cmzo-vr"></span>
                 <nav class="cmzo-mainnav"><a class="is-current" style="pointer-events:none;">home</a><a style="pointer-events:none;">blog</a></nav>
                 <span class="cmzo-spacer"></span>
@@ -886,7 +886,7 @@
                 </div>
               </div>
             </div>
-            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Layout «Variante A»: marca + secciones ancladas a la izquierda (línea vertical entre ellas), spacer elástico, y a la derecha la búsqueda (pastilla ⌘K) separada por una línea de la caja de herramientas (idioma · tema · github). Todo en IBM Plex Mono. Lo arma <code class="td-mono">nav.js</code> leyendo <code class="td-mono">data-section</code>/<code class="td-mono">data-page</code> del &lt;body&gt;; estilos en <code class="td-mono">home.css</code>. El selector de idioma es opt-in (<code class="td-mono">data-lang-switch</code>, solo la home).</p>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Layout «Variante A»: marca + secciones ancladas a la izquierda (línea vertical entre ellas), spacer elástico, y a la derecha la búsqueda (pastilla ⌘K) separada por una línea de la caja de herramientas (idioma · tema · github). Todo en IBM Plex Mono. Lo arma <code class="td-mono">nav.js</code> leyendo <code class="td-mono">data-section</code>/<code class="td-mono">data-page</code> del &lt;body&gt;; estilos en <code class="td-mono">home.css</code>. El selector de idioma es opt-in (<code class="td-mono">data-lang-switch</code>, solo la home). El wordmark <code class="td-mono">~/cmzo</code> (prompt de directorio home, link a la portada) lleva el <code class="td-mono">~/</code> tenue y <code class="td-mono">cmzo</code> en negrita.</p>
           </div>
 
           <!-- Sidebar (retirado) -->
@@ -895,9 +895,47 @@
             <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0;line-height:1.6;">El menú lateral de dos columnas (<code class="td-mono">.site-sidebar</code>) se reemplazó por la top-nav de arriba en el rediseño CMZO. Las clases <code class="td-mono">.site-*</code> siguen en <code class="td-mono">styles.css</code> pero solo se usan en <code class="td-mono">sobre.html</code> (huérfana, pendiente de decisión). En mobile (≤760px) la navegación vive en un drawer que arma <code class="td-mono">nav-drawer.js</code>.</p>
           </div>
 
-          <!-- Botones -->
+          <!-- Botones (CMZO) -->
           <div class="comp-block">
-            <p class="comp-label">Botones</p>
+            <p class="comp-label">Botones · CMZO (.cmzo-btn)</p>
+            <div class="ds-box ds-box--surface">
+              <div class="ds-row" style="gap:12px;flex-wrap:wrap;">
+                <a class="cmzo-btn" style="pointer-events:none;"><span>Outline</span><span>→</span></a>
+                <a class="cmzo-btn cmzo-btn--ghost" style="pointer-events:none;"><span>Ghost</span><span>→</span></a>
+                <a class="cmzo-btn cmzo-btn--solid" style="pointer-events:none;"><span>Solid</span><span>→</span></a>
+              </div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">IBM Plex Mono 13px. <code class="td-mono">.cmzo-btn</code> (outline accent — el por defecto) · <code class="td-mono">--ghost</code> (borde tenue, secundario) · <code class="td-mono">--solid</code> (relleno accent, primario). En el dashboard se usa outline de forma uniforme.</p>
+          </div>
+
+          <!-- Panel + filas de índice -->
+          <div class="comp-block">
+            <p class="comp-label">Panel + filas de índice (.cmzo-viz · .cmzo-srcrow)</p>
+            <div class="cmzo-viz" style="max-width:440px;">
+              <div class="cmzo-viz-head"><span>sources.index</span><span>02 archivos</span></div>
+              <a class="cmzo-srcrow" style="pointer-events:none;"><span class="ic">▤</span><span class="nm"><span class="t">Censos del Valais</span><span class="s">archives de l'État · VS</span></span><span class="meta">1802–1880</span></a>
+              <a class="cmzo-srcrow" style="pointer-events:none;"><span class="ic">❏</span><span class="nm"><span class="t">Gazette du Valais</span><span class="s">prensa histórica</span></span><span class="meta lk">enlace →</span></a>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Caja-panel con cabecera mono (<code class="td-mono">.cmzo-viz-head</code>; estado opcional <code class="td-mono">.ok</code> «● abierto»). Filas <code class="td-mono">.cmzo-srcrow</code>: grilla icono · nombre/sublabel · meta (la meta <code class="td-mono">.lk</code> resalta en accent). Usado en la página de Fuentes y en el dashboard <code class="td-mono">/gen</code>.</p>
+          </div>
+
+          <!-- Formulario sobre panel -->
+          <div class="comp-block">
+            <p class="comp-label">Formulario sobre panel (.cmzo-form · .cmzo-field)</p>
+            <div class="cmzo-viz" style="max-width:440px;overflow:visible;">
+              <div class="cmzo-viz-head"><span>contribute.form</span><span class="ok"><span class="dot"></span>abierto</span></div>
+              <div class="cmzo-form">
+                <div class="cmzo-field"><label>nombre</label><input type="text" placeholder="Tu nombre" tabindex="-1"></div>
+                <div class="cmzo-field"><label>mensaje</label><textarea placeholder="Contame qué encontraste" tabindex="-1"></textarea></div>
+                <div class="cmzo-form-foot"><span class="cmzo-hint">se revisa antes de publicar</span><button class="cmzo-btn" type="button" style="pointer-events:none;">enviar <span>→</span></button></div>
+              </div>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Labels en IBM Plex Mono mayúsculas, inputs sobre fondo cálido (<code class="td-mono">--bg</code>), foco en accent. Pie <code class="td-mono">.cmzo-form-foot</code> con hint mono + botón. (La página real de Colaborar conserva su propio markup/lógica; esta es la piel compartida.)</p>
+          </div>
+
+          <!-- Botones (legacy) -->
+          <div class="comp-block">
+            <p class="comp-label">Botones · legacy (posts / páginas viejas)</p>
             <div class="ds-box ds-box--surface">
               <div class="ds-row" style="gap:16px;flex-wrap:wrap;">
                 <a href="#" class="home-cta-btn" onclick="return false;">

@@ -87,7 +87,13 @@
             <p class="cmzo-body">Los archivos e instituciones de donde sale todo: censos del Valais (1802–1880), actas de Entre Ríos, prensa histórica como la <em>Gazette du Valais</em>, registros militares. Con enlaces cuando existen.</p>
             <div class="cmzo-links"><a href="fuentes.html" class="cmzo-btn"><span>Ver las fuentes</span><span>→</span></a></div>
           </div>
-          <div></div>
+          <div class="cmzo-viz">
+            <div class="cmzo-viz-head"><span>sources.index</span><span>04 archivos</span></div>
+            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">▤</span><span class="nm"><span class="t">Censos del Valais</span><span class="s">archives de l'État · VS</span></span><span class="meta">1802–1880</span></a>
+            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">▤</span><span class="nm"><span class="t">Actas civiles de Entre Ríos</span><span class="s">registro civil · AR</span></span><span class="meta">1888–1930</span></a>
+            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">❏</span><span class="nm"><span class="t">Gazette du Valais</span><span class="s">prensa histórica</span></span><span class="meta lk">enlace →</span></a>
+            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">✦</span><span class="nm"><span class="t">Registros militares</span><span class="s">contingente federal · VS</span></span><span class="meta">s. XIX</span></a>
+          </div>
         </div>
       </div>
     </section>
@@ -100,7 +106,15 @@
             <p class="cmzo-body">¿Te suena un apellido, un pueblo o una foto? ¿Encontraste un error? Buena parte de lo que hay acá empezó con un dato que alguien se tomó el trabajo de mandar.</p>
             <div class="cmzo-links"><a href="colaborar.html" class="cmzo-btn"><span>Escribir</span><span>→</span></a></div>
           </div>
-          <div></div>
+          <form class="cmzo-viz" onsubmit="location.href='colaborar.html';return false;">
+            <div class="cmzo-viz-head"><span>contribute.form</span><span class="ok"><span class="dot"></span>abierto</span></div>
+            <div class="cmzo-form">
+              <div class="cmzo-field"><label for="cf-nombre">nombre</label><input id="cf-nombre" type="text" placeholder="Tu nombre" tabindex="-1"></div>
+              <div class="cmzo-field"><label for="cf-aporte">aporte</label><input id="cf-aporte" type="text" placeholder="apellido · pueblo · foto · corrección" tabindex="-1"></div>
+              <div class="cmzo-field"><label for="cf-msg">mensaje</label><textarea id="cf-msg" placeholder="Contame qué encontraste" tabindex="-1"></textarea></div>
+              <div class="cmzo-form-foot"><span class="cmzo-hint">se revisa antes de publicar</span><button class="cmzo-btn" type="submit">enviar <span>→</span></button></div>
+            </div>
+          </form>
         </div>
       </div>
     </section>

@@ -31,10 +31,12 @@ body {
   display: flex; align-items: center; gap: 0;
 }
 .cmzo-brand { display: flex; align-items: center; gap: 7px; flex-shrink: 0; letter-spacing: 0.02em; }
-.cmzo-brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-/* Breadcrumb navegable: cmzo / gen / arbol — cada segmento es un link salvo el actual */
+/* Breadcrumb navegable: ~/cmzo / gen / arbol — cada segmento es un link salvo el actual */
 .cmzo-seg { font-family: var(--mono); font-size: 15px; font-weight: 600; text-decoration: none; color: var(--muted); }
 .cmzo-brand .cmzo-seg:first-of-type { color: var(--text); }
+/* Wordmark «~/cmzo»: cmzo en negrita, el prefijo ~/ tenue */
+.cmzo-wordmark { font-weight: 700; color: var(--text); }
+.cmzo-wordmark .cmzo-tilde { color: var(--muted); font-weight: 400; }
 a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-seg.is-current { color: var(--text); }
 .cmzo-sep { font-family: var(--mono); color: var(--muted); opacity: 0.5; margin: 0 2px; font-weight: 400; }
@@ -128,6 +130,8 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-btn:hover { background: var(--accent); color: var(--on-accent); }
 .cmzo-btn--ghost { border-color: var(--border); color: var(--muted); }
 .cmzo-btn--ghost:hover { background: var(--bg); color: var(--text); border-color: var(--accent); }
+.cmzo-btn--solid { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.cmzo-btn--solid:hover { background: var(--accent); color: var(--on-accent); filter: brightness(1.12); }
 
 /* ── Caja-panel con visualización ─────────────────────────────────────────── */
 .cmzo-viz { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; }
@@ -137,6 +141,9 @@ a.cmzo-seg:hover { color: var(--accent); }
   display: flex; justify-content: space-between;
 }
 .cmzo-viz-body { padding: 20px; flex: 1; display: flex; align-items: center; justify-content: center; }
+/* Estado en la cabecera del panel (ej. «● abierto») */
+.cmzo-viz-head .ok { color: var(--accent); display: flex; align-items: center; gap: 7px; }
+.cmzo-viz-head .ok .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 .cmzo-viz svg { width: 100%; height: auto; }
 .cmzo-viz line { stroke: var(--border); stroke-width: 1; }
 .cmzo-viz line.act { stroke: var(--accent); stroke-opacity: 0.7; }
@@ -166,6 +173,43 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-entry .home-latest-desc { font-family: var(--sans); color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0 0 16px; }
 .cmzo-entry .home-latest-read { font-family: var(--mono); font-size: 13px; color: var(--accent); }
 .cmzo-entry .home-latest-link:hover .home-latest-read { text-decoration: underline; }
+
+/* ── Filas dentro de un panel (índice de fuentes, etc.) ───────────────────── */
+.cmzo-src { display: block; padding: 15px 18px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background .12s; }
+.cmzo-src:last-child { border-bottom: 0; }
+.cmzo-src:hover { background: var(--bg); }
+.cmzo-src .cmzo-src-top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.cmzo-src .cmzo-src-name { font-family: var(--sans); font-weight: 600; font-size: 14.5px; color: var(--text); }
+.cmzo-src .cmzo-src-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.cmzo-src .cmzo-src-meta.lk { color: var(--accent); }
+.cmzo-src .cmzo-src-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; margin-top: 3px; }
+.cmzo-src .cmzo-src-desc { font-family: var(--sans); font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 8px 0 0; }
+.cmzo-src .cmzo-src-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── Fila compacta de índice (icono · nombre/sub · meta) — paneles tipo sources.index ── */
+.cmzo-srcrow { display: grid; grid-template-columns: 18px 1fr auto; gap: 13px; align-items: center; padding: 15px 18px; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: background .12s; }
+.cmzo-srcrow:last-child { border-bottom: 0; }
+.cmzo-srcrow:hover { background: var(--bg); }
+.cmzo-srcrow .ic { font-family: var(--mono); color: var(--muted); font-size: 13px; text-align: center; }
+.cmzo-srcrow .nm { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cmzo-srcrow .nm .t { font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--text); }
+.cmzo-srcrow .nm .s { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.cmzo-srcrow .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.cmzo-srcrow .meta.lk { color: var(--accent); }
+
+/* ── Campos de formulario sobre un panel ──────────────────────────────────── */
+.cmzo-form { padding: 18px; }
+.cmzo-field { margin-bottom: 12px; }
+.cmzo-field label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.cmzo-field .cmzo-inp, .cmzo-field input[type="text"], .cmzo-field input[type="email"], .cmzo-field textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: 7px; background: var(--bg);
+  padding: 11px 13px; font-family: var(--sans); font-size: 14px; color: var(--text); outline: none; transition: .15s;
+}
+.cmzo-field input::placeholder, .cmzo-field textarea::placeholder { color: var(--muted); }
+.cmzo-field input:focus, .cmzo-field textarea:focus, .cmzo-field .cmzo-inp:focus { border-color: var(--accent); background: var(--surface); }
+.cmzo-field textarea { min-height: 84px; resize: vertical; }
+.cmzo-form-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 14px; }
+.cmzo-form-foot .cmzo-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 .cmzo-foot { border-top: 1px solid var(--border); margin-top: 8px; background: var(--surface); }

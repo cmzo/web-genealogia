@@ -1,5 +1,21 @@
 ### 21 de junio de 2026
 
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Fuentes y Colaborar, al mismo lenguaje visual
+
+Las páginas de <strong>Fuentes</strong> y <strong>Colaborar</strong>, que seguían con el diseño viejo, ahora hablan el mismo idioma que el resto del sitio: secciones numeradas, paneles y tipografía monoespaciada. Fuentes agrupa los archivos por región en paneles ordenados, con un índice arriba; Colaborar conserva el formulario y todo lo que hacía, pero con la piel nueva.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> El tablero de genealogía muestra más
+
+En la portada de genealogía (<code>/gen</code>), las secciones de Fuentes y Colaborar ahora traen una vista previa: un índice de archivos y un formulario de ejemplo, para dar una idea de lo que hay del otro lado antes de entrar.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Una marca con más identidad
+
+El nombre del sitio en la barra pasó de un punto verde suelto a <strong><code>~/cmzo</code></strong> —un guiño a las rutas de carpetas—, con «cmzo» en negrita. Chico, pero le da carácter.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Un rectángulo fantasma al hacer scroll
+
+Al frenar el scroll por encima del inicio (ese rebote elástico), asomaba un rectángulo claro arriba a la izquierda: era un atajo de accesibilidad oculto que se dejaba ver de más. Ahora queda invisible salvo cuando corresponde.
+
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Una navegación nueva en todo el sitio
 
 La barra de arriba cambió de fondo. En lugar del menú lateral, ahora hay una **ruta tipo carpetas** (`cmzo / gen / árbol`) que muestra dónde estás parado y te deja volver a cualquier nivel con un clic. Las secciones principales quedaron en **inicio**, **blog** y **genealogía**, y la barra se adapta según dónde estés. Es el primer paso de un cambio de enfoque: el sitio deja de ser solo «genealogía Clemenzo» para volverse una página personal donde la genealogía es uno de los temas, no el único.

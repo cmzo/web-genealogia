@@ -16,234 +16,36 @@
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/home.css" />
   <style>
-    .fuentes-content h1 { display: none; }
+    /* Páginas de fuentes: el grueso del estilo viene de home.css (cmzo-mod, cmzo-viz, cmzo-src).
+       Acá solo los ajustes propios: índice, contenido de cada fila y la tabla de bibliografía. */
+    .fuentes-content { display: flex; flex-direction: column; gap: 22px; }
 
-    /* Párrafo de intro */
-    .fuentes-content > p:first-child {
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 0;
-    }
+    /* Índice (panel de navegación) — grilla de accesos a cada grupo */
+    .fuentes-toc .cmzo-toc-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 1px; background: var(--border); }
+    .fuentes-toc .cmzo-toc-grid .cmzo-src { background: var(--surface); }
+    @media (max-width: 600px) { .fuentes-toc .cmzo-toc-grid { grid-template-columns: 1fr; } }
 
-    /* Índice de secciones (autogenerado) */
-    .fuentes-toc {
-      margin: 28px 0 24px;
-      padding: 22px 24px 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
+    /* Contenido dentro de cada fila de fuente (descripciones, contacto, listas) */
+    .cmzo-src .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; margin: 6px 0 0; }
+    .cmzo-src .meta strong { font-weight: 500; color: var(--mid, var(--muted)); }
+    .cmzo-src .meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    .cmzo-src p:not(.meta) { font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 8px 0 0; }
+    .cmzo-src ul, .cmzo-src ol { font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 8px 0 0; padding-left: 20px; }
+    .cmzo-src li { margin-bottom: 4px; }
+    .cmzo-src strong { color: var(--text); font-weight: 600; }
+    .cmzo-src em { font-style: italic; }
+    .cmzo-src a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 
-    .fuentes-toc-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 14px;
-    }
+    /* Bibliografía: la tabla llena el panel */
+    .fuentes-group > .pad { padding: 16px 18px 4px; }
+    .fuentes-group .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .fuentes-group table { border-collapse: collapse; font-family: var(--sans); font-size: 14px; width: 100%; }
+    .fuentes-group th { text-align: left; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 11px 18px; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .fuentes-group td { padding: 13px 18px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.6; }
+    .fuentes-group tr:last-child td { border-bottom: 0; }
+    .fuentes-group td em { font-style: italic; }
 
-    .fuentes-toc-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px 18px;
-    }
-
-    .fuentes-toc-link {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: 6px;
-      border-left: 2px solid transparent;
-      text-decoration: none;
-      transition: background 0.15s, border-color 0.15s;
-    }
-
-    .fuentes-toc-link:hover {
-      background: var(--bg);
-      border-left-color: var(--accent);
-    }
-
-    .fuentes-toc-name {
-      flex: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.4;
-      transition: color 0.15s;
-    }
-
-    .fuentes-toc-link:hover .fuentes-toc-name { color: var(--accent); }
-
-    .fuentes-toc-count {
-      flex-shrink: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--surface);
-      background: var(--accent);
-      border-radius: 10px;
-      padding: 1px 8px;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 600px) {
-      .fuentes-toc-list { grid-template-columns: 1fr; }
-    }
-
-    /* Sección país/región */
-    .fuentes-content h2 {
-      scroll-margin-top: 20px;
-      font-family: 'Hanken Grotesk', sans-serif;
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 700;
-      color: var(--text);
-      margin: 64px 0 28px;
-      padding-bottom: 14px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .fuentes-content h2::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 36px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .fuentes-content h2:first-of-type {
-      margin-top: 76px;
-    }
-
-    /* Tarjeta de institución */
-    .fuente-entry {
-      padding: 0 0 0 20px;
-      border-left: 2px solid var(--border);
-      margin-bottom: 0;
-      transition: border-color 0.2s;
-    }
-
-    .fuente-entry:hover {
-      border-left-color: var(--accent);
-    }
-
-    /* Nombre de institución */
-    .fuente-entry h3 {
-      font-family: 'Hanken Grotesk', sans-serif;
-      font-size: clamp(18px, 2vw, 22px);
-      font-weight: 700;
-      color: var(--text);
-      margin: 0 0 12px;
-      line-height: 1.35;
-    }
-
-    /* Líneas de contacto: **Web:**, **Tel:**, etc. */
-    .fuente-meta {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0 0 6px;
-    }
-
-    .fuente-meta strong { font-weight: 600; color: var(--muted); }
-
-    .fuente-meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-
-    /* Texto descriptivo dentro de entrada */
-    .fuente-entry p {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text);
-      margin: 0 0 16px;
-    }
-
-    .fuente-entry ul, .fuente-entry ol {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--text);
-      margin: 0 0 16px;
-      padding-left: 22px;
-    }
-
-    .fuente-entry li { margin-bottom: 6px; }
-
-    .fuente-entry strong { font-weight: 700; color: var(--accent); }
-
-    .fuente-entry em { font-style: italic; }
-
-    .fuente-entry a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-
-    /* Separador visual entre tarjetas */
-    .fuente-separator {
-      height: 32px;
-    }
-
-    /* Tabla de bibliografía */
-    .fuentes-content .table-wrapper {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin: 16px 0 24px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .fuentes-content table {
-      border-collapse: collapse;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      width: 100%;
-    }
-
-    .fuentes-content th {
-      text-align: left;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 10px 16px;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-    }
-
-    .fuentes-content th:last-child { border-right: none; }
-
-    .fuentes-content td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      color: var(--text);
-      vertical-align: top;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .fuentes-content td:last-child { border-right: none; }
-
-    .fuentes-content tr:last-child td { border-bottom: none; }
-
-    /* Nota de actualización al pie */
-    .fuentes-update {
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 56px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
+    .fuentes-update { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 4px 0 0; }
   </style>
 </head>
 <body data-section="gen" data-page="fuentes">
@@ -253,14 +55,15 @@
   <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
 
   <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
-    <div class="article-container">
-      <header class="article-header">
-        <h1 class="article-title">Fuentes genealógicas</h1>
-      </header>
-      <div class="fuentes-content">
-        <p style="color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;">Cargando…</p>
+    <section class="cmzo-mod" style="border-top: 0;">
+      <div class="cmzo-mod-inner">
+        <div class="cmzo-mod-head"><span class="cmzo-mod-num">03</span><h2>Fuentes</h2><span class="rule"></span></div>
+        <p class="cmzo-body" style="max-width: 64ch;">Los archivos e instituciones de donde sale todo: censos del Valais (1802–1880), actas de Entre Ríos, prensa histórica como la <em>Gazette du Valais</em>, registros militares. Con enlaces cuando existen.</p>
+        <div class="fuentes-content">
+          <p style="color:var(--muted);font-family:var(--mono);font-size:13px;">Cargando…</p>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer class="cmzo-foot">
@@ -273,103 +76,92 @@
   <script src="./assets/js/path-config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
   <script>
-    function postProcess(container) {
+    const slugify = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    // Reagrupa el markdown en paneles (un panel por sección «## país/región»), y dentro,
+    // cada institución «### …» como una fila .cmzo-src. La bibliografía (tabla) va en su panel.
+    function panelize(container) {
       const children = Array.from(container.children);
-      const fragment = document.createDocumentFragment();
-      let currentCard = null;
+      const frag = document.createDocumentFragment();
+      let panel = null, countEl = null, count = 0, entry = null;
+
+      const flush = () => {
+        if (panel) { if (countEl) countEl.textContent = count ? (count + (count === 1 ? ' fuente' : ' fuentes')) : ''; frag.appendChild(panel); }
+        panel = null; countEl = null; count = 0; entry = null;
+      };
 
       for (const el of children) {
-        if (el.tagName === 'H1') {
-          continue;
-        } else if (el.tagName === 'H2') {
-          if (currentCard) { fragment.appendChild(currentCard); currentCard = null; }
-          fragment.appendChild(el);
-        } else if (el.tagName === 'H3') {
-          if (currentCard) { fragment.appendChild(currentCard); currentCard = null; }
-          currentCard = document.createElement('div');
-          currentCard.className = 'fuente-entry';
-          currentCard.appendChild(el);
+        if (el.tagName === 'H1') continue;
+
+        if (el.tagName === 'H2') {
+          flush();
+          panel = document.createElement('section');
+          panel.className = 'cmzo-viz fuentes-group';
+          panel.id = 'sec-' + slugify(el.textContent);
+          const head = document.createElement('div');
+          head.className = 'cmzo-viz-head';
+          const l = document.createElement('span'); l.textContent = el.textContent;
+          countEl = document.createElement('span'); countEl.className = 'count';
+          head.append(l, countEl);
+          panel.appendChild(head);
+          entry = null;
+        } else if (el.tagName === 'H3' && panel) {
+          entry = document.createElement('div');
+          entry.className = 'cmzo-src';
+          const top = document.createElement('div'); top.className = 'cmzo-src-top';
+          const nm = document.createElement('span'); nm.className = 'cmzo-src-name'; nm.textContent = el.textContent;
+          top.appendChild(nm);
+          entry.appendChild(top);
+          panel.appendChild(entry);
+          count++;
         } else if (el.tagName === 'HR') {
-          if (currentCard) {
-            fragment.appendChild(currentCard);
-            currentCard = null;
-            const sep = document.createElement('div');
-            sep.className = 'fuente-separator';
-            fragment.appendChild(sep);
-          }
-        } else if (el.tagName === 'P') {
-          const isLastP = el === children[children.length - 1];
-          if (isLastP && el.textContent.startsWith('Última actualización')) {
-            if (currentCard) { fragment.appendChild(currentCard); currentCard = null; }
-            el.className = 'fuentes-update';
-            fragment.appendChild(el);
-          } else if (currentCard) {
-            const firstChild = el.firstChild;
-            if (firstChild && firstChild.nodeName === 'STRONG') {
-              el.className = 'fuente-meta';
-            }
-            currentCard.appendChild(el);
-          } else {
-            fragment.appendChild(el);
-          }
+          entry = null;
+        } else if (el.tagName === 'P' && el.textContent.startsWith('Última actualización')) {
+          flush();
+          el.className = 'fuentes-update';
+          frag.appendChild(el);
+        } else if (el.classList && el.classList.contains('table-wrapper')) {
+          if (panel) panel.appendChild(el); else frag.appendChild(el);
+          entry = null;
+        } else if (el.tagName === 'P' || el.tagName === 'UL' || el.tagName === 'OL') {
+          // ¿es una línea de contacto **Web:** … ?
+          if (el.tagName === 'P' && el.firstChild && el.firstChild.nodeName === 'STRONG') el.classList.add('meta');
+          if (entry) entry.appendChild(el);
+          else if (panel) { const pad = document.createElement('div'); pad.className = 'pad'; pad.appendChild(el); panel.appendChild(pad); }
+          else frag.appendChild(el);
         } else {
-          if (currentCard) currentCard.appendChild(el);
-          else fragment.appendChild(el);
+          if (entry) entry.appendChild(el); else if (panel) panel.appendChild(el); else frag.appendChild(el);
         }
       }
-      if (currentCard) fragment.appendChild(currentCard);
+      flush();
       container.innerHTML = '';
-      container.appendChild(fragment);
+      container.appendChild(frag);
     }
 
+    // Índice de grupos como panel de accesos
     function buildTOC(container) {
-      const headings = Array.from(container.querySelectorAll('h2'));
-      if (headings.length < 2) return;
-
-      const slugify = s => s.toLowerCase()
-        .normalize('NFD').replace(/[̀-ͯ]/g, '')
-        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-
+      const groups = Array.from(container.querySelectorAll('.fuentes-group'));
+      if (groups.length < 2) return;
       const toc = document.createElement('nav');
-      toc.className = 'fuentes-toc';
+      toc.className = 'cmzo-viz fuentes-toc';
       toc.setAttribute('aria-label', 'Índice de secciones');
-
-      const label = document.createElement('p');
-      label.className = 'fuentes-toc-label';
-      label.textContent = 'En esta página';
-      toc.appendChild(label);
-
-      const list = document.createElement('div');
-      list.className = 'fuentes-toc-list';
-
-      headings.forEach(h => {
-        h.id = 'sec-' + slugify(h.textContent);
-
-        // Contar fuentes (tarjetas) hasta la próxima sección
-        let count = 0;
-        let el = h.nextElementSibling;
-        while (el && el.tagName !== 'H2') {
-          if (el.classList && el.classList.contains('fuente-entry')) count++;
-          el = el.nextElementSibling;
-        }
-
+      const head = document.createElement('div');
+      head.className = 'cmzo-viz-head';
+      head.innerHTML = `<span>índice</span><span>${groups.length} grupos</span>`;
+      toc.appendChild(head);
+      const grid = document.createElement('div');
+      grid.className = 'cmzo-toc-grid';
+      groups.forEach(g => {
+        const name = g.querySelector('.cmzo-viz-head span').textContent;
+        const count = g.querySelectorAll('.cmzo-src').length;
         const a = document.createElement('a');
-        a.className = 'fuentes-toc-link';
-        a.href = '#' + h.id;
-        const name = document.createElement('span');
-        name.className = 'fuentes-toc-name';
-        name.textContent = h.textContent;
-        a.appendChild(name);
-        if (count) {
-          const badge = document.createElement('span');
-          badge.className = 'fuentes-toc-count';
-          badge.textContent = count;
-          a.appendChild(badge);
-        }
-        list.appendChild(a);
+        a.className = 'cmzo-src';
+        a.href = '#' + g.id;
+        a.innerHTML = `<div class="cmzo-src-top"><span class="cmzo-src-name">${name}</span>${count ? `<span class="cmzo-src-meta">${count}</span>` : ''}</div>`;
+        grid.appendChild(a);
       });
-
-      toc.appendChild(list);
+      toc.appendChild(grid);
       container.prepend(toc);
     }
 
@@ -383,19 +175,14 @@
     fetch(url)
       .then(r => r.text())
       .then(md => {
-        const html = marked.parse(md);
         const container = document.querySelector('.fuentes-content');
-        container.innerHTML = html;
-        postProcess(container);
+        container.innerHTML = marked.parse(md);
+        panelize(container);
         buildTOC(container);
-        // Los enlaces externos se abren en una pestaña nueva
-        container.querySelectorAll('a[href^="http"]').forEach(a => {
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-        });
+        container.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
       })
       .catch(() => {
-        document.querySelector('.fuentes-content').innerHTML = '<p>No se pudo cargar el contenido.</p>';
+        document.querySelector('.fuentes-content').innerHTML = '<p style="color:var(--muted);font-family:var(--sans);">No se pudo cargar el contenido.</p>';
       });
   </script>
 

@@ -23,8 +23,9 @@
     : `<a class="cmzo-seg" href="${prefix}${href}">${label}</a>`;
   const sep = `<span class="cmzo-sep">/</span>`;
 
-  // ── Breadcrumb: cmzo / <sección> [/ <página>] ───────────────────────────────
-  const parts = [seg('cmzo', 'index.html', false)];
+  // ── Breadcrumb: ~/cmzo / <sección> [/ <página>] ─────────────────────────────
+  // El wordmark «~/cmzo» (prompt de directorio home) es siempre link a la portada.
+  const parts = [`<a class="cmzo-seg cmzo-wordmark" href="${prefix}index.html"><span class="cmzo-tilde">~/</span>cmzo</a>`];
   if (section === 'home') {
     parts.push(seg('home', '', true));
   } else if (sec && page && GEN_LABELS[page]) {
@@ -61,7 +62,7 @@
   // (idioma · tema · github). El tema lo inserta theme.js antes del github, dentro de .cmzo-tools.
   header.innerHTML = `
     <div class="cmzo-top-inner">
-      <span class="cmzo-brand"><span class="dot"></span>${crumb}</span>
+      <span class="cmzo-brand">${crumb}</span>
       <span class="cmzo-vr"></span>
       <nav class="cmzo-mainnav">${links}</nav>
       <span class="cmzo-spacer"></span>

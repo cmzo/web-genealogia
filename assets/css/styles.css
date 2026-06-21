@@ -68,10 +68,16 @@ html[data-theme="dark"] mark {
   text-decoration: none;
   z-index: 10000;
   transform: translateY(-100%);
-  transition: transform 0.15s;
+  /* opacity:0 cuando no tiene foco → no aparece como rectángulo al hacer overscroll
+     (rubber-band) por encima del origen del documento. */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.15s, opacity 0.15s;
 }
 .skip-link:focus {
   transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
   outline: 3px solid var(--accent);
   outline-offset: 2px;
 }

@@ -134,6 +134,44 @@
     .fieldset-block[hidden] { display: none; }
     .sub-block[hidden] { display: none; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    /* ════ Reestilo «terminal claro» — mismo lenguaje que el dashboard (sobrescribe lo de arriba).
+       El markup y la lógica del formulario quedan intactos; solo cambia la piel. ════ */
+    .colab-wrap { max-width: 720px; margin: 0 auto; }
+    .colab-intro { font-family: var(--sans); font-size: 15.5px; line-height: 1.62; color: var(--muted); text-align: left; max-width: 64ch; margin: 0 0 22px; }
+    .lang-selector { justify-content: flex-end; margin: 0 0 16px; max-width: none; }
+    .lang-pillbox { gap: 1px; border-radius: 8px; padding: 3px; background: var(--bg); }
+    .lang-pillbox > svg { width: 13px; height: 13px; margin: 0 4px; }
+    .lang-opt { font-family: var(--mono); font-size: 11px; font-weight: 500; border-radius: 5px; padding: 4px 8px; }
+    .lang-opt.is-active { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); color: var(--accent); }
+
+    /* El formulario vive dentro de un panel (.cmzo-viz). overflow:visible para que el
+       dropdown del buscador de personas no quede recortado por el panel. */
+    .colab-panel { overflow: visible; }
+    .colab-tabs { margin: 0; max-width: none; border-bottom: 1px solid var(--border); }
+    .colab-tab { font-family: var(--mono); font-size: 12.5px; padding: 13px 18px; flex: 0 1 auto; text-align: left; }
+
+    .colab-form { max-width: none; margin: 0; padding: 18px; }
+    .form-field { gap: 7px; margin-bottom: 18px; }
+    .form-field label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; }
+    .form-field input[type="text"], .form-field input[type="email"], .form-field input[type="url"],
+    .form-field textarea, .pp-input {
+      font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--bg);
+      border: 1px solid var(--border); border-radius: 7px; padding: 11px 13px; width: 100%; box-sizing: border-box;
+    }
+    .form-field input:focus, .form-field textarea:focus, .pp-input:focus { border-color: var(--accent); background: var(--surface); }
+    .form-field textarea { min-height: 110px; }
+    .form-hint { font-family: var(--mono); font-size: 11px; }
+    .radio-opt, .check-opt { font-family: var(--sans); }
+    .pp-chip { font-family: var(--mono); font-size: 12px; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); border-color: color-mix(in srgb, var(--accent) 22%, var(--surface)); }
+    .pp-opt { font-family: var(--sans); }
+    .pp-opt:hover { background: var(--bg); }
+    .pp-empty { font-family: var(--sans); }
+    .form-submit { font-family: var(--mono); font-size: 13px; color: var(--on-accent); border: 1px solid var(--accent); border-radius: 7px; padding: 11px 17px; }
+    .form-submit:hover { opacity: 1; filter: brightness(1.12); }
+    .form-status { font-family: var(--sans); font-size: 15px; background: var(--bg); border-radius: 10px; max-width: none; margin: 16px 0 0; }
+    .form-error { font-family: var(--mono); font-size: 12px; }
+    .cf-turnstile { margin: 4px 0 16px !important; }
   </style>
 </head>
 <body data-section="gen" data-page="colaborar">
@@ -143,7 +181,16 @@
   <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
 
   <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
-      <div class="article-container">
+    <section class="cmzo-mod" style="border-top: 0;">
+      <div class="cmzo-mod-inner colab-wrap">
+        <div class="cmzo-mod-head"><span class="cmzo-mod-num">04</span><h2 data-i18n="title">Colaborar</h2><span class="rule"></span></div>
+
+        <p class="colab-intro" data-i18n="intro">
+          Más de un avance decisivo de esta investigación —de esos que destraban un nudo
+          y permiten subir otra generación— salió del aporte de otra persona. Si tenés un
+          recuerdo, una corrección, un documento o el dato de alguien relacionado con la
+          familia, escribime. También podés dejar un comentario, sin más.
+        </p>
 
         <div class="lang-selector" role="group" aria-label="Idioma / Langue / Language">
           <span class="lang-pillbox">
@@ -154,23 +201,15 @@
           </span>
         </div>
 
-        <header class="article-header">
-          <h1 class="article-title" data-i18n="title">Colaborar</h1>
-        </header>
+        <div class="cmzo-viz colab-panel">
+          <div class="cmzo-viz-head"><span>contribute.form</span><span class="ok"><span class="dot"></span>abierto</span></div>
 
-        <p class="colab-intro" data-i18n="intro">
-          Más de un avance decisivo de esta investigación —de esos que destraban un nudo
-          y permiten subir otra generación— salió del aporte de otra persona. Si tenés un
-          recuerdo, una corrección, un documento o el dato de alguien relacionado con la
-          familia, escribime. También podés dejar un comentario, sin más.
-        </p>
+          <div class="colab-tabs" role="tablist">
+            <button type="button" class="colab-tab is-active" data-mode="comentario" role="tab" data-i18n="tab_comment">Dejar un comentario</button>
+            <button type="button" class="colab-tab" data-mode="informacion" role="tab" data-i18n="tab_info">Tengo información sobre alguien</button>
+          </div>
 
-        <div class="colab-tabs" role="tablist">
-          <button type="button" class="colab-tab is-active" data-mode="comentario" role="tab" data-i18n="tab_comment">Dejar un comentario</button>
-          <button type="button" class="colab-tab" data-mode="informacion" role="tab" data-i18n="tab_info">Tengo información sobre alguien</button>
-        </div>
-
-        <form class="colab-form" id="colab-form" novalidate>
+          <form class="colab-form" id="colab-form" novalidate>
           <input type="hidden" name="tipo" id="field-tipo" value="comentario" />
           <div class="hp" aria-hidden="true"><label>No completar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label></div>
 
@@ -265,12 +304,14 @@
 
           <p class="form-error" id="form-error" data-i18n="err_generic">Algo salió mal. Intentá de nuevo o escribime a mdclemenzo@gmail.com.</p>
           <button type="submit" class="form-submit" id="form-submit" data-i18n="btn_send">Enviar</button>
-        </form>
+          </form>
+        </div>
 
         <div class="form-status" id="form-status" data-i18n="status_ok">
           ¡Gracias! Recibí tu mensaje. Si dejaste tu email, te escribo.
         </div>
       </div>
+    </section>
   </main>
 
   <footer class="cmzo-foot">
