@@ -1,21 +1,23 @@
 [
   {
-    "id": "2026-06-21-blogs",
-    "date": "2026-06-21",
-    "type": "nota",
-    "image": "",
-    "link": "",
-    "html": "<p>Algunos sitios a los que siempre entro a ver cómo están las cosas:</p>\n<ul>\n<li><a href=\"https://jvns.ca/\">https://jvns.ca/</a></li>\n<li><a href=\"https://kevinlynagh.com/\">https://kevinlynagh.com/</a></li>\n<li><a href=\"https://simonwillison.net/\">https://simonwillison.net/</a></li>\n<li><a href=\"https://gwern.net/\">https://gwern.net/</a></li>\n<li><a href=\"https://maggieappleton.com/\">https://maggieappleton.com/</a></li>\n<li><a href=\"https://macwright.com/\">https://macwright.com/</a></li>\n<li><a href=\"https://andymatuschak.org/\">https://andymatuschak.org/</a></li>\n</ul>\n",
-    "text": "Algunos sitios a los que siempre entro a ver cómo están las cosas: https://jvns.ca/ https://kevinlynagh.com/ https://simonwillison.net/ https://gwern.net/ https://maggieappleton.com/ https://macwright.com/ https://andymatuschak.org/"
-  },
-  {
     "id": "2026-06-21-lecturas",
     "date": "2026-06-21",
     "type": "nota",
     "image": "",
     "link": "",
     "html": "<h2 id=\"leyendo-actualmente\">Leyendo actualmente</h2>\n<ul>\n<li>Trilogía Fundación de Isaac Asimov</li>\n</ul>\n<h2 id=\"quiero-leer\">Quiero leer</h2>\n<p>Intermezzo de Sally Rooney</p>\n",
-    "text": "Leyendo actualmente Trilogía Fundación de Isaac Asimov Quiero leer Intermezzo de Sally Rooney"
+    "text": "Leyendo actualmente Trilogía Fundación de Isaac Asimov Quiero leer Intermezzo de Sally Rooney",
+    "preview": "Leyendo actualmente"
+  },
+  {
+    "id": "2026-06-21-blogs",
+    "date": "2026-06-21",
+    "type": "nota",
+    "image": "",
+    "link": "",
+    "html": "<p>Algunos sitios a los que siempre entro a ver cómo están las cosas:</p>\n<ul>\n<li><a href=\"https://jvns.ca/\">https://jvns.ca/</a></li>\n<li><a href=\"https://kevinlynagh.com/\">https://kevinlynagh.com/</a></li>\n<li><a href=\"https://simonwillison.net/\">https://simonwillison.net/</a></li>\n<li><a href=\"https://gwern.net/\">https://gwern.net/</a></li>\n<li><a href=\"https://maggieappleton.com/\">https://maggieappleton.com/</a></li>\n<li><a href=\"https://macwright.com/\">https://macwright.com/</a></li>\n<li><a href=\"https://andymatuschak.org/\">https://andymatuschak.org/</a></li>\n</ul>\n",
+    "text": "Algunos sitios a los que siempre entro a ver cómo están las cosas: https://jvns.ca/ https://kevinlynagh.com/ https://simonwillison.net/ https://gwern.net/ https://maggieappleton.com/ https://macwright.com/ https://andymatuschak.org/",
+    "preview": "Algunos sitios a los que siempre entro a ver cómo están las cosas:"
   },
   {
     "id": "2026-06-21-tony",
@@ -24,7 +26,8 @@
     "image": "",
     "link": "",
     "html": "<p>Tony imitándome. - </p>\n<p><img src=\"assets/images/notas/tony1.png\" alt=\"\"></p>\n<p><img src=\"assets/images/notas/tony2.png\" alt=\"\"></p>\n<p>fuente: The Sopranos E05 S02 “Big Girls Don&#39;t Cry”</p>\n",
-    "text": "Tony imitándome. - fuente: The Sopranos E05 S02 “Big Girls Don't Cry”"
+    "text": "Tony imitándome. - fuente: The Sopranos E05 S02 “Big Girls Don't Cry”",
+    "preview": "Tony imitándome. -"
   },
   {
     "id": "2026-06-20-gwern",
@@ -33,6 +36,7 @@
     "image": "",
     "link": "https://gwern.net",
     "html": "<p><a href=\"https://gwern.net\">gwern.net</a> — la referencia de &quot;sitio personal no encasillado&quot; que inspiró este rediseño. Índice denso, con personalidad y aura de genio.</p>\n",
-    "text": "gwern.net — la referencia de \"sitio personal no encasillado\" que inspiró este rediseño. Índice denso, con personalidad y aura de genio."
+    "text": "gwern.net — la referencia de \"sitio personal no encasillado\" que inspiró este rediseño. Índice denso, con personalidad y aura de genio.",
+    "preview": "gwern.net — la referencia de \"sitio personal no encasillado\" que inspiró este rediseño. Índice denso, con personalidad y aura de genio."
   }
 ]

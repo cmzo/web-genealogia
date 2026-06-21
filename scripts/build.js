@@ -700,9 +700,16 @@ function buildNotas() {
   const notas = [];
   if (fs.existsSync(NOTAS_DIR)) {
     fs.readdirSync(NOTAS_DIR).filter(f => f.endsWith('.md')).forEach(file => {
-      const raw = fs.readFileSync(path.join(NOTAS_DIR, file), 'utf8');
+      const full = path.join(NOTAS_DIR, file);
+      const raw = fs.readFileSync(full, 'utf8');
       const { metadata, content } = extractFrontMatter(raw);
       const html = marked.parse(content.trim());
+      // Preview para el stream: el PRIMER bloque (heading, item de lista o párrafo), hasta el
+      // primer salto, limpio y truncado. El contenido completo y formateado va en el modal (html).
+      const fb = html.match(/<(h[1-6]|p|li|blockquote)[^>]*>([\s\S]*?)<\/\1>/i);
+      let firstBlock = (fb ? fb[2] : html).split(/<br\s*\/?>/i)[0];
+      let preview = plainText(firstBlock);
+      if (preview.length > 160) preview = preview.slice(0, 160).replace(/\s+\S*$/, '') + '…';
       notas.push({
         id: file.replace(/\.md$/, ''),
         date: metadata.date || '',
@@ -710,11 +717,19 @@ function buildNotas() {
         image: metadata.image || '',
         link: metadata.link || '',
         html,
-        text: plainText(html),
+        text: plainText(html),   // texto completo (lo usa el buscador)
+        preview,                 // primera línea (lo muestra el stream)
+        _mtime: fs.statSync(full).mtimeMs,
       });
     });
   }
-  notas.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  // Por fecha desc; a igual fecha, la modificada más reciente primero (la que acabás de crear),
+  // y como último desempate el id, para que el orden sea estable y predecible.
+  notas.sort((a, b) =>
+    (b.date || '').localeCompare(a.date || '') ||
+    (b._mtime - a._mtime) ||
+    b.id.localeCompare(a.id));
+  notas.forEach(n => { delete n._mtime; });
   fs.writeFileSync(NOTAS_FILE, JSON.stringify(notas, null, 2));
   console.log(`✅ Generado: ${NOTAS_FILE} (${notas.length} notas)`);
 }

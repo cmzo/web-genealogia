@@ -274,7 +274,7 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-s-item:hover { background: var(--bg); }
 .cmzo-s-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .cmzo-s-type { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 4px; text-align: center; align-self: center; }
-.cmzo-s-title { font-family: var(--sans); font-size: 14.5px; color: var(--text); line-height: 1.45; }
+.cmzo-s-title { font-family: var(--sans); font-size: 14.5px; color: var(--text); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .cmzo-s-item:hover .cmzo-s-title { color: var(--accent); }
 .cmzo-s-cat { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
 /* Tono por tipo: contenido (post/lab) en accent; efímeros (nota/imagen/enlace/cambio) en neutro */
@@ -299,8 +299,9 @@ a.cmzo-seg:hover { color: var(--accent); }
 .cmzo-modal-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 0 0 12px; display: block; }
 .cmzo-modal-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
 .cmzo-modal-body code { font-family: var(--mono); font-size: 0.9em; background: var(--bg); padding: 1px 5px; border-radius: 4px; }
-.cmzo-modal-body h3, .cmzo-modal-body h4 { font-family: var(--display); font-weight: 700; margin: 18px 0 8px; color: var(--text); }
-.cmzo-modal-body h3 { font-size: 18px; } .cmzo-modal-body h4 { font-size: 15px; }
+.cmzo-modal-body h2, .cmzo-modal-body h3, .cmzo-modal-body h4 { font-family: var(--display); font-weight: 700; margin: 18px 0 8px; color: var(--text); line-height: 1.25; }
+.cmzo-modal-body h2 { font-size: 19px; } .cmzo-modal-body h3 { font-size: 17px; } .cmzo-modal-body h4 { font-size: 15px; }
+.cmzo-modal-body > :first-child { margin-top: 0; }
 .cmzo-modal-body ul, .cmzo-modal-body ol { margin: 0 0 12px; padding-left: 22px; }
 .cmzo-modal-body li { margin-bottom: 5px; }
 .cmzo-modal-body strong { color: var(--text); font-weight: 600; }

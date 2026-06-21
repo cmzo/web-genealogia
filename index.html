@@ -159,7 +159,7 @@
         const items = [];
         (blog || []).forEach(p => items.push({ date: p.date, type: 'post', filter: 'post', title: p.title, cat: p.category || '', url: p.url }));
         (lab || []).forEach(l => items.push({ date: l.date, type: 'lab', filter: 'lab', title: l.title, cat: 'lab', url: l.url }));
-        (notas || []).forEach(n => items.push({ id: n.id, date: n.date, type: n.type, filter: 'nota', title: n.text, cat: '', modal: { head: n.type, html: n.html, image: n.image, link: n.link } }));
+        (notas || []).forEach(n => items.push({ id: n.id, date: n.date, type: n.type, filter: 'nota', title: n.preview || n.text, cat: '', modal: { head: n.type, html: n.html, image: n.image, link: n.link } }));
         (cambios || []).forEach(c => items.push({ date: c.date, type: 'cambio', filter: 'cambio', title: c.title, cat: 'sitio', modal: { head: 'cambio' + (c.tag ? ' · ' + c.tag : ''), html: c.html } }));
         items.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
         STREAM = items;
