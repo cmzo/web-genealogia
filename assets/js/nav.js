@@ -31,6 +31,9 @@
   } else if (sec && page && GEN_LABELS[page]) {
     parts.push(seg(sec.label, sec.href, false));            // /gen (clickeable → dashboard)
     parts.push(seg(body.dataset.pageLabel || GEN_LABELS[page], '', true)); // /arbol (actual)
+  } else if (sec && body.dataset.pageLabel) {
+    parts.push(seg(sec.label, sec.href, false));            // /blog (clickeable → índice)
+    parts.push(seg(body.dataset.pageLabel, '', true));      // /título-del-post (actual)
   } else if (sec) {
     parts.push(seg(sec.label, '', true));                   // /gen o /blog (actual)
   } else {

@@ -82,7 +82,7 @@ function extractFrontMatter(content) {
         // Procesar la línea actual como nueva clave
         const [key, ...valueParts] = line.split(':');
         if (key && valueParts.length > 0) {
-          metadata[key.trim()] = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
+          metadata[key.trim()] = valueParts.join(':').trim().replace(/^["'“”]|["'“”]$/g, '');
         }
       }
       return;
@@ -91,7 +91,7 @@ function extractFrontMatter(content) {
     // Procesamiento normal de clave: valor
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {
-      metadata[key.trim()] = valueParts.join(':').trim().replace(/^["']|["']$/g, '');
+      metadata[key.trim()] = valueParts.join(':').trim().replace(/^["'“”]|["'“”]$/g, '');
     }
   });
   
@@ -690,7 +690,11 @@ function buildLab() {
 }
 
 // ── Notas / momentos (entradas cortas, solo datos → modal) ───────────────────
-function plainText(html) { return html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
+function plainText(html) {
+  return html.replace(/<[^>]+>/g, '')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ').trim();
+}
 
 function buildNotas() {
   const notas = [];

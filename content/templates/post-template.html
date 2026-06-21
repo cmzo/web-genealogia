@@ -14,49 +14,24 @@
   <meta property="og:url" content="{{canonical}}" />
   <meta property="og:image" content="{{ogimage}}" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <link rel="stylesheet" href="../../assets/css/home.css" />
   <style>
-    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; font-family: 'Inter', sans-serif; }
-    .lang-pillbox { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px 4px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
-    .lang-globe { color: var(--muted); flex-shrink: 0; }
-    .lang-opt { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 999px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
-    .lang-opt + .lang-opt { margin-left: -1px; }
-    a.lang-opt:hover { color: var(--text); background: var(--border); }
-    .lang-opt.is-active { background: var(--text); color: var(--bg); cursor: default; }
+    /* Selector de idioma del post — estilo mono (cajita como el de la nav / colaborar) */
+    .lang-selector { display: flex; justify-content: flex-end; margin: 0 0 20px; }
+    .lang-pillbox { display: inline-flex; align-items: center; gap: 1px; padding: 3px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    .lang-globe { width: 13px; height: 13px; color: var(--muted); flex-shrink: 0; margin: 0 4px; }
+    .lang-opt { font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 4px 8px; border-radius: 5px; text-decoration: none; color: var(--muted); transition: color .15s, background .15s; }
+    a.lang-opt:hover { color: var(--text); }
+    .lang-opt.is-active { background: color-mix(in srgb, var(--accent) 16%, var(--surface)); color: var(--accent); cursor: default; }
   </style>
 </head>
-<body>
+<body data-section="blog" data-nav-prefix="../../" data-page-label="{{title}}">
 
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
-  <header class="site-nav">
-    <a href="../../index.html" class="nav-brand">CMZO</a>
-    <nav class="nav-actions">
-      <a href="../../blog.html" class="nav-link nav-mobile-link">Blog</a>
-      <a href="../../sobre.html" class="nav-link nav-mobile-link">Sobre</a>
-      <a href="https://github.com/cmzo/web-genealogia" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Repositorio en GitHub">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-        </svg>
-      </a>
-    </nav>
-  </header>
+  <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
 
-  <div class="site-body">
-    <aside class="site-sidebar">
-      <nav class="sidebar-nav">
-        <a href="../../sobre.html" class="sidebar-link">Sobre</a>
-        <a href="../../arbol.html" class="sidebar-link">Árbol</a>
-        <a href="../../wiki.html" class="sidebar-link">Wiki</a>
-        <a href="../../blog.html" class="sidebar-link is-active">Blog</a>
-        <a href="../../fuentes.html" class="sidebar-link">Fuentes</a>
-        <a href="../../colaborar.html" class="sidebar-link sidebar-link--icon" title="Colaborar" aria-label="Colaborar"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg> Colaborar</a>
-      </nav>
-      <div class="sidebar-bottom">
-        <a href="../../changelog.html" class="sidebar-link sidebar-link--minor">Cambios</a>
-      </div>
-    </aside>
-
-    <main class="site-main" id="main-content">
+  <main class="cmzo cmzo-wrap cmzo-page" id="main-content">
       <div class="article-container">
         <div class="top-bar">
           <a class="back-home" href="../../blog.html" aria-label="Volver al blog">
@@ -89,30 +64,28 @@
         </section>
       </div>
     </main>
-  </div>
 
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="document.querySelector('.site-main').scrollTo({top:0,behavior:'smooth'})">
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
-  <footer class="site-footer">
-    <p class="footer-desc">Diseñado y mantenido por <strong>Matías Clemenzo</strong> · 2026</p>
-    <nav class="footer-mobile-nav">
-      <a href="../../colaborar.html" class="footer-nav-link">Colaborar</a>
-      <a href="../../changelog.html" class="footer-nav-link">Cambios</a>
-    </nav>
+  <footer class="cmzo-foot">
+    <div class="cmzo-foot-inner">
+      <div class="sig">// diseñado y mantenido por <b>Matías Clemenzo</b> · 2026</div>
+      <div class="cmzo-foot-links"><a href="../../colaborar.html">colaborar</a><a href="../../changelog.html">cambios</a></div>
+    </div>
   </footer>
 
   <script>
     (function() {
       const btn = document.getElementById('backToTop');
-      const scroller = document.querySelector('.site-main');
-      scroller.addEventListener('scroll', function() {
-        btn.classList.toggle('visible', scroller.scrollTop > 400);
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
       });
     })();
   </script>
 
+  <script src="../../assets/js/nav.js" defer></script>
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
