@@ -147,9 +147,13 @@ async function init() {
   // ── Física tipo Obsidian: repulsión entre todos + centrado + resortes de enlace, CONFINADOS
   //    en un borde circular. El disco redondo emerge de la repulsión empujando hacia afuera contra
   //    el centro; el borde lo cierra el confinamiento. La misma física sirve para el arrastre.
-  const W0 = host.clientWidth || 900, H0 = host.clientHeight || 700;
-  const CX = W0 / 2, CY = H0 / 2;
-  const DISC_R = Math.min(W0, H0) * 0.25;   // radio del disco
+  // El disco vive en coordenadas de MODELO, independientes del viewport: cy.fit()/centerNodes()
+  // lo escalan a la pantalla al final. Antes DISC_R = 0.25·min(ancho,alto) del CONTENEDOR, así que
+  // en pantallas angostas (móvil en vertical) el disco quedaba chico y los 100+ nodos —de tamaño
+  // fijo— se amontonaban → parecía la maraña vieja. Ahora el radio depende de la CANTIDAD de nodos:
+  // densidad pareja en cualquier dispositivo, y sin depender de que el contenedor ya tenga su alto.
+  const CX = 0, CY = 0;
+  const DISC_R = Math.max(170, Math.sqrt(nodes.length) * 15);   // radio del disco — calibrado a ≈ el desktop actual (173 nodos → ~197)
 
   const K_REPEL  = 13000;   // repulsión entre nodos (más alto = más separados, disco más lleno)
   const K_CENTER = 0.038;   // elástico al centro (ayuda a llenar el interior)
