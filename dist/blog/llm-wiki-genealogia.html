@@ -29,7 +29,7 @@
   <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
   <header class="site-nav">
-    <a href="../../index.html" class="nav-brand">Clemenzo</a>
+    <a href="../../index.html" class="nav-brand">CMZO</a>
     <nav class="nav-actions">
       <a href="../../blog.html" class="nav-link nav-mobile-link">Blog</a>
       <a href="../../sobre.html" class="nav-link nav-mobile-link">Sobre</a>
@@ -104,13 +104,13 @@
 <li><strong>Wiki (markdown mantenido por un agente)</strong>: una nota por persona (<code>content/personas/p*.md</code>) y páginas de lugar/fuente/evento (<code>content/wiki/*.md</code>). No las escribo a mano: las crea y actualiza un <strong>agente</strong> a través de un servidor MCP, con herramientas como <code>crear_archivo_investigacion</code> y <code>crear_pagina_wiki</code>.</li>
 <li><strong>Schema</strong>: una plantilla fija para las notas más un par de <code>CLAUDE.md</code> que documentan las convenciones y el flujo. Y una herramienta de <em>mantenimiento</em> (<code>estado_wiki</code>) que hace de lint: marca personas sin etiquetar, notas huérfanas, etc. —el &quot;detectar contradicciones&quot; de Karpathy.</li>
 </ul>
-<p>Sobre eso construí una <strong><a href="wiki.html">Wiki navegable</a></strong>: un grafo donde las personas, los lugares, las fuentes y los posts del blog son puntos conectados. Hay tres tipos de arista:</p>
+<p>Sobre eso construí una <strong><a href="../../wiki.html">Wiki navegable</a></strong>: un grafo donde las personas, los lugares, las fuentes y los posts del blog son puntos conectados. Hay tres tipos de arista:</p>
 <ol>
 <li><strong>Familia</strong> — padre/madre/cónyuge, derivadas de la base de datos del árbol.</li>
 <li><strong>Enlace</strong> — menciones explícitas entre notas (<code>[[p26]]</code>, o el id en prosa).</li>
 <li><strong>Tag</strong> — etiquetas temáticas. No son nodos del grafo, pero funcionan como <strong>hubs transversales</strong>: un tag como <code>#emigracion</code> conecta personas con posts y con páginas, cruzando dominios que el parentesco no toca.</li>
 </ol>
-<p>Esto deja dos vistas complementarias del mismo material: el <strong><a href="arbol.html">Árbol</a></strong> muestra la <em>estructura</em> (genealogía, datos, documentos), y la <strong>Wiki</strong> muestra el <em>conocimiento</em> (cómo se entrelaza todo lo demás).</p>
+<p>Esto deja dos vistas complementarias del mismo material: el <strong><a href="../../arbol.html">Árbol</a></strong> muestra la <em>estructura</em> (genealogía, datos, documentos), y la <strong>Wiki</strong> muestra el <em>conocimiento</em> (cómo se entrelaza todo lo demás).</p>
 <h2 id="el-grafo-lo-que-costó">El grafo: lo que costó</h2>
 <p>Quería que el grafo se viera como el de Obsidian: un disco redondo, ordenado, que invitara a explorarse. Conseguirlo me llevó bastantes más horas de las que esperaba, y el camino fue de frustración y descarte.</p>
 <p><strong>Primer problema: una maraña.</strong> Empecé con D3 y un layout de fuerzas clásico. El resultado era un ovillo. Medí el grafo y encontré la causa: de las ~460 aristas, <strong>el 51% eran de tags</strong>, y unos pocos tags gigantes (uno tocaba un tercio de los nodos) se solapaban entre sí, amarrando todo al centro. La solución fue sacar los tags del lienzo —siguen vivos en el panel y el resaltado, pero no se dibujan—. El grafo pasó a ser disperso, casi un árbol.</p>
@@ -127,7 +127,7 @@
         </div>
       <figcaption class="article-caption">El mismo grafo con los tags fuera del lienzo y la física de Obsidian con borde circular: un disco donde se distinguen las familias.</figcaption></figure></p>
 <h2 id="un-laboratorio-para-reproducirlo">Un laboratorio para reproducirlo</h2>
-<p>Para que esto no quedara como una caja negra —y para poder reproducirlo yo mismo más adelante— armé un <strong><a href="lab-grafo.html">laboratorio del grafo</a></strong>: un sandbox donde elegís cuántos nodos y conexiones, movés cada parámetro de la física en vivo, y ves el resultado al instante. Genera un grafo sintético con <em>preferential attachment</em> (el modelo que hace emerger hubs), así que se parece a un grafo de conocimiento real.</p>
+<p>Para que esto no quedara como una caja negra —y para poder reproducirlo yo mismo más adelante— armé un <strong><a href="../../lab-grafo.html">laboratorio del grafo</a></strong>: un sandbox donde elegís cuántos nodos y conexiones, movés cada parámetro de la física en vivo, y ves el resultado al instante. Genera un grafo sintético con <em>preferential attachment</em> (el modelo que hace emerger hubs), así que se parece a un grafo de conocimiento real.</p>
 <p>Incluye una <strong>receta copiable</strong>: el listado de todos los parámetros más una explicación de la técnica, lista para pegar a un LLM y reconstruir cualquier configuración. De hecho, los valores con los que quedó la Wiki salieron de jugar ahí y copiar la receta.</p>
 <h2 id="cierre">Cierre</h2>
 <p>Lo que aprendí poniendo a prueba la idea: la parte de IA fue la más directa —el agente mantiene el markdown bien y sin quejarse—. Lo difícil fue la representación. Y el patrón de fondo no es nuevo: Luhmann ya enlazaba fichas en los años 60. Lo que cambió en 2026 es <strong>quién mantiene los enlaces</strong>.</p>
@@ -139,7 +139,7 @@
 <li><a href="https://www.buildingasecondbrain.com/">Building a Second Brain — Tiago Forte</a></li>
 <li><a href="https://www.youtube.com/@VisualPKM">Visual PKM — Zsolt Viczián (YouTube)</a></li>
 <li><a href="https://js.cytoscape.org/">Cytoscape.js</a> — la librería con la que está dibujado el grafo.</li>
-<li>Este sitio: la <strong><a href="wiki.html">Wiki</a></strong>, el <strong><a href="arbol.html">Árbol</a></strong> y el <strong><a href="lab-grafo.html">laboratorio del grafo</a></strong>. El código está en el <a href="https://github.com/cmzo/web-genealogia">repositorio</a>.</li>
+<li>Este sitio: la <strong><a href="../../wiki.html">Wiki</a></strong>, el <strong><a href="../../arbol.html">Árbol</a></strong> y el <strong><a href="../../lab-grafo.html">laboratorio del grafo</a></strong>. El código está en el <a href="https://github.com/cmzo/web-genealogia">repositorio</a>.</li>
 </ul>
 
   <style>

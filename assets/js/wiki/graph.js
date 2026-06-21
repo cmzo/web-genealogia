@@ -161,9 +161,20 @@ async function init() {
   const vel = new Map();
   let simRunning = false, grabbedId = null, revealed = false;
 
+  // Centra el disco de NODOS en el viewport. cy.fit/center usan el bounding box CON labels,
+  // y como los hubs muestran su nombre a la derecha, eso corre el cúmulo hacia la izquierda.
+  // Recalculamos el paneo sobre el bbox de los nodos SIN labels para que quede centrado de verdad.
+  function centerNodes() {
+    const bb = cy.nodes(':visible').boundingBox({ includeLabels: false });
+    if (!bb || !isFinite(bb.x1)) return;
+    const z = cy.zoom();
+    cy.pan({ x: cy.width() / 2 - ((bb.x1 + bb.x2) / 2) * z, y: cy.height() / 2 - ((bb.y1 + bb.y2) / 2) * z });
+  }
+
   function reveal() {
     if (revealed) return; revealed = true;
     cy.fit(undefined, 50);
+    centerNodes();
     host.style.transition = 'opacity 0.5s ease';
     host.style.opacity = '1';
   }

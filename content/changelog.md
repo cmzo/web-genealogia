@@ -1,3 +1,29 @@
+### 21 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Una navegación nueva en todo el sitio
+
+La barra de arriba cambió de fondo. En lugar del menú lateral, ahora hay una **ruta tipo carpetas** (`cmzo / gen / árbol`) que muestra dónde estás parado y te deja volver a cualquier nivel con un clic. Las secciones principales quedaron en **inicio**, **blog** y **genealogía**, y la barra se adapta según dónde estés. Es el primer paso de un cambio de enfoque: el sitio deja de ser solo «genealogía Clemenzo» para volverse una página personal donde la genealogía es uno de los temas, no el único.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> La genealogía ahora tiene su propia portada
+
+Todo lo genealógico se reunió en una **página-tablero** (`/gen`): desde ahí entrás al **árbol** —con un resumen de cuántas personas, fechas, lugares y generaciones hay documentadas—, a la **wiki**, a las **fuentes** y a **colaborar**. Antes esos accesos estaban repartidos en el menú lateral; ahora viven juntos y con más contexto.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Una portada más enfocada
+
+La página de inicio se replanteó: una presentación breve del sitio, dos accesos claros —**genealogía** y **blog**— y la última entrada publicada. Menos cosas, más dirección.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La barra de arriba, más ordenada
+
+El buscador (⌘ + K), el selector de idioma, el modo claro/oscuro y el enlace al código quedaron **agrupados a la derecha**, separados por líneas finas, mientras las secciones se alinean a la izquierda junto al nombre del sitio. Se ve más prolija y con menos elementos compitiendo por el centro.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> El mapa de la Wiki aparece centrado
+
+El grafo de la Wiki (y el del Laboratorio) ahora se **centra en la pantalla** al abrirse, en vez de quedar corrido hacia un costado.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Enlaces de los posts que no funcionaban
+
+Algunos enlaces dentro de los posts del blog —al árbol, la wiki y el laboratorio— estaban rotos y daban error de página inexistente. Ahora **llevan bien** a su destino.
+
 ### 20 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Un laboratorio para jugar con el grafo

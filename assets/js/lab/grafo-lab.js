@@ -142,6 +142,7 @@ function build() {
   restyle();
   for (let i = 0; i < 280; i++) step();
   cy.fit(undefined, 40);
+  centerNodes();
 
   cy.on('grab', 'node', e => { grabbedId = e.target.id(); reheat(); });
   cy.on('drag', 'node', reheat);
@@ -236,8 +237,17 @@ Parámetros:
   Mostrar nombre si grado ≥ ${P.hubDeg}`;
 }
 
+// Centra el disco de nodos ignorando los labels (que sobresalen a la derecha y descentran el cúmulo).
+function centerNodes() {
+  if (!cy) return;
+  const bb = cy.nodes(':visible').boundingBox({ includeLabels: false });
+  if (!bb || !isFinite(bb.x1)) return;
+  const z = cy.zoom();
+  cy.pan({ x: cy.width() / 2 - ((bb.x1 + bb.x2) / 2) * z, y: cy.height() / 2 - ((bb.y1 + bb.y2) / 2) * z });
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────────────────
 buildControls();
 updateRecipe();
 build();
-window.addEventListener('resize', () => { if (cy) cy.fit(undefined, 40); });
+window.addEventListener('resize', () => { if (cy) { cy.fit(undefined, 40); centerNodes(); } });

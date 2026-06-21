@@ -277,7 +277,14 @@ function markdownToHtml(markdown) {
       return `<img src="${correctedSrc}" alt="${alt}" loading="lazy" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e5e7eb; background: #f8fafc; margin: 24px 0;"`;
     }
   );
-  
+
+  // Corregir enlaces a páginas raíz (wiki.html, arbol.html, lab-grafo.html, …) para que
+  // funcionen desde /dist/blog/: les antepone ../../. Ignora absolutos, anclas y rutas ya relativas.
+  html = html.replace(
+    /href="(?!https?:|\/\/|\/|#|\.\.?\/|mailto:)([^"]+\.html[^"]*)"/g,
+    'href="../../$1"'
+  );
+
   // Corregir rutas en HTML personalizado
   html = html.replace(
     /src="img\//g,

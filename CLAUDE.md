@@ -14,6 +14,7 @@ Cuando el usuario diga **«Actualiza todo»**, ejecutar en orden:
    - mejora de algo existente → `<span class="changelog-tag changelog-tag--mejora">Mejora</span>`
    - corrección → `<span class="changelog-tag changelog-tag--fix">Arreglo</span>`
 3. **`CLAUDE.md`** (este archivo) — revisar si algo documentado aquí quedó desactualizado por los cambios de la sesión (rutas, nombres de archivos, tipografía, comandos, descripción de componentes) y corregirlo.
+4. **`design-system.html`** — si la sesión introdujo o cambió lenguaje visual (un token de color, un tamaño/escala tipográfica, un valor de espaciado, un componente o una variante nuevos —p. ej. la nav-bar, botones, cards), reflejarlo acá. Es la fuente única de verdad del diseño: actualizarla cuando algo se desvíe de lo documentado, no inventar estilos ad-hoc. Si no hubo cambios visuales, omitir.
 
 ## Commands
 
@@ -219,7 +220,15 @@ When building or significantly changing UI, use the skill defined in `frontend-d
 
 ## Site design system
 
-All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Árbol / Wiki / Blog / Fuentes / Colaborar, plus Cambios at the bottom) + scrollable main area. CSS variables are defined in `assets/css/styles.css`. Key layout classes: `.site-nav`, `.site-body`, `.site-sidebar`, `.site-main`, `.site-footer`. The sidebar uses the `is-active` class for the current page, rendered as a filled green (`--accent`) pill. Each `.sidebar-link` shows a **Material Symbols Outlined** icon with an uppercase label; the icons + the icon font `<link>` are injected by `assets/js/nav-drawer.js` (mapping href → icon name), so the sidebar markup in each HTML page stays plain text — no per-page edits needed to change icons.
+All pages use a **top-nav layout** (the old two-column sidebar was retired in the 2026-06 "CMZO" redesign). The header `<header class="cmzo-top">` is left empty in the HTML and **built at runtime by `assets/js/nav.js`**, which reads the `<body>` data attributes:
+
+- `data-section="home|blog|gen"` — top-level section. Also accepts a "loose" value (e.g. `changelog`) with `data-section-label` for pages outside the three sections (`cmzo /cambios`).
+- `data-page="arbol|wiki|fuentes|colaborar|lab"` — sub-page inside `gen` (renders `cmzo /gen /arbol`).
+- `data-lang-switch` (presence) — render the language selector (only where switching does something, i.e. the home; `colaborar` keeps its own in-page selector).
+
+nav.js renders a **navigable breadcrumb** (`cmzo / gen / arbol`, each segment a link except the current) anchored left next to the page sections, then an elastic spacer, then the right zone — **"Variante A" layout**: search pill (⌘K, injected by `command-palette.js`) · vertical line · tools box (`.cmzo-tools`: language selector · theme toggle · GitHub), with thin vertical dividers (`.cmzo-vr`). The CMZO nav/home visual layer lives in **`assets/css/home.css`** (linked after `styles.css` on every page); CSS variables `--mono`/`--sans`/`--display` (IBM Plex Mono/Sans + Hanken Grotesk) are set on `body` there.
+
+Page shells: content pages use `<main class="cmzo cmzo-wrap cmzo-page">` (centered, scrollable); app pages (árbol, wiki) use `.cmzo-app` (full-bleed canvas that fills the viewport under the nav); the footer is `.cmzo-foot`. The legacy `.site-nav`/`.site-body`/`.site-sidebar`/`.site-main`/`.site-footer` classes (still in `styles.css`) survive **only on `sobre.html`**, which is orphaned pending a decision. Mobile (≤760px): the inline sections (`.cmzo-mainnav`) hide and `assets/js/nav-drawer.js` provides a slide-in drawer (Inicio / Blog / Genealogía / Árbol / Wiki / Fuentes + Colaborar / Cambios).
 
 **Color palette (light mode):**
 
@@ -235,7 +244,7 @@ All pages share a two-column layout: persistent sidebar (Sobre el proyecto / Ár
 
 **Dark mode** (`[data-theme="dark"]`) overrides all tokens: `--bg: #16181a`, `--surface: #1f2225`, `--border: #33373b`, `--text: #e8eaec`, `--muted: #9aa3a8`, `--accent: #5fb389`, `--on-accent: #0f1f17`. Applied via:
 - Anti-flash init script inline in `<head>` of every page (reads `localStorage["theme"]`, falls back to `prefers-color-scheme`)
-- `assets/js/theme.js` — injects the sun/moon toggle button into `.nav-actions`; persists choice to `localStorage`; listens to `matchMedia` change events for system-preference tracking
+- `assets/js/theme.js` — injects the sun/moon toggle button into the nav tools box (before the GitHub link inside `.cmzo-tools`); persists choice to `localStorage`; listens to `matchMedia` change events for system-preference tracking
 
 **Typography:**
 
@@ -243,9 +252,11 @@ All fonts are **self-hosted** in `assets/fonts/*.woff2` (latin + latin-ext subse
 
 | Font | Weights | Use |
 |---|---|---|
-| Hanken Grotesk | 500, 600, 700, 800 | Titles (h1, h2, h3), nav brand, UI headings |
+| Hanken Grotesk | 500, 600, 700, 800 | Titles (h1, h2, h3), UI headings, `--display` |
+| IBM Plex Mono | 400, 500, 600 | Nav breadcrumb/sections, kickers, mono UI labels (`--mono`) — CMZO layer |
+| IBM Plex Sans | 400, 500, 600 | Body/UI in the CMZO nav + home/dashboard (`--sans`) |
 | Source Serif 4 | 400, 400i, 600, 700 | Body text in blog posts, subtitles, blog card descriptions |
-| Inter | 400, 500, 600, 700 | UI, navigation, metadata, table content |
+| Inter | 400, 500, 600, 700 | UI, metadata, table content (legacy pages) |
 | JetBrains Mono | 400, 500 | Code blocks |
 
-**Layout constants:** nav `height: 52px` sticky; sidebar `width: 160px` sticky; grid `160px 1fr`. Mobile (≤960px): sidebar hidden, footer hidden, hamburger button opens a slide-in drawer with all nav links. Article grid switches to two columns when `aside` content is present.
+**Layout constants:** top-nav (`.cmzo-top-inner`) `height: 58px`, content max-width `1120px` (`.cmzo-wrap`, padding `0 40px`). Content pages add vertical breathing room via `.cmzo-page` (`flex: 1 0 auto` so the page grows with content and never lets the footer overlap, since `body` is a fixed-height flex column). App pages use `.cmzo-app` (`flex: 1; overflow: hidden`). Mobile breakpoint `760px`: inline sections hide, hamburger drawer takes over. Blog-post article grid still switches to two columns when `aside` content is present.

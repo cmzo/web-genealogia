@@ -39,7 +39,8 @@
     btn.type = 'button';
     btn.className = 'theme-toggle';
     const gh = nav.querySelector('a[aria-label="Repositorio en GitHub"]');
-    if (gh) nav.insertBefore(btn, gh); else nav.appendChild(btn);
+    // gh puede estar anidado en .cmzo-tools, así que insertamos en su propio contenedor.
+    if (gh) gh.parentNode.insertBefore(btn, gh); else nav.appendChild(btn);
     updateButton(current());
     btn.addEventListener('click', () => {
       const next = current() === 'dark' ? 'light' : 'dark';

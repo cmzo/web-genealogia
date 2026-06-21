@@ -5,11 +5,12 @@
   const current  = path.split('/').pop() || 'index.html';
 
   const mainLinks = [
-    { href: 'sobre.html',             label: 'Sobre el proyecto' },
-    { href: 'arbol.html', label: 'Árbol' },
-    { href: 'wiki.html',              label: 'Wiki' },
-    { href: 'blog.html',              label: 'Blog' },
-    { href: 'fuentes.html',           label: 'Fuentes' },
+    { href: 'index.html',   label: 'Inicio' },
+    { href: 'blog.html',    label: 'Blog' },
+    { href: 'gen.html',     label: 'Genealogía' },
+    { href: 'arbol.html',   label: 'Árbol' },
+    { href: 'wiki.html',    label: 'Wiki' },
+    { href: 'fuentes.html', label: 'Fuentes' },
   ];
 
   const secondaryLinks = [
@@ -39,7 +40,7 @@
   drawer.setAttribute('aria-label', 'Menú de navegación');
   drawer.innerHTML = `
     <div class="nav-drawer-header">
-      <a href="${prefix}index.html" class="nav-drawer-brand">Clemenzo</a>
+      <a href="${prefix}index.html" class="nav-drawer-brand">CMZO</a>
       <button class="nav-drawer-close" aria-label="Cerrar menú">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
