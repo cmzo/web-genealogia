@@ -13,11 +13,9 @@ const DEPLOY_SUBPATH = '/';          // subpath (usar '/' si el sitio está en l
   window.PATH_CONFIG = {
     base,
     assets:  base + 'assets/',
-    css:     base + 'assets/css/',
     images:  base + 'assets/images/',
     data:    base + 'assets/data/',
     content: base + 'content/',
-    dist:    base + 'dist/',
   };
 
   window.getAssetPath = function(path) {
@@ -27,9 +25,7 @@ const DEPLOY_SUBPATH = '/';          // subpath (usar '/' si el sitio está en l
     return window.PATH_CONFIG.base + path;
   };
 
-  window.getCSSPath     = function(filename) { return window.PATH_CONFIG.css     + filename; };
   window.getImagePath   = function(path)     { return window.PATH_CONFIG.images  + path; };
   window.getContentPath = function(path)     { return window.PATH_CONFIG.content + path; };
   window.getDataPath    = function(path)     { return window.PATH_CONFIG.data    + path; };
-  window.getDistPath    = function(path)     { return window.PATH_CONFIG.dist    + path; };
 })();
