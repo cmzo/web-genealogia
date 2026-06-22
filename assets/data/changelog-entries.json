@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-06-22-laboratorio-de-fractales",
+    "date": "2026-06-22",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Laboratorio de fractales",
+    "html": "<p>Un segundo experimento en el área lab: <strong>L-systems</strong> sobre Canvas 2D. Elegís el fractal —Koch, Sierpiński, árbol o curva dragón—, ajustás las iteraciones y el ángulo de giro, y ves cómo cambia en tiempo real. El panel derecho muestra la gramática que lo genera, cómo crece el string con cada paso y la dimensión fractal del resultado. Sin dependencias externas.</p>\n"
+  },
+  {
+    "id": "2026-06-22-índice-del-lab-con-tarjetas-visuales",
+    "date": "2026-06-22",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Índice del lab con tarjetas visuales",
+    "html": "<p>El área lab tiene ahora su propia página de entrada (<code>/lab</code>), separada de genealogía. Cada herramienta aparece como una tarjeta con una visualización previa —un grafo esquemático o un Sierpiński— hecha con el mismo lenguaje visual del resto del sitio. El lab también tiene su propio lugar en la barra de navegación y en el menú mobile.</p>\n"
+  },
+  {
     "id": "2026-06-21-la-versión-mobile-más-prolija",
     "date": "2026-06-21",
     "type": "cambio",
@@ -302,21 +318,5 @@
     "tag": "fix",
     "title": "Escudos heráldicos en modo oscuro",
     "html": "<p>Los escudos de la portada (Valais, armorial Clemenzo, Ardon) tenían un fondo blanco que en modo oscuro se veía como un recuadro fuera de lugar. Ahora tienen <strong>fondo transparente</strong> —recortado respetando los blancos propios del escudo— con una sombra suave, así se ven prolijos sobre cualquier fondo.</p>\n"
-  },
-  {
-    "id": "2026-06-15-línea-de-tiempo-de-cada-persona",
-    "date": "2026-06-15",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Línea de tiempo de cada persona",
-    "html": "<p>Al elegir a alguien en el <strong>Árbol</strong> aparece un botón <strong>«Línea de tiempo»</strong> que abre una vista nueva: ubica a la persona —junto a sus ancestros y descendientes— sobre un eje temporal, enfrentada a los <strong>hitos históricos</strong> del mundo de cada época (de la Revolución Francesa a la llegada del hombre a la Luna). Una franja superior muestra <strong>dónde nació, creció, vivió y murió</strong> cada quien, y al recorrer la línea se va resaltando cada nombre con su contexto. Es una forma de ver la historia familiar situada en el tiempo: qué pasaba en el mundo cuando vivió cada antepasado.</p>\n"
-  },
-  {
-    "id": "2026-06-14-modo-oscuro-en-todo-el-sitio",
-    "date": "2026-06-14",
-    "type": "cambio",
-    "tag": "",
-    "title": "Modo oscuro en todo el sitio",
-    "html": "<p>El sitio sumó <strong>modo oscuro</strong> con una paleta neutra gris-azulada («Pizarra neutra»). Un botón <strong>sol/luna</strong> en la barra superior alterna el tema; si no elegís nada, sigue la preferencia de tu sistema operativo en vivo, y si lo tocás, recuerda tu elección. Un script mínimo en el <code>&lt;head&gt;</code> fija el tema antes de pintar la página, así no hay parpadeo al cargar. Se ajustaron los detalles para que todo se lea bien en oscuro: la grilla de puntos del árbol se aclaró, el avatar del autor recibe fondo claro para no perderse y los enlaces del panel lateral ganaron contraste.</p>\n"
   }
 ]

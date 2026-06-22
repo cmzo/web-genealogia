@@ -9,8 +9,9 @@
     { id: 'home', label: 'home', href: 'index.html' },
     { id: 'blog', label: 'blog', href: 'blog.html' },
     { id: 'gen',  label: 'gen',  href: 'gen.html' },
+    { id: 'lab',  label: 'lab',  href: 'lab.html' },
   ];
-  const GEN_LABELS = { arbol: 'arbol', wiki: 'wiki', fuentes: 'fuentes', colaborar: 'colaborar', lab: 'lab' };
+  const GEN_LABELS = { arbol: 'arbol', wiki: 'wiki', fuentes: 'fuentes', colaborar: 'colaborar' };
 
   const body = document.body;
   const section = body.dataset.section || 'home';

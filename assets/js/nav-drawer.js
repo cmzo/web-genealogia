@@ -7,6 +7,7 @@
   const mainLinks = [
     { href: 'index.html',   label: 'Inicio' },
     { href: 'blog.html',    label: 'Blog' },
+    { href: 'lab.html',     label: 'Lab' },
     { href: 'gen.html',     label: 'Genealogía' },
     { href: 'arbol.html',   label: 'Árbol' },
     { href: 'wiki.html',    label: 'Wiki' },

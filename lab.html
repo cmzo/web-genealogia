@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lab · Matías Clemenzo</title>
+  <meta name="description" content="Laboratorio de experimentos interactivos: visualizaciones, tools y sandboxes para explorar ideas." />
+  <link rel="canonical" href="https://cmzo.net/lab" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lab · Matías Clemenzo" />
+  <meta property="og:description" content="Laboratorio de experimentos interactivos: visualizaciones, tools y sandboxes." />
+  <meta property="og:url" content="https://cmzo.net/lab" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="./assets/css/home.css" />
+  <link rel="stylesheet" href="./assets/css/lab.css" />
+</head>
+<body data-section="lab">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+  <header class="cmzo-top"><!-- nav.js --></header>
+
+  <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
+
+    <div class="lab-intro">
+      <h1>Lab</h1>
+      <p>Experimentos interactivos: tools para explorar ideas, visualizar datos y entender conceptos desde adentro. Cada laboratorio tiene sus propios diales.</p>
+    </div>
+
+    <section id="labList" class="lab-list">
+      <p class="lab-loading">Cargando…</p>
+    </section>
+
+  </main>
+
+  <footer class="cmzo-foot">
+    <div class="cmzo-foot-inner">
+      <div class="sig">// diseñado y mantenido por <b>Matías Clemenzo</b> · 2026</div>
+      <div class="cmzo-foot-links"><a href="colaborar.html">colaborar</a><a href="changelog.html">cambios</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // SVG preview por tool — cada entry del lab tiene su firma visual
+    const PREVIEWS = {
+      'laboratorio-del-grafo': {
+        head: 'grafo.lab', meta: 'nodes · 130',
+        svg: `<svg viewBox="0 0 360 155" role="img" aria-label="Red de nodos">
+          <line class="act" x1="180" y1="78" x2="100" y2="33"/>
+          <line class="act" x1="180" y1="78" x2="260" y2="33"/>
+          <line x1="180" y1="78" x2="48" y2="82"/>
+          <line x1="180" y1="78" x2="312" y2="82"/>
+          <line x1="180" y1="78" x2="108" y2="133"/>
+          <line x1="180" y1="78" x2="252" y2="133"/>
+          <line x1="100" y1="33" x2="48" y2="82"/>
+          <line x1="260" y1="33" x2="312" y2="82"/>
+          <line x1="48" y1="82" x2="108" y2="133"/>
+          <line x1="312" y1="82" x2="252" y2="133"/>
+          <line x1="100" y1="33" x2="152" y2="16"/>
+          <line x1="260" y1="33" x2="208" y2="16"/>
+          <circle class="hl" cx="180" cy="78" r="9"/>
+          <circle cx="100" cy="33" r="6"/><circle cx="260" cy="33" r="6"/>
+          <circle cx="48"  cy="82" r="5"/><circle cx="312" cy="82" r="5"/>
+          <circle cx="108" cy="133" r="5"/><circle cx="252" cy="133" r="5"/>
+          <circle cx="152" cy="16" r="4"/><circle cx="208" cy="16" r="4"/>
+          <text x="193" y="76">hub</text>
+        </svg>`
+      },
+      'laboratorio-de-fractales': {
+        head: 'fractales.lab', meta: 'L-system · turtle',
+        svg: `<svg viewBox="0 0 360 155" role="img" aria-label="Triángulo de Sierpiński profundidad 2">
+          <!-- triángulo exterior -->
+          <line class="act" x1="55"   y1="140" x2="305"  y2="140"/>
+          <line class="act" x1="55"   y1="140" x2="180"  y2="15"/>
+          <line class="act" x1="305"  y1="140" x2="180"  y2="15"/>
+          <!-- hueco central — profundidad 1 -->
+          <line x1="180"   y1="140" x2="117.5" y2="77.5"/>
+          <line x1="180"   y1="140" x2="242.5" y2="77.5"/>
+          <line x1="117.5" y1="77.5" x2="242.5" y2="77.5"/>
+          <!-- hueco profundidad 2 — sub-triángulo inferior izquierdo -->
+          <line x1="117.5" y1="140"   x2="86.25"  y2="108.75"/>
+          <line x1="117.5" y1="140"   x2="148.75" y2="108.75"/>
+          <line x1="86.25" y1="108.75" x2="148.75" y2="108.75"/>
+          <!-- hueco profundidad 2 — sub-triángulo inferior derecho -->
+          <line x1="242.5"  y1="140"   x2="211.25" y2="108.75"/>
+          <line x1="242.5"  y1="140"   x2="273.75" y2="108.75"/>
+          <line x1="211.25" y1="108.75" x2="273.75" y2="108.75"/>
+          <!-- hueco profundidad 2 — sub-triángulo superior -->
+          <line x1="180"    y1="77.5"  x2="148.75" y2="46.25"/>
+          <line x1="180"    y1="77.5"  x2="211.25" y2="46.25"/>
+          <line x1="148.75" y1="46.25" x2="211.25" y2="46.25"/>
+          <circle class="hl" cx="180" cy="15" r="4"/>
+          <text x="188" y="13">N=2</text>
+        </svg>`
+      }
+    };
+
+    const DEFAULT_PREVIEW = { head: 'lab.tool', meta: '', svg: '' };
+
+    (async () => {
+      const list = document.getElementById('labList');
+      try {
+        const entries = await fetch('./assets/data/lab-entries.json').then(r => r.json());
+        if (!entries.length) { list.innerHTML = '<p class="lab-loading">No hay entradas todavía.</p>'; return; }
+        list.innerHTML = entries.map(e => {
+          const href = e.kind === 'tool' ? e.url : `dist/lab/${e.id}.html`;
+          const cta  = e.kind === 'tool' ? 'Abrir' : 'Leer';
+          const tag  = e.kind === 'tool' ? 'tool' : 'writeup';
+          const p    = PREVIEWS[e.id] || DEFAULT_PREVIEW;
+          return `<article class="lab-card">
+            <a href="${href}" class="lab-card-viz cmzo-viz" tabindex="-1" aria-hidden="true">
+              <div class="cmzo-viz-head">
+                <span>${p.head || e.id}</span>
+                <span>${p.meta || e.date}</span>
+              </div>
+              <div class="cmzo-viz-body lab-card-viz-body">${p.svg}</div>
+            </a>
+            <div class="lab-card-foot">
+              <div class="lab-card-meta">
+                <span class="lab-card-tag">${tag}</span>
+                <span class="lab-card-date">${e.date}</span>
+              </div>
+              <h2 class="lab-card-title"><a href="${href}">${e.title}</a></h2>
+              <p class="lab-card-summary">${e.summary}</p>
+              <a href="${href}" class="lab-card-cta">${cta} <span aria-hidden="true">→</span></a>
+            </div>
+          </article>`;
+        }).join('');
+      } catch {
+        list.innerHTML = '<p class="lab-loading">Error cargando el lab.</p>';
+      }
+    })();
+  </script>
+
+  <script src="./assets/js/path-config.js"></script>
+  <script src="./assets/js/nav.js" defer></script>
+  <script src="./assets/js/nav-drawer.js" defer></script>
+  <script src="./assets/js/theme.js" defer></script>
+  <script src="./assets/js/command-palette.js" defer></script>
+
+</body>
+</html>

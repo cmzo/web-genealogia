@@ -1,3 +1,13 @@
+### 22 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Laboratorio de fractales
+
+Un segundo experimento en el área lab: **L-systems** sobre Canvas 2D. Elegís el fractal —Koch, Sierpiński, árbol o curva dragón—, ajustás las iteraciones y el ángulo de giro, y ves cómo cambia en tiempo real. El panel derecho muestra la gramática que lo genera, cómo crece el string con cada paso y la dimensión fractal del resultado. Sin dependencias externas.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Índice del lab con tarjetas visuales
+
+El área lab tiene ahora su propia página de entrada (`/lab`), separada de genealogía. Cada herramienta aparece como una tarjeta con una visualización previa —un grafo esquemático o un Sierpiński— hecha con el mismo lenguaje visual del resto del sitio. El lab también tiene su propio lugar en la barra de navegación y en el menú mobile.
+
 ### 21 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La versión mobile, más prolija
