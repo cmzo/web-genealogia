@@ -1,5 +1,13 @@
 [
   {
+    "id": "laboratorio-de-fractales",
+    "title": "Laboratorio de fractales",
+    "summary": "Explorá Koch, Sierpiński, árbol y curva dragón generados por L-systems. Modificá iteraciones y ángulo en vivo; el panel lateral muestra la gramática, el string creciendo y la dimensión fractal.",
+    "date": "2026-06-22",
+    "kind": "tool",
+    "url": "lab-fractales.html"
+  },
+  {
     "id": "laboratorio-del-grafo",
     "title": "Laboratorio del grafo",
     "summary": "Sandbox de la física del grafo de la wiki: elegí nodos y conexiones, movés cada parámetro en vivo y copiás la receta para reproducirlo.",

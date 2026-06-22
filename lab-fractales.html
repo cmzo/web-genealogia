@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de fractales · Matías Clemenzo</title>
+    <meta name="description" content="Explorá fractales geométricos generados por L-systems: Koch, Sierpiński, árbol y curva dragón. Modificá los parámetros en vivo y leé la gramática que los produce." />
+    <link rel="canonical" href="https://cmzo.net/lab-fractales" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Laboratorio de fractales · Matías Clemenzo" />
+    <meta property="og:description" content="Explorá fractales geométricos generados por L-systems y modificá sus parámetros en vivo." />
+    <meta property="og:url" content="https://cmzo.net/lab-fractales" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/lab.css" />
+</head>
+<body data-section="gen" data-page="lab">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+  <header class="cmzo-top"><!-- nav.js --></header>
+
+  <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
+
+    <div class="lab-intro">
+      <h1>Laboratorio de fractales</h1>
+      <p>Los cuatro fractales de acá se generan con <strong>L-systems</strong> (sistemas de Lindenmayer): una gramática de reescritura de strings que describe cómo crecer. Un axioma inicial, una regla de sustitución, y un intérprete <em>turtle</em> que convierte la cadena en líneas. La misma lógica —distinta gramática— produce el copo de nieve, el triángulo, el árbol y la curva dragón.</p>
+      <p>El panel derecho muestra la gramática, cómo crece el string con cada iteración, y la <strong>dimensión fractal</strong>: un número que no es entero porque el fractal ocupa más espacio que una línea pero menos que una superficie.</p>
+    </div>
+
+    <!-- Sandbox principal: canvas + panel de info -->
+    <div class="frac-sandbox">
+      <div class="frac-canvas-wrap">
+        <canvas id="fracCanvas"></canvas>
+      </div>
+      <aside class="frac-info">
+        <section class="frac-info-section">
+          <h3 class="lab-group-title">Gramática</h3>
+          <div class="frac-grammar">
+            <div class="frac-grammar-row">
+              <span class="frac-grammar-key">Axioma</span>
+              <span class="frac-grammar-arrow">→</span>
+              <code id="fracAxiom" class="frac-grammar-code"></code>
+            </div>
+            <div id="fracRules"></div>
+          </div>
+        </section>
+
+        <section class="frac-info-section">
+          <h3 class="lab-group-title">Iteración del string</h3>
+          <div id="fracIter" class="frac-iter"></div>
+        </section>
+
+        <section class="frac-info-section">
+          <h3 class="lab-group-title">Dimensión fractal</h3>
+          <div id="fracDim" class="frac-dim"></div>
+        </section>
+      </aside>
+    </div>
+
+    <!-- Controles: selector de fractal + diales -->
+    <div class="frac-controls">
+      <div class="frac-selector">
+        <span class="frac-selector-label">Fractal</span>
+        <div class="frac-selector-btns" id="fracSelector"></div>
+      </div>
+
+      <div class="frac-sliders">
+        <div class="frac-slider-group">
+          <label class="lab-control">
+            <span class="lab-control-head">
+              <span>Iteraciones (N)</span>
+              <output id="outN">4</output>
+            </span>
+            <input type="range" id="ctlN" min="0" max="8" step="1" value="4">
+          </label>
+        </div>
+
+        <div class="frac-slider-group">
+          <label class="lab-control">
+            <span class="lab-control-head">
+              <span>Ángulo de giro</span>
+              <output id="outAngle">60°</output>
+            </span>
+            <input type="range" id="ctlAngle" min="1" max="180" step="1" value="60">
+          </label>
+        </div>
+
+        <div class="frac-slider-group frac-color-group">
+          <span class="lab-control-head" style="margin-bottom:8px">
+            <span>Color</span>
+          </span>
+          <div class="frac-color-pills" id="fracColorPills">
+            <button class="frac-color-pill is-active" data-mode="mono">Mono</button>
+            <button class="frac-color-pill" data-mode="gradient">Gradiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Receta copiable -->
+    <div class="lab-recipe-wrap">
+      <div class="lab-recipe-head">
+        <h2>Receta del fractal</h2>
+        <button id="fracCopy" class="lab-btn">Copiar</button>
+      </div>
+      <pre id="fracRecipe" class="lab-recipe"></pre>
+    </div>
+
+  </main>
+
+  <footer class="cmzo-foot">
+    <div class="cmzo-foot-inner">
+      <div class="sig">// diseñado y mantenido por <b>Matías Clemenzo</b> · 2026</div>
+      <div class="cmzo-foot-links"><a href="colaborar.html">colaborar</a><a href="changelog.html">cambios</a></div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/path-config.js"></script>
+  <script type="module" src="./assets/js/lab/fractales-lab.js"></script>
+  <script src="./assets/js/nav.js" defer></script>
+  <script src="./assets/js/nav-drawer.js" defer></script>
+  <script src="./assets/js/theme.js" defer></script>
+  <script src="./assets/js/command-palette.js" defer></script>
+
+</body>
+</html>
