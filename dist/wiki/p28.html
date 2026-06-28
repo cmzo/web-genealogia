@@ -74,7 +74,7 @@ Testigos: Nicolas Devoto y Jorge Waffles, vecinos de la colonia</p>
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p104.html" data-node="p104">José Domingo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p36.html" data-node="p36">François Clemenzoz</a><a class="wiki-chip wiki-chip--persona" href="p37.html" data-node="p37">Marie Louise Stalder</a><a class="wiki-chip wiki-chip--persona" href="p84.html" data-node="p84">Maria Luisa Clemenzo Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip" href="riddes-valais.html" data-node="riddes-valais">Riddes (Valais)</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p36.html" data-node="p36">François Clemenzoz</a><a class="wiki-chip wiki-chip--persona" href="p104.html" data-node="p104">José Domingo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p37.html" data-node="p37">Marie Louise Stalder</a><a class="wiki-chip wiki-chip--persona" href="p84.html" data-node="p84">Maria Luisa Clemenzo Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#clemenzo</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#emigracion</span><span class="wiki-chip wiki-chip--tag">#riddes</span><span class="wiki-chip wiki-chip--tag">#entre-rios</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p104.html" data-node="p104">José Domingo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p124.html" data-node="p124">Felisa Clemenzo Roh</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p36.html" data-node="p36">François Clemenzoz</a><a class="wiki-chip wiki-chip--persona" href="p37.html" data-node="p37">Marie Louise Stalder</a><a class="wiki-chip wiki-chip--persona" href="p84.html" data-node="p84">Maria Luisa Clemenzo Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip" href="riddes-valais.html" data-node="riddes-valais">Riddes (Valais)</a><a class="wiki-chip wiki-chip--persona" href="p124.html" data-node="p124">Felisa Clemenzo Roh</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p36.html" data-node="p36">François Clemenzoz</a><a class="wiki-chip wiki-chip--persona" href="p104.html" data-node="p104">José Domingo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p37.html" data-node="p37">Marie Louise Stalder</a><a class="wiki-chip wiki-chip--persona" href="p84.html" data-node="p84">Maria Luisa Clemenzo Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#clemenzo</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#emigracion</span><span class="wiki-chip wiki-chip--tag">#riddes</span><span class="wiki-chip wiki-chip--tag">#entre-rios</span></div></div>
         </section>
       </div>
     </main>
@@ -91,6 +91,22 @@ Testigos: Nicolas Devoto y Jorge Waffles, vecinos de la colonia</p>
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras → lightbox + Mermaid (carga perezosa) en la página directa
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.wiki-figure img')];
+      const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
+      imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
+      if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+          const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

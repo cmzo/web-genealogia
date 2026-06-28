@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
   <title>Maria Luisa Clemenzo Roh · Wiki · Matías Clemenzo</title>
-  <meta name="description" content="Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina." />
+  <meta name="description" content="Hija de José Clemenzo (p28) y Marianna Roh (p85). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina." />
   <link rel="canonical" href="https://cmzo.net/dist/wiki/p84.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Maria Luisa Clemenzo Roh · Wiki · Matías Clemenzo" />
-  <meta property="og:description" content="Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina." />
+  <meta property="og:description" content="Hija de José Clemenzo (p28) y Marianna Roh (p85). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina." />
   <meta property="og:url" content="https://cmzo.net/dist/wiki/p84.html" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <link rel="stylesheet" href="../../assets/css/wiki.css" />
@@ -61,7 +61,7 @@
         <header class="wiki-page-header">
           <span class="wiki-type-badge wiki-type-badge--persona">Persona</span>
           <h1 class="wiki-page-title">Maria Luisa Clemenzo Roh</h1>
-          <p class="wiki-page-summary">Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.</p>
+          <p class="wiki-page-summary">Hija de José Clemenzo (p28) y Marianna Roh (p85). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.</p>
         </header>
 
         <article class="wiki-page-content">
@@ -80,7 +80,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p28.html" data-node="p28">Jose Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p85.html" data-node="p85">Marianna Roh</a><a class="wiki-chip wiki-chip--persona" href="p86.html" data-node="p86">Eleuterio Troncoso</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p28.html" data-node="p28">Jose Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p85.html" data-node="p85">Marianna Roh</a><a class="wiki-chip wiki-chip--persona" href="p86.html" data-node="p86">Eleuterio Troncoso</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#clemenzo</span><span class="wiki-chip wiki-chip--tag">#roh</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p125.html" data-node="p125">José Martín Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p28.html" data-node="p28">Jose Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p85.html" data-node="p85">Marianna Roh</a><a class="wiki-chip wiki-chip--persona" href="p86.html" data-node="p86">Eleuterio Troncoso</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p125.html" data-node="p125">José Martín Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p28.html" data-node="p28">Jose Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p85.html" data-node="p85">Marianna Roh</a><a class="wiki-chip wiki-chip--persona" href="p86.html" data-node="p86">Eleuterio Troncoso</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#clemenzo</span><span class="wiki-chip wiki-chip--tag">#roh</span></div></div>
         </section>
       </div>
     </main>
@@ -97,6 +97,22 @@
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras → lightbox + Mermaid (carga perezosa) en la página directa
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.wiki-figure img')];
+      const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
+      imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
+      if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+          const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

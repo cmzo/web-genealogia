@@ -83,7 +83,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p105.html" data-node="p105">Gregoria Orfilia Roh</a><a class="wiki-chip wiki-chip--persona" href="p106.html" data-node="p106">Pedro Mauricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p107.html" data-node="p107">Rogelia Roh</a><a class="wiki-chip wiki-chip--persona" href="p108.html" data-node="p108">Antonio Ramón Roh</a><a class="wiki-chip wiki-chip--persona" href="p109.html" data-node="p109">Héctor Patricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p110.html" data-node="p110">Raúl Roque Roh</a><a class="wiki-chip wiki-chip--persona" href="p97.html" data-node="p97">Mauricio Francisco Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p105.html" data-node="p105">Gregoria Orfilia Roh</a><a class="wiki-chip wiki-chip--persona" href="p106.html" data-node="p106">Pedro Mauricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p107.html" data-node="p107">Rogelia Roh</a><a class="wiki-chip wiki-chip--persona" href="p108.html" data-node="p108">Antonio Ramón Roh</a><a class="wiki-chip wiki-chip--persona" href="p109.html" data-node="p109">Héctor Patricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p110.html" data-node="p110">Raúl Roque Roh</a><a class="wiki-chip wiki-chip--persona" href="p97.html" data-node="p97">Mauricio Francisco Roh</a></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p105.html" data-node="p105">Gregoria Orfilia Roh</a><a class="wiki-chip wiki-chip--persona" href="p106.html" data-node="p106">Pedro Mauricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p107.html" data-node="p107">Rogelia Roh</a><a class="wiki-chip wiki-chip--persona" href="p108.html" data-node="p108">Antonio Ramón Roh</a><a class="wiki-chip wiki-chip--persona" href="p109.html" data-node="p109">Héctor Patricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p110.html" data-node="p110">Raúl Roque Roh</a><a class="wiki-chip wiki-chip--persona" href="p123.html" data-node="p123">María Isidora Roh</a><a class="wiki-chip wiki-chip--persona" href="p97.html" data-node="p97">Mauricio Francisco Roh</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p123.html" data-node="p123">María Isidora Roh</a><a class="wiki-chip wiki-chip--persona" href="p105.html" data-node="p105">Gregoria Orfilia Roh</a><a class="wiki-chip wiki-chip--persona" href="p106.html" data-node="p106">Pedro Mauricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p107.html" data-node="p107">Rogelia Roh</a><a class="wiki-chip wiki-chip--persona" href="p108.html" data-node="p108">Antonio Ramón Roh</a><a class="wiki-chip wiki-chip--persona" href="p109.html" data-node="p109">Héctor Patricio Roh</a><a class="wiki-chip wiki-chip--persona" href="p110.html" data-node="p110">Raúl Roque Roh</a><a class="wiki-chip wiki-chip--persona" href="p97.html" data-node="p97">Mauricio Francisco Roh</a></div></div>
         </section>
       </div>
     </main>
@@ -100,6 +100,22 @@
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras → lightbox + Mermaid (carga perezosa) en la página directa
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.wiki-figure img')];
+      const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
+      imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
+      if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+          const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

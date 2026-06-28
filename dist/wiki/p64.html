@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
   <title>Petrona Estefania Clemenzoz · Wiki · Matías Clemenzo</title>
-  <meta name="description" content="Hija de José Clemenzo (p28), nacida en Entre Ríos en 1897." />
+  <meta name="description" content="Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1897." />
   <link rel="canonical" href="https://cmzo.net/dist/wiki/p64.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Petrona Estefania Clemenzoz · Wiki · Matías Clemenzo" />
-  <meta property="og:description" content="Hija de José Clemenzo (p28), nacida en Entre Ríos en 1897." />
+  <meta property="og:description" content="Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1897." />
   <meta property="og:url" content="https://cmzo.net/dist/wiki/p64.html" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <link rel="stylesheet" href="../../assets/css/wiki.css" />
@@ -61,7 +61,7 @@
         <header class="wiki-page-header">
           <span class="wiki-type-badge wiki-type-badge--persona">Persona</span>
           <h1 class="wiki-page-title">Petrona Estefania Clemenzoz</h1>
-          <p class="wiki-page-summary">Hija de José Clemenzo (p28), nacida en Entre Ríos en 1897.</p>
+          <p class="wiki-page-summary">Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1897.</p>
         </header>
 
         <article class="wiki-page-content">
@@ -96,6 +96,22 @@
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras → lightbox + Mermaid (carga perezosa) en la página directa
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.wiki-figure img')];
+      const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
+      imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
+      if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+          const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

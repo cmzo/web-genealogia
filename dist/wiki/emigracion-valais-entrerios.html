@@ -80,7 +80,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip" href="riddes-valais.html" data-node="riddes-valais">Riddes (Valais)</a><a class="wiki-chip wiki-chip--persona" href="p27.html" data-node="p27">María Celestina Roh</a><a class="wiki-chip" href="censo-valais-1870.html" data-node="censo-valais-1870">Censo del Valais de 1870</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip" href="censo-valais-1870.html" data-node="censo-valais-1870">Censo del Valais de 1870</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#emigracion</span><span class="wiki-chip wiki-chip--tag">#entre-rios</span><span class="wiki-chip wiki-chip--tag">#argentina</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip" href="riddes-valais.html" data-node="riddes-valais">Riddes (Valais)</a><a class="wiki-chip wiki-chip--persona" href="p27.html" data-node="p27">María Celestina Roh</a><a class="wiki-chip" href="censo-valais-1870.html" data-node="censo-valais-1870">Censo del Valais de 1870</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip" href="arbol-jean-yves.html" data-node="arbol-jean-yves">Árbol de Jean-Yves Clemenzo (Descendance à Ardon)</a><a class="wiki-chip" href="censo-valais-1870.html" data-node="censo-valais-1870">Censo del Valais de 1870</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#emigracion</span><span class="wiki-chip wiki-chip--tag">#entre-rios</span><span class="wiki-chip wiki-chip--tag">#argentina</span></div></div>
         </section>
       </div>
     </main>
@@ -97,6 +97,22 @@
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras → lightbox + Mermaid (carga perezosa) en la página directa
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.wiki-figure img')];
+      const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
+      imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
+      if (document.querySelector('.mermaid')) {
+        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+          const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

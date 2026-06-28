@@ -1,3 +1,33 @@
+### 28 de junio de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> El árbol de Jean-Yves, en la wiki
+
+Sumé una página nueva: el **árbol genealógico manuscrito de Jean-Yves Clemenzo**, la rama de los Clemenzo que se quedó en Ardon (Suiza) y que corre en paralelo a la que emigró a Entre Ríos. Trae las dos fotos del documento original, la transcripción generación por generación y un diagrama por cada una. De paso, resolvió una duda vieja de la investigación sobre quién era la «Elisabeth» casada con los Lambiel de Riddes.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Imágenes en los artículos de la wiki
+
+Los artículos de la wiki ahora pueden mostrar **fotos** —un pueblo, un documento, un árbol manuscrito— con su pie de foto, y al tocarlas se abren en el visor con zoom, igual que en el blog.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Diagramas de parentesco dentro de un artículo
+
+Se pueden dibujar **árboles y diagramas** directamente dentro de un artículo de la wiki (con Mermaid). El árbol de Jean-Yves los estrena: un esquema por cada generación.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Los artículos de la wiki se leen mucho mejor
+
+Rehíce la tipografía de lectura de la wiki: una entradilla que resume, secciones bien marcadas, tablas más claras y citas destacadas. Además, al abrir un artículo, el recuadro de lectura se ubica a la izquierda y **el panel de relaciones queda a la derecha** —sin duplicarse—, así podés leer y saltar a personas o lugares vinculados a la vez.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El buscador encuentra páginas de la wiki
+
+El buscador (⌘ + K) ahora también encuentra **las páginas de la wiki** por su nombre: escribís «jean-yves», «ardon» o «árbol» y te lleva al nodo en el grafo.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Nuevas personas y documentos en el árbol
+
+Aparecieron papeles de la rama de los Roh y los Clemenzo en Santa Fe. Sumé al árbol tres personas con sus actas: **María Isidora Roh** (1907), **Felisa Clemenzo Roh** (1890) y **José Martín Clemenzo** (1905). Además se encontró el **bautismo de José Domingo (Santa Fe, 1884)** —el que en el post sobre los Roh figuraba como «pendiente»—, y apareció la **segunda hoja del censo de Colón de 1895**, con la familia de Francisco al completo.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Parentescos corregidos en el árbol
+
+Revisé ficha por ficha los lazos familiares contra los documentos y corregí varios que estaban mal: alguien marcado como «bisabuelo» que en realidad era tío abuelo, hijos atribuidos al hermano equivocado, y dos «hermanas» de Francisco que eran en verdad sus sobrinas (hijas de su hermana). También suavicé las paternidades que son hipótesis y no están probadas. La idea es que se pueda confiar en lo que dice el árbol.
+
 ### 22 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Laboratorio de fractales

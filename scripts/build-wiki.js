@@ -113,11 +113,40 @@ function processCallouts(html) {
     }
   );
 }
-// Pipeline de markdown → HTML para la wiki: resaltados, marked, callouts, tablas con wrapper.
+// Mermaid: ```mermaid (marked → <pre><code class="language-mermaid">) → <div class="mermaid">
+// con el texto sin escapar (lo re-renderiza mermaid.js en la página directa y en el modal).
+function processMermaid(html) {
+  return html.replace(
+    /<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g,
+    (m, code) => {
+      const un = code.replace(/&amp;/g, '&').replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+      return `<div class="mermaid">${un}</div>`;
+    }
+  );
+}
+// Imágenes en bloque (<p><img></p>) → <figure> con pie (alt) y gancho de lightbox.
+function processFigures(html) {
+  return html.replace(/<p>(<img\b[^>]*>)<\/p>/g, (m, img) => {
+    const alt = (img.match(/alt="([^"]*)"/) || [, ''])[1];
+    const tag = img.replace('<img', '<img loading="lazy"');
+    return `<figure class="wiki-figure">${tag}${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>`;
+  });
+}
+// Pipeline de markdown → HTML para la wiki: resaltados, imágenes Obsidian, marked,
+// callouts, mermaid, figuras y tablas con wrapper.
 function renderRich(md) {
   md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
+  // Imágenes estilo Obsidian: ![[archivo]] → assets/images/wiki/archivo (alt = nombre legible)
+  md = md.replace(/!\[\[([^\]]+)\]\]/g, (m, fn) => {
+    const f = fn.trim();
+    const alt = f.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ');
+    return `![${alt}](../../assets/images/wiki/${f})`;
+  });
   let html = marked(md);
   html = processCallouts(html);
+  html = processMermaid(html);
+  html = processFigures(html);
   html = html.replace(/<table>/g, '<div class="table-wrapper"><table>').replace(/<\/table>/g, '</table></div>');
   return html;
 }

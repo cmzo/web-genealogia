@@ -8,6 +8,7 @@
   <title>Sistema de diseño · Clemenzo</title>
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/home.css" />
+  <link rel="stylesheet" href="./assets/css/wiki.css" />
   <style>
     /* ── Design System page layout ───────────────────────── */
     .ds { max-width: 820px; margin: 0 auto; }
@@ -391,6 +392,7 @@
         <a href="#espaciado" class="ds-anchor">Espaciado</a>
         <a href="#componentes" class="ds-anchor">Componentes</a>
         <a href="#editorial" class="ds-anchor">Editorial</a>
+        <a href="#wiki" class="ds-anchor">Wiki: lectura</a>
       </nav>
     </aside>
 
@@ -1211,6 +1213,81 @@
                 </figure>
                 <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Figure: margin 44px 0 · figcaption: Inter 13px/italic/muted. Lightbox: ahora componente compartido <code class="td-mono">assets/js/lightbox.js</code> (CSS en styles.css). Click abre <code class="td-mono">.lbx</code> (panel lateral 320px). Pie en Source Serif en los posts; la bitácora de la home lo abre con <code class="td-mono">.lbx--sans</code> (IBM Plex).</p>
               </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ─── WIKI: VISTA DE LECTURA ───────────────────── -->
+        <section class="ds-section" id="wiki">
+          <p class="ds-eyebrow">06</p>
+          <h2 class="ds-section-heading">Wiki: vista de lectura</h2>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Lenguaje editorial propio de los artículos de la wiki (distinto del blog). Lo genera <code class="td-mono">scripts/build-wiki.js</code> desde Markdown y se estiliza bajo <code class="td-mono">.wiki-page-content</code> (<code class="td-mono">assets/css/wiki.css</code>). Se usa igual en la página directa <code class="td-mono">dist/wiki/&lt;id&gt;.html</code> y en el modal de lectura del grafo.</p>
+
+          <div class="editorial-wrap">
+
+            <!-- Lede + headings -->
+            <div class="comp-block">
+              <p class="comp-label">Entradilla (lede) + jerarquía</p>
+              <div class="wiki-page-content" style="border:1px solid var(--border);border-radius:8px;padding:32px 36px;">
+                <p>El primer párrafo abre como <strong>entradilla</strong>: más grande y en color tenue, a modo de resumen editorial del artículo.</p>
+                <h2>Sección con marcador de acento</h2>
+                <p>Cada <code class="td-mono">h2</code> lleva un filete superior y una barra de acento (26×3px) que da ritmo al recorrido, como en una wiki.</p>
+                <h3>Subsección como kicker mono</h3>
+                <p>Los <code class="td-mono">h3</code> son etiquetas en IBM Plex Mono, versalitas.</p>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Cuerpo: Source Serif 4 1.07rem/1.75 · Lede: primer <code class="td-mono">p</code> 1.2rem/--muted · H2: Hanken 1.32rem + <code class="td-mono">border-top</code> + barra <code class="td-mono">::before</code> --accent · H3: IBM Plex Mono 0.82rem uppercase/--muted</p>
+              </div>
+            </div>
+
+            <!-- Pull-quote + mark -->
+            <div class="comp-block">
+              <p class="comp-label">Cita destacada + resaltado</p>
+              <div class="wiki-page-content" style="border:1px solid var(--border);border-radius:8px;padding:32px 36px;">
+                <blockquote><p>«Ces deux mariages furent célébrés le même jour: 12 mai 1846.»</p></blockquote>
+                <p>Los enlaces <mark>resaltados</mark> usan el acento al 18%.</p>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Blockquote: Source Serif 1.15rem/italic, border-left 3px --accent · <code class="td-mono">mark</code>: <code class="td-mono">color-mix(--accent 18%)</code></p>
+              </div>
+            </div>
+
+            <!-- Tabla -->
+            <div class="comp-block">
+              <p class="comp-label">Tabla (header mono, zebra, hover)</p>
+              <div class="wiki-page-content" style="border:1px solid var(--border);border-radius:8px;padding:32px 36px;">
+                <div class="table-wrapper">
+                  <table>
+                    <thead><tr><th>Candidata</th><th>Origen</th></tr></thead>
+                    <tbody>
+                      <tr><td>Marie Elizabet (n. 1821)</td><td>Rama emigrada</td></tr>
+                      <tr><td>Anne-Marie-Elisabeth (1820)</td><td>Rama de Ardon</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Wrapper con borde redondeado · TH: IBM Plex Mono 0.7rem uppercase, fondo tenue · zebra <code class="td-mono">--muted 5%</code> + hover de fila <code class="td-mono">--accent 7%</code></p>
+              </div>
+            </div>
+
+            <!-- Figura + Mermaid -->
+            <div class="comp-block">
+              <p class="comp-label">Imagen con pie + diagrama (Mermaid)</p>
+              <div class="wiki-page-content" style="border:1px solid var(--border);border-radius:8px;padding:32px 36px;">
+                <figure class="wiki-figure">
+                  <div style="width:100%;height:120px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--muted);">[imagen de la wiki]</span>
+                  </div>
+                  <figcaption>Hoja del árbol manuscrito de Jean-Yves Clemenzo.</figcaption>
+                </figure>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Imágenes con <code class="td-mono">![[archivo]]</code> → <code class="td-mono">assets/images/wiki/</code>, envueltas en <code class="td-mono">.wiki-figure</code> (pie IBM Plex Sans 0.82rem) + visor compartido <code class="td-mono">lightbox.js</code>. Los bloques <code class="td-mono">```mermaid</code> se renderizan con mermaid.js (carga perezosa) en <code class="td-mono">.wiki-page-content .mermaid</code>.</p>
+              </div>
+            </div>
+
+            <!-- Layout modal + panel -->
+            <div class="comp-block">
+              <p class="comp-label">Modal de lectura + panel de relaciones</p>
+              <div style="border:1px solid var(--border);border-radius:8px;padding:18px;display:flex;gap:14px;align-items:stretch;height:150px;background:var(--bg);">
+                <div style="flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--muted);">modal de lectura (artículo) — anclado a la izquierda</div>
+                <div style="width:120px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--muted);">#wikiPanel relaciones</div>
+              </div>
+              <p style="margin:14px 0 0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">El modal muestra <strong>solo el contenido</strong>; las relaciones no se duplican: reusan el <code class="td-mono">#wikiPanel</code> existente, que queda a la derecha. Backdrop uniforme en toda la pantalla; el panel se eleva (<code class="td-mono">z-index 1001</code>). Margen izquierdo del modal = gap con el panel. En mobile el modal va a pantalla completa y el panel pasa a drawer inferior.</p>
             </div>
 
           </div>

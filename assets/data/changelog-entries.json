@@ -1,5 +1,61 @@
 [
   {
+    "id": "2026-06-28-el-árbol-de-jean-yves-en-la-wiki",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "El árbol de Jean-Yves, en la wiki",
+    "html": "<p>Sumé una página nueva: el <strong>árbol genealógico manuscrito de Jean-Yves Clemenzo</strong>, la rama de los Clemenzo que se quedó en Ardon (Suiza) y que corre en paralelo a la que emigró a Entre Ríos. Trae las dos fotos del documento original, la transcripción generación por generación y un diagrama por cada una. De paso, resolvió una duda vieja de la investigación sobre quién era la «Elisabeth» casada con los Lambiel de Riddes.</p>\n"
+  },
+  {
+    "id": "2026-06-28-imágenes-en-los-artículos-de-la-wiki",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Imágenes en los artículos de la wiki",
+    "html": "<p>Los artículos de la wiki ahora pueden mostrar <strong>fotos</strong> —un pueblo, un documento, un árbol manuscrito— con su pie de foto, y al tocarlas se abren en el visor con zoom, igual que en el blog.</p>\n"
+  },
+  {
+    "id": "2026-06-28-diagramas-de-parentesco-dentro-de-un-artículo",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Diagramas de parentesco dentro de un artículo",
+    "html": "<p>Se pueden dibujar <strong>árboles y diagramas</strong> directamente dentro de un artículo de la wiki (con Mermaid). El árbol de Jean-Yves los estrena: un esquema por cada generación.</p>\n"
+  },
+  {
+    "id": "2026-06-28-los-artículos-de-la-wiki-se-leen-mucho-mejor",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Los artículos de la wiki se leen mucho mejor",
+    "html": "<p>Rehíce la tipografía de lectura de la wiki: una entradilla que resume, secciones bien marcadas, tablas más claras y citas destacadas. Además, al abrir un artículo, el recuadro de lectura se ubica a la izquierda y <strong>el panel de relaciones queda a la derecha</strong> —sin duplicarse—, así podés leer y saltar a personas o lugares vinculados a la vez.</p>\n"
+  },
+  {
+    "id": "2026-06-28-el-buscador-encuentra-páginas-de-la-wiki",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El buscador encuentra páginas de la wiki",
+    "html": "<p>El buscador (⌘ + K) ahora también encuentra <strong>las páginas de la wiki</strong> por su nombre: escribís «jean-yves», «ardon» o «árbol» y te lleva al nodo en el grafo.</p>\n"
+  },
+  {
+    "id": "2026-06-28-nuevas-personas-y-documentos-en-el-árbol",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Nuevas personas y documentos en el árbol",
+    "html": "<p>Aparecieron papeles de la rama de los Roh y los Clemenzo en Santa Fe. Sumé al árbol tres personas con sus actas: <strong>María Isidora Roh</strong> (1907), <strong>Felisa Clemenzo Roh</strong> (1890) y <strong>José Martín Clemenzo</strong> (1905). Además se encontró el <strong>bautismo de José Domingo (Santa Fe, 1884)</strong> —el que en el post sobre los Roh figuraba como «pendiente»—, y apareció la <strong>segunda hoja del censo de Colón de 1895</strong>, con la familia de Francisco al completo.</p>\n"
+  },
+  {
+    "id": "2026-06-28-parentescos-corregidos-en-el-árbol",
+    "date": "2026-06-28",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Parentescos corregidos en el árbol",
+    "html": "<p>Revisé ficha por ficha los lazos familiares contra los documentos y corregí varios que estaban mal: alguien marcado como «bisabuelo» que en realidad era tío abuelo, hijos atribuidos al hermano equivocado, y dos «hermanas» de Francisco que eran en verdad sus sobrinas (hijas de su hermana). También suavicé las paternidades que son hipótesis y no están probadas. La idea es que se pueda confiar en lo que dice el árbol.</p>\n"
+  },
+  {
     "id": "2026-06-22-laboratorio-de-fractales",
     "date": "2026-06-22",
     "type": "cambio",
@@ -262,61 +318,5 @@
     "tag": "mejora",
     "title": "Más protección contra spam y bots",
     "html": "<p>El formulario de <strong>Colaborar</strong> sumó <strong>Cloudflare Turnstile</strong>: una verificación anti-spam que confirma que sos una persona <strong>sin cookies ni &quot;elegí los semáforos&quot;</strong> (la mayoría de las veces es invisible). Se valida del lado del servidor, así los envíos automatizados se descartan y solo llegan los reales. Se suma al honeypot y la traba de tiempo que ya tenía. Además se reforzó la protección anti-bots del sitio con herramientas de Cloudflare (AI Labyrinth).</p>\n"
-  },
-  {
-    "id": "2026-06-16-el-sitio-tiene-dominio-propio-cmzonet",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "El sitio tiene dominio propio: cmzo.net",
-    "html": "<p>El sitio ahora vive en <strong><a href=\"https://cmzo.net\">cmzo.net</a></strong>, un dominio propio más corto y fácil de recordar. <code>www.cmzo.net</code> redirige solo al dominio principal, así que no hay enlaces rotos.</p>\n"
-  },
-  {
-    "id": "2026-06-16-un-panel-de-contexto-fijo-en-la-línea-de-tiempo",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Un panel de contexto fijo en la línea de tiempo",
-    "html": "<p>La línea de tiempo se ensanchó y sumó un <strong>panel de detalle fijo a la derecha</strong> que reemplaza a los globos chiquitos que aparecían al pasar el mouse. Se actualiza solo: al pasar o hacer clic sobre una persona muestra su ficha —relación con la persona del árbol («bisabuelo de…», «chozno de…»), nacimiento y defunción con lugares, casamientos, hijos, un fragmento de su historia y la lista de documentos— con un acceso para <strong>abrir la ficha completa</strong>.</p>\n"
-  },
-  {
-    "id": "2026-06-16-los-hitos-históricos-ahora-traen-imagen-y-resumen-de-wikipedia",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Los hitos históricos ahora traen imagen y resumen de Wikipedia",
-    "html": "<p>Cada hito mundial de la línea (Revolución Francesa, llegada del hombre a la Luna, etc.) abre en ese panel con una <strong>imagen y un resumen traídos en vivo de Wikipedia</strong>, además del texto propio y un enlace para leer más. Se sumaron <strong>hitos argentinos</strong> (Constitución de 1853, Ley Sáenz Peña, Yrigoyen, el golpe de 1930, Perón, el retorno a la democracia en 1983), que aparecen cuando la vida de la persona los abarca, y se corrigieron enlaces rotos.</p>\n"
-  },
-  {
-    "id": "2026-06-16-geografía-más-clara-y-un-desplazamiento-que-encaja",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Geografía más clara y un desplazamiento que «encaja»",
-    "html": "<p>La franja superior muestra con <strong>banderas circulares</strong> dónde <strong>nació, creció, vivió y murió</strong> cada persona (incluida España para quienes emigraron allá). Al desplazar la línea, el nombre se resalta y <strong>encaja en su lugar</strong> como en un selector de fecha del celular, y el panel de la derecha acompaña. Si la persona vive, ya no aparece la columna «murió» y se muestra «vive». También se afinó el espaciado para que los nombres no se solapen y se puede llegar con el scroll hasta los integrantes más jóvenes del árbol.</p>\n"
-  },
-  {
-    "id": "2026-06-16-la-línea-de-tiempo-más-a-mano",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "La línea de tiempo, más a mano",
-    "html": "<p>El acceso dejó de pasar desapercibido: el botón <strong>«Línea de tiempo»</strong> en la ficha de cada persona ahora es <strong>verde y destacado</strong>, y además se puede abrir desde el buscador <strong>⌘ + K</strong> (escribís un nombre y elegís «Línea de tiempo»). En pantallas chicas, donde la vista no entra cómoda, el acceso se oculta.</p>\n"
-  },
-  {
-    "id": "2026-06-16-parentescos-con-nombre-propio",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Parentescos con nombre propio",
-    "html": "<p>La relación de cada persona con la que estás mirando se nombra con más precisión: hijo, nieto, bisnieto, tataranieto y <strong>chozno</strong> (la 5.ª generación). De ahí en adelante, en vez del genérico «descendiente», se indica la <strong>generación exacta</strong> (por ejemplo «Descendiente · 7.ª generación»).</p>\n"
-  },
-  {
-    "id": "2026-06-16-escudos-heráldicos-en-modo-oscuro",
-    "date": "2026-06-16",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Escudos heráldicos en modo oscuro",
-    "html": "<p>Los escudos de la portada (Valais, armorial Clemenzo, Ardon) tenían un fondo blanco que en modo oscuro se veía como un recuadro fuera de lugar. Ahora tienen <strong>fondo transparente</strong> —recortado respetando los blancos propios del escudo— con una sombra suave, así se ven prolijos sobre cualquier fondo.</p>\n"
   }
 ]

@@ -348,7 +348,12 @@ async function init() {
   // Delegación: chips re-centran; botón "Leer" abre modal
   panelBody.addEventListener('click', e => {
     const c = e.target.closest('[data-node]');
-    if (c) { const id = c.dataset.node; if (nodeById.has(id)) { recenterOn(id); selectNode(id); } else { location.href = `${rootBase()}arbol.html?focus=${id}`; } return; }
+    if (c) {
+      const id = c.dataset.node;
+      if (modal.classList.contains('is-open')) closeModal();  // si estabas leyendo, saltá
+      if (nodeById.has(id)) { recenterOn(id); selectNode(id); } else { location.href = `${rootBase()}arbol.html?focus=${id}`; }
+      return;
+    }
     const r = e.target.closest('[data-read]');
     if (r) openModal(nodeById.get(r.dataset.read));
   });
@@ -360,6 +365,38 @@ async function init() {
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
 
+  // Mermaid bajo demanda: solo se importa cuando un artículo trae diagramas.
+  let _mermaidP = null;
+  function ensureMermaid() {
+    if (window.mermaid) return Promise.resolve(window.mermaid);
+    if (_mermaidP) return _mermaidP;
+    _mermaidP = import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs')
+      .then(mod => {
+        const m = mod.default;
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        m.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+        window.mermaid = m;
+        return m;
+      });
+    return _mermaidP;
+  }
+  async function runMermaidIn(root) {
+    const blocks = root.querySelectorAll('.mermaid');
+    if (!blocks.length) return;
+    try { (await ensureMermaid()).run({ nodes: blocks }); } catch (_) {}
+  }
+  // Figuras → lightbox compartido (assets/js/lightbox.js). Arma una galería con todas
+  // las imágenes del artículo y abre en la que se clickeó.
+  function wireFigures(root) {
+    const imgs = [...root.querySelectorAll('.wiki-figure img')];
+    if (!imgs.length || !window.openLightboxGallery) return;
+    const gallery = imgs.map(im => ({
+      src: im.src, alt: im.alt,
+      caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '',
+    }));
+    imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery(gallery, i, { sans: true })); });
+  }
+
   async function openModal(n) {
     if (!n || !n.hasContent) return;
     modalBody.innerHTML = '<p class="wiki-modal-loading">Cargando…</p>';
@@ -367,15 +404,17 @@ async function init() {
     document.body.style.overflow = 'hidden';
     try {
       const doc = new DOMParser().parseFromString(await (await fetch(rootBase() + n.url)).text(), 'text/html');
+      // Solo el contenido editorial: las relaciones viven en el #wikiPanel de la derecha,
+      // que queda abierto al costado del modal (no se duplica acá).
       const content = doc.querySelector('.wiki-page-content');
-      const related = doc.querySelector('.wiki-related');
       modalBody.innerHTML =
         `<span class="wiki-type-badge wiki-type-badge--${n.type}">${TYPE_LABEL[n.type] || n.type}</span>
          <h1 class="wiki-modal-title">${escapeHtml(n.title)}</h1>
          ${n.summary ? `<p class="wiki-modal-summary">${escapeHtml(n.summary)}</p>` : ''}
-         <div class="wiki-page-content">${content ? content.innerHTML : ''}</div>
-         ${related ? `<div class="wiki-related">${related.innerHTML}</div>` : ''}`;
+         <div class="wiki-page-content">${content ? content.innerHTML : ''}</div>`;
       modalBody.scrollTop = 0;
+      runMermaidIn(modalBody);   // diagramas (carga perezosa)
+      wireFigures(modalBody);    // imágenes → lightbox
     } catch (err) {
       modalBody.innerHTML = '<p class="wiki-modal-loading">No se pudo cargar el contenido.</p>';
     }

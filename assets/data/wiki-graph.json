@@ -1,6 +1,15 @@
 {
-  "generated": "2026-06-22T11:10:40.492Z",
+  "generated": "2026-06-28T20:42:23.607Z",
   "nodes": [
+    {
+      "id": "arbol-jean-yves",
+      "title": "Árbol de Jean-Yves Clemenzo (Descendance à Ardon)",
+      "type": "fuente",
+      "branch": "",
+      "url": "dist/wiki/arbol-jean-yves.html",
+      "summary": "Árbol genealógico manuscrito de Jean-Yves Clemenzo: la rama de los Clemenzo que permaneció en Ardon (Valais), desde 1481 hasta el siglo XX.",
+      "hasContent": true
+    },
     {
       "id": "censo-valais-1870",
       "title": "Censo del Valais de 1870",
@@ -88,7 +97,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p104.html",
-      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en 1884.",
+      "summary": "Hijo de José Clemenzo (p28) y Marianna Roh (p85). Nació en 1884.",
       "hasContent": true
     },
     {
@@ -272,6 +281,33 @@
       "hasContent": true
     },
     {
+      "id": "p123",
+      "title": "María Isidora Roh",
+      "type": "persona",
+      "branch": "roh",
+      "url": "dist/wiki/p123.html",
+      "summary": "Hija de Mauricio Francisco Roh (p97) y Rogelia Hernández (p99). Nació el 12 de abril de 1907 en Villa Mantero, Entre Ríos. Sobrina de María Celestina Roh (p27).",
+      "hasContent": true
+    },
+    {
+      "id": "p124",
+      "title": "Felisa Clemenzo Roh",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p124.html",
+      "summary": "Hija de José Clemenzo (p28) y Marianna Roh (p85). Nació el 7 de marzo de 1890 en Santa Fe; hermana de José Domingo (p104) y María Luisa (p84). La identificación de los padres del acta («José Clemencio» y «Mariana Rô», suizos) con José y Marianna es muy probable, no confirmada.",
+      "hasContent": true
+    },
+    {
+      "id": "p125",
+      "title": "José Martín Clemenzo",
+      "type": "persona",
+      "branch": "clemenzo",
+      "url": "dist/wiki/p125.html",
+      "summary": "Hijo natural de María Luisa Clemenzo (p84); nieto de José Clemenzo (p28) y Marianna Roh (p85). Nació el 23 de febrero de 1905 en Santa Fe. Se casó con Clara Rosa Cardozo en 1927 (anotación al margen de su bautismo).",
+      "hasContent": true
+    },
+    {
       "id": "p13",
       "title": "Ana Mary Clemenzo",
       "type": "persona",
@@ -367,7 +403,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p22.html",
-      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27). Sin fecha de nacimiento documentada; podría ser uno de los hijos mencionados en el censo de 1895.",
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27). El censo de Colón de 1895 lo registra con 5 años → nacido hacia 1890.",
       "hasContent": true
     },
     {
@@ -385,7 +421,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p25.html",
-      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), registrada con el apellido materno. Nació en Santa Fe en 1885, antes del establecimiento definitivo de la familia en Entre Ríos; su existencia figura en el censo de 1895.",
+      "summary": "Hija de María Celestina Roh (p27), registrada solo con el apellido materno y sin padre en el acta. La paternidad —posiblemente Francisco Clemenzo (p26)— está sin confirmar. Nació en Santa Fe en 1885, antes de la unión estable de la familia; figura en el censo de 1895.",
       "hasContent": true
     },
     {
@@ -718,7 +754,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p59.html",
-      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1887. Lleva el apellido «Clemenzoz», grafía usada en los registros argentinos de la rama de José.",
+      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1887. Lleva el apellido «Clemenzoz», grafía usada en los registros argentinos de esta rama.",
       "hasContent": true
     },
     {
@@ -736,7 +772,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p60.html",
-      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1889.",
+      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1889.",
       "hasContent": true
     },
     {
@@ -745,7 +781,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p61.html",
-      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1891.",
+      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1891.",
       "hasContent": true
     },
     {
@@ -754,7 +790,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p62.html",
-      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1893.",
+      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1893.",
       "hasContent": true
     },
     {
@@ -763,7 +799,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p63.html",
-      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1895.",
+      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1895.",
       "hasContent": true
     },
     {
@@ -772,7 +808,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p64.html",
-      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1897.",
+      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1897.",
       "hasContent": true
     },
     {
@@ -781,7 +817,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p65.html",
-      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1902.",
+      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1902.",
       "hasContent": true
     },
     {
@@ -790,7 +826,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p66.html",
-      "summary": "Hija de José Clemenzo (p28), nacida en Entre Ríos en 1904.",
+      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1904.",
       "hasContent": true
     },
     {
@@ -799,7 +835,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p67.html",
-      "summary": "Hijo de José Clemenzo (p28), nacido en Entre Ríos en 1906. El último de los hijos registrados de la rama Clemenzoz.",
+      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1906. El último de los hijos registrados de la rama Clemenzoz.",
       "hasContent": true
     },
     {
@@ -898,7 +934,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p77.html",
-      "summary": "Hermana mayor de François Clemenzo (p26), nacida en Riddes en 1843. La mayor diferencia de edad con François (15 años) sugiere que fue adulta cuando emigró o que no emigró.",
+      "summary": "Hija de François Clemenzoz (p36) y media hermana (probable) del emigrante François Clemenzo (p26); la mayor del grupo (n. 1843). Madre soltera («fille mère») de Anaiis (p78) y Edwige (p79) según el censo de Riddes de 1870.",
       "hasContent": true
     },
     {
@@ -907,7 +943,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p78.html",
-      "summary": "Hermana de François Clemenzo (p26), nacida en Riddes en 1864 y documentada en el censo suizo de 1870. Tenía 9 años al partir la familia a Argentina en 1873.",
+      "summary": "Hija de Josephine Clemenzo (p77) —anotada «fille mère» en el censo de Riddes de 1870— y por lo tanto sobrina del emigrante François Clemenzo (p26). Nació en Riddes en 1864.",
       "hasContent": true
     },
     {
@@ -916,7 +952,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p79.html",
-      "summary": "Hermana de François Clemenzo (p26), nacida en Riddes en 1870 y documentada en el censo suizo de ese mismo año. Tenía apenas 3 años al emigrar la familia.",
+      "summary": "Hija de Josephine Clemenzo (p77) —«fille mère» en el censo de Riddes de 1870— y sobrina del emigrante François Clemenzo (p26). Nació en Riddes en 1870.",
       "hasContent": true
     },
     {
@@ -970,7 +1006,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p84.html",
-      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.",
+      "summary": "Hija de José Clemenzo (p28) y Marianna Roh (p85). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.",
       "hasContent": true
     },
     {
@@ -1069,7 +1105,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p94.html",
-      "summary": "Hijo de Baptiste Clemenzo (p93), hermano de Jean Joseph (p57). Natural de Ardon o Riddes, Valais. Bisabuelo probable del emigrante François Clemenzo (p26).",
+      "summary": "Hijo de Baptiste Clemenzo (p93) y hermano de Jean Joseph (p57) —el abuelo del emigrante François Clemenzo (p26)—, por lo que sería tío abuelo (probable) de François. Natural de Ardon o Riddes, Valais.",
       "hasContent": true
     },
     {
@@ -1190,6 +1226,26 @@
       "hasContent": false
     },
     {
+      "id": "tag:clemenzo",
+      "title": "#clemenzo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 56
+    },
+    {
+      "id": "tag:ardon",
+      "title": "#ardon",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 11
+    },
+    {
       "id": "tag:valais",
       "title": "#valais",
       "type": "tag",
@@ -1197,7 +1253,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 32
+      "weight": 33
     },
     {
       "id": "tag:suiza",
@@ -1207,11 +1263,11 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 30
+      "weight": 31
     },
     {
-      "id": "tag:censo",
-      "title": "#censo",
+      "id": "tag:arbol",
+      "title": "#arbol",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1222,6 +1278,16 @@
     {
       "id": "tag:fuente",
       "title": "#fuente",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:censo",
+      "title": "#censo",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1247,7 +1313,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 5
+      "weight": 6
     },
     {
       "id": "tag:argentina",
@@ -1257,7 +1323,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 4
+      "weight": 7
     },
     {
       "id": "tag:lugar",
@@ -1270,16 +1336,6 @@
       "weight": 1
     },
     {
-      "id": "tag:clemenzo",
-      "title": "#clemenzo",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 53
-    },
-    {
       "id": "tag:roh",
       "title": "#roh",
       "type": "tag",
@@ -1287,7 +1343,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 23
+      "weight": 25
     },
     {
       "id": "tag:conthey",
@@ -1310,6 +1366,16 @@
       "weight": 3
     },
     {
+      "id": "tag:santa-fe",
+      "title": "#santa-fe",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 4
+    },
+    {
       "id": "tag:queipo",
       "title": "#queipo",
       "type": "tag",
@@ -1328,16 +1394,6 @@
       "summary": "",
       "hasContent": false,
       "weight": 11
-    },
-    {
-      "id": "tag:ardon",
-      "title": "#ardon",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 10
     },
     {
       "id": "tag:stalder",
@@ -1368,16 +1424,6 @@
       "summary": "",
       "hasContent": false,
       "weight": 3
-    },
-    {
-      "id": "tag:santa-fe",
-      "title": "#santa-fe",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 2
     },
     {
       "id": "tag:wiki",
@@ -1602,6 +1648,34 @@
   ],
   "edges": [
     {
+      "source": "arbol-jean-yves",
+      "target": "emigracion-valais-entrerios"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "p26"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "censo-valais-1870"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "p76"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "p36"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "p57"
+    },
+    {
       "source": "censo-valais-1870",
       "target": "p26"
     },
@@ -1672,6 +1746,38 @@
     {
       "source": "p121",
       "target": "p38"
+    },
+    {
+      "source": "p123",
+      "target": "p97"
+    },
+    {
+      "source": "p123",
+      "target": "p99"
+    },
+    {
+      "source": "p123",
+      "target": "p38"
+    },
+    {
+      "source": "p123",
+      "target": "p39"
+    },
+    {
+      "source": "p124",
+      "target": "p28"
+    },
+    {
+      "source": "p124",
+      "target": "p85"
+    },
+    {
+      "source": "p124",
+      "target": "p36"
+    },
+    {
+      "source": "p125",
+      "target": "p84"
     },
     {
       "source": "p23",
@@ -1806,7 +1912,15 @@
       "target": "p58"
     },
     {
-      "source": "p78",
+      "source": "p77",
+      "target": "p78"
+    },
+    {
+      "source": "p77",
+      "target": "p79"
+    },
+    {
+      "source": "p77",
       "target": "p37"
     },
     {
@@ -2528,21 +2642,6 @@
       "rel": "familia"
     },
     {
-      "source": "p77",
-      "target": "p37",
-      "rel": "familia"
-    },
-    {
-      "source": "p78",
-      "target": "p77",
-      "rel": "familia"
-    },
-    {
-      "source": "p79",
-      "target": "p77",
-      "rel": "familia"
-    },
-    {
       "source": "p8",
       "target": "p50",
       "rel": "familia"
@@ -2722,6 +2821,36 @@
     {
       "source": "post:investigando-francisco",
       "target": "p26"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:arbol",
+      "rel": "tag"
+    },
+    {
+      "source": "arbol-jean-yves",
+      "target": "tag:fuente",
+      "rel": "tag"
     },
     {
       "source": "censo-valais-1870",
@@ -2956,6 +3085,56 @@
     {
       "source": "p122",
       "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p123",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p123",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p123",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p124",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p124",
+      "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p124",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p124",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p125",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p125",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p125",
+      "target": "tag:argentina",
       "rel": "tag"
     },
     {

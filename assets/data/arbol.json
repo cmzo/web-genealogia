@@ -494,6 +494,37 @@
       "media": []
     },
     {
+      "id": "p125",
+      "name": "José Martín Clemenzo",
+      "gender": "M",
+      "birth_date": "1905-02-23",
+      "birth_place": "Santa Fe, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "",
+      "mother_id": "p84",
+      "branch": "clemenzo",
+      "generation": 3,
+      "sort_order": 0,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "",
+      "sources": "Bautismo, N. Sra. del Carmen, Santa Fe, 1905 (hijo natural de Luisa Clemenzo p84); casamiento con Clara Rosa Cardozo, 1927 (nota al margen)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med174",
+          "type": "photo",
+          "url": "assets/images/personas/p125-bautismo-1905.webp",
+          "caption": "Bautismo de José Martín — Nuestra Señora del Carmen, Santa Fe, 1905. Hijo natural de Luisa Clemenzo (p84), de 19 años. Al margen: casamiento con Clara Rosa Cardozo (1927).",
+          "date": "1905-02-23",
+          "source_label": "",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
       "id": "p12",
       "name": "Jorge Clemenzo",
       "gender": "",
@@ -1218,7 +1249,7 @@
       "id": "p104",
       "name": "José Domingo Clemenzo",
       "gender": "M",
-      "birth_date": "1884-07-25",
+      "birth_date": "1884-07-08",
       "birth_place": "Santa Fe, Argentina",
       "death_date": "",
       "death_place": "",
@@ -1234,43 +1265,12 @@
       "status": "en_proceso",
       "media": [
         {
-          "id": "med132",
+          "id": "med170",
           "type": "photo",
-          "url": "assets/images/posts/roh-1884-bautismo-jose-domingo-clemenzo.webp",
-          "caption": "Bautismo de José Domingo, Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884",
+          "url": "assets/images/posts/roh-1884-bautismo-jose-domingo.webp",
+          "caption": "Bautismo de José Domingo — Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884 (nacido 08-07-1884). Hijo de «José Clemencia» y «Mariana Roh», suizos. Identificación con José (p28) × Marianna (p85): muy probable.",
           "date": "1884-07-27",
-          "source_label": "Registro Civil / parroquial",
-          "group_label": "",
-          "group_order": 0
-        }
-      ]
-    },
-    {
-      "id": "p106",
-      "name": "Pedro Mauricio Roh",
-      "gender": "M",
-      "birth_date": "1908-03-24",
-      "birth_place": "Villa Mantero, Entre Ríos, Argentina",
-      "death_date": "",
-      "death_place": "",
-      "father_id": "p97",
-      "mother_id": "p99",
-      "branch": "roh",
-      "generation": 4,
-      "sort_order": 1,
-      "vivo": "",
-      "photo_url": "",
-      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
-      "sources": "Acta de nacimiento 1908",
-      "status": "en_proceso",
-      "media": [
-        {
-          "id": "med152",
-          "type": "photo",
-          "url": "assets/images/posts/roh-1908-nac-pedro-mauricio.webp",
-          "caption": "Acta de nacimiento de Pedro Mauricio Roh, 1908",
-          "date": "1908-03-24",
-          "source_label": "Registro Civil / parroquial",
+          "source_label": "",
           "group_label": "",
           "group_order": 0
         }
@@ -1308,10 +1308,41 @@
       ]
     },
     {
+      "id": "p123",
+      "name": "María Isidora Roh",
+      "gender": "F",
+      "birth_date": "1907-04-12",
+      "birth_place": "Villa Mantero, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 1,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "",
+      "sources": "Partida de nacimiento n.º 22, Registro Civil de Villa Mantero, Entre Ríos (1907)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med169",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1907-partida-maria-isidora.webp",
+          "caption": "Partida de nacimiento n.º 22 — María Isidora Roh, Registro Civil de Villa Mantero, Entre Ríos. Padres: Mauricio Roh y Rogelia Hernández; abuelos paternos José Roh y María Putallaz.",
+          "date": "1907-04-12",
+          "source_label": "",
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
       "id": "p22",
       "name": "Pedro Clemenzo",
       "gender": "",
-      "birth_date": "",
+      "birth_date": "1890",
       "birth_place": "Entre Rios",
       "death_date": "",
       "death_place": "",
@@ -1370,11 +1401,11 @@
       ]
     },
     {
-      "id": "p107",
-      "name": "Rogelia Roh",
-      "gender": "F",
-      "birth_date": "1909-04-17",
-      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "id": "p106",
+      "name": "Pedro Mauricio Roh",
+      "gender": "M",
+      "birth_date": "1908-03-24",
+      "birth_place": "Villa Mantero, Entre Ríos, Argentina",
       "death_date": "",
       "death_place": "",
       "father_id": "p97",
@@ -1384,16 +1415,16 @@
       "sort_order": 2,
       "vivo": "",
       "photo_url": "",
-      "notes": "Hija de Mauricio Francisco Roh y Rogelia Hernández.",
-      "sources": "Acta de nacimiento, Distrito Genacito 1909",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento 1908",
       "status": "en_proceso",
       "media": [
         {
-          "id": "med153",
+          "id": "med152",
           "type": "photo",
-          "url": "assets/images/posts/roh-1909-nac-rogelia-roh.webp",
-          "caption": "Acta de nacimiento de Rogelia Roh, 1909",
-          "date": "1909-04-17",
+          "url": "assets/images/posts/roh-1908-nac-pedro-mauricio.webp",
+          "caption": "Acta de nacimiento de Pedro Mauricio Roh, 1908",
+          "date": "1908-03-24",
           "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
@@ -1438,6 +1469,37 @@
           "source_label": "Registro Civil / parroquial",
           "group_label": "Nacimiento Luisa Odila 1908",
           "group_order": 1
+        }
+      ]
+    },
+    {
+      "id": "p124",
+      "name": "Felisa Clemenzo Roh",
+      "gender": "F",
+      "birth_date": "1890-03-07",
+      "birth_place": "Santa Fe, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p28",
+      "mother_id": "p85",
+      "branch": "clemenzo",
+      "generation": 4,
+      "sort_order": 2,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "",
+      "sources": "Bautismo, Santa Fe, 22-04-1890 (acta: nacida 07-03-1890, hija de «José Clemencio» y «Mariana Rô», suizos)",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med173",
+          "type": "photo",
+          "url": "assets/images/personas/p124-bautismo-1890.webp",
+          "caption": "Bautismo de Felisa — Santa Fe, 22-04-1890 (nacida 07-03-1890). Hija de «José Clemencio» y «Mariana Rô», suizos. Identificación con José (p28) × Marianna (p85): muy probable.",
+          "date": "1890-04-22",
+          "source_label": "",
+          "group_label": "",
+          "group_order": 0
         }
       ]
     },
@@ -1565,10 +1627,10 @@
       ]
     },
     {
-      "id": "p108",
-      "name": "Antonio Ramón Roh",
-      "gender": "M",
-      "birth_date": "1911-01-08",
+      "id": "p107",
+      "name": "Rogelia Roh",
+      "gender": "F",
+      "birth_date": "1909-04-17",
       "birth_place": "Genacito, Entre Ríos, Argentina",
       "death_date": "",
       "death_place": "",
@@ -1579,16 +1641,16 @@
       "sort_order": 3,
       "vivo": "",
       "photo_url": "",
-      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
-      "sources": "Acta de nacimiento, Distrito Genacito 1911",
+      "notes": "Hija de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1909",
       "status": "en_proceso",
       "media": [
         {
-          "id": "med154",
+          "id": "med153",
           "type": "photo",
-          "url": "assets/images/posts/roh-1911-nac-antonio-ramon-roh.webp",
-          "caption": "Acta de nacimiento de Antonio Ramón Roh, 1911",
-          "date": "1911-01-08",
+          "url": "assets/images/posts/roh-1909-nac-rogelia-roh.webp",
+          "caption": "Acta de nacimiento de Rogelia Roh, 1909",
+          "date": "1909-04-17",
           "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
@@ -1695,14 +1757,24 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med171",
+          "type": "photo",
+          "url": "assets/images/personas/p63-matrimonio-1912.webp",
+          "caption": "Matrimonio de Ángela Clemenzo con Francisco Mediavilla — Parroquia San Carlos, Buenos Aires, 28-09-1912. La declara hija de Esteban (Etienne) Clemenzo, de Suiza, y Estefanía Venegas.",
+          "date": "1912-09-28",
+          "source_label": "",
+          "group_label": "",
+          "group_order": 0
         }
       ]
     },
     {
-      "id": "p109",
-      "name": "Héctor Patricio Roh",
+      "id": "p108",
+      "name": "Antonio Ramón Roh",
       "gender": "M",
-      "birth_date": "1914-05-17",
+      "birth_date": "1911-01-08",
       "birth_place": "Genacito, Entre Ríos, Argentina",
       "death_date": "",
       "death_place": "",
@@ -1714,15 +1786,15 @@
       "vivo": "",
       "photo_url": "",
       "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
-      "sources": "Acta de nacimiento, Distrito Genacito 1914",
+      "sources": "Acta de nacimiento, Distrito Genacito 1911",
       "status": "en_proceso",
       "media": [
         {
-          "id": "med155",
+          "id": "med154",
           "type": "photo",
-          "url": "assets/images/posts/roh-1914-nac-hector-patricio-roh.webp",
-          "caption": "Acta de nacimiento de Héctor Patricio Roh, 1914",
-          "date": "1914-05-17",
+          "url": "assets/images/posts/roh-1911-nac-antonio-ramon-roh.webp",
+          "caption": "Acta de nacimiento de Antonio Ramón Roh, 1911",
+          "date": "1911-01-08",
           "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
@@ -1843,10 +1915,10 @@
       ]
     },
     {
-      "id": "p110",
-      "name": "Raúl Roque Roh",
+      "id": "p109",
+      "name": "Héctor Patricio Roh",
       "gender": "M",
-      "birth_date": "1917-12-30",
+      "birth_date": "1914-05-17",
       "birth_place": "Genacito, Entre Ríos, Argentina",
       "death_date": "",
       "death_place": "",
@@ -1858,15 +1930,15 @@
       "vivo": "",
       "photo_url": "",
       "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
-      "sources": "Acta de nacimiento, Distrito Genacito 1918",
+      "sources": "Acta de nacimiento, Distrito Genacito 1914",
       "status": "en_proceso",
       "media": [
         {
-          "id": "med156",
+          "id": "med155",
           "type": "photo",
-          "url": "assets/images/posts/roh-1918-nac-raul-roque-roh.webp",
-          "caption": "Acta de nacimiento de Raúl Roque Roh (1917, inscripto 1918)",
-          "date": "1917-12-30",
+          "url": "assets/images/posts/roh-1914-nac-hector-patricio-roh.webp",
+          "caption": "Acta de nacimiento de Héctor Patricio Roh, 1914",
+          "date": "1914-05-17",
           "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
@@ -1971,6 +2043,37 @@
           "caption": "Bautismo de Modesta Damiana Clemencia Clemenzoz",
           "date": null,
           "source_label": null,
+          "group_label": "",
+          "group_order": 0
+        }
+      ]
+    },
+    {
+      "id": "p110",
+      "name": "Raúl Roque Roh",
+      "gender": "M",
+      "birth_date": "1917-12-30",
+      "birth_place": "Genacito, Entre Ríos, Argentina",
+      "death_date": "",
+      "death_place": "",
+      "father_id": "p97",
+      "mother_id": "p99",
+      "branch": "roh",
+      "generation": 4,
+      "sort_order": 6,
+      "vivo": "",
+      "photo_url": "",
+      "notes": "Hijo de Mauricio Francisco Roh y Rogelia Hernández.",
+      "sources": "Acta de nacimiento, Distrito Genacito 1918",
+      "status": "en_proceso",
+      "media": [
+        {
+          "id": "med156",
+          "type": "photo",
+          "url": "assets/images/posts/roh-1918-nac-raul-roque-roh.webp",
+          "caption": "Acta de nacimiento de Raúl Roque Roh (1917, inscripto 1918)",
+          "date": "1917-12-30",
+          "source_label": "Registro Civil / parroquial",
           "group_label": "",
           "group_order": 0
         }
@@ -2118,16 +2221,6 @@
       "status": "en_proceso",
       "media": [
         {
-          "id": "med48",
-          "type": "photo",
-          "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
-          "caption": "Censo de Colon de 1895",
-          "date": "1895-01-01",
-          "source_label": null,
-          "group_label": "",
-          "group_order": 0
-        },
-        {
           "id": "med54",
           "type": "photo",
           "url": "assets/images/personas/p26-enrolamiento-militar.webp",
@@ -2206,6 +2299,26 @@
           "source_label": "Registro civil de Entre Ríos",
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med48",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
+          "caption": "Censo de Colon de 1895",
+          "date": "1895-01-01",
+          "source_label": null,
+          "group_label": "Censo de Colón de 1895",
+          "group_order": 0
+        },
+        {
+          "id": "med175",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p27-p25-1895-censo-2.webp",
+          "caption": "Censo nacional de 1895, Colón (Entre Ríos) — 2.ª hoja del hogar de François Clemenzo (continúa la hoja 1). Incluye a su hijo Pedro, 5 años (n. ~1890).",
+          "date": "1895",
+          "source_label": "",
+          "group_label": "Censo de Colón de 1895",
+          "group_order": 1
         },
         {
           "id": "med98",
@@ -2600,6 +2713,16 @@
           "source_label": null,
           "group_label": "",
           "group_order": 4
+        },
+        {
+          "id": "med172",
+          "type": "photo",
+          "url": "assets/images/personas/p40-censo-1895.webp",
+          "caption": "Censo nacional de 1895 (Buenos Aires) — Esteban (Etienne) Clemenzo, 31, suizo, casado, con Estefanía Venegas y sus hijos María Luisa, Fortunato, Juan y German (4 hijos, 9 años de matrimonio).",
+          "date": "1895",
+          "source_label": "",
+          "group_label": "",
+          "group_order": 0
         },
         {
           "id": "med100",

@@ -43,6 +43,7 @@
     command: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 3 3-3 3M13 15h5"/></svg>',
     theme:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>',
     nota:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+    wiki:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="9" r="2.4"/><circle cx="9" cy="18" r="2.4"/><path d="M8 7.2 16 8.4M7.4 8 8.6 16M10.6 16.6 16 11"/></svg>',
   };
 
   // La línea de tiempo (master-detail) no entra en pantallas chicas
@@ -165,10 +166,11 @@
   async function loadIndex() {
     if (_index || _loading) return;
     _loading = true;
-    const [arbol, posts, notasRaw] = await Promise.all([
+    const [arbol, posts, notasRaw, wikiRaw] = await Promise.all([
       fetch(ROOT + 'assets/data/arbol.json').then(r => r.ok ? r.json() : { personas: [] }).catch(() => ({ personas: [] })),
       fetch(ROOT + 'assets/data/blog-entries.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch(ROOT + 'assets/data/notas.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch(ROOT + 'assets/data/wiki-graph.json').then(r => r.ok ? r.json() : { nodes: [] }).catch(() => ({ nodes: [] })),
     ]);
 
     const personas = (arbol.personas || []).map(p => {
@@ -194,7 +196,16 @@
                _t: norm(title), _h: norm(t) };
     });
 
-    _index = { personas, posts: list, notas };
+    // Páginas de la wiki (lugares/fuentes/eventos/temas). Las personas ya están
+    // indexadas arriba y los posts en el blog, así que se excluyen para no duplicar.
+    const WIKI_TYPE_ES = { lugar: 'Lugar', fuente: 'Fuente', evento: 'Evento', tema: 'Tema' };
+    const wikiPages = ((wikiRaw && wikiRaw.nodes) || [])
+      .filter(n => !/^p\d+$/.test(n.id) && n.type !== 'tag' && n.type !== 'post' && n.hasContent)
+      .map(n => ({ type: 'wiki', id: n.id, title: n.title,
+                   sub: ['Wiki', WIKI_TYPE_ES[n.type] || ''].filter(Boolean).join(' · '),
+                   _t: norm(n.title), _h: norm([n.title, n.summary || '', n.type || ''].join(' ')) }));
+
+    _index = { personas, posts: list, notas, wikiPages };
     _loading = false;
   }
 
@@ -273,6 +284,7 @@
     const personas = (_index && _index.personas) || [];
     const posts = (_index && _index.posts) || [];
     const notas = (_index && _index.notas) || [];
+    const wikiPages = (_index && _index.wikiPages) || [];
 
     if (!q) {
       // Estado vacío: sugerencias — filtros de la wiki (si aplica) + comandos + páginas + posts recientes
@@ -294,6 +306,7 @@
       { label: 'Filtrar la wiki', items: rank(wikiFilterItems(), q, 5) },
       { label: 'Comandos',        items: rank(commandItems(), q, 5) },
       { label: 'Páginas',         items: rank(pages, q, 6) },
+      { label: 'Wiki',            items: rank(wikiPages, q, 7) },
       { label: 'Personas',        items: rank(personas, q, 7) },
       { label: 'Línea de tiempo', items: tl },
       { label: 'Posts',           items: rank(posts, q, 6) },
@@ -382,6 +395,12 @@
       const focusFn = window.__personaFocus || window.__treeFocus;
       if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
       window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+      return;
+    }
+    if (it.type === 'wiki') {
+      // Enfocar el nodo en el grafo si ya estamos en la wiki; si no, navegar con ?focus=
+      if (typeof window.__personaFocus === 'function') { window.__personaFocus(it.id); close(); return; }
+      window.location.href = ROOT + 'wiki.html?focus=' + encodeURIComponent(it.id);
       return;
     }
     if (it.type === 'nota') {
