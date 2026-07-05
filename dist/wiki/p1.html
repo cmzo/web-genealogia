@@ -69,7 +69,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p3.html" data-node="p3">Matias Damian Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p4.html" data-node="p4">Maria Cecilia Vargas Yegros</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p3.html" data-node="p3">Matias Damian Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p4.html" data-node="p4">Maria Cecilia Vargas Yegros</a></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p3" data-node="p3">Matias Damian Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p4" data-node="p4">Maria Cecilia Vargas Yegros</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p3" data-node="p3">Matias Damian Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p4" data-node="p4">Maria Cecilia Vargas Yegros</a></div></div>
         </section>
       </div>
     </main>
@@ -94,11 +94,14 @@
       const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
       imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
       if (document.querySelector('.mermaid')) {
-        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+        const s = document.createElement('script');
+        s.src = '../../assets/js/vendor/mermaid.min.js';
+        s.onload = () => {
           const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
-          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
-        });
+          mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+        };
+        document.head.appendChild(s);
       }
     });
   </script>

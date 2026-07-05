@@ -66,7 +66,7 @@
 
         <article class="wiki-page-content">
           <h2 id="la-historia">La historia</h2>
-<p>Identificado mediante el PDF <em>Émigrés de Conthey</em> (Gabriel Antonin, valais-argentine.ch): padre de Juan José Roch (<a class="wiki-link wiki-link--persona" href="p38.html" data-node="p38">Juan José Roch</a>), casado con Anne Marie Papilloud (<a class="wiki-link wiki-link--persona" href="p120.html" data-node="p120">Anne Marie Papilloud</a>). Su familia residía en Aven, aldea de la commune de Conthey, en la generación anterior a la emigración de 1873.</p>
+<p>Identificado mediante el PDF <em>Émigrés de Conthey</em> (Gabriel Antonin, valais-argentine.ch): padre de Juan José Roch (<a class="wiki-link wiki-link--persona" href="p38.html" data-node="p38">Juan José Roch</a>), casado con Anne Marie Papilloud (<a class="wiki-link wiki-link--persona" href="../../arbol.html?focus=p120" data-node="p120">Anne Marie Papilloud</a>). Su familia residía en Aven, aldea de la commune de Conthey, en la generación anterior a la emigración de 1873.</p>
 <h2 id="cronología">Cronología</h2>
 <p><em>Sin cronología documentada todavía.</em></p>
 <h2 id="qué-falta-hipótesis">Qué falta / hipótesis</h2>
@@ -82,7 +82,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p120.html" data-node="p120">Anne Marie Papilloud</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="p120.html" data-node="p120">Anne Marie Papilloud</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#roh</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#conthey</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p120" data-node="p120">Anne Marie Papilloud</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p120" data-node="p120">Anne Marie Papilloud</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#roh</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#conthey</span></div></div>
         </section>
       </div>
     </main>
@@ -107,11 +107,14 @@
       const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
       imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
       if (document.querySelector('.mermaid')) {
-        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+        const s = document.createElement('script');
+        s.src = '../../assets/js/vendor/mermaid.min.js';
+        s.onload = () => {
           const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
-          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
-        });
+          mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+        };
+        document.head.appendChild(s);
       }
     });
   </script>

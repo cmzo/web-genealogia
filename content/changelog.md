@@ -1,3 +1,21 @@
+### 5 de julio de 2026
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> «Leer investigación» ya no abre páginas vacías
+
+El botón «Leer investigación» del grafo aparecía en las 124 personas, pero la gran mayoría todavía no tiene investigación escrita: abrías el panel de lectura y te encontrabas una plantilla vacía. Ahora el botón aparece **solo en las personas que de verdad tienen algo para leer**; el resto sigue en el grafo con sus relaciones, y su ficha completa vive en el árbol.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Un anillo marca qué nodos tienen algo para leer
+
+En el grafo de la wiki, los nodos que tienen contenido —una investigación, una página de lugar o fuente, un post— llevan ahora un **anillo verde**. De un vistazo se ve dónde hay historia para abrir, sin clickear a ciegas.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El grafo, más legible
+
+Varios retoques finos al grafo de conocimiento: los colores de lugares, fuentes, eventos y posts pasaron a una **familia de tonos cálidos** propia del sitio (antes un lugar podía confundirse con una persona de cierta rama, porque compartían color exacto); las líneas de parentesco se dibujan **más tenues** que las de menciones y enlaces, así resalta la red de investigación sobre el esqueleto del árbol; y al alternar entre modo día y noche **el grafo acompaña al instante**, sin recargar la página.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La wiki ya no depende de servidores externos
+
+Las bibliotecas que dibujan el grafo y los diagramas se servían desde un CDN externo: si ese servicio fallaba, la wiki no cargaba. Ahora viven en el propio sitio, como ya pasaba con las tipografías — la wiki carga completa desde cmzo.net.
+
 ### 28 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> El árbol de Jean-Yves, en la wiki

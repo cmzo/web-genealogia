@@ -1224,6 +1224,20 @@
           <h2 class="ds-section-heading">Wiki: vista de lectura</h2>
           <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Lenguaje editorial propio de los artículos de la wiki (distinto del blog). Lo genera <code class="td-mono">scripts/build-wiki.js</code> desde Markdown y se estiliza bajo <code class="td-mono">.wiki-page-content</code> (<code class="td-mono">assets/css/wiki.css</code>). Se usa igual en la página directa <code class="td-mono">dist/wiki/&lt;id&gt;.html</code> y en el modal de lectura del grafo.</p>
 
+          <!-- Colores de tipo del grafo -->
+          <div class="comp-block" style="margin-bottom:36px;">
+            <p class="comp-label">Colores de tipo (grafo, badges y chips)</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#4a7c59;"></span>lugar <code class="td-mono">#4a7c59</code></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#854d0e;"></span>fuente <code class="td-mono">#854d0e</code></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#8f4632;"></span>evento <code class="td-mono">#8f4632</code></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#2d4a3e;"></span>tema <code class="td-mono">--accent</code></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#3f5e6b;"></span>post <code class="td-mono">#3f5e6b</code></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);"><span style="width:14px;height:14px;border-radius:50%;background:#64748b;"></span>tag <code class="td-mono">#64748b</code></span>
+            </div>
+            <p style="margin:12px 0 0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Familia apagada/cálida, deliberadamente distinta de la paleta viva de las ramas del árbol: en el grafo, las páginas/posts se leen como otra clase de nodo. Vive en <code class="td-mono">TYPE_COLOR</code> (<code class="td-mono">wiki/graph.js</code>) y en los badges/chips de <code class="td-mono">wiki.css</code> — cambiar siempre en ambos. Los nodos con contenido legible llevan un anillo <code class="td-mono">--accent</code>; las aristas de familia van más tenues (opacidad 0.18) que las de menciones (0.4).</p>
+          </div>
+
           <div class="editorial-wrap">
 
             <!-- Lede + headings -->

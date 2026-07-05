@@ -4,6 +4,8 @@ node_modules
 /data
 /content/posts
 /content/templates
+/content/wiki
+/content/personas
 /package.json
 /package-lock.json
 /wrangler.toml

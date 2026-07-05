@@ -166,13 +166,15 @@ function build() {
   const personaById = new Map((arbol.personas || []).map(p => [p.id, p]));
 
   // Notas de persona disponibles en disco → { body, summary }
-  const notaById = new Map();   // pNN -> { body, summary }
+  // Las plantillas sin investigar (stub) entran al grafo pero sin botón "Leer".
+  const notaById = new Map();   // pNN -> { body, summary, tags, stub }
   if (fs.existsSync(PERSONAS_DIR)) {
     fs.readdirSync(PERSONAS_DIR).filter(f => /^p\d+\.md$/.test(f)).forEach(file => {
       const id = file.replace(/\.md$/, '');
       if (!personaById.has(id)) return;
       const { metadata, body } = extractFrontMatter(fs.readFileSync(path.join(PERSONAS_DIR, file), 'utf8'));
-      notaById.set(id, { body, summary: metadata.summary || '', tags: parseTags(metadata.tags) });
+      const stub = body.includes('_Investigación pendiente._');
+      notaById.set(id, { body, summary: metadata.summary || '', tags: parseTags(metadata.tags), stub });
     });
   }
 
@@ -210,7 +212,7 @@ function build() {
     if (nodes.has(id)) return nodes.get(id);
     const p = personaById.get(id);
     if (!p) return null;
-    const hasNote = notaById.has(id);
+    const hasNote = notaById.has(id) && !notaById.get(id).stub;
     const node = {
       id, title: p.name, type: 'persona', branch: p.branch || '',
       url: hasNote ? `dist/wiki/${id}.html` : `arbol.html?focus=${id}`,
@@ -381,14 +383,15 @@ function build() {
   }
 
   function writePage({ slug, type, title, description, content, related }) {
+    // Reemplazos como función: un "$&" en el contenido no debe interpretarse.
     const html = template
-      .replace(/\{\{title\}\}/g, escapeHtml(title))
-      .replace(/\{\{typelabel\}\}/g, TYPE_LABEL[type] || type)
-      .replace(/\{\{type\}\}/g, type)
-      .replace(/\{\{description\}\}/g, escapeHtml(description || ''))
-      .replace(/\{\{canonical\}\}/g, `${BASE_URL}/dist/wiki/${slug}.html`)
-      .replace(/\{\{content\}\}/g, content)
-      .replace(/\{\{related\}\}/g, related);
+      .replace(/\{\{title\}\}/g, () => escapeHtml(title))
+      .replace(/\{\{typelabel\}\}/g, () => TYPE_LABEL[type] || type)
+      .replace(/\{\{type\}\}/g, () => type)
+      .replace(/\{\{description\}\}/g, () => escapeHtml(description || ''))
+      .replace(/\{\{canonical\}\}/g, () => `${BASE_URL}/dist/wiki/${slug}.html`)
+      .replace(/\{\{content\}\}/g, () => content)
+      .replace(/\{\{related\}\}/g, () => related);
     fs.writeFileSync(path.join(OUTPUT_DIR, `${slug}.html`), html);
   }
 
@@ -410,8 +413,9 @@ function build() {
     console.log(`  ✅ Wiki: ${page.title}`);
   });
 
-  // Notas de persona
-  notaById.forEach(({ body, summary, tags }, id) => {
+  // Notas de persona (los stubs no generan página)
+  notaById.forEach(({ body, summary, tags, stub }, id) => {
+    if (stub) return;
     const p = personaById.get(id);
     let md = linkifyPersonas(body, id).replace(/^\s*#\s+[^\n]+\n+/, '');
     const outIds = [...nodes.keys()].filter(nid => edges.some(e =>

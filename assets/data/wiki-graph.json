@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-28T20:42:23.607Z",
+  "generated": "2026-07-05T18:48:01.371Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -51,189 +51,189 @@
       "title": "Felix Ricardo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p10.html",
-      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en 1926.",
-      "hasContent": true
+      "url": "arbol.html?focus=p10",
+      "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
+      "hasContent": false
     },
     {
       "id": "p100",
       "title": "Anselmo Leopoldo Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p100.html",
+      "url": "arbol.html?focus=p100",
       "summary": "n. 1876, Colón, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p101",
       "title": "Manuela Locher",
       "type": "persona",
       "branch": "locher",
-      "url": "dist/wiki/p101.html",
+      "url": "arbol.html?focus=p101",
       "summary": "n. 1876, Departamento Colón, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p102",
       "title": "Francisco José Vergère",
       "type": "persona",
       "branch": "vergere",
-      "url": "dist/wiki/p102.html",
+      "url": "arbol.html?focus=p102",
       "summary": "n. 1836, Conthey, Valais, Suiza",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p103",
       "title": "Domingo Mersilli",
       "type": "persona",
       "branch": "mersilli",
-      "url": "dist/wiki/p103.html",
+      "url": "arbol.html?focus=p103",
       "summary": "n. 1860, Italia",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p104",
       "title": "José Domingo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p104.html",
-      "summary": "Hijo de José Clemenzo (p28) y Marianna Roh (p85). Nació en 1884.",
-      "hasContent": true
+      "url": "arbol.html?focus=p104",
+      "summary": "n. 1884-07-08, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p105",
       "title": "Gregoria Orfilia Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p105.html",
-      "summary": "Hija de la familia Roh establecida en Argentina, nacida en 1906.",
-      "hasContent": true
+      "url": "arbol.html?focus=p105",
+      "summary": "n. 1906-05-09, Genacito, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p106",
       "title": "Pedro Mauricio Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p106.html",
-      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1908.",
-      "hasContent": true
+      "url": "arbol.html?focus=p106",
+      "summary": "n. 1908-03-24, Villa Mantero, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p107",
       "title": "Rogelia Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p107.html",
-      "summary": "Hija de la familia Roh establecida en Argentina, nacida en 1909.",
-      "hasContent": true
+      "url": "arbol.html?focus=p107",
+      "summary": "n. 1909-04-17, Genacito, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p108",
       "title": "Antonio Ramón Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p108.html",
-      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1911.",
-      "hasContent": true
+      "url": "arbol.html?focus=p108",
+      "summary": "n. 1911-01-08, Genacito, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p109",
       "title": "Héctor Patricio Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p109.html",
-      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1914.",
-      "hasContent": true
+      "url": "arbol.html?focus=p109",
+      "summary": "n. 1914-05-17, Genacito, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p11",
       "title": "Raquel Noemi Carvallo",
       "type": "persona",
       "branch": "carvallo",
-      "url": "dist/wiki/p11.html",
-      "summary": "Casada en la familia Clemenzo; figura en la generación 3 de la rama junto a Felix Ricardo Clemenzo (p10).",
-      "hasContent": true
+      "url": "arbol.html?focus=p11",
+      "summary": "n. CABA",
+      "hasContent": false
     },
     {
       "id": "p110",
       "title": "Raúl Roque Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p110.html",
-      "summary": "Hijo de la familia Roh establecida en Argentina, nacido en 1917.",
-      "hasContent": true
+      "url": "arbol.html?focus=p110",
+      "summary": "n. 1917-12-30, Genacito, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p111",
       "title": "Leopoldo Ramón Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p111.html",
+      "url": "arbol.html?focus=p111",
       "summary": "n. 1898, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p112",
       "title": "Laurindo Anselmo Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p112.html",
+      "url": "arbol.html?focus=p112",
       "summary": "n. 1902-11-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p113",
       "title": "Luisa Odila Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p113.html",
+      "url": "arbol.html?focus=p113",
       "summary": "n. 1908-07-21, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p114",
       "title": "Juan Héctor Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p114.html",
+      "url": "arbol.html?focus=p114",
       "summary": "n. 1911-03-08, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p115",
       "title": "María Catalina Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p115.html",
+      "url": "arbol.html?focus=p115",
       "summary": "n. 1912-05-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p116",
       "title": "Irma Cirila Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "dist/wiki/p116.html",
+      "url": "arbol.html?focus=p116",
       "summary": "n. 1916-03-09, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p117",
       "title": "Marie Rosalie Roch",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p117.html",
-      "summary": "Hija de Juan José Roch (p38) y Marie Putallaz, nacida en Conthey en 1864. Emigró a Argentina con la familia en 1873. La grafía «Roch» (vs. «Roh» argentina) sugiere que nació en Suiza.",
-      "hasContent": true
+      "url": "arbol.html?focus=p117",
+      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p118",
       "title": "Joseph Marie Roch",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p118.html",
-      "summary": "Hijo menor de Juan José Roch (p38) y Marie Putallaz, nacido en Conthey en 1870. Emigró a Argentina con su familia en 1873, siendo un niño de tres años. La grafía «Roch» indica nacimiento en Suiza.",
-      "hasContent": true
+      "url": "arbol.html?focus=p118",
+      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p119",
@@ -249,18 +249,18 @@
       "title": "Jorge Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p12.html",
-      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27).",
-      "hasContent": true
+      "url": "arbol.html?focus=p12",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p120",
       "title": "Anne Marie Papilloud",
       "type": "persona",
       "branch": "papilloud",
-      "url": "dist/wiki/p120.html",
-      "summary": "Madre de Juan José Roch (p38). Casada con Jean Joseph Roch (p119) en Conthey, Valais. Su presencia en el censo de Aven de 1850 (Familia A) fue clave para identificar la familia de origen de su hijo.",
-      "hasContent": true
+      "url": "arbol.html?focus=p120",
+      "summary": "n. 1796, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p121",
@@ -276,153 +276,153 @@
       "title": "Catherine Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p122.html",
-      "summary": "Madre de Marie Putallaz (esposa de Juan José Roch p38). Casada con Jean François Putallaz (p121) en Conthey, Valais. Su apellido Roh revela el entrelazamiento familiar típico de Aven.",
-      "hasContent": true
+      "url": "arbol.html?focus=p122",
+      "summary": "n. Conthey, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p123",
       "title": "María Isidora Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p123.html",
-      "summary": "Hija de Mauricio Francisco Roh (p97) y Rogelia Hernández (p99). Nació el 12 de abril de 1907 en Villa Mantero, Entre Ríos. Sobrina de María Celestina Roh (p27).",
-      "hasContent": true
+      "url": "arbol.html?focus=p123",
+      "summary": "n. 1907-04-12, Villa Mantero, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p124",
       "title": "Felisa Clemenzo Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p124.html",
-      "summary": "Hija de José Clemenzo (p28) y Marianna Roh (p85). Nació el 7 de marzo de 1890 en Santa Fe; hermana de José Domingo (p104) y María Luisa (p84). La identificación de los padres del acta («José Clemencio» y «Mariana Rô», suizos) con José y Marianna es muy probable, no confirmada.",
-      "hasContent": true
+      "url": "arbol.html?focus=p124",
+      "summary": "n. 1890-03-07, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p125",
       "title": "José Martín Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p125.html",
-      "summary": "Hijo natural de María Luisa Clemenzo (p84); nieto de José Clemenzo (p28) y Marianna Roh (p85). Nació el 23 de febrero de 1905 en Santa Fe. Se casó con Clara Rosa Cardozo en 1927 (anotación al margen de su bautismo).",
-      "hasContent": true
+      "url": "arbol.html?focus=p125",
+      "summary": "n. 1905-02-23, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p13",
       "title": "Ana Mary Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p13.html",
-      "summary": "Nieta de Francisco Clemenzo (p26) y María Celestina Roh (p27).",
-      "hasContent": true
+      "url": "arbol.html?focus=p13",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p14",
       "title": "Margot Celestina Clemenzo Queipo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p14.html",
-      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
-      "hasContent": true
+      "url": "arbol.html?focus=p14",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p15",
       "title": "Eduardo Clemenzo Queipo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p15.html",
-      "summary": "Hijo de la unión Clemenzo-Queipo; nieto de Francisco Clemenzo (p26) por línea paterna e hijo de Isabel Queipo (p19).",
-      "hasContent": true
+      "url": "arbol.html?focus=p15",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p16",
       "title": "Yolanda Isabel Clemenzo Queipo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p16.html",
-      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
-      "hasContent": true
+      "url": "arbol.html?focus=p16",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p17",
       "title": "Olga Hemilce Clemenzo Queipo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p17.html",
-      "summary": "Hija de la unión Clemenzo-Queipo; nieta de Francisco Clemenzo (p26) por línea paterna e hija de Isabel Queipo (p19).",
-      "hasContent": true
+      "url": "arbol.html?focus=p17",
+      "summary": "n. Bs As",
+      "hasContent": false
     },
     {
       "id": "p18",
       "title": "Felix Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p18.html",
-      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Entre Ríos en 1894.",
-      "hasContent": true
+      "url": "arbol.html?focus=p18",
+      "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p19",
       "title": "Isabel Maria Queipo",
       "type": "persona",
       "branch": "queipo",
-      "url": "dist/wiki/p19.html",
-      "summary": "Natural de Entre Ríos, nacida en 1897. Casada en la familia Clemenzo; madre de los Clemenzo Queipo (Margot, Eduardo, Yolanda, Olga).",
-      "hasContent": true
+      "url": "arbol.html?focus=p19",
+      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p2",
       "title": "Manuel Fernandez Clemenzo",
       "type": "persona",
       "branch": "fernandez",
-      "url": "dist/wiki/p2.html",
+      "url": "arbol.html?focus=p2",
       "summary": "n. 2023-08-03, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p20",
       "title": "Leon Francisco Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p20.html",
-      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en San José, Entre Ríos, en 1891. Francisco Clemenzo falleció en su domicilio de Concepción del Uruguay en 1928.",
-      "hasContent": true
+      "url": "arbol.html?focus=p20",
+      "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
+      "hasContent": false
     },
     {
       "id": "p21",
       "title": "Emiliana Elena Baster",
       "type": "persona",
       "branch": "baster",
-      "url": "dist/wiki/p21.html",
-      "summary": "Casada en la familia Clemenzo en Argentina; figura en la generación 4 de la rama.",
-      "hasContent": true
+      "url": "arbol.html?focus=p21",
+      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
+      "hasContent": false
     },
     {
       "id": "p22",
       "title": "Pedro Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p22.html",
-      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27). El censo de Colón de 1895 lo registra con 5 años → nacido hacia 1890.",
-      "hasContent": true
+      "url": "arbol.html?focus=p22",
+      "summary": "n. 1890, Entre Rios",
+      "hasContent": false
     },
     {
       "id": "p23",
       "title": "Francisca Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p23.html",
-      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27). Sin fecha documentada; posiblemente la hija de 8 años registrada como «Celestina» en el censo de 1895.",
-      "hasContent": true
+      "url": "arbol.html?focus=p23",
+      "summary": "n. Entre Rios",
+      "hasContent": false
     },
     {
       "id": "p25",
       "title": "Maria Celestina Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p25.html",
-      "summary": "Hija de María Celestina Roh (p27), registrada solo con el apellido materno y sin padre en el acta. La paternidad —posiblemente Francisco Clemenzo (p26)— está sin confirmar. Nació en Santa Fe en 1885, antes de la unión estable de la familia; figura en el censo de 1895.",
-      "hasContent": true
+      "url": "arbol.html?focus=p25",
+      "summary": "n. 1885-06-27, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p26",
@@ -456,72 +456,72 @@
       "title": "Maria Luisa Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p29.html",
-      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Colonia Yeruá, Entre Ríos, en 1897.",
-      "hasContent": true
+      "url": "arbol.html?focus=p29",
+      "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p3",
       "title": "Matias Damian Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p3.html",
+      "url": "arbol.html?focus=p3",
       "summary": "n. 1986-08-07, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p30",
       "title": "Carlota Julia Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p30.html",
-      "summary": "Hija de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Colonia Yeruá en 1899. Su acta la declara hija «civil» en lugar de «legítima», señal de la unión posiblemente no formalizada de sus padres.",
-      "hasContent": true
+      "url": "arbol.html?focus=p30",
+      "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p31",
       "title": "Tomas Baster",
       "type": "persona",
       "branch": "baster",
-      "url": "dist/wiki/p31.html",
+      "url": "arbol.html?focus=p31",
       "summary": "n. Inglaterra",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p32",
       "title": "Francisca Guido",
       "type": "persona",
       "branch": "guido",
-      "url": "dist/wiki/p32.html",
+      "url": "arbol.html?focus=p32",
       "summary": "n. Uruguay",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p33",
       "title": "Horacio Lorenzo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p33.html",
-      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Entre Ríos en 1914.",
-      "hasContent": true
+      "url": "arbol.html?focus=p33",
+      "summary": "n. 1914-08-10, Concepción del Uruguay, Entre Rios, Argentina · f. 1989-03-27, Gualeguaychu, Entre Rios, Argentina",
+      "hasContent": false
     },
     {
       "id": "p34",
       "title": "Elena Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p34.html",
-      "summary": "Nieta de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacida en Argentina en 1917.",
-      "hasContent": true
+      "url": "arbol.html?focus=p34",
+      "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
+      "hasContent": false
     },
     {
       "id": "p35",
       "title": "Rodolfo Ambrosio Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p35.html",
-      "summary": "Nieto de Francisco Clemenzo (p26) y María Celestina Roh (p27), nacido en Argentina en 1919.",
-      "hasContent": true
+      "url": "arbol.html?focus=p35",
+      "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p36",
@@ -537,9 +537,9 @@
       "title": "Marie Louise Stalder",
       "type": "persona",
       "branch": "stalder",
-      "url": "dist/wiki/p37.html",
-      "summary": "Madre de François (p26), José y Etienne Clemenzo. Natural de Salins, Valais. Tras enviudar hacia 1871–74, sus hijos emigraron a Argentina; ella no aparece en los registros argentinos.",
-      "hasContent": true
+      "url": "arbol.html?focus=p37",
+      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p38",
@@ -555,18 +555,18 @@
       "title": "Maria Putallaz",
       "type": "persona",
       "branch": "putallaz",
-      "url": "dist/wiki/p39.html",
-      "summary": "Esposa de Juan José Roch (p38), hija de Jean François Putallaz (p121) y Catherine Roh (p122). Nacida en Aven, Conthey, en 1835. Emigró a Argentina con su familia en 1873; el censo de 1895 la registra en Colón, Entre Ríos, como suiza.",
-      "hasContent": true
+      "url": "arbol.html?focus=p39",
+      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p4",
       "title": "Maria Cecilia Vargas Yegros",
       "type": "persona",
       "branch": "vargas yegros",
-      "url": "dist/wiki/p4.html",
+      "url": "arbol.html?focus=p4",
       "summary": "n. 1983-12-20, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p40",
@@ -582,153 +582,153 @@
       "title": "Estefania Venegas",
       "type": "persona",
       "branch": "venegas",
-      "url": "dist/wiki/p41.html",
+      "url": "arbol.html?focus=p41",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p42",
       "title": "Gustavo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p42.html",
+      "url": "arbol.html?focus=p42",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p43",
       "title": "Jorge Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p43.html",
+      "url": "arbol.html?focus=p43",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p44",
       "title": "Pablo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p44.html",
+      "url": "arbol.html?focus=p44",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p45",
       "title": "Sylvia Alina Lantz",
       "type": "persona",
       "branch": "Lantz",
-      "url": "dist/wiki/p45.html",
+      "url": "arbol.html?focus=p45",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p46",
       "title": "Maria Alejandra Cybulski",
       "type": "persona",
       "branch": "cybulski",
-      "url": "dist/wiki/p46.html",
+      "url": "arbol.html?focus=p46",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p47",
       "title": "Sofia Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p47.html",
+      "url": "arbol.html?focus=p47",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p48",
       "title": "Josefina Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p48.html",
+      "url": "arbol.html?focus=p48",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p49",
       "title": "Elida Vasquez",
       "type": "persona",
       "branch": "vasquez",
-      "url": "dist/wiki/p49.html",
+      "url": "arbol.html?focus=p49",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p5",
       "title": "Micaela Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p5.html",
+      "url": "arbol.html?focus=p5",
       "summary": "n. 1991-07-06, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p50",
       "title": "Oscar Edgar Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "dist/wiki/p50.html",
-      "summary": "Familiar de Cristina Magdalena Arceo (p8), de la familia Arceo radicada en Argentina.",
-      "hasContent": true
+      "url": "arbol.html?focus=p50",
+      "summary": "",
+      "hasContent": false
     },
     {
       "id": "p51",
       "title": "Benito Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "dist/wiki/p51.html",
-      "summary": "Familiar de Cristina Magdalena Arceo (p8), de la familia Arceo radicada en Argentina.",
-      "hasContent": true
+      "url": "arbol.html?focus=p51",
+      "summary": "",
+      "hasContent": false
     },
     {
       "id": "p52",
       "title": "Antonia Yanitelli",
       "type": "persona",
       "branch": "yanitelli",
-      "url": "dist/wiki/p52.html",
+      "url": "arbol.html?focus=p52",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p53",
       "title": "Enrique Alfredo Vasquez",
       "type": "persona",
       "branch": "vasquez",
-      "url": "dist/wiki/p53.html",
+      "url": "arbol.html?focus=p53",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p54",
       "title": "Maria Luisa Fracchia",
       "type": "persona",
       "branch": "fracchia",
-      "url": "dist/wiki/p54.html",
+      "url": "arbol.html?focus=p54",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p55",
       "title": "Pablo Martin Vasquez",
       "type": "persona",
       "branch": "vasquez",
-      "url": "dist/wiki/p55.html",
+      "url": "arbol.html?focus=p55",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p56",
       "title": "Elvira Garrido",
       "type": "persona",
       "branch": "",
-      "url": "dist/wiki/p56.html",
+      "url": "arbol.html?focus=p56",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p57",
@@ -744,135 +744,135 @@
       "title": "Marie Catherine Cerisier",
       "type": "persona",
       "branch": "cerisier",
-      "url": "dist/wiki/p58.html",
-      "summary": "Esposa de Jean Joseph Clemenzo (p57) y abuela del emigrante François Clemenzo (p26). Natural de Ardon/Riddes, Valais. Encabezó el hogar como viuda en el censo de Riddes de 1850.",
-      "hasContent": true
+      "url": "arbol.html?focus=p58",
+      "summary": "n. 1786 · f. 1851/1861",
+      "hasContent": false
     },
     {
       "id": "p59",
       "title": "Maria Luisa Perceveranda Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p59.html",
-      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1887. Lleva el apellido «Clemenzoz», grafía usada en los registros argentinos de esta rama.",
-      "hasContent": true
+      "url": "arbol.html?focus=p59",
+      "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p6",
       "title": "Gustavo Fernandez",
       "type": "persona",
       "branch": "fernandez",
-      "url": "dist/wiki/p6.html",
+      "url": "arbol.html?focus=p6",
       "summary": "n. 1991-05-30, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p60",
       "title": "Fortunato Abelardo Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p60.html",
-      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1889.",
-      "hasContent": true
+      "url": "arbol.html?focus=p60",
+      "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p61",
       "title": "Juan Francisco Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p61.html",
-      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1891.",
-      "hasContent": true
+      "url": "arbol.html?focus=p61",
+      "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p62",
       "title": "German Cipriano Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p62.html",
-      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1893.",
-      "hasContent": true
+      "url": "arbol.html?focus=p62",
+      "summary": "n. 1893-11-13, Partido de San Nicolas",
+      "hasContent": false
     },
     {
       "id": "p63",
       "title": "Angela Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p63.html",
-      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1895.",
-      "hasContent": true
+      "url": "arbol.html?focus=p63",
+      "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p64",
       "title": "Petrona Estefania Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p64.html",
-      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1897.",
-      "hasContent": true
+      "url": "arbol.html?focus=p64",
+      "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p65",
       "title": "Modesta Damiana Clemencia Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p65.html",
-      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1902.",
-      "hasContent": true
+      "url": "arbol.html?focus=p65",
+      "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p66",
       "title": "Felisa Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p66.html",
-      "summary": "Hija de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1904.",
-      "hasContent": true
+      "url": "arbol.html?focus=p66",
+      "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p67",
       "title": "Esteban Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p67.html",
-      "summary": "Hijo de Etienne (Esteban) Clemenzo (p40) y Estefania Venegas (p41). Nació en Entre Ríos en 1906. El último de los hijos registrados de la rama Clemenzoz.",
-      "hasContent": true
+      "url": "arbol.html?focus=p67",
+      "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
+      "hasContent": false
     },
     {
       "id": "p68",
       "title": "Ricardo Queipo",
       "type": "persona",
       "branch": "queipo",
-      "url": "dist/wiki/p68.html",
-      "summary": "Familiar de Isabel María Queipo (p19), de la familia Queipo radicada en Entre Ríos.",
-      "hasContent": true
+      "url": "arbol.html?focus=p68",
+      "summary": "",
+      "hasContent": false
     },
     {
       "id": "p69",
       "title": "Isabel Teresa Viñales",
       "type": "persona",
       "branch": "viñales",
-      "url": "dist/wiki/p69.html",
+      "url": "arbol.html?focus=p69",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p7",
       "title": "Daniel Jorge Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p7.html",
+      "url": "arbol.html?focus=p7",
       "summary": "n. 1959-12-07, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p70",
       "title": "Antonio Fonteine",
       "type": "persona",
       "branch": "fonteine",
-      "url": "dist/wiki/p70.html",
+      "url": "arbol.html?focus=p70",
       "summary": "n. Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p71",
@@ -888,270 +888,270 @@
       "title": "Joseph Florentine Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p72.html",
-      "summary": "Hijo mayor de Jean Joseph Clemenzo (p57), hermano de François Clemenzoz (p36). Los censos de 1829 lo ubican como estudiante en Friburgo de Brisgovia y con domicilio en Viena.",
-      "hasContent": true
+      "url": "arbol.html?focus=p72",
+      "summary": "n. 1805, Ardon",
+      "hasContent": false
     },
     {
       "id": "p73",
       "title": "Joseph Marie Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p73.html",
-      "summary": "Hijo de Jean Joseph Clemenzo (p57), hermano de François Clemenzoz (p36). Natural de Ardon, Valais.",
-      "hasContent": true
+      "url": "arbol.html?focus=p73",
+      "summary": "n. 1818, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p74",
       "title": "Janne Marie Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p74.html",
-      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Aparece en los censos del Valais hasta 1850, cuando acompañaba a su madre viuda.",
-      "hasContent": true
+      "url": "arbol.html?focus=p74",
+      "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p75",
       "title": "Marie Henriette Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p75.html",
-      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Natural de Ardon, Valais. Es la única persona de esta generación con estado «verificado» en el árbol.",
-      "hasContent": true
+      "url": "arbol.html?focus=p75",
+      "summary": "n. 1815, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p76",
       "title": "Marie Elizabet Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p76.html",
-      "summary": "Hija de Jean Joseph Clemenzo (p57), hermana de François Clemenzoz (p36). Posiblemente emparentada con los Lambiel de Riddes, que mediaron en la liquidación de bienes de los Clemenzo en 1905 (carta de Conthey).",
-      "hasContent": true
+      "url": "arbol.html?focus=p76",
+      "summary": "n. 1821, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p77",
       "title": "Josephine Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p77.html",
-      "summary": "Hija de François Clemenzoz (p36) y media hermana (probable) del emigrante François Clemenzo (p26); la mayor del grupo (n. 1843). Madre soltera («fille mère») de Anaiis (p78) y Edwige (p79) según el censo de Riddes de 1870.",
-      "hasContent": true
+      "url": "arbol.html?focus=p77",
+      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p78",
       "title": "Anaiis Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p78.html",
-      "summary": "Hija de Josephine Clemenzo (p77) —anotada «fille mère» en el censo de Riddes de 1870— y por lo tanto sobrina del emigrante François Clemenzo (p26). Nació en Riddes en 1864.",
-      "hasContent": true
+      "url": "arbol.html?focus=p78",
+      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p79",
       "title": "Edwige Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p79.html",
-      "summary": "Hija de Josephine Clemenzo (p77) —«fille mère» en el censo de Riddes de 1870— y sobrina del emigrante François Clemenzo (p26). Nació en Riddes en 1870.",
-      "hasContent": true
+      "url": "arbol.html?focus=p79",
+      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p8",
       "title": "Cristina Magdalena Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "dist/wiki/p8.html",
-      "summary": "Nacida en Entre Ríos en 1965. Casada con Daniel Jorge Clemenzo (p7), bisnieto de Francisco Clemenzo (p26).",
-      "hasContent": true
+      "url": "arbol.html?focus=p8",
+      "summary": "n. 1965-03-28, CABA",
+      "hasContent": false
     },
     {
       "id": "p80",
       "title": "Jose Luciano Roh Blanco",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p80.html",
-      "summary": "Hijo de Juan José Roch (p38) y Marie Putallaz, nacido en Colonia Cullen, San Javier, Santa Fe, en junio de 1873 —recién llegada la familia a Argentina. Primer miembro de la generación nacido en el nuevo país.",
-      "hasContent": true
+      "url": "arbol.html?focus=p80",
+      "summary": "n. 1873-06-14, Colonia Cullen, San Javier, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p81",
       "title": "Agustin Costabile",
       "type": "persona",
       "branch": "costabile",
-      "url": "dist/wiki/p81.html",
+      "url": "arbol.html?focus=p81",
       "summary": "n. Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p82",
       "title": "Teresa Lidia Costabile",
       "type": "persona",
       "branch": "costabile",
-      "url": "dist/wiki/p82.html",
+      "url": "arbol.html?focus=p82",
       "summary": "n. 1917-11-20, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p83",
       "title": "Angel Carmelo Magallanes",
       "type": "persona",
       "branch": "magallanes",
-      "url": "dist/wiki/p83.html",
+      "url": "arbol.html?focus=p83",
       "summary": "n. Catamarca, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p84",
       "title": "Maria Luisa Clemenzo Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p84.html",
-      "summary": "Hija de José Clemenzo (p28) y Marianna Roh (p85). Su doble apellido Clemenzo Roh refleja la unión de las dos familias valesanas en Argentina.",
-      "hasContent": true
+      "url": "arbol.html?focus=p84",
+      "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p85",
       "title": "Marianna Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p85.html",
-      "summary": "Hija mayor de Juan José Roch (p38) y Marie Putallaz, nacida en Conthey en 1862. Emigró a Argentina en 1873 con 11 años. El censo de 1895 la registra como suiza, en el hogar de sus padres en Colón, Entre Ríos.",
-      "hasContent": true
+      "url": "arbol.html?focus=p85",
+      "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p86",
       "title": "Eleuterio Troncoso",
       "type": "persona",
       "branch": "troncoso",
-      "url": "dist/wiki/p86.html",
+      "url": "arbol.html?focus=p86",
       "summary": "n. Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p87",
       "title": "Nicanor Troncoso",
       "type": "persona",
       "branch": "troncoso",
-      "url": "dist/wiki/p87.html",
+      "url": "arbol.html?focus=p87",
       "summary": "n. Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p88",
       "title": "Francisca Ruiz",
       "type": "persona",
       "branch": "ruiz",
-      "url": "dist/wiki/p88.html",
+      "url": "arbol.html?focus=p88",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p89",
       "title": "Dalmaso Fracchia",
       "type": "persona",
       "branch": "fracchia",
-      "url": "dist/wiki/p89.html",
+      "url": "arbol.html?focus=p89",
       "summary": "n. Italia",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p9",
       "title": "Guillermo Alejandro Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p9.html",
+      "url": "arbol.html?focus=p9",
       "summary": "n. 1964-04-04, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p90",
       "title": "Magdalena Rivero",
       "type": "persona",
       "branch": "rivero",
-      "url": "dist/wiki/p90.html",
+      "url": "arbol.html?focus=p90",
       "summary": "",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p91",
       "title": "Mónica Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p91.html",
+      "url": "arbol.html?focus=p91",
       "summary": "n. México",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p92",
       "title": "Jean-François Battnier",
       "type": "persona",
       "branch": "Battnier",
-      "url": "dist/wiki/p92.html",
+      "url": "arbol.html?focus=p92",
       "summary": "n. 1817, Saint-Jean-d'Aulph, Haute-Savoie, Francia",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p93",
       "title": "Baptiste Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p93.html",
-      "summary": "Ancestro más antiguo documentado de la familia Clemenzo, natural de Ardon, Valais. Bisabuelo del emigrante François Clemenzo (p26).",
-      "hasContent": true
+      "url": "arbol.html?focus=p93",
+      "summary": "n. 1750, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p94",
       "title": "Jean Baptiste Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p94.html",
-      "summary": "Hijo de Baptiste Clemenzo (p93) y hermano de Jean Joseph (p57) —el abuelo del emigrante François Clemenzo (p26)—, por lo que sería tío abuelo (probable) de François. Natural de Ardon o Riddes, Valais.",
-      "hasContent": true
+      "url": "arbol.html?focus=p94",
+      "summary": "n. 1774, Ardon, Valais, Suiza",
+      "hasContent": false
     },
     {
       "id": "p95",
       "title": "María Luisa Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p95.html",
-      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1876.",
-      "hasContent": true
+      "url": "arbol.html?focus=p95",
+      "summary": "n. 1876, Santa Fe, Argentina",
+      "hasContent": false
     },
     {
       "id": "p96",
       "title": "Manuela Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p96.html",
-      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1877. El censo de 1895 la registra como argentina, casada, en Colón, Entre Ríos.",
-      "hasContent": true
+      "url": "arbol.html?focus=p96",
+      "summary": "n. 1877",
+      "hasContent": false
     },
     {
       "id": "p97",
       "title": "Mauricio Francisco Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p97.html",
-      "summary": "Hijo de Juan José Roch (p38), nacido en Argentina en 1878. Heredó el oficio de herrero de su padre; el censo de 1895 lo registra en Colón, Entre Ríos.",
-      "hasContent": true
+      "url": "arbol.html?focus=p97",
+      "summary": "n. 1878, Diamante, Entre Ríos, Argentina · f. 1964-02-07, Concepción del Uruguay, Entre Ríos, Argentina",
+      "hasContent": false
     },
     {
       "id": "p98",
       "title": "Luisa Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "dist/wiki/p98.html",
-      "summary": "Hija de Juan José Roch (p38), nacida en Argentina en 1886. La menor de los hijos registrados en el censo de 1895.",
-      "hasContent": true
+      "url": "arbol.html?focus=p98",
+      "summary": "n. 1886",
+      "hasContent": false
     },
     {
       "id": "p99",
       "title": "Rogelia Hernández",
       "type": "persona",
       "branch": "hernandez",
-      "url": "dist/wiki/p99.html",
+      "url": "arbol.html?focus=p99",
       "summary": "n. 1880, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "post:llm-wiki-genealogia",

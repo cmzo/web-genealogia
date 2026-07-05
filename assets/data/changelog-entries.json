@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-07-05-leer-investigación-ya-no-abre-páginas-vacías",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "«Leer investigación» ya no abre páginas vacías",
+    "html": "<p>El botón «Leer investigación» del grafo aparecía en las 124 personas, pero la gran mayoría todavía no tiene investigación escrita: abrías el panel de lectura y te encontrabas una plantilla vacía. Ahora el botón aparece <strong>solo en las personas que de verdad tienen algo para leer</strong>; el resto sigue en el grafo con sus relaciones, y su ficha completa vive en el árbol.</p>\n"
+  },
+  {
+    "id": "2026-07-05-un-anillo-marca-qué-nodos-tienen-algo-para-leer",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Un anillo marca qué nodos tienen algo para leer",
+    "html": "<p>En el grafo de la wiki, los nodos que tienen contenido —una investigación, una página de lugar o fuente, un post— llevan ahora un <strong>anillo verde</strong>. De un vistazo se ve dónde hay historia para abrir, sin clickear a ciegas.</p>\n"
+  },
+  {
+    "id": "2026-07-05-el-grafo-más-legible",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El grafo, más legible",
+    "html": "<p>Varios retoques finos al grafo de conocimiento: los colores de lugares, fuentes, eventos y posts pasaron a una <strong>familia de tonos cálidos</strong> propia del sitio (antes un lugar podía confundirse con una persona de cierta rama, porque compartían color exacto); las líneas de parentesco se dibujan <strong>más tenues</strong> que las de menciones y enlaces, así resalta la red de investigación sobre el esqueleto del árbol; y al alternar entre modo día y noche <strong>el grafo acompaña al instante</strong>, sin recargar la página.</p>\n"
+  },
+  {
+    "id": "2026-07-05-la-wiki-ya-no-depende-de-servidores-externos",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La wiki ya no depende de servidores externos",
+    "html": "<p>Las bibliotecas que dibujan el grafo y los diagramas se servían desde un CDN externo: si ese servicio fallaba, la wiki no cargaba. Ahora viven en el propio sitio, como ya pasaba con las tipografías — la wiki carga completa desde cmzo.net.</p>\n"
+  },
+  {
     "id": "2026-06-28-el-árbol-de-jean-yves-en-la-wiki",
     "date": "2026-06-28",
     "type": "cambio",
@@ -286,37 +318,5 @@
     "tag": "novedad",
     "title": "Los posts del blog, conectados con su gente",
     "html": "<p>Las entradas del blog ahora aparecen en el mapa <strong>unidas a las personas que cuentan</strong>: «La ruina de François» queda pegado a François Clemenzo y su familia, «Buscando a los Roh» entre los Roh, y así. Tocá un post para ver de quién habla, o una persona para ver en qué posts aparece.</p>\n"
-  },
-  {
-    "id": "2026-06-19-la-wiki-un-mapa-navegable-de-la-familia",
-    "date": "2026-06-19",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "La Wiki: un mapa navegable de la familia",
-    "html": "<p>El <strong>Archivo</strong> se transformó en la <strong>Wiki</strong>, una forma nueva de recorrer la investigación. En lugar de una tabla, ahora hay un <strong>grafo interactivo</strong> —al estilo de las wikis de fans— donde las <strong>personas, los lugares y las fuentes</strong> son puntos conectados entre sí: se ve de un vistazo qué se relaciona con qué. Al tocar un punto se abre un <strong>panel</strong> con sus vínculos (padres, cónyuge, hijos) y los lugares y documentos donde aparece, y el botón <strong>Leer</strong> abre, sin salir de la página, un recuadro grande con la investigación o la ficha completa. Podés saltar de una persona a otra siguiendo las conexiones, y filtrar por rama familiar con las pastillas de arriba.</p>\n"
-  },
-  {
-    "id": "2026-06-19-la-investigación-de-cada-persona-ahora-se-lee-mejor",
-    "date": "2026-06-19",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "La investigación de cada persona ahora se lee mejor",
-    "html": "<p>Las notas de investigación que antes vivían en una pestaña del árbol se mudaron a la Wiki, donde se ven <strong>más grandes y mejor maquetadas</strong> (con sus tablas, cronologías y citas). Desde la ficha de una persona en el árbol, el botón <strong>«Ver investigación en la wiki»</strong> lleva directo a su página.</p>\n"
-  },
-  {
-    "id": "2026-06-19-acceso-a-la-wiki-desde-la-portada",
-    "date": "2026-06-19",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Acceso a la Wiki desde la portada",
-    "html": "<p>La página de inicio suma una invitación para <strong>entrar a la Wiki</strong>, igual que la que ya existía para el árbol genealógico.</p>\n"
-  },
-  {
-    "id": "2026-06-17-más-protección-contra-spam-y-bots",
-    "date": "2026-06-17",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Más protección contra spam y bots",
-    "html": "<p>El formulario de <strong>Colaborar</strong> sumó <strong>Cloudflare Turnstile</strong>: una verificación anti-spam que confirma que sos una persona <strong>sin cookies ni &quot;elegí los semáforos&quot;</strong> (la mayoría de las veces es invisible). Se valida del lado del servidor, así los envíos automatizados se descartan y solo llegan los reales. Se suma al honeypot y la traba de tiempo que ya tenía. Además se reforzó la protección anti-bots del sitio con herramientas de Cloudflare (AI Labyrinth).</p>\n"
   }
 ]

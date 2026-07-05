@@ -66,7 +66,7 @@
 
         <article class="wiki-page-content">
           <h2 id="la-historia">La historia</h2>
-<p>La endogamia de Aven (Conthey) hacía que Roh, Putallaz, Papilloud y Udry se entrelazaran generación tras generación. Jean François Putallaz casó con Catherine Roh (<a class="wiki-link wiki-link--persona" href="p122.html" data-node="p122">Catherine Roh</a>), y su hija Marie Putallaz casó a su vez con Jean Joseph Roch (<a class="wiki-link wiki-link--persona" href="p38.html" data-node="p38">Juan José Roch</a>), quien también era Roh por su padre. Este tejido endogámico es típico de las aldeas de montaña del Valais.</p>
+<p>La endogamia de Aven (Conthey) hacía que Roh, Putallaz, Papilloud y Udry se entrelazaran generación tras generación. Jean François Putallaz casó con Catherine Roh (<a class="wiki-link wiki-link--persona" href="../../arbol.html?focus=p122" data-node="p122">Catherine Roh</a>), y su hija Marie Putallaz casó a su vez con Jean Joseph Roch (<a class="wiki-link wiki-link--persona" href="p38.html" data-node="p38">Juan José Roch</a>), quien también era Roh por su padre. Este tejido endogámico es típico de las aldeas de montaña del Valais.</p>
 <h2 id="cronología">Cronología</h2>
 <p><em>Sin cronología documentada todavía.</em></p>
 <h2 id="qué-falta-hipótesis">Qué falta / hipótesis</h2>
@@ -82,7 +82,7 @@
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p122.html" data-node="p122">Catherine Roh</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="p39.html" data-node="p39">Maria Putallaz</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p122.html" data-node="p122">Catherine Roh</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="p39.html" data-node="p39">Maria Putallaz</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#putallaz</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#conthey</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p122" data-node="p122">Catherine Roh</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p39" data-node="p39">Maria Putallaz</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p122" data-node="p122">Catherine Roh</a><a class="wiki-chip wiki-chip--persona" href="p38.html" data-node="p38">Juan José Roch</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p39" data-node="p39">Maria Putallaz</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#putallaz</span><span class="wiki-chip wiki-chip--tag">#valais</span><span class="wiki-chip wiki-chip--tag">#suiza</span><span class="wiki-chip wiki-chip--tag">#conthey</span></div></div>
         </section>
       </div>
     </main>
@@ -107,11 +107,14 @@
       const g = imgs.map(im => ({ src: im.src, alt: im.alt, caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML || im.alt || '' }));
       imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery && window.openLightboxGallery(g, i, { sans: true })); });
       if (document.querySelector('.mermaid')) {
-        import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(m => {
+        const s = document.createElement('script');
+        s.src = '../../assets/js/vendor/mermaid.min.js';
+        s.onload = () => {
           const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-          m.default.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
-          m.default.run({ nodes: document.querySelectorAll('.mermaid') });
-        });
+          mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+          mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+        };
+        document.head.appendChild(s);
       }
     });
   </script>

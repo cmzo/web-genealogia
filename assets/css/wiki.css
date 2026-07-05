@@ -163,10 +163,10 @@
   margin-bottom: 10px;
 }
 .wiki-panel-type--persona { background: #1e40af; }
-.wiki-panel-type--lugar   { background: #0d9488; }
-.wiki-panel-type--fuente  { background: #b45309; }
-.wiki-panel-type--evento  { background: #9333ea; }
-.wiki-panel-type--post    { background: #0891b2; }
+.wiki-panel-type--lugar   { background: #4a7c59; }
+.wiki-panel-type--fuente  { background: #854d0e; }
+.wiki-panel-type--evento  { background: #8f4632; }
+.wiki-panel-type--post    { background: #3f5e6b; }
 .wiki-panel-type--tag     { background: #64748b; }
 .wiki-panel-title {
   font-family: 'Source Serif 4', serif; font-size: 1.3rem; font-weight: 600;
@@ -235,12 +235,12 @@ button.wiki-chip { background: var(--bg); }
   background: var(--accent);
   margin-bottom: 14px;
 }
-.wiki-type-badge--lugar   { background: #0d9488; }
-.wiki-type-badge--fuente  { background: #b45309; }
-.wiki-type-badge--evento  { background: #9333ea; }
+.wiki-type-badge--lugar   { background: #4a7c59; }
+.wiki-type-badge--fuente  { background: #854d0e; }
+.wiki-type-badge--evento  { background: #8f4632; }
 .wiki-type-badge--persona { background: #1e40af; }
 .wiki-type-badge--tema    { background: var(--accent); }
-.wiki-type-badge--post    { background: #0891b2; }
+.wiki-type-badge--post    { background: #3f5e6b; }
 .wiki-type-badge--tag     { background: #64748b; }
 .wiki-page-title {
   font-family: 'Source Serif 4', serif;
@@ -361,7 +361,8 @@ button.wiki-chip { background: var(--bg); }
 .wiki-chip:hover { border-color: var(--accent); background: var(--surface); }
 .wiki-chip--persona { color: #1e40af; }
 [data-theme="dark"] .wiki-chip--persona { color: #93b4ff; }
-.wiki-chip--post { color: #0891b2; }
+.wiki-chip--post { color: #3f5e6b; }
+[data-theme="dark"] .wiki-chip--post { color: #8fb3c4; }
 .wiki-chip--tag {
   color: #64748b;
   background: color-mix(in srgb, #64748b 8%, transparent);

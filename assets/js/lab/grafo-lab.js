@@ -3,7 +3,7 @@
 // resortes de enlace, confinados en un borde circular). Los diales editan los parámetros
 // en vivo. Pensado como documentación reproducible: la "receta" de abajo se copia a un LLM.
 
-import cytoscape from 'https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/+esm';
+import cytoscape from '../vendor/cytoscape.esm.min.js';
 
 // ── Parámetros (los editan los diales; los defaults son los de la Wiki real) ──────────
 const P = {

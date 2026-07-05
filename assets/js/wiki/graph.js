@@ -1,18 +1,17 @@
-// Grafo de conocimiento de la wiki (estilo Obsidian) con Cytoscape.js + fcose.
-// fcose es un layout force-directed con soporte de "nodos compuestos": cada familia
-// se agrupa en un contenedor y el algoritmo separa los clusters entre sí. Eso ordena
-// el grafo (clusters prolijos) sin sacar los tags, que quedan como nodos transversales.
+// Grafo de conocimiento de la wiki (estilo Obsidian): Cytoscape.js solo como
+// renderer (layout "preset") + física propia — repulsión, centrado, resortes y
+// borde circular — definida más abajo. Los tags no se dibujan (viven en el panel).
 //
 // El grafo es el hub: clic en un nodo abre un panel lateral con relaciones/enlaces;
 // "Leer" abre un modal con el markdown renderizado, sin salir de la página.
 
-import cytoscape from 'https://cdn.jsdelivr.net/npm/cytoscape@3.30.2/+esm';
-import fcose from 'https://cdn.jsdelivr.net/npm/cytoscape-fcose@2.2.0/+esm';
+import cytoscape from '../vendor/cytoscape.esm.min.js';
 import { getBranchColor } from '../arbol/config.js';
 
-cytoscape.use(fcose);
-
-const TYPE_COLOR = { lugar: '#0d9488', fuente: '#b45309', evento: '#9333ea', tema: '#2d4a3e', post: '#0891b2', tag: '#64748b' };
+// Colores de tipo: familia apagada/cálida (tierras y verdes del sitio), deliberadamente
+// distinta de la paleta viva de las ramas para que las páginas/posts se lean como otra
+// clase de nodo (los viejos teal/violeta/cian colisionaban con garrido/lantz/venegas).
+const TYPE_COLOR = { lugar: '#4a7c59', fuente: '#854d0e', evento: '#8f4632', tema: '#2d4a3e', post: '#3f5e6b', tag: '#64748b' };
 const TYPE_LABEL = { persona: 'Persona', lugar: 'Lugar', fuente: 'Fuente', evento: 'Evento', tema: 'Tema', post: 'Post', tag: 'Etiqueta' };
 
 const nodeColor = n => n.type === 'persona' ? getBranchColor(n.branch) : (TYPE_COLOR[n.type] || TYPE_COLOR.tema);
@@ -90,14 +89,56 @@ async function init() {
   visNodes.forEach(n => {
     const data = { id: n.id, title: n.title, type: n.type, branch: n.branch || '', color: nodeColor(n), r: nodeRadius(n) };
     if ((degreeMap.get(n.id) || 0) >= HUB_DEG) data.hub = 1;
+    if (n.hasContent || n.type === 'post') data.content = 1;   // anillo: hay algo para leer
     elements.push({ data });
   });
   visLinks.forEach((l, i) => elements.push({ data: { id: `e${i}`, source: l.source, target: l.target, rel: l.rel || '' } }));
 
-  // Tokens de color según tema (se leen una vez al iniciar)
-  const css = getComputedStyle(document.documentElement);
-  const tok = (name, fb) => (css.getPropertyValue(name).trim() || fb);
-  const C = { text: tok('--text', '#1a1a1a'), surface: tok('--surface', '#ffffff'), border: tok('--border', '#e8e8e6'), accent: tok('--accent', '#2d4a3e'), muted: tok('--muted', '#5a5040') };
+  // Tokens de color según tema (se releen al alternar día/noche — ver el MutationObserver más abajo)
+  const readTokens = () => {
+    const css = getComputedStyle(document.documentElement);
+    const tok = (name, fb) => (css.getPropertyValue(name).trim() || fb);
+    return { text: tok('--text', '#1a1a1a'), surface: tok('--surface', '#ffffff'), border: tok('--border', '#e8e8e6'), accent: tok('--accent', '#2d4a3e'), muted: tok('--muted', '#5a5040') };
+  };
+  const C = readTokens();
+
+  // Hoja de estilos como función de los tokens, para poder re-aplicarla al cambiar el tema.
+  const makeStyle = () => [
+    {
+      selector: 'node',
+      style: {
+        'background-color': 'data(color)', 'background-blacken': -0.15,
+        width: 'data(r)', height: 'data(r)',
+        'border-width': 0,
+        // Nombres tenues y livianos (no dominan), apagados salvo en hubs / hover / zoom.
+        label: 'data(title)', color: C.muted, 'text-opacity': 0,
+        'font-family': '"IBM Plex Sans", sans-serif', 'font-size': 11, 'font-weight': 500,
+        'text-valign': 'center', 'text-halign': 'right', 'text-margin-x': 4,
+        'text-outline-color': C.surface, 'text-outline-width': 1.5,
+        'transition-property': 'opacity, text-opacity, border-width', 'transition-duration': '0.15s',
+      },
+    },
+    // Anillo en los nodos con algo para leer (nota, página o post) — invita el clic
+    { selector: 'node[?content]', style: { 'border-width': 1.5, 'border-color': C.accent } },
+    {
+      selector: 'edge',
+      style: {
+        width: 0.3, 'line-color': C.muted, 'curve-style': 'straight', opacity: 0.4,
+        'transition-property': 'opacity', 'transition-duration': '0.15s',
+      },
+    },
+    // El backbone familiar, más tenue: es contexto (ya vive en el árbol);
+    // la red de menciones/enlaces es el contenido propio de la wiki.
+    { selector: 'edge[rel="familia"]', style: { opacity: 0.18 } },
+    // Estados
+    { selector: '.dim', style: { opacity: 0.08 } },
+    { selector: 'edge.hl', style: { 'line-color': C.accent, opacity: 1, width: 1.8, 'z-index': 20 } },  // líneas del nodo en hover
+    { selector: 'node.show', style: { 'text-opacity': 1 } },   // nombre visible (hover / vecinos / selección)
+    { selector: 'node.focus', style: { 'border-width': 2.5, 'border-color': C.text, color: C.text, 'font-weight': 700, 'z-index': 30 } },
+    // Nombre visible siempre en los hubs, y en todos los nodos al acercar el zoom
+    { selector: 'node[?hub], node.zoomed', style: { 'text-opacity': 1 } },
+    { selector: '.hidden', style: { display: 'none' } },
+  ];
 
   // Ocultar el lienzo ANTES del primer render, SIN transición (oculto instantáneo). La transición
   // se agrega recién al revelar — si se pusiera acá, el grafo se desvanecería a la vista (visible).
@@ -110,37 +151,7 @@ async function init() {
     maxZoom: 4,
     wheelSensitivity: 0.25,
     boxSelectionEnabled: false,
-    style: [
-      {
-        selector: 'node',
-        style: {
-          'background-color': 'data(color)', 'background-blacken': -0.15,
-          width: 'data(r)', height: 'data(r)',
-          'border-width': 0,
-          // Nombres tenues y livianos (no dominan), apagados salvo en hubs / hover / zoom.
-          label: 'data(title)', color: C.muted, 'text-opacity': 0,
-          'font-family': 'Inter, sans-serif', 'font-size': 11, 'font-weight': 500,
-          'text-valign': 'center', 'text-halign': 'right', 'text-margin-x': 4,
-          'text-outline-color': C.surface, 'text-outline-width': 1.5,
-          'transition-property': 'opacity, text-opacity, border-width', 'transition-duration': '0.15s',
-        },
-      },
-      {
-        selector: 'edge',
-        style: {
-          width: 0.3, 'line-color': C.muted, 'curve-style': 'straight', opacity: 0.4,
-          'transition-property': 'opacity', 'transition-duration': '0.15s',
-        },
-      },
-      // Estados
-      { selector: '.dim', style: { opacity: 0.08 } },
-      { selector: 'edge.hl', style: { 'line-color': C.accent, opacity: 1, width: 1.8, 'z-index': 20 } },  // líneas del nodo en hover
-      { selector: 'node.show', style: { 'text-opacity': 1 } },   // nombre visible (hover / vecinos / selección)
-      { selector: 'node.focus', style: { 'border-width': 2.5, 'border-color': C.text, color: C.text, 'font-weight': 700, 'z-index': 30 } },
-      // Nombre visible siempre en los hubs, y en todos los nodos al acercar el zoom
-      { selector: 'node[?hub], node.zoomed', style: { 'text-opacity': 1 } },
-      { selector: '.hidden', style: { display: 'none' } },
-    ],
+    style: makeStyle(),
     layout: { name: 'preset' },   // las posiciones las pone la física de abajo
   });
 
@@ -252,6 +263,11 @@ async function init() {
   };
   cy.on('zoom', fixLabelSize);
   fixLabelSize();
+
+  // El grafo sigue al toggle día/noche en vivo: se releen los tokens y se re-aplica la hoja
+  // de estilos (los font-size por elemento de fixLabelSize son bypass y sobreviven).
+  new MutationObserver(() => { Object.assign(C, readTokens()); cy.style(makeStyle()); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   // ── Interacción del grafo ───────────────────────────────────────────────────
   let selectedId = null;
@@ -365,19 +381,22 @@ async function init() {
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
 
-  // Mermaid bajo demanda: solo se importa cuando un artículo trae diagramas.
+  // Mermaid bajo demanda: solo se carga (vendoreado, build UMD) cuando un artículo trae diagramas.
   let _mermaidP = null;
   function ensureMermaid() {
     if (window.mermaid) return Promise.resolve(window.mermaid);
     if (_mermaidP) return _mermaidP;
-    _mermaidP = import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs')
-      .then(mod => {
-        const m = mod.default;
+    _mermaidP = new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = `${rootBase()}assets/js/vendor/mermaid.min.js`;
+      s.onload = () => {
         const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        m.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
-        window.mermaid = m;
-        return m;
-      });
+        window.mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral' });
+        resolve(window.mermaid);
+      };
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
     return _mermaidP;
   }
   async function runMermaidIn(root) {
