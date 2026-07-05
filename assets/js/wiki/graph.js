@@ -484,10 +484,19 @@ async function init() {
     if (nodeById.has(id)) { recenterOn(id); selectNode(id); }
     else location.href = `${rootBase()}arbol.html?focus=${id}`;
   };
+  // …y puede abrir la lectura directo (acción «Leer investigación» del ⌘K)
+  window.__wikiRead = id => {
+    if (!nodeById.has(id)) return;
+    recenterOn(id); selectNode(id); openModal(nodeById.get(id));
+  };
 
-  // Foco inicial si viene ?focus=<id>
-  const focusId = new URLSearchParams(location.search).get('focus');
-  if (focusId && nodeById.has(focusId)) cy.ready(() => setTimeout(() => { recenterOn(focusId); selectNode(focusId); }, 300));
+  // Foco inicial si viene ?focus=<id>; ?read=<id> además abre el modal de lectura
+  const params = new URLSearchParams(location.search);
+  const focusId = params.get('focus') || params.get('read');
+  if (focusId && nodeById.has(focusId)) cy.ready(() => setTimeout(() => {
+    recenterOn(focusId); selectNode(focusId);
+    if (params.get('read')) openModal(nodeById.get(focusId));
+  }, 300));
 }
 
 function escapeHtml(s) {

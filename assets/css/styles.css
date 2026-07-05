@@ -858,6 +858,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .article-content .mermaid {
   max-width: 100%;
   overflow-x: auto;
+  margin: 32px 0;
 }
 
 .article-grid:has(> .article-aside:has(*)) {
@@ -911,31 +912,26 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   text-align: center;
 }
 
-/* Imágenes apiladas: no sumar márgenes, usar uno solo.
-   El build separa figuras consecutivas con un <br> dentro de un <p>. */
-.article-content figure + figure,
-.article-content figure + br + figure { margin-top: 0; }
-.article-content figure + br { display: none; }
+/* Imágenes apiladas: no sumar márgenes, usar uno solo */
+.article-content figure + figure { margin-top: 0; }
 
 .article-content figure img {
   max-width: 100%;
   height: auto;
-  /* !important: el build emite estilos inline en cada <img> que hay que pisar */
-  border-radius: 2px !important;
-  border: 1px solid var(--border) !important;
-  background: var(--bg) !important;
-  margin: 0 !important;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  margin: 0;
 }
 
-/* Galería de imágenes: encuadre sobrio (el build emite una caja gris inline) */
+/* Galería de imágenes: grid sobrio, sin caja */
 .article-content .image-gallery {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  gap: 14px !important;
-  margin: 44px 0 !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 44px 0;
 }
+.article-content .image-gallery figure { margin: 0; }
 
 /* ── Lightbox editorial ─────────────────────────────── */
 .lbx { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
@@ -989,6 +985,77 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   border: none;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+
+/* ── Hypothesis cards (posts de investigación; antes inline en cada post) ── */
+.hypothesis-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid #9ca3af;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+  margin: 35px 0;
+  background: var(--bg);
+}
+.hypothesis-card + hr { display: none; }
+.hypothesis-card--confirmed          { border-left-color: #16a34a; background: color-mix(in srgb, #16a34a 7%, var(--surface)); border-color: color-mix(in srgb, #16a34a 28%, var(--border)); }
+.hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: color-mix(in srgb, #16a34a 7%, var(--surface)); border-color: color-mix(in srgb, #16a34a 28%, var(--border)); }
+.hypothesis-card--solida             { border-left-color: #2563eb; background: color-mix(in srgb, #2563eb 7%, var(--surface)); border-color: color-mix(in srgb, #2563eb 28%, var(--border)); }
+.hypothesis-card--plausible          { border-left-color: #d97706; background: color-mix(in srgb, #d97706 8%, var(--surface)); border-color: color-mix(in srgb, #d97706 30%, var(--border)); }
+.hypothesis-card--speculative        { border-left-color: #9ca3af; }
+.hypothesis-card--directa            { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
+.hypothesis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.hypothesis-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hypothesis-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  font-family: monospace;
+}
+.hypothesis-badge-directa {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #b91c1c;
+  background: color-mix(in srgb, #b91c1c 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, #b91c1c 35%, var(--border));
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+[data-theme="dark"] .hypothesis-badge-directa { color: #f0a5a5; }
+.hypothesis-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.hypothesis-status--confirmed,
+.hypothesis-status--confirmed-informal { color: #15803d; background: color-mix(in srgb, #16a34a 16%, var(--surface)); }
+.hypothesis-status--solida             { color: #1d4ed8; background: color-mix(in srgb, #2563eb 14%, var(--surface)); }
+.hypothesis-status--plausible          { color: #92400e; background: color-mix(in srgb, #d97706 16%, var(--surface)); }
+.hypothesis-status--speculative        { color: var(--muted); background: var(--border); }
+[data-theme="dark"] .hypothesis-status--confirmed,
+[data-theme="dark"] .hypothesis-status--confirmed-informal { color: #7fd8a2; }
+[data-theme="dark"] .hypothesis-status--solida             { color: #93b4ff; }
+[data-theme="dark"] .hypothesis-status--plausible          { color: #f2c078; }
+.hypothesis-title {
+  font-size: 0.97rem;
+  font-weight: 600;
+  margin: 0 0 14px 0;
+  color: var(--text);
+  line-height: 1.4;
+}
+.hypothesis-body { font-size: 0.9rem; }
+.hypothesis-body .table-wrapper { margin-top: 0; }
 
 .article-content img {
   max-width: 100%;

@@ -38,8 +38,9 @@
     persona: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/></svg>',
     post:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
     search:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>',
-    timeline:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
     filter:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>',
+    arbol:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>',
+    timeline:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
     command: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 3 3-3 3M13 15h5"/></svg>',
     theme:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>',
     nota:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
@@ -128,12 +129,28 @@
 
   // ── Estado ──────────────────────────────────────────────────────────────────
   let _built = false;
-  let _overlay, _input, _results;
+  let _overlay, _input, _results, _actHint;
   let _index = null;       // { personas: [], posts: [] } — cargado on demand
   let _loading = false;
   let _visible = [];       // items planos en orden de render
   let _active = 0;
   let _lastFocus = null;
+  let _mode = null;        // null = raíz | 'branch' = filtrar por familia | 'actions' = acciones de una persona
+  let _modeItem = null;    // la persona cuyas acciones se listan (modo 'actions')
+  let _rootQuery = '';     // query de la raíz, para restaurarlo al volver de un sub-menú
+
+  const PLACEHOLDER = 'Buscar o ejecutar un comando…';
+  const PLACEHOLDERS = { branch: 'Tipeá un apellido…', actions: 'Elegir una acción…' };
+
+  function setMode(mode, item) {
+    if (mode && !_mode) _rootQuery = _input.value;   // al entrar, recordar lo tipeado
+    _mode = mode;
+    _modeItem = item || null;
+    _input.value = mode ? '' : _rootQuery;           // al salir, restaurarlo
+    _input.placeholder = PLACEHOLDERS[mode] || PLACEHOLDER;
+    renderResults(_input.value);
+    _input.focus();
+  }
 
   // ── Utilidades de texto ───────────────────────────────────────────────────────
   const norm = s => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -154,12 +171,23 @@
     return qi === q.length ? 240 - gaps : -1;
   }
 
-  /** Resalta la primera ocurrencia (substring) del query en el texto. */
+  /** Resalta la primera ocurrencia de cada token del query en el texto. */
   function highlight(text, q) {
-    if (!q) return esc(text);
-    const i = norm(text).indexOf(q);
-    if (i === -1) return esc(text);
-    return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' + esc(text.slice(i + q.length));
+    const tokens = (q || '').split(/\s+/).filter(Boolean);
+    if (!tokens.length) return esc(text);
+    const n = norm(text);
+    const ranges = [];
+    tokens.forEach(t => { const i = n.indexOf(t); if (i !== -1) ranges.push([i, i + t.length]); });
+    if (!ranges.length) return esc(text);
+    ranges.sort((a, b) => a[0] - b[0]);
+    const merged = [ranges[0]];
+    ranges.slice(1).forEach(r => {
+      const last = merged[merged.length - 1];
+      if (r[0] <= last[1]) last[1] = Math.max(last[1], r[1]); else merged.push(r);
+    });
+    let out = '', prev = 0;
+    merged.forEach(([a, b]) => { out += esc(text.slice(prev, a)) + '<mark>' + esc(text.slice(a, b)) + '</mark>'; prev = b; });
+    return out + esc(text.slice(prev));
   }
 
   // ── Carga de datos (perezosa, cacheada) ───────────────────────────────────────
@@ -173,13 +201,19 @@
       fetch(ROOT + 'assets/data/wiki-graph.json').then(r => r.ok ? r.json() : { nodes: [] }).catch(() => ({ nodes: [] })),
     ]);
 
+    // Personas con investigación legible en la wiki (para la acción «Leer investigación»)
+    const readable = new Set(((wikiRaw && wikiRaw.nodes) || [])
+      .filter(n => /^p\d+$/.test(n.id) && n.hasContent).map(n => n.id));
+
     const personas = (arbol.personas || []).map(p => {
       const b = year(p.birth_date), d = year(p.death_date);
       const years = b || d ? `${b || '?'}–${d || (p.vivo === 'si' ? '' : '?')}`.replace(/–$/, '') : '';
       const branch = p.branch ? cap(p.branch) : '';
       const sub = [years, branch].filter(Boolean).join(' · ');
-      return { type: 'persona', id: p.id, title: p.name, sub,
-               _t: norm(p.name), _h: norm([p.name, branch, p.id].join(' ')) };
+      return { type: 'persona', id: p.id, title: p.name, sub, read: readable.has(p.id),
+               _t: norm(p.name),
+               // Lugares y años en el haystack: «riddes» o «1858» encuentran personas
+               _h: norm([p.name, branch, p.id, p.birth_place, p.death_place, b, d].filter(Boolean).join(' ')) };
     });
 
     const list = (Array.isArray(posts) ? posts : []).map(e => {
@@ -215,21 +249,48 @@
       _t: norm(p.title), _h: norm(p.title + ' ' + p.desc) }));
   }
 
-  // Filtros por rama de la wiki — solo existen cuando el grafo los expone (estás en la wiki)
-  function wikiFilterItems() {
+  // Filtro por familia de la wiki — solo existe cuando el grafo lo expone (estás en la wiki).
+  // En el nivel raíz es UNA entrada («Filtrar por familia…») que abre un sub-menú donde
+  // se tipea el apellido; las familias no se listan una por una en la raíz.
+  function activeBranch() {
+    return typeof window.__wikiActiveBranch === 'function' ? window.__wikiActiveBranch() : null;
+  }
+  function wikiFilterEntry() {
     const branches = window.__wikiBranches;
     if (!Array.isArray(branches) || !branches.length) return [];
-    const active = typeof window.__wikiActiveBranch === 'function' ? window.__wikiActiveBranch() : null;
-    const items = [];
-    if (active) items.push({ type: 'filter', branch: null, title: 'Quitar filtro de rama',
-      sub: 'Mostrar todas las ramas', _t: norm('quitar filtro ramas'), _h: norm('quitar filtro todas las ramas mostrar') });
-    branches.forEach(b => {
-      const label = cap(b);
-      items.push({ type: 'filter', branch: b, title: `Rama: ${label}`,
-        sub: active === b ? 'Filtro activo' : 'Filtrar el grafo por esta rama',
-        _t: norm(label), _h: norm('rama ' + label + ' filtro') });
-    });
+    const active = activeBranch();
+    const items = [{ type: 'mode', mode: 'branch', icon: 'filter', title: 'Filtrar por familia…',
+      sub: active ? `Filtro activo: ${cap(active)}` : 'Elegir un apellido del grafo',
+      _t: norm('filtrar por familia'), _h: norm('filtrar familia rama apellido grafo wiki filtro') }];
+    if (active) items.push({ type: 'filter', branch: null, icon: 'filter', title: 'Quitar filtro de familia',
+      sub: `Mostrando solo ${cap(active)}`, _t: norm('quitar filtro familia'), _h: norm('quitar filtro todas las ramas familias mostrar') });
     return items;
+  }
+  // Acciones de una persona (sub-menú «→» sobre su fila): elegir el destino
+  // en vez del comportamiento contextual por defecto del Enter.
+  function personaActions(p) {
+    const items = [
+      { type: 'action', act: 'tree', id: p.id, icon: 'arbol', title: 'Ver en el árbol',
+        sub: 'Enfocar la tarjeta en el árbol genealógico', _t: norm('ver en el arbol'), _h: norm('arbol genealogico tarjeta ficha') },
+      { type: 'action', act: 'graph', id: p.id, icon: 'wiki', title: 'Ver en el grafo de la wiki',
+        sub: 'Enfocar el nodo y sus conexiones', _t: norm('ver en el grafo de la wiki'), _h: norm('wiki grafo nodo conexiones') },
+    ];
+    if (p.read) items.push({ type: 'action', act: 'read', id: p.id, icon: 'post', title: 'Leer investigación',
+      sub: 'Abrir su archivo de investigación en la wiki', _t: norm('leer investigacion'), _h: norm('investigacion archivo nota leer wiki') });
+    if (TIMELINE_OK()) items.push({ type: 'action', act: 'timeline', id: p.id, icon: 'timeline', title: 'Línea de tiempo',
+      sub: 'Su vida contra los hitos de la época', _t: norm('linea de tiempo'), _h: norm('linea tiempo timeline hitos') });
+    return items;
+  }
+
+  // Ítems del sub-menú (una fila por familia, filtrables al tipear)
+  function branchItems() {
+    const active = activeBranch();
+    return (window.__wikiBranches || []).map(b => {
+      const label = cap(b);
+      return { type: 'filter', branch: b, icon: 'filter', title: label,
+        sub: active === b ? 'Filtro activo' : 'Filtrar el grafo por esta familia',
+        _t: norm(label), _h: norm(label) };
+    });
   }
 
   // ── Comandos (acciones ejecutables, no navegación) ────────────────────────────
@@ -261,17 +322,27 @@
     ];
   }
 
+  /** Puntaje de un ítem contra los tokens del query: TODOS deben matchear (AND).
+   *  Por token: título con coincidencia difusa (substring o subsecuencia); el resto
+   *  del haystack (descripción, lugares, tags, rama, id) solo substring exacto,
+   *  para no traer ruido por subsecuencias dispersas en textos largos. */
+  function scoreItem(tokens, it) {
+    let total = 0;
+    for (const t of tokens) {
+      const st = scoreText(t, it._t);
+      const hi = it._h.indexOf(t);
+      const s = Math.max(st >= 0 ? st + 200 : -1, hi !== -1 ? 620 - hi : -1);
+      if (s < 0) return -1;
+      total += s;
+    }
+    return total;
+  }
+
   function rank(items, q, limit) {
+    const tokens = q.split(/\s+/).filter(Boolean);
+    if (!tokens.length) return [];
     return items
-      .map(it => {
-        // Título: permite coincidencia difusa (substring o subsecuencia).
-        // Resto del haystack (descripción, tags, rama, id): solo substring exacto,
-        // para no traer ruido por subsecuencias dispersas en textos largos.
-        const st = scoreText(q, it._t);
-        const hi = it._h.indexOf(q);
-        const s = Math.max(st >= 0 ? st + 200 : -1, hi !== -1 ? 620 - hi : -1);
-        return { it, s };
-      })
+      .map(it => ({ it, s: scoreItem(tokens, it) }))
       .filter(x => x.s >= 0)
       .sort((a, b) => b.s - a.s)
       .slice(0, limit)
@@ -280,6 +351,20 @@
 
   function buildGroups(query) {
     const q = norm(query.trim());
+
+    // Sub-menú «Filtrar por familia»: solo las familias, filtrables al tipear
+    if (_mode === 'branch') {
+      const items = q ? rank(branchItems(), q, 30) : branchItems();
+      return items.length ? [{ label: 'Familias', items }] : [];
+    }
+
+    // Sub-menú de acciones de una persona (→ sobre su fila)
+    if (_mode === 'actions' && _modeItem) {
+      const all = personaActions(_modeItem);
+      const items = q ? rank(all, q, 10) : all;
+      return items.length ? [{ label: _modeItem.title, items }] : [];
+    }
+
     const pages = pagesItems();
     const personas = (_index && _index.personas) || [];
     const posts = (_index && _index.posts) || [];
@@ -287,28 +372,22 @@
     const wikiPages = (_index && _index.wikiPages) || [];
 
     if (!q) {
-      // Estado vacío: sugerencias — filtros de la wiki (si aplica) + comandos + páginas + posts recientes
+      // Estado vacío: sugerencias — filtro de la wiki (si aplica) + comandos + páginas + posts recientes
       const recent = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 4);
       return [
-        { label: 'Filtrar la wiki', items: wikiFilterItems() },
+        { label: 'Filtrar la wiki', items: wikiFilterEntry() },
         { label: 'Comandos', items: commandItems() },
         { label: 'Páginas', items: pages },
         { label: 'Posts recientes', items: recent },
       ].filter(g => g.items.length);
     }
 
-    const tl = TIMELINE_OK()
-      ? rank(personas, q, 4).map(p => ({ ...p, type: 'timeline', tl: true,
-          sub: 'Ver línea de tiempo' }))
-      : [];
-
     return [
-      { label: 'Filtrar la wiki', items: rank(wikiFilterItems(), q, 5) },
+      { label: 'Filtrar la wiki', items: rank(wikiFilterEntry(), q, 3) },
       { label: 'Comandos',        items: rank(commandItems(), q, 5) },
       { label: 'Páginas',         items: rank(pages, q, 6) },
       { label: 'Wiki',            items: rank(wikiPages, q, 7) },
       { label: 'Personas',        items: rank(personas, q, 7) },
-      { label: 'Línea de tiempo', items: tl },
       { label: 'Posts',           items: rank(posts, q, 6) },
       { label: 'Notas',           items: rank(notas, q, 6) },
     ].filter(g => g.items.length);
@@ -359,6 +438,8 @@
     const els = _results.querySelectorAll('.cmdk-item');
     els.forEach((el, i) => el.classList.toggle('is-active', i === _active));
     if (scroll && els[_active]) els[_active].scrollIntoView({ block: 'nearest' });
+    // Hint contextual: solo cuando el ítem activo es una persona en la raíz
+    if (_actHint) _actHint.hidden = !(!_mode && _visible[_active] && _visible[_active].type === 'persona');
   }
 
   function move(delta) {
@@ -370,6 +451,29 @@
   function activate() {
     const it = _visible[_active];
     if (!it) return;
+    if (it.type === 'mode') {
+      // Entra al sub-menú (p. ej. «Filtrar por familia…»): el palette queda abierto
+      setMode(it.mode);
+      return;
+    }
+    if (it.type === 'action') {
+      // Acción elegida en el sub-menú de una persona: destino explícito
+      if (it.act === 'tree') {
+        if (typeof window.__treeFocus === 'function') { window.__treeFocus(it.id); close(); return; }
+        window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+      } else if (it.act === 'graph') {
+        // __personaFocus solo lo expone la wiki (en el árbol el handler es __treeFocus)
+        if (typeof window.__wikiRead === 'function' && typeof window.__personaFocus === 'function') { window.__personaFocus(it.id); close(); return; }
+        window.location.href = ROOT + 'wiki.html?focus=' + encodeURIComponent(it.id);
+      } else if (it.act === 'read') {
+        if (typeof window.__wikiRead === 'function') { window.__wikiRead(it.id); close(); return; }
+        window.location.href = ROOT + 'wiki.html?read=' + encodeURIComponent(it.id);
+      } else if (it.act === 'timeline') {
+        if (typeof window.__openTimeline === 'function') { window.__openTimeline(it.id); close(); return; }
+        window.location.href = ROOT + 'arbol.html?timeline=' + encodeURIComponent(it.id);
+      }
+      return;
+    }
     if (it.type === 'command') {
       // Ejecuta la acción. Si run() devuelve truthy, el palette sigue abierto y se
       // re-renderiza (p. ej. el toggle de tema actualiza su etiqueta in situ).
@@ -383,15 +487,10 @@
       close();
       return;
     }
-    if (it.tl) {
-      // Abrir la línea de tiempo: directo si estamos en el árbol, si no navegar con ?timeline=
-      if (typeof window.__openTimeline === 'function') { window.__openTimeline(it.id); close(); return; }
-      window.location.href = ROOT + 'arbol.html?timeline=' + encodeURIComponent(it.id);
-      return;
-    }
     if (it.type === 'persona') {
-      // Si la página define un handler propio (árbol o wiki), enfocar sin salir;
-      // si no, navegar al árbol con ?focus=
+      // Enter = acción por defecto (enfocar); los demás destinos —incluida la línea
+      // de tiempo— viven en el sub-menú de acciones (→). Si la página define un
+      // handler propio (árbol o wiki), enfoca sin salir; si no, navega al árbol.
       const focusFn = window.__personaFocus || window.__treeFocus;
       if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
       window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
@@ -419,7 +518,9 @@
     if (!_overlay.hidden) return;
     _lastFocus = document.activeElement;
     _overlay.hidden = false;
+    _mode = null;
     _input.value = '';
+    _input.placeholder = PLACEHOLDER;
     // Re-render con el valor actual cuando lleguen los datos (no pisar lo tipeado)
     loadIndex().then(() => { if (!_overlay.hidden) renderResults(_input.value); });
     renderResults('');
@@ -462,6 +563,7 @@
         <div class="cmdk-footer">
           <span><span class="cmdk-kbd">↑</span><span class="cmdk-kbd">↓</span> navegar</span>
           <span><span class="cmdk-kbd">↵</span> abrir / ejecutar</span>
+          <span class="cmdk-hint-act" hidden><span class="cmdk-kbd">→</span> acciones</span>
           <span class="cmdk-footer-spacer"></span>
           <span><span class="cmdk-kbd">esc</span> cerrar</span>
         </div>
@@ -470,6 +572,7 @@
 
     _input   = _overlay.querySelector('.cmdk-input');
     _results = _overlay.querySelector('.cmdk-results');
+    _actHint = _overlay.querySelector('.cmdk-hint-act');
 
     _input.addEventListener('input', () => renderResults(_input.value));
     _overlay.querySelector('[data-close]').addEventListener('click', close);
@@ -478,7 +581,14 @@
       if (e.key === 'ArrowDown')      { e.preventDefault(); move(1); }
       else if (e.key === 'ArrowUp')   { e.preventDefault(); move(-1); }
       else if (e.key === 'Enter')     { e.preventDefault(); activate(); }
-      else if (e.key === 'Escape')    { e.preventDefault(); close(); }
+      else if (e.key === 'Escape')    { e.preventDefault(); if (_mode) setMode(null); else close(); }
+      else if (e.key === 'Backspace' && _mode && !_input.value) { e.preventDefault(); setMode(null); }
+      else if (e.key === 'ArrowRight' && !_mode
+               && _visible[_active] && _visible[_active].type === 'persona'
+               && _input.selectionStart === _input.value.length) {
+        // → sobre una persona (con el cursor al final del texto): abrir sus acciones
+        e.preventDefault(); setMode('actions', _visible[_active]);
+      }
       else if (e.key === 'Tab')       { e.preventDefault(); move(e.shiftKey ? -1 : 1); }
     });
   }

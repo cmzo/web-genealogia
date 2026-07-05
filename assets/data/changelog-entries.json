@@ -32,6 +32,38 @@
     "html": "<p>Las bibliotecas que dibujan el grafo y los diagramas se servían desde un CDN externo: si ese servicio fallaba, la wiki no cargaba. Ahora viven en el propio sitio, como ya pasaba con las tipografías — la wiki carga completa desde cmzo.net.</p>\n"
   },
   {
+    "id": "2026-07-05-el-buscador-entiende-lugares-años-y-varias-palabras",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "El buscador entiende lugares, años y varias palabras",
+    "html": "<p>El buscador (⌘ + K) ahora encuentra personas <strong>por dónde nacieron o murieron y por año</strong>: «riddes» trae a todos los nacidos en Riddes, y «riddes 1858» te deja solo a François. Además podés combinar <strong>varias palabras</strong> («celestina roh», «censo 1870») y cada una se resalta en el resultado.</p>\n"
+  },
+  {
+    "id": "2026-07-05-buscador-sin-resultados-repetidos",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Buscador sin resultados repetidos",
+    "html": "<p>Antes, al buscar una persona, aparecía dos veces: una fila para verla en el árbol y otra para su línea de tiempo. Ahora hay una sola fila: <strong>Enter</strong> la abre en el árbol y <strong>⌘ + Enter</strong> abre su línea de tiempo (el pie del buscador te lo recuerda cuando corresponde).</p>\n"
+  },
+  {
+    "id": "2026-07-05-filtrar-la-wiki-por-familia-sin-lista-interminable",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Filtrar la wiki por familia, sin lista interminable",
+    "html": "<p>Estando en la wiki, el buscador ofrecía una fila por cada familia del grafo — muchas líneas para una sola función. Ahora hay una única opción, <strong>«Filtrar por familia…»</strong>, que abre un segundo paso donde tipeás el apellido y listo.</p>\n"
+  },
+  {
+    "id": "2026-07-05-la-portada-se-presenta-como-sitio-personal",
+    "date": "2026-07-05",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "La portada se presenta como sitio personal",
+    "html": "<p>Reescribí la presentación de la portada: CMZO es un <strong>sitio personal</strong> —un blog, un laboratorio de experimentos y la investigación genealógica de la familia—, no solo una página de genealogía. La genealogía sigue siendo el proyecto más largo, pero acá se puede escribir de cualquier cosa.</p>\n"
+  },
+  {
     "id": "2026-06-28-el-árbol-de-jean-yves-en-la-wiki",
     "date": "2026-06-28",
     "type": "cambio",
@@ -286,37 +318,5 @@
     "tag": "novedad",
     "title": "Los nombres de las personas más conectadas, siempre a la vista",
     "html": "<p>En el mapa de la Wiki ahora se ven por defecto los nombres de los nodos con más conexiones (los centros de cada familia), y al acercar el zoom aparecen todos. Antes los nombres solo salían al pasar el mouse y daba la sensación de que faltaba algo.</p>\n"
-  },
-  {
-    "id": "2026-06-20-los-enlaces-a-documentos-llevan-al-lugar-correcto",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Los enlaces a documentos llevan al lugar correcto",
-    "html": "<p>Algunos enlaces de los posts que invitaban a ver los documentos llevaban a la Wiki; ahora llevan al <strong>Árbol</strong>, que es donde está la galería de documentos de cada persona. La Wiki guarda la investigación; el árbol, los documentos.</p>\n"
-  },
-  {
-    "id": "2026-06-20-el-mapa-de-la-wiki-ahora-es-un-círculo-navegable",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "El mapa de la Wiki ahora es un círculo navegable",
-    "html": "<p>El grafo de la Wiki pasó de ser una maraña a un <strong>disco ordenado</strong>: las personas y sus documentos se acomodan solos en un círculo, agrupados por familia, igual que los mapas de conocimiento de apps como Obsidian. Los nombres aparecen <strong>al pasar el mouse</strong> (en reposo se ven solo los puntos, más limpio) y, al apuntar a alguien, <strong>se iluminan las líneas</strong> que lo conectan con su familia. El conjunto aparece con una animación suave en lugar de saltar al cargar.</p>\n"
-  },
-  {
-    "id": "2026-06-20-mover-los-nodos-del-mapa",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Mover los nodos del mapa",
-    "html": "<p>Ahora podés <strong>agarrar cualquier punto y arrastrarlo</strong>: los parientes conectados lo siguen, y al soltar todo vuelve lentamente a su lugar en el círculo, con una sensación elástica. Sirve para explorar quién está unido a quién.</p>\n"
-  },
-  {
-    "id": "2026-06-20-los-posts-del-blog-conectados-con-su-gente",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Los posts del blog, conectados con su gente",
-    "html": "<p>Las entradas del blog ahora aparecen en el mapa <strong>unidas a las personas que cuentan</strong>: «La ruina de François» queda pegado a François Clemenzo y su familia, «Buscando a los Roh» entre los Roh, y así. Tocá un post para ver de quién habla, o una persona para ver en qué posts aparece.</p>\n"
   }
 ]

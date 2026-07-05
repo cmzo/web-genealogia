@@ -287,143 +287,6 @@ if __name__ == &quot;__main__&quot;:
 <p>La diferencia clave es que el agente con MCP <strong>actúa en tu entorno real</strong>: lee los archivos que vos tenés, escribe en las carpetas que vos usás, busca en la web y te devuelve resultados verificables. No simula tener contexto, lo tiene.</p>
 <p>Con el tiempo, a medida que se generan más archivos de investigación y se actualizan los datos del árbol, el agente se vuelve progresivamente más útil porque trabaja siempre con la versión más reciente de tus datos, sin que tengas que pegar nada en un chat.</p>
 
-  <style>
-    /* ── Hypothesis Cards ───────────────────────────────────────────── */
-    .hypothesis-card {
-      border: 1px solid #e5e7eb;
-      border-left: 4px solid #9ca3af;
-      border-radius: 0 8px 8px 0;
-      padding: 20px 24px;
-      margin: 35px 0;
-      background: #f9fafb;
-    }
-    .hypothesis-card + hr { display: none; }
-    .hypothesis-card--confirmed       { border-left-color: #16a34a; background: #f0fdf4; border-color: #bbf7d0; }
-    .hypothesis-card--confirmed-informal { border-left-color: #4ade80; background: #f0fdf4; border-color: #bbf7d0; }
-    .hypothesis-card--solida          { border-left-color: #2563eb; background: #eff6ff; border-color: #bfdbfe; }
-    .hypothesis-card--plausible       { border-left-color: #d97706; background: #fffbeb; border-color: #fde68a; }
-    .hypothesis-card--speculative     { border-left-color: #9ca3af; background: #f9fafb; border-color: #e5e7eb; }
-    .hypothesis-card--directa         { outline: 2px solid rgba(252, 165, 165, 0.4); outline-offset: 2px; }
-    .hypothesis-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-    .hypothesis-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .hypothesis-number {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #6b7280;
-      background: #e5e7eb;
-      padding: 2px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-      font-family: monospace;
-    }
-    .hypothesis-badge-directa {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #b91c1c;
-      background: #fee2e2;
-      border: 1px solid #fca5a5;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-    .hypothesis-status {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 12px;
-      white-space: nowrap;
-    }
-    .hypothesis-status--confirmed,
-    .hypothesis-status--confirmed-informal { color: #15803d; background: #dcfce7; }
-    .hypothesis-status--solida             { color: #1d4ed8; background: #dbeafe; }
-    .hypothesis-status--plausible          { color: #92400e; background: #fef3c7; }
-    .hypothesis-status--speculative        { color: #374151; background: #f3f4f6; }
-    .hypothesis-title {
-      font-size: 0.97rem;
-      font-weight: 600;
-      margin: 0 0 14px 0;
-      color: #111827;
-      line-height: 1.4;
-    }
-    .hypothesis-body { font-size: 0.9rem; }
-    .hypothesis-body .table-wrapper { margin-top: 0; }
-    /* ──────────────────────────────────────────────────────────────── */
-
-    .image-clickable:hover {
-      transform: scale(1.02);
-    }
-    .image-clickable:hover .zoom-hint {
-      opacity: 1 !important;
-    }
-    .gallery-item .image-clickable img {
-      transition: all 0.2s ease;
-    }
-    .gallery-item .image-clickable:hover img {
-      filter: brightness(1.1);
-    }
-  </style>
-  
-  <!-- Lightbox editorial (estilos en styles.css) -->
-  <div class="lbx" id="lbx" hidden>
-    <div class="lbx-modal">
-      <div class="lbx-stage" id="lbxStage">
-        <img class="lbx-img" id="lbxImg" alt="">
-        <button class="lbx-btn lbx-nav lbx-prev" id="lbxPrev" aria-label="Anterior">‹</button>
-        <button class="lbx-btn lbx-nav lbx-next" id="lbxNext" aria-label="Siguiente">›</button>
-        <div class="lbx-hint">Clic para acercar · ← → navegar · Esc cerrar</div>
-      </div>
-      <aside class="lbx-panel" id="lbxPanel" hidden>
-        <div class="lbx-count" id="lbxCount"></div>
-        <div class="lbx-cap" id="lbxCap"></div>
-      </aside>
-      <button class="lbx-btn lbx-close" id="lbxClose" aria-label="Cerrar">✕</button>
-    </div>
-  </div>
-  <script>
-  (function(){
-    var boxes = [].slice.call(document.querySelectorAll('.article-content .image-clickable'));
-    var items = boxes.map(function(b){
-      var img = b.querySelector('img'); var fig = b.closest('figure'); var cap = fig ? fig.querySelector('figcaption') : null;
-      return { src: img.getAttribute('src')||'', alt: img.getAttribute('alt')||'', caption: cap ? cap.innerHTML.trim() : '' };
-    });
-    var lbx=document.getElementById('lbx'), stage=document.getElementById('lbxStage'), imgEl=document.getElementById('lbxImg'),
-        panel=document.getElementById('lbxPanel'), capEl=document.getElementById('lbxCap'), countEl=document.getElementById('lbxCount');
-    var idx=0, scale=1, tx=0, ty=0, drag=false, moved=false, sx=0, sy=0, px=0, py=0;
-    function apply(){ imgEl.style.transform='translate('+tx+'px,'+ty+'px) scale('+scale+')'; }
-    function reset(){ scale=1; tx=0; ty=0; stage.classList.remove('zoomed'); apply(); }
-    function zoomTo(s){ scale=Math.max(1,Math.min(6,s)); if(scale===1){tx=0;ty=0;} stage.classList.toggle('zoomed',scale>1); apply(); }
-    function render(){ var it=items[idx]; imgEl.src=it.src; imgEl.alt=it.alt;
-      if(it.caption){ capEl.innerHTML=it.caption; countEl.textContent=(idx+1)+' / '+items.length; panel.hidden=false; } else { panel.hidden=true; }
-      reset(); }
-    function openLB(i){ idx=i; lbx.hidden=false; document.body.style.overflow='hidden'; render(); }
-    function closeLB(){ lbx.hidden=true; document.body.style.overflow=''; }
-    function go(d){ idx=(idx+d+items.length)%items.length; render(); }
-    window.openLightbox = function(src){ var i=-1; items.forEach(function(it,j){ if(it.src===src) i=j; }); openLB(i<0?0:i); };
-    window.closeLightbox = closeLB;
-    document.getElementById('lbxClose').onclick=closeLB;
-    document.getElementById('lbxPrev').onclick=function(e){ e.stopPropagation(); go(-1); };
-    document.getElementById('lbxNext').onclick=function(e){ e.stopPropagation(); go(1); };
-    lbx.addEventListener('click', function(e){ if(e.target===lbx) closeLB(); });
-    imgEl.addEventListener('click', function(e){ e.stopPropagation(); if(moved){ moved=false; return; } zoomTo(scale>1?1:2.2); });
-    stage.addEventListener('wheel', function(e){ e.preventDefault(); zoomTo(scale*(e.deltaY<0?1.2:1/1.2)); }, {passive:false});
-    imgEl.addEventListener('pointerdown', function(e){ if(scale<=1) return; drag=true; moved=false; sx=e.clientX; sy=e.clientY; px=tx; py=ty; try{imgEl.setPointerCapture(e.pointerId);}catch(_){} });
-    imgEl.addEventListener('pointermove', function(e){ if(!drag) return; var dx=e.clientX-sx, dy=e.clientY-sy; if(Math.abs(dx)+Math.abs(dy)>3) moved=true; tx=px+dx; ty=py+dy; apply(); });
-    window.addEventListener('pointerup', function(){ drag=false; });
-    document.addEventListener('keydown', function(e){ if(lbx.hidden) return; if(e.key==='Escape') closeLB(); else if(e.key==='ArrowLeft') go(-1); else if(e.key==='ArrowRight') go(1); });
-  })();
-  </script>
-  
           </article>
           <aside class="article-aside">
             
@@ -456,6 +319,22 @@ if __name__ == &quot;__main__&quot;:
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras del artículo → lightbox compartido (galería con todas las imágenes)
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.article-content figure img')];
+      if (!imgs.length || !window.openLightboxGallery) return;
+      const gallery = imgs.map(im => ({
+        src: im.src, alt: im.alt,
+        caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML.trim() || '',
+      }));
+      imgs.forEach((im, i) => {
+        im.style.cursor = 'zoom-in';
+        im.addEventListener('click', () => window.openLightboxGallery(gallery, i));
+      });
+    });
+  </script>
 
   <script>
     (function() {

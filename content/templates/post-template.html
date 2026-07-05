@@ -88,6 +88,22 @@
   <script src="../../assets/js/nav-drawer.js" defer></script>
   <script src="../../assets/js/theme.js" defer></script>
   <script src="../../assets/js/command-palette.js" defer></script>
+  <script src="../../assets/js/lightbox.js" defer></script>
+  <script>
+    // Figuras del artículo → lightbox compartido (galería con todas las imágenes)
+    addEventListener('DOMContentLoaded', () => {
+      const imgs = [...document.querySelectorAll('.article-content figure img')];
+      if (!imgs.length || !window.openLightboxGallery) return;
+      const gallery = imgs.map(im => ({
+        src: im.src, alt: im.alt,
+        caption: im.closest('figure')?.querySelector('figcaption')?.innerHTML.trim() || '',
+      }));
+      imgs.forEach((im, i) => {
+        im.style.cursor = 'zoom-in';
+        im.addEventListener('click', () => window.openLightboxGallery(gallery, i));
+      });
+    });
+  </script>
 
   <script>
     (function() {

@@ -18,6 +18,9 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const {
+  extractFrontMatter, slugify, processCallouts, processMermaid, processFigures, configureMarked,
+} = require('./lib/markdown');
 
 const ROOT = path.join(__dirname, '..');
 const WIKI_DIR = path.join(ROOT, 'content/wiki');
@@ -41,27 +44,8 @@ function parseTags(raw) {
   return [...new Set(arr.map(t => String(t).trim().replace(/^#/, '')).filter(Boolean))];
 }
 
-function slugify(text) {
-  return String(text || '')
-    .toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
 function escapeHtml(s) {
   return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function extractFrontMatter(content) {
-  const m = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!m) return { metadata: {}, body: content };
-  const metadata = {};
-  m[1].split('\n').forEach(line => {
-    const [key, ...rest] = line.split(':');
-    if (key && rest.length) metadata[key.trim()] = rest.join(':').trim().replace(/^["']|["']$/g, '');
-  });
-  return { metadata, body: m[2] };
 }
 
 function findLinks(body) {
@@ -72,69 +56,10 @@ function findLinks(body) {
   return links;
 }
 
-// ── Render rico (compartido con el estilo del blog) ───────────────────────────
-// Callouts de Obsidian: > [!tipo] título / cuerpo  → <div class="callout …">
-function calloutLabel(t) {
-  const labels = {
-    note: 'Nota', info: 'Información', tip: 'Consejo', hint: 'Pista', hallazgo: 'Hallazgo',
-    important: 'Importante', warning: 'Advertencia', caution: 'Precaución', duda: 'Duda',
-    danger: 'Peligro', error: 'Error', success: 'Éxito', check: 'Verificado', done: 'Hecho',
-    question: 'Pregunta', faq: 'Pregunta', help: 'Ayuda', quote: 'Cita', cite: 'Cita',
-    example: 'Ejemplo', fuente: 'Fuente', abstract: 'Resumen', summary: 'Resumen',
-  };
-  return labels[t] || t.charAt(0).toUpperCase() + t.slice(1);
-}
-function calloutIcon(t) {
-  const icons = {
-    note: 'ℹ', info: 'ℹ', tip: '✦', hint: '✦', important: '★', hallazgo: '✦', fuente: '❝',
-    warning: '▲', caution: '▲', danger: '✕', error: '✕', duda: '?', question: '?', faq: '?',
-    help: '?', success: '✓', check: '✓', done: '✓', quote: '"', cite: '"', example: '◆',
-    abstract: '≡', summary: '≡',
-  };
-  return icons[t] || '·';
-}
-function processCallouts(html) {
-  return html.replace(
-    /<blockquote>\n<p>\[!([A-Za-z_]+)\]([^\n<]*)([\s\S]*?)<\/blockquote>/g,
-    (match, type, titleRest, bodyRest) => {
-      const t = type.toLowerCase();
-      const title = titleRest.trim() || calloutLabel(t);
-      let body = bodyRest;
-      if (body.startsWith('\n')) {
-        body = body.substring(1).replace(/^([^<]*)<\/p>/, (_, c) => c.trim() ? `<p>${c.trim()}</p>` : '');
-      } else {
-        body = body.replace(/^<\/p>/, '').trim();
-      }
-      body = body.trim();
-      return `<div class="callout callout--${t}">
-  <div class="callout-title"><span class="callout-icon">${calloutIcon(t)}</span><span>${title}</span></div>
-  ${body ? `<div class="callout-body">${body}</div>` : ''}
-</div>`;
-    }
-  );
-}
-// Mermaid: ```mermaid (marked → <pre><code class="language-mermaid">) → <div class="mermaid">
-// con el texto sin escapar (lo re-renderiza mermaid.js en la página directa y en el modal).
-function processMermaid(html) {
-  return html.replace(
-    /<pre><code class="language-mermaid">([\s\S]*?)<\/code><\/pre>/g,
-    (m, code) => {
-      const un = code.replace(/&amp;/g, '&').replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
-      return `<div class="mermaid">${un}</div>`;
-    }
-  );
-}
-// Imágenes en bloque (<p><img></p>) → <figure> con pie (alt) y gancho de lightbox.
-function processFigures(html) {
-  return html.replace(/<p>(<img\b[^>]*>)<\/p>/g, (m, img) => {
-    const alt = (img.match(/alt="([^"]*)"/) || [, ''])[1];
-    const tag = img.replace('<img', '<img loading="lazy"');
-    return `<figure class="wiki-figure">${tag}${alt ? `<figcaption>${alt}</figcaption>` : ''}</figure>`;
-  });
-}
-// Pipeline de markdown → HTML para la wiki: resaltados, imágenes Obsidian, marked,
-// callouts, mermaid, figuras y tablas con wrapper.
+// ── Render rico ───────────────────────────────────────────────────────────────
+// Pipeline de markdown → HTML para la wiki: resaltados, imágenes Obsidian, marked
+// (el renderer compartido de lib/markdown.js pone ids de heading y envuelve las
+// tablas en .table-wrapper), callouts, mermaid y figuras.
 function renderRich(md) {
   md = md.replace(/==([^=\n]+)==/g, '<mark>$1</mark>');
   // Imágenes estilo Obsidian: ![[archivo]] → assets/images/wiki/archivo (alt = nombre legible)
@@ -145,9 +70,8 @@ function renderRich(md) {
   });
   let html = marked(md);
   html = processCallouts(html);
-  html = processMermaid(html);
+  html = processMermaid(html).html;
   html = processFigures(html);
-  html = html.replace(/<table>/g, '<div class="table-wrapper"><table>').replace(/<\/table>/g, '</table></div>');
   return html;
 }
 
@@ -342,6 +266,7 @@ function build() {
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const template = fs.readFileSync(TEMPLATE_FILE, 'utf8');
   marked.setOptions({ breaks: false, gfm: true });
+  configureMarked();   // mismo renderer que los posts (ids de heading + .table-wrapper)
 
   // Linkifica menciones pNN en el markdown de una nota
   function linkifyPersonas(md, ownerId) {

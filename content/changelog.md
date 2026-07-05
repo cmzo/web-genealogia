@@ -16,6 +16,22 @@ Varios retoques finos al grafo de conocimiento: los colores de lugares, fuentes,
 
 Las bibliotecas que dibujan el grafo y los diagramas se servían desde un CDN externo: si ese servicio fallaba, la wiki no cargaba. Ahora viven en el propio sitio, como ya pasaba con las tipografías — la wiki carga completa desde cmzo.net.
 
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> El buscador entiende lugares, años y varias palabras
+
+El buscador (⌘ + K) ahora encuentra personas **por dónde nacieron o murieron y por año**: «riddes» trae a todos los nacidos en Riddes, y «riddes 1858» te deja solo a François. Además podés combinar **varias palabras** («celestina roh», «censo 1870») y cada una se resalta en el resultado.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Buscador sin resultados repetidos
+
+Antes, al buscar una persona, aparecía dos veces: una fila para verla en el árbol y otra para su línea de tiempo. Ahora hay una sola fila: **Enter** la abre en el árbol y **⌘ + Enter** abre su línea de tiempo (el pie del buscador te lo recuerda cuando corresponde).
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Filtrar la wiki por familia, sin lista interminable
+
+Estando en la wiki, el buscador ofrecía una fila por cada familia del grafo — muchas líneas para una sola función. Ahora hay una única opción, **«Filtrar por familia…»**, que abre un segundo paso donde tipeás el apellido y listo.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> La portada se presenta como sitio personal
+
+Reescribí la presentación de la portada: CMZO es un **sitio personal** —un blog, un laboratorio de experimentos y la investigación genealógica de la familia—, no solo una página de genealogía. La genealogía sigue siendo el proyecto más largo, pero acá se puede escribir de cualquier cosa.
+
 ### 28 de junio de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> El árbol de Jean-Yves, en la wiki
