@@ -86,6 +86,17 @@ This is a **static site** deployed to **Cloudflare Workers Assets**, served at *
 3. The build also regenerates `assets/data/blog-entries.json`, which is the index that `blog.html` **y el `log` de la home** read at runtime via `fetch()`
 4. **`dist/` is committed** to the repo — Cloudflare sirve esos archivos directamente, so always commit `dist/` after a build
 
+### Traducciones (posts `.fr.md`)
+
+Las traducciones al francés se hacen **con un LLM en sesión** (pedírselas a Claude) — no hay API externa. (El plan original era DeepL vía `scripts/translate.js`, pero DeepL cerró su API gratuita a altas nuevas a mediados de 2026 y el script **nunca corrió**; se eliminó del repo en 2026-07-06, queda en el historial de git.)
+
+Reglas al traducir:
+- **Fidelidad completa: nunca resumir ni abreviar** — la traducción de 2026-06 de `clan-clemenzo` resumió 11 hipótesis en 2 y hubo que rehacerla.
+- Preservar intactos: `![[imágenes]]`, código con backticks (p. ej. `` `rama-directa` ``, del que depende el badge de las hypothesis cards), separadores `---` (delimitan las cards), tablas, y la estructura de headings.
+- Frontmatter: traducir `title`/`kicker`/`description`; copiar tal cual `image`/`category`/`date`/`tags`/`featured`/`slug`/`wiki`; agregar `lang: "fr"`.
+- **El archivo va junto al ES con su mismo basename**: `<archivo>.fr.md` al lado de `<archivo>.md` — el emparejamiento del selector de idiomas es por **nombre de archivo**, no por slug (el slug de salida lo aporta el ES). Un `.fr.md` sin ES homónimo queda huérfano, sin selector.
+- Al **editar un post ES ya traducido, actualizar también su `.fr.md`** — no hay ningún aviso automático de traducción desactualizada.
+
 ### Otros feeds de contenido (generados en build)
 
 Además del blog, `build.js` emite:

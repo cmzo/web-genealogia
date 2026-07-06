@@ -48,11 +48,11 @@ const template = fs.readFileSync(TEMPLATE_FILE, 'utf8');
 
 function processHypotheses(html) {
   const STATUS_MAP = [
-    { test: s => s.includes('Confirmado informalmente'), cls: 'confirmed-informal' },
-    { test: s => s.includes('Confirmado'),               cls: 'confirmed' },
-    { test: s => s.includes('sólida'),                   cls: 'solida' },
-    { test: s => s.includes('plausible'),                cls: 'plausible' },
-    { test: () => true,                                  cls: 'speculative' },
+    { test: s => s.includes('Confirmado informalmente') || s.includes('Confirmée informellement'), cls: 'confirmed-informal' },
+    { test: s => s.includes('Confirmado') || s.includes('Confirmée'), cls: 'confirmed' },
+    { test: s => s.includes('sólida') || s.includes('solide'),        cls: 'solida' },
+    { test: s => s.includes('plausible'),                             cls: 'plausible' },
+    { test: () => true,                                               cls: 'speculative' },
   ];
 
   return html.replace(
