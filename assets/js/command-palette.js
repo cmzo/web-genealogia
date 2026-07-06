@@ -44,6 +44,9 @@
     command: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 3 3-3 3M13 15h5"/></svg>',
     theme:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg>',
     nota:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+    link:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>',
+    fuente:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>',
+    recent:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/><path d="M12 7v5l3 2"/></svg>',
     wiki:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="9" r="2.4"/><circle cx="9" cy="18" r="2.4"/><path d="M8 7.2 16 8.4M7.4 8 8.6 16M10.6 16.6 16 11"/></svg>',
   };
 
@@ -94,6 +97,11 @@
   .cmdk-item-sub { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--muted, #8a8a88);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
   .cmdk-item-enter { flex-shrink: 0; font-size: 11px; color: var(--accent, #2d4a3e); opacity: 0; }
+  .cmdk-item-actbtn { flex-shrink: 0; width: 22px; height: 22px; border: 1px solid var(--border, #e8e8e6);
+    border-radius: 6px; background: var(--surface, #fff); color: var(--muted, #8a8a88);
+    font-size: 14px; line-height: 1; cursor: pointer; opacity: 0; transition: opacity .12s, border-color .12s; }
+  .cmdk-item.is-active .cmdk-item-actbtn, .cmdk-item:hover .cmdk-item-actbtn { opacity: 1; }
+  .cmdk-item-actbtn:hover { border-color: var(--accent, #2d4a3e); color: var(--accent, #2d4a3e); }
   .cmdk-item mark { background: rgba(45,74,62,0.16); color: inherit; border-radius: 2px; padding: 0 1px; }
 
   .cmdk-item.is-active { background: rgba(45,74,62,0.08); }
@@ -194,11 +202,12 @@
   async function loadIndex() {
     if (_index || _loading) return;
     _loading = true;
-    const [arbol, posts, notasRaw, wikiRaw] = await Promise.all([
+    const [arbol, posts, notasRaw, wikiRaw, fuentesRaw] = await Promise.all([
       fetch(ROOT + 'assets/data/arbol.json').then(r => r.ok ? r.json() : { personas: [] }).catch(() => ({ personas: [] })),
       fetch(ROOT + 'assets/data/blog-entries.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch(ROOT + 'assets/data/notas.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch(ROOT + 'assets/data/wiki-graph.json').then(r => r.ok ? r.json() : { nodes: [] }).catch(() => ({ nodes: [] })),
+      fetch(ROOT + 'assets/data/fuentes.json').then(r => r.ok ? r.json() : []).catch(() => []),
     ]);
 
     // Personas con investigación legible en la wiki (para la acción «Leer investigación»)
@@ -239,7 +248,16 @@
                    sub: ['Wiki', WIKI_TYPE_ES[n.type] || ''].filter(Boolean).join(' · '),
                    _t: norm(n.title), _h: norm([n.title, n.summary || '', n.type || ''].join(' ')) }));
 
-    _index = { personas, posts: list, notas, wikiPages };
+    // Fuentes (catálogo): Enter abre el sitio externo en pestaña nueva; los libros
+    // (sin url) llevan a su ficha en la página de fuentes.
+    const fuentes = (Array.isArray(fuentesRaw) ? fuentesRaw : []).map(f => ({
+      type: 'fuente', id: f.id, url: f.url || '', title: f.title,
+      sub: [f.region, f.tipo].filter(Boolean).join(' · ') + (f.url ? ' · ↗ abre el sitio' : ''),
+      _t: norm(f.title),
+      _h: norm([f.title, f.region, f.tipo, f.autor, f.text].filter(Boolean).join(' ')),
+    }));
+
+    _index = { personas, posts: list, notas, wikiPages, fuentes };
     _loading = false;
   }
 
@@ -282,6 +300,17 @@
     return items;
   }
 
+  // Acciones de una página wiki (lugar/fuente/evento/tema): Enter ya abre la
+  // lectura; acá vive el destino alternativo.
+  function wikiActions(n) {
+    return [
+      { type: 'action', act: 'read', id: n.id, icon: 'post', title: 'Leer página',
+        sub: 'Abrir la lectura (enfoca el nodo y abre el modal)', _t: norm('leer pagina'), _h: norm('leer pagina abrir articulo contenido') },
+      { type: 'action', act: 'graph', id: n.id, icon: 'wiki', title: 'Ver en el grafo',
+        sub: 'Solo enfocar el nodo y sus conexiones', _t: norm('ver en el grafo'), _h: norm('wiki grafo nodo conexiones enfocar') },
+    ];
+  }
+
   // Ítems del sub-menú (una fila por familia, filtrables al tipear)
   function branchItems() {
     const active = activeBranch();
@@ -291,6 +320,22 @@
         sub: active === b ? 'Filtro activo' : 'Filtrar el grafo por esta familia',
         _t: norm(label), _h: norm(label) };
     });
+  }
+
+  // ── Recientes: últimas selecciones (localStorage), para el estado vacío ───────
+  const RECENT_KEY = 'cmdk-recent';
+  const RECENT_TYPES = ['persona', 'page', 'post', 'wiki', 'nota', 'fuente'];
+  function recentItems() {
+    try { return (JSON.parse(localStorage.getItem(RECENT_KEY)) || []).map(r => ({ ...r, icon: r.icon || 'recent' })); }
+    catch (e) { return []; }
+  }
+  function remember(it) {
+    if (!RECENT_TYPES.includes(it.type)) return;
+    const key = it.id || it.url;
+    if (!key) return;
+    const list = recentItems().filter(r => (r.id || r.url) !== key);
+    list.unshift({ type: it.type, id: it.id, url: it.url, title: it.title, sub: it.sub, read: it.read, icon: it.type });
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 5))); } catch (e) {}
   }
 
   // ── Comandos (acciones ejecutables, no navegación) ────────────────────────────
@@ -319,6 +364,11 @@
         title: dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro', sub: 'Tema del sitio',
         _t: norm('tema modo dia noche claro oscuro'),
         _h: norm('tema theme modo dia noche claro oscuro light dark apariencia cambiar') },
+      { type: 'command', icon: 'link',
+        run: () => { try { navigator.clipboard.writeText(window.location.href); } catch (e) {} return false; },
+        title: 'Copiar enlace de esta página', sub: 'Copia la URL actual al portapapeles',
+        _t: norm('copiar enlace de esta pagina'),
+        _h: norm('copiar enlace link url pagina portapapeles compartir copy') },
     ];
   }
 
@@ -338,15 +388,19 @@
     return total;
   }
 
+  // Devuelve los mejores `limit` ítems; el array lleva `.best` (puntaje del primero)
+  // para poder ordenar los GRUPOS entre sí: un match exacto de persona no debe
+  // quedar debajo de un match difuso de otro grupo.
   function rank(items, q, limit) {
     const tokens = q.split(/\s+/).filter(Boolean);
-    if (!tokens.length) return [];
-    return items
+    if (!tokens.length) { const e = []; e.best = -1; return e; }
+    const scored = items
       .map(it => ({ it, s: scoreItem(tokens, it) }))
       .filter(x => x.s >= 0)
-      .sort((a, b) => b.s - a.s)
-      .slice(0, limit)
-      .map(x => x.it);
+      .sort((a, b) => b.s - a.s);
+    const arr = scored.slice(0, limit).map(x => x.it);
+    arr.best = scored.length ? scored[0].s : -1;
+    return arr;
   }
 
   function buildGroups(query) {
@@ -358,9 +412,9 @@
       return items.length ? [{ label: 'Familias', items }] : [];
     }
 
-    // Sub-menú de acciones de una persona (→ sobre su fila)
+    // Sub-menú de acciones de una persona o página wiki (→ sobre su fila)
     if (_mode === 'actions' && _modeItem) {
-      const all = personaActions(_modeItem);
+      const all = _modeItem.type === 'wiki' ? wikiActions(_modeItem) : personaActions(_modeItem);
       const items = q ? rank(all, q, 10) : all;
       return items.length ? [{ label: _modeItem.title, items }] : [];
     }
@@ -370,27 +424,32 @@
     const posts = (_index && _index.posts) || [];
     const notas = (_index && _index.notas) || [];
     const wikiPages = (_index && _index.wikiPages) || [];
+    const fuentes = (_index && _index.fuentes) || [];
 
     if (!q) {
-      // Estado vacío: sugerencias — filtro de la wiki (si aplica) + comandos + páginas + posts recientes
-      const recent = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 4);
+      // Estado vacío: recientes + filtro de la wiki (si aplica) + comandos + páginas + posts nuevos
+      const latest = [...posts].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 4);
       return [
+        { label: 'Recientes', items: recentItems() },
         { label: 'Filtrar la wiki', items: wikiFilterEntry() },
         { label: 'Comandos', items: commandItems() },
         { label: 'Páginas', items: pages },
-        { label: 'Posts recientes', items: recent },
+        { label: 'Últimos posts', items: latest },
       ].filter(g => g.items.length);
     }
 
+    // Con query: los grupos se ordenan por su mejor match (empates: orden canónico)
     return [
       { label: 'Filtrar la wiki', items: rank(wikiFilterEntry(), q, 3) },
       { label: 'Comandos',        items: rank(commandItems(), q, 5) },
       { label: 'Páginas',         items: rank(pages, q, 6) },
       { label: 'Wiki',            items: rank(wikiPages, q, 7) },
       { label: 'Personas',        items: rank(personas, q, 7) },
+      { label: 'Fuentes',         items: rank(fuentes, q, 6) },
       { label: 'Posts',           items: rank(posts, q, 6) },
       { label: 'Notas',           items: rank(notas, q, 6) },
-    ].filter(g => g.items.length);
+    ].filter(g => g.items.length)
+     .sort((a, b) => (b.items.best || 0) - (a.items.best || 0));
   }
 
   // ── Render ────────────────────────────────────────────────────────────────────
@@ -411,12 +470,13 @@
         const i = _visible.length;
         _visible.push(it);
         html += `
-          <div class="cmdk-item" role="option" data-i="${i}">
+          <div class="cmdk-item" role="option" id="cmdk-opt-${i}" data-i="${i}">
             <div class="cmdk-item-icon">${ICONS[it.icon] || ICONS[it.type] || ICONS.page}</div>
             <div class="cmdk-item-text">
               <div class="cmdk-item-title">${highlight(it.title, q)}</div>
-              ${it.sub ? `<div class="cmdk-item-sub">${esc(it.sub)}</div>` : ''}
+              ${it.sub ? `<div class="cmdk-item-sub">${highlight(it.sub, q)}</div>` : ''}
             </div>
+            ${['persona', 'wiki'].includes(it.type) && !_mode ? '<button class="cmdk-item-actbtn" data-actions="1" aria-label="Acciones" title="Acciones (→)">›</button>' : ''}
             <span class="cmdk-item-enter">↵</span>
           </div>`;
       });
@@ -430,16 +490,25 @@
     _results.querySelectorAll('.cmdk-item').forEach(el => {
       const i = +el.dataset.i;
       el.addEventListener('mousemove', () => { if (_active !== i) { _active = i; paintActive(false); } });
-      el.addEventListener('click', () => { _active = i; activate(); });
+      el.addEventListener('click', e => {
+        _active = i;
+        // El botón › abre el sub-menú de acciones de la persona (equivale a →)
+        if (e.target.closest('[data-actions]')) { setMode('actions', _visible[i]); return; }
+        activate();
+      });
     });
   }
 
   function paintActive(scroll = true) {
     const els = _results.querySelectorAll('.cmdk-item');
-    els.forEach((el, i) => el.classList.toggle('is-active', i === _active));
+    els.forEach((el, i) => {
+      el.classList.toggle('is-active', i === _active);
+      el.setAttribute('aria-selected', i === _active);
+    });
     if (scroll && els[_active]) els[_active].scrollIntoView({ block: 'nearest' });
-    // Hint contextual: solo cuando el ítem activo es una persona en la raíz
-    if (_actHint) _actHint.hidden = !(!_mode && _visible[_active] && _visible[_active].type === 'persona');
+    if (_input) _input.setAttribute('aria-activedescendant', els[_active] ? `cmdk-opt-${_active}` : '');
+    // Hint contextual: cuando el ítem activo (en la raíz) tiene sub-menú de acciones
+    if (_actHint) _actHint.hidden = !(!_mode && _visible[_active] && ['persona', 'wiki'].includes(_visible[_active].type));
   }
 
   function move(delta) {
@@ -448,9 +517,19 @@
     paintActive();
   }
 
+  // Abrir una persona: si la página define un handler propio (árbol o wiki),
+  // enfoca sin salir; si no, navega al árbol. También lo usa «Persona al azar».
+  function openPersona(it) {
+    remember(it);
+    const focusFn = window.__personaFocus || window.__treeFocus;
+    if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
+    window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+  }
+
   function activate() {
     const it = _visible[_active];
     if (!it) return;
+    remember(it);   // solo registra los tipos navegables (personas, páginas, posts…)
     if (it.type === 'mode') {
       // Entra al sub-menú (p. ej. «Filtrar por familia…»): el palette queda abierto
       setMode(it.mode);
@@ -489,17 +568,22 @@
     }
     if (it.type === 'persona') {
       // Enter = acción por defecto (enfocar); los demás destinos —incluida la línea
-      // de tiempo— viven en el sub-menú de acciones (→). Si la página define un
-      // handler propio (árbol o wiki), enfoca sin salir; si no, navega al árbol.
-      const focusFn = window.__personaFocus || window.__treeFocus;
-      if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
-      window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+      // de tiempo— viven en el sub-menú de acciones (→ o el botón ›).
+      openPersona(it);
       return;
     }
     if (it.type === 'wiki') {
-      // Enfocar el nodo en el grafo si ya estamos en la wiki; si no, navegar con ?focus=
-      if (typeof window.__personaFocus === 'function') { window.__personaFocus(it.id); close(); return; }
-      window.location.href = ROOT + 'wiki.html?focus=' + encodeURIComponent(it.id);
+      // Enter abre la LECTURA directo (?read= enfoca el nodo Y abre el modal);
+      // «Ver en el grafo» vive en el sub-menú de acciones (→ o ›)
+      if (typeof window.__wikiRead === 'function') { window.__wikiRead(it.id); close(); return; }
+      window.location.href = ROOT + 'wiki.html?read=' + encodeURIComponent(it.id);
+      return;
+    }
+    if (it.type === 'fuente') {
+      // Quicklink: abrir el sitio de la fuente en pestaña nueva, sin salir de donde estás.
+      // Los libros (sin url) llevan a su ficha en la página de fuentes.
+      if (it.url) { window.open(it.url, '_blank', 'noopener'); close(); return; }
+      window.location.href = ROOT + 'fuentes.html#f-' + encodeURIComponent(it.id);
       return;
     }
     if (it.type === 'nota') {
@@ -556,10 +640,11 @@
         <div class="cmdk-input-row">
           ${ICONS.command}
           <input class="cmdk-input" type="text" placeholder="Buscar o ejecutar un comando…"
-                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Buscar o ejecutar un comando">
+                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Buscar o ejecutar un comando"
+                 role="combobox" aria-expanded="true" aria-controls="cmdkList" aria-autocomplete="list">
           <span class="cmdk-kbd">esc</span>
         </div>
-        <div class="cmdk-results" role="listbox"></div>
+        <div class="cmdk-results" id="cmdkList" role="listbox"></div>
         <div class="cmdk-footer">
           <span><span class="cmdk-kbd">↑</span><span class="cmdk-kbd">↓</span> navegar</span>
           <span><span class="cmdk-kbd">↵</span> abrir / ejecutar</span>
@@ -584,9 +669,9 @@
       else if (e.key === 'Escape')    { e.preventDefault(); if (_mode) setMode(null); else close(); }
       else if (e.key === 'Backspace' && _mode && !_input.value) { e.preventDefault(); setMode(null); }
       else if (e.key === 'ArrowRight' && !_mode
-               && _visible[_active] && _visible[_active].type === 'persona'
+               && _visible[_active] && ['persona', 'wiki'].includes(_visible[_active].type)
                && _input.selectionStart === _input.value.length) {
-        // → sobre una persona (con el cursor al final del texto): abrir sus acciones
+        // → sobre una persona o página wiki (cursor al final del texto): abrir sus acciones
         e.preventDefault(); setMode('actions', _visible[_active]);
       }
       else if (e.key === 'Tab')       { e.preventDefault(); move(e.shiftKey ? -1 : 1); }

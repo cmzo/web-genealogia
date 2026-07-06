@@ -6,6 +6,7 @@ node_modules
 /content/templates
 /content/wiki
 /content/personas
+/content/fuentes
 /package.json
 /package-lock.json
 /wrangler.toml

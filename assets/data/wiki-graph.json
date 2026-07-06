@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-06T06:05:43.388Z",
+  "generated": "2026-07-06T14:42:44.468Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -8,6 +8,15 @@
       "branch": "",
       "url": "dist/wiki/arbol-jean-yves.html",
       "summary": "Árbol genealógico manuscrito de Jean-Yves Clemenzo: la rama de los Clemenzo que permaneció en Ardon (Valais), desde 1481 hasta el siglo XX.",
+      "hasContent": true
+    },
+    {
+      "id": "ardon-valais",
+      "title": "Ardon (Valais)",
+      "type": "lugar",
+      "branch": "",
+      "url": "dist/wiki/ardon-valais.html",
+      "summary": "Comuna del distrito de Conthey, en el Valais, Suiza: cuna documentada del clan Clemenzo desde 1481 y hogar de la rama que permaneció en Europa.",
       "hasContent": true
     },
     {
@@ -1233,7 +1242,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 56
+      "weight": 57
     },
     {
       "id": "tag:ardon",
@@ -1243,7 +1252,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 11
+      "weight": 12
     },
     {
       "id": "tag:valais",
@@ -1253,7 +1262,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 33
+      "weight": 34
     },
     {
       "id": "tag:suiza",
@@ -1263,7 +1272,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 31
+      "weight": 32
     },
     {
       "id": "tag:arbol",
@@ -1278,6 +1287,16 @@
     {
       "id": "tag:fuente",
       "title": "#fuente",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:lugar",
+      "title": "#lugar",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1324,16 +1343,6 @@
       "summary": "",
       "hasContent": false,
       "weight": 7
-    },
-    {
-      "id": "tag:lugar",
-      "title": "#lugar",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
     },
     {
       "id": "tag:roh",
@@ -1649,6 +1658,10 @@
   "edges": [
     {
       "source": "arbol-jean-yves",
+      "target": "ardon-valais"
+    },
+    {
+      "source": "arbol-jean-yves",
       "target": "emigracion-valais-entrerios"
     },
     {
@@ -1674,6 +1687,50 @@
     {
       "source": "arbol-jean-yves",
       "target": "p57"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p93"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p94"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p57"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p36"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p72"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p73"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p74"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p75"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "p76"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "emigracion-valais-entrerios"
     },
     {
       "source": "censo-valais-1870",
@@ -2850,6 +2907,31 @@
     {
       "source": "arbol-jean-yves",
       "target": "tag:fuente",
+      "rel": "tag"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "ardon-valais",
+      "target": "tag:lugar",
       "rel": "tag"
     },
     {

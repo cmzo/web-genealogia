@@ -73,113 +73,53 @@
   </footer>
 
   <script src="./assets/js/path-config.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked@4/marked.min.js"></script>
   <script>
+    // Catálogo de fuentes desde assets/data/fuentes.json (lo emite el build a partir
+    // de content/fuentes/*.md — un archivo por fuente). El mismo JSON lo indexa el ⌘K.
     const slugify = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
       .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-    // Reagrupa el markdown en paneles (un panel por sección «## país/región»), y dentro,
-    // cada institución «### …» como una fila .cmzo-src. La bibliografía (tabla) va en su panel.
-    function panelize(container) {
-      const children = Array.from(container.children);
-      const frag = document.createDocumentFragment();
-      let panel = null, countEl = null, count = 0, entry = null;
+    function render(fuentes) {
+      const container = document.querySelector('.fuentes-content');
+      const regiones = [];
+      fuentes.forEach(f => { if (!regiones.includes(f.region)) regiones.push(f.region); });
 
-      const flush = () => {
-        if (panel) { if (countEl) countEl.textContent = count ? (count + (count === 1 ? ' fuente' : ' fuentes')) : ''; frag.appendChild(panel); }
-        panel = null; countEl = null; count = 0; entry = null;
-      };
-
-      for (const el of children) {
-        if (el.tagName === 'H1') continue;
-
-        if (el.tagName === 'H2') {
-          flush();
-          panel = document.createElement('section');
-          panel.className = 'cmzo-viz fuentes-group';
-          panel.id = 'sec-' + slugify(el.textContent);
-          const head = document.createElement('div');
-          head.className = 'cmzo-viz-head';
-          const l = document.createElement('span'); l.textContent = el.textContent;
-          countEl = document.createElement('span'); countEl.className = 'count';
-          head.append(l, countEl);
-          panel.appendChild(head);
-          entry = null;
-        } else if (el.tagName === 'H3' && panel) {
-          entry = document.createElement('div');
-          entry.className = 'cmzo-src';
-          const top = document.createElement('div'); top.className = 'cmzo-src-top';
-          const nm = document.createElement('span'); nm.className = 'cmzo-src-name'; nm.textContent = el.textContent;
-          top.appendChild(nm);
-          entry.appendChild(top);
-          panel.appendChild(entry);
-          count++;
-        } else if (el.tagName === 'HR') {
-          entry = null;
-        } else if (el.tagName === 'P' && el.textContent.startsWith('Última actualización')) {
-          flush();
-          el.className = 'fuentes-update';
-          frag.appendChild(el);
-        } else if (el.classList && el.classList.contains('table-wrapper')) {
-          if (panel) panel.appendChild(el); else frag.appendChild(el);
-          entry = null;
-        } else if (el.tagName === 'P' || el.tagName === 'UL' || el.tagName === 'OL') {
-          // ¿es una línea de contacto **Web:** … ?
-          if (el.tagName === 'P' && el.firstChild && el.firstChild.nodeName === 'STRONG') el.classList.add('meta');
-          if (entry) entry.appendChild(el);
-          else if (panel) { const pad = document.createElement('div'); pad.className = 'pad'; pad.appendChild(el); panel.appendChild(pad); }
-          else frag.appendChild(el);
-        } else {
-          if (entry) entry.appendChild(el); else if (panel) panel.appendChild(el); else frag.appendChild(el);
-        }
+      let html = '';
+      // Índice de grupos
+      if (regiones.length > 1) {
+        html += `<nav class="cmzo-viz fuentes-toc" aria-label="Índice de secciones">
+          <div class="cmzo-viz-head"><span>índice</span><span>${regiones.length} grupos</span></div>
+          <div class="cmzo-toc-grid">${regiones.map(r => {
+            const n = fuentes.filter(f => f.region === r).length;
+            return `<a class="cmzo-src" href="#sec-${slugify(r)}"><div class="cmzo-src-top"><span class="cmzo-src-name">${esc(r)}</span><span class="cmzo-src-meta">${n}</span></div></a>`;
+          }).join('')}</div>
+        </nav>`;
       }
-      flush();
-      container.innerHTML = '';
-      container.appendChild(frag);
-    }
-
-    // Índice de grupos como panel de accesos
-    function buildTOC(container) {
-      const groups = Array.from(container.querySelectorAll('.fuentes-group'));
-      if (groups.length < 2) return;
-      const toc = document.createElement('nav');
-      toc.className = 'cmzo-viz fuentes-toc';
-      toc.setAttribute('aria-label', 'Índice de secciones');
-      const head = document.createElement('div');
-      head.className = 'cmzo-viz-head';
-      head.innerHTML = `<span>índice</span><span>${groups.length} grupos</span>`;
-      toc.appendChild(head);
-      const grid = document.createElement('div');
-      grid.className = 'cmzo-toc-grid';
-      groups.forEach(g => {
-        const name = g.querySelector('.cmzo-viz-head span').textContent;
-        const count = g.querySelectorAll('.cmzo-src').length;
-        const a = document.createElement('a');
-        a.className = 'cmzo-src';
-        a.href = '#' + g.id;
-        a.innerHTML = `<div class="cmzo-src-top"><span class="cmzo-src-name">${name}</span>${count ? `<span class="cmzo-src-meta">${count}</span>` : ''}</div>`;
-        grid.appendChild(a);
+      // Paneles por región
+      regiones.forEach(r => {
+        const items = fuentes.filter(f => f.region === r);
+        html += `<section class="cmzo-viz fuentes-group" id="sec-${slugify(r)}">
+          <div class="cmzo-viz-head"><span>${esc(r)}</span><span class="count">${items.length} ${items.length === 1 ? 'fuente' : 'fuentes'}</span></div>
+          ${items.map(f => `
+            <div class="cmzo-src" id="f-${esc(f.id)}">
+              <div class="cmzo-src-top">
+                <span class="cmzo-src-name">${esc(f.title)}</span>
+                ${f.tipo ? `<span class="cmzo-src-meta">${esc(f.tipo)}</span>` : ''}
+              </div>
+              ${f.url ? `<p class="meta"><strong>Web:</strong> <a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}
+              ${f.autor ? `<p class="meta"><strong>Autor:</strong> ${esc(f.autor)}</p>` : ''}
+              ${f.html}
+            </div>`).join('')}
+        </section>`;
       });
-      toc.appendChild(grid);
-      container.prepend(toc);
+      container.innerHTML = html;
+      container.querySelectorAll('.cmzo-src a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
     }
 
-    marked.use({ renderer: {
-      table(header, body) {
-        return `<div class="table-wrapper"><table><thead>${header}</thead><tbody>${body}</tbody></table></div>\n`;
-      }
-    }});
-
-    const url = window.getContentPath?.('fuentes.md') ?? './content/fuentes.md';
-    fetch(url)
-      .then(r => r.text())
-      .then(md => {
-        const container = document.querySelector('.fuentes-content');
-        container.innerHTML = marked.parse(md);
-        panelize(container);
-        buildTOC(container);
-        container.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
-      })
+    fetch(window.getDataPath ? window.getDataPath('fuentes.json') : './assets/data/fuentes.json')
+      .then(r => r.json())
+      .then(render)
       .catch(() => {
         document.querySelector('.fuentes-content').innerHTML = '<p style="color:var(--muted);font-family:var(--sans);">No se pudo cargar el contenido.</p>';
       });
@@ -188,5 +128,6 @@
 <script src="assets/js/nav.js" defer></script>
 <script src="assets/js/nav-drawer.js" defer></script>
 <script src="assets/js/theme.js" defer></script>
+<script src="assets/js/command-palette.js" defer></script>
 </body>
 </html>

@@ -379,6 +379,48 @@ function buildNotas() {
   console.log(`✅ Generado: ${NOTAS_FILE} (${notas.length} notas)`);
 }
 
+// ── Fuentes: catálogo de archivos/repositorios (content/fuentes/*.md) ─────────
+// Un archivo por fuente con frontmatter (title, url, region, tipo, estado, autor,
+// orden). Emite assets/data/fuentes.json — lo consumen fuentes.html y el ⌘K.
+const FUENTES_DIR = './content/fuentes';
+const FUENTES_FILE = './assets/data/fuentes.json';
+const REGION_ORDER = [
+  'Argentina — Entre Ríos', 'Argentina — Nacional',
+  'Suiza — Cantón del Valais', 'Suiza — General',
+  'Plataformas y directorios', 'Bibliografía',
+];
+
+function buildFuentes() {
+  const fuentes = [];
+  if (fs.existsSync(FUENTES_DIR)) {
+    marked.setOptions({ breaks: false, gfm: true });
+    fs.readdirSync(FUENTES_DIR).filter(f => f.endsWith('.md')).forEach(file => {
+      const raw = fs.readFileSync(path.join(FUENTES_DIR, file), 'utf8');
+      const { metadata, content } = extractFrontMatter(raw);
+      if (!metadata.title) { console.warn(`⚠️  fuentes/${file} sin título — se omite`); return; }
+      const html = marked.parse(content.trim());
+      fuentes.push({
+        id: file.replace(/\.md$/, ''),
+        title: metadata.title,
+        url: metadata.url || '',
+        region: metadata.region || 'Otras',
+        tipo: metadata.tipo || '',
+        estado: metadata.estado || '',
+        autor: metadata.autor || '',
+        orden: parseInt(metadata.orden, 10) || 999,
+        html,
+        text: plainText(html).slice(0, 300),   // para el buscador
+      });
+    });
+  }
+  fuentes.sort((a, b) => {
+    const ra = REGION_ORDER.indexOf(a.region), rb = REGION_ORDER.indexOf(b.region);
+    return (ra === -1 ? 99 : ra) - (rb === -1 ? 99 : rb) || a.orden - b.orden || a.title.localeCompare(b.title);
+  });
+  fs.writeFileSync(FUENTES_FILE, JSON.stringify(fuentes, null, 2));
+  console.log(`✅ Generado: ${FUENTES_FILE} (${fuentes.length} fuentes)`);
+}
+
 // ── Changelog → ítems de la bitácora ─────────────────────────────────────────
 const MESES = {
   enero: '01', febrero: '02', marzo: '03', abril: '04', mayo: '05', junio: '06',
@@ -503,6 +545,7 @@ function build() {
   // Área lab, notas/momentos y feed del changelog (alimentan la bitácora de la home)
   buildLab();
   buildNotas();
+  buildFuentes();
   buildChangelogFeed();
 
   // Generar arbol.json desde data/arbol.db
