@@ -154,38 +154,43 @@ function markdownToHtml(markdown) {
   
   // ── Figuras y galerías (semántico; estilos en styles.css, lightbox compartido
   //    vía post-template.html) ──────────────────────────────────────────────────
-  const IMG_TAG = '<img[^>]+>';
   const toFigure = (img, caption) =>
     `<figure class="article-image">${img}${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
 
-  // Imagen + pie en el mismo párrafo (breaks:true):  ![[img]]\n*pie*  → <p><img><br><em>pie</em></p>
-  html = html.replace(
-    new RegExp(`<p>(${IMG_TAG})<br>\\s*<em>([\\s\\S]*?)<\\/em><\\/p>`, 'g'),
-    (m, img, cap) => toFigure(img, cap)
-  );
-  // Imagen y pie en párrafos consecutivos: <p><img></p> <p><em>pie</em></p>
-  html = html.replace(
-    new RegExp(`<p>(${IMG_TAG})<\\/p>\\s*<p><em>([\\s\\S]*?)<\\/em><\\/p>`, 'g'),
-    (m, img, cap) => toFigure(img, cap)
-  );
-  // Varias imágenes dentro de un mismo párrafo (separadas por <br>) → figuras apiladas
-  html = html.replace(
-    new RegExp(`<p>((?:${IMG_TAG}(?:<br>)?\\s*){2,})<\\/p>`, 'g'),
-    m => (m.match(/<img[^>]+>/g) || []).map(img => toFigure(img)).join('\n')
-  );
-  // Galería: 2+ párrafos-imagen consecutivos → grid (estilos en .image-gallery)
-  html = html.replace(
-    new RegExp(`(?:<p>${IMG_TAG}<\\/p>\\s*){2,}`, 'g'),
-    match => {
-      const images = match.match(/<img[^>]+>/g) || [];
-      if (VERBOSE) console.log(`📸 Galería detectada con ${images.length} imágenes`);
-      return `<div class="image-gallery">\n${images.map(img => toFigure(img)).join('\n')}\n</div>`;
+  // Todo <p> que contenga imágenes se descompone en segmentos separados por <br>
+  // (con breaks:true, "![[img]]\n*pie*\ntexto" es UN párrafo): cada imagen se vuelve
+  // <figure>; si el segmento siguiente es una línea entera en cursiva, es su pie;
+  // el texto restante se re-emite como párrafo. Los patrones quedan acotados al
+  // párrafo — nunca cruzan a otros elementos.
+  html = html.replace(/<p>((?:(?!<\/p>)[\s\S])*?<img[^>]+>(?:(?!<\/p>)[\s\S])*?)<\/p>/g, (m, inner) => {
+    const parts = inner.split(/\s*<br>\s*/);
+    const out = [];
+    let buf = [];
+    const flush = () => { if (buf.length) { out.push(`<p>${buf.join('<br>')}</p>`); buf = []; } };
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i].trim();
+      if (!part) continue;
+      if (/^<img[^>]+>$/.test(part)) {
+        const cap = (parts[i + 1] || '').trim().match(/^<em>([\s\S]+)<\/em>$/);
+        flush();
+        out.push(toFigure(part, cap ? cap[1] : ''));
+        if (cap) i++;
+      } else {
+        buf.push(part);
+      }
     }
-  );
-  // Imagen suelta en su propio párrafo → figura
+    flush();
+    return out.join('\n');
+  });
+
+  // Galería: 2+ figuras consecutivas SIN pie → grid (estilos en .image-gallery)
   html = html.replace(
-    new RegExp(`<p>(${IMG_TAG})<\\/p>`, 'g'),
-    (m, img) => toFigure(img)
+    /(?:<figure class="article-image"><img[^>]+><\/figure>\s*){2,}/g,
+    match => {
+      const figs = match.match(/<figure class="article-image"><img[^>]+><\/figure>/g) || [];
+      if (VERBOSE) console.log(`📸 Galería detectada con ${figs.length} imágenes`);
+      return `<div class="image-gallery">\n${figs.join('\n')}\n</div>`;
+    }
   );
 
   // (El lightbox es el compartido —assets/js/lightbox.js— y lo carga el template;
