@@ -1,5 +1,13 @@
 ### 7 de julio de 2026
 
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los documentos de cada persona ahora viven en la wiki
+
+Las fotos, actas y censos de cada persona estaban en una pestaña «Archivos» dentro del árbol, separados de la investigación que respaldan. Ahora cada página de persona en la **wiki** termina con su galería de **Documentos** — y las personas que todavía no tienen investigación escrita pero sí documentos (61 casos) ganaron su propia página. Las páginas de persona con algo para ver pasaron de 11 a **72**. En el árbol, la ficha enlaza directo a la lectura con la cantidad de documentos; la pestaña Archivos se retiró para no tener lo mismo en dos lados.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Botón de ayuda en el árbol
+
+El árbol se puede recorrer con el teclado —flechas para moverse entre padres, hijos, hermanos y cónyuges— pero eso no estaba explicado en ningún lado. Ahora hay un **botón ⓘ** junto a los controles de zoom que muestra todos los atajos, el buscador ⌘ K y cómo funciona el clic para reorganizar el árbol.
+
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Se retiró la página «Sobre el proyecto»
 
 La página «Sobre el proyecto» era la última que conservaba el diseño viejo del sitio, anterior al rediseño CMZO, y ya no estaba enlazada desde ninguna parte. Se eliminó. Su contenido útil tiene mejor casa en otros lados: la presentación vive en la portada, y los atajos de teclado del árbol volverán pronto como un botón de ayuda dentro del propio árbol.

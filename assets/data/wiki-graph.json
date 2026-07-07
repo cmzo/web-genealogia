@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T20:11:11.500Z",
+  "generated": "2026-07-07T21:13:39.042Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -60,99 +60,99 @@
       "title": "Felix Ricardo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p10",
+      "url": "dist/wiki/p10.html",
       "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p100",
       "title": "Anselmo Leopoldo Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p100",
+      "url": "dist/wiki/p100.html",
       "summary": "n. 1876, Colón, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p101",
       "title": "Manuela Locher",
       "type": "persona",
       "branch": "locher",
-      "url": "arbol.html?focus=p101",
+      "url": "dist/wiki/p101.html",
       "summary": "n. 1876, Departamento Colón, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p102",
       "title": "Francisco José Vergère",
       "type": "persona",
       "branch": "vergere",
-      "url": "arbol.html?focus=p102",
+      "url": "dist/wiki/p102.html",
       "summary": "n. 1836, Conthey, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p103",
       "title": "Domingo Mersilli",
       "type": "persona",
       "branch": "mersilli",
-      "url": "arbol.html?focus=p103",
+      "url": "dist/wiki/p103.html",
       "summary": "n. 1860, Italia",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p104",
       "title": "José Domingo Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p104",
+      "url": "dist/wiki/p104.html",
       "summary": "n. 1884-07-08, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p105",
       "title": "Gregoria Orfilia Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p105",
+      "url": "dist/wiki/p105.html",
       "summary": "n. 1906-05-09, Genacito, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p106",
       "title": "Pedro Mauricio Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p106",
+      "url": "dist/wiki/p106.html",
       "summary": "n. 1908-03-24, Villa Mantero, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p107",
       "title": "Rogelia Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p107",
+      "url": "dist/wiki/p107.html",
       "summary": "n. 1909-04-17, Genacito, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p108",
       "title": "Antonio Ramón Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p108",
+      "url": "dist/wiki/p108.html",
       "summary": "n. 1911-01-08, Genacito, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p109",
       "title": "Héctor Patricio Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p109",
+      "url": "dist/wiki/p109.html",
       "summary": "n. 1914-05-17, Genacito, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p11",
@@ -168,9 +168,9 @@
       "title": "Raúl Roque Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p110",
+      "url": "dist/wiki/p110.html",
       "summary": "n. 1917-12-30, Genacito, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p111",
@@ -186,63 +186,63 @@
       "title": "Laurindo Anselmo Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p112",
+      "url": "dist/wiki/p112.html",
       "summary": "n. 1902-11-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p113",
       "title": "Luisa Odila Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p113",
+      "url": "dist/wiki/p113.html",
       "summary": "n. 1908-07-21, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p114",
       "title": "Juan Héctor Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p114",
+      "url": "dist/wiki/p114.html",
       "summary": "n. 1911-03-08, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p115",
       "title": "María Catalina Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p115",
+      "url": "dist/wiki/p115.html",
       "summary": "n. 1912-05-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p116",
       "title": "Irma Cirila Etchegorry",
       "type": "persona",
       "branch": "etchegorry",
-      "url": "arbol.html?focus=p116",
+      "url": "dist/wiki/p116.html",
       "summary": "n. 1916-03-09, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p117",
       "title": "Marie Rosalie Roch",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p117",
+      "url": "dist/wiki/p117.html",
       "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p118",
       "title": "Joseph Marie Roch",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p118",
+      "url": "dist/wiki/p118.html",
       "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p119",
@@ -294,27 +294,27 @@
       "title": "María Isidora Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p123",
+      "url": "dist/wiki/p123.html",
       "summary": "n. 1907-04-12, Villa Mantero, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p124",
       "title": "Felisa Clemenzo Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p124",
+      "url": "dist/wiki/p124.html",
       "summary": "n. 1890-03-07, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p125",
       "title": "José Martín Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p125",
+      "url": "dist/wiki/p125.html",
       "summary": "n. 1905-02-23, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p13",
@@ -366,18 +366,18 @@
       "title": "Felix Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p18",
+      "url": "dist/wiki/p18.html",
       "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p19",
       "title": "Isabel Maria Queipo",
       "type": "persona",
       "branch": "queipo",
-      "url": "arbol.html?focus=p19",
+      "url": "dist/wiki/p19.html",
       "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p2",
@@ -393,45 +393,45 @@
       "title": "Leon Francisco Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p20",
+      "url": "dist/wiki/p20.html",
       "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p21",
       "title": "Emiliana Elena Baster",
       "type": "persona",
       "branch": "baster",
-      "url": "arbol.html?focus=p21",
+      "url": "dist/wiki/p21.html",
       "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p22",
       "title": "Pedro Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p22",
+      "url": "dist/wiki/p22.html",
       "summary": "n. 1890, Entre Rios",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p23",
       "title": "Francisca Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p23",
+      "url": "dist/wiki/p23.html",
       "summary": "n. Entre Rios",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p25",
       "title": "Maria Celestina Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p25",
+      "url": "dist/wiki/p25.html",
       "summary": "n. 1885-06-27, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p26",
@@ -465,9 +465,9 @@
       "title": "Maria Luisa Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p29",
+      "url": "dist/wiki/p29.html",
       "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p3",
@@ -483,9 +483,9 @@
       "title": "Carlota Julia Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p30",
+      "url": "dist/wiki/p30.html",
       "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p31",
@@ -519,18 +519,18 @@
       "title": "Elena Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p34",
+      "url": "dist/wiki/p34.html",
       "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p35",
       "title": "Rodolfo Ambrosio Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p35",
+      "url": "dist/wiki/p35.html",
       "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p36",
@@ -546,9 +546,9 @@
       "title": "Marie Louise Stalder",
       "type": "persona",
       "branch": "stalder",
-      "url": "arbol.html?focus=p37",
+      "url": "dist/wiki/p37.html",
       "summary": "n. 1826-05-05, Salins, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p38",
@@ -564,9 +564,9 @@
       "title": "Maria Putallaz",
       "type": "persona",
       "branch": "putallaz",
-      "url": "arbol.html?focus=p39",
+      "url": "dist/wiki/p39.html",
       "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p4",
@@ -591,9 +591,9 @@
       "title": "Estefania Venegas",
       "type": "persona",
       "branch": "venegas",
-      "url": "arbol.html?focus=p41",
+      "url": "dist/wiki/p41.html",
       "summary": "",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p42",
@@ -753,18 +753,18 @@
       "title": "Marie Catherine Cerisier",
       "type": "persona",
       "branch": "cerisier",
-      "url": "arbol.html?focus=p58",
+      "url": "dist/wiki/p58.html",
       "summary": "n. 1786 · f. 1851/1861",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p59",
       "title": "Maria Luisa Perceveranda Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p59",
+      "url": "dist/wiki/p59.html",
       "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p6",
@@ -780,72 +780,72 @@
       "title": "Fortunato Abelardo Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p60",
+      "url": "dist/wiki/p60.html",
       "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p61",
       "title": "Juan Francisco Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p61",
+      "url": "dist/wiki/p61.html",
       "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p62",
       "title": "German Cipriano Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p62",
+      "url": "dist/wiki/p62.html",
       "summary": "n. 1893-11-13, Partido de San Nicolas",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p63",
       "title": "Angela Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p63",
+      "url": "dist/wiki/p63.html",
       "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p64",
       "title": "Petrona Estefania Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p64",
+      "url": "dist/wiki/p64.html",
       "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p65",
       "title": "Modesta Damiana Clemencia Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p65",
+      "url": "dist/wiki/p65.html",
       "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p66",
       "title": "Felisa Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p66",
+      "url": "dist/wiki/p66.html",
       "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p67",
       "title": "Esteban Clemenzoz",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p67",
+      "url": "dist/wiki/p67.html",
       "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p68",
@@ -897,72 +897,72 @@
       "title": "Joseph Florentine Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p72",
+      "url": "dist/wiki/p72.html",
       "summary": "n. 1805, Ardon",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p73",
       "title": "Joseph Marie Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p73",
+      "url": "dist/wiki/p73.html",
       "summary": "n. 1818, Ardon, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p74",
       "title": "Janne Marie Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p74",
+      "url": "dist/wiki/p74.html",
       "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p75",
       "title": "Marie Henriette Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p75",
+      "url": "dist/wiki/p75.html",
       "summary": "n. 1815, Ardon, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p76",
       "title": "Marie Elizabet Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p76",
+      "url": "dist/wiki/p76.html",
       "summary": "n. 1821, Ardon, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p77",
       "title": "Josephine Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p77",
+      "url": "dist/wiki/p77.html",
       "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p78",
       "title": "Anaiis Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p78",
+      "url": "dist/wiki/p78.html",
       "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p79",
       "title": "Edwige Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p79",
+      "url": "dist/wiki/p79.html",
       "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p8",
@@ -978,9 +978,9 @@
       "title": "Jose Luciano Roh Blanco",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p80",
+      "url": "dist/wiki/p80.html",
       "summary": "n. 1873-06-14, Colonia Cullen, San Javier, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p81",
@@ -996,9 +996,9 @@
       "title": "Teresa Lidia Costabile",
       "type": "persona",
       "branch": "costabile",
-      "url": "arbol.html?focus=p82",
+      "url": "dist/wiki/p82.html",
       "summary": "n. 1917-11-20, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p83",
@@ -1014,18 +1014,18 @@
       "title": "Maria Luisa Clemenzo Roh",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p84",
+      "url": "dist/wiki/p84.html",
       "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p85",
       "title": "Marianna Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p85",
+      "url": "dist/wiki/p85.html",
       "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p86",
@@ -1122,9 +1122,9 @@
       "title": "María Luisa Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p95",
+      "url": "dist/wiki/p95.html",
       "summary": "n. 1876, Santa Fe, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p96",
@@ -1140,9 +1140,9 @@
       "title": "Mauricio Francisco Roh",
       "type": "persona",
       "branch": "roh",
-      "url": "arbol.html?focus=p97",
+      "url": "dist/wiki/p97.html",
       "summary": "n. 1878, Diamante, Entre Ríos, Argentina · f. 1964-02-07, Concepción del Uruguay, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "p98",
@@ -1158,9 +1158,9 @@
       "title": "Rogelia Hernández",
       "type": "persona",
       "branch": "hernandez",
-      "url": "arbol.html?focus=p99",
+      "url": "dist/wiki/p99.html",
       "summary": "n. 1880, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": false
+      "hasContent": true
     },
     {
       "id": "post:llm-wiki-genealogia",

@@ -75,6 +75,45 @@ function renderRich(md) {
   return html;
 }
 
+// ── Galería «Documentos» ──────────────────────────────────────────────────────
+// La media de arbol.json (fotos y documentos por persona) vive en la wiki:
+// respalda la investigación. Misma agrupación por group_label que tenía la
+// pestaña Archivos del árbol; las fotos van como .wiki-figure → heredan los
+// estilos del content y el lightbox del modal/página sin código extra.
+const IMG_EXT = /\.(webp|jpe?g|png|gif|avif)$/i;
+
+function mediaHtml(p) {
+  const media = p.media || [];
+  if (!media.length) return '';
+  const isImg = m => m.type !== 'document' || IMG_EXT.test(m.url);
+  const fig = m => {
+    const cap = [m.caption, m.source_label].filter(Boolean).join(' · ');
+    return `<figure class="wiki-figure"><img src="../../${m.url}" alt="${escapeHtml(m.caption || p.name)}" loading="lazy">${cap ? `<figcaption>${escapeHtml(cap)}</figcaption>` : ''}</figure>`;
+  };
+  const docLink = m => `<p class="wiki-doc-file"><a href="../../${m.url}" target="_blank" rel="noopener">📄 ${escapeHtml(m.caption || m.url.split('/').pop())}</a></p>`;
+
+  let html = '';
+  let grid = [];
+  let docs = [];
+  const flush = () => {
+    if (grid.length) { html += `<div class="wiki-docs-grid">${grid.join('')}</div>`; grid = []; }
+    if (docs.length) { html += docs.join(''); docs = []; }
+  };
+  const push = m => (isImg(m) ? grid.push(fig(m)) : docs.push(docLink(m)));
+  const seen = new Set();
+  media.forEach(m => {
+    if (!m.group_label) { push(m); return; }
+    if (seen.has(m.group_label)) return;
+    seen.add(m.group_label);
+    flush();
+    html += `<h3>${escapeHtml(m.group_label)}</h3>`;
+    media.filter(x => x.group_label === m.group_label).forEach(push);
+    flush();
+  });
+  flush();
+  return `<section class="wiki-docs"><h2>Documentos</h2>${html}</section>`;
+}
+
 function vitals(p) {
   const parts = [];
   if (p.birth_date || p.birth_place) parts.push(`n. ${[p.birth_date, p.birth_place].filter(Boolean).join(', ')}`);
@@ -137,10 +176,13 @@ function build() {
     const p = personaById.get(id);
     if (!p) return null;
     const hasNote = notaById.has(id) && !notaById.get(id).stub;
+    // La media (fotos/documentos de arbol.json) también es contenido: una persona
+    // sin investigación escrita pero con documentos genera página igual.
+    const hasContent = hasNote || (p.media || []).length > 0;
     const node = {
       id, title: p.name, type: 'persona', branch: p.branch || '',
-      url: hasNote ? `dist/wiki/${id}.html` : `arbol.html?focus=${id}`,
-      summary: (hasNote && notaById.get(id).summary) || vitals(p), hasContent: hasNote,
+      url: hasContent ? `dist/wiki/${id}.html` : `arbol.html?focus=${id}`,
+      summary: (hasNote && notaById.get(id).summary) || vitals(p), hasContent,
     };
     nodes.set(id, node);
     return node;
@@ -338,19 +380,27 @@ function build() {
     console.log(`  ✅ Wiki: ${page.title}`);
   });
 
-  // Notas de persona (los stubs no generan página)
-  notaById.forEach(({ body, summary, tags, stub }, id) => {
-    if (stub) return;
-    const p = personaById.get(id);
-    let md = linkifyPersonas(body, id).replace(/^\s*#\s+[^\n]+\n+/, '');
+  // Páginas de persona: nota de investigación (si no es stub) + galería de
+  // documentos (media de arbol.json). Con cualquiera de las dos hay página.
+  let personaPages = 0;
+  personaById.forEach((p, id) => {
+    const nota = notaById.get(id);
+    const hasNote = nota && !nota.stub;
+    const gallery = mediaHtml(p);
+    if (!hasNote && !gallery) return;
+    const content = (hasNote
+      ? renderRich(linkifyPersonas(nota.body, id).replace(/^\s*#\s+[^\n]+\n+/, ''))
+      : '<p class="wiki-pending">La investigación de esta persona todavía está pendiente.</p>'
+    ) + gallery;
     const outIds = [...nodes.keys()].filter(nid => edges.some(e =>
       (e.source === id && e.target === nid) || (e.target === id && e.source === nid && /^p\d+$/.test(nid))));
     writePage({
-      slug: id, type: 'persona', title: p.name, description: summary || vitals(p),
-      content: renderRich(md), related: relatedHtml(id, outIds, tags),
+      slug: id, type: 'persona', title: p.name, description: (hasNote && nota.summary) || vitals(p),
+      content, related: relatedHtml(id, outIds, nota ? nota.tags : []),
     });
-    console.log(`  ✅ Nota: ${p.name} (${id})`);
+    personaPages++;
   });
+  console.log(`  ✅ Páginas de persona: ${personaPages} (nota y/o documentos)`);
 }
 
 if (require.main === module) build();

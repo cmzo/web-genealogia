@@ -151,7 +151,7 @@ Reemplaza al antiguo Archivo. Es un **grafo estilo Obsidian** donde el grafo es 
 **Tags fuera del grafo visual:** los tags existen en `wiki-graph.json` (aristas `rel:"tag"`) y alimentan el **panel** («Etiquetas») y el **resaltado temático** (clic en un chip de tag ilumina a toda su gente), pero **no se dibujan como nodos** — eran el ~51% de las aristas y enmarañaban el disco. El lienzo solo muestra personas + páginas + posts con aristas de familia (`rel:"familia"`) y enlaces/menciones.
 
 **Pipeline (`scripts/build-wiki.js`, llamado por `build.js` después de generar `arbol.json`):**
-1. Lee `content/wiki/*.md` (páginas autoradas, con frontmatter `title`/`type`/`summary`/`tags` y enlaces `[[destino]]`/`[[destino|alias]]`) + `content/personas/p{id}.md` (las **notas de investigación**; las que aún contienen el marcador `_Investigación pendiente._` cuentan como **stub**: entran al grafo como nodos pero con `hasContent:false` — sin página en `dist/wiki/` ni botón «Leer») + `arbol.json` (personas + backbone familiar) + `blog-entries.json` (posts).
+1. Lee `content/wiki/*.md` (páginas autoradas, con frontmatter `title`/`type`/`summary`/`tags` y enlaces `[[destino]]`/`[[destino|alias]]`) + `content/personas/p{id}.md` (las **notas de investigación**; las que aún contienen el marcador `_Investigación pendiente._` cuentan como **stub**) + `arbol.json` (personas + backbone familiar **+ media**) + `blog-entries.json` (posts). **La media vive solo en la wiki** (la pestaña Archivos del árbol se retiró el 2026-07-07): cada página de persona termina con una sección «Documentos» (`mediaHtml()`: imágenes como `.wiki-figure` en un grid `.wiki-docs-grid` → lightbox compartido gratis; no-imágenes como link `.wiki-doc-file`; agrupación por `group_label` como la vieja pestaña). Una persona tiene página y `hasContent:true` si tiene **nota real o media**: un stub con media genera página con aviso `.wiki-pending` + galería; un stub sin media queda como nodo sin botón «Leer».
 2. Resuelve enlaces: en páginas, `[[p26]]` / `[[slug]]` / `[[Título]]`; en notas de persona, las **menciones en prosa tipo `p36`** generan aristas; cada **post** se enlaza a las personas de su frontmatter `wiki: "p36, p26, …"`; los `tags:` (de páginas, notas y posts) generan aristas `rel:"tag"`.
 3. Emite **`assets/data/wiki-graph.json`** `{ nodes:[{id,title,type,branch,url,summary,hasContent}], edges:[{source,target,rel}] }` y renderiza cada nodo con contenido a **`dist/wiki/<id>.html`** usando `content/templates/wiki-template.html`. El render del markdown (`renderRich`) soporta **imágenes** (`![[archivo]]` → `assets/images/wiki/`, envueltas en `<figure class="wiki-figure">` con pie) y **diagramas Mermaid** (```mermaid → `<div class="mermaid">`), además de callouts (`> [!tipo]`) y `==resaltado==`.
 
@@ -175,13 +175,15 @@ assets/js/arbol/
   ├── structure.js — buildMarriageStructure(): parses personas+matrimonios into nodes
   ├── layout.js    — calculateLayout(): positions nodes by generation/order, exports VGAP
   ├── render.js    — initTree(), render(), recenterOn(), zoomIn/Out() — D3 SVG rendering
-  ├── panel.js     — side panel con pestañas **Persona | Archivos** (la pestaña Investigación se quitó: la investigación vive en la Wiki, y la pestaña Persona enlaza allí vía `wiki.html?focus=<id>`)
+  ├── panel.js     — side panel con la ficha de la persona, sin pestañas (investigación **y media** viven en la Wiki; la ficha cierra con «Documentos e investigación (N) en la wiki» → `wiki.html?read=<id>` si hay media, `?focus=<id>` si no)
   ├── timeline.js  — modal «Línea de tiempo» por persona (se abre desde el botón del hero de panel.js)
   ├── search.js    — name search UI
   └── keyboard.js  — keyboard shortcuts
 ```
 
 Styles are in `assets/css/arbol.css`. The HTML (`arbol.html`) has no inline CSS or JS.
+
+El toolbar del árbol tiene un **botón ⓘ** (junto al zoom) que abre un popover (`.tree-info-pop`) con los atajos de teclado, el hint de ⌘K y la nota del clic-para-reorganizar — es la única documentación de atajos del sitio (antes vivía en `sobre.html`). Oculto en ≤600px.
 
 **Panel inspector (`panel.js` + `.tree-panel`):** lenguaje editorial coherente con el blog — hero sobre superficie clara (nombre en Source Serif 4, años en serif cursiva), badge de estado tipo chip, secciones en cards blancas. En desktop el panel flota como tarjeta con **gaps de 5mm tipo i3** (el fondo de puntos vive en `.tree-wrapper` y se ve en los gaps). El botón "Ampliar panel" del footer alterna el estado `.is-expanded`, que hace que el panel ocupe todo el área dejando solo el gap de 5mm (toggle a "Volver al árbol"). **Esta expansión y los gaps son solo desktop** (`@media max-width: 960px` los desactiva: el panel vuelve a ser un drawer overlay a pantalla completa y el footer se oculta).
 

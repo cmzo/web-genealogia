@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-07-los-documentos-de-cada-persona-ahora-viven-en-la-wiki",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Los documentos de cada persona ahora viven en la wiki",
+    "html": "<p>Las fotos, actas y censos de cada persona estaban en una pestaña «Archivos» dentro del árbol, separados de la investigación que respaldan. Ahora cada página de persona en la <strong>wiki</strong> termina con su galería de <strong>Documentos</strong> — y las personas que todavía no tienen investigación escrita pero sí documentos (61 casos) ganaron su propia página. Las páginas de persona con algo para ver pasaron de 11 a <strong>72</strong>. En el árbol, la ficha enlaza directo a la lectura con la cantidad de documentos; la pestaña Archivos se retiró para no tener lo mismo en dos lados.</p>\n"
+  },
+  {
+    "id": "2026-07-07-botón-de-ayuda-en-el-árbol",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Botón de ayuda en el árbol",
+    "html": "<p>El árbol se puede recorrer con el teclado —flechas para moverse entre padres, hijos, hermanos y cónyuges— pero eso no estaba explicado en ningún lado. Ahora hay un <strong>botón ⓘ</strong> junto a los controles de zoom que muestra todos los atajos, el buscador ⌘ K y cómo funciona el clic para reorganizar el árbol.</p>\n"
+  },
+  {
     "id": "2026-07-07-se-retiró-la-página-sobre-el-proyecto",
     "date": "2026-07-07",
     "type": "cambio",
@@ -302,21 +318,5 @@
     "tag": "fix",
     "title": "El mapa de la wiki en el celular",
     "html": "<p>En el teléfono —sobre todo en vertical— el grafo de la wiki se veía amontonado, como la maraña vieja. Ahora se arma igual de prolijo que en la computadora, en cualquier pantalla.</p>\n"
-  },
-  {
-    "id": "2026-06-21-favicon-nuevo",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Favicon nuevo",
-    "html": "<p>El sitio estrena ícono en la pestaña.</p>\n"
-  },
-  {
-    "id": "2026-06-21-fuentes-y-colaborar-al-mismo-lenguaje-visual",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Fuentes y Colaborar, al mismo lenguaje visual",
-    "html": "<p>Las páginas de <strong>Fuentes</strong> y <strong>Colaborar</strong>, que seguían con el diseño viejo, ahora hablan el mismo idioma que el resto del sitio: secciones numeradas, paneles y tipografía monoespaciada. Fuentes agrupa los archivos por región en paneles ordenados, con un índice arriba; Colaborar conserva el formulario y todo lo que hacía, pero con la piel nueva.</p>\n"
   }
 ]

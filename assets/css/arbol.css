@@ -161,6 +161,72 @@
     gap: 4px;
     margin-left: auto;
     flex-shrink: 0;
+    position: relative;
+}
+
+/* ── Popover de ayuda (ⓘ) ────────────────────────────────────────────────────── */
+
+.tree-info-pop {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 30;
+    width: 264px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    padding: 14px 16px;
+}
+
+.tree-info-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+}
+
+.tree-info-title + .tree-info-title,
+.tree-info-row + .tree-info-title {
+    margin-top: 14px;
+}
+
+.tree-info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.tree-info-row:last-of-type { margin-bottom: 0; }
+
+.tree-info-row kbd {
+    min-width: 26px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.tree-info-row span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    color: var(--text);
+}
+
+.tree-info-foot {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+    .zoom-btn--info, .tree-info-pop { display: none; }
 }
 
 .zoom-btn {
@@ -278,42 +344,6 @@
 
 .panel-hero-content {
     position: relative;
-}
-
-/* ── Tabs del panel — flat underline ─────────────────────────────────────────── */
-
-.panel-tabs {
-    display: flex;
-    flex-shrink: 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    padding: 0 16px;
-    gap: 0;
-}
-
-.panel-tab {
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: 10px 14px;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted);
-    cursor: pointer;
-    margin-bottom: -1px;
-    transition: color 0.15s, border-color 0.15s;
-    white-space: nowrap;
-}
-
-.panel-tab:hover {
-    color: var(--text);
-}
-
-.panel-tab.is-active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-    font-weight: 600;
 }
 
 /* ── Cuerpo scrollable ───────────────────────────────────────────────────────── */
@@ -751,61 +781,6 @@
 
 .panel-markdown tr:last-child td {
     border-bottom: none;
-}
-
-.panel-media {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-}
-
-.panel-media-photo {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-decoration: none;
-    color: var(--muted);
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-}
-
-.panel-media-photo img {
-    width: 100%;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-    display: block;
-}
-
-.panel-media-doc {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.panel-media-doc:hover { text-decoration: underline; }
-
-.panel-media-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.panel-media-group-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0;
-}
-
-.panel-media-group-photos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 8px;
 }
 
 /* ── Peek tab (mobile) ───────────────────────────────────────────────────────── */

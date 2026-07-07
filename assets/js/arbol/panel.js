@@ -1,10 +1,10 @@
 /**
- * panel.js — panel lateral con pestañas: Persona | Archivos.
- * (La investigación se movió a la Wiki; la pestaña Persona enlaza allí.)
+ * panel.js — panel lateral con la ficha de la persona.
+ * (Investigación y documentos viven en la Wiki; la ficha enlaza allí.
+ *  La antigua pestaña Archivos se retiró cuando la media pasó a la wiki.)
  *
  * Escucha 'selectionChange' del store. Los links de navegación llaman a
- * setFocus + setSelected. El estado de pestaña activa persiste entre cambios
- * de persona (salvo que la nueva persona no tenga contenido en la pestaña).
+ * setFocus + setSelected.
  */
 
 import {
@@ -20,11 +20,9 @@ import { openTimeline } from './timeline.js';
 
 let _panel    = null;
 let _hero     = null;
-let _tabs     = null;
 let _body     = null;
 let _peek     = null;
 let _peekName = null;
-let _activeTab = 'persona';
 let _currentId = null;
 
 export function initPanel() {
@@ -32,7 +30,6 @@ export function initPanel() {
   window.__openTimeline = openTimeline;
   _panel    = document.getElementById('treePanel');
   _hero     = document.getElementById('treePanelHero');
-  _tabs     = document.getElementById('panelTabs');
   _body     = document.getElementById('treePanelBody');
   _peek     = document.getElementById('panelPeek');
   _peekName = document.getElementById('panelPeekName');
@@ -92,15 +89,6 @@ export function initPanel() {
     _renderBody(_currentId);
     _panel.classList.add('is-open');
     setTimeout(() => recenterOn(), 320);
-  });
-
-  _tabs?.querySelectorAll('.panel-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      _activeTab = btn.dataset.tab;
-      _tabs.querySelectorAll('.panel-tab').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      if (_currentId) _renderBody(_currentId);
-    });
   });
 
   on('selectionChange', id => {
@@ -171,16 +159,12 @@ function _renderHero(personaId) {
        ?.addEventListener('click', e => { e.stopPropagation(); openTimeline(p.id); });
 }
 
-// ── Body dispatcher ───────────────────────────────────────────────────────────
+// ── Body ──────────────────────────────────────────────────────────────────────
 
 function _renderBody(personaId) {
   if (!_body) return;
-  if (_activeTab === 'persona') {
-    _tabPersona(personaId);
-    _bindNavLinks();
-  } else if (_activeTab === 'archivos') {
-    _tabArchivos(personaId);
-  }
+  _tabPersona(personaId);
+  _bindNavLinks();
 }
 
 // ── Tab: Persona ──────────────────────────────────────────────────────────────
@@ -266,29 +250,19 @@ function _tabPersona(personaId) {
     html = `<p class="panel-empty">Sin datos biográficos registrados.</p>`;
   }
 
+  // Investigación y documentos viven en la wiki. Si la persona tiene media,
+  // el link abre directo la lectura (?read); si no, solo la enfoca en el grafo.
   const wikiBase = window.PATH_CONFIG ? window.PATH_CONFIG.base : './';
-  html += `<a class="panel-wiki-link" href="${wikiBase}wiki.html?focus=${personaId}">
+  const hasMedia = p.media?.length > 0;
+  const wikiQuery = hasMedia ? 'read' : 'focus';
+  const wikiLabel = hasMedia
+    ? `Documentos e investigación (${p.media.length}) en la wiki`
+    : 'Ver investigación en la wiki';
+  html += `<a class="panel-wiki-link" href="${wikiBase}wiki.html?${wikiQuery}=${personaId}">
     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6.5 10 10M17 6.5 14 10M7 17.5 10 14M17 17.5 14 14"/></svg>
-    Ver investigación en la wiki</a>`;
+    ${wikiLabel}</a>`;
 
   _body.innerHTML = html;
-}
-
-// La investigación por persona ya no vive en el árbol: se consolidó en la Wiki
-// (content/personas/p{id}.md → grafo + modal). La ficha enlaza allí vía _tabPersona.
-
-// ── Tab: Archivos ─────────────────────────────────────────────────────────────
-
-function _tabArchivos(personaId) {
-  const p = getPersona(personaId);
-  if (!p) return;
-
-  if (!p.media?.length) {
-    _body.innerHTML = `<p class="panel-empty">No hay archivos multimedia para esta persona.</p>`;
-    return;
-  }
-
-  _body.innerHTML = `<div class="panel-media">${_renderMedia(p.media)}</div>`;
 }
 
 // ── Navegación interna ────────────────────────────────────────────────────────
@@ -301,53 +275,6 @@ function _bindNavLinks() {
       setSelected(id);
     });
   });
-}
-
-// ── Media ─────────────────────────────────────────────────────────────────────
-
-function _renderMedia(media) {
-  const seen  = new Set();
-  const units = [];
-
-  for (const m of media) {
-    if (!m.group_label) {
-      units.push({ type: 'single', item: m });
-    } else if (!seen.has(m.group_label)) {
-      seen.add(m.group_label);
-      units.push({
-        type:  'group',
-        label: m.group_label,
-        items: media.filter(x => x.group_label === m.group_label),
-      });
-    }
-  }
-
-  return units.map(u => {
-    if (u.type === 'single') return _mediaItem(u.item);
-    return `
-      <div class="panel-media-group">
-        <p class="panel-media-group-label">${u.label}</p>
-        <div class="panel-media-group-photos">
-          ${u.items.map(m => _mediaItem(m)).join('')}
-        </div>
-      </div>`;
-  }).join('');
-}
-
-const _IMG_EXT = /\.(webp|jpe?g|png|gif|avif)$/i;
-
-function _mediaItem(item) {
-  // Mostrar como imagen todo lo que sea un archivo de imagen, aunque esté
-  // tipado 'document' en la base (escaneos); el enlace 📄 queda para PDFs y similares.
-  if (item.type !== 'document' || _IMG_EXT.test(item.url)) {
-    return `<a href="${item.url}" target="_blank" class="panel-media-photo">
-      <img src="${item.url}" alt="${item.caption || ''}">
-      ${item.caption ? `<span>${item.caption}</span>` : ''}
-    </a>`;
-  }
-  return `<a href="${item.url}" target="_blank" class="panel-media-doc">
-    📄 ${item.caption || item.url}
-  </a>`;
 }
 
 // ── Status badge ──────────────────────────────────────────────────────────────

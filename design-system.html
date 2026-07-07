@@ -1306,6 +1306,24 @@
               </div>
             </div>
 
+            <!-- Galería Documentos -->
+            <div class="comp-block">
+              <p class="comp-label">Galería «Documentos» (media por persona)</p>
+              <div class="wiki-page-content" style="border:1px solid var(--border);border-radius:8px;padding:32px 36px;">
+                <div class="wiki-docs-grid" style="margin-top:0;">
+                  <figure class="wiki-figure">
+                    <div style="width:100%;height:90px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;"><span style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--muted);">[acta]</span></div>
+                    <figcaption>Censo de Riddes de 1837</figcaption>
+                  </figure>
+                  <figure class="wiki-figure">
+                    <div style="width:100%;height:90px;background:var(--bg);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;"><span style="font-family:'IBM Plex Sans',sans-serif;font-size:11px;color:var(--muted);">[censo]</span></div>
+                    <figcaption>Censo federal 1880, Riddes</figcaption>
+                  </figure>
+                </div>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Sección final de cada página de persona, generada por <code class="td-mono">mediaHtml()</code> en <code class="td-mono">build-wiki.js</code> desde la media de <code class="td-mono">arbol.json</code>. Grid <code class="td-mono">.wiki-docs-grid</code> (minmax 150px, gap 14px) de <code class="td-mono">.wiki-figure</code> compactas (margen 0, pie 0.75rem alineado a la izquierda) → mismo lightbox; grupos (<code class="td-mono">group_label</code>) como <code class="td-mono">h3</code>; no-imágenes como link <code class="td-mono">.wiki-doc-file</code>. El aviso <code class="td-mono">.wiki-pending</code> (cursiva, <code class="td-mono">--muted</code>) marca las personas con documentos pero investigación pendiente.</p>
+              </div>
+            </div>
+
             <!-- Layout modal + panel -->
             <div class="comp-block">
               <p class="comp-label">Modal de lectura + panel de relaciones</p>
