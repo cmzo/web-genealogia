@@ -1,5 +1,13 @@
 ### 7 de julio de 2026
 
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Se retiró la página «Sobre el proyecto»
+
+La página «Sobre el proyecto» era la última que conservaba el diseño viejo del sitio, anterior al rediseño CMZO, y ya no estaba enlazada desde ninguna parte. Se eliminó. Su contenido útil tiene mejor casa en otros lados: la presentación vive en la portada, y los atajos de teclado del árbol volverán pronto como un botón de ayuda dentro del propio árbol.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El árbol ya no depende de servidores externos
+
+Quedaban dos bibliotecas que se cargaban desde un CDN externo: la que dibuja el **árbol genealógico** y la que renderiza el texto en las páginas de cambios y ayuda. Si ese servicio fallaba, el árbol no cargaba. Ahora viven en el propio sitio, como ya pasaba con el grafo de la wiki y las tipografías — todo cmzo.net se sirve desde cmzo.net.
+
 #### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El buscador recuerda lo que usaste
 
 El buscador (⌘ K) ahora muestra un grupo **«Recientes»** cuando lo abrís sin escribir nada: las últimas cinco cosas que elegiste, sean personas, posts, notas, páginas de la wiki o fuentes. Sin escribir nada, llegás directo al lugar donde estabas.

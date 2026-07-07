@@ -2,21 +2,19 @@
 
 > **Para el traductor (Haiku): tu única tarea es traducir textos. No cambies código, ni claves, ni el español. Seguí estas reglas al pie de la letra.**
 
-El sitio queda en español por defecto. Hay tres páginas con selector **ES / FR / EN** cuyos textos faltan traducir. Hoy los bloques `fr` y `en` (y los `.fr.md` / `.en.md`) son **copias del español**: tu trabajo es reemplazar el texto por su traducción.
+> **Nota (2026-07-07):** este documento quedó **histórico**. La home ya es solo-ES y `sobre.html` se eliminó del sitio; de las páginas listadas solo `colaborar.html` conserva selector de idioma.
+
+El sitio queda en español por defecto. Hay páginas con selector **ES / FR / EN** cuyos textos faltan traducir. Hoy los bloques `fr` y `en` son **copias del español**: tu trabajo es reemplazar el texto por su traducción.
 
 ## Archivos a tocar
 
 | # | Archivo | Qué traducir |
 |---|---------|--------------|
 | 1 | `colaborar.html` | objeto `I18N` → valores de los bloques `fr` y `en` |
-| 2 | `index.html` | objeto `window.I18N` → valores de los bloques `fr` y `en` |
-| 3 | `sobre.html` | objeto `CHROME` → valores de los bloques `fr` y `en` (solo 2 textos: `kicker` y `title`) |
-| 4 | `content/sobre.fr.md` | traducir **todo el documento** al francés |
-| 5 | `content/sobre.en.md` | traducir **todo el documento** al inglés |
 
 ---
 
-## Reglas para los diccionarios JS (archivos 1, 2 y 3)
+## Reglas para los diccionarios JS
 
 Cada uno tiene un objeto con tres bloques: `es` (fuente, **NO TOCAR**), `fr` y `en`. Ejemplo:
 
@@ -35,26 +33,10 @@ fr: {
 6. Cada valor queda **en una sola línea**, entre comillas simples y **con coma final** `,`, igual que ahora.
 7. **Tono:** informal y cordial, como el español.
 
-## Reglas para los markdown (archivos 4 y 5)
-
-Traducí **todo el texto** de `content/sobre.fr.md` (al francés) y `content/sobre.en.md` (al inglés), pero **conservando la estructura markdown**:
-
-- Encabezados (`#`, `##`, `###`), listas, negritas/cursivas: traducí el texto, dejá los símbolos.
-- **Tablas** (`| … |`): traducí el contenido de las celdas, mantené las barras y la fila de guiones.
-- **Enlaces** `[texto](url)`: traducí solo `texto`, **nunca** la `url`.
-- **Imágenes** `![alt](ruta)`: traducí `alt`, dejá la `ruta`.
-- **Bloques de código** y ```` ```mermaid ````: **no traducir** su interior (son código/diagramas).
-- **Callouts** tipo `> [!note]` o `> [!info]`: traducí el texto, **no** la etiqueta `[!note]`.
-- No traduzcas nombres propios (los mismos de arriba).
-- Si hay frontmatter (líneas entre `---` al inicio), no lo toques salvo el `title`/`description` si los hubiera.
-
----
-
 ## Cómo verificar al terminar
 
 1. Abrí cada página en el navegador y cambiá el selector **ES / FR / EN** (arriba): todos los textos deben verse traducidos.
 2. Abrí la consola (F12): **no debe haber errores** de JavaScript. Si aparece uno, casi siempre es un apóstrofo recto `'` mal puesto → cambialo por `’`.
-3. En Sobre, al cambiar de idioma se carga `sobre.fr.md` / `sobre.en.md`; revisá que el contenido aparezca traducido y que las tablas/diagramas sigan bien.
 
 ---
 
@@ -123,12 +105,5 @@ Traducí **todo el texto** de `content/sobre.fr.md` (al francés) y `content/sob
 | `stat_places` | Lugares |
 | `stat_generations` | Generaciones |
 | `read` | Leer → |
-
-## Apéndice C — claves y texto fuente de `sobre.html` (objeto `CHROME`)
-
-| Clave | Español |
-|---|---|
-| `kicker` | Proyecto de investigación |
-| `title` | Sobre el proyecto |
 
 Eso es todo. **Traducir, nada más.**

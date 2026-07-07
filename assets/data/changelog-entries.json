@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-07-07-se-retiró-la-página-sobre-el-proyecto",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Se retiró la página «Sobre el proyecto»",
+    "html": "<p>La página «Sobre el proyecto» era la última que conservaba el diseño viejo del sitio, anterior al rediseño CMZO, y ya no estaba enlazada desde ninguna parte. Se eliminó. Su contenido útil tiene mejor casa en otros lados: la presentación vive en la portada, y los atajos de teclado del árbol volverán pronto como un botón de ayuda dentro del propio árbol.</p>\n"
+  },
+  {
+    "id": "2026-07-07-el-árbol-ya-no-depende-de-servidores-externos",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El árbol ya no depende de servidores externos",
+    "html": "<p>Quedaban dos bibliotecas que se cargaban desde un CDN externo: la que dibuja el <strong>árbol genealógico</strong> y la que renderiza el texto en las páginas de cambios y ayuda. Si ese servicio fallaba, el árbol no cargaba. Ahora viven en el propio sitio, como ya pasaba con el grafo de la wiki y las tipografías — todo cmzo.net se sirve desde cmzo.net.</p>\n"
+  },
+  {
     "id": "2026-07-07-el-buscador-recuerda-lo-que-usaste",
     "date": "2026-07-07",
     "type": "cambio",
@@ -302,21 +318,5 @@
     "tag": "mejora",
     "title": "Fuentes y Colaborar, al mismo lenguaje visual",
     "html": "<p>Las páginas de <strong>Fuentes</strong> y <strong>Colaborar</strong>, que seguían con el diseño viejo, ahora hablan el mismo idioma que el resto del sitio: secciones numeradas, paneles y tipografía monoespaciada. Fuentes agrupa los archivos por región en paneles ordenados, con un índice arriba; Colaborar conserva el formulario y todo lo que hacía, pero con la piel nueva.</p>\n"
-  },
-  {
-    "id": "2026-06-21-el-tablero-de-genealogía-muestra-más",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "El tablero de genealogía muestra más",
-    "html": "<p>En la portada de genealogía (<code>/gen</code>), las secciones de Fuentes y Colaborar ahora traen una vista previa: un índice de archivos y un formulario de ejemplo, para dar una idea de lo que hay del otro lado antes de entrar.</p>\n"
-  },
-  {
-    "id": "2026-06-21-una-marca-con-más-identidad",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Una marca con más identidad",
-    "html": "<p>El nombre del sitio en la barra pasó de un punto verde suelto a <strong><code>~/cmzo</code></strong> —un guiño a las rutas de carpetas—, con «cmzo» en negrita. Chico, pero le da carácter.</p>\n"
   }
 ]

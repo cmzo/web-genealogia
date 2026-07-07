@@ -87,7 +87,6 @@
 
   // ── Iconos Material Symbols en la sidebar de escritorio ──────────────────────
   const SIDEBAR_ICONS = {
-    'sobre.html':             'info',
     'arbol.html': 'account_tree',
     'wiki.html':              'hub',
     'blog.html':              'edit_note',
