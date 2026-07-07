@@ -14,38 +14,7 @@
   <meta property="og:url" content="https://cmzo.net/fuentes" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <link rel="stylesheet" href="./assets/css/home.css" />
-  <style>
-    /* Páginas de fuentes: el grueso del estilo viene de home.css (cmzo-mod, cmzo-viz, cmzo-src).
-       Acá solo los ajustes propios: índice, contenido de cada fila y la tabla de bibliografía. */
-    .fuentes-content { display: flex; flex-direction: column; gap: 22px; }
-
-    /* Índice (panel de navegación) — grilla de accesos a cada grupo */
-    .fuentes-toc .cmzo-toc-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 1px; background: var(--border); }
-    .fuentes-toc .cmzo-toc-grid .cmzo-src { background: var(--surface); }
-    @media (max-width: 600px) { .fuentes-toc .cmzo-toc-grid { grid-template-columns: 1fr; } }
-
-    /* Contenido dentro de cada fila de fuente (descripciones, contacto, listas) */
-    .cmzo-src .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.6; margin: 6px 0 0; }
-    .cmzo-src .meta strong { font-weight: 500; color: var(--mid, var(--muted)); }
-    .cmzo-src .meta a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-    .cmzo-src p:not(.meta) { font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 8px 0 0; }
-    .cmzo-src ul, .cmzo-src ol { font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 8px 0 0; padding-left: 20px; }
-    .cmzo-src li { margin-bottom: 4px; }
-    .cmzo-src strong { color: var(--text); font-weight: 600; }
-    .cmzo-src em { font-style: italic; }
-    .cmzo-src a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-
-    /* Bibliografía: la tabla llena el panel */
-    .fuentes-group > .pad { padding: 16px 18px 4px; }
-    .fuentes-group .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .fuentes-group table { border-collapse: collapse; font-family: var(--sans); font-size: 14px; width: 100%; }
-    .fuentes-group th { text-align: left; font-family: var(--mono); font-weight: 500; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 11px 18px; background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .fuentes-group td { padding: 13px 18px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.6; }
-    .fuentes-group tr:last-child td { border-bottom: 0; }
-    .fuentes-group td em { font-style: italic; }
-
-    .fuentes-update { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 4px 0 0; }
-  </style>
+  <link rel="stylesheet" href="./assets/css/fuentes.css" />
 </head>
 <body data-section="gen" data-page="fuentes">
 
@@ -53,11 +22,19 @@
 
   <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
 
+  <!-- Barra sticky: filtros por tipo/estado + anclas de región (la puebla el script) -->
+  <nav class="fx-bar" aria-label="Filtros y navegación de regiones" hidden>
+    <div class="fx-bar-inner">
+      <div class="fx-filters" id="fxFilters"></div>
+      <div class="fx-toc" id="fxToc"></div>
+    </div>
+  </nav>
+
   <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
     <section class="cmzo-mod" style="border-top: 0;">
       <div class="cmzo-mod-inner">
         <div class="cmzo-mod-head"><span class="cmzo-mod-num">03</span><h2>Fuentes</h2><span class="rule"></span></div>
-        <p class="cmzo-body" style="max-width: 64ch;">Los archivos e instituciones de donde sale todo: censos del Valais (1802–1880), actas de Entre Ríos, prensa histórica como la <em>Gazette du Valais</em>, registros militares. Con enlaces cuando existen.</p>
+        <p class="cmzo-body">Los archivos e instituciones de donde sale todo: censos del Valais (1802–1880), actas de Entre Ríos, prensa histórica como la <em>Gazette du Valais</em>, registros militares. Con enlaces cuando existen.</p>
         <div class="fuentes-content">
           <p style="color:var(--muted);font-family:var(--mono);font-size:13px;">Cargando…</p>
         </div>
@@ -76,53 +53,177 @@
   <script>
     // Catálogo de fuentes desde assets/data/fuentes.json (lo emite el build a partir
     // de content/fuentes/*.md — un archivo por fuente). El mismo JSON lo indexa el ⌘K.
-    const slugify = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
-      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    // Diseño 2026-07: barra sticky de filtros (tipo/estado) + anclas, paneles por
+    // región con filas ricas, chips de estado semánticos y cuerpos colapsables.
+    (function () {
+      const slugify = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-    function render(fuentes) {
-      const container = document.querySelector('.fuentes-content');
-      const regiones = [];
-      fuentes.forEach(f => { if (!regiones.includes(f.region)) regiones.push(f.region); });
-
-      let html = '';
-      // Índice de grupos
-      if (regiones.length > 1) {
-        html += `<nav class="cmzo-viz fuentes-toc" aria-label="Índice de secciones">
-          <div class="cmzo-viz-head"><span>índice</span><span>${regiones.length} grupos</span></div>
-          <div class="cmzo-toc-grid">${regiones.map(r => {
-            const n = fuentes.filter(f => f.region === r).length;
-            return `<a class="cmzo-src" href="#sec-${slugify(r)}"><div class="cmzo-src-top"><span class="cmzo-src-name">${esc(r)}</span><span class="cmzo-src-meta">${n}</span></div></a>`;
-          }).join('')}</div>
-        </nav>`;
+      // Clase semántica del chip de estado
+      function estadoKey(estado) {
+        if (!estado) return '';
+        if (estado.includes('consultada')) return 'consultada';
+        if (estado.includes('presencial')) return 'presencial';
+        if (estado.includes('membres') || estado.includes('trámite')) return 'membresia';
+        if (estado.includes('barrida')) return 'barrida';
+        return 'pendiente';
       }
-      // Paneles por región
-      regiones.forEach(r => {
-        const items = fuentes.filter(f => f.region === r);
-        html += `<section class="cmzo-viz fuentes-group" id="sec-${slugify(r)}">
-          <div class="cmzo-viz-head"><span>${esc(r)}</span><span class="count">${items.length} ${items.length === 1 ? 'fuente' : 'fuentes'}</span></div>
-          ${items.map(f => `
-            <div class="cmzo-src" id="f-${esc(f.id)}">
-              <div class="cmzo-src-top">
-                <span class="cmzo-src-name">${esc(f.title)}</span>
-                ${f.tipo ? `<span class="cmzo-src-meta">${esc(f.tipo)}</span>` : ''}
-              </div>
-              ${f.url ? `<p class="meta"><strong>Web:</strong> <a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}
-              ${f.autor ? `<p class="meta"><strong>Autor:</strong> ${esc(f.autor)}</p>` : ''}
-              ${f.html}
-            </div>`).join('')}
-        </section>`;
-      });
-      container.innerHTML = html;
-      container.querySelectorAll('.cmzo-src a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
-    }
 
-    fetch(window.getDataPath ? window.getDataPath('fuentes.json') : './assets/data/fuentes.json')
-      .then(r => r.json())
-      .then(render)
-      .catch(() => {
-        document.querySelector('.fuentes-content').innerHTML = '<p style="color:var(--muted);font-family:var(--sans);">No se pudo cargar el contenido.</p>';
+      // Separa del html del cuerpo los párrafos de contacto («**Dirección:** …»,
+      // con líneas separadas por <br>) del resto de la prosa.
+      function splitContact(html) {
+        const doc = new DOMParser().parseFromString('<div>' + html + '</div>', 'text/html');
+        const root = doc.body.firstChild;
+        const contact = [];
+        [...root.children].forEach(el => {
+          if (el.tagName !== 'P' || !/^<strong>[^<]{2,30}:<\/strong>/.test(el.innerHTML.trim())) return;
+          const lines = el.innerHTML.split(/<br\s*\/?>/i).map(l => l.trim()).filter(Boolean);
+          const parsed = lines.map(l => {
+            const m = l.match(/^<strong>([^<]+):<\/strong>\s*([\s\S]*)$/);
+            return m ? { label: m[1], value: m[2] } : null;
+          });
+          if (parsed.every(Boolean)) { contact.push(...parsed); el.remove(); }
+        });
+        return { body: root.innerHTML.trim(), contact };
+      }
+
+      let FUENTES = [], REGIONES = [];
+      const state = { tipo: null, estado: null, expanded: new Set() };
+
+      const bar = document.querySelector('.fx-bar');
+      const filtersEl = document.getElementById('fxFilters');
+      const tocEl = document.getElementById('fxToc');
+      const container = document.querySelector('.fuentes-content');
+
+      function renderBar() {
+        const visible = FUENTES.filter(matches);
+        const tipos = [...new Set(FUENTES.map(f => f.tipo).filter(Boolean))];
+        const estados = [...new Set(FUENTES.map(f => f.estado).filter(Boolean))];
+        const chip = (label, active, data) =>
+          `<button class="fx-chip" data-active="${active}" ${data}>${esc(label)}</button>`;
+        let html = '<span class="fx-flabel">tipo</span>' +
+          tipos.map(t => chip(t, state.tipo === t, `data-tipo="${esc(t)}"`)).join('');
+        if (estados.length) {
+          html += '<div class="fx-vr"></div><span class="fx-flabel">estado</span>' +
+            estados.map(e => chip(e, state.estado === e, `data-estado-f="${esc(e)}"`)).join('');
+        }
+        if (state.tipo || state.estado) {
+          html += `<button class="fx-chip fx-clear" data-clear="1">✕ limpiar · ${visible.length} / ${FUENTES.length}</button>`;
+        }
+        filtersEl.innerHTML = html;
+        tocEl.innerHTML = REGIONES.map(r => {
+          const n = visible.filter(f => f.region === r).length;
+          const abbrev = r.replace('Argentina — ', 'AR ').replace('Suiza — ', 'CH ').replace('Cantón del ', '');
+          return `<a href="#sec-${slugify(r)}">${esc(abbrev)}<span class="dot">·</span>${n}</a>`;
+        }).join('');
+      }
+
+      const matches = f => (!state.tipo || f.tipo === state.tipo) && (!state.estado || f.estado === state.estado);
+
+      function renderRow(f) {
+        const isBook = f.tipo === 'libro';
+        const { body, contact } = splitContact(f.html || '');
+        const ek = estadoKey(f.estado);
+        const expanded = state.expanded.has(f.id);
+
+        if (isBook) {
+          return `<article class="fx-row fx-book" id="f-${esc(f.id)}">
+            <div class="fx-book-top">
+              <h3 class="fx-title">${esc(f.title)}</h3>
+              ${f.autor ? `<span class="fx-book-autor">${esc(f.autor)}</span>` : ''}
+            </div>
+            ${body ? `<div class="fx-body">${body}</div>` : ''}
+          </article>`;
+        }
+        return `<article class="fx-row" id="f-${esc(f.id)}">
+          <div class="fx-row-top">
+            <div class="fx-chips">
+              ${f.tipo ? `<span class="fx-tag">${esc(f.tipo)}</span>` : ''}
+              ${f.estado ? `<span class="fx-tag" data-estado="${ek}">${esc(f.estado)}</span>` : ''}
+            </div>
+            ${f.url ? `<a class="fx-open" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">Abrir ↗</a>` : ''}
+          </div>
+          <h3 class="fx-title">${f.url
+            ? `<a href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">${esc(f.title)}</a>`
+            : esc(f.title)}</h3>
+          ${body ? `<div class="fx-body${expanded ? '' : ' clamped'}" data-fid="${esc(f.id)}">${body}</div>
+            <button class="fx-more" data-expand="${esc(f.id)}" hidden>${expanded ? '↑ cerrar' : '↓ leer más'}</button>` : ''}
+          ${contact.length ? `<div class="fx-contact">${contact.map(c =>
+            `<div class="fx-contact-line"><span class="fx-contact-label">${esc(c.label)}</span><span class="fx-contact-val">${c.value}</span></div>`
+          ).join('')}</div>` : ''}
+        </article>`;
+      }
+
+      function render() {
+        renderBar();
+        const visible = FUENTES.filter(matches);
+        let html = '';
+        REGIONES.forEach(r => {
+          const all = FUENTES.filter(f => f.region === r);
+          const items = visible.filter(f => f.region === r);
+          if (!items.length) return;
+          const count = (state.tipo || state.estado) && items.length !== all.length
+            ? `${items.length} / ${all.length} fuentes`
+            : `${all.length} ${all.length === 1 ? 'fuente' : 'fuentes'}`;
+          html += `<section class="fx-group" id="sec-${slugify(r)}">
+            <div class="fx-group-head"><span class="label">${esc(r)}</span><span>${count}</span></div>
+            ${items.map(renderRow).join('')}
+          </section>`;
+        });
+        container.innerHTML = html || '<p class="fx-empty">Ninguna fuente coincide con el filtro.</p>';
+
+        // «leer más» solo si el clamp realmente recorta: medición exacta comparando
+        // la altura con y sin clamp (scrollHeight sobre -webkit-box no es confiable)
+        container.querySelectorAll('.fx-body.clamped').forEach(el => {
+          const clampedH = el.clientHeight;
+          el.classList.remove('clamped');
+          const fullH = el.scrollHeight;
+          el.classList.add('clamped');
+          if (fullH > clampedH + 4) {
+            const btn = el.parentElement.querySelector(`[data-expand="${el.dataset.fid}"]`);
+            if (btn) btn.hidden = false;
+          }
+        });
+        container.querySelectorAll('.fx-body:not(.clamped)[data-fid]').forEach(el => {
+          const btn = el.parentElement.querySelector(`[data-expand="${el.dataset.fid}"]`);
+          if (btn) btn.hidden = false;
+        });
+      }
+
+      // Delegación: filtros, limpiar y leer más
+      filtersEl.addEventListener('click', e => {
+        const b = e.target.closest('button');
+        if (!b) return;
+        if (b.dataset.clear) { state.tipo = null; state.estado = null; }
+        else if (b.dataset.tipo) state.tipo = state.tipo === b.dataset.tipo ? null : b.dataset.tipo;
+        else if (b.dataset.estadoF) state.estado = state.estado === b.dataset.estadoF ? null : b.dataset.estadoF;
+        render();
       });
+      container.addEventListener('click', e => {
+        const b = e.target.closest('[data-expand]');
+        if (!b) return;
+        const id = b.dataset.expand;
+        state.expanded.has(id) ? state.expanded.delete(id) : state.expanded.add(id);
+        render();
+      });
+
+      fetch(window.getDataPath ? window.getDataPath('fuentes.json') : './assets/data/fuentes.json')
+        .then(r => r.json())
+        .then(fuentes => {
+          FUENTES = fuentes;
+          REGIONES = [...new Set(fuentes.map(f => f.region))];
+          bar.hidden = false;
+          render();
+          // Las webfonts cambian la métrica: re-medir el clamp cuando terminan de cargar
+          if (document.fonts && document.fonts.ready) document.fonts.ready.then(render);
+          // Deep-link a una ficha (#f-<id>, lo usa el ⌘K para los libros)
+          if (location.hash) document.querySelector(CSS.escape ? '#' + CSS.escape(location.hash.slice(1)) : location.hash)?.scrollIntoView();
+        })
+        .catch(() => {
+          container.innerHTML = '<p style="color:var(--muted);font-family:var(--sans);">No se pudo cargar el contenido.</p>';
+        });
+    })();
   </script>
 
 <script src="assets/js/nav.js" defer></script>

@@ -664,7 +664,7 @@
                 <span style="font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:700;line-height:1.5;color:var(--text);">Cantón de Valais, Suiza</span>
               </div>
             </div>
-            <p class="type-use">Uso: cuerpo de artículos (18px / 1.8), descripción de cards (13px), textos editoriales largos, pie de imagen del lightbox (15px). (La nav ya no usa Source Serif: el breadcrumb es IBM Plex Mono.)</p>
+            <p class="type-use">Uso: cuerpo de artículos (19.5px / 1.75), descripción de cards (13px), textos editoriales largos, pie de imagen del lightbox (15px). (La nav ya no usa Source Serif: el breadcrumb es IBM Plex Mono.)</p>
           </div>
 
           <!-- Inter -->
@@ -729,13 +729,13 @@
                 <tr><td>.article-content h2</td><td class="td-mono">Hanken Grotesk</td><td class="td-mono">clamp(30–42px)</td><td class="td-mono">700</td><td class="td-mono">1.2</td></tr>
                 <tr><td>.article-content h3</td><td class="td-mono">Hanken Grotesk</td><td class="td-mono">clamp(22–28px)</td><td class="td-mono">600</td><td class="td-mono">1.3</td></tr>
                 <tr><td>.nav-brand</td><td class="td-mono">Source Serif 4</td><td class="td-mono">28px</td><td class="td-mono">700</td><td class="td-mono">—</td></tr>
-                <tr><td>.article-content p / ul / ol</td><td class="td-mono">Source Serif 4</td><td class="td-mono">18px</td><td class="td-mono">400</td><td class="td-mono">1.8</td></tr>
+                <tr><td>.article-content p / ul / ol</td><td class="td-mono">Source Serif 4</td><td class="td-mono">19.5px</td><td class="td-mono">400</td><td class="td-mono">1.75</td></tr>
                 <tr><td>.home-doc-tagline</td><td class="td-mono">Source Serif 4</td><td class="td-mono">17px</td><td class="td-mono">400</td><td class="td-mono">1.75</td></tr>
                 <tr><td>.blog-card-desc / .home-latest-desc</td><td class="td-mono">Source Serif 4</td><td class="td-mono">13px</td><td class="td-mono">400</td><td class="td-mono">1.5</td></tr>
                 <tr><td>.home-stat-num</td><td class="td-mono">Source Serif 4</td><td class="td-mono">30px</td><td class="td-mono">700</td><td class="td-mono">1</td></tr>
                 <tr><td>.nav-link</td><td class="td-mono">Inter</td><td class="td-mono">14px</td><td class="td-mono">500</td><td class="td-mono">—</td></tr>
                 <tr><td>.sidebar-link</td><td class="td-mono">Inter</td><td class="td-mono">12px uppercase</td><td class="td-mono">600</td><td class="td-mono">1.25</td></tr>
-                <tr><td>.article-content figcaption</td><td class="td-mono">Inter</td><td class="td-mono">13px italic</td><td class="td-mono">400</td><td class="td-mono">1.4</td></tr>
+                <tr><td>.article-content figcaption</td><td class="td-mono">Inter</td><td class="td-mono">13.5px italic</td><td class="td-mono">400</td><td class="td-mono">1.4</td></tr>
                 <tr><td>code inline</td><td class="td-mono">JetBrains Mono</td><td class="td-mono">0.88em</td><td class="td-mono">400</td><td class="td-mono">—</td></tr>
                 <tr><td>pre code</td><td class="td-mono">JetBrains Mono</td><td class="td-mono">13px</td><td class="td-mono">400</td><td class="td-mono">1.6</td></tr>
               </tbody>
@@ -849,7 +849,7 @@
               <tbody>
                 <tr><td class="td-mono">--nav-h</td><td class="td-mono">52px</td><td class="td-desc">Altura del nav sticky</td></tr>
                 <tr><td class="td-mono">--sidebar-w</td><td class="td-mono">200px</td><td class="td-desc">Ancho de la sidebar desktop</td></tr>
-                <tr><td>max-width artículo</td><td class="td-mono">720px</td><td class="td-desc">.article-content y .article-header</td></tr>
+                <tr><td>max-width artículo</td><td class="td-mono">1020px</td><td class="td-desc">.article-content y .article-header (afinado en el lab editorial, 2026-07)</td></tr>
                 <tr><td>max-width home</td><td class="td-mono">900px</td><td class="td-desc">.home-doc</td></tr>
                 <tr><td>max-width article-container</td><td class="td-mono">860px</td><td class="td-desc">Contenedor del artículo completo</td></tr>
                 <tr><td>site-main padding</td><td class="td-mono">48px 56px 80px</td><td class="td-desc">Desktop · mobile: 32px 24px 60px</td></tr>
@@ -1118,6 +1118,18 @@
                 <code class="td-mono">.lang-chip</code> — badge de idiomas en las blog cards (Inter 10px/600 uppercase). <strong>El selector de idioma se retiró del nav</strong>; sobrevive solo in-page en <code class="td-mono">colaborar.html</code> (y en los posts), ahí restilado en IBM Plex Mono cuadrado — ya no la píldora redondeada vieja (<code class="td-mono">.lang-pillbox</code>, retirada).
               </div>
             </div>
+
+            <!-- Catálogo de fuentes (fuentes.html · assets/css/fuentes.css) -->
+            <div class="comp-block">
+              <p class="comp-label">Catálogo de fuentes (familia <code class="td-mono">fx-</code>)</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);background:var(--surface);letter-spacing:.04em;">archivo</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 8px;border-radius:999px;letter-spacing:.04em;background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 26%,var(--surface));">consultada</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 8px;border-radius:999px;letter-spacing:.04em;background:color-mix(in srgb,var(--muted) 11%,var(--surface));color:var(--muted);border:1px solid color-mix(in srgb,var(--muted) 20%,var(--surface));">pendiente</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 11px;border:1px solid var(--border);border-radius:4px;color:var(--muted);background:var(--surface);letter-spacing:.04em;">Abrir ↗</span>
+              </div>
+              <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Diseño 2026-07 (mockup Claude Design). <strong>Barra sticky</strong> bajo el nav (<code class="td-mono">.fx-bar</code>, top 0): fila de chips-filtro por tipo/estado (chip activo = fondo <code class="td-mono">--accent</code> texto <code class="td-mono">--on-accent</code>) + fila de anclas de región con contador. <strong>Paneles por región</strong> (<code class="td-mono">.fx-group</code>, mismo chrome mono que <code class="td-mono">.cmzo-viz</code>) con filas <code class="td-mono">.fx-row</code>: chips arriba, título Hanken 600/16, cuerpo 13px muted <strong>colapsable</strong> (line-clamp 2 + «↓ leer más» mono en accent, solo si recorta de verdad — se re-mide en <code class="td-mono">fonts.ready</code>), caja de contacto (<code class="td-mono">.fx-contact</code>: etiquetas mono 9px uppercase + valores 12px). <strong>Estados semánticos</strong> vía <code class="td-mono">data-estado</code>: consultada/barrida en familia del accent, pendiente/membresía/presencial en familia del muted — todo con <code class="td-mono">color-mix</code>, funciona en ambos temas. <strong>Libros</strong> (<code class="td-mono">.fx-book</code>): fila compacta título 14 + autor en itálica. Datos desde <code class="td-mono">assets/data/fuentes.json</code> (build desde <code class="td-mono">content/fuentes/*.md</code>).</p>
+            </div>
           </div>
         </section>
 
@@ -1125,7 +1137,7 @@
         <section class="ds-section" id="editorial">
           <p class="ds-eyebrow">05</p>
           <h2 class="ds-section-heading">Tipografía editorial (artículos)</h2>
-          <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Elementos generados por el build desde Markdown. Max-width 720px centrado. Todos los estilos aplican bajo <code class="td-mono">.article-content</code>.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Elementos generados por el build desde Markdown. Max-width 1020px centrado. Todos los estilos aplican bajo <code class="td-mono">.article-content</code>. La tipografía editorial se afina en el <a href="lab-editorial.html">laboratorio editorial</a>.</p>
 
           <div class="editorial-wrap">
 
@@ -1211,7 +1223,7 @@
                   </div>
                   <figcaption>Gazette du Valais, 8 de diciembre de 1861 — aviso de subasta de los bienes Cerisier en Salins.</figcaption>
                 </figure>
-                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Figure (<code class="td-mono">.article-image</code>, semántico — el build ya no emite estilos inline): margin 44px 0, img con borde <code class="td-mono">var(--border)</code> y fondo <code class="td-mono">var(--bg)</code> · figcaption: Inter 13px/italic/muted (viene del <code class="td-mono">*pie*</code> en cursiva bajo la imagen en el Markdown). Galería: 2+ imágenes sin pie consecutivas → <code class="td-mono">.image-gallery</code> (grid auto-fit 280px, gap 14px, sin caja). Lightbox: componente compartido <code class="td-mono">assets/js/lightbox.js</code> (CSS en styles.css); el template lo cablea sobre <code class="td-mono">.article-content figure img</code>. Pie en Source Serif en los posts; la bitácora de la home lo abre con <code class="td-mono">.lbx--sans</code> (IBM Plex). Las <b>hypothesis cards</b> (<code class="td-mono">.hypothesis-card</code>, posts de investigación) viven en styles.css con variantes por estado y modo oscuro (<code class="td-mono">color-mix</code> sobre tokens).</p>
+                <p style="margin:0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Figure (<code class="td-mono">.article-image</code>, semántico — el build ya no emite estilos inline): margin 80px 0, img con borde <code class="td-mono">var(--border)</code>, fondo <code class="td-mono">var(--bg)</code> y radio 6px · figcaption: Inter 13.5px/italic/muted (viene del <code class="td-mono">*pie*</code> en cursiva bajo la imagen en el Markdown). Galería: 2+ imágenes sin pie consecutivas → <code class="td-mono">.image-gallery</code> (grid auto-fit 280px, gap 14px, sin caja). Lightbox: componente compartido <code class="td-mono">assets/js/lightbox.js</code> (CSS en styles.css); el template lo cablea sobre <code class="td-mono">.article-content figure img</code>. Pie en Source Serif en los posts; la bitácora de la home lo abre con <code class="td-mono">.lbx--sans</code> (IBM Plex). Las <b>hypothesis cards</b> (<code class="td-mono">.hypothesis-card</code>, posts de investigación) viven en styles.css con variantes por estado y modo oscuro (<code class="td-mono">color-mix</code> sobre tokens).</p>
               </div>
             </div>
 

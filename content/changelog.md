@@ -1,3 +1,41 @@
+### 7 de julio de 2026
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El buscador recuerda lo que usaste
+
+El buscador (⌘ K) ahora muestra un grupo **«Recientes»** cuando lo abrís sin escribir nada: las últimas cinco cosas que elegiste, sean personas, posts, notas, páginas de la wiki o fuentes. Sin escribir nada, llegás directo al lugar donde estabas.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Abrí una fuente desde el buscador sin entrar a la página
+
+Ahora podés buscar cualquier fuente bibliográfica o digital (FamilySearch, Ancestry, los archivos suizos) y al presionar Enter el sitio la abre directamente en una pestaña nueva. Sin pasar por la página de fuentes, sin buscar el link manual.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> El buscador abre la lectura de la wiki, no solo la localiza
+
+Antes, buscar una página de la wiki (un lugar, una fuente, un evento) la localizaba en el grafo pero no la abría. Ahora Enter abre el modal de lectura directamente. Si querés verla en el grafo, hay una acción secundaria para eso.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Los resultados más relevantes aparecen primero
+
+El buscador antes mostraba los grupos en orden fijo (personas, luego wiki, luego posts). Ahora se ordenan por el mejor resultado de cada grupo: si la coincidencia más fuerte está en las fuentes, las fuentes aparecen primero.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Página de fuentes completamente rehecha
+
+La lista de fuentes genealógicas tenía forma de documento de texto. Ahora es una **página de consulta**: las fuentes están organizadas por región (Entre Ríos, Argentina, Valais, Suiza general, plataformas, bibliografía), con etiquetas de estado —consultada, pendiente, con membresía, presencial— y un botón para abrir cada fuente directo, sin leer el detalle. El filtro de la barra superior muestra solo las fuentes de la región que te interesa.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Ocho fuentes suizas nuevas, Cyndi's List auditada
+
+Hice un barrido de los 318 recursos suizos de Cyndi's List: 212 están vivos, 11 caídos y 8 bloquean el acceso. De ahí rescaté ocho recursos de calidad que no estaban en el sitio: el Familiennamenbuch der Schweiz (índice de apellidos por cantón), los archivos federales suizos, la Société Genevoise de Généalogie, el Portrait-Archiv Eidgenössische Technische Hochschule, y otros. Todos disponibles desde el buscador.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Wiki: Ardon (Valais), origen del clan Clemenzo
+
+Nueva página en la wiki para **Ardon**, el pueblo del Valais del que salió el clan. Cubre la primera mención documental (1481, el Armorial Valaisan con «Clemenczoz»), el escudo heráldico —la llave de los Clemenzo derivada del arma de Ardon—, el patriarca Baptiste (p93, n.c. 1745–1755) y la bifurcación que define todo: Jean Baptiste se quedó en Ardon (rama de Jean-Yves), Jean Joseph emigró a Riddes y de ahí a la Argentina.
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Laboratorio editorial: jugá con la tipografía del blog
+
+Nueva herramienta en el **Lab**: una maqueta viva de la tipografía de los posts. Mostrás un fragmento real del blog con todos los elementos (títulos, párrafos, citas, imágenes, galería, tabla, diagrama) y tenés diales para cambiar el ancho de la columna, la fuente, el tamaño del cuerpo, el interlineado, los márgenes de las figuras. Al terminar, copiás la **receta** —solo los cambios respecto al estado actual del sitio— y la traés al chat.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Los posts se leen con más espacio
+
+Apliqué una receta de tipografía que salió del lab: la columna de texto pasó de **720 a 1020 px**, el cuerpo de 18 a 19.5 px, el interlineado de 1.8 a 1.75, los márgenes superiores de los h2 y las figuras crecieron. El texto respira más y las imágenes tienen más peso visual.
+
 ### 5 de julio de 2026
 
 #### <span class="changelog-tag changelog-tag--fix">Arreglo</span> «Leer investigación» ya no abre páginas vacías

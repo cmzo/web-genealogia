@@ -782,7 +782,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .back-home svg { width: 14px; height: 14px; }
 
-.article-header { padding: 40px 0 24px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.article-header { padding: 40px 0 24px; max-width: 1020px; margin-left: auto; margin-right: auto; }
 
 .article-kicker {
   color: var(--muted);
@@ -850,7 +850,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .article-content {
   min-width: 0;
-  max-width: 720px;
+  max-width: 1020px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -868,13 +868,13 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .article-content p {
   margin: 0 0 26px 0;
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 19.5px;
+  line-height: 1.75;
   color: var(--text);
 }
 
 .article-content h2 {
-  margin: 48px 0 20px 0;
+  margin: 60px 0 20px 0;
   font-family: 'Hanken Grotesk', sans-serif;
   font-size: clamp(30px, 3.5vw, 42px);
   font-weight: 700;
@@ -898,17 +898,17 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   margin: 16px 0 24px 0;
   padding-left: 24px;
   font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 19.5px;
+  line-height: 1.75;
   color: var(--text);
 }
 
-.article-content li { margin: 6px 0; line-height: 1.8; }
+.article-content li { margin: 6px 0; line-height: 1.75; }
 .article-content ul li { list-style-type: disc; }
 .article-content ol li { list-style-type: decimal; }
 
 .article-content figure {
-  margin: 44px 0;
+  margin: 80px 0;
   text-align: center;
 }
 
@@ -918,7 +918,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .article-content figure img {
   max-width: 100%;
   height: auto;
-  border-radius: 2px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   background: var(--bg);
   margin: 0;
@@ -929,7 +929,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 14px;
-  margin: 44px 0;
+  margin: 80px 0;
 }
 .article-content .image-gallery figure { margin: 0; }
 
@@ -971,7 +971,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 .article-content figure figcaption {
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--muted);
   font-family: 'Inter', sans-serif;
   line-height: 1.4;

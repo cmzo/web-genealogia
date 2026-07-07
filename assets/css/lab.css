@@ -452,3 +452,136 @@
   .frac-selector-btns { flex-direction: row; flex-wrap: wrap; gap: 4px; }
   .frac-slider-group { min-width: 140px; border-right: none; padding: 10px 16px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   lab-editorial.html — maqueta viva de la tipografía de los posts
+   El espécimen (.ed-spec) usa una COPIA parametrizada de los estilos de
+   .article-content: variables --ed-* que setean los diales (editorial-lab.js).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.ed-sandbox { height: auto; min-height: 0; align-items: start; }
+.ed-sandbox .lab-panel { position: sticky; top: 16px; max-height: calc(100vh - 32px); }
+.ed-stage {
+  border: 1px solid var(--border); border-radius: 12px; overflow: auto;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 22px 22px;
+  padding: 40px 24px; max-height: 78vh;
+}
+.ed-spec-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 48px 40px; }
+
+.ed-spec {
+  max-width: var(--ed-measure, 720px);
+  margin: 0 auto; min-width: 0;
+}
+/* Guías del ancho de caja (dial «mostrar bordes») */
+.ed-spec--box { position: relative; }
+.ed-spec--box::before, .ed-spec--box::after {
+  content: ''; position: absolute; top: -24px; bottom: -24px; width: 0;
+  border-left: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.ed-spec--box::before { left: -12px; }
+.ed-spec--box::after { right: -12px; }
+
+/* ── Copia parametrizada de la tipografía editorial ── */
+.ed-spec p {
+  margin: 0 0 var(--ed-pspace, 26px) 0;
+  font-family: var(--ed-body-font, 'Source Serif 4', Georgia, serif);
+  font-size: var(--ed-body-size, 18px);
+  line-height: var(--ed-lh, 1.8);
+  color: var(--text);
+}
+.ed-spec a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.ed-spec mark { background: color-mix(in srgb, var(--accent) 18%, transparent); color: inherit; padding: 0 2px; }
+.ed-spec h2 {
+  margin: var(--ed-h2-top, 48px) 0 20px 0;
+  font-family: var(--ed-display-font, 'Hanken Grotesk', sans-serif);
+  font-size: var(--ed-h2-size, 42px);
+  font-weight: var(--ed-h2-weight, 700);
+  line-height: 1.2; letter-spacing: -0.02em; color: var(--text);
+}
+.ed-spec h2:first-child { margin-top: 0; }
+.ed-spec h3 {
+  margin: 32px 0 10px 0;
+  font-family: var(--ed-display-font, 'Hanken Grotesk', sans-serif);
+  font-size: var(--ed-h3-size, 28px);
+  font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; color: var(--text);
+}
+.ed-spec ul, .ed-spec ol {
+  margin: 16px 0 24px 0; padding-left: 24px;
+  font-family: var(--ed-body-font, 'Source Serif 4', Georgia, serif);
+  font-size: var(--ed-body-size, 18px);
+  line-height: var(--ed-lh, 1.8); color: var(--text);
+}
+.ed-spec li { margin: 6px 0; }
+.ed-spec blockquote {
+  margin: 24px 0; padding: 4px 0 4px 20px;
+  border-left: 3px solid var(--accent);
+}
+.ed-spec blockquote p { font-style: italic; color: var(--muted); margin-bottom: 0; }
+.ed-spec figure { margin: var(--ed-fig-my, 44px) 0; text-align: center; }
+.ed-spec figure img {
+  max-width: 100%; height: auto;
+  border-radius: var(--ed-fig-radius, 2px);
+  border: 1px solid var(--border); background: var(--bg);
+}
+.ed-spec figcaption {
+  margin-top: 8px; font-size: var(--ed-cap-size, 13px);
+  color: var(--muted); font-family: 'Inter', sans-serif; line-height: 1.4; font-style: italic;
+}
+.ed-spec .image-gallery {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px; margin: var(--ed-fig-my, 44px) 0;
+}
+.ed-spec .image-gallery figure { margin: 0; }
+.ed-spec .table-wrapper { margin: 24px 0; overflow-x: auto; }
+.ed-spec table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 14px; }
+.ed-spec th {
+  text-align: left; font-family: var(--mono); font-weight: 500; font-size: 10.5px;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  padding: 9px 14px; background: var(--bg);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.ed-spec td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text); line-height: 1.5; }
+.ed-spec .mermaid { margin: 32px 0; max-width: 100%; overflow-x: auto; display: flex; justify-content: center; }
+
+/* Controles extra del panel (select y checkbox) */
+.ed-select {
+  width: 100%; margin-top: 4px; padding: 5px 8px;
+  font-family: var(--mono); font-size: 12px;
+  color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 6px;
+}
+.ed-check { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 12.5px; color: var(--muted); cursor: pointer; }
+.ed-check input { accent-color: var(--accent); }
+
+@media (max-width: 900px) {
+  .ed-sandbox .lab-panel { position: static; max-height: none; }
+  .ed-stage { max-height: none; padding: 20px 12px; }
+  .ed-spec-wrap { padding: 24px 16px; }
+}
+
+/* Modo amplio del laboratorio editorial: la maqueta ocupa toda la pantalla */
+.ed-sandbox--full {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--bg); margin: 0; padding: 16px;
+  grid-template-columns: 280px 1fr; gap: 16px;
+}
+.ed-sandbox--full .lab-panel { position: static; max-height: calc(100vh - 32px); }
+.ed-sandbox--full .ed-stage { max-height: none; height: calc(100vh - 32px); }
+@media (max-width: 900px) {
+  .ed-sandbox--full { grid-template-columns: 1fr; overflow-y: auto; }
+  .ed-sandbox--full .lab-panel { max-height: none; }
+  .ed-sandbox--full .ed-stage { height: auto; }
+}
+
+/* Aviso: el ancho pedido no entra en el área visible */
+.ed-hint {
+  position: sticky; top: 0; z-index: 5;
+  display: block; margin: 0 auto 16px; padding: 6px 14px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em;
+  color: var(--on-accent); background: var(--accent);
+  border: none; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+.ed-hint:hover { opacity: 0.9; }

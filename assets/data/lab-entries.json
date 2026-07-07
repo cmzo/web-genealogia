@@ -1,5 +1,13 @@
 [
   {
+    "id": "laboratorio-editorial",
+    "title": "Laboratorio editorial",
+    "summary": "Maqueta viva de la tipografía de los posts: ajustá el ancho de la caja de texto, tamaños, fuentes y márgenes con diales, y copiá la receta con los cambios exactos para aplicarlos al sitio.",
+    "date": "2026-07-07",
+    "kind": "tool",
+    "url": "lab-editorial.html"
+  },
+  {
     "id": "laboratorio-de-fractales",
     "title": "Laboratorio de fractales",
     "summary": "Explorá Koch, Sierpiński, árbol y curva dragón generados por L-systems. Modificá iteraciones y ángulo en vivo; el panel lateral muestra la gramática, el string creciendo y la dimensión fractal.",

@@ -44,6 +44,26 @@
   <script>
     // SVG preview por tool — cada entry del lab tiene su firma visual
     const PREVIEWS = {
+      'laboratorio-editorial': {
+        head: 'editorial.lab', meta: 'medida · 720px',
+        svg: `<svg viewBox="0 0 360 155" role="img" aria-label="Columna de texto con guías de ancho">
+          <!-- guías de la caja -->
+          <line class="act" x1="90"  y1="8" x2="90"  y2="147" stroke-dasharray="4 4"/>
+          <line class="act" x1="270" y1="8" x2="270" y2="147" stroke-dasharray="4 4"/>
+          <!-- título -->
+          <rect x="104" y="22" width="118" height="10" rx="2" class="hl"/>
+          <!-- líneas de texto -->
+          <line x1="104" y1="48"  x2="256" y2="48"/>
+          <line x1="104" y1="60"  x2="256" y2="60"/>
+          <line x1="104" y1="72"  x2="228" y2="72"/>
+          <line x1="104" y1="92"  x2="256" y2="92"/>
+          <line x1="104" y1="104" x2="256" y2="104"/>
+          <line x1="104" y1="116" x2="196" y2="116"/>
+          <!-- figura -->
+          <rect x="104" y="128" width="152" height="16" rx="2"/>
+          <text x="278" y="80">720px</text>
+        </svg>`
+      },
       'laboratorio-del-grafo': {
         head: 'grafo.lab', meta: 'nodes · 130',
         svg: `<svg viewBox="0 0 360 155" role="img" aria-label="Red de nodos">

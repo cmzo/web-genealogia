@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio editorial · Matías Clemenzo</title>
+    <meta name="description" content="Maqueta viva de la tipografía editorial del blog: ajustá ancho de columna, tamaños, fuentes y márgenes con diales, y copiá la receta con los cambios exactos." />
+    <link rel="canonical" href="https://cmzo.net/lab-editorial" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Laboratorio editorial · Matías Clemenzo" />
+    <meta property="og:description" content="Jugá con la tipografía de los posts y copiá la receta para aplicar los cambios." />
+    <meta property="og:url" content="https://cmzo.net/lab-editorial" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/lab.css" />
+</head>
+<body data-section="lab" data-page-label="editorial">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
+
+    <main id="main-content" class="cmzo cmzo-wrap cmzo-page">
+      <div class="lab-intro">
+        <h1>Laboratorio editorial</h1>
+        <p>La tipografía de los posts del <a href="blog.html">blog</a> vive en <strong>una sola hoja de estilos</strong>: la medida de la columna, el cuerpo en Source Serif, los títulos en Hanken Grotesk, los márgenes de figuras. Acá hay una <strong>maqueta viva</strong> de un artículo real: movés los diales y el fragmento cambia al instante.</p>
+        <p>Los valores iniciales son <strong>el estado actual del sitio</strong>. Cuando algo te guste más que lo que hay, copiá la <strong>receta</strong> de abajo — lista solo lo que cambiaste, con los valores exactos — y pegala en el chat para aplicarla. Probá también el modo día/noche desde la barra de arriba: los ajustes tienen que funcionar en ambos.</p>
+      </div>
+
+      <div class="lab-sandbox ed-sandbox">
+        <aside class="lab-panel">
+          <div class="lab-panel-actions">
+            <button id="edReset" class="lab-btn lab-btn--primary">Volver al estado actual</button>
+            <button id="edExpand" class="lab-btn">Ampliar maqueta</button>
+          </div>
+          <div id="edControls"></div>
+        </aside>
+        <div class="ed-stage">
+          <button class="ed-hint" id="edHint" hidden>El ancho pedido no entra acá — ampliar la maqueta ⛶</button>
+          <div class="ed-spec-wrap" id="edSpecWrap">
+            <article class="ed-spec" id="edSpec"><!-- el espécimen lo inyecta editorial-lab.js --></article>
+          </div>
+        </div>
+      </div>
+
+      <div class="lab-recipe-wrap">
+        <div class="lab-recipe-head">
+          <h2>Receta — cambios vs. estado actual</h2>
+          <button id="edCopy" class="lab-btn">Copiar</button>
+        </div>
+        <pre id="edRecipe" class="lab-recipe"></pre>
+      </div>
+    </main>
+
+  <footer class="cmzo-foot">
+    <div class="cmzo-foot-inner">
+      <div class="sig">// diseñado y mantenido por <b>Matías Clemenzo</b> · 2026</div>
+      <div class="cmzo-foot-links"><a href="colaborar.html">colaborar</a><a href="changelog.html">cambios</a></div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/path-config.js"></script>
+  <script type="module" src="./assets/js/lab/editorial-lab.js"></script>
+  <script src="./assets/js/nav.js" defer></script>
+  <script src="./assets/js/nav-drawer.js" defer></script>
+  <script src="./assets/js/theme.js" defer></script>
+  <script src="./assets/js/command-palette.js" defer></script>
+
+</body>
+</html>

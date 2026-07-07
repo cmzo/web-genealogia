@@ -1,5 +1,77 @@
 [
   {
+    "id": "2026-07-07-el-buscador-recuerda-lo-que-usaste",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El buscador recuerda lo que usaste",
+    "html": "<p>El buscador (⌘ K) ahora muestra un grupo <strong>«Recientes»</strong> cuando lo abrís sin escribir nada: las últimas cinco cosas que elegiste, sean personas, posts, notas, páginas de la wiki o fuentes. Sin escribir nada, llegás directo al lugar donde estabas.</p>\n"
+  },
+  {
+    "id": "2026-07-07-abrí-una-fuente-desde-el-buscador-sin-entrar-a-la-página",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Abrí una fuente desde el buscador sin entrar a la página",
+    "html": "<p>Ahora podés buscar cualquier fuente bibliográfica o digital (FamilySearch, Ancestry, los archivos suizos) y al presionar Enter el sitio la abre directamente en una pestaña nueva. Sin pasar por la página de fuentes, sin buscar el link manual.</p>\n"
+  },
+  {
+    "id": "2026-07-07-el-buscador-abre-la-lectura-de-la-wiki-no-solo-la-localiza",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "El buscador abre la lectura de la wiki, no solo la localiza",
+    "html": "<p>Antes, buscar una página de la wiki (un lugar, una fuente, un evento) la localizaba en el grafo pero no la abría. Ahora Enter abre el modal de lectura directamente. Si querés verla en el grafo, hay una acción secundaria para eso.</p>\n"
+  },
+  {
+    "id": "2026-07-07-los-resultados-más-relevantes-aparecen-primero",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Los resultados más relevantes aparecen primero",
+    "html": "<p>El buscador antes mostraba los grupos en orden fijo (personas, luego wiki, luego posts). Ahora se ordenan por el mejor resultado de cada grupo: si la coincidencia más fuerte está en las fuentes, las fuentes aparecen primero.</p>\n"
+  },
+  {
+    "id": "2026-07-07-página-de-fuentes-completamente-rehecha",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Página de fuentes completamente rehecha",
+    "html": "<p>La lista de fuentes genealógicas tenía forma de documento de texto. Ahora es una <strong>página de consulta</strong>: las fuentes están organizadas por región (Entre Ríos, Argentina, Valais, Suiza general, plataformas, bibliografía), con etiquetas de estado —consultada, pendiente, con membresía, presencial— y un botón para abrir cada fuente directo, sin leer el detalle. El filtro de la barra superior muestra solo las fuentes de la región que te interesa.</p>\n"
+  },
+  {
+    "id": "2026-07-07-ocho-fuentes-suizas-nuevas-cyndis-list-auditada",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Ocho fuentes suizas nuevas, Cyndi's List auditada",
+    "html": "<p>Hice un barrido de los 318 recursos suizos de Cyndi&#39;s List: 212 están vivos, 11 caídos y 8 bloquean el acceso. De ahí rescaté ocho recursos de calidad que no estaban en el sitio: el Familiennamenbuch der Schweiz (índice de apellidos por cantón), los archivos federales suizos, la Société Genevoise de Généalogie, el Portrait-Archiv Eidgenössische Technische Hochschule, y otros. Todos disponibles desde el buscador.</p>\n"
+  },
+  {
+    "id": "2026-07-07-wiki-ardon-valais-origen-del-clan-clemenzo",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Wiki: Ardon (Valais), origen del clan Clemenzo",
+    "html": "<p>Nueva página en la wiki para <strong>Ardon</strong>, el pueblo del Valais del que salió el clan. Cubre la primera mención documental (1481, el Armorial Valaisan con «Clemenczoz»), el escudo heráldico —la llave de los Clemenzo derivada del arma de Ardon—, el patriarca Baptiste (p93, n.c. 1745–1755) y la bifurcación que define todo: Jean Baptiste se quedó en Ardon (rama de Jean-Yves), Jean Joseph emigró a Riddes y de ahí a la Argentina.</p>\n"
+  },
+  {
+    "id": "2026-07-07-laboratorio-editorial-jugá-con-la-tipografía-del-blog",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Laboratorio editorial: jugá con la tipografía del blog",
+    "html": "<p>Nueva herramienta en el <strong>Lab</strong>: una maqueta viva de la tipografía de los posts. Mostrás un fragmento real del blog con todos los elementos (títulos, párrafos, citas, imágenes, galería, tabla, diagrama) y tenés diales para cambiar el ancho de la columna, la fuente, el tamaño del cuerpo, el interlineado, los márgenes de las figuras. Al terminar, copiás la <strong>receta</strong> —solo los cambios respecto al estado actual del sitio— y la traés al chat.</p>\n"
+  },
+  {
+    "id": "2026-07-07-los-posts-se-leen-con-más-espacio",
+    "date": "2026-07-07",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Los posts se leen con más espacio",
+    "html": "<p>Apliqué una receta de tipografía que salió del lab: la columna de texto pasó de <strong>720 a 1020 px</strong>, el cuerpo de 18 a 19.5 px, el interlineado de 1.8 a 1.75, los márgenes superiores de los h2 y las figuras crecieron. El texto respira más y las imágenes tienen más peso visual.</p>\n"
+  },
+  {
     "id": "2026-07-05-leer-investigación-ya-no-abre-páginas-vacías",
     "date": "2026-07-05",
     "type": "cambio",
@@ -246,77 +318,5 @@
     "tag": "mejora",
     "title": "Una marca con más identidad",
     "html": "<p>El nombre del sitio en la barra pasó de un punto verde suelto a <strong><code>~/cmzo</code></strong> —un guiño a las rutas de carpetas—, con «cmzo» en negrita. Chico, pero le da carácter.</p>\n"
-  },
-  {
-    "id": "2026-06-21-un-rectángulo-fantasma-al-hacer-scroll",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Un rectángulo fantasma al hacer scroll",
-    "html": "<p>Al frenar el scroll por encima del inicio (ese rebote elástico), asomaba un rectángulo claro arriba a la izquierda: era un atajo de accesibilidad oculto que se dejaba ver de más. Ahora queda invisible salvo cuando corresponde.</p>\n"
-  },
-  {
-    "id": "2026-06-21-una-navegación-nueva-en-todo-el-sitio",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Una navegación nueva en todo el sitio",
-    "html": "<p>La barra de arriba cambió de fondo. En lugar del menú lateral, ahora hay una <strong>ruta tipo carpetas</strong> (<code>cmzo / gen / árbol</code>) que muestra dónde estás parado y te deja volver a cualquier nivel con un clic. Las secciones principales quedaron en <strong>inicio</strong>, <strong>blog</strong> y <strong>genealogía</strong>, y la barra se adapta según dónde estés. Es el primer paso de un cambio de enfoque: el sitio deja de ser solo «genealogía Clemenzo» para volverse una página personal donde la genealogía es uno de los temas, no el único.</p>\n"
-  },
-  {
-    "id": "2026-06-21-la-genealogía-ahora-tiene-su-propia-portada",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "La genealogía ahora tiene su propia portada",
-    "html": "<p>Todo lo genealógico se reunió en una <strong>página-tablero</strong> (<code>/gen</code>): desde ahí entrás al <strong>árbol</strong> —con un resumen de cuántas personas, fechas, lugares y generaciones hay documentadas—, a la <strong>wiki</strong>, a las <strong>fuentes</strong> y a <strong>colaborar</strong>. Antes esos accesos estaban repartidos en el menú lateral; ahora viven juntos y con más contexto.</p>\n"
-  },
-  {
-    "id": "2026-06-21-una-portada-más-enfocada",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Una portada más enfocada",
-    "html": "<p>La página de inicio se replanteó: una presentación breve del sitio, dos accesos claros —<strong>genealogía</strong> y <strong>blog</strong>— y la última entrada publicada. Menos cosas, más dirección.</p>\n"
-  },
-  {
-    "id": "2026-06-21-la-barra-de-arriba-más-ordenada",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "La barra de arriba, más ordenada",
-    "html": "<p>El buscador (⌘ + K), el selector de idioma, el modo claro/oscuro y el enlace al código quedaron <strong>agrupados a la derecha</strong>, separados por líneas finas, mientras las secciones se alinean a la izquierda junto al nombre del sitio. Se ve más prolija y con menos elementos compitiendo por el centro.</p>\n"
-  },
-  {
-    "id": "2026-06-21-el-mapa-de-la-wiki-aparece-centrado",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "El mapa de la Wiki aparece centrado",
-    "html": "<p>El grafo de la Wiki (y el del Laboratorio) ahora se <strong>centra en la pantalla</strong> al abrirse, en vez de quedar corrido hacia un costado.</p>\n"
-  },
-  {
-    "id": "2026-06-21-enlaces-de-los-posts-que-no-funcionaban",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Enlaces de los posts que no funcionaban",
-    "html": "<p>Algunos enlaces dentro de los posts del blog —al árbol, la wiki y el laboratorio— estaban rotos y daban error de página inexistente. Ahora <strong>llevan bien</strong> a su destino.</p>\n"
-  },
-  {
-    "id": "2026-06-20-un-laboratorio-para-jugar-con-el-grafo",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Un laboratorio para jugar con el grafo",
-    "html": "<p>Hay una página nueva, el <strong>Laboratorio del grafo</strong>, para experimentar con el mapa: elegís cuántos puntos y cuántas conexiones, y con una serie de controles cambiás la física —cómo se repelen los nodos, cuánto se agrupan, qué tan redondo queda el conjunto, el grosor de las líneas, el brillo de los puntos— viendo el resultado al instante. Sirve para entender cómo está hecho el mapa de la Wiki y para poder reproducirlo: incluye una &quot;receta&quot; copiable con todos los valores.</p>\n"
-  },
-  {
-    "id": "2026-06-20-los-nombres-de-las-personas-más-conectadas-siempre-a-la-vista",
-    "date": "2026-06-20",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Los nombres de las personas más conectadas, siempre a la vista",
-    "html": "<p>En el mapa de la Wiki ahora se ven por defecto los nombres de los nodos con más conexiones (los centros de cada familia), y al acercar el zoom aparecen todos. Antes los nombres solo salían al pasar el mouse y daba la sensación de que faltaba algo.</p>\n"
   }
 ]
