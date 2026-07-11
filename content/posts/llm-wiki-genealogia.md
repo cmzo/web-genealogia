@@ -6,6 +6,7 @@ category: "tecnologia"
 date: "2026-06-20"
 tags: "wiki, pkm, llm, zettelkasten, obsidian, karpathy, okf, grafo"
 featured: false
+wiki: "metodologia"
 slug: "llm-wiki-genealogia"
 ---
 

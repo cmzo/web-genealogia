@@ -2301,6 +2301,26 @@
           "group_order": 0
         },
         {
+          "id": "med98",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p40-carta-conthey-1.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
+          "source_label": "Tribunal de Conthey",
+          "group_label": "Carta del tribunal de Conthey (1905)",
+          "group_order": 1
+        },
+        {
+          "id": "med99",
+          "type": "photo",
+          "url": "assets/images/personas/p26-p40-carta-conthey-2.webp",
+          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
+          "date": null,
+          "source_label": null,
+          "group_label": "Carta del tribunal de Conthey (1905)",
+          "group_order": 2
+        },
+        {
           "id": "med48",
           "type": "photo",
           "url": "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
@@ -2321,33 +2341,13 @@
           "group_order": 1
         },
         {
-          "id": "med98",
-          "type": "photo",
-          "url": "assets/images/personas/p26-p40-carta-conthey-1.webp",
-          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
-          "date": null,
-          "source_label": "Tribunal de Conthey",
-          "group_label": "carta_conthey",
-          "group_order": 1
-        },
-        {
-          "id": "med99",
-          "type": "photo",
-          "url": "assets/images/personas/p26-p40-carta-conthey-2.webp",
-          "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
-          "date": null,
-          "source_label": null,
-          "group_label": "carta_conthey",
-          "group_order": 2
-        },
-        {
           "id": "med7",
           "type": "photo",
           "url": "assets/images/personas/p26-militar-1.webp",
           "caption": "Enrolamiento militar en Santa Fe",
           "date": "",
           "source_label": "Registro Militar",
-          "group_label": "militar",
+          "group_label": "Enrolamiento militar en Santa Fe",
           "group_order": 1
         },
         {
@@ -2357,7 +2357,7 @@
           "caption": "Enrolamiento militar en Santa Fe",
           "date": "",
           "source_label": "Registro Militar",
-          "group_label": "militar",
+          "group_label": "Enrolamiento militar en Santa Fe",
           "group_order": 2
         },
         {
@@ -2367,7 +2367,7 @@
           "caption": "Enrolamiento militar en Santa Fe",
           "date": "",
           "source_label": "Registro Militar",
-          "group_label": "militar",
+          "group_label": "Enrolamiento militar en Santa Fe",
           "group_order": 3
         },
         {
@@ -2377,7 +2377,7 @@
           "caption": "Enrolamiento militar en Santa Fe",
           "date": "",
           "source_label": "Registro Militar",
-          "group_label": "militar",
+          "group_label": "Enrolamiento militar en Santa Fe",
           "group_order": 4
         }
       ]
@@ -2731,7 +2731,7 @@
           "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
           "date": null,
           "source_label": null,
-          "group_label": "carta_conthey",
+          "group_label": "Carta del tribunal de Conthey (1905)",
           "group_order": 3
         },
         {
@@ -2741,7 +2741,7 @@
           "caption": "Carta del tribunal de Conthey a Francisco y Esteban",
           "date": null,
           "source_label": null,
-          "group_label": "carta_conthey",
+          "group_label": "Carta del tribunal de Conthey (1905)",
           "group_order": 4
         }
       ]

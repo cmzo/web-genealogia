@@ -18,7 +18,9 @@
     ],
     "featured": false,
     "url": "dist/blog/llm-wiki-genealogia.html",
-    "wiki": [],
+    "wiki": [
+      "metodologia"
+    ],
     "langs": [
       "es"
     ]
@@ -75,7 +77,9 @@
       "p26",
       "p37",
       "p57",
-      "p58"
+      "p58",
+      "salins-valais",
+      "sion-valais"
     ],
     "langs": [
       "es",
@@ -124,7 +128,9 @@
     ],
     "featured": true,
     "url": "dist/blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html",
-    "wiki": [],
+    "wiki": [
+      "metodologia"
+    ],
     "langs": [
       "es"
     ]
@@ -145,7 +151,9 @@
     ],
     "featured": true,
     "url": "dist/blog/documentar-fuentes.html",
-    "wiki": [],
+    "wiki": [
+      "metodologia"
+    ],
     "langs": [
       "es",
       "fr"

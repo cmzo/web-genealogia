@@ -6,6 +6,7 @@ category: "investigación"
 date: "2026-01-29"
 tags: "genealogia, investigacion, documentos, registros, archivo"
 featured: true
+wiki: "metodologia"
 slug: "documentar-fuentes"
 kicker: "Un vistazo al método con el que registro las fuentes, registros y documentos hoy en día"
 ---

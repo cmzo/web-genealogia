@@ -1,5 +1,29 @@
 [
   {
+    "id": "2026-07-11-cuatro-páginas-nuevas-en-la-wiki-salins-sion-colónsan-josé-y-metodología",
+    "date": "2026-07-11",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Cuatro páginas nuevas en la wiki: Salins, Sion, Colón/San José y Metodología",
+    "html": "<p>El grafo suma tres <strong>lugares</strong> que faltaban en la historia familiar: <strong>Salins</strong> (la comuna de los Stalder y de la granja de Turrin, vendida en 1862), <strong>Sion</strong> (donde el abogado Gabioud y el juez liquidaron el patrimonio, y donde se depositó el giro de 1905) y <strong>Colón y San José</strong> (las colonias entrerrianas donde reaparece François en 1886). Además, una página-tema de <strong>Metodología</strong> explica cómo se investiga y documenta este proyecto.</p>\n"
+  },
+  {
+    "id": "2026-07-11-los-posts-del-blog-ahora-pueden-enlazar-páginas-de-la-wiki",
+    "date": "2026-07-11",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Los posts del blog ahora pueden enlazar páginas de la wiki",
+    "html": "<p>Los posts sobre el método —el agente de investigación, la documentación de fuentes, la LLM Wiki— quedaban como puntos sueltos en el grafo porque no tratan de ninguna persona. Ahora un post puede referenciar también páginas de la wiki, no solo personas: los tres posts «meta» cuelgan de la página de Metodología, y «La ruina de François» quedó conectado a Salins y Sion.</p>\n"
+  },
+  {
+    "id": "2026-07-11-etiquetas-completas-y-títulos-de-documentos-prolijos",
+    "date": "2026-07-11",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Etiquetas completas y títulos de documentos prolijos",
+    "html": "<p>Las 46 notas de persona que faltaba etiquetar ya tienen sus etiquetas (apellido y lugares), así que el resaltado temático de la wiki ahora alcanza a todo el árbol. Y dos grupos de documentos que mostraban nombres internos como título («carta_conthey», «militar») ahora se llaman como corresponde: «Carta del tribunal de Conthey (1905)» y «Enrolamiento militar en Santa Fe».</p>\n"
+  },
+  {
     "id": "2026-07-07-los-documentos-de-cada-persona-ahora-viven-en-la-wiki",
     "date": "2026-07-07",
     "type": "cambio",
@@ -294,29 +318,5 @@
     "tag": "novedad",
     "title": "Un área para experimentos (lab)",
     "html": "<p>El <strong>laboratorio del grafo</strong> dejó de ser una página suelta: ahora vive en un área propia, <code>lab</code>, pensada para experimentos y cosas técnicas. Sumar una nueva es tirar un archivo y listo.</p>\n"
-  },
-  {
-    "id": "2026-06-21-los-posts-del-blog-estrenan-el-diseño-nuevo",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Los posts del blog estrenan el diseño nuevo",
-    "html": "<p>Las entradas del blog se actualizaron al mismo diseño que el resto del sitio: la barra de arriba con la ruta (<code>~/cmzo / blog / …</code>), el pie nuevo y el selector de idioma más prolijo. La lectura del artículo queda igual.</p>\n"
-  },
-  {
-    "id": "2026-06-21-el-buscador-hace-más",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "El buscador hace más",
-    "html": "<p>El <strong>⌘ + K</strong> dejó de ser solo búsqueda: ahora también <strong>ejecuta acciones</strong> (por ejemplo, cambiar entre modo día y noche) y <strong>encuentra las notas</strong> por su contenido, no solo posts y personas.</p>\n"
-  },
-  {
-    "id": "2026-06-21-el-mapa-de-la-wiki-en-el-celular",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "El mapa de la wiki en el celular",
-    "html": "<p>En el teléfono —sobre todo en vertical— el grafo de la wiki se veía amontonado, como la maraña vieja. Ahora se arma igual de prolijo que en la computadora, en cualquier pantalla.</p>\n"
   }
 ]

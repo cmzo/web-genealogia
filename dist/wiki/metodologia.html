@@ -5,13 +5,13 @@
   <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../../assets/images/favicon.png" type="image/png">
-  <title>Leon Francisco Clemenzo · Wiki · Matías Clemenzo</title>
-  <meta name="description" content="n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina" />
-  <link rel="canonical" href="https://cmzo.net/dist/wiki/p20.html" />
+  <title>Metodología de investigación · Wiki · Matías Clemenzo</title>
+  <meta name="description" content="Cómo se investiga y documenta este proyecto: notas por persona, fuentes registradas, una wiki-grafo mantenida por agentes y este mismo sitio como salida." />
+  <link rel="canonical" href="https://cmzo.net/dist/wiki/metodologia.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Leon Francisco Clemenzo · Wiki · Matías Clemenzo" />
-  <meta property="og:description" content="n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina" />
-  <meta property="og:url" content="https://cmzo.net/dist/wiki/p20.html" />
+  <meta property="og:title" content="Metodología de investigación · Wiki · Matías Clemenzo" />
+  <meta property="og:description" content="Cómo se investiga y documenta este proyecto: notas por persona, fuentes registradas, una wiki-grafo mantenida por agentes y este mismo sitio como salida." />
+  <meta property="og:url" content="https://cmzo.net/dist/wiki/metodologia.html" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <link rel="stylesheet" href="../../assets/css/wiki.css" />
 </head>
@@ -57,17 +57,25 @@
         </div>
 
         <header class="wiki-page-header">
-          <span class="wiki-type-badge wiki-type-badge--persona">Persona</span>
-          <h1 class="wiki-page-title">Leon Francisco Clemenzo</h1>
-          <p class="wiki-page-summary">n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina</p>
+          <span class="wiki-type-badge wiki-type-badge--tema">Tema</span>
+          <h1 class="wiki-page-title">Metodología de investigación</h1>
+          <p class="wiki-page-summary">Cómo se investiga y documenta este proyecto: notas por persona, fuentes registradas, una wiki-grafo mantenida por agentes y este mismo sitio como salida.</p>
         </header>
 
         <article class="wiki-page-content">
-          <p class="wiki-pending">La investigación de esta persona todavía está pendiente.</p><section class="wiki-docs"><h2>Documentos</h2><div class="wiki-docs-grid"><figure class="wiki-figure"><img src="../../assets/images/personas/p20-bautismo.webp" alt="Bautismo de Leon Francisco Clemenzo" loading="lazy"><figcaption>Bautismo de Leon Francisco Clemenzo</figcaption></figure><figure class="wiki-figure"><img src="../../assets/images/personas/p20-firma.webp" alt="Firma de Leon Francisco Clemenzo" loading="lazy"><figcaption>Firma de Leon Francisco Clemenzo</figcaption></figure><figure class="wiki-figure"><img src="../../assets/images/personas/p20-p21-matrimonio.webp" alt="Libreta de matrimonio de Leon Francisco Clemenzo con Emiliana Elena Baster" loading="lazy"><figcaption>Libreta de matrimonio de Leon Francisco Clemenzo con Emiliana Elena Baster</figcaption></figure><figure class="wiki-figure"><img src="../../assets/images/personas/p26-p27-p25-p20-p22-p23-1895-censo-2.webp" alt="Censo de Colon de 1895" loading="lazy"><figcaption>Censo de Colon de 1895</figcaption></figure></div><h3>Actas</h3><div class="wiki-docs-grid"><figure class="wiki-figure"><img src="../../assets/images/personas/p35-p20-p21-1919-nacimiento-acta.webp" alt="Acta de nacimiento de su hijo Rodolfo (N° 97, 1919) — comparece y firma como «León F. Clemence», 27 años, domiciliado en calle Córdoba." loading="lazy"><figcaption>Acta de nacimiento de su hijo Rodolfo (N° 97, 1919) — comparece y firma como «León F. Clemence», 27 años, domiciliado en calle Córdoba. · Registro Civil de Concepción del Uruguay</figcaption></figure></div></section>
+          <p>Este proyecto no es solo un árbol: es un <strong>sistema de trabajo</strong>. Cada persona tiene una nota de investigación en markdown (cronología, hipótesis, líneas pendientes, fuentes); las fuentes se registran con su estado y cobertura; y todo se compila en el grafo de esta wiki, donde documentos, personas, lugares y posts quedan enlazados.</p>
+<p>Tres posts del blog documentan cómo se llegó a este método:</p>
+<ul>
+<li><strong>«Ideas para documentar bien las fuentes»</strong> — el registro sistemático de fuentes, actas y documentos.</li>
+<li><strong>«Creación de un agente de investigación genealógica con Claude»</strong> — el agente MCP que asiste la investigación: busca personas, lee notas, carga documentos.</li>
+<li><strong>«Una LLM Wiki para mi genealogía»</strong> — el patrón de Karpathy aplicado a este archivo: agentes que mantienen la base de conocimiento en markdown, y el grafo que la visualiza.</li>
+</ul>
+<p>Las piezas del sistema, de la fuente al sitio: los registros originales (censos como el <a class="wiki-link" href="censo-valais-1870.html" data-node="censo-valais-1870">censo del Valais de 1870</a>, actas parroquiales, prensa histórica) → notas por persona y páginas de lugar/fuente/evento → la base del árbol (SQLite) → el build estático que genera el árbol, esta wiki y el blog.</p>
+
         </article>
 
         <section class="wiki-related">
-          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--persona" href="p21.html" data-node="p21">Emiliana Elena Baster</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p27.html" data-node="p27">María Celestina Roh</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p33" data-node="p33">Horacio Lorenzo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p34.html" data-node="p34">Elena Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p35.html" data-node="p35">Rodolfo Ambrosio Clemenzo</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip" href="colon-san-jose.html" data-node="colon-san-jose">Colón y San José (Entre Ríos)</a><a class="wiki-chip wiki-chip--persona" href="p26.html" data-node="p26">François Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p27.html" data-node="p27">María Celestina Roh</a><a class="wiki-chip wiki-chip--persona" href="p21.html" data-node="p21">Emiliana Elena Baster</a><a class="wiki-chip wiki-chip--persona" href="../../arbol.html?focus=p33" data-node="p33">Horacio Lorenzo Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p34.html" data-node="p34">Elena Clemenzo</a><a class="wiki-chip wiki-chip--persona" href="p35.html" data-node="p35">Rodolfo Ambrosio Clemenzo</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#clemenzo</span></div></div>
+          <div class="wiki-related-group"><h2 class="wiki-related-title">Enlaza con</h2><div class="wiki-chips"><a class="wiki-chip" href="censo-valais-1870.html" data-node="censo-valais-1870">Censo del Valais de 1870</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Mencionada en</h2><div class="wiki-chips"><a class="wiki-chip wiki-chip--post" href="../blog/llm-wiki-genealogia.html">Una LLM Wiki para mi genealogía</a><a class="wiki-chip wiki-chip--post" href="../blog/creacion-de-un-agente-de-investigacion-genealogica-con-claude.html">Creación de un agente de investigación genealógica con CLAUDE</a><a class="wiki-chip wiki-chip--post" href="../blog/documentar-fuentes.html">Ideas para documentar bien las fuentes</a></div></div><div class="wiki-related-group"><h2 class="wiki-related-title">Etiquetas</h2><div class="wiki-chips"><span class="wiki-chip wiki-chip--tag">#metodologia</span><span class="wiki-chip wiki-chip--tag">#investigacion</span></div></div>
         </section>
       </div>
     </main>

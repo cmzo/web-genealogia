@@ -7,6 +7,7 @@ category: "investigacion"
 date: "2026-05-08"
 tags: "investigacion, ia, genealogia, tecnologia"
 featured: true
+wiki: "metodologia"
 slug: "creacion-de-un-agente-de-investigacion-genealogica-con-claude"
 ---
 

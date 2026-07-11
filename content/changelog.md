@@ -1,3 +1,17 @@
+### 11 de julio de 2026
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Cuatro páginas nuevas en la wiki: Salins, Sion, Colón/San José y Metodología
+
+El grafo suma tres **lugares** que faltaban en la historia familiar: **Salins** (la comuna de los Stalder y de la granja de Turrin, vendida en 1862), **Sion** (donde el abogado Gabioud y el juez liquidaron el patrimonio, y donde se depositó el giro de 1905) y **Colón y San José** (las colonias entrerrianas donde reaparece François en 1886). Además, una página-tema de **Metodología** explica cómo se investiga y documenta este proyecto.
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los posts del blog ahora pueden enlazar páginas de la wiki
+
+Los posts sobre el método —el agente de investigación, la documentación de fuentes, la LLM Wiki— quedaban como puntos sueltos en el grafo porque no tratan de ninguna persona. Ahora un post puede referenciar también páginas de la wiki, no solo personas: los tres posts «meta» cuelgan de la página de Metodología, y «La ruina de François» quedó conectado a Salins y Sion.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Etiquetas completas y títulos de documentos prolijos
+
+Las 46 notas de persona que faltaba etiquetar ya tienen sus etiquetas (apellido y lugares), así que el resaltado temático de la wiki ahora alcanza a todo el árbol. Y dos grupos de documentos que mostraban nombres internos como título («carta_conthey», «militar») ahora se llaman como corresponde: «Carta del tribunal de Conthey (1905)» y «Enrolamiento militar en Santa Fe».
+
 ### 7 de julio de 2026
 
 #### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Los documentos de cada persona ahora viven en la wiki

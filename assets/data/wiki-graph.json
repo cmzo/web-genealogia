@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T21:13:39.042Z",
+  "generated": "2026-07-11T13:36:27.481Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -29,12 +29,30 @@
       "hasContent": true
     },
     {
+      "id": "colon-san-jose",
+      "title": "Colón y San José (Entre Ríos)",
+      "type": "lugar",
+      "branch": "",
+      "url": "dist/wiki/colon-san-jose.html",
+      "summary": "Las colonias valesanas de la costa del río Uruguay donde reaparece François Clemenzo hacia 1886, casado con Celestina Roh: el destino argentino del grupo emigrado de Ardon.",
+      "hasContent": true
+    },
+    {
       "id": "emigracion-valais-entrerios",
       "title": "Emigración Valais → Entre Ríos",
       "type": "evento",
       "branch": "",
       "url": "dist/wiki/emigracion-valais-entrerios.html",
       "summary": "El traslado de la familia Clemenzo desde el cantón del Valais (Suiza) a Entre Ríos (Argentina) a fines del siglo XIX.",
+      "hasContent": true
+    },
+    {
+      "id": "metodologia",
+      "title": "Metodología de investigación",
+      "type": "tema",
+      "branch": "",
+      "url": "dist/wiki/metodologia.html",
+      "summary": "Cómo se investiga y documenta este proyecto: notas por persona, fuentes registradas, una wiki-grafo mantenida por agentes y este mismo sitio como salida.",
       "hasContent": true
     },
     {
@@ -47,13 +65,31 @@
       "hasContent": true
     },
     {
+      "id": "salins-valais",
+      "title": "Salins (Valais)",
+      "type": "lugar",
+      "branch": "",
+      "url": "dist/wiki/salins-valais.html",
+      "summary": "Pueblo de montaña sobre Sion, a ~1.000 m: comuna de los Stalder y hogar de la familia de François Clemenzoz hasta la venta de la granja de Turrin en 1862.",
+      "hasContent": true
+    },
+    {
+      "id": "sion-valais",
+      "title": "Sion (Valais)",
+      "type": "lugar",
+      "branch": "",
+      "url": "dist/wiki/sion-valais.html",
+      "summary": "Capital del Valais: sede del abogado Gabioud y del juez que liquidaron el patrimonio familiar (1861–63), de la caja de ahorros del giro de 1905 y de los Archives de l'État du Valais.",
+      "hasContent": true
+    },
+    {
       "id": "p1",
       "title": "Juan Martin Clemenzo Vargas Yegros",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "dist/wiki/p1.html",
+      "url": "arbol.html?focus=p1",
       "summary": "n. 2016-05-17, CABA",
-      "hasContent": true
+      "hasContent": false
     },
     {
       "id": "p10",
@@ -1242,7 +1278,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 57
+      "weight": 68
     },
     {
       "id": "tag:ardon",
@@ -1262,7 +1298,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 34
+      "weight": 37
     },
     {
       "id": "tag:suiza",
@@ -1272,7 +1308,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 32
+      "weight": 35
     },
     {
       "id": "tag:arbol",
@@ -1302,11 +1338,51 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 2
+      "weight": 5
     },
     {
       "id": "tag:censo",
       "title": "#censo",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:entre-rios",
+      "title": "#entre-rios",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 16
+    },
+    {
+      "id": "tag:argentina",
+      "title": "#argentina",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 31
+    },
+    {
+      "id": "tag:colon",
+      "title": "#colon",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:san-jose",
+      "title": "#san-jose",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1325,24 +1401,114 @@
       "weight": 10
     },
     {
-      "id": "tag:entre-rios",
-      "title": "#entre-rios",
+      "id": "tag:metodologia",
+      "title": "#metodologia",
       "type": "tag",
       "branch": "",
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 6
+      "weight": 1
     },
     {
-      "id": "tag:argentina",
-      "title": "#argentina",
+      "id": "tag:investigacion",
+      "title": "#investigacion",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 8
+    },
+    {
+      "id": "tag:salins",
+      "title": "#salins",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:sion",
+      "title": "#sion",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:buenos-aires",
+      "title": "#buenos-aires",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 8
+    },
+    {
+      "id": "tag:etchegorry",
+      "title": "#etchegorry",
       "type": "tag",
       "branch": "",
       "url": "",
       "summary": "",
       "hasContent": false,
       "weight": 7
+    },
+    {
+      "id": "tag:locher",
+      "title": "#locher",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:vergere",
+      "title": "#vergere",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:conthey",
+      "title": "#conthey",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 12
+    },
+    {
+      "id": "tag:mersilli",
+      "title": "#mersilli",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:italia",
+      "title": "#italia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
     },
     {
       "id": "tag:roh",
@@ -1353,16 +1519,6 @@
       "summary": "",
       "hasContent": false,
       "weight": 25
-    },
-    {
-      "id": "tag:conthey",
-      "title": "#conthey",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 11
     },
     {
       "id": "tag:putallaz",
@@ -1382,7 +1538,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 4
+      "weight": 5
     },
     {
       "id": "tag:queipo",
@@ -1395,6 +1551,16 @@
       "weight": 6
     },
     {
+      "id": "tag:fernandez",
+      "title": "#fernandez",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
       "id": "tag:riddes",
       "title": "#riddes",
       "type": "tag",
@@ -1403,6 +1569,36 @@
       "summary": "",
       "hasContent": false,
       "weight": 11
+    },
+    {
+      "id": "tag:baster",
+      "title": "#baster",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:guido",
+      "title": "#guido",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:uruguay",
+      "title": "#uruguay",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     },
     {
       "id": "tag:stalder",
@@ -1415,14 +1611,54 @@
       "weight": 1
     },
     {
-      "id": "tag:salins",
-      "title": "#salins",
+      "id": "tag:vargas-yegros",
+      "title": "#vargas-yegros",
       "type": "tag",
       "branch": "",
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 2
+      "weight": 1
+    },
+    {
+      "id": "tag:venegas",
+      "title": "#venegas",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:lantz",
+      "title": "#lantz",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:cybulski",
+      "title": "#cybulski",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:vasquez",
+      "title": "#vasquez",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
     },
     {
       "id": "tag:arceo",
@@ -1433,6 +1669,126 @@
       "summary": "",
       "hasContent": false,
       "weight": 3
+    },
+    {
+      "id": "tag:yanitelli",
+      "title": "#yanitelli",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:fracchia",
+      "title": "#fracchia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:vinales",
+      "title": "#vinales",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:fonteine",
+      "title": "#fonteine",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:costabile",
+      "title": "#costabile",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:magallanes",
+      "title": "#magallanes",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:troncoso",
+      "title": "#troncoso",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:ruiz",
+      "title": "#ruiz",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:rivero",
+      "title": "#rivero",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:battnier",
+      "title": "#battnier",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:francia",
+      "title": "#francia",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 2
+    },
+    {
+      "id": "tag:hernandez",
+      "title": "#hernandez",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     },
     {
       "id": "tag:wiki",
@@ -1535,16 +1891,6 @@
       "weight": 1
     },
     {
-      "id": "tag:investigacion",
-      "title": "#investigacion",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 7
-    },
-    {
       "id": "tag:gazette-du-valais",
       "title": "#gazette du valais",
       "type": "tag",
@@ -1643,16 +1989,6 @@
       "summary": "",
       "hasContent": false,
       "weight": 1
-    },
-    {
-      "id": "tag:francia",
-      "title": "#francia",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
     }
   ],
   "edges": [
@@ -1745,6 +2081,34 @@
       "target": "emigracion-valais-entrerios"
     },
     {
+      "source": "colon-san-jose",
+      "target": "emigracion-valais-entrerios"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "ardon-valais"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "p26"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "p27"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "p20"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "p80"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "p38"
+    },
+    {
       "source": "emigracion-valais-entrerios",
       "target": "p26"
     },
@@ -1755,6 +2119,10 @@
     {
       "source": "emigracion-valais-entrerios",
       "target": "p27"
+    },
+    {
+      "source": "metodologia",
+      "target": "censo-valais-1870"
     },
     {
       "source": "riddes-valais",
@@ -1783,6 +2151,54 @@
     {
       "source": "riddes-valais",
       "target": "p27"
+    },
+    {
+      "source": "salins-valais",
+      "target": "p37"
+    },
+    {
+      "source": "salins-valais",
+      "target": "p36"
+    },
+    {
+      "source": "salins-valais",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "salins-valais",
+      "target": "p58"
+    },
+    {
+      "source": "salins-valais",
+      "target": "sion-valais"
+    },
+    {
+      "source": "salins-valais",
+      "target": "p26"
+    },
+    {
+      "source": "sion-valais",
+      "target": "p58"
+    },
+    {
+      "source": "sion-valais",
+      "target": "p36"
+    },
+    {
+      "source": "sion-valais",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "sion-valais",
+      "target": "p26"
+    },
+    {
+      "source": "sion-valais",
+      "target": "p40"
+    },
+    {
+      "source": "sion-valais",
+      "target": "censo-valais-1870"
     },
     {
       "source": "p119",
@@ -2824,6 +3240,10 @@
       "rel": "familia"
     },
     {
+      "source": "post:llm-wiki-genealogia",
+      "target": "metodologia"
+    },
+    {
       "source": "post:buscando-a-los-roh",
       "target": "p38"
     },
@@ -2860,6 +3280,14 @@
       "target": "p58"
     },
     {
+      "source": "post:la-ruina-de-francois",
+      "target": "salins-valais"
+    },
+    {
+      "source": "post:la-ruina-de-francois",
+      "target": "sion-valais"
+    },
+    {
       "source": "post:clan-clemenzo",
       "target": "p57"
     },
@@ -2870,6 +3298,14 @@
     {
       "source": "post:clan-clemenzo",
       "target": "p36"
+    },
+    {
+      "source": "post:creacion-de-un-agente-de-investigacion-genealogica-con-claude",
+      "target": "metodologia"
+    },
+    {
+      "source": "post:documentar-fuentes",
+      "target": "metodologia"
     },
     {
       "source": "post:linea-de-tiempo-de-francisco",
@@ -2955,6 +3391,31 @@
       "rel": "tag"
     },
     {
+      "source": "colon-san-jose",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "tag:colon",
+      "rel": "tag"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "tag:san-jose",
+      "rel": "tag"
+    },
+    {
+      "source": "colon-san-jose",
+      "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
       "source": "emigracion-valais-entrerios",
       "target": "tag:valais",
       "rel": "tag"
@@ -2975,6 +3436,16 @@
       "rel": "tag"
     },
     {
+      "source": "metodologia",
+      "target": "tag:metodologia",
+      "rel": "tag"
+    },
+    {
+      "source": "metodologia",
+      "target": "tag:investigacion",
+      "rel": "tag"
+    },
+    {
       "source": "riddes-valais",
       "target": "tag:valais",
       "rel": "tag"
@@ -2990,8 +3461,123 @@
       "rel": "tag"
     },
     {
+      "source": "salins-valais",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "salins-valais",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "salins-valais",
+      "target": "tag:salins",
+      "rel": "tag"
+    },
+    {
+      "source": "salins-valais",
+      "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
+      "source": "sion-valais",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "sion-valais",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "sion-valais",
+      "target": "tag:sion",
+      "rel": "tag"
+    },
+    {
+      "source": "sion-valais",
+      "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
+      "source": "p1",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p1",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p1",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p10",
       "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p100",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p100",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p100",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p101",
+      "target": "tag:locher",
+      "rel": "tag"
+    },
+    {
+      "source": "p101",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p101",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p102",
+      "target": "tag:vergere",
+      "rel": "tag"
+    },
+    {
+      "source": "p102",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p102",
+      "target": "tag:valais",
+      "rel": "tag"
+    },
+    {
+      "source": "p102",
+      "target": "tag:suiza",
+      "rel": "tag"
+    },
+    {
+      "source": "p103",
+      "target": "tag:mersilli",
+      "rel": "tag"
+    },
+    {
+      "source": "p103",
+      "target": "tag:italia",
       "rel": "tag"
     },
     {
@@ -3032,6 +3618,96 @@
     {
       "source": "p110",
       "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p111",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p111",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p111",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p112",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p112",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p112",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p113",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p113",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p113",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p114",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p114",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p114",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p115",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p115",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p115",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p116",
+      "target": "tag:etchegorry",
+      "rel": "tag"
+    },
+    {
+      "source": "p116",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p116",
+      "target": "tag:argentina",
       "rel": "tag"
     },
     {
@@ -3280,6 +3956,21 @@
       "rel": "tag"
     },
     {
+      "source": "p2",
+      "target": "tag:fernandez",
+      "rel": "tag"
+    },
+    {
+      "source": "p2",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p2",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p20",
       "target": "tag:clemenzo",
       "rel": "tag"
@@ -3410,8 +4101,38 @@
       "rel": "tag"
     },
     {
+      "source": "p3",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p3",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p3",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p30",
       "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p31",
+      "target": "tag:baster",
+      "rel": "tag"
+    },
+    {
+      "source": "p32",
+      "target": "tag:guido",
+      "rel": "tag"
+    },
+    {
+      "source": "p32",
+      "target": "tag:uruguay",
       "rel": "tag"
     },
     {
@@ -3540,6 +4261,21 @@
       "rel": "tag"
     },
     {
+      "source": "p4",
+      "target": "tag:vargas-yegros",
+      "rel": "tag"
+    },
+    {
+      "source": "p4",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p4",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p40",
       "target": "tag:clemenzo",
       "rel": "tag"
@@ -3565,6 +4301,66 @@
       "rel": "tag"
     },
     {
+      "source": "p41",
+      "target": "tag:venegas",
+      "rel": "tag"
+    },
+    {
+      "source": "p42",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p43",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p44",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p45",
+      "target": "tag:lantz",
+      "rel": "tag"
+    },
+    {
+      "source": "p46",
+      "target": "tag:cybulski",
+      "rel": "tag"
+    },
+    {
+      "source": "p47",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p48",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p49",
+      "target": "tag:vasquez",
+      "rel": "tag"
+    },
+    {
+      "source": "p5",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p5",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p5",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p50",
       "target": "tag:arceo",
       "rel": "tag"
@@ -3572,6 +4368,26 @@
     {
       "source": "p51",
       "target": "tag:arceo",
+      "rel": "tag"
+    },
+    {
+      "source": "p52",
+      "target": "tag:yanitelli",
+      "rel": "tag"
+    },
+    {
+      "source": "p53",
+      "target": "tag:vasquez",
+      "rel": "tag"
+    },
+    {
+      "source": "p54",
+      "target": "tag:fracchia",
+      "rel": "tag"
+    },
+    {
+      "source": "p55",
+      "target": "tag:vasquez",
       "rel": "tag"
     },
     {
@@ -3625,6 +4441,21 @@
       "rel": "tag"
     },
     {
+      "source": "p6",
+      "target": "tag:fernandez",
+      "rel": "tag"
+    },
+    {
+      "source": "p6",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p6",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p60",
       "target": "tag:clemenzo",
       "rel": "tag"
@@ -3667,6 +4498,36 @@
     {
       "source": "p68",
       "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p69",
+      "target": "tag:vinales",
+      "rel": "tag"
+    },
+    {
+      "source": "p7",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p7",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p7",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p70",
+      "target": "tag:fonteine",
+      "rel": "tag"
+    },
+    {
+      "source": "p70",
+      "target": "tag:argentina",
       "rel": "tag"
     },
     {
@@ -3855,6 +4716,41 @@
       "rel": "tag"
     },
     {
+      "source": "p81",
+      "target": "tag:costabile",
+      "rel": "tag"
+    },
+    {
+      "source": "p81",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p82",
+      "target": "tag:costabile",
+      "rel": "tag"
+    },
+    {
+      "source": "p82",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p82",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p83",
+      "target": "tag:magallanes",
+      "rel": "tag"
+    },
+    {
+      "source": "p83",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
       "source": "p84",
       "target": "tag:clemenzo",
       "rel": "tag"
@@ -3887,6 +4783,76 @@
     {
       "source": "p85",
       "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p86",
+      "target": "tag:troncoso",
+      "rel": "tag"
+    },
+    {
+      "source": "p86",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p87",
+      "target": "tag:troncoso",
+      "rel": "tag"
+    },
+    {
+      "source": "p87",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p88",
+      "target": "tag:ruiz",
+      "rel": "tag"
+    },
+    {
+      "source": "p89",
+      "target": "tag:fracchia",
+      "rel": "tag"
+    },
+    {
+      "source": "p89",
+      "target": "tag:italia",
+      "rel": "tag"
+    },
+    {
+      "source": "p9",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p9",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p9",
+      "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p90",
+      "target": "tag:rivero",
+      "rel": "tag"
+    },
+    {
+      "source": "p91",
+      "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p92",
+      "target": "tag:battnier",
+      "rel": "tag"
+    },
+    {
+      "source": "p92",
+      "target": "tag:francia",
       "rel": "tag"
     },
     {
@@ -3942,6 +4908,21 @@
     {
       "source": "p98",
       "target": "tag:roh",
+      "rel": "tag"
+    },
+    {
+      "source": "p99",
+      "target": "tag:hernandez",
+      "rel": "tag"
+    },
+    {
+      "source": "p99",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p99",
+      "target": "tag:argentina",
       "rel": "tag"
     },
     {
