@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T13:36:27.481Z",
+  "generated": "2026-07-11T17:50:00.663Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -98,7 +98,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p10.html",
       "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p100",
@@ -107,7 +108,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p100.html",
       "summary": "n. 1876, Colón, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p101",
@@ -116,7 +118,8 @@
       "branch": "locher",
       "url": "dist/wiki/p101.html",
       "summary": "n. 1876, Departamento Colón, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p102",
@@ -125,7 +128,8 @@
       "branch": "vergere",
       "url": "dist/wiki/p102.html",
       "summary": "n. 1836, Conthey, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p103",
@@ -134,7 +138,8 @@
       "branch": "mersilli",
       "url": "dist/wiki/p103.html",
       "summary": "n. 1860, Italia",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p104",
@@ -143,7 +148,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p104.html",
       "summary": "n. 1884-07-08, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p105",
@@ -152,7 +158,8 @@
       "branch": "roh",
       "url": "dist/wiki/p105.html",
       "summary": "n. 1906-05-09, Genacito, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p106",
@@ -161,7 +168,8 @@
       "branch": "roh",
       "url": "dist/wiki/p106.html",
       "summary": "n. 1908-03-24, Villa Mantero, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p107",
@@ -170,7 +178,8 @@
       "branch": "roh",
       "url": "dist/wiki/p107.html",
       "summary": "n. 1909-04-17, Genacito, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p108",
@@ -179,7 +188,8 @@
       "branch": "roh",
       "url": "dist/wiki/p108.html",
       "summary": "n. 1911-01-08, Genacito, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p109",
@@ -188,7 +198,8 @@
       "branch": "roh",
       "url": "dist/wiki/p109.html",
       "summary": "n. 1914-05-17, Genacito, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p11",
@@ -206,7 +217,8 @@
       "branch": "roh",
       "url": "dist/wiki/p110.html",
       "summary": "n. 1917-12-30, Genacito, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p111",
@@ -224,7 +236,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p112.html",
       "summary": "n. 1902-11-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p113",
@@ -233,7 +246,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p113.html",
       "summary": "n. 1908-07-21, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p114",
@@ -242,7 +256,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p114.html",
       "summary": "n. 1911-03-08, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p115",
@@ -251,7 +266,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p115.html",
       "summary": "n. 1912-05-30, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p116",
@@ -260,7 +276,8 @@
       "branch": "etchegorry",
       "url": "dist/wiki/p116.html",
       "summary": "n. 1916-03-09, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p117",
@@ -269,7 +286,8 @@
       "branch": "roh",
       "url": "dist/wiki/p117.html",
       "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p118",
@@ -278,7 +296,8 @@
       "branch": "roh",
       "url": "dist/wiki/p118.html",
       "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p119",
@@ -332,7 +351,8 @@
       "branch": "roh",
       "url": "dist/wiki/p123.html",
       "summary": "n. 1907-04-12, Villa Mantero, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p124",
@@ -341,7 +361,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p124.html",
       "summary": "n. 1890-03-07, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p125",
@@ -350,7 +371,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p125.html",
       "summary": "n. 1905-02-23, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p13",
@@ -404,7 +426,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p18.html",
       "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p19",
@@ -413,7 +436,8 @@
       "branch": "queipo",
       "url": "dist/wiki/p19.html",
       "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p2",
@@ -431,7 +455,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p20.html",
       "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p21",
@@ -440,7 +465,8 @@
       "branch": "baster",
       "url": "dist/wiki/p21.html",
       "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p22",
@@ -449,7 +475,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p22.html",
       "summary": "n. 1890, Entre Rios",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p23",
@@ -458,7 +485,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p23.html",
       "summary": "n. Entre Rios",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p25",
@@ -467,7 +495,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p25.html",
       "summary": "n. 1885-06-27, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p26",
@@ -503,7 +532,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p29.html",
       "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p3",
@@ -521,7 +551,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p30.html",
       "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p31",
@@ -557,7 +588,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p34.html",
       "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p35",
@@ -566,7 +598,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p35.html",
       "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p36",
@@ -584,7 +617,8 @@
       "branch": "stalder",
       "url": "dist/wiki/p37.html",
       "summary": "n. 1826-05-05, Salins, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p38",
@@ -602,7 +636,8 @@
       "branch": "putallaz",
       "url": "dist/wiki/p39.html",
       "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p4",
@@ -629,7 +664,8 @@
       "branch": "venegas",
       "url": "dist/wiki/p41.html",
       "summary": "",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p42",
@@ -791,7 +827,8 @@
       "branch": "cerisier",
       "url": "dist/wiki/p58.html",
       "summary": "n. 1786 · f. 1851/1861",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p59",
@@ -800,7 +837,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p59.html",
       "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p6",
@@ -818,7 +856,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p60.html",
       "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p61",
@@ -827,7 +866,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p61.html",
       "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p62",
@@ -836,7 +876,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p62.html",
       "summary": "n. 1893-11-13, Partido de San Nicolas",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p63",
@@ -845,7 +886,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p63.html",
       "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p64",
@@ -854,7 +896,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p64.html",
       "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p65",
@@ -863,7 +906,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p65.html",
       "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p66",
@@ -872,7 +916,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p66.html",
       "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p67",
@@ -881,7 +926,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p67.html",
       "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p68",
@@ -935,7 +981,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p72.html",
       "summary": "n. 1805, Ardon",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p73",
@@ -944,7 +991,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p73.html",
       "summary": "n. 1818, Ardon, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p74",
@@ -953,7 +1001,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p74.html",
       "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p75",
@@ -962,7 +1011,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p75.html",
       "summary": "n. 1815, Ardon, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p76",
@@ -971,7 +1021,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p76.html",
       "summary": "n. 1821, Ardon, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p77",
@@ -980,7 +1031,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p77.html",
       "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p78",
@@ -989,7 +1041,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p78.html",
       "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p79",
@@ -998,7 +1051,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p79.html",
       "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p8",
@@ -1016,7 +1070,8 @@
       "branch": "roh",
       "url": "dist/wiki/p80.html",
       "summary": "n. 1873-06-14, Colonia Cullen, San Javier, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p81",
@@ -1034,7 +1089,8 @@
       "branch": "costabile",
       "url": "dist/wiki/p82.html",
       "summary": "n. 1917-11-20, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p83",
@@ -1052,7 +1108,8 @@
       "branch": "clemenzo",
       "url": "dist/wiki/p84.html",
       "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p85",
@@ -1061,7 +1118,8 @@
       "branch": "roh",
       "url": "dist/wiki/p85.html",
       "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p86",
@@ -1160,7 +1218,8 @@
       "branch": "roh",
       "url": "dist/wiki/p95.html",
       "summary": "n. 1876, Santa Fe, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p96",
@@ -1178,7 +1237,8 @@
       "branch": "roh",
       "url": "dist/wiki/p97.html",
       "summary": "n. 1878, Diamante, Entre Ríos, Argentina · f. 1964-02-07, Concepción del Uruguay, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p98",
@@ -1196,7 +1256,8 @@
       "branch": "hernandez",
       "url": "dist/wiki/p99.html",
       "summary": "n. 1880, Colonia Rocamora, Entre Ríos, Argentina",
-      "hasContent": true
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "post:llm-wiki-genealogia",

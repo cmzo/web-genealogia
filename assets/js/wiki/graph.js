@@ -352,7 +352,7 @@ async function init() {
 
     let actions = '';
     if (n.type === 'post') actions += `<a class="wiki-panel-btn wiki-panel-btn--primary" href="${rootBase()}${n.url}">Leer post →</a>`;
-    else if (n.hasContent) actions += `<button class="wiki-panel-btn wiki-panel-btn--primary" data-read="${n.id}">${n.type === 'persona' ? 'Leer investigación' : 'Leer página'}</button>`;
+    else if (n.hasContent) actions += `<button class="wiki-panel-btn wiki-panel-btn--primary" data-read="${n.id}">${n.type !== 'persona' ? 'Leer página' : n.docsOnly ? 'Ver documentos' : 'Leer investigación'}</button>`;
     if (n.type === 'persona') actions += `<a class="wiki-panel-btn wiki-panel-btn--ghost" href="${rootBase()}arbol.html?focus=${n.id}">Ver en árbol</a>`;
     if (actions) html += `<div class="wiki-panel-actions">${actions}</div>`;
 

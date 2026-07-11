@@ -184,6 +184,7 @@ function build() {
       url: hasContent ? `dist/wiki/${id}.html` : `arbol.html?focus=${id}`,
       summary: (hasNote && notaById.get(id).summary) || vitals(p), hasContent,
     };
+    if (hasContent && !hasNote) node.docsOnly = true; // solo media: el botón dice «Ver documentos»
     nodes.set(id, node);
     return node;
   }
