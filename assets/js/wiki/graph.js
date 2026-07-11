@@ -494,6 +494,7 @@ async function init() {
       `<div class="wiki-stats-bar" title="${pct}% investigado"><span style="width:${pct}%"></span></div>` +
       row('páginas', nPaginas) +
       row('posts', nPosts) +
+      row('nodos', nodes.length) +
       row('relaciones', links.length) +
       row('tags', nTags);
   }
