@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T17:50:00.663Z",
+  "generated": "2026-07-11T19:28:37.776Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -285,9 +285,8 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p117.html",
-      "summary": "n. 1864-10-24, Conthey (Aven), Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Censada de niña en Aven en 1870 (n. 12-10-1863 según el boletín; 1864 según Antonin). Emigró con la familia en 1873 y después desaparece: no está en el censo de Colón de 1895.",
+      "hasContent": true
     },
     {
       "id": "p118",
@@ -616,9 +615,8 @@
       "type": "persona",
       "branch": "stalder",
       "url": "dist/wiki/p37.html",
-      "summary": "n. 1826-05-05, Salins, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "De Salins, como la granja de Turrin que vendieron en 1862. El censo de 1870 la declara nacida en 1828 (la DB dice 1826). Tras enviudar hacia 1871–74 sus hijos emigraron; de ella no hay rastro argentino.",
+      "hasContent": true
     },
     {
       "id": "p38",
@@ -635,9 +633,8 @@
       "type": "persona",
       "branch": "putallaz",
       "url": "dist/wiki/p39.html",
-      "summary": "n. 1835-11-01, Conthey (Aven), Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "De Aven, Conthey — nacida el 1-11-1835, confirmada al día por el censo de 1870 y por Antonin. Crió a sus hijos en una casa de dos piezas, emigró en 1873 y reaparece en el censo de Colón de 1895.",
+      "hasContent": true
     },
     {
       "id": "p4",
@@ -826,9 +823,8 @@
       "type": "persona",
       "branch": "cerisier",
       "url": "dist/wiki/p58.html",
-      "summary": "n. 1786 · f. 1851/1861",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Catherine Fortunée Cerisier (1786–1851), matriarca del hogar Clemenzoz de Riddes. Su testamento —que salteó a su hijo François para legar directamente a los nietos— abrió la crisis patrimonial de 1861.",
+      "hasContent": true
     },
     {
       "id": "p59",
@@ -980,9 +976,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p72.html",
-      "summary": "n. 1805, Ardon",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "El hermano cirujano: estudiante en Viena y Friburgo de Brisgovia (1829), ejercía en Nápoles al menos entre 1837 y 1846. El único de la generación que hizo carrera universitaria — y el que se esfumó sin dejar rastro.",
+      "hasContent": true
     },
     {
       "id": "p73",
@@ -990,9 +985,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p73.html",
-      "summary": "n. 1818, Ardon, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hermano menor de François (p36). Los censos de 1829 lo dejan en el hogar paterno; el de Ardon 1846 registra un hogar de un «Joseph Marie Clemenzo d'Ardon» con esposa e hija — candidato a ser él, pero el nombre se repite en la misma página.",
+      "hasContent": true
     },
     {
       "id": "p74",
@@ -1000,9 +994,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p74.html",
-      "summary": "n. 1813-09-22, Ardon, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Jeanne Marie Clemenzo (n. 1813), la hermana que nunca emigró: soltera, sostuvo un hogar propio en el caserío de Vignes (Riddes) hasta fin de siglo. La liquidación de los bienes de Riddes en 1905 —el giro que llegó a sus sobrinos en Argentina— sugiere que murió poco antes.",
+      "hasContent": true
     },
     {
       "id": "p75",
@@ -1010,9 +1003,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p75.html",
-      "summary": "n. 1815, Ardon, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "La hermana que se casó con un saboyano: Jean-François Battnier, en Vallorcine 1840, con delegación del cura de Riddes. La única de la generación con filiación probada por acta. En 1849 vivía en Saxon.",
+      "hasContent": true
     },
     {
       "id": "p76",
@@ -1020,9 +1012,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p76.html",
-      "summary": "n. 1821, Ardon, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Marie Elizabet Clemenzo (n. 1821), hermana de François (p36). Candidata principal a ser la «Elisabeth née Clementz» del hogar Lambiel de Plan de Villy — el parentesco que explicaría a los «cousins Lambiel» que mediaron en la liquidación de 1904-05.",
+      "hasContent": true
     },
     {
       "id": "p77",
@@ -1030,9 +1021,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p77.html",
-      "summary": "n. 1843-03-19, Riddes, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "La mayor del grupo (n. 19-03-1843) y la incógnita de la generación: el censo de 1870 la registra «fille mère» en el hogar paterno con sus hijas Anaïs y Edwige. Su madre podría no ser Stalder (hipótesis H1).",
+      "hasContent": true
     },
     {
       "id": "p78",
@@ -1040,9 +1030,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p78.html",
-      "summary": "n. 1864-01-25, Riddes, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "La primera hija de Josephine (p77), nacida cuando su madre tenía 20 años y soltera. Su única aparición documental: el censo de 1870, a los 6 años, en el hogar de su abuelo p36. Padre desconocido.",
+      "hasContent": true
     },
     {
       "id": "p79",
@@ -1050,9 +1039,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p79.html",
-      "summary": "n. 1870-02-03, Riddes, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "La segunda hija de Josephine (p77), censada con 10 meses en el hogar de su abuelo p36. Nació el mismo año del censo que la registra — su única huella documental. Padre desconocido.",
+      "hasContent": true
     },
     {
       "id": "p8",
@@ -1339,7 +1327,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 68
+      "weight": 58
     },
     {
       "id": "tag:ardon",
@@ -1419,7 +1407,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 16
+      "weight": 17
     },
     {
       "id": "tag:argentina",
@@ -1459,7 +1447,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 10
+      "weight": 11
     },
     {
       "id": "tag:metodologia",
@@ -1579,7 +1567,17 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 25
+      "weight": 23
+    },
+    {
+      "id": "tag:censos",
+      "title": "#censos",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 13
     },
     {
       "id": "tag:putallaz",
@@ -1589,7 +1587,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 3
+      "weight": 2
     },
     {
       "id": "tag:santa-fe",
@@ -1629,7 +1627,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 11
+      "weight": 17
     },
     {
       "id": "tag:baster",
@@ -1662,8 +1660,8 @@
       "weight": 1
     },
     {
-      "id": "tag:stalder",
-      "title": "#stalder",
+      "id": "tag:gazette",
+      "title": "#gazette",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1764,6 +1762,16 @@
     {
       "id": "tag:fonteine",
       "title": "#fonteine",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:saboya",
+      "title": "#saboya",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1954,16 +1962,6 @@
     {
       "id": "tag:gazette-du-valais",
       "title": "#gazette du valais",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:censos",
-      "title": "#censos",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -2262,6 +2260,26 @@
       "target": "censo-valais-1870"
     },
     {
+      "source": "p117",
+      "target": "p38"
+    },
+    {
+      "source": "p117",
+      "target": "p39"
+    },
+    {
+      "source": "p117",
+      "target": "p85"
+    },
+    {
+      "source": "p117",
+      "target": "p27"
+    },
+    {
+      "source": "p117",
+      "target": "p118"
+    },
+    {
       "source": "p119",
       "target": "p38"
     },
@@ -2394,6 +2412,26 @@
       "target": "p79"
     },
     {
+      "source": "p37",
+      "target": "p28"
+    },
+    {
+      "source": "p37",
+      "target": "p40"
+    },
+    {
+      "source": "p37",
+      "target": "p77"
+    },
+    {
+      "source": "p37",
+      "target": "p78"
+    },
+    {
+      "source": "p37",
+      "target": "p79"
+    },
+    {
       "source": "p38",
       "target": "p39"
     },
@@ -2403,15 +2441,35 @@
     },
     {
       "source": "p38",
-      "target": "p117"
-    },
-    {
-      "source": "p38",
       "target": "p27"
     },
     {
       "source": "p38",
       "target": "p118"
+    },
+    {
+      "source": "p39",
+      "target": "p121"
+    },
+    {
+      "source": "p39",
+      "target": "p122"
+    },
+    {
+      "source": "p39",
+      "target": "p85"
+    },
+    {
+      "source": "p39",
+      "target": "p27"
+    },
+    {
+      "source": "p39",
+      "target": "p118"
+    },
+    {
+      "source": "p39",
+      "target": "p80"
     },
     {
       "source": "p57",
@@ -2442,8 +2500,104 @@
       "target": "p93"
     },
     {
+      "source": "p58",
+      "target": "p72"
+    },
+    {
+      "source": "p58",
+      "target": "p74"
+    },
+    {
+      "source": "p58",
+      "target": "p75"
+    },
+    {
+      "source": "p58",
+      "target": "p73"
+    },
+    {
+      "source": "p58",
+      "target": "p76"
+    },
+    {
+      "source": "p58",
+      "target": "p77"
+    },
+    {
+      "source": "p73",
+      "target": "p36"
+    },
+    {
+      "source": "p73",
+      "target": "p77"
+    },
+    {
       "source": "p74",
-      "target": "p58"
+      "target": "p36"
+    },
+    {
+      "source": "p74",
+      "target": "p76"
+    },
+    {
+      "source": "p74",
+      "target": "p26"
+    },
+    {
+      "source": "p74",
+      "target": "p40"
+    },
+    {
+      "source": "p74",
+      "target": "p77"
+    },
+    {
+      "source": "p74",
+      "target": "p72"
+    },
+    {
+      "source": "p74",
+      "target": "p73"
+    },
+    {
+      "source": "p74",
+      "target": "p75"
+    },
+    {
+      "source": "p75",
+      "target": "p72"
+    },
+    {
+      "source": "p76",
+      "target": "p36"
+    },
+    {
+      "source": "p76",
+      "target": "p40"
+    },
+    {
+      "source": "p76",
+      "target": "p77"
+    },
+    {
+      "source": "p76",
+      "target": "p72"
+    },
+    {
+      "source": "p76",
+      "target": "p73"
+    },
+    {
+      "source": "p76",
+      "target": "p75"
+    },
+    {
+      "source": "p77",
+      "target": "p28"
+    },
+    {
+      "source": "p77",
+      "target": "p40"
     },
     {
       "source": "p77",
@@ -2454,8 +2608,24 @@
       "target": "p79"
     },
     {
-      "source": "p77",
-      "target": "p37"
+      "source": "p78",
+      "target": "p79"
+    },
+    {
+      "source": "p78",
+      "target": "p28"
+    },
+    {
+      "source": "p78",
+      "target": "p40"
+    },
+    {
+      "source": "p79",
+      "target": "p28"
+    },
+    {
+      "source": "p79",
+      "target": "p40"
     },
     {
       "source": "p94",
@@ -2641,16 +2811,6 @@
       "rel": "familia"
     },
     {
-      "source": "p117",
-      "target": "p39",
-      "rel": "familia"
-    },
-    {
-      "source": "p118",
-      "target": "p39",
-      "rel": "familia"
-    },
-    {
       "source": "p12",
       "target": "p18",
       "rel": "familia"
@@ -2791,16 +2951,6 @@
       "rel": "familia"
     },
     {
-      "source": "p27",
-      "target": "p39",
-      "rel": "familia"
-    },
-    {
-      "source": "p28",
-      "target": "p37",
-      "rel": "familia"
-    },
-    {
       "source": "p29",
       "target": "p26",
       "rel": "familia"
@@ -2878,21 +3028,6 @@
     {
       "source": "p35",
       "target": "p21",
-      "rel": "familia"
-    },
-    {
-      "source": "p39",
-      "target": "p121",
-      "rel": "familia"
-    },
-    {
-      "source": "p39",
-      "target": "p122",
-      "rel": "familia"
-    },
-    {
-      "source": "p40",
-      "target": "p37",
       "rel": "familia"
     },
     {
@@ -3151,28 +3286,8 @@
       "rel": "familia"
     },
     {
-      "source": "p72",
-      "target": "p58",
-      "rel": "familia"
-    },
-    {
-      "source": "p73",
-      "target": "p58",
-      "rel": "familia"
-    },
-    {
-      "source": "p75",
-      "target": "p58",
-      "rel": "familia"
-    },
-    {
       "source": "p75",
       "target": "p92",
-      "rel": "familia"
-    },
-    {
-      "source": "p76",
-      "target": "p58",
       "rel": "familia"
     },
     {
@@ -3188,11 +3303,6 @@
     {
       "source": "p80",
       "target": "p38",
-      "rel": "familia"
-    },
-    {
-      "source": "p80",
-      "target": "p39",
       "rel": "familia"
     },
     {
@@ -3223,11 +3333,6 @@
     {
       "source": "p84",
       "target": "p86",
-      "rel": "familia"
-    },
-    {
-      "source": "p85",
-      "target": "p39",
       "rel": "familia"
     },
     {
@@ -3773,11 +3878,6 @@
     },
     {
       "source": "p117",
-      "target": "tag:roh",
-      "rel": "tag"
-    },
-    {
-      "source": "p117",
       "target": "tag:valais",
       "rel": "tag"
     },
@@ -3788,12 +3888,17 @@
     },
     {
       "source": "p117",
-      "target": "tag:emigracion",
+      "target": "tag:conthey",
       "rel": "tag"
     },
     {
       "source": "p117",
-      "target": "tag:conthey",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p117",
+      "target": "tag:emigracion",
       "rel": "tag"
     },
     {
@@ -4238,16 +4343,6 @@
     },
     {
       "source": "p37",
-      "target": "tag:stalder",
-      "rel": "tag"
-    },
-    {
-      "source": "p37",
-      "target": "tag:clemenzo",
-      "rel": "tag"
-    },
-    {
-      "source": "p37",
       "target": "tag:valais",
       "rel": "tag"
     },
@@ -4259,6 +4354,21 @@
     {
       "source": "p37",
       "target": "tag:salins",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p37",
+      "target": "tag:gazette",
       "rel": "tag"
     },
     {
@@ -4293,16 +4403,6 @@
     },
     {
       "source": "p39",
-      "target": "tag:roh",
-      "rel": "tag"
-    },
-    {
-      "source": "p39",
-      "target": "tag:putallaz",
-      "rel": "tag"
-    },
-    {
-      "source": "p39",
       "target": "tag:valais",
       "rel": "tag"
     },
@@ -4313,12 +4413,22 @@
     },
     {
       "source": "p39",
+      "target": "tag:conthey",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p39",
       "target": "tag:emigracion",
       "rel": "tag"
     },
     {
       "source": "p39",
-      "target": "tag:conthey",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
@@ -4478,11 +4588,6 @@
     },
     {
       "source": "p58",
-      "target": "tag:clemenzo",
-      "rel": "tag"
-    },
-    {
-      "source": "p58",
       "target": "tag:valais",
       "rel": "tag"
     },
@@ -4493,7 +4598,17 @@
     },
     {
       "source": "p58",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
       "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p58",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4593,11 +4708,6 @@
     },
     {
       "source": "p72",
-      "target": "tag:clemenzo",
-      "rel": "tag"
-    },
-    {
-      "source": "p72",
       "target": "tag:valais",
       "rel": "tag"
     },
@@ -4608,12 +4718,22 @@
     },
     {
       "source": "p72",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
       "target": "tag:ardon",
       "rel": "tag"
     },
     {
-      "source": "p73",
-      "target": "tag:clemenzo",
+      "source": "p72",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p72",
+      "target": "tag:emigracion",
       "rel": "tag"
     },
     {
@@ -4632,8 +4752,8 @@
       "rel": "tag"
     },
     {
-      "source": "p74",
-      "target": "tag:clemenzo",
+      "source": "p73",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4648,12 +4768,12 @@
     },
     {
       "source": "p74",
-      "target": "tag:ardon",
+      "target": "tag:riddes",
       "rel": "tag"
     },
     {
-      "source": "p75",
-      "target": "tag:clemenzo",
+      "source": "p74",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4672,8 +4792,18 @@
       "rel": "tag"
     },
     {
-      "source": "p76",
-      "target": "tag:clemenzo",
+      "source": "p75",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p75",
+      "target": "tag:saboya",
       "rel": "tag"
     },
     {
@@ -4688,12 +4818,17 @@
     },
     {
       "source": "p76",
+      "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p76",
       "target": "tag:ardon",
       "rel": "tag"
     },
     {
-      "source": "p77",
-      "target": "tag:clemenzo",
+      "source": "p76",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4712,8 +4847,13 @@
       "rel": "tag"
     },
     {
-      "source": "p78",
-      "target": "tag:clemenzo",
+      "source": "p77",
+      "target": "tag:ardon",
+      "rel": "tag"
+    },
+    {
+      "source": "p77",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4732,8 +4872,8 @@
       "rel": "tag"
     },
     {
-      "source": "p79",
-      "target": "tag:clemenzo",
+      "source": "p78",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4749,6 +4889,11 @@
     {
       "source": "p79",
       "target": "tag:riddes",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
