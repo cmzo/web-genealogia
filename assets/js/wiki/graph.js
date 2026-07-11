@@ -475,9 +475,28 @@ async function init() {
     s.innerHTML = `<span class="wiki-legend-dot" style="background:${color}"></span>${TYPE_LABEL[t]}`;
     legend.appendChild(s);
   });
-  const zoomBy = factor => cy.zoom({ level: cy.zoom() * factor, renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 } });
-  document.getElementById('wikiZoomIn').onclick = () => zoomBy(1.3);
-  document.getElementById('wikiZoomOut').onclick = () => zoomBy(1 / 1.3);
+
+  // ── Card de métricas del grafo (derivadas del JSON en runtime; se actualizan
+  // solas con cada build — nada hardcodeado) ───────────────────────────────────
+  const statsCard = document.getElementById('wikiStats');
+  if (statsCard) {
+    const nPersonas = nodes.filter(n => n.type === 'persona').length;
+    const nInvestigadas = nodes.filter(n => n.type === 'persona' && n.hasContent && !n.docsOnly).length;
+    const nPaginas = nodes.filter(n => ['lugar', 'fuente', 'evento', 'tema'].includes(n.type)).length;
+    const nPosts = nodes.filter(n => n.type === 'post').length;
+    const nTags = nodes.filter(n => n.type === 'tag').length;
+    const pct = nPersonas ? Math.round((nInvestigadas / nPersonas) * 100) : 0;
+    const row = (label, v) => `<div class="wiki-stats-row">${label}<b>${v}</b></div>`;
+    statsCard.innerHTML =
+      `<div class="wiki-stats-kicker">// grafo</div>` +
+      row('personas', nPersonas) +
+      row('investigadas', `${nInvestigadas}/${nPersonas}`) +
+      `<div class="wiki-stats-bar" title="${pct}% investigado"><span style="width:${pct}%"></span></div>` +
+      row('páginas', nPaginas) +
+      row('posts', nPosts) +
+      row('relaciones', links.length) +
+      row('tags', nTags);
+  }
 
   // El command palette (⌘K) enfoca un nodo sin salir de la página
   window.__personaFocus = id => {
