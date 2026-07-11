@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T20:17:51.763Z",
+  "generated": "2026-07-11T20:30:48.539Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -433,9 +433,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p18.html",
-      "summary": "n. 1894-01-01, Villa Elisa, Entre Rios · f. 1943-06-24, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo de Francisco Clemenzo (p26) y María Celestina Roh (p27) nacido en Villa Elisa en 1894. Carpintero; el hermano que se fue a Buenos Aires: Bolívar y Guaminí hacia 1922 —donde se casó con Isabel María Queipo, maestra porteña—, San Fernando en 1927 y finalmente Capital Federal, donde murió en 1943.",
+      "hasContent": true
     },
     {
       "id": "p19",
@@ -1334,7 +1333,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 56
+      "weight": 55
     },
     {
       "id": "tag:ardon",
@@ -1414,7 +1413,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 20
+      "weight": 21
     },
     {
       "id": "tag:argentina",
@@ -1524,7 +1523,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 8
+      "weight": 9
     },
     {
       "id": "tag:etchegorry",
@@ -2381,6 +2380,14 @@
       "target": "p84"
     },
     {
+      "source": "p18",
+      "target": "p20"
+    },
+    {
+      "source": "p18",
+      "target": "p19"
+    },
+    {
       "source": "p20",
       "target": "p26"
     },
@@ -2984,11 +2991,6 @@
     {
       "source": "p18",
       "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p18",
-      "target": "p19",
       "rel": "familia"
     },
     {
@@ -4179,7 +4181,12 @@
     },
     {
       "source": "p18",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p18",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
