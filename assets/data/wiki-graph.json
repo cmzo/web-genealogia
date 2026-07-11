@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T19:46:02.796Z",
+  "generated": "2026-07-11T20:17:51.763Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -35,6 +35,15 @@
       "branch": "",
       "url": "dist/wiki/colon-san-jose.html",
       "summary": "Las colonias valesanas de la costa del río Uruguay donde reaparece François Clemenzo hacia 1886, casado con Celestina Roh: el destino argentino del grupo emigrado de Ardon.",
+      "hasContent": true
+    },
+    {
+      "id": "el-mito-clemenceau",
+      "title": "El mito Clemenceau",
+      "type": "tema",
+      "branch": "",
+      "url": "dist/wiki/el-mito-clemenceau.html",
+      "summary": "La tradición oral familiar que hace del apellido Clemenzo una deformación de «Clemenceau» y emparenta a los inmigrantes con el estadista francés. Dos ramas la heredaron por separado; los censos suizos la refutan; un decreto eclesiástico de 1933 la dejó asentada en un libro parroquial.",
       "hasContent": true
     },
     {
@@ -453,9 +462,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p20.html",
-      "summary": "n. 1891-12-16, Colonia San Jose, Entre Rios, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Primer hijo varón de Francisco Clemenzo (p26) y María Celestina Roh (p27) nacido en la Colonia San José en 1891. Sastre en Concepción del Uruguay, casado en 1913 con Emiliana Elena Baster. Su acta de bautismo lleva la rectificación de apellido de 1933 («Clemenceau»), primer rastro documental del mito familiar.",
+      "hasContent": true
     },
     {
       "id": "p21",
@@ -463,9 +471,8 @@
       "type": "persona",
       "branch": "baster",
       "url": "dist/wiki/p21.html",
-      "summary": "n. 1895/1896, Parana, Entre Rios, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Nacida en Paraná hacia fines de 1895 o principios de 1896, costurera. Hija de Tomás Baster (inglés, ya fallecido en 1913) y Francisca Guido (oriental). Casada a los 17 años con León Francisco Clemenzo (p20) en Concepción del Uruguay; madre de Horacio, Elena y Rodolfo.",
+      "hasContent": true
     },
     {
       "id": "p22",
@@ -1327,7 +1334,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 58
+      "weight": 56
     },
     {
       "id": "tag:ardon",
@@ -1407,7 +1414,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 17
+      "weight": 20
     },
     {
       "id": "tag:argentina",
@@ -1432,6 +1439,26 @@
     {
       "id": "tag:san-jose",
       "title": "#san-jose",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:tradicion-oral",
+      "title": "#tradicion-oral",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:apellido",
+      "title": "#apellido",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1577,7 +1604,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 13
+      "weight": 14
     },
     {
       "id": "tag:putallaz",
@@ -1618,6 +1645,16 @@
       "summary": "",
       "hasContent": false,
       "weight": 2
+    },
+    {
+      "id": "tag:colonia-san-jose",
+      "title": "#colonia-san-jose",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     },
     {
       "id": "tag:riddes",
@@ -2168,6 +2205,18 @@
       "target": "p38"
     },
     {
+      "source": "el-mito-clemenceau",
+      "target": "riddes-valais"
+    },
+    {
+      "source": "el-mito-clemenceau",
+      "target": "ardon-valais"
+    },
+    {
+      "source": "el-mito-clemenceau",
+      "target": "colon-san-jose"
+    },
+    {
       "source": "emigracion-valais-entrerios",
       "target": "p26"
     },
@@ -2330,6 +2379,58 @@
     {
       "source": "p125",
       "target": "p84"
+    },
+    {
+      "source": "p20",
+      "target": "p26"
+    },
+    {
+      "source": "p20",
+      "target": "p27"
+    },
+    {
+      "source": "p20",
+      "target": "p35"
+    },
+    {
+      "source": "p20",
+      "target": "p23"
+    },
+    {
+      "source": "p20",
+      "target": "p22"
+    },
+    {
+      "source": "p20",
+      "target": "p21"
+    },
+    {
+      "source": "p20",
+      "target": "p97"
+    },
+    {
+      "source": "p20",
+      "target": "p25"
+    },
+    {
+      "source": "p21",
+      "target": "p31"
+    },
+    {
+      "source": "p21",
+      "target": "p32"
+    },
+    {
+      "source": "p21",
+      "target": "p33"
+    },
+    {
+      "source": "p21",
+      "target": "p34"
+    },
+    {
+      "source": "p21",
+      "target": "p35"
     },
     {
       "source": "p23",
@@ -2911,31 +3012,6 @@
       "rel": "familia"
     },
     {
-      "source": "p20",
-      "target": "p26",
-      "rel": "familia"
-    },
-    {
-      "source": "p20",
-      "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p20",
-      "target": "p21",
-      "rel": "familia"
-    },
-    {
-      "source": "p21",
-      "target": "p31",
-      "rel": "familia"
-    },
-    {
-      "source": "p21",
-      "target": "p32",
-      "rel": "familia"
-    },
-    {
       "source": "p22",
       "target": "p27",
       "rel": "familia"
@@ -3006,28 +3082,8 @@
       "rel": "familia"
     },
     {
-      "source": "p33",
-      "target": "p21",
-      "rel": "familia"
-    },
-    {
       "source": "p34",
       "target": "p20",
-      "rel": "familia"
-    },
-    {
-      "source": "p34",
-      "target": "p21",
-      "rel": "familia"
-    },
-    {
-      "source": "p35",
-      "target": "p20",
-      "rel": "familia"
-    },
-    {
-      "source": "p35",
-      "target": "p21",
       "rel": "familia"
     },
     {
@@ -3579,6 +3635,21 @@
     {
       "source": "colon-san-jose",
       "target": "tag:lugar",
+      "rel": "tag"
+    },
+    {
+      "source": "el-mito-clemenceau",
+      "target": "tag:tradicion-oral",
+      "rel": "tag"
+    },
+    {
+      "source": "el-mito-clemenceau",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "el-mito-clemenceau",
+      "target": "tag:apellido",
       "rel": "tag"
     },
     {
@@ -4138,12 +4209,22 @@
     },
     {
       "source": "p20",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p20",
+      "target": "tag:colonia-san-jose",
+      "rel": "tag"
+    },
+    {
+      "source": "p20",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
       "source": "p21",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
