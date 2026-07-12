@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-12T16:10:35.930Z",
+  "generated": "2026-07-12T16:14:17.707Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -854,9 +854,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p61.html",
-      "summary": "n. 1891-08-29, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Tercer hijo de Esteban Clemenzo y Estefanía Venegas, nacido en San Nicolás de los Arroyos el 29 de agosto de 1891 y bautizado a los diez días. De su vida adulta no hay nada documentado todavía.",
+      "hasContent": true
     },
     {
       "id": "p62",
@@ -1319,7 +1318,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 42
+      "weight": 41
     },
     {
       "id": "tag:ardon",
@@ -1509,7 +1508,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 14
+      "weight": 15
     },
     {
       "id": "tag:etchegorry",
@@ -2864,6 +2863,14 @@
       "target": "p59"
     },
     {
+      "source": "p61",
+      "target": "p60"
+    },
+    {
+      "source": "p61",
+      "target": "p40"
+    },
+    {
       "source": "p73",
       "target": "p36"
     },
@@ -3408,11 +3415,6 @@
     },
     {
       "source": "p60",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p61",
       "target": "p40",
       "rel": "familia"
     },
@@ -4844,7 +4846,7 @@
     },
     {
       "source": "p61",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
