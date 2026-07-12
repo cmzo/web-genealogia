@@ -509,7 +509,7 @@
       "vivo": "",
       "photo_url": "",
       "notes": "",
-      "sources": "Bautismo, N. Sra. del Carmen, Santa Fe, 1905 (hijo natural de Luisa Clemenzo p84); casamiento con Clara Rosa Cardozo, 1927 (nota al margen)",
+      "sources": "Bautismo, N. Sra. del Carmen, Santa Fe, 1905 (hijo natural de Luisa Clemenzo p84); casamiento con Blanca (¿o Clara?) Rosa Cardozo, 17-09-1927, Par. San Juan, Santa Fe (nota al margen)",
       "status": "en_proceso",
       "media": [
         {
@@ -894,7 +894,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, 24-07-1887, Parroquia de la Concepción, Buenos Aires (acta N.º 1243)",
       "status": "en_proceso",
       "media": [
         {
@@ -978,13 +978,24 @@
       "notes": null,
       "sources": null,
       "status": "en_proceso",
-      "media": []
+      "media": [
+        {
+          "id": "med180",
+          "type": "photo",
+          "url": "assets/images/personas/p29-p81-familia-auto.webp",
+          "caption": "Agustín Costabile —de camiseta— y María Luisa Clemenzo con tres jóvenes frente al auto familiar; su única foto conocida",
+          "date": "",
+          "source_label": "Archivo familiar",
+          "group_label": "Fotos",
+          "group_order": 0
+        }
+      ]
     },
     {
       "id": "p84",
       "name": "Maria Luisa Clemenzo Roh",
       "gender": "F",
-      "birth_date": "1885-01-01",
+      "birth_date": "1885",
       "birth_place": "Argentina",
       "death_date": "1951-05-18",
       "death_place": "Santa Fe, Argentina",
@@ -1178,7 +1189,7 @@
       "name": "Fortunato Abelardo Clemenzoz",
       "gender": "M",
       "birth_date": "1889-06-23",
-      "birth_place": "Ciudad de Buenos Aires",
+      "birth_place": "San Nicolás de los Arroyos, Buenos Aires, Argentina",
       "death_date": "",
       "death_place": null,
       "father_id": "p40",
@@ -1189,7 +1200,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, 14-12-1889, San Nicolás de los Arroyos (acta N.º 01918); matrimonio con Eusebia Torres, 13-06-1914, Parroquia de San Carlos, Buenos Aires",
       "status": "en_proceso",
       "media": [
         {
@@ -1836,7 +1847,7 @@
       "id": "p29",
       "name": "Maria Luisa Clemenzo",
       "gender": "F",
-      "birth_date": "1897-10-13",
+      "birth_date": "1897-04-08",
       "birth_place": "Colonia Yerua, Concordia, Entre Rios, Argentina",
       "death_date": "1972-04-30",
       "death_place": "Santa Fe, Argentina",
@@ -1880,6 +1891,46 @@
           "source_label": null,
           "group_label": "",
           "group_order": 0
+        },
+        {
+          "id": "med176",
+          "type": "photo",
+          "url": "assets/images/personas/p29-con-citroen.webp",
+          "caption": "María Luisa en sus últimos años, junto a un Citroën, con un joven de la familia (c. 1965–1972)",
+          "date": "",
+          "source_label": "Archivo familiar",
+          "group_label": "Fotos",
+          "group_order": 0
+        },
+        {
+          "id": "med177",
+          "type": "photo",
+          "url": "assets/images/personas/p29-p81-familia-auto.webp",
+          "caption": "María Luisa y Agustín Costabile con tres jóvenes frente al auto familiar (c. década de 1960)",
+          "date": "",
+          "source_label": "Archivo familiar",
+          "group_label": "Fotos",
+          "group_order": 1
+        },
+        {
+          "id": "med178",
+          "type": "photo",
+          "url": "assets/images/personas/p29-con-agustin-magallanes.webp",
+          "caption": "María Luisa con dos muchachos; a uno lo identifica el archivo como Agustín Magallanes (c. década de 1960)",
+          "date": "",
+          "source_label": "Archivo familiar",
+          "group_label": "Fotos",
+          "group_order": 2
+        },
+        {
+          "id": "med179",
+          "type": "photo",
+          "url": "assets/images/personas/p29-con-magallanes-represa.webp",
+          "caption": "María Luisa con un joven Magallanes, frente a una represa (c. 1965–1972)",
+          "date": "",
+          "source_label": "Archivo familiar",
+          "group_label": "Fotos",
+          "group_order": 3
         }
       ]
     },
@@ -1982,7 +2033,7 @@
       "gender": "F",
       "birth_date": "1899-11-04",
       "birth_place": "Concordia, Entre Rios, Argentina",
-      "death_date": "1978-03-22",
+      "death_date": "1968-03-22",
       "death_place": "Santa Fe, Argentina",
       "father_id": "p26",
       "mother_id": "p27",
@@ -3116,8 +3167,8 @@
       "id": "p41",
       "name": "Estefania Venegas",
       "gender": "",
-      "birth_date": "",
-      "birth_place": "",
+      "birth_date": "1868",
+      "birth_place": "San Nicolás de los Arroyos, Buenos Aires, Argentina",
       "death_date": "",
       "death_place": "",
       "father_id": "",
@@ -3128,7 +3179,7 @@
       "vivo": "no",
       "photo_url": "",
       "notes": "",
-      "sources": "",
+      "sources": "matrimonio con Esteban Clemenzo, 11-09-1886, Parroquia de la Concepción, Buenos Aires (acta N.º 347)",
       "status": "en_proceso",
       "media": [
         {
@@ -4292,8 +4343,8 @@
       "id": "m12",
       "spouse1_id": "p40",
       "spouse2_id": "p41",
-      "marriage_date": "",
-      "marriage_place": "",
+      "marriage_date": "1886-09-11",
+      "marriage_place": "Parroquia de la Concepción, Ciudad de Buenos Aires, Argentina",
       "divorce_date": "",
       "notes": ""
     },

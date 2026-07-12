@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11T20:32:15.000Z",
+  "generated": "2026-07-12T16:10:35.930Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -106,9 +106,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p10.html",
-      "summary": "n. 1926-08-13, Bolivar, Buenos Aires, Argentina · f. Ciudad de Buenos Aires, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo de Félix Clemenzo e Isabel María Queipo, nacido el 13 de agosto de 1926 en Bolívar (Buenos Aires), durante la etapa bonaerense rural de sus padres. Casó con Raquel Noemí Carvallo — la abuela que transmitió la versión Clemenceau del apellido.",
+      "hasContent": true
     },
     {
       "id": "p100",
@@ -378,9 +377,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p125.html",
-      "summary": "n. 1905-02-23, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo natural de María Luisa Clemenzo Roh (p84), nacido el 23 de febrero de 1905 en Santa Fe, con el padre en blanco en su bautismo. Sus padrinos conectan con las redes Mersilli y Stalder; la nota marginal documenta su casamiento de 1927 con Blanca (¿o Clara?) Rosa Cardozo.",
+      "hasContent": true
     },
     {
       "id": "p13",
@@ -442,9 +440,8 @@
       "type": "persona",
       "branch": "queipo",
       "url": "dist/wiki/p19.html",
-      "summary": "n. 1897-09-11, Ciudad de Buenos Aires · f. 1986-08-25, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Porteña (n. 11-09-1897), maestra de escuela, hija de Ricardo Queipo Ruiz e Isabel Teresa Viñales. Casada en Guaminí en 1922 con Félix Clemenzo (p18); madre de los siete Clemenzo Queipo; viuda desde 1943. Murió en su domicilio de Capital Federal en 1986.",
+      "hasContent": true
     },
     {
       "id": "p2",
@@ -479,9 +476,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p22.html",
-      "summary": "n. 1890, Entre Rios",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo de Francisco Clemenzo y Celestina Roh, nacido hacia 1890 en el departamento Colón, Entre Ríos. Su única huella documental es el censo de 1895, que lo registra con 5 años; después de eso, ningún rastro.",
+      "hasContent": true
     },
     {
       "id": "p23",
@@ -489,9 +485,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p23.html",
-      "summary": "n. Entre Rios",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija de Francisco Clemenzo y Celestina Roh, nacida hacia 1888–1889 en el departamento Colón, Entre Ríos — su primera fecha documentada, deducida del censo de 1895 («Francisca, 6 años»). Única huella documental; sin rastro posterior.",
+      "hasContent": true
     },
     {
       "id": "p25",
@@ -499,9 +494,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p25.html",
-      "summary": "n. 1885-06-27, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Nacida en Santa Fe el 27-06-1885 y bautizada «hija natural de Celestina Roch, suiza», sin padre declarado; padrinos del círculo Clemenzo. Censada en 1895 como hija del hogar de Francisco Clemenzo (p26) en Colón. La paternidad de Francisco es hipótesis fuerte —nació meses antes del matrimonio de ~1886— pero ningún documento la declara.",
+      "hasContent": true
     },
     {
       "id": "p26",
@@ -536,9 +530,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p29.html",
-      "summary": "n. 1897-10-13, Colonia Yerua, Concordia, Entre Rios, Argentina · f. 1972-04-30, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija de Francisco Clemenzo y Celestina Roh, nacida el 8 de abril de 1897 en Colonia Yeruá (Concordia, Entre Ríos) y fallecida viuda de Costabile en Santa Fe en 1972. Su acta de nacimiento declara a los cuatro abuelos; su casamiento con Agustín Costabile la señala como la «María Luisa» de la rama de Lucía Magallanes.",
+      "hasContent": true
     },
     {
       "id": "p3",
@@ -555,9 +548,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p30.html",
-      "summary": "n. 1899-11-04, Concordia, Entre Rios, Argentina · f. 1978-03-22, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija de Francisco Clemenzo y Celestina Roh, nacida el 4 de noviembre de 1899 en Concordia y bautizada «hija civil» — la pista que fecha el casamiento civil de sus padres entre 1897 y 1900. Murió en Santa Fe en 1968, casada en segundas nupcias con un Rosales.",
+      "hasContent": true
     },
     {
       "id": "p31",
@@ -592,9 +584,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p34.html",
-      "summary": "n. 1917-05-14, Concepción del Uruguay, Entre Rios, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija de León Francisco Clemenzo y Emiliana Baster, nacida el 14 de mayo de 1917 en la casa familiar de calle Córdoba, Concepción del Uruguay. Su acta civil declara a los cuatro abuelos y muestra a su padre firmando «Clemence» por segunda vez documentada. De su vida adulta no hay nada.",
+      "hasContent": true
     },
     {
       "id": "p35",
@@ -602,9 +593,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p35.html",
-      "summary": "n. 1919-03-21, Concepción del Uruguay, Entre Ríos, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo menor de León Francisco Clemenzo y Emiliana Baster, nacido el 21 de marzo de 1919 en la casa de calle Córdoba, Concepción del Uruguay — la misma donde moriría su abuelo Francisco en 1928. Quedó inscripto en el Registro Civil con el apellido «Clemence». De su vida adulta no hay nada.",
+      "hasContent": true
     },
     {
       "id": "p36",
@@ -666,9 +656,8 @@
       "type": "persona",
       "branch": "venegas",
       "url": "dist/wiki/p41.html",
-      "summary": "",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Argentina de San Nicolás de los Arroyos, nacida hacia 1868, hija natural de Cipriana Venegas. A los 18 años casó con Esteban Clemenzo en la Parroquia de la Concepción de Buenos Aires (1886) y fue la madre de los nueve Clemenzoz de Santa Fe.",
+      "hasContent": true
     },
     {
       "id": "p42",
@@ -838,9 +827,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p59.html",
-      "summary": "n. 1887-06-26, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Primera hija de Esteban Clemenzo y Estefanía Venegas, nacida en Buenos Aires el 26 de junio de 1887 y bautizada en la Parroquia de la Concepción — el acta donde su padre se declaró «natural de Francia, Departamento del Sena»: el rastro documental más antiguo del mito Clemenceau.",
+      "hasContent": true
     },
     {
       "id": "p6",
@@ -857,9 +845,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p60.html",
-      "summary": "n. 1889-06-23, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Segundo hijo de Esteban Clemenzo y Estefanía Venegas, nacido en San Nicolás de los Arroyos en 1889 — la vuelta de la familia al pueblo materno. De adulto fue mecánico en Buenos Aires, donde casó en 1914 con la modista Eusebia Torres en la Parroquia de San Carlos.",
+      "hasContent": true
     },
     {
       "id": "p61",
@@ -1072,9 +1059,10 @@
       "title": "Agustin Costabile",
       "type": "persona",
       "branch": "costabile",
-      "url": "arbol.html?focus=p81",
+      "url": "dist/wiki/p81.html",
       "summary": "n. Argentina",
-      "hasContent": false
+      "hasContent": true,
+      "docsOnly": true
     },
     {
       "id": "p82",
@@ -1082,9 +1070,8 @@
       "type": "persona",
       "branch": "costabile",
       "url": "dist/wiki/p82.html",
-      "summary": "n. 1917-11-20, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija de Agustín Costabile y María Luisa Clemenzo, nacida el 20 de noviembre de 1917 en Santa Fe. La nota marginal de su bautismo documenta su casamiento de 1943 con Ángel Carmelo Magallanes — el puente que conecta a los Clemenzo con la rama Magallanes de Chubut y su versión del mito Clemenceau.",
+      "hasContent": true
     },
     {
       "id": "p83",
@@ -1101,9 +1088,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p84.html",
-      "summary": "n. 1885-01-01, Argentina · f. 1951-05-18, Santa Fe, Argentina",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija legítima de José Clemenzo y Marianna Roh, nacida hacia mayo–junio de 1885. Madre soltera de José Martín (1905), casó a los 30 con Eleuterio Troncoso (1915) — acta donde el cura la escribió «Clemenzeau», 18 años antes del decreto de 1933 — y murió viuda en Santa Fe en 1951.",
+      "hasContent": true
     },
     {
       "id": "p85",
@@ -1333,7 +1319,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 55
+      "weight": 42
     },
     {
       "id": "tag:ardon",
@@ -1413,7 +1399,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 21
+      "weight": 27
     },
     {
       "id": "tag:argentina",
@@ -1423,7 +1409,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 31
+      "weight": 29
     },
     {
       "id": "tag:colon",
@@ -1453,7 +1439,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 4
     },
     {
       "id": "tag:apellido",
@@ -1463,7 +1449,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 2
     },
     {
       "id": "tag:emigracion",
@@ -1523,7 +1509,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 9
+      "weight": 14
     },
     {
       "id": "tag:etchegorry",
@@ -1593,7 +1579,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 23
+      "weight": 21
     },
     {
       "id": "tag:censos",
@@ -1603,7 +1589,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 14
+      "weight": 17
     },
     {
       "id": "tag:putallaz",
@@ -1623,7 +1609,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 5
+      "weight": 10
     },
     {
       "id": "tag:queipo",
@@ -1633,7 +1619,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 6
+      "weight": 5
     },
     {
       "id": "tag:fernandez",
@@ -1708,16 +1694,6 @@
     {
       "id": "tag:vargas-yegros",
       "title": "#vargas-yegros",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:venegas",
-      "title": "#venegas",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1823,7 +1799,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 2
+      "weight": 1
     },
     {
       "id": "tag:magallanes",
@@ -2308,6 +2284,26 @@
       "target": "censo-valais-1870"
     },
     {
+      "source": "p10",
+      "target": "p18"
+    },
+    {
+      "source": "p10",
+      "target": "p19"
+    },
+    {
+      "source": "p10",
+      "target": "p26"
+    },
+    {
+      "source": "p10",
+      "target": "p7"
+    },
+    {
+      "source": "p10",
+      "target": "p9"
+    },
+    {
       "source": "p117",
       "target": "p38"
     },
@@ -2380,12 +2376,68 @@
       "target": "p84"
     },
     {
+      "source": "p125",
+      "target": "p103"
+    },
+    {
+      "source": "p125",
+      "target": "p85"
+    },
+    {
+      "source": "p125",
+      "target": "p28"
+    },
+    {
+      "source": "p125",
+      "target": "p29"
+    },
+    {
+      "source": "p125",
+      "target": "p37"
+    },
+    {
+      "source": "p125",
+      "target": "p21"
+    },
+    {
       "source": "p18",
       "target": "p20"
     },
     {
       "source": "p18",
       "target": "p19"
+    },
+    {
+      "source": "p19",
+      "target": "p68"
+    },
+    {
+      "source": "p19",
+      "target": "p69"
+    },
+    {
+      "source": "p19",
+      "target": "p12"
+    },
+    {
+      "source": "p19",
+      "target": "p13"
+    },
+    {
+      "source": "p19",
+      "target": "p14"
+    },
+    {
+      "source": "p19",
+      "target": "p15"
+    },
+    {
+      "source": "p19",
+      "target": "p16"
+    },
+    {
+      "source": "p19",
+      "target": "p17"
     },
     {
       "source": "p20",
@@ -2440,12 +2492,60 @@
       "target": "p35"
     },
     {
+      "source": "p22",
+      "target": "p26"
+    },
+    {
+      "source": "p22",
+      "target": "p27"
+    },
+    {
+      "source": "p22",
+      "target": "p25"
+    },
+    {
+      "source": "p22",
+      "target": "p23"
+    },
+    {
+      "source": "p22",
+      "target": "p18"
+    },
+    {
       "source": "p23",
       "target": "p26"
     },
     {
+      "source": "p23",
+      "target": "p27"
+    },
+    {
+      "source": "p23",
+      "target": "p25"
+    },
+    {
+      "source": "p23",
+      "target": "p18"
+    },
+    {
       "source": "p25",
       "target": "p26"
+    },
+    {
+      "source": "p25",
+      "target": "p85"
+    },
+    {
+      "source": "p25",
+      "target": "p18"
+    },
+    {
+      "source": "p25",
+      "target": "p104"
+    },
+    {
+      "source": "p25",
+      "target": "p95"
     },
     {
       "source": "p26",
@@ -2458,10 +2558,6 @@
     {
       "source": "p26",
       "target": "p28"
-    },
-    {
-      "source": "p26",
-      "target": "p22"
     },
     {
       "source": "p26",
@@ -2486,6 +2582,78 @@
     {
       "source": "p26",
       "target": "p79"
+    },
+    {
+      "source": "p29",
+      "target": "p26"
+    },
+    {
+      "source": "p29",
+      "target": "p27"
+    },
+    {
+      "source": "p29",
+      "target": "p37"
+    },
+    {
+      "source": "p29",
+      "target": "p38"
+    },
+    {
+      "source": "p29",
+      "target": "p39"
+    },
+    {
+      "source": "p29",
+      "target": "p30"
+    },
+    {
+      "source": "p29",
+      "target": "p82"
+    },
+    {
+      "source": "p30",
+      "target": "p26"
+    },
+    {
+      "source": "p30",
+      "target": "p27"
+    },
+    {
+      "source": "p30",
+      "target": "p71"
+    },
+    {
+      "source": "p30",
+      "target": "p25"
+    },
+    {
+      "source": "p30",
+      "target": "p84"
+    },
+    {
+      "source": "p34",
+      "target": "p33"
+    },
+    {
+      "source": "p34",
+      "target": "p35"
+    },
+    {
+      "source": "p34",
+      "target": "p26"
+    },
+    {
+      "source": "p34",
+      "target": "p27"
+    },
+    {
+      "source": "p35",
+      "target": "p26"
+    },
+    {
+      "source": "p35",
+      "target": "p33"
     },
     {
       "source": "p36",
@@ -2580,6 +2748,54 @@
       "target": "p80"
     },
     {
+      "source": "p41",
+      "target": "p40"
+    },
+    {
+      "source": "p41",
+      "target": "p36"
+    },
+    {
+      "source": "p41",
+      "target": "p37"
+    },
+    {
+      "source": "p41",
+      "target": "p59"
+    },
+    {
+      "source": "p41",
+      "target": "p60"
+    },
+    {
+      "source": "p41",
+      "target": "p61"
+    },
+    {
+      "source": "p41",
+      "target": "p62"
+    },
+    {
+      "source": "p41",
+      "target": "p63"
+    },
+    {
+      "source": "p41",
+      "target": "p64"
+    },
+    {
+      "source": "p41",
+      "target": "p65"
+    },
+    {
+      "source": "p41",
+      "target": "p66"
+    },
+    {
+      "source": "p41",
+      "target": "p67"
+    },
+    {
       "source": "p57",
       "target": "p58"
     },
@@ -2630,6 +2846,22 @@
     {
       "source": "p58",
       "target": "p77"
+    },
+    {
+      "source": "p59",
+      "target": "p40"
+    },
+    {
+      "source": "p59",
+      "target": "p84"
+    },
+    {
+      "source": "p59",
+      "target": "p29"
+    },
+    {
+      "source": "p60",
+      "target": "p59"
     },
     {
       "source": "p73",
@@ -2736,6 +2968,42 @@
       "target": "p40"
     },
     {
+      "source": "p82",
+      "target": "p81"
+    },
+    {
+      "source": "p84",
+      "target": "p28"
+    },
+    {
+      "source": "p84",
+      "target": "p85"
+    },
+    {
+      "source": "p84",
+      "target": "p21"
+    },
+    {
+      "source": "p84",
+      "target": "p103"
+    },
+    {
+      "source": "p84",
+      "target": "p20"
+    },
+    {
+      "source": "p84",
+      "target": "p29"
+    },
+    {
+      "source": "p84",
+      "target": "p104"
+    },
+    {
+      "source": "p84",
+      "target": "p124"
+    },
+    {
       "source": "p94",
       "target": "p93"
     },
@@ -2751,16 +3019,6 @@
     {
       "source": "p1",
       "target": "p4",
-      "rel": "familia"
-    },
-    {
-      "source": "p10",
-      "target": "p18",
-      "rel": "familia"
-    },
-    {
-      "source": "p10",
-      "target": "p19",
       "rel": "familia"
     },
     {
@@ -2924,18 +3182,8 @@
       "rel": "familia"
     },
     {
-      "source": "p12",
-      "target": "p19",
-      "rel": "familia"
-    },
-    {
       "source": "p13",
       "target": "p18",
-      "rel": "familia"
-    },
-    {
-      "source": "p13",
-      "target": "p19",
       "rel": "familia"
     },
     {
@@ -2944,18 +3192,8 @@
       "rel": "familia"
     },
     {
-      "source": "p14",
-      "target": "p19",
-      "rel": "familia"
-    },
-    {
       "source": "p15",
       "target": "p18",
-      "rel": "familia"
-    },
-    {
-      "source": "p15",
-      "target": "p19",
       "rel": "familia"
     },
     {
@@ -2969,18 +3207,8 @@
       "rel": "familia"
     },
     {
-      "source": "p16",
-      "target": "p19",
-      "rel": "familia"
-    },
-    {
       "source": "p17",
       "target": "p18",
-      "rel": "familia"
-    },
-    {
-      "source": "p17",
-      "target": "p19",
       "rel": "familia"
     },
     {
@@ -2991,16 +3219,6 @@
     {
       "source": "p18",
       "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p19",
-      "target": "p68",
-      "rel": "familia"
-    },
-    {
-      "source": "p19",
-      "target": "p69",
       "rel": "familia"
     },
     {
@@ -3014,27 +3232,7 @@
       "rel": "familia"
     },
     {
-      "source": "p22",
-      "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p23",
-      "target": "p27",
-      "rel": "familia"
-    },
-    {
       "source": "p25",
-      "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p29",
-      "target": "p26",
-      "rel": "familia"
-    },
-    {
-      "source": "p29",
       "target": "p27",
       "rel": "familia"
     },
@@ -3060,16 +3258,6 @@
     },
     {
       "source": "p30",
-      "target": "p26",
-      "rel": "familia"
-    },
-    {
-      "source": "p30",
-      "target": "p27",
-      "rel": "familia"
-    },
-    {
-      "source": "p30",
       "target": "p70",
       "rel": "familia"
     },
@@ -3086,11 +3274,6 @@
     {
       "source": "p34",
       "target": "p20",
-      "rel": "familia"
-    },
-    {
-      "source": "p40",
-      "target": "p41",
       "rel": "familia"
     },
     {
@@ -3224,23 +3407,8 @@
       "rel": "familia"
     },
     {
-      "source": "p59",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p59",
-      "target": "p41",
-      "rel": "familia"
-    },
-    {
       "source": "p60",
       "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p60",
-      "target": "p41",
       "rel": "familia"
     },
     {
@@ -3249,18 +3417,8 @@
       "rel": "familia"
     },
     {
-      "source": "p61",
-      "target": "p41",
-      "rel": "familia"
-    },
-    {
       "source": "p62",
       "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p62",
-      "target": "p41",
       "rel": "familia"
     },
     {
@@ -3269,18 +3427,8 @@
       "rel": "familia"
     },
     {
-      "source": "p63",
-      "target": "p41",
-      "rel": "familia"
-    },
-    {
       "source": "p64",
       "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p64",
-      "target": "p41",
       "rel": "familia"
     },
     {
@@ -3289,38 +3437,18 @@
       "rel": "familia"
     },
     {
-      "source": "p65",
-      "target": "p41",
-      "rel": "familia"
-    },
-    {
       "source": "p66",
       "target": "p40",
       "rel": "familia"
     },
     {
-      "source": "p66",
-      "target": "p41",
-      "rel": "familia"
-    },
-    {
       "source": "p67",
       "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p67",
-      "target": "p41",
       "rel": "familia"
     },
     {
       "source": "p68",
       "target": "p69",
-      "rel": "familia"
-    },
-    {
-      "source": "p7",
-      "target": "p10",
       "rel": "familia"
     },
     {
@@ -3336,11 +3464,6 @@
     {
       "source": "p71",
       "target": "p70",
-      "rel": "familia"
-    },
-    {
-      "source": "p71",
-      "target": "p30",
       "rel": "familia"
     },
     {
@@ -3365,27 +3488,7 @@
     },
     {
       "source": "p82",
-      "target": "p81",
-      "rel": "familia"
-    },
-    {
-      "source": "p82",
-      "target": "p29",
-      "rel": "familia"
-    },
-    {
-      "source": "p82",
       "target": "p83",
-      "rel": "familia"
-    },
-    {
-      "source": "p84",
-      "target": "p28",
-      "rel": "familia"
-    },
-    {
-      "source": "p84",
-      "target": "p85",
       "rel": "familia"
     },
     {
@@ -3401,11 +3504,6 @@
     {
       "source": "p86",
       "target": "p88",
-      "rel": "familia"
-    },
-    {
-      "source": "p9",
-      "target": "p10",
       "rel": "familia"
     },
     {
@@ -3756,7 +3854,7 @@
     },
     {
       "source": "p10",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
@@ -4121,17 +4219,7 @@
     },
     {
       "source": "p125",
-      "target": "tag:clemenzo",
-      "rel": "tag"
-    },
-    {
-      "source": "p125",
       "target": "tag:santa-fe",
-      "rel": "tag"
-    },
-    {
-      "source": "p125",
-      "target": "tag:argentina",
       "rel": "tag"
     },
     {
@@ -4191,12 +4279,7 @@
     },
     {
       "source": "p19",
-      "target": "tag:queipo",
-      "rel": "tag"
-    },
-    {
-      "source": "p19",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
@@ -4236,22 +4319,32 @@
     },
     {
       "source": "p22",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p22",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
       "source": "p23",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p23",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
       "source": "p25",
-      "target": "tag:roh",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
       "source": "p25",
-      "target": "tag:clemenzo",
+      "target": "tag:censos",
       "rel": "tag"
     },
     {
@@ -4351,7 +4444,17 @@
     },
     {
       "source": "p29",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p29",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p29",
+      "target": "tag:tradicion-oral",
       "rel": "tag"
     },
     {
@@ -4371,7 +4474,12 @@
     },
     {
       "source": "p30",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
+      "rel": "tag"
+    },
+    {
+      "source": "p30",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
@@ -4396,12 +4504,12 @@
     },
     {
       "source": "p34",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
       "source": "p35",
-      "target": "tag:clemenzo",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
@@ -4561,7 +4669,12 @@
     },
     {
       "source": "p41",
-      "target": "tag:venegas",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p41",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
@@ -4701,7 +4814,12 @@
     },
     {
       "source": "p59",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
+      "rel": "tag"
+    },
+    {
+      "source": "p59",
+      "target": "tag:tradicion-oral",
       "rel": "tag"
     },
     {
@@ -4721,7 +4839,7 @@
     },
     {
       "source": "p60",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
@@ -5021,17 +5139,12 @@
     },
     {
       "source": "p82",
-      "target": "tag:costabile",
-      "rel": "tag"
-    },
-    {
-      "source": "p82",
       "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
       "source": "p82",
-      "target": "tag:argentina",
+      "target": "tag:tradicion-oral",
       "rel": "tag"
     },
     {
@@ -5046,12 +5159,12 @@
     },
     {
       "source": "p84",
-      "target": "tag:clemenzo",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
       "source": "p84",
-      "target": "tag:roh",
+      "target": "tag:apellido",
       "rel": "tag"
     },
     {
