@@ -1622,7 +1622,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, 27-11-1893, San Nicolás (pág. 881); matrimonio con Josefina Dominga Grippo, 21-03-1925, Parroquia de San Carlos, Buenos Aires (nota marginal)",
       "status": "en_proceso",
       "media": [
         {
@@ -1756,7 +1756,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, acta N.º 326, Parroquia de Ntra. Sra. de Balvanera, Buenos Aires, 24-05-1896; matrimonio con Francisco Mediavilla, 28-09-1912, Parroquia de San Carlos, Buenos Aires (pág. 440)",
       "status": "en_proceso",
       "media": [
         {
@@ -1950,7 +1950,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, acta N.º 96, Parroquia de Ntra. Sra. de Balvanera, Buenos Aires, 12-09-1902 (nacida 28-10-1897)",
       "status": "en_proceso",
       "media": [
         {
@@ -2084,7 +2084,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, acta N.º 95, Parroquia de Ntra. Sra. de Balvanera, Buenos Aires, 12-09-1902 (nacida 13-02-1902)",
       "status": "en_proceso",
       "media": [
         {
@@ -2146,7 +2146,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, acta N.º 547, Parroquia de Ntra. Sra. de Balvanera, Buenos Aires, 11-03-1905 (nacida 11-07-1904)",
       "status": "en_proceso",
       "media": [
         {
@@ -2177,7 +2177,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "bautismo, pág. 228, Parroquia de San Carlos en Buenos Aires, 24-09-1908 (nacido 28-09-1906)",
       "status": "en_proceso",
       "media": [
         {
@@ -2813,7 +2813,7 @@
       "vivo": "no",
       "photo_url": null,
       "notes": null,
-      "sources": null,
+      "sources": "censo federal suizo, 01-12-1870, Aven, Conthey (boletín 38, casa 33); matrimonio civil con F.J. Vergère, acta N.º 73, Registro Civil de Colón, 19-11-1896; matrimonio religioso con Domingo Mersilli, acta N.º 242, parroquia sin identificar, 21-06-1915; censo nacional 1895, Colón",
       "status": "en_proceso",
       "media": [
         {
@@ -3323,7 +3323,7 @@
       "vivo": "",
       "photo_url": "",
       "notes": "Segundo esposo de Marianna Roh (Colón, 19-11-1896). Suizo, nacido en el distrito de Conthey, agricultor en la colonia San José. Hijo de Juan Pedro Vergère y Ana María Roh (ambos de Conthey) — su madre era, también, una Roh. Viudo: su primera mujer, María Catalina Filomena Rudaz, murió en Conthey el 26-08-1883. Tenía 60 años al casarse con Marianna.",
-      "sources": "Casamiento con Marianna Roh, Colón 1896",
+      "sources": "matrimonio civil con Marianna Roh, acta N.º 73, Registro Civil de Colón, Entre Ríos, 19-11-1896",
       "status": "en_proceso",
       "media": [
         {
@@ -4506,7 +4506,7 @@
       "spouse1_id": "p85",
       "spouse2_id": "p103",
       "marriage_date": "1915-06-21",
-      "marriage_place": "Entre Ríos, Argentina",
+      "marriage_place": "parroquia sin identificar (mismo libro que el casamiento de p84, 26-06-1915)",
       "divorce_date": "",
       "notes": "Marianna, viuda de Vergère, se casa con Domingo Mersilli (acta parroquial, Libro de Matrimonio N°242)."
     },

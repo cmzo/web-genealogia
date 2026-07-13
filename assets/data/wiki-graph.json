@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-12T16:14:17.707Z",
+  "generated": "2026-07-13T18:19:19.000Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -135,9 +135,8 @@
       "type": "persona",
       "branch": "vergere",
       "url": "dist/wiki/p102.html",
-      "summary": "n. 1836, Conthey, Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Suizo de Conthey, nacido hacia 1836, hijo de Juan Pedro Vergère y Ana María Roh — una Roh, como la mujer con la que volvería a casarse. Enviudó de María Catalina Filomena Rudaz en 1883, emigró cincuentón a la Colonia San José (Entre Ríos) y en 1896, a los 60, casó en Colón con Marianna Roh.",
+      "hasContent": true
     },
     {
       "id": "p103",
@@ -656,7 +655,7 @@
       "type": "persona",
       "branch": "venegas",
       "url": "dist/wiki/p41.html",
-      "summary": "Argentina de San Nicolás de los Arroyos, nacida hacia 1868, hija natural de Cipriana Venegas. A los 18 años casó con Esteban Clemenzo en la Parroquia de la Concepción de Buenos Aires (1886) y fue la madre de los nueve Clemenzoz de Santa Fe.",
+      "summary": "Argentina de San Nicolás de los Arroyos, nacida hacia 1868, hija natural de Cipriana Venegas. A los 18 años casó con Esteban Clemenzo en la Parroquia de la Concepción de Buenos Aires (1886) y fue la madre de los nueve hijos que los registros anotarían «Clemenzoz».",
       "hasContent": true
     },
     {
@@ -863,9 +862,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p62.html",
-      "summary": "n. 1893-11-13, Partido de San Nicolas",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Cuarto hijo de Esteban Clemenzo y Estefanía Venegas, nacido en San Nicolás de los Arroyos el 13 de noviembre de 1893. Como su hermano Fortunato, de adulto se instaló en Buenos Aires: casó en 1925 con Josefina Dominga Grippo en la misma Parroquia de San Carlos.",
+      "hasContent": true
     },
     {
       "id": "p63",
@@ -873,9 +871,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p63.html",
-      "summary": "n. 1895-09-29, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Quinta hija de Esteban Clemenzo y Estefanía Venegas, nacida en Buenos Aires en 1895 y bautizada en Balvanera — la familia ya de vuelta en la ciudad. A los 16 casó con Francisco Mediavilla, hijo de españoles, en la Parroquia de San Carlos (1912): la primera de tres bodas de hermanos en esa parroquia, y el acta donde firma el propio Esteban.",
+      "hasContent": true
     },
     {
       "id": "p64",
@@ -883,9 +880,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p64.html",
-      "summary": "n. 1897-10-28, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Sexta hija de Esteban Clemenzo y Estefanía Venegas, nacida en Buenos Aires en 1897 y bautizada recién en 1902, a los casi cinco años, en Balvanera — con Félix Santa Cruz y Joaquina Balmaceda, los amigos de siempre de la familia, como padrinos.",
+      "hasContent": true
     },
     {
       "id": "p65",
@@ -893,9 +889,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p65.html",
-      "summary": "n. 1902-02-13, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Séptima hija de Esteban Clemenzo y Estefanía Venegas, nacida en Buenos Aires en febrero de 1902 y bautizada en septiembre en Balvanera, el mismo día y con los mismos padrinos — Félix Santa Cruz y Joaquina Balmaceda — que su hermana Petrona, bautizada a los casi cinco años en la misma tanda.",
+      "hasContent": true
     },
     {
       "id": "p66",
@@ -903,9 +898,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p66.html",
-      "summary": "n. 1904-07-11, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Octava hija de Esteban Clemenzo y Estefanía Venegas, nacida en Buenos Aires en 1904 y bautizada en Balvanera en 1905, cuando la familia vivía en Billinghurst 45 — la misma cuadra de donde saldría, años después, el marido de su hermana Ángela.",
+      "hasContent": true
     },
     {
       "id": "p67",
@@ -913,9 +907,8 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p67.html",
-      "summary": "n. 1906-09-28, Ciudad de Buenos Aires",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "El menor de los nueve hijos de Esteban Clemenzo y Estefanía Venegas, nacido en Buenos Aires en 1906 y bautizado a los casi dos años en la Parroquia de San Carlos — la parroquia del barrio donde la familia echó raíces y donde después se casarían tres de sus hermanos.",
+      "hasContent": true
     },
     {
       "id": "p68",
@@ -1096,9 +1089,8 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p85.html",
-      "summary": "n. 1862-02-19, Conthey (Aven), Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hija mayor de José Roh —herrero de Conthey— y María Putallaz, nacida en Aven hacia 1860/62 y emigrada a Entre Ríos con la familia hacia 1871–73. Tuvo tres hijos con José Clemenzo sin matrimonio civil, casó a los ~35 con el viudo Francisco José Vergère (Colón, 1896) y, ya viuda, con el italiano Domingo Mersilli (1915) — cinco días antes de que su hija María Luisa casara con Troncoso, cada pareja de testigo de la otra.",
+      "hasContent": true
     },
     {
       "id": "p86",
@@ -1318,7 +1310,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 41
+      "weight": 35
     },
     {
       "id": "tag:ardon",
@@ -1348,7 +1340,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 35
+      "weight": 33
     },
     {
       "id": "tag:arbol",
@@ -1398,7 +1390,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 27
+      "weight": 29
     },
     {
       "id": "tag:argentina",
@@ -1458,7 +1450,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 11
+      "weight": 12
     },
     {
       "id": "tag:metodologia",
@@ -1508,7 +1500,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 15
+      "weight": 21
     },
     {
       "id": "tag:etchegorry",
@@ -1523,16 +1515,6 @@
     {
       "id": "tag:locher",
       "title": "#locher",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
-      "id": "tag:vergere",
-      "title": "#vergere",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1578,7 +1560,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 21
+      "weight": 20
     },
     {
       "id": "tag:censos",
@@ -2303,6 +2285,14 @@
       "target": "p9"
     },
     {
+      "source": "p102",
+      "target": "p38"
+    },
+    {
+      "source": "p102",
+      "target": "p85"
+    },
+    {
       "source": "p117",
       "target": "p38"
     },
@@ -2863,12 +2853,76 @@
       "target": "p59"
     },
     {
+      "source": "p60",
+      "target": "p62"
+    },
+    {
+      "source": "p60",
+      "target": "p64"
+    },
+    {
       "source": "p61",
       "target": "p60"
     },
     {
       "source": "p61",
       "target": "p40"
+    },
+    {
+      "source": "p62",
+      "target": "p40"
+    },
+    {
+      "source": "p62",
+      "target": "p61"
+    },
+    {
+      "source": "p63",
+      "target": "p60"
+    },
+    {
+      "source": "p63",
+      "target": "p61"
+    },
+    {
+      "source": "p63",
+      "target": "p62"
+    },
+    {
+      "source": "p63",
+      "target": "p66"
+    },
+    {
+      "source": "p63",
+      "target": "p40"
+    },
+    {
+      "source": "p64",
+      "target": "p65"
+    },
+    {
+      "source": "p67",
+      "target": "p64"
+    },
+    {
+      "source": "p67",
+      "target": "p63"
+    },
+    {
+      "source": "p67",
+      "target": "p60"
+    },
+    {
+      "source": "p67",
+      "target": "p62"
+    },
+    {
+      "source": "p67",
+      "target": "p84"
+    },
+    {
+      "source": "p67",
+      "target": "p125"
     },
     {
       "source": "p73",
@@ -3011,6 +3065,30 @@
       "target": "p124"
     },
     {
+      "source": "p85",
+      "target": "p27"
+    },
+    {
+      "source": "p85",
+      "target": "p118"
+    },
+    {
+      "source": "p85",
+      "target": "p80"
+    },
+    {
+      "source": "p85",
+      "target": "p28"
+    },
+    {
+      "source": "p85",
+      "target": "p104"
+    },
+    {
+      "source": "p85",
+      "target": "p103"
+    },
+    {
       "source": "p94",
       "target": "p93"
     },
@@ -3044,23 +3122,8 @@
       "rel": "familia"
     },
     {
-      "source": "p102",
-      "target": "p85",
-      "rel": "familia"
-    },
-    {
-      "source": "p103",
-      "target": "p85",
-      "rel": "familia"
-    },
-    {
       "source": "p104",
       "target": "p28",
-      "rel": "familia"
-    },
-    {
-      "source": "p104",
-      "target": "p85",
       "rel": "familia"
     },
     {
@@ -3415,16 +3478,6 @@
     },
     {
       "source": "p60",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p62",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p63",
       "target": "p40",
       "rel": "familia"
     },
@@ -3891,11 +3944,6 @@
     },
     {
       "source": "p102",
-      "target": "tag:vergere",
-      "rel": "tag"
-    },
-    {
-      "source": "p102",
       "target": "tag:conthey",
       "rel": "tag"
     },
@@ -3906,7 +3954,12 @@
     },
     {
       "source": "p102",
-      "target": "tag:suiza",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
+      "source": "p102",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
@@ -4851,32 +4904,32 @@
     },
     {
       "source": "p62",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
       "source": "p63",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
       "source": "p64",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
       "source": "p65",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
       "source": "p66",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
       "source": "p67",
-      "target": "tag:clemenzo",
+      "target": "tag:buenos-aires",
       "rel": "tag"
     },
     {
@@ -5171,17 +5224,12 @@
     },
     {
       "source": "p85",
-      "target": "tag:roh",
-      "rel": "tag"
-    },
-    {
-      "source": "p85",
       "target": "tag:valais",
       "rel": "tag"
     },
     {
       "source": "p85",
-      "target": "tag:suiza",
+      "target": "tag:conthey",
       "rel": "tag"
     },
     {
@@ -5191,7 +5239,7 @@
     },
     {
       "source": "p85",
-      "target": "tag:conthey",
+      "target": "tag:entre-rios",
       "rel": "tag"
     },
     {
