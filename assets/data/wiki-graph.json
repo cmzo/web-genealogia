@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-13T18:19:19.000Z",
+  "generated": "2026-08-10T15:37:30.332Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -144,9 +144,8 @@
       "type": "persona",
       "branch": "mersilli",
       "url": "dist/wiki/p103.html",
-      "summary": "n. 1860, Italia",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Italiano nacido hacia 1860, hijo de Santo Mersilli y Mariana Viva (lectura insegura). Probable padrino de José Martín en 1905 — diez años en la órbita de la familia —, casó soltero a los 55 con la viuda Marianna Roh (1915) y cinco días después atestiguó la boda de su hijastra María Luisa.",
+      "hasContent": true
     },
     {
       "id": "p104",
@@ -380,6 +379,42 @@
       "hasContent": true
     },
     {
+      "id": "p126",
+      "title": "Esther Queipo",
+      "type": "persona",
+      "branch": "queipo",
+      "url": "dist/wiki/p126.html",
+      "summary": "Hipotética hija de Ricardo Queipo (p68) e Isabel Teresa Viñales (p69), hermana de Isabel María Queipo (p19) y tía de Yolanda, Margot y Olga Clemenzo Queipo.",
+      "hasContent": true
+    },
+    {
+      "id": "p127",
+      "title": "Esteban Cordero",
+      "type": "persona",
+      "branch": "cordero",
+      "url": "dist/wiki/p127.html",
+      "summary": "Hipotético hijo de Esther Queipo (p126), primo hermano de Yolanda, Margot y Olga Clemenzo Queipo. Vivía en Estados Unidos, junto con sus hijas; si vive, es muy mayor — probablemente haya fallecido.",
+      "hasContent": true
+    },
+    {
+      "id": "p128",
+      "title": "Alexandra Cordero",
+      "type": "persona",
+      "branch": "cordero",
+      "url": "dist/wiki/p128.html",
+      "summary": "Hija de Esteban Cordero (p127), radicada en Estados Unidos.",
+      "hasContent": true
+    },
+    {
+      "id": "p129",
+      "title": "Kristina Cordero",
+      "type": "persona",
+      "branch": "cordero",
+      "url": "dist/wiki/p129.html",
+      "summary": "Hija de Esteban Cordero (p127), radicada en Estados Unidos.",
+      "hasContent": true
+    },
+    {
       "id": "p13",
       "title": "Ana Mary Clemenzo",
       "type": "persona",
@@ -387,6 +422,51 @@
       "url": "arbol.html?focus=p13",
       "summary": "n. Bs As",
       "hasContent": false
+    },
+    {
+      "id": "p130",
+      "title": "Osvaldo Arceo",
+      "type": "persona",
+      "branch": "arceo",
+      "url": "dist/wiki/p130.html",
+      "summary": "Hermano de Oscar Edgar Arceo (p50), hijo de Benito Arceo (p51) y Antonia Ianitelli (p52). Casado con Doris Braga (p131).",
+      "hasContent": true
+    },
+    {
+      "id": "p131",
+      "title": "Doris Braga",
+      "type": "persona",
+      "branch": "braga",
+      "url": "dist/wiki/p131.html",
+      "summary": "Esposa de Osvaldo Arceo (p130).",
+      "hasContent": true
+    },
+    {
+      "id": "p132",
+      "title": "Elba Lidia Vázquez",
+      "type": "persona",
+      "branch": "vazquez",
+      "url": "dist/wiki/p132.html",
+      "summary": "Hija de Enrique Alfredo Vázquez (p53) y María Luisa Fracchia (p54), hermana de Elida María (p49). Casada con Héctor Bravo (p133).",
+      "hasContent": true
+    },
+    {
+      "id": "p133",
+      "title": "Héctor Bravo",
+      "type": "persona",
+      "branch": "bravo",
+      "url": "dist/wiki/p133.html",
+      "summary": "Esposo de Elba Lidia Vázquez (p132).",
+      "hasContent": true
+    },
+    {
+      "id": "p134",
+      "title": "Eduardo Alberto Vázquez",
+      "type": "persona",
+      "branch": "vazquez",
+      "url": "dist/wiki/p134.html",
+      "summary": "Hijo de Enrique Alfredo Vázquez (p53) y María Luisa Fracchia (p54), hermano de Elida María (p49).",
+      "hasContent": true
     },
     {
       "id": "p14",
@@ -723,12 +803,12 @@
     },
     {
       "id": "p49",
-      "title": "Elida Vasquez",
+      "title": "Elida María Vázquez",
       "type": "persona",
       "branch": "vasquez",
-      "url": "arbol.html?focus=p49",
-      "summary": "",
-      "hasContent": false
+      "url": "dist/wiki/p49.html",
+      "summary": "Hija de Enrique Alfredo Vázquez (p53) y María Luisa Fracchia (p54); esposa de Oscar Edgar Arceo (p50), madre de Cristina Magdalena (p8).",
+      "hasContent": true
     },
     {
       "id": "p5",
@@ -744,45 +824,45 @@
       "title": "Oscar Edgar Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "arbol.html?focus=p50",
-      "summary": "",
-      "hasContent": false
+      "url": "dist/wiki/p50.html",
+      "summary": "Rosarino (Santa Fe), n. hacia 1940, padre de Cristina Magdalena Arceo (p8). Falleció el 27-09-1965, seis meses después de nacer ella.",
+      "hasContent": true
     },
     {
       "id": "p51",
       "title": "Benito Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "arbol.html?focus=p51",
-      "summary": "",
-      "hasContent": false
+      "url": "dist/wiki/p51.html",
+      "summary": "Padre de Oscar Edgar (p50) y Osvaldo Arceo (p130), casado con Antonia Ianitelli (p52). Tenían campos en Pérez, cerca de Rosario, Santa Fe.",
+      "hasContent": true
     },
     {
       "id": "p52",
-      "title": "Antonia Yanitelli",
+      "title": "Antonia Ianitelli",
       "type": "persona",
-      "branch": "yanitelli",
-      "url": "arbol.html?focus=p52",
-      "summary": "",
-      "hasContent": false
+      "branch": "ianitelli",
+      "url": "dist/wiki/p52.html",
+      "summary": "Esposa de Benito Arceo (p51), madre de Oscar Edgar (p50) y Osvaldo Arceo (p130).",
+      "hasContent": true
     },
     {
       "id": "p53",
-      "title": "Enrique Alfredo Vasquez",
+      "title": "Enrique Alfredo Vázquez",
       "type": "persona",
       "branch": "vasquez",
-      "url": "arbol.html?focus=p53",
-      "summary": "",
-      "hasContent": false
+      "url": "dist/wiki/p53.html",
+      "summary": "Padre de Elida María Vázquez (p49); falleció el 30-07-1961, domiciliado en la zona de Granadero Baigorria, Santa Fe.",
+      "hasContent": true
     },
     {
       "id": "p54",
       "title": "Maria Luisa Fracchia",
       "type": "persona",
       "branch": "fracchia",
-      "url": "arbol.html?focus=p54",
-      "summary": "",
-      "hasContent": false
+      "url": "dist/wiki/p54.html",
+      "summary": "Esposa de Enrique Alfredo Vázquez (p53), madre de Elida María (p49), Elba Lidia (p132) y Eduardo Alberto (p134). Viuda desde 1961.",
+      "hasContent": true
     },
     {
       "id": "p55",
@@ -1032,9 +1112,9 @@
       "title": "Cristina Magdalena Arceo",
       "type": "persona",
       "branch": "arceo",
-      "url": "arbol.html?focus=p8",
-      "summary": "n. 1965-03-28, CABA",
-      "hasContent": false
+      "url": "dist/wiki/p8.html",
+      "summary": "Nacida en Rosario, Santa Fe, el 28-03-1965 (corrige el dato anterior de Entre Ríos). Casada con Daniel Jorge Clemenzo (p7).",
+      "hasContent": true
     },
     {
       "id": "p80",
@@ -1310,7 +1390,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 35
+      "weight": 34
     },
     {
       "id": "tag:ardon",
@@ -1533,16 +1613,6 @@
       "weight": 12
     },
     {
-      "id": "tag:mersilli",
-      "title": "#mersilli",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 1
-    },
-    {
       "id": "tag:italia",
       "title": "#italia",
       "type": "tag",
@@ -1551,6 +1621,16 @@
       "summary": "",
       "hasContent": false,
       "weight": 2
+    },
+    {
+      "id": "tag:santa-fe",
+      "title": "#santa-fe",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 21
     },
     {
       "id": "tag:roh",
@@ -1583,16 +1663,6 @@
       "weight": 2
     },
     {
-      "id": "tag:santa-fe",
-      "title": "#santa-fe",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 10
-    },
-    {
       "id": "tag:queipo",
       "title": "#queipo",
       "type": "tag",
@@ -1600,7 +1670,27 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 5
+      "weight": 7
+    },
+    {
+      "id": "tag:cordero",
+      "title": "#cordero",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 3
+    },
+    {
+      "id": "tag:rosario",
+      "title": "#rosario",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 6
     },
     {
       "id": "tag:fernandez",
@@ -1703,28 +1793,8 @@
       "weight": 1
     },
     {
-      "id": "tag:vasquez",
-      "title": "#vasquez",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 3
-    },
-    {
-      "id": "tag:arceo",
-      "title": "#arceo",
-      "type": "tag",
-      "branch": "",
-      "url": "",
-      "summary": "",
-      "hasContent": false,
-      "weight": 3
-    },
-    {
-      "id": "tag:yanitelli",
-      "title": "#yanitelli",
+      "id": "tag:perez-santa-fe",
+      "title": "#perez-santa-fe",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -1733,14 +1803,24 @@
       "weight": 1
     },
     {
-      "id": "tag:fracchia",
-      "title": "#fracchia",
+      "id": "tag:granadero-baigorria",
+      "title": "#granadero-baigorria",
       "type": "tag",
       "branch": "",
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 2
+      "weight": 1
+    },
+    {
+      "id": "tag:vasquez",
+      "title": "#vasquez",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
     },
     {
       "id": "tag:vinales",
@@ -1805,6 +1885,16 @@
     {
       "id": "tag:ruiz",
       "title": "#ruiz",
+      "type": "tag",
+      "branch": "",
+      "url": "",
+      "summary": "",
+      "hasContent": false,
+      "weight": 1
+    },
+    {
+      "id": "tag:fracchia",
+      "title": "#fracchia",
       "type": "tag",
       "branch": "",
       "url": "",
@@ -2293,6 +2383,18 @@
       "target": "p85"
     },
     {
+      "source": "p103",
+      "target": "p125"
+    },
+    {
+      "source": "p103",
+      "target": "p84"
+    },
+    {
+      "source": "p103",
+      "target": "p85"
+    },
+    {
       "source": "p117",
       "target": "p38"
     },
@@ -2366,10 +2468,6 @@
     },
     {
       "source": "p125",
-      "target": "p103"
-    },
-    {
-      "source": "p125",
       "target": "p85"
     },
     {
@@ -2387,6 +2485,62 @@
     {
       "source": "p125",
       "target": "p21"
+    },
+    {
+      "source": "p126",
+      "target": "p16"
+    },
+    {
+      "source": "p126",
+      "target": "p14"
+    },
+    {
+      "source": "p126",
+      "target": "p17"
+    },
+    {
+      "source": "p126",
+      "target": "p19"
+    },
+    {
+      "source": "p126",
+      "target": "p68"
+    },
+    {
+      "source": "p126",
+      "target": "p69"
+    },
+    {
+      "source": "p126",
+      "target": "p127"
+    },
+    {
+      "source": "p127",
+      "target": "p16"
+    },
+    {
+      "source": "p127",
+      "target": "p14"
+    },
+    {
+      "source": "p127",
+      "target": "p17"
+    },
+    {
+      "source": "p127",
+      "target": "p19"
+    },
+    {
+      "source": "p127",
+      "target": "p128"
+    },
+    {
+      "source": "p127",
+      "target": "p129"
+    },
+    {
+      "source": "p128",
+      "target": "p129"
     },
     {
       "source": "p18",
@@ -2785,6 +2939,78 @@
       "target": "p67"
     },
     {
+      "source": "p49",
+      "target": "p53"
+    },
+    {
+      "source": "p49",
+      "target": "p54"
+    },
+    {
+      "source": "p49",
+      "target": "p132"
+    },
+    {
+      "source": "p49",
+      "target": "p134"
+    },
+    {
+      "source": "p50",
+      "target": "p51"
+    },
+    {
+      "source": "p50",
+      "target": "p52"
+    },
+    {
+      "source": "p50",
+      "target": "p130"
+    },
+    {
+      "source": "p50",
+      "target": "p131"
+    },
+    {
+      "source": "p50",
+      "target": "p54"
+    },
+    {
+      "source": "p50",
+      "target": "p53"
+    },
+    {
+      "source": "p51",
+      "target": "p52"
+    },
+    {
+      "source": "p53",
+      "target": "p54"
+    },
+    {
+      "source": "p53",
+      "target": "p132"
+    },
+    {
+      "source": "p53",
+      "target": "p133"
+    },
+    {
+      "source": "p53",
+      "target": "p134"
+    },
+    {
+      "source": "p53",
+      "target": "p89"
+    },
+    {
+      "source": "p53",
+      "target": "p55"
+    },
+    {
+      "source": "p54",
+      "target": "p89"
+    },
+    {
       "source": "p57",
       "target": "p58"
     },
@@ -3029,6 +3255,30 @@
       "target": "p40"
     },
     {
+      "source": "p8",
+      "target": "p50"
+    },
+    {
+      "source": "p8",
+      "target": "p49"
+    },
+    {
+      "source": "p8",
+      "target": "p51"
+    },
+    {
+      "source": "p8",
+      "target": "p52"
+    },
+    {
+      "source": "p8",
+      "target": "p53"
+    },
+    {
+      "source": "p8",
+      "target": "p54"
+    },
+    {
       "source": "p82",
       "target": "p81"
     },
@@ -3043,10 +3293,6 @@
     {
       "source": "p84",
       "target": "p21"
-    },
-    {
-      "source": "p84",
-      "target": "p103"
     },
     {
       "source": "p84",
@@ -3083,10 +3329,6 @@
     {
       "source": "p85",
       "target": "p104"
-    },
-    {
-      "source": "p85",
-      "target": "p103"
     },
     {
       "source": "p94",
@@ -3257,6 +3499,36 @@
       "rel": "familia"
     },
     {
+      "source": "p130",
+      "target": "p51",
+      "rel": "familia"
+    },
+    {
+      "source": "p130",
+      "target": "p52",
+      "rel": "familia"
+    },
+    {
+      "source": "p130",
+      "target": "p131",
+      "rel": "familia"
+    },
+    {
+      "source": "p132",
+      "target": "p54",
+      "rel": "familia"
+    },
+    {
+      "source": "p132",
+      "target": "p133",
+      "rel": "familia"
+    },
+    {
+      "source": "p134",
+      "target": "p54",
+      "rel": "familia"
+    },
+    {
       "source": "p14",
       "target": "p18",
       "rel": "familia"
@@ -3403,16 +3675,6 @@
     },
     {
       "source": "p49",
-      "target": "p53",
-      "rel": "familia"
-    },
-    {
-      "source": "p49",
-      "target": "p54",
-      "rel": "familia"
-    },
-    {
-      "source": "p49",
       "target": "p50",
       "rel": "familia"
     },
@@ -3432,38 +3694,8 @@
       "rel": "familia"
     },
     {
-      "source": "p50",
-      "target": "p51",
-      "rel": "familia"
-    },
-    {
-      "source": "p50",
-      "target": "p52",
-      "rel": "familia"
-    },
-    {
-      "source": "p51",
-      "target": "p52",
-      "rel": "familia"
-    },
-    {
-      "source": "p53",
-      "target": "p55",
-      "rel": "familia"
-    },
-    {
       "source": "p53",
       "target": "p56",
-      "rel": "familia"
-    },
-    {
-      "source": "p53",
-      "target": "p54",
-      "rel": "familia"
-    },
-    {
-      "source": "p54",
-      "target": "p89",
       "rel": "familia"
     },
     {
@@ -3524,16 +3756,6 @@
     {
       "source": "p75",
       "target": "p92",
-      "rel": "familia"
-    },
-    {
-      "source": "p8",
-      "target": "p50",
-      "rel": "familia"
-    },
-    {
-      "source": "p8",
-      "target": "p49",
       "rel": "familia"
     },
     {
@@ -3964,12 +4186,12 @@
     },
     {
       "source": "p103",
-      "target": "tag:mersilli",
+      "target": "tag:italia",
       "rel": "tag"
     },
     {
       "source": "p103",
-      "target": "tag:italia",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
@@ -4278,8 +4500,53 @@
       "rel": "tag"
     },
     {
+      "source": "p126",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p127",
+      "target": "tag:queipo",
+      "rel": "tag"
+    },
+    {
+      "source": "p127",
+      "target": "tag:cordero",
+      "rel": "tag"
+    },
+    {
+      "source": "p128",
+      "target": "tag:cordero",
+      "rel": "tag"
+    },
+    {
+      "source": "p129",
+      "target": "tag:cordero",
+      "rel": "tag"
+    },
+    {
       "source": "p13",
       "target": "tag:clemenzo",
+      "rel": "tag"
+    },
+    {
+      "source": "p130",
+      "target": "tag:rosario",
+      "rel": "tag"
+    },
+    {
+      "source": "p130",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p132",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p134",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
@@ -4769,7 +5036,12 @@
     },
     {
       "source": "p49",
-      "target": "tag:vasquez",
+      "target": "tag:rosario",
+      "rel": "tag"
+    },
+    {
+      "source": "p49",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
@@ -4789,27 +5061,52 @@
     },
     {
       "source": "p50",
-      "target": "tag:arceo",
+      "target": "tag:rosario",
+      "rel": "tag"
+    },
+    {
+      "source": "p50",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
       "source": "p51",
-      "target": "tag:arceo",
+      "target": "tag:rosario",
+      "rel": "tag"
+    },
+    {
+      "source": "p51",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p51",
+      "target": "tag:perez-santa-fe",
       "rel": "tag"
     },
     {
       "source": "p52",
-      "target": "tag:yanitelli",
+      "target": "tag:rosario",
+      "rel": "tag"
+    },
+    {
+      "source": "p52",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
       "source": "p53",
-      "target": "tag:vasquez",
+      "target": "tag:santa-fe",
+      "rel": "tag"
+    },
+    {
+      "source": "p53",
+      "target": "tag:granadero-baigorria",
       "rel": "tag"
     },
     {
       "source": "p54",
-      "target": "tag:fracchia",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {
@@ -5159,12 +5456,12 @@
     },
     {
       "source": "p8",
-      "target": "tag:arceo",
+      "target": "tag:rosario",
       "rel": "tag"
     },
     {
       "source": "p8",
-      "target": "tag:clemenzo",
+      "target": "tag:santa-fe",
       "rel": "tag"
     },
     {

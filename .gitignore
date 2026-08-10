@@ -60,3 +60,6 @@ assets/docs/
 # Capturas de pantalla sueltas (macOS)
 SCR-*.png
 Screenshot *.png
+
+# Material privado / sin permiso de publicación (fotos de terceros, actas con datos personales)
+claude_mira_aqui/
