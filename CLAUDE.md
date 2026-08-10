@@ -217,11 +217,13 @@ Run `npm run optimize-personas` to convert images to WebP before committing.
 
 ### Deploy script
 
-`scripts/update-and-deploy.js` runs `build()` then stages and pushes:
-```
-git add dist/ assets/data/ assets/css/ assets/js/ assets/images/ assets/fonts/ *.html docs/ content/
-```
-Raw image files (`.jpg`, `.png` originals) are **not** staged by the deploy script — optimize them to WebP first.
+`scripts/update-and-deploy.js` runs `git pull --rebase --autostash`, then `build()`, then **`git add -A`** (stages everything not covered by `.gitignore`, deletions included), commits and pushes. Since it's `-A` and not a selective list, anything that shouldn't ever reach the public repo **must be `.gitignore`d** — there's no other safety net.
+
+Raw image files (`.jpg`, `.png` originals) in `assets/images/` are conventionally left uncommitted by habit, but nothing stops `git add -A` from picking them up if they're not gitignored — optimize to WebP before running `npm run deploy`.
+
+### Material privado (no publicable)
+
+`claude_mira_aqui/` (raíz del repo, gitignored) es una carpeta de intercambio para archivos que el usuario deja para que el agente los procese pero que **nunca deben llegar al repo público**: escaneos con datos personales (actas, documentos de identidad), fotos bajadas de redes sociales sin permiso de republicación, etc. Al terminar de extraer la información relevante (volcarla a una nota de investigación o a la base), el archivo se queda ahí — no se mueve a ninguna carpeta trackeada. Mismo criterio para cualquier otro archivo sensible que aparezca suelto en el repo (p. ej. una foto en `content/pendiente-media/` sin permiso de uso): moverlo a `claude_mira_aqui/`, nunca dejarlo en una ruta trackeada.
 
 ### Images
 

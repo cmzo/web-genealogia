@@ -17,18 +17,44 @@
   --sidebar-w: 200px;
   --nav-h:     52px;
   color-scheme: light;
+
+  /* Tarjeta de color sólido («de papel»), usada en el panel de la wiki: mismo
+     valor en claro y oscuro a propósito — es un objeto físico, no una
+     superficie de UI que reacciona al tema. */
+  --card-paper-bg:  #e8dcc4;
+  --card-paper-fg:  #2a241a;
+  --card-paper-accent: #2d4a3e;
+
+  /* Familias temáticas de las etiquetas. El color dice QUÉ TIPO de cosa es el
+     tag, no es decorativo: lugar / familia / método de investigación / técnica.
+     Desaturados a propósito para convivir con el verde botella. */
+  --tag-lugar:   #3f5c6b;   /* azul pizarra — geografía */
+  --tag-familia: #8a5a3c;   /* terracota apagada — personas y apellidos */
+  --tag-metodo:  #2d4a3e;   /* verde botella — investigación, archivo */
+  --tag-tec:     #5a4a70;   /* ciruela — tecnología */
+  --tag-otro:    #5a5040;   /* el gris cálido de siempre — sin familia */
 }
 
-/* ─── MODO OSCURO · paleta «Pizarra neutra» ───────────── */
+/* ─── MODO OSCURO · grafito neutro ─────────────────────────────────────────
+   Neutro a propósito: ni marrón (se probó en 2026-08 y quedaba sepia) ni el
+   azul-pizarra de antes. El acento va en salvia desaturada, no en verde menta:
+   el menta saturado sobre fondo oscuro lee como terminal de hacker. */
 [data-theme="dark"] {
-  --bg:        #16181a;
-  --surface:   #1f2225;
-  --border:    #33373b;
-  --text:      #e8eaec;
-  --muted:     #9aa3a8;
-  --accent:    #5fb389;
-  --on-accent: #0f1f17;
+  --bg:        #17181a;
+  --surface:   #1e2022;
+  --border:    #303336;
+  --text:      #e9eaec;
+  --muted:     #9a9ea3;
+  --accent:    #8fb3a1;
+  --on-accent: #14201b;
   color-scheme: dark;
+
+  /* Mismas familias temáticas, aclaradas para leerse sobre grafito */
+  --tag-lugar:   #8fb3c4;
+  --tag-familia: #cf9c80;
+  --tag-metodo:  #8fb3a1;
+  --tag-tec:     #b3a3d4;
+  --tag-otro:    #9a9ea3;
 }
 
 /* Resaltado (==texto==) legible en oscuro */
@@ -652,6 +678,30 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   text-transform: uppercase;
   color: var(--accent);
 }
+
+/* ── Etiquetas en pastilla ────────────────────────────────────────────────
+   El color viene de la familia temática del tag (ver tokens --tag-*), así que
+   dice algo: azul = lugar, terracota = familia, verde = método, ciruela =
+   técnica. La familia se resuelve en JS y llega como data-fam. */
+.tag-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2px; }
+.tag-pill {
+  --c: var(--tag-otro);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 19%, var(--surface));
+  padding: 4px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  line-height: 1.35;
+}
+.tag-pill[data-fam="lugar"]   { --c: var(--tag-lugar); }
+.tag-pill[data-fam="familia"] { --c: var(--tag-familia); }
+.tag-pill[data-fam="metodo"]  { --c: var(--tag-metodo); }
+.tag-pill[data-fam="tec"]     { --c: var(--tag-tec); }
 
 .blog-card-title {
   font-family: 'Hanken Grotesk', sans-serif;

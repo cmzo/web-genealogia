@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-10-nueve-fichas-nuevas-en-el-árbol-y-la-wiki-ramas-queipo-cordero-y-arceo-vázquez",
+    "date": "2026-08-10",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "Nueve fichas nuevas en el árbol y la wiki: ramas Queipo-Cordero y Arceo-Vázquez",
+    "html": "<p>El árbol suma dos hilos de investigación abiertos con material familiar reciente: una rama <strong>Queipo-Cordero</strong> con parientes radicados en Estados Unidos, y una ampliación de la rama <strong>Arceo-Vázquez</strong> (Rosario, Santa Fe) documentada con un acta de nacimiento y dos esquelas de época, que corrigieron varias fechas y lugares que estaban mal o incompletos. El árbol pasó de 125 a 133 personas.</p>\n"
+  },
+  {
+    "id": "2026-08-10-blindaje-de-material-privado-antes-de-publicar",
+    "date": "2026-08-10",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Blindaje de material privado antes de publicar",
+    "html": "<p>Se reforzó la protección de documentos con datos personales y fotos sin permiso de republicación para que nunca terminen subidos al repositorio público por accidente: quedan en una carpeta local excluida del control de versiones, en vez de mezclados con el resto del contenido.</p>\n"
+  },
+  {
     "id": "2026-07-11-cuatro-páginas-nuevas-en-la-wiki-salins-sion-colónsan-josé-y-metodología",
     "date": "2026-07-11",
     "type": "cambio",
@@ -302,21 +318,5 @@
     "tag": "nueva",
     "title": "Una home nueva: índice y bitácora",
     "html": "<p>La portada se rehízo de cero. Arriba, una presentación corta y tres áreas —<strong>blog</strong>, <strong>lab</strong> y <strong>genealogía</strong>— como &quot;directorios&quot;, cada una con una vista previa en vivo (las últimas entradas, los experimentos, el estado del árbol). Abajo, un <strong>log</strong>: un hilo cronológico que mezcla posts, notas cortas y cambios del sitio, filtrable por tipo. La idea es que el sitio se sienta vivo aunque pase tiempo entre un post largo y otro.</p>\n"
-  },
-  {
-    "id": "2026-06-21-notas-sueltas",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Notas sueltas",
-    "html": "<p>Ahora puedo publicar <strong>cosas cortas</strong> —una idea, un enlace, una foto que me llamó la atención— sin escribir un post entero. Aparecen en el log y se abren en un recuadro ahí mismo, sin página aparte; las fotos abren en el visor con zoom.</p>\n"
-  },
-  {
-    "id": "2026-06-21-un-área-para-experimentos-lab",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Un área para experimentos (lab)",
-    "html": "<p>El <strong>laboratorio del grafo</strong> dejó de ser una página suelta: ahora vive en un área propia, <code>lab</code>, pensada para experimentos y cosas técnicas. Sumar una nueva es tirar un archivo y listo.</p>\n"
   }
 ]

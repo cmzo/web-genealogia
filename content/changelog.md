@@ -1,3 +1,13 @@
+### 10 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Nueve fichas nuevas en el árbol y la wiki: ramas Queipo-Cordero y Arceo-Vázquez
+
+El árbol suma dos hilos de investigación abiertos con material familiar reciente: una rama **Queipo-Cordero** con parientes radicados en Estados Unidos, y una ampliación de la rama **Arceo-Vázquez** (Rosario, Santa Fe) documentada con un acta de nacimiento y dos esquelas de época, que corrigieron varias fechas y lugares que estaban mal o incompletos. El árbol pasó de 125 a 133 personas.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Blindaje de material privado antes de publicar
+
+Se reforzó la protección de documentos con datos personales y fotos sin permiso de republicación para que nunca terminen subidos al repositorio público por accidente: quedan en una carpeta local excluida del control de versiones, en vez de mezclados con el resto del contenido.
+
 ### 11 de julio de 2026
 
 #### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Cuatro páginas nuevas en la wiki: Salins, Sion, Colón/San José y Metodología

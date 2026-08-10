@@ -54,6 +54,54 @@
       }
     }
 
+    // Familia temática de cada etiqueta → color de la pastilla. El color dice qué
+    // TIPO de cosa es el tag; los que no están acá caen en el gris cálido neutro.
+    const TAG_FAMILIA = {
+      lugar: ['valais', 'riddes', 'ardon', 'salins', 'sion', 'conthey', 'suiza', 'argentina',
+              'francia', 'santa fe', 'entre rios', 'entre ríos', 'colonia cullen', 'rosario'],
+      familia: ['clemenzo', 'roh', 'roch', 'putallaz', 'queipo', 'arceo', 'francisco', 'stalder'],
+      metodo: ['investigacion', 'investigación', 'genealogia', 'genealogía', 'documentos',
+               'registros', 'archivo', 'censos', 'cronologia', 'cronología', 'fuentes',
+               'gazette du valais', 'uxorilocalidad', 'metodologia', 'metodología'],
+      tec: ['tecnologia', 'tecnología', 'llm', 'ia', 'pkm', 'wiki', 'obsidian', 'zettelkasten',
+            'grafo', 'karpathy', 'okf'],
+    };
+    const FAM_DE = {};
+    for (const [fam, tags] of Object.entries(TAG_FAMILIA)) for (const t of tags) FAM_DE[t] = fam;
+
+    const normalizar = s => (s || '').toString().trim().toLowerCase()
+      .normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+    // Categoría + hasta 2 etiquetas. Se prefieren etiquetas de una familia que la
+    // tarjeta todavía no muestre: casi todos los posts son de «investigación», así que
+    // sin esto las tres pastillas saldrían del mismo color y no dirían nada nuevo.
+    function pastillas(post) {
+      const cat = (post.category || '').trim();
+      const vistos = new Set();
+      const familiasUsadas = new Set();
+      const salida = [];
+      const agregar = etiqueta => {
+        const clave = normalizar(etiqueta);
+        if (!clave || vistos.has(clave) || salida.length >= 3) return;
+        vistos.add(clave);
+        const fam = FAM_DE[clave] || 'otro';
+        familiasUsadas.add(fam);
+        salida.push({ texto: etiqueta.trim(), fam });
+      };
+      if (cat) agregar(cat);
+
+      const tags = (Array.isArray(post.tags) ? post.tags : (post.tags || '').split(','))
+        .map(t => t.trim()).filter(Boolean)
+        .filter(t => !vistos.has(normalizar(t)));
+      const nuevas = tags.filter(t => !familiasUsadas.has(FAM_DE[normalizar(t)] || 'otro'));
+      [...nuevas, ...tags].forEach(agregar);
+
+      return salida.length
+        ? `<div class="tag-pills">${salida.map(p =>
+            `<span class="tag-pill" data-fam="${p.fam}">${p.texto}</span>`).join('')}</div>`
+        : '';
+    }
+
     function renderPosts(posts) {
       const grid = document.getElementById('blogGrid');
       if (!posts.length) {
@@ -69,7 +117,7 @@
         return `
         <a href="${post.url}" class="blog-card">
           <div class="blog-card-content">
-            <div class="blog-card-category">${post.category}</div>
+            ${pastillas(post)}
             <h2 class="blog-card-title">${post.title}</h2>
             <p class="blog-card-desc">${post.description}</p>
             <div class="blog-card-meta"><span>${post.date}</span>${langBadge}</div>
