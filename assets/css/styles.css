@@ -33,6 +33,11 @@
   --tag-metodo:  #2d4a3e;   /* verde botella — investigación, archivo */
   --tag-tec:     #5a4a70;   /* ciruela — tecnología */
   --tag-otro:    #5a5040;   /* el gris cálido de siempre — sin familia */
+
+  /* Anillos generacionales de /gen: degradé del más antiguo (--ring-from) al
+     más nuevo (--ring-to). Los lee gen.html por getComputedStyle e interpola. */
+  --ring-from: #cddfd5;
+  --ring-to:   #2d4a3e;
 }
 
 /* ─── MODO OSCURO · grafito neutro ─────────────────────────────────────────
@@ -55,6 +60,11 @@
   --tag-metodo:  #8fb3a1;
   --tag-tec:     #b3a3d4;
   --tag-otro:    #9a9ea3;
+
+  /* En oscuro el degradé arranca casi al ras del fondo y sube hasta la salvia:
+     así el disco no queda como una mancha luminosa. */
+  --ring-from: #2b3330;
+  --ring-to:   #8fb3a1;
 }
 
 /* Resaltado (==texto==) legible en oscuro */

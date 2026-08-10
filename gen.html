@@ -156,10 +156,24 @@
       const swFor = s => sMax === sMin ? 12 : 5 + (s - sMin) / (sMax - sMin) * 19;
 
       const R0 = 16, R1 = 150;
-      const pale = [205, 222, 213], full = [45, 74, 62]; // #cddfd5 → var(--card-accent-bg)
-      const colorFor = t => {
-        const c = pale.map((v, i) => Math.round(v + t * (full[i] - v)));
-        return `rgb(${c[0]},${c[1]},${c[2]})`;
+      // El degradé sale de los tokens --ring-from/--ring-to, así que sigue al tema.
+      const aRgb = hex => {
+        const h = hex.trim().replace('#', '');
+        return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
+      };
+      const leerTokens = () => {
+        const cs = getComputedStyle(document.documentElement);
+        return [aRgb(cs.getPropertyValue('--ring-from') || '#cddfd5'),
+                aRgb(cs.getPropertyValue('--ring-to')   || '#2d4a3e')];
+      };
+      // Cada anillo guarda su t; repintar es releer los tokens y recorrerlos.
+      const pintarAnillos = () => {
+        const [desde, hasta] = leerTokens();
+        svg.querySelectorAll('.ring').forEach(c => {
+          const t = parseFloat(c.dataset.t);
+          const rgb = desde.map((v, i) => Math.round(v + t * (hasta[i] - v)));
+          c.setAttribute('stroke', `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
+        });
       };
 
       const svg = document.getElementById('genRings');
@@ -180,7 +194,7 @@
         circle.setAttribute('class', 'ring');
         circle.setAttribute('cx', 160); circle.setAttribute('cy', 160);
         circle.setAttribute('r', r.toFixed(1));
-        circle.setAttribute('stroke', colorFor(t));
+        circle.dataset.t = t;
         circle.setAttribute('stroke-width', swFor(sqrts[i]).toFixed(1));
         const n = byGen[g].length;
         circle.addEventListener('mouseenter', () => {
@@ -189,6 +203,11 @@
         circle.addEventListener('mouseleave', () => { wEl.textContent = defaultWho; });
         svg.appendChild(circle);
       });
+
+      pintarAnillos();
+      // El toggle de tema cambia data-theme en <html>: repintar para seguirlo.
+      new MutationObserver(pintarAnillos).observe(document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] });
     }).catch(() => {});
 
     // Tarjeta «el grafo, en vivo»: hubs reales (desde wiki-graph.json)
