@@ -40,31 +40,38 @@
   --ring-to:   #2d4a3e;
 }
 
-/* ─── MODO OSCURO · grafito neutro ─────────────────────────────────────────
-   Neutro a propósito: ni marrón (se probó en 2026-08 y quedaba sepia) ni el
-   azul-pizarra de antes. El acento va en salvia desaturada, no en verde menta:
-   el menta saturado sobre fondo oscuro lee como terminal de hacker. */
+/* ─── MODO OSCURO · grafito neutro, acento hueso ───────────────────────────
+   Fondo neutro a propósito: ni marrón (se probó en 2026-08 y quedaba sepia) ni
+   el azul-pizarra de antes.
+
+   El acento NO tiene color: es un blanco cálido. Cualquier verde sobre fondo
+   oscuro lee como terminal de hacker, y ese era el problema de fondo. Acá el
+   color queda reservado para las familias de etiquetas --tag-*, que es donde
+   significa algo. En modo claro el acento sigue siendo el verde botella. */
 [data-theme="dark"] {
   --bg:        #17181a;
   --surface:   #1e2022;
   --border:    #303336;
   --text:      #e9eaec;
   --muted:     #9a9ea3;
-  --accent:    #8fb3a1;
-  --on-accent: #14201b;
+  --accent:    #ddd8cd;
+  --on-accent: #1a1a18;
   color-scheme: dark;
 
-  /* Mismas familias temáticas, aclaradas para leerse sobre grafito */
+  /* Mismas familias temáticas, aclaradas para leerse sobre grafito. Cada familia
+     conserva su tono en los dos temas: son un sistema categorial propio, no
+     derivados del acento. Por eso «método» sigue siendo verde acá aunque el
+     acento del modo oscuro ya no lo sea (en claro sí coinciden). */
   --tag-lugar:   #8fb3c4;
   --tag-familia: #cf9c80;
   --tag-metodo:  #8fb3a1;
   --tag-tec:     #b3a3d4;
   --tag-otro:    #9a9ea3;
 
-  /* En oscuro el degradé arranca casi al ras del fondo y sube hasta la salvia:
+  /* En oscuro el degradé arranca casi al ras del fondo y sube hasta el hueso:
      así el disco no queda como una mancha luminosa. */
-  --ring-from: #2b3330;
-  --ring-to:   #8fb3a1;
+  --ring-from: #2c2d2b;
+  --ring-to:   #ddd8cd;
 }
 
 /* Resaltado (==texto==) legible en oscuro */
