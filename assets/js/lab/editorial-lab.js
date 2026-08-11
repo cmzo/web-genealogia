@@ -20,6 +20,7 @@ const DEFAULTS = {
   displayFont:{ value: 'Hanken Grotesk', css: '.article-content h2/h3 { font-family }' },
   h2Size:     { value: 42,   css: '.article-content h2 { font-size } (clamp: tope desktop)', unit: 'px' },
   h2Weight:   { value: 700,  css: '.article-content h2 { font-weight }' },
+  h2Case:     { value: 'normal', css: '.article-content h2 { text-transform / font-variant-caps }' },
   h2Top:      { value: 60,   css: '.article-content h2 { margin-top }',        unit: 'px' },
   h3Size:     { value: 28,   css: '.article-content h3 { font-size } (clamp: tope desktop)', unit: 'px' },
   figMargin:  { value: 80,   css: '.article-content figure { margin } (vertical)', unit: 'px' },
@@ -46,8 +47,18 @@ const FONT_STACKS = {
   'Verdana':         "Verdana, Geneva, sans-serif",
   'Trebuchet MS':    "'Trebuchet MS', 'Helvetica Neue', sans-serif",
   'system-ui':       "system-ui, -apple-system, 'Segoe UI', sans-serif",
+  // Candidatas para títulos (fonts-candidatas.css, solo en este lab)
+  'Fraunces':         "'Fraunces', Georgia, serif",
+  'Instrument Serif': "'Instrument Serif', Georgia, serif",
+  'Newsreader':       "'Newsreader', Georgia, serif",
+  'Bodoni Moda':      "'Bodoni Moda', 'Didot', Georgia, serif",
+  'Young Serif':      "'Young Serif', Georgia, serif",
 };
 const SITE_FONTS = ['Source Serif 4', 'IBM Plex Sans', 'IBM Plex Mono', 'Inter', 'Hanken Grotesk', 'JetBrains Mono'];
+// Descargadas y self-hosted, pero todavía NO en fonts.css: son opciones a evaluar.
+const CANDIDATE_FONTS = ['Fraunces', 'Instrument Serif', 'Newsreader', 'Bodoni Moda', 'Young Serif'];
+// Peso propio de cada candidata: son display serif, no llegan a 800 como Hanken.
+const CANDIDATE_WEIGHT = { 'Fraunces': 700, 'Instrument Serif': 400, 'Newsreader': 600, 'Bodoni Moda': 700, 'Young Serif': 400 };
 const FONTS_BODY = [
   { group: 'Del sitio (self-hosted)', items: ['Source Serif 4', 'IBM Plex Sans', 'Inter', 'Hanken Grotesk', 'IBM Plex Mono'] },
   { group: 'Serif del sistema', items: ['Georgia', 'Palatino', 'Charter', 'Baskerville', 'Iowan Old Style', 'Times New Roman'] },
@@ -55,6 +66,7 @@ const FONTS_BODY = [
 ];
 const FONTS_DISPLAY = [
   { group: 'Del sitio (self-hosted)', items: ['Hanken Grotesk', 'Source Serif 4', 'IBM Plex Sans', 'IBM Plex Mono'] },
+  { group: 'Candidatas (a evaluar)', items: CANDIDATE_FONTS },
   { group: 'Serif del sistema', items: ['Georgia', 'Palatino', 'Charter', 'Baskerville', 'Times New Roman'] },
   { group: 'Sans del sistema', items: ['Helvetica Neue', 'Verdana', 'Trebuchet MS', 'system-ui'] },
 ];
@@ -69,6 +81,8 @@ const CONTROLS = [
   { key: 'displayFont',label: 'Familia de títulos', type: 'select', options: FONTS_DISPLAY, group: 'títulos' },
   { key: 'h2Size',     label: 'Tamaño h2', min: 24, max: 52, step: 1, group: 'títulos' },
   { key: 'h2Weight',   label: 'Peso h2', min: 500, max: 800, step: 100, group: 'títulos' },
+  { key: 'h2Case',     label: 'Caja del h2', type: 'select', group: 'títulos',
+    options: [{ group: 'Caja', items: ['normal', 'versalitas', 'MAYÚSCULAS'] }] },
   { key: 'h2Top',      label: 'Aire sobre h2', min: 24, max: 96, step: 4, group: 'títulos' },
   { key: 'h3Size',     label: 'Tamaño h3', min: 18, max: 36, step: 1, group: 'títulos' },
   { key: 'figMargin',  label: 'Margen de figuras', min: 16, max: 80, step: 4, group: 'figuras' },
@@ -130,6 +144,16 @@ function apply() {
   s.setProperty('--ed-display-font', FONT_STACKS[state.displayFont] || state.displayFont);
   s.setProperty('--ed-h2-size', state.h2Size + 'px');
   s.setProperty('--ed-h2-weight', state.h2Weight);
+  // Versalitas y mayúsculas necesitan aire: el tracking negativo del h2 normal
+  // las apelmaza. Se abre a positivo, como se compone en tipografía de verdad.
+  const caja = {
+    'normal':     { transform: 'none',      caps: 'normal',     track: '-0.02em' },
+    'versalitas': { transform: 'lowercase', caps: 'small-caps', track: '0.04em' },
+    'MAYÚSCULAS': { transform: 'uppercase', caps: 'normal',     track: '0.06em' },
+  }[state.h2Case] || { transform: 'none', caps: 'normal', track: '-0.02em' };
+  s.setProperty('--ed-h2-transform', caja.transform);
+  s.setProperty('--ed-h2-caps', caja.caps);
+  s.setProperty('--ed-h2-tracking', caja.track);
   s.setProperty('--ed-h2-top', state.h2Top + 'px');
   s.setProperty('--ed-h3-size', state.h3Size + 'px');
   s.setProperty('--ed-fig-my', state.figMargin + 'px');
@@ -157,12 +181,21 @@ function updateRecipe() {
       return `  ${d.css}:  ${d.value}${u}  →  ${state[k]}${u}`;
     });
 
-  // Nota si alguna fuente elegida es del sistema (va como font-stack, sin self-hosting)
-  const sysFonts = [state.bodyFont, state.displayFont].filter(f => !SITE_FONTS.includes(f));
-  const sysNote = sysFonts.length
-    ? `\n\nNota: ${[...new Set(sysFonts)].join(' y ')} ${sysFonts.length > 1 ? 'son fuentes' : 'es fuente'} del sistema —
-se aplica como font-stack CSS (${[...new Set(sysFonts)].map(f => FONT_STACKS[f]).join(' · ')}), sin self-hosting.`
-    : '';
+  // Nota según de dónde sale cada fuente elegida: del sitio (nada que hacer),
+  // candidata (ya descargada, falta moverla a fonts.css) o del sistema (font-stack).
+  const elegidas = [...new Set([state.bodyFont, state.displayFont])];
+  const candidatas = elegidas.filter(f => CANDIDATE_FONTS.includes(f));
+  const sysFonts = elegidas.filter(f => !SITE_FONTS.includes(f) && !CANDIDATE_FONTS.includes(f));
+  let sysNote = '';
+  if (candidatas.length) {
+    sysNote += `\n\nPara adoptar: ${candidatas.join(' y ')} ya ${candidatas.length > 1 ? 'están descargadas' : 'está descargada'} en assets/fonts/,
+pero ${candidatas.length > 1 ? 'sus @font-face viven' : 'su @font-face vive'} en fonts-candidatas.css, que solo carga este lab.
+Hay que mover ${candidatas.length > 1 ? 'esos bloques' : 'ese bloque'} a fonts.css para usarla${candidatas.length > 1 ? 's' : ''} en el sitio.`;
+  }
+  if (sysFonts.length) {
+    sysNote += `\n\nNota: ${sysFonts.join(' y ')} ${sysFonts.length > 1 ? 'son fuentes' : 'es fuente'} del sistema —
+se aplica como font-stack CSS (${sysFonts.map(f => FONT_STACKS[f]).join(' · ')}), sin self-hosting.`;
+  }
 
   const el = document.getElementById('edRecipe');
   el.textContent = changes.length
@@ -213,6 +246,14 @@ function buildControls() {
       else {
         state[c.key] = parseFloat(input.value);
         document.getElementById('out_' + c.key).textContent = input.value;
+      }
+      // Las candidatas se descargaron con un solo peso; si el h2 queda pedido en
+      // otro, el navegador lo sintetiza y se ve como falsa negrita — el lab
+      // mostraría una fuente peor de lo que es. Se ajusta al peso que existe.
+      if (c.key === 'displayFont' && CANDIDATE_WEIGHT[state.displayFont]) {
+        state.h2Weight = CANDIDATE_WEIGHT[state.displayFont];
+        const w = document.getElementById('ctl_h2Weight');
+        if (w) { w.value = state.h2Weight; document.getElementById('out_h2Weight').textContent = state.h2Weight; }
       }
       apply();
     });

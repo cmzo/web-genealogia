@@ -498,7 +498,12 @@
   font-family: var(--ed-display-font, 'Hanken Grotesk', sans-serif);
   font-size: var(--ed-h2-size, 42px);
   font-weight: var(--ed-h2-weight, 700);
-  line-height: 1.2; letter-spacing: -0.02em; color: var(--text);
+  line-height: 1.2; color: var(--text);
+  /* Caja tipográfica del h2: normal / versalitas / mayúsculas. En mayúsculas y
+     versalitas el tracking negativo aprieta demasiado, por eso va como variable. */
+  text-transform: var(--ed-h2-transform, none);
+  font-variant-caps: var(--ed-h2-caps, normal);
+  letter-spacing: var(--ed-h2-tracking, -0.02em);
 }
 .ed-spec h2:first-child { margin-top: 0; }
 .ed-spec h3 {
