@@ -506,6 +506,53 @@
             </div>
           </div>
 
+          <div class="ds-sub">Pastillas de área (home)</div>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:0 0 20px;">Añadidas en 2026-08 con el rediseño de las tarjetas de <strong style="color:var(--text);">01 Áreas</strong>. Fórmula tomada de User Interviews: <strong style="color:var(--text);">fondo pastel saturado + tinta casi negra</strong> (<code class="td-mono">--pill-ink</code>), no el tono del color sobre un fondo lavado — que es lo que hacen las pastillas de etiqueta del blog. Son los <strong style="color:var(--text);">mismos valores en claro y oscuro</strong>: funcionan como chips luminosos sobre el grafito. El mismo color, mezclado al 55% con blanco, tiñe la portada de la tarjeta.</p>
+          <div class="palette-grid">
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--pill-escritura);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--pill-escritura</div>
+                <div class="palette-use">Damasco · área Blog</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--pill-experim);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--pill-experim</div>
+                <div class="palette-use">Lavanda · área Lab</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--pill-investig);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--pill-investig</div>
+                <div class="palette-use">Menta · área Genealogía</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--pill-archivo);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--pill-archivo</div>
+                <div class="palette-use">Amarillo pálido · tarjeta Fuentes (/gen)</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--pill-ink);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--pill-ink</div>
+                <div class="palette-use">Tinta de todas las pastillas</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 8px;">
+            <span class="cmzo-pill cmzo-pill--escritura">escritura</span>
+            <span class="cmzo-pill cmzo-pill--experim">experimentos</span>
+            <span class="cmzo-pill cmzo-pill--investig">investigación</span>
+            <span class="cmzo-pill cmzo-pill--archivo">archivo</span>
+          </div>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:14px 0 0;">Misma paleta para la pastilla (<code class="td-mono">.cmzo-pill</code>) y la tarjeta de color sólido (<code class="td-mono">.cmzo-gcard</code>, más abajo): <strong style="color:var(--text);">escritura → blog, experim → lab, investig → genealogía (color por defecto), archivo → fuentes</strong>.</p>
+
           <div class="ds-sub">Referencia completa (ambos modos)</div>
 
           <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
@@ -601,7 +648,43 @@
         <section class="ds-section" id="tipografia">
           <p class="ds-eyebrow">02</p>
           <h2 class="ds-section-heading">Tipografía</h2>
-          <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Todas las fuentes son <strong style="color:var(--text);">self-hosted</strong> en <code class="td-mono">assets/fonts/*.woff2</code> (subsets latin + latin-ext). Cargadas vía <code class="td-mono">assets/css/fonts.css</code>, importado al inicio de <code class="td-mono">styles.css</code>. Sin dependencia de Google Fonts.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin:0 0 36px;line-height:1.6;">Desde 2026-08 el sitio es <strong style="color:var(--text);">enteramente serif</strong>: Fraunces en los títulos, Source Serif 4 en todo lo demás, y monoespaciada solo dentro de bloques de código. Los tokens <code class="td-mono">--sans</code> y <code class="td-mono">--mono</code> quedaron como alias de Source Serif 4 para no reescribir las ~150 reglas que los usaban. Todas las fuentes son <strong style="color:var(--text);">self-hosted</strong> en <code class="td-mono">assets/fonts/*.woff2</code> (subsets latin + latin-ext). Cargadas vía <code class="td-mono">assets/css/fonts.css</code>, importado al inicio de <code class="td-mono">styles.css</code>. Sin dependencia de Google Fonts.</p>
+
+          <!-- Fraunces -->
+          <div class="type-block">
+            <div class="type-meta">
+              <span class="type-family">Fraunces</span>
+              <span class="type-chip">serif display</span>
+              <span class="type-chip">500 600 700 800</span>
+              <span class="type-chip">latin · latin-ext</span>
+              <span class="type-chip">desde 2026-08</span>
+            </div>
+            <div class="type-weights">
+              <div class="type-row">
+                <span class="type-weight-label">700 · h2 en versalitas</span>
+                <span style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:700;text-transform:lowercase;font-variant-caps:small-caps;letter-spacing:0.04em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+              </div>
+              <div class="type-row">
+                <span class="type-weight-label">800 · Display</span>
+                <span style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:800;letter-spacing:-0.01em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+              </div>
+              <div class="type-row">
+                <span class="type-weight-label">700 · Title</span>
+                <span style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:700;letter-spacing:-0.01em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+              </div>
+              <div class="type-row">
+                <span class="type-weight-label">600 · Heading</span>
+                <span style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:600;letter-spacing:-0.01em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+              </div>
+              <div class="type-row">
+                <span class="type-weight-label">500 · Medium</span>
+                <span style="font-family:'Fraunces',Georgia,serif;font-size:32px;font-weight:500;letter-spacing:-0.01em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+              </div>
+            </div>
+            <p class="type-use">Uso: <strong style="color:var(--text);">toda la tipografía de títulos del sitio</strong> — variable <code class="td-mono">--display</code>, definida en <code class="td-mono">:root</code> de <code class="td-mono">styles.css</code> (no en <code class="td-mono">home.css</code>, porque las páginas de la wiki no lo cargan). Reemplazó a Hanken Grotesk en 2026-08.<br><br>
+            <strong style="color:var(--text);">Versalitas en los h2 de sección</strong> (<code class="td-mono">.article-content h2</code>, <code class="td-mono">.wiki-page-content h2</code>, <code class="td-mono">.cmzo-mod-head h2</code>): <code class="td-mono">text-transform: lowercase</code> + <code class="td-mono">font-variant-caps: small-caps</code> + <code class="td-mono">letter-spacing: 0.04em</code>. El tracking abre a positivo porque el −0.02em de los títulos normales apelmaza las versalitas. El tope del clamp del h2 de artículo sube a 51px: las versalitas ocupan menos alto y el título se veía chico.<br><br>
+            <strong style="color:var(--text);">No llevan versalitas</strong> los títulos de tarjeta ni los h1 de página: en textos largos las versalitas destruyen la silueta de la palabra y cuesta escanearlos.</p>
+          </div>
 
           <!-- Hanken Grotesk -->
           <div class="type-block">
@@ -609,33 +692,22 @@
               <span class="type-family">Hanken Grotesk</span>
               <span class="type-chip">sans-serif</span>
               <span class="type-chip">500 600 700 800</span>
-              <span class="type-chip">latin · latin-ext</span>
+              <span class="type-chip" style="opacity:.7;">retirada de uso</span>
             </div>
             <div class="type-weights">
               <div class="type-row">
-                <span class="type-weight-label">800 · Display</span>
-                <span style="font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
-              </div>
-              <div class="type-row">
                 <span class="type-weight-label">700 · Title</span>
-                <span style="font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
-              </div>
-              <div class="type-row">
-                <span class="type-weight-label">600 · Heading</span>
-                <span style="font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:600;letter-spacing:-0.02em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
-              </div>
-              <div class="type-row">
-                <span class="type-weight-label">500 · Medium</span>
-                <span style="font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:500;letter-spacing:-0.02em;line-height:1.1;color:var(--text);">La familia Clemenzo</span>
+                <span style="font-family:'Hanken Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--muted);">La familia Clemenzo</span>
               </div>
             </div>
-            <p class="type-use">Uso: títulos de artículo (h1, h2, h3), títulos del blog, home/dashboard section labels grandes, variable <code class="td-mono">--display</code>. Letter-spacing: −0.02em en tamaños display.</p>
+            <p class="type-use">Era la fuente de títulos hasta 2026-08. Sigue self-hosted y queda como <em>fallback</em> de <code class="td-mono">--display</code>, pero ninguna regla la pide directamente.</p>
           </div>
 
           <!-- IBM Plex Mono -->
           <div class="type-block">
             <div class="type-meta">
-              <span class="type-family">IBM Plex Mono</span>
+              <span class="type-family" style="opacity:.65;">IBM Plex Mono</span>
+              <span class="type-chip" style="opacity:.7;">retirada 2026-08</span>
               <span class="type-chip">monospace</span>
               <span class="type-chip">400 500 600</span>
               <span class="type-chip">latin · latin-ext</span>
@@ -660,7 +732,8 @@
           <!-- IBM Plex Sans -->
           <div class="type-block">
             <div class="type-meta">
-              <span class="type-family">IBM Plex Sans</span>
+              <span class="type-family" style="opacity:.65;">IBM Plex Sans</span>
+              <span class="type-chip" style="opacity:.7;">retirada 2026-08</span>
               <span class="type-chip">sans-serif</span>
               <span class="type-chip">400 500 600</span>
               <span class="type-chip">latin · latin-ext</span>
@@ -710,7 +783,8 @@
           <!-- Inter -->
           <div class="type-block">
             <div class="type-meta">
-              <span class="type-family">Inter</span>
+              <span class="type-family" style="opacity:.65;">Inter</span>
+              <span class="type-chip" style="opacity:.7;">retirada 2026-08</span>
               <span class="type-chip">sans-serif</span>
               <span class="type-chip">400 500 600 700</span>
               <span class="type-chip">latin · latin-ext</span>
@@ -751,7 +825,7 @@
               </div>
               <div class="type-row">
                 <span class="type-weight-label">400 · Regular</span>
-                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:400;line-height:1.6;color:var(--muted);">font-family: 'Hanken Grotesk', sans-serif;</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:400;line-height:1.6;color:var(--muted);">font-family: var(--display);  /* Fraunces */</span>
               </div>
             </div>
             <p class="type-use">Uso: bloques de código pre/code (13px / 1.6), código inline (0.88em), nombres de tokens en esta página, tabla de personas (primera columna).</p>
@@ -765,8 +839,8 @@
                 <tr><th>Clase / Contexto</th><th>Fuente</th><th>Tamaño</th><th>Peso</th><th>Line-height</th></tr>
               </thead>
               <tbody>
-                <tr><td>.article-title</td><td class="td-mono">Hanken Grotesk</td><td class="td-mono">clamp(34–60px)</td><td class="td-mono">700</td><td class="td-mono">1.05</td></tr>
-                <tr><td>.article-content h2</td><td class="td-mono">Hanken Grotesk</td><td class="td-mono">clamp(30–42px)</td><td class="td-mono">700</td><td class="td-mono">1.2</td></tr>
+                <tr><td>.article-title</td><td class="td-mono">Fraunces</td><td class="td-mono">clamp(34–60px)</td><td class="td-mono">700</td><td class="td-mono">1.05</td></tr>
+                <tr><td>.article-content h2</td><td class="td-mono">Fraunces · versalitas</td><td class="td-mono">clamp(36–51px)</td><td class="td-mono">700</td><td class="td-mono">1.2</td></tr>
                 <tr><td>.article-content h3</td><td class="td-mono">Hanken Grotesk</td><td class="td-mono">clamp(22–28px)</td><td class="td-mono">600</td><td class="td-mono">1.3</td></tr>
                 <tr><td>.nav-brand</td><td class="td-mono">Source Serif 4</td><td class="td-mono">28px</td><td class="td-mono">700</td><td class="td-mono">—</td></tr>
                 <tr><td>.article-content p / ul / ol</td><td class="td-mono">Source Serif 4</td><td class="td-mono">19.5px</td><td class="td-mono">400</td><td class="td-mono">1.75</td></tr>
@@ -975,23 +1049,40 @@
             <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Labels en IBM Plex Mono mayúsculas, inputs sobre fondo cálido (<code class="td-mono">--bg</code>), foco en accent. Pie <code class="td-mono">.cmzo-form-foot</code> con hint mono + botón. (La página real de Colaborar conserva su propio markup/lógica; esta es la piel compartida.)</p>
           </div>
 
-          <!-- Área de la home -->
+          <!-- Tarjeta de color sólido -->
           <div class="comp-block">
-            <p class="comp-label">Área de la home (.cmzo-area · panel con peek)</p>
-            <div class="cmzo-area cmzo-viz" style="max-width:300px;">
-              <div class="cmzo-viz-head"><span>tree.render</span><span>cmzo / gen</span></div>
-              <div class="cmzo-area-body">
-                <div class="cmzo-area-route">~/gen — árbol genealógico</div>
-                <div class="cmzo-areastats">
-                  <div class="cmzo-areastat"><div class="v">173</div><div class="k">Personas</div></div>
-                  <div class="cmzo-areastat"><div class="v">6</div><div class="k">Generaciones</div></div>
-                  <div class="cmzo-areastat"><div class="v">37</div><div class="k">Lugares</div></div>
-                  <div class="cmzo-areastat"><div class="v">128</div><div class="k">Fechas docs.</div></div>
-                </div>
-                <a class="cmzo-btn" style="pointer-events:none;"><span>Explorá la genealogía</span><span>→</span></a>
+            <p class="comp-label">Tarjeta de color sólido (.cmzo-gcard)</p>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+              <div style="max-width:300px;">
+                <a class="cmzo-gcard" href="#" onclick="return false;">
+                  <div class="cmzo-gcard-top">
+                    <div class="cmzo-gcard-cluster">
+                      <span class="cmzo-gcard-badge">+130</span>
+                      <span class="cmzo-gcard-av">B</span><span class="cmzo-gcard-av">F</span><span class="cmzo-gcard-av">F</span>
+                    </div>
+                    <span class="cmzo-gcard-act" aria-hidden="true">→</span>
+                  </div>
+                  <h3>El árbol</h3>
+                  <p>Seis generaciones enlazadas desde Ardon, en el Valais suizo, hasta Entre Ríos.</p>
+                  <div class="cmzo-gcard-ind">133 personas <span>/ 9 generaciones</span></div>
+                  <div class="cmzo-gcard-bar"><i style="width:65%"></i></div>
+                </a>
+              </div>
+              <div style="max-width:300px;">
+                <a class="cmzo-gcard cmzo-gcard--archivo" href="#" onclick="return false;">
+                  <div class="cmzo-gcard-top">
+                    <div class="cmzo-gcard-cluster"><span class="cmzo-gcard-badge">34</span></div>
+                    <span class="cmzo-gcard-act" aria-hidden="true">→</span>
+                  </div>
+                  <h3>Fuentes</h3>
+                  <p>Los archivos e instituciones de donde sale todo, con enlaces cuando existen.</p>
+                  <div class="cmzo-gcard-ind">34 archivos <span>/ 15 suizos</span></div>
+                  <div class="cmzo-gcard-bar"><i style="width:44%"></i></div>
+                </a>
               </div>
             </div>
-            <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:8px 0 0;font-style:italic;">Sección 01 de la home: 3 paneles-directorio (<code class="td-mono">.cmzo-areas</code>, grilla) blog/lab/gen, cada uno un <code class="td-mono">.cmzo-viz</code> con peek en vivo (últimas entradas / lista del lab / stats del árbol) y botón al pie.</p>
+            <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:12px 0 0;">Componente de tarjeta general del sitio (grilla <code class="td-mono">.cmzo-gcards</code>, 3 por fila): lo usan <code class="td-mono">/gen</code> (árbol · wiki · fuentes · colaborar), la home (01 Áreas: blog · lab · genealogía) y <code class="td-mono">/lab</code> (los tres laboratorios). <strong style="color:var(--text);">La tarjeta entera es el pastel</strong>: sin borde ni portada. Los colores salen de los mismos <code class="td-mono">--pill-*</code>, por familia (<code class="td-mono">--escritura/--experim/--archivo</code>, e <code class="td-mono">investig</code> por defecto) y <strong style="color:var(--text);">no cambian con el tema</strong> — son objetos de papel y la tinta casi negra necesita fondo claro.<br><br>
+            El <strong style="color:var(--text);">racimo de círculos</strong> solo se usa donde hay individuos que nombrar (iniciales de la línea directa, hubs del grafo): con dos caracteres el solape los corta, así que va de a una letra; si no hay individuos, el badge va solo (Fuentes, Colaborar, y las tres del lab). El badge es <strong style="color:var(--text);">pastilla y no círculo</strong> para que crezca solo con textos como «+130». La <strong style="color:var(--text);">barra solo aparece si hay una proporción real</strong> que mostrar — no todas la llevan.</p>
           </div>
 
           <!-- log / bitácora -->
@@ -1102,7 +1193,7 @@
 
           <!-- Estadísticas (CMZO) -->
           <div class="comp-block">
-            <p class="comp-label">Estadísticas · CMZO (.cmzo-stats / .cmzo-areastats)</p>
+            <p class="comp-label">Estadísticas · CMZO (.cmzo-stats)</p>
             <div class="ds-row" style="gap:24px;flex-wrap:wrap;align-items:flex-start;">
               <div class="ds-box ds-box--surface" style="flex:1;min-width:280px;">
                 <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 14px;">.cmzo-stats — dashboard /gen (sin cajas, separadores finos)</p>
@@ -1111,15 +1202,6 @@
                   <div class="home-stat"><div class="home-stat-num">128</div><div class="home-stat-label">Fechas documentadas</div></div>
                   <div class="home-stat"><div class="home-stat-num">37</div><div class="home-stat-label">Lugares</div></div>
                   <div class="home-stat"><div class="home-stat-num">6</div><div class="home-stat-label">Generaciones</div></div>
-                </div>
-              </div>
-              <div class="ds-box ds-box--surface" style="min-width:240px;">
-                <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin:0 0 14px;">.cmzo-areastats — panel del área /gen (mini)</p>
-                <div class="cmzo-areastats">
-                  <div class="cmzo-areastat"><div class="v">173</div><div class="k">Personas</div></div>
-                  <div class="cmzo-areastat"><div class="v">6</div><div class="k">Generaciones</div></div>
-                  <div class="cmzo-areastat"><div class="v">37</div><div class="k">Lugares</div></div>
-                  <div class="cmzo-areastat"><div class="v">128</div><div class="k">Fechas docs.</div></div>
                 </div>
               </div>
             </div>

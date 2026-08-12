@@ -33,87 +33,11 @@
 
     <section class="cmzo-mod">
       <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.3" fill="currentColor" fill-opacity="0.12"/><circle cx="15" cy="8" r="3.3" fill="currentColor" fill-opacity="0.12"/><circle cx="12" cy="5.2" r="3.3" fill="currentColor" fill-opacity="0.12"/><path d="M12 10.5v10.5M9.5 21h5"/></svg></span><div class="cmzo-mod-title"><h2>El árbol genealógico</h2><svg class="cmzo-rub" viewBox="0 0 664 78" aria-hidden="true"><use href="#cmzo-rubrica"/></svg></div></div>
-        <p class="cmzo-body">Seis generaciones enlazadas desde Ardon (Valais) hasta Entre Ríos, con fechas, lugares y fuentes para cada persona documentada. Un recorrido navegable por la familia.</p>
-        <div class="cmzo-rings-wrap">
-          <svg class="cmzo-rings" viewBox="0 0 320 320" id="genRings" role="img" aria-label="Generaciones de la familia, en anillos"></svg>
-          <div class="cmzo-rings-caption">
-            <div class="cmzo-rings-eyebrow">cronología familiar · Ardon 1750 → hoy</div>
-            <div class="cmzo-rings-stats" id="genRingsStats"></div>
-            <p class="cmzo-rings-who" id="genRingsWho">Cargando…</p>
-            <div class="cmzo-rings-hint">pasá el mouse por un anillo →</div>
-          </div>
-        </div>
-        <div class="cmzo-links" style="margin-top: 22px;"><a href="arbol.html" class="cmzo-btn"><span>Explorá el árbol interactivo</span><span>→</span></a></div>
+        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.3" fill="currentColor" fill-opacity="0.12"/><circle cx="15" cy="8" r="3.3" fill="currentColor" fill-opacity="0.12"/><circle cx="12" cy="5.2" r="3.3" fill="currentColor" fill-opacity="0.12"/><path d="M12 10.5v10.5M9.5 21h5"/></svg></span><div class="cmzo-mod-title"><h2>El archivo</h2><svg class="cmzo-rub" viewBox="0 0 664 78" aria-hidden="true"><use href="#cmzo-rubrica"/></svg></div></div>
+        <div class="cmzo-gcards" id="genCards"></div>
       </div>
     </section>
 
-    <section class="cmzo-mod">
-      <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M9.5 10.5 6.3 7.3M14.5 10.5l3.2-3.2M9.5 13.5l-3.2 3.2M14.5 13.5l3.2 3.2"/></svg></span><div class="cmzo-mod-title"><h2>La wiki</h2><svg class="cmzo-rub" viewBox="0 0 664 78" aria-hidden="true"><use href="#cmzo-rubrica"/></svg></div></div>
-        <div class="cmzo-two">
-          <div>
-            <p class="cmzo-body">Un grafo navegable que conecta personas, lugares y fuentes. Cada nodo abre su ficha con relaciones y enlaces, y la investigación de cada persona se lee ahí mismo.</p>
-            <div class="cmzo-links">
-              <a href="wiki.html" class="cmzo-btn"><span>Explorá la wiki</span><span>→</span></a>
-              <a href="lab.html" class="cmzo-btn cmzo-btn--ghost"><span>Laboratorio</span><span>→</span></a>
-            </div>
-          </div>
-          <article class="cmzo-solid cmzo-solid--paper">
-            <svg class="cmzo-solid-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M9.5 10.5 6.3 7.3M14.5 10.5l3.2-3.2M9.5 13.5l-3.2 3.2M14.5 13.5l3.2 3.2"/></svg>
-            <div>
-              <p class="cmzo-solid-head">El grafo, en vivo</p>
-              <p class="cmzo-solid-body">Quiénes y qué conectan más hoy:</p>
-            </div>
-            <div class="cmzo-solid-foot">
-              <div id="genHubRows" class="cmzo-solid-rows"></div>
-              <div class="cmzo-meter-track"><div id="genContentFill" class="cmzo-meter-fill" style="width:0%"></div></div>
-              <div id="genContentLabel" class="cmzo-meter-label"></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cmzo-mod">
-      <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8 4.5 4h15L21 8"/><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M9.5 12.5h5"/></svg></span><div class="cmzo-mod-title"><h2>Fuentes</h2><svg class="cmzo-rub" viewBox="0 0 664 78" aria-hidden="true"><use href="#cmzo-rubrica"/></svg></div></div>
-        <div class="cmzo-two">
-          <div>
-            <p class="cmzo-body">Los archivos e instituciones de donde sale todo: censos del Valais (1802–1880), actas de Entre Ríos, prensa histórica como la <em>Gazette du Valais</em>, registros militares. Con enlaces cuando existen.</p>
-            <div class="cmzo-links"><a href="fuentes.html" class="cmzo-btn"><span>Ver las fuentes</span><span>→</span></a></div>
-          </div>
-          <div class="cmzo-viz">
-            <div class="cmzo-viz-head"><span>sources.index</span><span>04 archivos</span></div>
-            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">▤</span><span class="nm"><span class="t">Censos del Valais</span><span class="s">archives de l'État · VS</span></span><span class="meta">1802–1880</span></a>
-            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">▤</span><span class="nm"><span class="t">Actas civiles de Entre Ríos</span><span class="s">registro civil · AR</span></span><span class="meta">1888–1930</span></a>
-            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">❏</span><span class="nm"><span class="t">Gazette du Valais</span><span class="s">prensa histórica</span></span><span class="meta lk">enlace →</span></a>
-            <a class="cmzo-srcrow" href="fuentes.html"><span class="ic">✦</span><span class="nm"><span class="t">Registros militares</span><span class="s">contingente federal · VS</span></span><span class="meta">s. XIX</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cmzo-mod">
-      <div class="cmzo-mod-inner">
-        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></span><div class="cmzo-mod-title"><h2>Colaborar</h2><svg class="cmzo-rub" viewBox="0 0 664 78" aria-hidden="true"><use href="#cmzo-rubrica"/></svg></div></div>
-        <div class="cmzo-two">
-          <div>
-            <p class="cmzo-body">¿Te suena un apellido, un pueblo o una foto? ¿Encontraste un error? Buena parte de lo que hay acá empezó con un dato que alguien se tomó el trabajo de mandar.</p>
-            <div class="cmzo-links"><a href="colaborar.html" class="cmzo-btn"><span>Escribir</span><span>→</span></a></div>
-          </div>
-          <form class="cmzo-viz" onsubmit="location.href='colaborar.html';return false;">
-            <div class="cmzo-viz-head"><span>contribute.form</span><span class="ok"><span class="dot"></span>abierto</span></div>
-            <div class="cmzo-form">
-              <div class="cmzo-field"><label for="cf-nombre">nombre</label><input id="cf-nombre" type="text" placeholder="Tu nombre" tabindex="-1"></div>
-              <div class="cmzo-field"><label for="cf-aporte">aporte</label><input id="cf-aporte" type="text" placeholder="apellido · pueblo · foto · corrección" tabindex="-1"></div>
-              <div class="cmzo-field"><label for="cf-msg">mensaje</label><textarea id="cf-msg" placeholder="Contame qué encontraste" tabindex="-1"></textarea></div>
-              <div class="cmzo-form-foot"><span class="cmzo-hint">se revisa antes de publicar</span><button class="cmzo-btn" type="submit">enviar <span>→</span></button></div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="cmzo-foot">
@@ -124,116 +48,95 @@
   </footer>
 
   <script>
-    // Anillos generacionales (desde arbol.json): un anillo por generación real,
-    // grosor = población de esa generación, color pálido→pleno de patriarca a hoy.
-    fetch('./assets/data/arbol.json').then(r => r.json()).then(data => {
-      const arr = data.personas || [];
-      const byId = Object.fromEntries(arr.map(p => [p.id, p]));
-      const byGen = {};
-      let dates = 0, places = new Set(), gmin = Infinity, gmax = -Infinity;
-      arr.forEach(p => {
-        if (p.birth_date) dates++;
-        [p.birth_place, p.death_place].forEach(pl => { const v = (pl || '').trim().toLowerCase(); if (v) places.add(v); });
-        const g = p.generation;
-        if (typeof g === 'number') {
-          if (g < gmin) gmin = g; if (g > gmax) gmax = g;
-          (byGen[g] = byGen[g] || []).push(p);
-        }
-      });
-      if (!isFinite(gmin)) return;
+    // Las cuatro tarjetas del archivo. Las cifras salen de los datos reales; la
+    // barra solo aparece donde hay una proporción que exista de verdad (el campo
+    // `estado` de las fuentes está vacío en 33 de 34, así que no se inventa una).
+    (function () {
+      const D = './assets/data/';
+      const pedir = f => fetch(D + f).then(r => r.ok ? r.json() : null).catch(() => null);
+      const esc = t => (t || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-      // Representante de cada generación: preferí la línea directa del dueño del sitio
-      const LINEA_DIRECTA = ['p93', 'p57', 'p36', 'p26', 'p18', 'p10', 'p7', 'p3', 'p1'];
-      const directaByGen = {};
-      LINEA_DIRECTA.forEach(id => { const p = byId[id]; if (p && typeof p.generation === 'number') directaByGen[p.generation] = p; });
+      function tarjeta(o) {
+        const avs = (o.avs || []).map(a => `<span class="cmzo-gcard-av">${esc(a)}</span>`).join('');
+        const barra = o.bar != null ? `<div class="cmzo-gcard-bar"><i style="width:${o.bar}%"></i></div>` : '';
+        return `<a class="cmzo-gcard ${o.cls || ''}" href="${o.href}">
+          <div class="cmzo-gcard-top">
+            <div class="cmzo-gcard-cluster"><span class="cmzo-gcard-badge">${esc(o.badge)}</span>${avs}</div>
+            <span class="cmzo-gcard-act" aria-hidden="true">→</span>
+          </div>
+          <h3>${esc(o.titulo)}</h3>
+          <p>${esc(o.texto)}</p>
+          <div class="cmzo-gcard-ind">${o.ind}</div>${barra}
+        </a>`;
+      }
 
-      const gens = []; // de más vieja (gmax) a más nueva (gmin) — anillo interior → exterior
-      for (let g = gmax; g >= gmin; g--) if (byGen[g]) gens.push(g);
+      Promise.all([pedir('arbol.json'), pedir('wiki-graph.json'), pedir('fuentes.json')])
+        .then(([arbol, grafo, fuentes]) => {
+          const cont = document.getElementById('genCards');
+          if (!cont) return;
+          const tarjetas = [];
 
-      const counts = gens.map(g => byGen[g].length);
-      const sqrts = counts.map(Math.sqrt);
-      const sMin = Math.min(...sqrts), sMax = Math.max(...sqrts);
-      const swFor = s => sMax === sMin ? 12 : 5 + (s - sMin) / (sMax - sMin) * 19;
+          // ── El árbol ──────────────────────────────────────────────────────
+          const gente = (arbol && arbol.personas) || [];
+          if (gente.length) {
+            const porId = Object.fromEntries(gente.map(p => [p.id, p]));
+            const gens = new Set(gente.map(p => p.generation).filter(g => typeof g === 'number'));
+            const conNacimiento = gente.filter(p => p.birth_date).length;
+            const pct = Math.round(100 * conNacimiento / gente.length);
+            // Iniciales de la línea directa: son personas concretas, no adorno
+            const linea = ['p93', 'p36', 'p26'].map(id => porId[id]).filter(Boolean);
+            tarjetas.push(tarjeta({
+              href: 'arbol.html', badge: '+' + (gente.length - linea.length),
+              avs: linea.map(p => p.name.trim()[0]),
+              titulo: 'El árbol', texto: 'Seis generaciones enlazadas desde Ardon, en el Valais suizo, hasta Entre Ríos, con fechas, lugares y fuentes.',
+              ind: `${gente.length} personas <span>/ ${gens.size} generaciones</span>`, bar: pct,
+            }));
+          }
 
-      const R0 = 16, R1 = 150;
-      // El degradé sale de los tokens --ring-from/--ring-to, así que sigue al tema.
-      const aRgb = hex => {
-        const h = hex.trim().replace('#', '');
-        return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16));
-      };
-      const leerTokens = () => {
-        const cs = getComputedStyle(document.documentElement);
-        return [aRgb(cs.getPropertyValue('--ring-from') || '#cddfd5'),
-                aRgb(cs.getPropertyValue('--ring-to')   || '#2d4a3e')];
-      };
-      // Cada anillo guarda su t; repintar es releer los tokens y recorrerlos.
-      const pintarAnillos = () => {
-        const [desde, hasta] = leerTokens();
-        svg.querySelectorAll('.ring').forEach(c => {
-          const t = parseFloat(c.dataset.t);
-          const rgb = desde.map((v, i) => Math.round(v + t * (hasta[i] - v)));
-          c.setAttribute('stroke', `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`);
+          // ── La wiki ───────────────────────────────────────────────────────
+          if (grafo && grafo.nodes) {
+            const nodos = grafo.nodes.filter(n => n.type !== 'tag');
+            const conTexto = nodos.filter(n => n.hasContent).length;
+            const grado = {};
+            (grafo.edges || []).forEach(e => {
+              if (e.rel === 'tag') return;
+              grado[e.source] = (grado[e.source] || 0) + 1;
+              grado[e.target] = (grado[e.target] || 0) + 1;
+            });
+            const porId = Object.fromEntries(nodos.map(n => [n.id, n]));
+            const top = Object.entries(grado).filter(([id]) => porId[id])
+              .sort((a, b) => b[1] - a[1]).slice(0, 3).map(([id]) => porId[id].title);
+            tarjetas.push(tarjeta({
+              cls: 'cmzo-gcard--experim', href: 'wiki.html', badge: '+' + (nodos.length - top.length),
+              avs: top.map(t => t.trim()[0]),
+              titulo: 'La wiki', texto: 'Un grafo navegable que conecta personas, lugares y fuentes. Cada nodo abre su ficha y su investigación.',
+              ind: `${nodos.length} nodos <span>/ ${conTexto} documentados</span>`,
+              bar: Math.round(100 * conTexto / nodos.length),
+            }));
+          }
+
+          // ── Fuentes ───────────────────────────────────────────────────────
+          if (fuentes && fuentes.length) {
+            const suizas = fuentes.filter(f => (f.region || '').includes('Suiza')).length;
+            tarjetas.push(tarjeta({
+              cls: 'cmzo-gcard--archivo', href: 'fuentes.html', badge: String(fuentes.length),
+              titulo: 'Fuentes', texto: 'Los archivos e instituciones de donde sale todo, con enlaces cuando existen.',
+              ind: `${fuentes.length} archivos <span>/ ${suizas} suizos</span>`,
+              bar: Math.round(100 * suizas / fuentes.length),
+            }));
+          }
+
+          // ── Colaborar ─────────────────────────────────────────────────────
+          // Sin barra: no hay ninguna proporción real que medir acá.
+          tarjetas.push(tarjeta({
+            cls: 'cmzo-gcard--escritura', href: 'colaborar.html', badge: '✉',
+            titulo: 'Colaborar', texto: '¿Te suena un apellido, un pueblo o una foto? Mucho de lo que hay acá empezó con un dato que alguien mandó.',
+            ind: 'Abierto <span>/ se revisa a mano</span>',
+          }));
+
+          cont.innerHTML = tarjetas.join('');
         });
-      };
-
-      const svg = document.getElementById('genRings');
-      const wEl = document.getElementById('genRingsWho');
-      const personaMasVieja = byGen[gmax][0];
-      const defaultWho = `${personaMasVieja.birth_place || 'Ardon'}, ${personaMasVieja.birth_date || '1750'} — hoy. Un solo linaje sin cortes.`;
-      wEl.textContent = defaultWho;
-
-      const statsData = [[arr.length, 'personas'], [places.size, 'lugares'], [gens.length, 'generaciones']];
-      document.getElementById('genRingsStats').innerHTML = statsData.map(([n, l]) =>
-        `<div class="stat"><span class="n">${n}</span><span class="l">${l}</span></div>`).join('');
-
-      gens.forEach((g, i) => {
-        const t = gens.length > 1 ? i / (gens.length - 1) : 1;
-        const r = gens.length > 1 ? R0 + t * (R1 - R0) : R0;
-        const persona = directaByGen[g] || byGen[g][0];
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('class', 'ring');
-        circle.setAttribute('cx', 160); circle.setAttribute('cy', 160);
-        circle.setAttribute('r', r.toFixed(1));
-        circle.dataset.t = t;
-        circle.setAttribute('stroke-width', swFor(sqrts[i]).toFixed(1));
-        const n = byGen[g].length;
-        circle.addEventListener('mouseenter', () => {
-          wEl.textContent = `Generación ${g} · ${n} ${n === 1 ? 'persona' : 'personas'} — ${persona.name}${byGen[g].length > 1 ? ', entre otros' : ''}${persona.birth_date ? ' · ' + persona.birth_date : ''}${persona.birth_place ? ' · ' + persona.birth_place : ''}`;
-        });
-        circle.addEventListener('mouseleave', () => { wEl.textContent = defaultWho; });
-        svg.appendChild(circle);
-      });
-
-      pintarAnillos();
-      // El toggle de tema cambia data-theme en <html>: repintar para seguirlo.
-      new MutationObserver(pintarAnillos).observe(document.documentElement,
-        { attributes: true, attributeFilter: ['data-theme'] });
-    }).catch(() => {});
-
-    // Tarjeta «el grafo, en vivo»: hubs reales (desde wiki-graph.json)
-    fetch('./assets/data/wiki-graph.json').then(r => r.json()).then(data => {
-      const nodes = data.nodes || [], edges = data.edges || [];
-      const degree = {};
-      edges.forEach(e => {
-        if (e.rel === 'tag') return; // los tags no se dibujan en el grafo visual
-        degree[e.source] = (degree[e.source] || 0) + 1;
-        degree[e.target] = (degree[e.target] || 0) + 1;
-      });
-      const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
-      const top = Object.entries(degree)
-        .filter(([id]) => byId[id] && byId[id].type !== 'tag')
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3);
-      const rows = document.getElementById('genHubRows');
-      if (rows) rows.innerHTML = top.map(([id, n]) =>
-        `<a class="cmzo-solid-row" href="wiki.html?focus=${id}"><span class="n">${byId[id].title}</span><span class="c">${n}</span></a>`).join('');
-
-      const contentable = nodes.filter(n => n.type !== 'tag');
-      const withContent = contentable.filter(n => n.hasContent).length;
-      const pct = contentable.length ? Math.round(100 * withContent / contentable.length) : 0;
-      const fill = document.getElementById('genContentFill'); if (fill) fill.style.width = pct + '%';
-      const label = document.getElementById('genContentLabel'); if (label) label.textContent = `${pct}% de las páginas ya tienen investigación escrita`;
-    }).catch(() => {});
+    })();
   </script>
   <script src="./assets/js/path-config.js"></script>
   <script src="./assets/js/nav.js" defer></script>

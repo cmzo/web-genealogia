@@ -32,56 +32,7 @@
     <section class="cmzo-mod">
       <div class="cmzo-mod-inner">
         <div class="cmzo-mod-head"><span class="cmzo-mod-num">01</span><h2>Áreas</h2><span class="rule"></span><span class="cmzo-mod-meta">3 directorios</span></div>
-        <div class="cmzo-areas">
-
-          <!-- /blog -->
-          <article class="cmzo-viz cmzo-area">
-            <div class="cmzo-viz-head"><span>blog/latest</span><span>cmzo / blog</span></div>
-            <div class="cmzo-area-body">
-              <div class="cmzo-area-route">~/blog — últimas entradas</div>
-              <div id="homeBlogList" class="cmzo-area-list"></div>
-              <a href="blog.html" class="cmzo-btn"><span>Ver el blog</span><span>→</span></a>
-            </div>
-          </article>
-
-          <!-- /lab -->
-          <article class="cmzo-viz cmzo-area">
-            <div class="cmzo-viz-head"><span>graph.lab</span><span>cmzo / lab</span></div>
-            <div class="cmzo-area-body">
-              <div class="cmzo-area-route">~/lab — experimentos</div>
-              <div class="cmzo-area-viz">
-                <svg viewBox="0 0 140 108" role="img" aria-label="Grafo de la wiki (esquema)">
-                  <line class="act" x1="70" y1="54" x2="108" y2="54"/><line class="act" x1="70" y1="54" x2="89" y2="21"/><line class="act" x1="70" y1="54" x2="51" y2="21"/><line class="act" x1="70" y1="54" x2="32" y2="54"/><line class="act" x1="70" y1="54" x2="51" y2="87"/><line class="act" x1="70" y1="54" x2="89" y2="87"/>
-                  <line x1="108" y1="54" x2="89" y2="21"/><line x1="89" y1="21" x2="51" y2="21"/><line x1="51" y1="21" x2="32" y2="54"/><line x1="32" y1="54" x2="51" y2="87"/><line x1="51" y1="87" x2="89" y2="87"/><line x1="89" y1="87" x2="108" y2="54"/>
-                  <circle class="hl" cx="70" cy="54" r="6"/>
-                  <circle cx="108" cy="54" r="4"/><circle cx="89" cy="21" r="4"/><circle cx="51" cy="21" r="4"/><circle cx="32" cy="54" r="4"/><circle cx="51" cy="87" r="4"/><circle cx="89" cy="87" r="4"/>
-                </svg>
-              </div>
-              <div id="homeLabList" class="cmzo-area-list"></div>
-              <a href="lab-grafo.html" class="cmzo-btn"><span>Abrí el laboratorio</span><span>→</span></a>
-            </div>
-          </article>
-
-          <!-- /gen -->
-          <article class="cmzo-viz cmzo-area">
-            <div class="cmzo-viz-head"><span>tree.render</span><span>cmzo / gen</span></div>
-            <div class="cmzo-area-body">
-              <div class="cmzo-area-route">~/gen — árbol genealógico</div>
-              <div class="cmzo-area-viz">
-                <svg viewBox="0 0 280 96" role="img" aria-label="Árbol genealógico (esquema)">
-                  <line class="act" x1="140" y1="14" x2="64" y2="50"/><line x1="140" y1="14" x2="140" y2="50"/><line x1="140" y1="14" x2="216" y2="50"/>
-                  <line x1="64" y1="50" x2="36" y2="84"/><line x1="64" y1="50" x2="92" y2="84"/><line x1="216" y1="50" x2="188" y2="84"/><line x1="216" y1="50" x2="244" y2="84"/>
-                  <circle class="hl" cx="140" cy="14" r="6"/>
-                  <circle cx="64" cy="50" r="5"/><circle cx="140" cy="50" r="5"/><circle cx="216" cy="50" r="5"/>
-                  <circle cx="36" cy="84" r="4"/><circle cx="92" cy="84" r="4"/><circle cx="188" cy="84" r="4"/><circle cx="244" cy="84" r="4"/>
-                </svg>
-              </div>
-              <div id="homeGenStats" class="cmzo-areastats"></div>
-              <a href="gen.html" class="cmzo-btn"><span>Explorá la genealogía</span><span>→</span></a>
-            </div>
-          </article>
-
-        </div>
+        <div class="cmzo-gcards" id="areaCards"></div>
       </div>
     </section>
 
@@ -125,31 +76,66 @@
       const fetchJSON = f => fetch(D + f).then(r => r.ok ? r.json() : null).catch(() => null);
       const esc = s => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-      // ── Áreas: peeks ──────────────────────────────────────────────────────
-      function renderBlogPeek(posts) {
-        const el = document.getElementById('homeBlogList');
-        if (!posts || !posts.length) { el.innerHTML = '<p class="cmzo-area-route">Sin entradas aún.</p>'; return; }
-        el.innerHTML = posts.slice(0, 3).map(p =>
-          `<a class="cmzo-line" href="${p.url}"><span class="m">${p.date || ''} · ${esc(p.category || '')}</span><span class="t">${esc(p.title)}</span></a>`).join('');
+      // ── Áreas: tarjetas de color sólido (.cmzo-gcard, mismo componente que
+      // /gen y /lab). Las cifras salen de los datos reales; la barra solo
+      // aparece donde hay una proporción real que mostrar.
+      function tarjeta(o) {
+        const avs = (o.avs || []).map(a => `<span class="cmzo-gcard-av">${esc(a)}</span>`).join('');
+        const barra = o.bar != null ? `<div class="cmzo-gcard-bar"><i style="width:${o.bar}%"></i></div>` : '';
+        return `<a class="cmzo-gcard ${o.cls || ''}" href="${o.href}">
+          <div class="cmzo-gcard-top">
+            <div class="cmzo-gcard-cluster"><span class="cmzo-gcard-badge">${esc(o.badge)}</span>${avs}</div>
+            <span class="cmzo-gcard-act" aria-hidden="true">→</span>
+          </div>
+          <h3>${esc(o.titulo)}</h3>
+          <p>${esc(o.texto)}</p>
+          <div class="cmzo-gcard-ind">${o.ind}</div>${barra}
+        </a>`;
       }
-      function renderLabPeek(lab) {
-        const el = document.getElementById('homeLabList');
-        if (!lab || !lab.length) { el.innerHTML = '<p class="cmzo-area-route">Sin experimentos aún.</p>'; return; }
-        el.innerHTML = lab.slice(0, 3).map(l =>
-          `<a class="cmzo-line" href="${l.url}"><span class="m">${l.kind === 'tool' ? 'herramienta' : 'writeup'}</span><span class="t">${esc(l.title)}</span></a>`).join('');
-      }
-      function renderGenStats(arbol) {
-        const el = document.getElementById('homeGenStats');
-        if (!arbol) { el.innerHTML = ''; return; }
-        const arr = arbol.personas || [];
-        let dates = 0; const places = new Set(); let gmin = Infinity, gmax = -Infinity;
-        arr.forEach(p => {
-          if (p.birth_date) dates++; if (p.death_date) dates++;
-          [p.birth_place, p.death_place].forEach(pl => { const v = (pl || '').trim().toLowerCase(); if (v) places.add(v); });
-          const g = p.generation; if (typeof g === 'number') { if (g < gmin) gmin = g; if (g > gmax) gmax = g; }
-        });
-        const stats = [['Personas', arr.length], ['Generaciones', isFinite(gmin) ? (gmax - gmin + 1) : 0], ['Lugares', places.size], ['Fechas docs.', dates]];
-        el.innerHTML = stats.map(([k, v]) => `<div class="cmzo-areastat"><div class="v">${v}</div><div class="k">${k}</div></div>`).join('');
+
+      function renderAreas(blog, lab, arbol) {
+        const cont = document.getElementById('areaCards');
+        if (!cont) return;
+        const tarjetas = [];
+
+        // ── Blog ──────────────────────────────────────────────────────────
+        if (blog && blog.length) {
+          const conFr = blog.filter(p => (p.langs || []).length > 1).length;
+          tarjetas.push(tarjeta({
+            cls: 'cmzo-gcard--escritura', href: 'blog.html', badge: String(blog.length),
+            titulo: 'Blog', texto: 'Investigaciones largas, hallazgos de archivo y algún apunte sobre método. Varias entradas están también en francés.',
+            ind: `${blog.length} entradas <span>/ ${conFr} en francés</span>`,
+            bar: Math.round(100 * conFr / blog.length),
+          }));
+        }
+
+        // ── Lab ───────────────────────────────────────────────────────────
+        if (lab && lab.length) {
+          tarjetas.push(tarjeta({
+            cls: 'cmzo-gcard--experim', href: 'lab.html', badge: String(lab.length),
+            titulo: 'Lab', texto: 'Herramientas que construyo para mí y quedan públicas: la física del grafo, fractales por L-system y una maqueta viva de la tipografía.',
+            ind: `${lab.length} herramientas <span>/ todas en vivo</span>`,
+          }));
+        }
+
+        // ── Genealogía ────────────────────────────────────────────────────
+        const gente = (arbol && arbol.personas) || [];
+        if (gente.length) {
+          const porId = Object.fromEntries(gente.map(p => [p.id, p]));
+          const gens = new Set(gente.map(p => p.generation).filter(g => typeof g === 'number'));
+          const conNacimiento = gente.filter(p => p.birth_date).length;
+          // Iniciales de la línea directa: son personas concretas, no adorno
+          const linea = ['p93', 'p36', 'p26'].map(id => porId[id]).filter(Boolean);
+          tarjetas.push(tarjeta({
+            href: 'gen.html', badge: '+' + (gente.length - linea.length),
+            avs: linea.map(p => p.name.trim()[0]),
+            titulo: 'Genealogía', texto: 'Seis años siguiendo a los Clemenzo desde Ardon, en el Valais suizo, hasta Entre Ríos. Árbol, wiki y fuentes.',
+            ind: `${gente.length} personas <span>/ ${gens.size} generaciones</span>`,
+            bar: Math.round(100 * conNacimiento / gente.length),
+          }));
+        }
+
+        cont.innerHTML = tarjetas.join('');
       }
 
       // ── Bitácora: stream unificado ────────────────────────────────────────
@@ -175,7 +161,7 @@
             ? `<a class="cmzo-s-item" href="#" data-modal="${idx}">${inner}</a>`
             : `<a class="cmzo-s-item" href="${it.url}">${inner}</a>`;
         });
-        document.getElementById('stream').innerHTML = html || '<p class="cmzo-area-route">Nada por acá todavía.</p>';
+        document.getElementById('stream').innerHTML = html || '<p class="cmzo-stream-note">Nada por acá todavía.</p>';
         const more = document.getElementById('streamMore');
         const rest = matches.length - SHOWN;
         if (rest > 0) { more.hidden = false; more.textContent = `ver más · ${rest} más`; } else { more.hidden = true; }
@@ -225,7 +211,7 @@
         fetchJSON('blog-entries.json'), fetchJSON('lab-entries.json'),
         fetchJSON('notas.json'), fetchJSON('changelog-entries.json'), fetchJSON('arbol.json'),
       ]).then(([blog, lab, notas, cambios, arbol]) => {
-        renderBlogPeek(blog); renderLabPeek(lab); renderGenStats(arbol);
+        renderAreas(blog, lab, arbol);
         buildStream(blog, lab, notas, cambios);
         // Apertura directa de una nota por URL (?nota=<id>), p. ej. desde ⌘K en otra página
         const wantNota = new URLSearchParams(location.search).get('nota');

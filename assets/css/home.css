@@ -5,12 +5,8 @@
    Títulos: Hanken Grotesk (la de siempre). Sin grilla de fondo.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* Variables en body para que header y footer (fuera de .cmzo) también las hereden */
-body {
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --sans: 'IBM Plex Sans', system-ui, sans-serif;
-  --display: 'Hanken Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
-}
+/* --display, --sans y --mono se definen en :root de styles.css (los necesitan
+   también las páginas de la wiki, que no cargan este archivo). */
 .cmzo { font-family: var(--sans); }
 .cmzo-wrap { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
 /* Páginas de contenido (blog, fuentes, colaborar, cambios): aire vertical bajo el nav.
@@ -142,11 +138,15 @@ a.cmzo-seg:hover { color: var(--accent); }
    alto constante, como un subrayado hecho a mano. */
 .cmzo-mod-title { display: inline-flex; flex-direction: column; align-items: stretch; }
 .cmzo-rub { display: block; width: 290px; max-width: 100%; height: auto; color: var(--accent); opacity: .85; margin-top: 2px; }
-.cmzo-mod-head h2 { font-family: var(--display); font-weight: 800; font-size: 28px; margin: 0; letter-spacing: -0.01em; color: var(--text); }
-body[data-section="gen"] .cmzo-mod-head h2 { font-size: 40px; letter-spacing: -0.02em; }
+/* Títulos de sección: mismo rol que el h2 de un post, así que llevan el mismo
+   tratamiento — Fraunces en versalitas con tracking abierto. */
+.cmzo-mod-head h2 {
+  font-family: var(--display); font-weight: 700; font-size: 30px; margin: 0; color: var(--text);
+  text-transform: lowercase; font-variant-caps: small-caps; letter-spacing: 0.04em;
+}
+body[data-section="gen"] .cmzo-mod-head h2 { font-size: 48px; }
 .cmzo-mod-head .rule { flex: 1; height: 1px; background: var(--border); }
 
-.cmzo-two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
 .cmzo-body { font-family: var(--sans); color: var(--muted); font-size: 15.5px; line-height: 1.6; margin: 0 0 18px; }
 .cmzo-links { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -180,61 +180,6 @@ body[data-section="gen"] .cmzo-mod-head h2 { font-size: 40px; letter-spacing: -0
 .cmzo-viz circle.hl { fill: var(--accent); stroke: var(--accent); }
 .cmzo-viz text { font-family: var(--mono); font-size: 8.5px; fill: var(--muted); }
 
-/* ── Tarjeta de color sólido («de papel») ─────────────────────────────────────
-   Para paneles con carácter propio (peeks del árbol/grafo en gen.html). A
-   diferencia de .cmzo-viz, no lleva borde ni cabecera mono — el color entero
-   es la superficie. Mismo valor en claro/oscuro (ver tokens --card-*): es un
-   objeto físico, no una superficie de UI que reacciona al tema. */
-.cmzo-solid {
-  border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 16px;
-  min-height: 210px;
-}
-.cmzo-solid--paper  { background: var(--card-paper-bg);  color: var(--card-paper-fg); }
-/* No se estira con la columna vecina — mantiene su alto natural (ver .cmzo-two) */
-.cmzo-solid { align-self: start; }
-.cmzo-solid-icon { width: 30px; height: 30px; }
-.cmzo-solid--paper  .cmzo-solid-icon { color: var(--card-paper-accent); }
-.cmzo-solid-head { font-family: var(--display); font-weight: 800; font-size: 20px; line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
-.cmzo-solid-body { font-family: var(--sans); font-size: 13px; line-height: 1.55; margin: 0; opacity: 0.86; }
-.cmzo-solid-foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
-
-/* ── Anillos generacionales (sección 01, árbol) ───────────────────────────────
-   Un anillo por generación, como se lee un árbol de verdad: el grosor es la
-   población real de esa generación, el color va de pálido (patriarca, 1750) a
-   pleno (hoy). Sin caja, sin grilla de números — el dato vive en la forma. */
-.cmzo-rings-wrap { display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; margin-top: 28px; }
-.cmzo-rings { width: 280px; height: 280px; flex-shrink: 0; }
-.cmzo-rings .ring { fill: none; cursor: pointer; transition: opacity 260ms ease, stroke-width 260ms cubic-bezier(0.175,0.885,0.32,1.275); }
-.cmzo-rings:hover .ring { opacity: 0.4; }
-.cmzo-rings .ring:hover { opacity: 1 !important; }
-.cmzo-rings-caption { max-width: 420px; flex: 1 1 340px; }
-.cmzo-rings-eyebrow {
-  display: inline-block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em;
-  color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface));
-  padding: 5px 10px; border-radius: 6px; margin-bottom: 14px;
-}
-.cmzo-rings-stats { display: flex; gap: 34px; margin: 4px 0 18px; }
-.cmzo-rings-stats .stat { display: flex; flex-direction: column; gap: 4px; }
-.cmzo-rings-stats .n { font-family: 'Source Serif 4', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
-.cmzo-rings-stats .l { font-family: var(--mono); font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-.cmzo-rings-who { font-family: var(--sans); font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; min-height: 44px; }
-.cmzo-rings-hint { font-family: var(--mono); font-size: 11px; color: var(--muted); opacity: 0.6; margin-top: 16px; }
-@media (max-width: 640px) { .cmzo-rings-wrap { gap: 24px; } .cmzo-rings { width: 220px; height: 220px; } }
-@media (prefers-reduced-motion: reduce) { .cmzo-rings .ring { transition: none; } }
-
-/* Filas rankeadas (hubs del grafo) — mismo espíritu que .cmzo-srcrow pero
-   sobre superficie de color en vez de fondo neutro. */
-.cmzo-solid-rows { display: flex; flex-direction: column; gap: 2px; }
-.cmzo-solid-row { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; padding: 3px 0; }
-.cmzo-solid-row .n { font-family: var(--sans); font-size: 13px; flex: 1; }
-.cmzo-solid-row .c { font-family: var(--mono); font-size: 11px; opacity: 0.72; }
-.cmzo-solid-row:hover .n { text-decoration: underline; }
-
-.cmzo-meter-track { width: 100%; height: 5px; border-radius: 3px; overflow: hidden; }
-.cmzo-solid--paper  .cmzo-meter-track { background: rgba(45,74,62,0.14); }
-.cmzo-meter-fill { height: 100%; border-radius: 3px; }
-.cmzo-solid--paper  .cmzo-meter-fill { background: var(--card-paper-accent); }
-.cmzo-meter-label { font-family: var(--mono); font-size: 10.5px; opacity: 0.75; }
 
 /* ── Stats (sección árbol) — los pinta el JS como .home-stat ──────────────── */
 /* Stats sin cajas: grilla 2×2 separada por líneas finas, números grandes y mucho aire.
@@ -322,27 +267,16 @@ body[data-section="gen"] .cmzo-mod-head h2 { font-size: 40px; letter-spacing: -0
 /* Meta a la derecha del encabezado de sección (ej. «3 directorios») */
 .cmzo-mod-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); flex-shrink: 0; }
 
-/* 01 — Áreas: tres paneles-directorio en grilla */
-.cmzo-areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
-.cmzo-area { height: 100%; }
-.cmzo-area-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-.cmzo-area-route { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
-.cmzo-area .cmzo-btn { margin-top: auto; align-self: flex-start; }   /* botón siempre al pie */
-.cmzo-area-viz { display: flex; align-items: center; justify-content: center; padding: 4px 0; }
-.cmzo-area-viz svg { width: 100%; height: auto; max-height: 104px; }
-
-/* Filas de peek (últimas entradas / experimentos) */
-.cmzo-area-list { display: flex; flex-direction: column; }
-.cmzo-line { display: flex; flex-direction: column; gap: 2px; padding: 9px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; }
-.cmzo-line:last-child { border-bottom: 0; }
-.cmzo-line .m { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.02em; }
-.cmzo-line .t { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.35; }
-.cmzo-line:hover .t { color: var(--accent); }
-
-/* Mini-stats del área gen */
-.cmzo-areastats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
-.cmzo-areastat .v { font-family: var(--mono); font-size: 22px; font-weight: 500; line-height: 1; color: var(--text); }
-.cmzo-areastat .k { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+/* Pastilla: fondo pastel + tinta casi negra, igual en ambos temas */
+.cmzo-pill {
+  align-self: flex-start; font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px;
+  color: var(--pill-ink);
+}
+.cmzo-pill--escritura { background: var(--pill-escritura); }
+.cmzo-pill--experim   { background: var(--pill-experim); }
+.cmzo-pill--investig  { background: var(--pill-investig); }
+.cmzo-pill--archivo   { background: var(--pill-archivo); }
 
 /* 02 — Bitácora */
 .cmzo-stream-note { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 0 0 14px; }
@@ -396,7 +330,6 @@ body[data-section="gen"] .cmzo-mod-head h2 { font-size: 40px; letter-spacing: -0
 
 @media (max-width: 760px) {
   .cmzo-wrap, .cmzo-top-inner, .cmzo-foot-inner { padding-left: 22px; padding-right: 22px; }
-  .cmzo-two, .cmzo-cards, .cmzo-areas { grid-template-columns: 1fr; }
   .cmzo-mainnav { display: none; }   /* en mobile, el menú vive en el drawer (nav-drawer.js) */
   .cmzo-s-item { grid-template-columns: 56px 1fr; grid-template-areas: "date title" "type title"; gap: 4px 12px; row-gap: 2px; }
   .cmzo-s-item .cmzo-s-date { grid-area: date; }
@@ -404,3 +337,70 @@ body[data-section="gen"] .cmzo-mod-head h2 { font-size: 40px; letter-spacing: -0
   .cmzo-s-item .cmzo-s-title { grid-area: title; }
   .cmzo-s-item .cmzo-s-cat { display: none; }
 }
+
+/* ── Tarjeta de color sólido ──────────────────────────────────────────────────
+   Rediseño 2026-08 a partir de una referencia de Uiverse. A diferencia de
+   .cmzo-area (superficie blanca + portada teñida), acá la tarjeta ENTERA es el
+   color: sin borde, sin portada. Racimo de círculos arriba, aire grande antes
+   del título y del pie, e indicador + barra al cierre. Es el componente de
+   tarjeta general del sitio: lo usan /gen, la home (01 Áreas) y /lab.
+   Los pasteles son los mismos --pill-* y no cambian con el tema: son objetos
+   de papel, y la tinta casi negra necesita fondo claro para leerse. Los
+   modificadores de color son por familia (igual que .cmzo-pill), no por
+   destino, para poder reusar la misma paleta en cualquier página. */
+.cmzo-gcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.cmzo-gcard {
+  --c:  var(--pill-investig);
+  --c2: color-mix(in srgb, var(--c) 45%, #fff);
+  background: var(--c); color: var(--pill-ink);
+  border-radius: 22px; padding: 30px 28px;
+  display: flex; flex-direction: column;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.cmzo-gcard:hover { transform: translateY(-3px); box-shadow: 0 10px 26px -12px rgba(30,26,20,.45); }
+.cmzo-gcard--escritura { --c: var(--pill-escritura); }
+.cmzo-gcard--experim   { --c: var(--pill-experim); }
+.cmzo-gcard--archivo   { --c: var(--pill-archivo); }
+
+.cmzo-gcard-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cmzo-gcard-cluster { display: flex; align-items: center; }
+/* Pastilla, no círculo: crece sola cuando el texto es largo («+130») */
+.cmzo-gcard-badge {
+  min-width: 42px; height: 42px; padding: 0 12px; border-radius: 100px; flex-shrink: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pill-ink); color: var(--c);
+  font-family: var(--sans); font-weight: 600; font-size: 13.5px;
+}
+/* El racimo superpuesto solo se usa donde hay individuos que nombrar; con dos
+   caracteres el solape los corta, así que las iniciales van de a una letra. */
+.cmzo-gcard-av {
+  width: 42px; height: 42px; border-radius: 50%; margin-left: -13px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c2); border: 2px solid var(--c);
+  font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: -0.02em;
+}
+.cmzo-gcard-av:nth-of-type(1) { z-index: 2; }
+.cmzo-gcard-av:nth-of-type(2) { z-index: 1; }
+.cmzo-gcard-av:nth-of-type(3) { z-index: 0; }
+.cmzo-gcard-act {
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c2); font-size: 17px;
+}
+.cmzo-gcard h3 {
+  font-family: var(--display); font-weight: 800; font-size: 26px; line-height: 1.15;
+  letter-spacing: -0.01em; margin: 48px 0 0;
+}
+.cmzo-gcard p {
+  font-family: var(--sans); font-size: 15.5px; line-height: 1.55; margin: 14px 0 0; opacity: .78;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.cmzo-gcard-ind { font-family: var(--sans); font-size: 14px; font-weight: 600; margin-top: auto; padding-top: 40px; }
+.cmzo-gcard-ind span { opacity: .6; font-weight: 400; }
+.cmzo-gcard-bar { height: 4px; border-radius: 100px; background: rgba(38,34,32,.18); margin-top: 10px; overflow: hidden; }
+.cmzo-gcard-bar i { display: block; height: 100%; border-radius: 100px; background: var(--pill-ink); }
+
+@media (max-width: 1000px) { .cmzo-gcards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .cmzo-gcards { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .cmzo-gcard { transition: none; } }

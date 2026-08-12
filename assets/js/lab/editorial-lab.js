@@ -17,10 +17,10 @@ const DEFAULTS = {
   bodySize:   { value: 19.5, css: '.article-content p { font-size }',          unit: 'px' },
   lineHeight: { value: 1.75, css: '.article-content p { line-height }' },
   pSpace:     { value: 26,   css: '.article-content p { margin-bottom }',      unit: 'px' },
-  displayFont:{ value: 'Hanken Grotesk', css: '.article-content h2/h3 { font-family }' },
-  h2Size:     { value: 42,   css: '.article-content h2 { font-size } (clamp: tope desktop)', unit: 'px' },
+  displayFont:{ value: 'Fraunces', css: '.article-content h2/h3 { font-family }' },
+  h2Size:     { value: 51,   css: '.article-content h2 { font-size } (clamp: tope desktop)', unit: 'px' },
   h2Weight:   { value: 700,  css: '.article-content h2 { font-weight }' },
-  h2Case:     { value: 'normal', css: '.article-content h2 { text-transform / font-variant-caps }' },
+  h2Case:     { value: 'versalitas', css: '.article-content h2 { text-transform / font-variant-caps }' },
   h2Top:      { value: 60,   css: '.article-content h2 { margin-top }',        unit: 'px' },
   h3Size:     { value: 28,   css: '.article-content h3 { font-size } (clamp: tope desktop)', unit: 'px' },
   figMargin:  { value: 80,   css: '.article-content figure { margin } (vertical)', unit: 'px' },
@@ -54,18 +54,18 @@ const FONT_STACKS = {
   'Bodoni Moda':      "'Bodoni Moda', 'Didot', Georgia, serif",
   'Young Serif':      "'Young Serif', Georgia, serif",
 };
-const SITE_FONTS = ['Source Serif 4', 'IBM Plex Sans', 'IBM Plex Mono', 'Inter', 'Hanken Grotesk', 'JetBrains Mono'];
+const SITE_FONTS = ['Source Serif 4', 'Fraunces', 'IBM Plex Sans', 'IBM Plex Mono', 'Inter', 'Hanken Grotesk', 'JetBrains Mono'];
 // Descargadas y self-hosted, pero todavía NO en fonts.css: son opciones a evaluar.
-const CANDIDATE_FONTS = ['Fraunces', 'Instrument Serif', 'Newsreader', 'Bodoni Moda', 'Young Serif'];
+const CANDIDATE_FONTS = ['Instrument Serif', 'Newsreader', 'Bodoni Moda', 'Young Serif'];
 // Peso propio de cada candidata: son display serif, no llegan a 800 como Hanken.
-const CANDIDATE_WEIGHT = { 'Fraunces': 700, 'Instrument Serif': 400, 'Newsreader': 600, 'Bodoni Moda': 700, 'Young Serif': 400 };
+const CANDIDATE_WEIGHT = { 'Instrument Serif': 400, 'Newsreader': 600, 'Bodoni Moda': 700, 'Young Serif': 400 };
 const FONTS_BODY = [
   { group: 'Del sitio (self-hosted)', items: ['Source Serif 4', 'IBM Plex Sans', 'Inter', 'Hanken Grotesk', 'IBM Plex Mono'] },
   { group: 'Serif del sistema', items: ['Georgia', 'Palatino', 'Charter', 'Baskerville', 'Iowan Old Style', 'Times New Roman'] },
   { group: 'Sans del sistema', items: ['Helvetica Neue', 'Verdana', 'Trebuchet MS', 'system-ui'] },
 ];
 const FONTS_DISPLAY = [
-  { group: 'Del sitio (self-hosted)', items: ['Hanken Grotesk', 'Source Serif 4', 'IBM Plex Sans', 'IBM Plex Mono'] },
+  { group: 'Del sitio (self-hosted)', items: ['Fraunces', 'Source Serif 4', 'Hanken Grotesk', 'IBM Plex Sans', 'IBM Plex Mono'] },
   { group: 'Candidatas (a evaluar)', items: CANDIDATE_FONTS },
   { group: 'Serif del sistema', items: ['Georgia', 'Palatino', 'Charter', 'Baskerville', 'Times New Roman'] },
   { group: 'Sans del sistema', items: ['Helvetica Neue', 'Verdana', 'Trebuchet MS', 'system-ui'] },

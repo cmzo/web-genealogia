@@ -18,7 +18,7 @@
 }
 
 .tree-toolbar-hint {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 12px;
     color: var(--muted);
     display: inline-flex;
@@ -47,7 +47,7 @@
     padding: 5px 10px;
     border: 1px solid var(--border);
     border-radius: 3px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     background: var(--bg);
@@ -96,7 +96,7 @@
 
 .search-suggestion-item {
     padding: 7px 12px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     cursor: pointer;
@@ -180,7 +180,7 @@
 }
 
 .tree-info-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -210,13 +210,13 @@
 }
 
 .tree-info-row span {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 12.5px;
     color: var(--text);
 }
 
 .tree-info-foot {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 11.5px;
     line-height: 1.5;
     color: var(--muted);
@@ -236,7 +236,7 @@
     border: 1px solid var(--border);
     border-radius: 3px;
     font-size: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-weight: 400;
     color: var(--muted);
     cursor: pointer;
@@ -380,7 +380,7 @@
     color: var(--surface);
     border: none;
     border-radius: 3px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.01em;
@@ -430,7 +430,7 @@
 }
 
 .panel-section-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.07em;
@@ -440,7 +440,7 @@
 }
 
 .panel-label {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.07em;
@@ -451,7 +451,7 @@
 }
 
 .panel-meta {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     margin: 3px 0;
@@ -466,7 +466,7 @@
 
 /* Links de navegación — hover pill */
 .panel-link {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--accent);
     margin: 2px 0;
@@ -502,7 +502,7 @@
 }
 
 .panel-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     margin: 0;
@@ -524,7 +524,7 @@
 .panel-status {
     display: inline-flex;
     align-items: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -560,7 +560,7 @@
 }
 
 .panel-vita-val {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     line-height: 1.4;
@@ -569,7 +569,7 @@
 /* ── Panel empty state ───────────────────────────────────────────────────────── */
 
 .panel-empty {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--muted);
     margin: 28px 0 0;
@@ -585,7 +585,7 @@
     gap: 8px;
     margin-top: 22px;
     padding: 11px 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--accent);
@@ -615,7 +615,7 @@
 /* ── Markdown prose (pestaña Investigación) ──────────────────────────────────── */
 
 .panel-markdown {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 13px;
     color: var(--text);
     line-height: 1.7;
@@ -650,7 +650,7 @@
 
 /* H3 — etiqueta de categoría */
 .panel-markdown h3 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -824,7 +824,7 @@
   }
 
   .panel-peek-name {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 12px;
     font-weight: 600;
     color: var(--text);
@@ -835,7 +835,7 @@
   }
 
   .panel-peek-cta {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Source Serif 4', Georgia, serif;
     font-size: 11px;
     color: var(--accent);
     font-weight: 500;
@@ -909,7 +909,7 @@
   gap: 7px;
   margin-top: 14px;
   padding: 9px 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 12.5px;
   font-weight: 600;
   color: #fff;
@@ -988,7 +988,7 @@
 }
 .tl-head-eyebrow {
   margin: 0 0 3px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -1075,7 +1075,7 @@
   position: absolute;
   right: 4px;
   transform: translateY(-50%);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 9.5px;
   color: var(--muted);
   opacity: 0.45;
@@ -1111,7 +1111,7 @@
   max-width: 155px;
 }
 .tl-event-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 12px;
   color: var(--muted);
   font-style: italic;
@@ -1119,7 +1119,7 @@
   line-height: 1.35;
 }
 .tl-event-year {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 10.5px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -1204,7 +1204,7 @@
   box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--muted) 45%, transparent);
 }
 .tl-sr-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 8px;
   font-weight: 600;
   letter-spacing: 0.07em;
@@ -1300,7 +1300,7 @@
   font-weight: 700;
 }
 .tl-node-life {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 11px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
@@ -1333,14 +1333,14 @@
 .tl-detail-block { margin-top: 14px; }
 .tl-detail-subhead {
   margin: 0 0 6px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--muted);
 }
 .tl-detail-doc {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 12px; line-height: 1.5; color: var(--text);
   padding-left: 14px; position: relative;
 }
@@ -1352,14 +1352,14 @@
 /* Resumen de Wikipedia en el panel de evento */
 .tl-popup-wiki-text {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 12.5px; line-height: 1.55; color: var(--muted);
 }
 
 /* Encabezado común (compartido por evento y persona) */
 .tl-popup-eyebrow {
   margin: 0 0 3px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.09em; text-transform: uppercase;
   color: var(--muted);
@@ -1374,7 +1374,7 @@
 /* ── Variante evento ── */
 .tl-popup-body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-size: 12.5px; line-height: 1.55; color: var(--text);
 }
 .tl-popup-media {
@@ -1385,7 +1385,7 @@
 .tl-popup-media img { display: block; width: 100%; height: 150px; object-fit: cover; }
 .tl-popup-link {
   display: inline-block; margin-top: 10px;
-  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 11.5px; font-weight: 600;
   color: var(--accent); text-decoration: none;
 }
 .tl-popup-link:hover { text-decoration: underline; }
@@ -1393,7 +1393,7 @@
 /* ── Variante persona ── */
 .tl-popup-rows { display: flex; flex-direction: column; gap: 4px; }
 .tl-popup-row {
-  font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.4; color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; line-height: 1.4; color: var(--text);
 }
 .tl-popup-k { display: inline-block; width: 15px; color: var(--muted); }
 .tl-popup-alive { color: var(--accent); font-weight: 600; }
@@ -1401,7 +1401,7 @@
   margin: 10px 0 0;
   padding-top: 10px;
   border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-  font-family: 'Inter', sans-serif; font-size: 11.5px; line-height: 1.5;
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 11.5px; line-height: 1.5;
   color: var(--muted); font-style: italic;
 }
 .tl-popup-foot {
@@ -1410,7 +1410,7 @@
 }
 .tl-popup-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
 .tl-popup-branch, .tl-popup-docs, .tl-popup-verified {
-  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 10px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
 }
 .tl-popup-verified { color: var(--accent); }
@@ -1418,7 +1418,7 @@
   flex-shrink: 0;
   border: 1px solid var(--border); border-radius: 8px;
   background: transparent; color: var(--text);
-  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 11.5px; font-weight: 600;
   padding: 6px 10px; cursor: pointer; white-space: nowrap;
   transition: background 0.15s, border-color 0.15s;
 }
