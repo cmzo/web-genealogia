@@ -1,5 +1,13 @@
 ### 13 de agosto de 2026
 
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Documentos: buscá una carta o un censo puntual desde ⌘K
+
+Hasta ahora, encontrar un documento concreto —una carta, un censo, un acta— significaba saber de antemano a qué persona estaba atada y navegar hasta su ficha. Se armó un inventario de los 176 archivos que había en la base y se agruparon en **99 documentos reales** (algunas cartas y censos tienen varias páginas, que ahora se muestran juntas en vez de sueltas). Cada uno tiene su propia página dedicada: todas sus imágenes, más su transcripción cuando ya está hecha. Buscando en ⌘K (por ejemplo «carta conthey» o «censo 1895») el resultado te lleva directo a esa página — ya no a la ficha completa de la persona. La carta del tribunal de Conthey de 1905 es el primer documento con transcripción completa (original en francés y traducción). El resto se va a ir completando de a poco.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Imágenes rotas en «Línea de tiempo de Francisco»
+
+Las dos imágenes de la carta del tribunal de Conthey y la del acta de defunción no cargaban en ese post — quedaron apuntando a archivos que ya no existían desde una reorganización anterior de las fotos. Ya se ven correctamente.
+
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Hipótesis: todo lo que falta confirmar, en un solo lugar
 
 Nueva sección en la genealogía (quinta tarjeta de `/gen`): **Hipótesis**. Reúne, por primera vez en un solo lugar, tres cosas que antes vivían dispersas — las hipótesis que cruzan varias generaciones (¿se casaron Francisco y Celestina? ¿cuándo murió François Clemenzoz? ¿es Baptiste el ancestro común con la rama suiza de Jean-Yves?), 236 tareas de investigación pendientes agrupadas por tipo de trámite (nacimiento, matrimonio, defunción, censos, archivo), y una sección de **Llaves**: los cuatro documentos puntuales que, si aparecen, resuelven varias cosas a la vez en lugar de una sola. Pasando el mouse sobre cualquier referencia a una hipótesis o sobre una persona con preguntas abiertas aparece una tarjeta con el detalle, sin salir de la página.

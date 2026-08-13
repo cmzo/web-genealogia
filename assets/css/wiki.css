@@ -489,17 +489,45 @@ button.wiki-chip { background: var(--bg); }
   font-family: 'Source Serif 4', Georgia, serif; font-size: 0.82rem;
   line-height: 1.45; color: var(--muted);
 }
-/* Galería «Documentos» (media de arbol.json, generada en build-wiki.js) */
+/* Galería «Documentos»: cards a documentos curados (content/documentos/*.md) */
 .wiki-page-content .wiki-docs-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 14px; margin: 20px 0 28px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px; margin: 20px 0 28px;
 }
-.wiki-page-content .wiki-docs-grid .wiki-figure { margin: 0; }
-.wiki-page-content .wiki-docs-grid .wiki-figure figcaption {
-  text-align: left; font-size: 0.75rem; margin-top: 6px;
+.wiki-doc-card { display: flex; flex-direction: column; gap: 7px; text-decoration: none; color: inherit; }
+.wiki-doc-thumb {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 3 / 4; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); overflow: hidden; font-size: 26px; color: var(--muted);
 }
-.wiki-page-content .wiki-doc-file { margin: 6px 0; }
-.wiki-page-content .wiki-doc-file a { font-family: 'Source Serif 4', Georgia, serif; font-size: 0.9rem; }
+.wiki-doc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.wiki-doc-card-title {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 0.78rem; line-height: 1.35; color: var(--text);
+}
+.wiki-doc-card:hover .wiki-doc-card-title { color: var(--accent); }
+.wiki-doc-pages {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.03em; color: var(--muted);
+}
+
+/* Vista enfocada en un documento puntual (⌘K → «Documentos», o data-doc en una card) */
+.wiki-doc-personas { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 22px; }
+.wiki-doc-persona-chip {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em;
+  padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border);
+  background: none; color: var(--muted); cursor: pointer;
+}
+.wiki-doc-persona-chip:hover { color: var(--accent); border-color: var(--accent); }
+.wiki-doc-pages-gallery { display: flex; flex-direction: column; gap: 22px; margin: 0 0 24px; }
+.wiki-doc-pages-gallery .wiki-figure { margin: 0; }
+.wiki-doc-pages-gallery .wiki-figure img {
+  display: block; width: 100%; height: auto; max-width: 100%;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); cursor: zoom-in;
+}
+.wiki-doc-pending {
+  font-family: 'Source Serif 4', Georgia, serif; font-size: 0.85rem;
+  font-style: italic; color: var(--muted);
+}
 .wiki-page-content .wiki-pending {
   font-style: italic; color: var(--muted);
 }

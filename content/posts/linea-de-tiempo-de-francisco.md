@@ -114,9 +114,9 @@ A partir de esto surgen varias preguntas:
 
 En relación a la familia de Francisco, existe una carta de 1905 del Tribunal de Conthey, referida a una herencia, donde se nombra a **Etienne**, un hermano de Francisco:
 
-![Carta del Tribunal de Conthey - Página 1](../../assets/images/posts/FJHC_1859_cartaConthey_1.JPG)
+![Carta del Tribunal de Conthey - Página 1](../../assets/images/personas/p26-p40-carta-conthey-1.webp)
 _Carta del Tribunal de Conthey - Página 1_
-![Carta del Tribunal de Conthey - Página 2](../../assets/images/posts/FJHC_1859_cartaConthey_2.JPG)
+![Carta del Tribunal de Conthey - Página 2](../../assets/images/personas/p26-p40-carta-conthey-2.webp)
 _Carta del Tribunal de Conthey - Página 2_
 
 Esto llevó a la hipótesis de que Etienne Clemenzo podría ser **Esteban Clemenzoz**, quien tiene varios registros en FamilySearch. Entre ellos se encontré el siguiente:
@@ -167,7 +167,7 @@ La siguiente referencia documental corresponde al registro militar de 1919, que 
 
 Finalmente, el acta de defunción de Francisco en 1928 confirma que se encontraba en **Concepción del Uruguay, Entre Ríos**.
 
-![FJHC 1859 defunción](../../assets/images/posts/\1
+![FJHC 1859 defunción](../../assets/images/posts/FJHC_1859_defuncion.jpg)
 
 Todos los documentos se pueden consultar en detalle haciendo click [acá](../../arbol.html?focus=p26).
 

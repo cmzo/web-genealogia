@@ -48,6 +48,7 @@
     fuente:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>',
     recent:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/><path d="M12 7v5l3 2"/></svg>',
     wiki:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="9" r="2.4"/><circle cx="9" cy="18" r="2.4"/><path d="M8 7.2 16 8.4M7.4 8 8.6 16M10.6 16.6 16 11"/></svg>',
+    documento: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5V6a4 4 0 0 1 8 0v10a2.5 2.5 0 0 1-5 0V8"/></svg>',
   };
 
   // La línea de tiempo (master-detail) no entra en pantallas chicas
@@ -202,12 +203,13 @@
   async function loadIndex() {
     if (_index || _loading) return;
     _loading = true;
-    const [arbol, posts, notasRaw, wikiRaw, fuentesRaw] = await Promise.all([
+    const [arbol, posts, notasRaw, wikiRaw, fuentesRaw, documentosRaw] = await Promise.all([
       fetch(ROOT + 'assets/data/arbol.json').then(r => r.ok ? r.json() : { personas: [] }).catch(() => ({ personas: [] })),
       fetch(ROOT + 'assets/data/blog-entries.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch(ROOT + 'assets/data/notas.json').then(r => r.ok ? r.json() : []).catch(() => []),
       fetch(ROOT + 'assets/data/wiki-graph.json').then(r => r.ok ? r.json() : { nodes: [] }).catch(() => ({ nodes: [] })),
       fetch(ROOT + 'assets/data/fuentes.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      fetch(ROOT + 'assets/data/documentos.json').then(r => r.ok ? r.json() : []).catch(() => []),
     ]);
 
     // Personas con investigación legible en la wiki (para la acción «Leer investigación»)
@@ -257,7 +259,18 @@
       _h: norm([f.title, f.region, f.tipo, f.autor, f.text].filter(Boolean).join(' ')),
     }));
 
-    _index = { personas, posts: list, notas, wikiPages, fuentes };
+    // Documentos (media de arbol.json — cartas, censos, actas). El caption solo no
+    // alcanza para encontrar "carta de Conthey": si hay transcripción, su snippet
+    // entra al haystack. Enter abre la vista enfocada del documento (todas sus
+    // páginas + transcripción), decoupled de cualquier ficha de persona.
+    const documentos = (Array.isArray(documentosRaw) ? documentosRaw : []).map(d => {
+      const personaNames = (d.personas || []).map(p => p.name);
+      const sub = personaNames.join(' · ') + (d.paginas && d.paginas.length > 1 ? ` · ${d.paginas.length} páginas` : '');
+      return { type: 'documento', slug: d.slug, title: d.title, sub,
+        _t: norm(d.title), _h: norm([d.title, ...personaNames, d.snippet].filter(Boolean).join(' ')) };
+    });
+
+    _index = { personas, posts: list, notas, wikiPages, fuentes, documentos };
     _loading = false;
   }
 
@@ -324,17 +337,17 @@
 
   // ── Recientes: últimas selecciones (localStorage), para el estado vacío ───────
   const RECENT_KEY = 'cmdk-recent';
-  const RECENT_TYPES = ['persona', 'page', 'post', 'wiki', 'nota', 'fuente'];
+  const RECENT_TYPES = ['persona', 'page', 'post', 'wiki', 'nota', 'fuente', 'documento'];
   function recentItems() {
     try { return (JSON.parse(localStorage.getItem(RECENT_KEY)) || []).map(r => ({ ...r, icon: r.icon || 'recent' })); }
     catch (e) { return []; }
   }
   function remember(it) {
     if (!RECENT_TYPES.includes(it.type)) return;
-    const key = it.id || it.url;
+    const key = it.id || it.slug || it.url;
     if (!key) return;
-    const list = recentItems().filter(r => (r.id || r.url) !== key);
-    list.unshift({ type: it.type, id: it.id, url: it.url, title: it.title, sub: it.sub, read: it.read, icon: it.type });
+    const list = recentItems().filter(r => (r.id || r.slug || r.url) !== key);
+    list.unshift({ type: it.type, id: it.id, slug: it.slug, url: it.url, title: it.title, sub: it.sub, read: it.read, icon: it.type });
     try { localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 5))); } catch (e) {}
   }
 
@@ -425,6 +438,7 @@
     const notas = (_index && _index.notas) || [];
     const wikiPages = (_index && _index.wikiPages) || [];
     const fuentes = (_index && _index.fuentes) || [];
+    const documentos = (_index && _index.documentos) || [];
 
     if (!q) {
       // Estado vacío: recientes + filtro de la wiki (si aplica) + comandos + páginas + posts nuevos
@@ -448,6 +462,7 @@
       { label: 'Fuentes',         items: rank(fuentes, q, 6) },
       { label: 'Posts',           items: rank(posts, q, 6) },
       { label: 'Notas',           items: rank(notas, q, 6) },
+      { label: 'Documentos',      items: rank(documentos, q, 6) },
     ].filter(g => g.items.length)
      .sort((a, b) => (b.items.best || 0) - (a.items.best || 0));
   }
@@ -584,6 +599,13 @@
       // Los libros (sin url) llevan a su ficha en la página de fuentes.
       if (it.url) { window.open(it.url, '_blank', 'noopener'); close(); return; }
       window.location.href = ROOT + 'fuentes.html#f-' + encodeURIComponent(it.id);
+      return;
+    }
+    if (it.type === 'documento') {
+      // Abre la vista enfocada del documento (todas sus páginas + transcripción),
+      // vía __wikiOpenDoc si ya estamos en la wiki, o navegando con ?doc=<slug> si no.
+      if (typeof window.__wikiOpenDoc === 'function') { window.__wikiOpenDoc(it.slug); close(); return; }
+      window.location.href = ROOT + 'wiki.html?doc=' + encodeURIComponent(it.slug);
       return;
     }
     if (it.type === 'nota') {

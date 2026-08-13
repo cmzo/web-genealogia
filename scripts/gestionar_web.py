@@ -23,6 +23,7 @@ from datetime import date as _date
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH   = os.path.join(ROOT, 'data', 'arbol.db')
 POSTS_DIR = os.path.join(ROOT, 'content', 'posts')
+DOCUMENTOS_DIR = os.path.join(ROOT, 'content', 'documentos')
 EXPORT_SCRIPT = os.path.join(ROOT, 'scripts', 'export_arbol.py')
 
 try:
@@ -681,6 +682,33 @@ def qfile(label, cur, media_type='photo', default=''):
     return clean if '/' in clean else prefix + clean
 
 
+def cmd_edit_documento(args=None):
+    """Abre content/documentos/<slug>.md para transcribir/editar un documento curado."""
+    if not os.path.exists(DOCUMENTOS_DIR):
+        console.print('[dim]No hay documentos en content/documentos/.[/dim]'); return
+
+    docs = sorted(f for f in os.listdir(DOCUMENTOS_DIR) if f.endswith('.md'))
+    if not docs:
+        console.print('[dim]No hay documentos en content/documentos/.[/dim]'); return
+
+    if args:
+        slug = args[0].removesuffix('.md')
+        slug_choice = f'{slug}.md'
+        if slug_choice not in docs:
+            console.print(f'[red]✗[/red] No existe "{slug_choice}"'); return
+    else:
+        console.print('\n[bold]Editar documento[/bold] [dim](transcripción)[/dim]\n')
+        slug_choice = _ask(questionary.autocomplete('Documento a editar', choices=docs, style=STYLE))
+        if not slug_choice:
+            return
+
+    file_path = os.path.join(DOCUMENTOS_DIR, slug_choice)
+    if not os.path.exists(file_path):
+        console.print(f'[red]✗[/red] No existe "{slug_choice}"'); return
+
+    _open_in_editor(file_path)
+
+
 def cmd_list_unregistered(_args=None):
     """Muestra archivos en assets/.../personas/ que no están en la tabla media."""
     con = get_con(); cur = con.cursor()
@@ -1139,6 +1167,7 @@ def interactive():
             questionary.Choice('Personas',             'personas'),
             questionary.Choice('Matrimonios',          'matrimonios'),
             questionary.Choice('Media',                'media'),
+            questionary.Choice('Editar documento (transcripción)', 'edit_documento'),
             SEP,
             questionary.Choice('Crear post',           'create_post'),
             questionary.Choice('Editar post',          'edit_post'),
@@ -1151,7 +1180,8 @@ def interactive():
         ]))
         if not choice or choice == 'salir': break
         {'personas': _submenu_personas, 'matrimonios': _submenu_matrimonios,
-         'media': _submenu_media, 'create_post': cmd_create_post,
+         'media': _submenu_media, 'edit_documento': cmd_edit_documento,
+         'create_post': cmd_create_post,
          'edit_post': cmd_edit_post, 'delete_post': cmd_delete_post,
          'optimize': cmd_optimize,
          'deploy': cmd_deploy}[choice]()
@@ -1173,6 +1203,7 @@ COMMANDS = {
     'add-media':         cmd_add_media,
     'delete-media':      cmd_delete_media,
     'add-media-bulk':    cmd_add_media_bulk,
+    'edit-documento':    cmd_edit_documento,
     'list-unregistered': cmd_list_unregistered,
     'optimize':          cmd_optimize,
     'create-post':       cmd_create_post,

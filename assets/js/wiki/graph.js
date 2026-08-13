@@ -22,11 +22,12 @@ const rootBase = () => (window.PATH_CONFIG && window.PATH_CONFIG.base) || './';
 
 async function init() {
   const host = document.getElementById('wikiGraph');
-  let data, arbol;
+  let data, arbol, documentos;
   try {
-    [data, arbol] = await Promise.all([
+    [data, arbol, documentos] = await Promise.all([
       fetch(dataPath('wiki-graph.json')).then(r => r.json()),
       fetch(dataPath('arbol.json')).then(r => r.json()).catch(() => ({ personas: [], matrimonios: [] })),
+      fetch(dataPath('documentos.json')).then(r => r.ok ? r.json() : []).catch(() => []),
     ]);
   } catch (e) {
     host.innerHTML = '<p class="wiki-graph-empty">No se pudo cargar el grafo.</p>';
@@ -416,6 +417,7 @@ async function init() {
     imgs.forEach((im, i) => { im.style.cursor = 'zoom-in'; im.addEventListener('click', () => window.openLightboxGallery(gallery, i, { sans: true })); });
   }
 
+  // Vista completa del artículo de un nodo (persona/página/post).
   async function openModal(n) {
     if (!n || !n.hasContent) return;
     modalBody.innerHTML = '<p class="wiki-modal-loading">Cargando…</p>';
@@ -423,8 +425,6 @@ async function init() {
     document.body.style.overflow = 'hidden';
     try {
       const doc = new DOMParser().parseFromString(await (await fetch(rootBase() + n.url)).text(), 'text/html');
-      // Solo el contenido editorial: las relaciones viven en el #wikiPanel de la derecha,
-      // que queda abierto al costado del modal (no se duplica acá).
       const content = doc.querySelector('.wiki-page-content');
       modalBody.innerHTML =
         `<span class="wiki-type-badge wiki-type-badge--${n.type}">${TYPE_LABEL[n.type] || n.type}</span>
@@ -438,10 +438,49 @@ async function init() {
       modalBody.innerHTML = '<p class="wiki-modal-loading">No se pudo cargar el contenido.</p>';
     }
   }
+
+  // Vista enfocada en UN documento curado (⌘K → «Documentos», o una card dentro
+  // de la ficha de una persona): todas sus páginas + transcripción, armada 100%
+  // desde documentos.json — no depende de a qué persona esté ligada.
+  const docBySlug = new Map((documentos || []).map(d => [d.slug, d]));
+  function renderDocModal(d) {
+    const personas = (d.personas || []).map(p =>
+      `<button type="button" class="wiki-doc-persona-chip" data-doc-persona="${p.id}">${escapeHtml(p.name)}</button>`).join('');
+    const gallery = (d.paginas || []).map(url =>
+      `<figure class="wiki-figure"><img src="${rootBase()}${url}" alt="${escapeHtml(d.title)}" loading="lazy"></figure>`).join('');
+    modalBody.innerHTML =
+      `<span class="wiki-type-badge wiki-type-badge--persona">Documento</span>
+       <h1 class="wiki-modal-title">${escapeHtml(d.title)}</h1>
+       <div class="wiki-doc-personas">${personas}</div>
+       <div class="wiki-doc-pages-gallery">${gallery}</div>
+       <div class="wiki-page-content">
+         ${d.hasBody ? d.bodyHtml : '<p class="wiki-doc-pending">Todavía no tiene transcripción.</p>'}
+       </div>`;
+    modalBody.scrollTop = 0;
+    runMermaidIn(modalBody);
+    wireFigures(modalBody);
+  }
+  function openDocModal(slug) {
+    const d = docBySlug.get(slug);
+    if (!d) return;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    renderDocModal(d);
+  }
   function closeModal() { modal.classList.remove('is-open'); document.body.style.overflow = ''; }
 
-  // Enlaces internos dentro del modal → navegan el grafo
+  // Enlaces internos dentro del modal → navegan el grafo; una card de documento
+  // (data-doc) abre su vista enfocada; un chip de persona (data-doc-persona)
+  // cierra la vista de documento y abre la ficha completa de esa persona.
   modalBody.addEventListener('click', e => {
+    const docCard = e.target.closest('[data-doc]');
+    if (docCard) { e.preventDefault(); openDocModal(docCard.dataset.doc); return; }
+    const personaChip = e.target.closest('[data-doc-persona]');
+    if (personaChip) {
+      const id = personaChip.dataset.docPersona;
+      if (nodeById.has(id)) { recenterOn(id); selectNode(id); openModal(nodeById.get(id)); }
+      return;
+    }
     const a = e.target.closest('[data-node]');
     if (!a) return;
     e.preventDefault();
@@ -496,7 +535,15 @@ async function init() {
       row('posts', nPosts) +
       row('nodos', nodes.length) +
       row('relaciones', links.length) +
-      row('tags', nTags);
+      row('tags', nTags) +
+      (Array.isArray(documentos) && documentos.length ? (() => {
+        const nDocs = documentos.length;
+        const nTrans = documentos.filter(d => d.hasBody).length;
+        const tPct = Math.round((nTrans / nDocs) * 100);
+        return row('documentos', nDocs) +
+          row('transcriptos', `${nTrans}/${nDocs}`) +
+          `<div class="wiki-stats-bar" title="${tPct}% transcripto"><span style="width:${tPct}%"></span></div>`;
+      })() : '');
   }
 
   // El command palette (⌘K) enfoca un nodo sin salir de la página
@@ -509,9 +556,14 @@ async function init() {
     if (!nodeById.has(id)) return;
     recenterOn(id); selectNode(id); openModal(nodeById.get(id));
   };
+  // Abre la vista enfocada de un documento curado por su slug (⌘K → «Documentos»)
+  window.__wikiOpenDoc = slug => openDocModal(slug);
 
-  // Foco inicial si viene ?focus=<id>; ?read=<id> además abre el modal de lectura
+  // Foco inicial: ?focus=<id> centra en el grafo; ?read=<id> además abre el modal
+  // de lectura; ?doc=<slug> abre directo la vista enfocada de un documento.
   const params = new URLSearchParams(location.search);
+  const docSlug = params.get('doc');
+  if (docSlug) openDocModal(docSlug);
   const focusId = params.get('focus') || params.get('read');
   if (focusId && nodeById.has(focusId)) cy.ready(() => setTimeout(() => {
     recenterOn(focusId); selectNode(focusId);

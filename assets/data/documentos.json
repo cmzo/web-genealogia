@@ -1,0 +1,1848 @@
+[
+  {
+    "slug": "acta-de-bautismo-de-carlota-julia-clemenzo",
+    "title": "Acta de bautismo de Carlota Julia Clemenzo",
+    "personas": [
+      {
+        "id": "p30",
+        "name": "Carlota Julia Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p30-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-bautismo-de-elena-clemenzo",
+    "title": "Acta de bautismo de Elena Clemenzo",
+    "personas": [
+      {
+        "id": "p34",
+        "name": "Elena Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p34-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-bautismo-de-maria-luisa-clemenzo-2",
+    "title": "Acta de bautismo de Maria Luisa Clemenzo",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-bautismo-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-bautismo-de-maria-luisa-clemenzo",
+    "title": "Acta de bautismo de Maria Luisa Clemenzo",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-bautismo-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-carlota-julia-clemenzo",
+    "title": "Acta de defunción de Carlota Julia Clemenzo",
+    "personas": [
+      {
+        "id": "p30",
+        "name": "Carlota Julia Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p30-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-francois-clemenzo",
+    "title": "Acta de defunción de François Clemenzo",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-isabel-maria-queipo",
+    "title": "Acta de defunción de Isabel Maria Queipo",
+    "personas": [
+      {
+        "id": "p19",
+        "name": "Isabel Maria Queipo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p19-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-jose-clemenzo-2",
+    "title": "Acta de defunción de Jose Clemenzo",
+    "personas": [
+      {
+        "id": "p28",
+        "name": "Jose Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p28-defuncion-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-jose-clemenzo",
+    "title": "Acta de defunción de Jose Clemenzo",
+    "personas": [
+      {
+        "id": "p28",
+        "name": "Jose Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p28-defuncion-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-maria-luisa-clemenzo-roh",
+    "title": "Acta de defunción de Maria Luisa Clemenzo Roh",
+    "personas": [
+      {
+        "id": "p84",
+        "name": "Maria Luisa Clemenzo Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p84-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-maria-luisa-clemenzo",
+    "title": "Acta de defunción de Maria Luisa Clemenzo",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-defuncion-de-mauricio-francisco-roh",
+    "title": "Acta de defunción de Mauricio Francisco Roh",
+    "personas": [
+      {
+        "id": "p97",
+        "name": "Mauricio Francisco Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1964-def-mauricio-francisco-roh.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Concepción del Uruguay, 1964 (85 años).</p>\n",
+    "snippet": "Concepción del Uruguay, 1964 (85 años)."
+  },
+  {
+    "slug": "acta-de-matrimonio-de-maria-luisa-clemenzo-roh-con-eleuterio-troncoso",
+    "title": "Acta de matrimonio de Maria Luisa Clemenzo Roh con Eleuterio Troncoso",
+    "personas": [
+      {
+        "id": "p84",
+        "name": "Maria Luisa Clemenzo Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p84-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-matrimonio-de-marie-henriette-clemenzo",
+    "title": "Acta de matrimonio de Marie Henriette Clemenzo",
+    "personas": [
+      {
+        "id": "p75",
+        "name": "Marie Henriette Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p75-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-antonio-ramon-roh-1911",
+    "title": "Acta de nacimiento de Antonio Ramón Roh, 1911",
+    "personas": [
+      {
+        "id": "p108",
+        "name": "Antonio Ramón Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1911-nac-antonio-ramon-roh.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-gregoria-orfilia-roh-1906",
+    "title": "Acta de nacimiento de Gregoria Orfilia Roh, 1906",
+    "personas": [
+      {
+        "id": "p105",
+        "name": "Gregoria Orfilia Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1906-nac-gregoria-orfilia-roh-p1.webp",
+      "assets/images/personas/roh-1906-nac-gregoria-orfilia-roh-p2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-hector-patricio-roh-1914",
+    "title": "Acta de nacimiento de Héctor Patricio Roh, 1914",
+    "personas": [
+      {
+        "id": "p109",
+        "name": "Héctor Patricio Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1914-nac-hector-patricio-roh.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-irma-cirila-etchegorry-1916",
+    "title": "Acta de nacimiento de Irma Cirila Etchegorry, 1916",
+    "personas": [
+      {
+        "id": "p116",
+        "name": "Irma Cirila Etchegorry"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1916-nac-irma-cirila-etchegorry.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-juan-hector-etchegorry-1911",
+    "title": "Acta de nacimiento de Juan Héctor Etchegorry, 1911",
+    "personas": [
+      {
+        "id": "p114",
+        "name": "Juan Héctor Etchegorry"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1911-nac-juan-hector-etchegorry.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-laurindo-anselmo-etchegorry-1902",
+    "title": "Acta de nacimiento de Laurindo Anselmo Etchegorry, 1902",
+    "personas": [
+      {
+        "id": "p112",
+        "name": "Laurindo Anselmo Etchegorry"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1902-nac-laurindo-anselmo-etchegorry.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-luisa-odila-etchegorry-1908",
+    "title": "Acta de nacimiento de Luisa Odila Etchegorry, 1908",
+    "personas": [
+      {
+        "id": "p113",
+        "name": "Luisa Odila Etchegorry"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1908-nac-luisa-odila-etchegorry-p1.webp",
+      "assets/images/personas/roh-1908-nac-luisa-odila-etchegorry-p2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-maria-catalina-etchegorry-1912",
+    "title": "Acta de nacimiento de María Catalina Etchegorry, 1912",
+    "personas": [
+      {
+        "id": "p115",
+        "name": "María Catalina Etchegorry"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1912-nac-maria-catalina-etchegorry.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-pedro-mauricio-roh-1908",
+    "title": "Acta de nacimiento de Pedro Mauricio Roh, 1908",
+    "personas": [
+      {
+        "id": "p106",
+        "name": "Pedro Mauricio Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1908-nac-pedro-mauricio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-raul-roque-roh-1917-inscripto-1918",
+    "title": "Acta de nacimiento de Raúl Roque Roh (1917, inscripto 1918)",
+    "personas": [
+      {
+        "id": "p110",
+        "name": "Raúl Roque Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1918-nac-raul-roque-roh.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "acta-de-nacimiento-de-rodolfo-ambrosio-clemenzo",
+    "title": "Acta de nacimiento de Rodolfo Ambrosio Clemenzo",
+    "personas": [
+      {
+        "id": "p20",
+        "name": "Leon Francisco Clemenzo"
+      },
+      {
+        "id": "p21",
+        "name": "Emiliana Elena Baster"
+      },
+      {
+        "id": "p35",
+        "name": "Rodolfo Ambrosio Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p35-p20-p21-1919-nacimiento-acta.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>N° 97, 1919 — «su esposa Emiliana Elena Baster, de veintitrés años, Argentina».</p>\n",
+    "snippet": "N° 97, 1919 — «su esposa Emiliana Elena Baster, de veintitrés años, Argentina»."
+  },
+  {
+    "slug": "acta-de-nacimiento-de-rogelia-roh-1909",
+    "title": "Acta de nacimiento de Rogelia Roh, 1909",
+    "personas": [
+      {
+        "id": "p107",
+        "name": "Rogelia Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1909-nac-rogelia-roh.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-angela-clemenzoz",
+    "title": "Bautismo de Angela Clemenzoz",
+    "personas": [
+      {
+        "id": "p63",
+        "name": "Angela Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p63-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-angelica-elvira-fonteine",
+    "title": "Bautismo de Angélica Elvira Fonteine",
+    "personas": [
+      {
+        "id": "p71",
+        "name": "Angélica Elvira Fonteine"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p71-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-esteban-clemenzoz",
+    "title": "Bautismo de Esteban Clemenzoz",
+    "personas": [
+      {
+        "id": "p67",
+        "name": "Esteban Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p67-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-felisa-clemenzo-roh",
+    "title": "Bautismo de Felisa Clemenzo Roh",
+    "personas": [
+      {
+        "id": "p124",
+        "name": "Felisa Clemenzo Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p124-bautismo-1890.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Santa Fe, 22-04-1890 (nacida 07-03-1890). Hija de «José Clemencio» y «Mariana Rô», suizos. Identificación con José (p28) × Marianna (p85): muy probable.</p>\n",
+    "snippet": "Santa Fe, 22-04-1890 (nacida 07-03-1890). Hija de «José Clemencio» y «Mariana Rô», suizos. Identificación con José (p28) × Marianna (p85): muy probable."
+  },
+  {
+    "slug": "bautismo-de-felisa-clemenzoz",
+    "title": "Bautismo de Felisa Clemenzoz",
+    "personas": [
+      {
+        "id": "p66",
+        "name": "Felisa Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p66-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-fortunato-abelardo-clemenzoz",
+    "title": "Bautismo de Fortunato Abelardo Clemenzoz",
+    "personas": [
+      {
+        "id": "p60",
+        "name": "Fortunato Abelardo Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p60-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-german-cipriano-clemenzoz",
+    "title": "Bautismo de German Cipriano Clemenzoz",
+    "personas": [
+      {
+        "id": "p62",
+        "name": "German Cipriano Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p62-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-jose-domingo-clemenzo",
+    "title": "Bautismo de José Domingo Clemenzo",
+    "personas": [
+      {
+        "id": "p104",
+        "name": "José Domingo Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1884-bautismo-jose-domingo.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884 (nacido 08-07-1884). Hijo de «José Clemencia» y «Mariana Roh», suizos. Identificación con José (p28) × Marianna (p85): muy probable.</p>\n",
+    "snippet": "Iglesia Matriz de Todos los Santos, Santa Fe, 27-07-1884 (nacido 08-07-1884). Hijo de «José Clemencia» y «Mariana Roh», suizos. Identificación con José (p28) × Marianna (p85): muy probable."
+  },
+  {
+    "slug": "bautismo-de-jose-luciano-roh-blanco",
+    "title": "Bautismo de Jose Luciano Roh Blanco",
+    "personas": [
+      {
+        "id": "p80",
+        "name": "Jose Luciano Roh Blanco"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p80-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-jose-martin-clemenzo",
+    "title": "Bautismo de José Martín Clemenzo",
+    "personas": [
+      {
+        "id": "p125",
+        "name": "José Martín Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p125-bautismo-1905.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Nuestra Señora del Carmen, Santa Fe, 1905. Hijo natural de Luisa Clemenzo (p84), de 19 años. Al margen: casamiento con Clara Rosa Cardozo (1927).</p>\n",
+    "snippet": "Nuestra Señora del Carmen, Santa Fe, 1905. Hijo natural de Luisa Clemenzo (p84), de 19 años. Al margen: casamiento con Clara Rosa Cardozo (1927)."
+  },
+  {
+    "slug": "bautismo-de-juan-francisco-clemenzoz",
+    "title": "Bautismo de Juan Francisco Clemenzoz",
+    "personas": [
+      {
+        "id": "p61",
+        "name": "Juan Francisco Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p61-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-leon-francisco-clemenzo",
+    "title": "Bautismo de Leon Francisco Clemenzo",
+    "personas": [
+      {
+        "id": "p20",
+        "name": "Leon Francisco Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p20-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-maria-celestina-roh",
+    "title": "Bautismo de Maria Celestina Roh",
+    "personas": [
+      {
+        "id": "p25",
+        "name": "Maria Celestina Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p25-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-maria-luisa-perceveranda-clemenzoz",
+    "title": "Bautismo de Maria Luisa Perceveranda Clemenzoz",
+    "personas": [
+      {
+        "id": "p59",
+        "name": "Maria Luisa Perceveranda Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p59-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-modesta-damiana-clemencia-clemenzoz",
+    "title": "Bautismo de Modesta Damiana Clemencia Clemenzoz",
+    "personas": [
+      {
+        "id": "p65",
+        "name": "Modesta Damiana Clemencia Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p65-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-petrona-estefania-clemenzoz",
+    "title": "Bautismo de Petrona Estefania Clemenzoz",
+    "personas": [
+      {
+        "id": "p64",
+        "name": "Petrona Estefania Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p64-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "bautismo-de-teresa-lidia-costabile",
+    "title": "Bautismo de Teresa Lidia Costabile",
+    "personas": [
+      {
+        "id": "p82",
+        "name": "Teresa Lidia Costabile"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p82-bautismo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "carta-del-tribunal-de-conthey-1905-francois-clemenzo-etienne-clemenzo",
+    "title": "Carta del tribunal de Conthey (1905) — François Clemenzo · Etienne Clemenzo",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      },
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-p40-carta-conthey-1.webp",
+      "assets/images/personas/p26-p40-carta-conthey-2.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<h2 id=\"transcripción-original\">Transcripción original</h2>\n<p><em>(Documento en francés, letra cursiva, papel con membrete «Canton du Valais – Tribunal – Conthey».)</em></p>\n<p><strong>Ardon, le 4 Février 1905</strong></p>\n<p>Aux Frères François et Etienne Clemenzo, au Consulat de Suisse à Buenos-Aires.</p>\n<p>Messieurs,</p>\n<p>Conformément à la lettre de vos cousins <strong>Lambiel</strong> [lectura probable] de <strong>Riddes</strong> du 30 août 1904, j&#39;ai l&#39;avantage de vous annoncer que j&#39;ai touché au commencement du mois de janvier dernier la somme de <strong>mille cent trente-cinq francs (1135 frs)</strong> qui en a fait l&#39;objet.</p>\n<p>En vous adressant le double de cette lettre avec la mienne du 30 septembre dernier, je vous disais que les frais qui résulteraient de la <strong>réalisation de vos avoirs à Riddes</strong> se monteraient à une soixantaine de francs. Je dois aujourd&#39;hui vous informer que mes prévisions ont été dépassées et que j&#39;ai dû porter ce dernier chiffre à <strong>cent cinq francs (105 frs)</strong>, <strong>frais d&#39;expédition</strong> compris.</p>\n<p>Veuillez croire que la retenue que j&#39;ai faite n&#39;est pas exagérée, car l&#39;affaire que vous m&#39;aviez confiée m&#39;a occasionné de nombreux ennuis et plusieurs déplacements.</p>\n<p>Déduction faite des frais et déboursés que cela réclame, je porte à votre connaissance que j&#39;ai versé <strong>le 28 janvier</strong> à la <strong>Caisse d&#39;Épargne du Canton du Valais, à Sion</strong>, la somme de <strong>mille trente francs</strong>, dont <strong>829 frs 25 cts</strong> revenant à <strong>François Clemenzo</strong> et <strong>200 frs 75 cts</strong> à <strong>son frère Étienne</strong>. <strong>Cette somme a été versée pour vous être respectivement remise par l&#39;intermédiaire du Consulat de Suisse,</strong> à votre demande.</p>\n<p>Si jamais je désirerais de nouvelles précisions vous concernant, veuillez croire que je ne perdrai pas de vue vos intérêts.</p>\n<p>Agréez, Messieurs, l&#39;assurance de ma considération distinguée.</p>\n<p><strong>Alf. Frossard, notaire</strong></p>\n<p><em>(en el margen inferior izquierdo: «recommandée»)</em></p>\n<h2 id=\"traducción-al-español-fiel\">Traducción al español (fiel)</h2>\n<p><strong>Ardon, 4 de febrero de 1905</strong></p>\n<p>A los hermanos François y Étienne Clemenzo, en el Consulado de Suiza en Buenos Aires.</p>\n<p>Señores:</p>\n<p>De conformidad con la carta de sus primos <strong>Lambiel</strong> [lectura probable] de <strong>Riddes</strong>, de fecha 30 de agosto de 1904, tengo el gusto de comunicarles que a comienzos del mes de enero pasado cobré la suma de <strong>mil ciento treinta y cinco francos (1135 frs)</strong>, que era el objeto del asunto.</p>\n<p>Al remitirles la copia de dicha carta, junto con la mía del 30 de septiembre último, les decía que los <strong>gastos que resultarían de la realización (liquidación) de sus haberes en Riddes</strong> ascenderían a unos sesenta francos. Debo informarles hoy que mis previsiones fueron superadas y que hube de elevar esa cifra a <strong>ciento cinco francos (105 frs)</strong>, <strong>incluidos los gastos de envío</strong>.</p>\n<p>Créanme que la deducción que efectué no es exagerada, pues el asunto que ustedes me confiaron me ocasionó numerosas molestias y varios desplazamientos.</p>\n<p>Hecha la deducción de los gastos y desembolsos que ello exigía, pongo en su conocimiento que <strong>el 28 de enero</strong> ingresé en la <strong>Caja de Ahorros del Cantón del Valais, en Sion</strong>, la suma de <strong>mil treinta francos</strong>, de los cuales <strong>829 francos con 25 céntimos</strong> corresponden a <strong>François Clemenzo</strong> y <strong>200 francos con 75 céntimos</strong> a <strong>su hermano Étienne</strong>. <strong>Dicha suma ha sido depositada para serles entregada respectivamente por intermedio del Consulado de Suiza</strong>, conforme a su solicitud.</p>\n<p>Si en algún momento necesitara nuevas precisiones que les conciernan, tengan la seguridad de que no perderé de vista sus intereses.</p>\n<p>Reciban, señores, la seguridad de mi distinguida consideración.</p>\n<p><strong>Alf. Frossard, notario</strong></p>\n<p><em>(al margen: «certificada / con acuse», «recommandée»)</em></p>\n<h2 id=\"análisis-y-conclusiones\">Análisis y conclusiones</h2>\n<p><strong>Idioma, fecha y lugar.</strong> La carta está redactada en francés suizo (uso administrativo de Valais), fechada en <strong>Ardon, 4 de febrero de 1905</strong>, con membrete del <strong>Tribunal de Conthey</strong>. El autor firma como <strong>Alf. (Alfred) Frossard, notario</strong>.</p>\n<p><strong>Remitente y destinatarios.</strong> El notario Frossard escribe a <strong>los hermanos François y Étienne Clemenzo</strong>, localizados a través del <strong>Consulado de Suiza en Buenos Aires</strong>. Esta mención ubica a los Clemenzo en Argentina en 1905 y confirma que mantenían vínculo consular suizo.</p>\n<p><strong>Objeto del asunto.</strong> Se trata de la «réalisation de vos avoirs à Riddes», expresión jurídica-notarial que indica <strong>liquidación/monetización de bienes o haberes</strong> situados en <strong>Riddes (Valais)</strong>, probablemente por venta, cobro de crédito, sucesión u otro acto de realización de patrimonio.</p>\n<p><strong>Flujo de dinero y desglose</strong></p>\n<ul>\n<li><strong>Importe cobrado:</strong> 1.135 francos (a comienzos de enero de 1905).</li>\n<li><strong>Gastos finales:</strong> 105 francos, superiores a la estimación previa de ~60 francos. El notario justifica el aumento por «molestias y desplazamientos» y señala que incluye gastos de expedición (envío/gestiones).</li>\n<li><strong>Neto depositado:</strong> 1.030 francos (1.135 – 105).</li>\n<li><strong>Distribución del neto:</strong><ul>\n<li><strong>829,25 fr.</strong> a <strong>François Clemenzo</strong> (~80,5%).</li>\n<li><strong>200,75 fr.</strong> a <strong>Étienne Clemenzo</strong> (~19,5%). La suma coincide exactamente con el neto, lo que respalda la lectura de cifras.</li>\n</ul>\n</li>\n<li><strong>Lugar del depósito:</strong> Caisse d&#39;Épargne du Canton du Valais (Sion).</li>\n<li><strong>Entrega prevista:</strong> a través del Consulado de Suiza, por expreso pedido de los destinatarios.</li>\n<li><strong>Observación postal:</strong> la nota marginal «recommandée» indica envío certificado, acorde con el valor legal y económico del contenido.</li>\n</ul>\n<p><strong>Tono e intenciones.</strong> El tono es formal, justificativo y conciliador. El notario informa el cobro y la consignación de fondos, justifica el incremento de gastos respecto de lo estimado, se cubre profesionalmente («la deducción no es exagerada») y asegura la protección de los intereses de los hermanos y su disponibilidad para futuras precisiones.</p>\n<p><strong>Contexto histórico y personal</strong></p>\n<ul>\n<li><strong>Migración suiza-argentina:</strong> la carta evidencia un canal financiero consular entre el Valais y Buenos Aires a inicios del siglo XX, típico de emigrantes que mantenían propiedades o derechos en Suiza.</li>\n<li><strong>Red familiar en Valais:</strong> se mencionan primos «Lambiel» de Riddes, clave para genealogía (posibles gestores locales o herederos colaterales).</li>\n<li><strong>Participación notarial:</strong> la intervención del notario y del Tribunal de Conthey sugiere que el origen de los fondos podría ser una sucesión, venta de bien inmueble o cobro judicial/administrativo.</li>\n</ul>\n<p><strong>Conclusiones útiles para investigación</strong></p>\n<ol>\n<li><strong>Vinculación geográfica precisa:</strong> Ardon – Riddes – Sion (Cantón del Valais) y Buenos Aires (vía Consulado).</li>\n<li><strong>Personas y roles:</strong> Alf. Frossard, notario (firmante); François Clemenzo y Étienne Clemenzo, beneficiarios (en Argentina); primos Lambiel (contactos en Riddes).</li>\n<li><strong>Fechas clave:</strong> 30-08-1904 (carta de primos), 30-09-1904 (carta del notario con estimación), enero de 1905 (cobro), 28-01-1905 (depósito), 04-02-1905 (redacción de la carta).</li>\n<li><strong>Pista documental:</strong> registros de la Caisse d&#39;Épargne du Canton du Valais y del Consulado de Suiza en Buenos Aires podrían conservar comprobantes del depósito/entrega; los archivos notariales de Frossard o del Tribunal de Conthey pueden contener el expediente completo de la liquidación («réalisation des avoirs»).</li>\n</ol>\n<div class=\"callout callout--note\">\n  <div class=\"callout-title\"><span class=\"callout-icon\">ℹ</span><span>Notas de lectura</span></div>\n  <div class=\"callout-body\"><p>Algunos términos menores (p. ej., apellido «Lambiel» y la mención exacta del concepto «frais d&#39;expédition») presentan leve incertidumbre paleográfica; se han marcado cuando procedía sin afectar el sentido global.\nLa coherencia aritmética entre 1135 – 105 = 1030 confirma la lectura de importes y su reparto.</p></div>\n</div>\n",
+    "snippet": "Transcripción original (Documento en francés, letra cursiva, papel con membrete «Canton du Valais – Tribunal – Conthey».) Ardon, le 4 Février 1905 Aux Frères François et Etienne Clemenzo, au Consulat de Suisse à Buenos-Aires. Messieurs, Conformément à la lettre de vos cousins Lambiel lectura probable de Riddes du 30 août 1904, j'ai l'avantage de vous annoncer que j'ai touché au commencement du moi"
+  },
+  {
+    "slug": "casamiento-con-anselmo-etchegorry-villa-mantero-1908",
+    "title": "Casamiento con Anselmo Etchegorry, Villa Mantero 1908",
+    "personas": [
+      {
+        "id": "p100",
+        "name": "Anselmo Leopoldo Etchegorry"
+      },
+      {
+        "id": "p95",
+        "name": "María Luisa Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1908-matr-etchegorry-maria-luisa-roh-p1.webp",
+      "assets/images/personas/roh-1908-matr-etchegorry-maria-luisa-roh-p2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "casamiento-con-jose-luciano-roh-1894",
+    "title": "Casamiento con José Luciano Roh (~1894)",
+    "personas": [
+      {
+        "id": "p101",
+        "name": "Manuela Locher"
+      },
+      {
+        "id": "p118",
+        "name": "Joseph Marie Roch"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1894-matr-jose-roh-manuela-locher.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "casamiento-con-marianna-roh-1915",
+    "title": "Casamiento con Marianna Roh, 1915",
+    "personas": [
+      {
+        "id": "p103",
+        "name": "Domingo Mersilli"
+      },
+      {
+        "id": "p85",
+        "name": "Marianna Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1915-matr-religioso-mersilli-marianna-roh.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "casamiento-de-marianna-roh-y-francisco-jose-vergere",
+    "title": "Casamiento de Marianna Roh y Francisco José Vergère",
+    "personas": [
+      {
+        "id": "p102",
+        "name": "Francisco José Vergère"
+      },
+      {
+        "id": "p85",
+        "name": "Marianna Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1896-matr-vergere-marianna-roh-p1.webp",
+      "assets/images/personas/roh-1896-matr-vergere-marianna-roh-p2.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Colón, 1896.</p>\n",
+    "snippet": "Colón, 1896."
+  },
+  {
+    "slug": "casamiento-de-mauricio-francisco-roh-con-rogelia-hernandez",
+    "title": "Casamiento de Mauricio Francisco Roh con Rogelia Hernández",
+    "personas": [
+      {
+        "id": "p97",
+        "name": "Mauricio Francisco Roh"
+      },
+      {
+        "id": "p99",
+        "name": "Rogelia Hernández"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1905-matr-civil-mauricio-rogelia-hernandez.webp",
+      "assets/images/personas/roh-1905-matr-religioso-mauricio-rogelia-hernandez.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Acta civil, Rosario del Tala, 1905.</p>\n",
+    "snippet": "Acta civil, Rosario del Tala, 1905."
+  },
+  {
+    "slug": "censo-de-ardon-1846-clemenzoz-clemenzo-pag-1",
+    "title": "Censo de Ardon 1846 — Clemenzoz · Clemenzo (pág. 1)",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p73",
+        "name": "Joseph Marie Clemenzo"
+      },
+      {
+        "id": "p77",
+        "name": "Josephine Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p73-p77-1846-ardon-censo-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-ardon-1846-clemenzoz-clemenzo-pag-2",
+    "title": "Censo de Ardon 1846 — Clemenzoz · Clemenzo (pág. 2)",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p73",
+        "name": "Joseph Marie Clemenzo"
+      },
+      {
+        "id": "p77",
+        "name": "Josephine Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p73-p77-1846-ardon-censo-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-ardon-clemenzoz-clemenzo-cerisier-2",
+    "title": "Censo de Ardon — Clemenzoz · Clemenzo · Cerisier",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      },
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      },
+      {
+        "id": "p72",
+        "name": "Joseph Florentine Clemenzo"
+      },
+      {
+        "id": "p73",
+        "name": "Joseph Marie Clemenzo"
+      },
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      },
+      {
+        "id": "p75",
+        "name": "Marie Henriette Clemenzo"
+      },
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-ardon-clemenzoz-clemenzo-cerisier",
+    "title": "Censo de Ardon — Clemenzoz · Clemenzo · Cerisier",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      },
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      },
+      {
+        "id": "p72",
+        "name": "Joseph Florentine Clemenzo"
+      },
+      {
+        "id": "p73",
+        "name": "Joseph Marie Clemenzo"
+      },
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      },
+      {
+        "id": "p75",
+        "name": "Marie Henriette Clemenzo"
+      },
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-censo-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-colon-de-1895-clemenzo",
+    "title": "Censo de Colon de 1895 — Clemenzo",
+    "personas": [
+      {
+        "id": "p20",
+        "name": "Leon Francisco Clemenzo"
+      },
+      {
+        "id": "p22",
+        "name": "Pedro Clemenzo"
+      },
+      {
+        "id": "p23",
+        "name": "Francisca Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-p27-p25-p20-p22-p23-1895-censo-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-colon-de-1895-roh-clemenzo",
+    "title": "Censo de Colon de 1895 — Roh · Clemenzo",
+    "personas": [
+      {
+        "id": "p25",
+        "name": "Maria Celestina Roh"
+      },
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      },
+      {
+        "id": "p27",
+        "name": "María Celestina Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-p27-p25-1895-censo-1.webp",
+      "assets/images/personas/p26-p27-p25-1895-censo-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-conthey-1870-aven-roch-roh-putallaz",
+    "title": "Censo de Conthey 1870 (Aven) — Roch · Roh · Putallaz",
+    "personas": [
+      {
+        "id": "p117",
+        "name": "Marie Rosalie Roch"
+      },
+      {
+        "id": "p118",
+        "name": "Joseph Marie Roch"
+      },
+      {
+        "id": "p27",
+        "name": "María Celestina Roh"
+      },
+      {
+        "id": "p38",
+        "name": "Juan José Roch"
+      },
+      {
+        "id": "p39",
+        "name": "Maria Putallaz"
+      },
+      {
+        "id": "p85",
+        "name": "Marianna Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1870-censo-conthey-aven.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-jean-joseph-clemenzo",
+    "title": "Censo de Jean Joseph Clemenzo",
+    "personas": [
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p57-censo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-juan-jose-roch",
+    "title": "Censo de Juan José Roch",
+    "personas": [
+      {
+        "id": "p38",
+        "name": "Juan José Roch"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p38-censo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-riddes-1829-clemenzoz-clemenzo-cerisier",
+    "title": "Censo de Riddes 1829 — Clemenzoz · Clemenzo · Cerisier",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      },
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      },
+      {
+        "id": "p72",
+        "name": "Joseph Florentine Clemenzo"
+      },
+      {
+        "id": "p73",
+        "name": "Joseph Marie Clemenzo"
+      },
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      },
+      {
+        "id": "p75",
+        "name": "Marie Henriette Clemenzo"
+      },
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p57-p58-p72-p73-p74-p75-p76-1829-riddes-2clase.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>2ème Classe. «Jeanne Marie Clemenzo, l.26, n.1813, domicilio Ardon.»</p>\n",
+    "snippet": "2ème Classe. «Jeanne Marie Clemenzo, l.26, n.1813, domicilio Ardon.»"
+  },
+  {
+    "slug": "censo-de-riddes-1837-de-joseph-florentine-clemenzo",
+    "title": "Censo de Riddes 1837 de Joseph Florentine Clemenzo",
+    "personas": [
+      {
+        "id": "p72",
+        "name": "Joseph Florentine Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p72-1837-riddes-ausente.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>4me Classe (ausentes). «Clémenzo Florentin, Chirurgien, à Naples.» Conserva derechos de burguesía en Riddes.</p>\n",
+    "snippet": "4me Classe (ausentes). «Clémenzo Florentin, Chirurgien, à Naples.» Conserva derechos de burguesía en Riddes."
+  },
+  {
+    "slug": "censo-de-riddes-1846-clemenzo-cerisier",
+    "title": "Censo de Riddes 1846 — Clemenzo · Cerisier",
+    "personas": [
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      },
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p57-p58-1846-riddes.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>l.45: «Catherine, sa femme de Joseph» (p57). Figura como Clemenzo Catherine.</p>\n",
+    "snippet": "l.45: «Catherine, sa femme de Joseph» (p57). Figura como Clemenzo Catherine."
+  },
+  {
+    "slug": "censo-de-riddes-1846-de-janne-marie-clemenzo",
+    "title": "Censo de Riddes 1846 de Janne Marie Clemenzo",
+    "personas": [
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p74-1846-riddes.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>l.46: «Clemenzo Jeanne, fille majeure.» Riddes.</p>\n",
+    "snippet": "l.46: «Clemenzo Jeanne, fille majeure.» Riddes."
+  },
+  {
+    "slug": "censo-de-riddes-1846-de-joseph-florentine-clemenzo",
+    "title": "Censo de Riddes 1846 de Joseph Florentine Clemenzo",
+    "personas": [
+      {
+        "id": "p72",
+        "name": "Joseph Florentine Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p72-1846-riddes-ausente.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>4me Classe (ausentes). «Clemenzoz Florentin, Chirurgien, à Naples.» Línea 7.</p>\n",
+    "snippet": "4me Classe (ausentes). «Clemenzoz Florentin, Chirurgien, à Naples.» Línea 7."
+  },
+  {
+    "slug": "censo-de-riddes-1850-cerisier-clemenzo",
+    "title": "Censo de Riddes 1850 — Cerisier · Clemenzo",
+    "personas": [
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      },
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p58-p74-1850-riddes.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>l.58: «Clemenzoz Cerisier Marie Catherine *1786.» Aparece sin marido — p57 falleció entre 1846 y 1850.</p>\n",
+    "snippet": "l.58: «Clemenzoz Cerisier Marie Catherine 1786.» Aparece sin marido — p57 falleció entre 1846 y 1850."
+  },
+  {
+    "slug": "censo-de-riddes-1850-de-marie-elizabet-clemenzo",
+    "title": "Censo de Riddes 1850 de Marie Elizabet Clemenzo",
+    "personas": [
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p76-1850-riddes-lambiel-censo.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>l.290-293 — «Lambiel née Clementz, Elisabeth, n.1822» con Jean Lambiel (n.1811) e hijas Josephine (n.1842) y Rosalie (n.1848). Fuente del apellido de soltera. HIPÓTESIS EN ESTUDIO: ¿es p76 (n.1821) o la Elisabeth de la rama de Ardon (n.1820)?</p>\n",
+    "snippet": "l.290-293 — «Lambiel née Clementz, Elisabeth, n.1822» con Jean Lambiel (n.1811) e hijas Josephine (n.1842) y Rosalie (n.1848). Fuente del apellido de soltera. HIPÓTESIS EN ESTUDIO: ¿es p76 (n.1821) o la Elisabeth de la rama de Ardon (n.1820)?"
+  },
+  {
+    "slug": "censo-de-riddes-de-1837-clemenzoz-clemenzo-cerisier",
+    "title": "Censo de Riddes de 1837 — Clemenzoz · Clemenzo · Cerisier",
+    "personas": [
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p57",
+        "name": "Jean Joseph Clemenzo"
+      },
+      {
+        "id": "p58",
+        "name": "Marie Catherine Cerisier"
+      },
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      },
+      {
+        "id": "p75",
+        "name": "Marie Henriette Clemenzo"
+      },
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p57-p58-p74-p75-p76-1837-riddes-censo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-de-riddes-de-1870-clemenzo-clemenzoz-stalder",
+    "title": "Censo de Riddes de 1870 — Clemenzo · Clemenzoz · Stalder",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      },
+      {
+        "id": "p28",
+        "name": "Jose Clemenzo"
+      },
+      {
+        "id": "p36",
+        "name": "François Clemenzoz"
+      },
+      {
+        "id": "p37",
+        "name": "Marie Louise Stalder"
+      },
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      },
+      {
+        "id": "p77",
+        "name": "Josephine Clemenzo"
+      },
+      {
+        "id": "p78",
+        "name": "Anaiis Clemenzo"
+      },
+      {
+        "id": "p79",
+        "name": "Edwige Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p36-p37-p28-p26-p40-77-p78-p79-1870-riddes-censo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "censo-federal-1870-de-janne-marie-clemenzo-riddes",
+    "title": "Censo federal 1870 de Janne Marie Clemenzo — Riddes",
+    "personas": [
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p74-1870-riddes-censo.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Hameau de Vignes — «Jeanne Clemenzoz» (n. 22-09-1812 declarada, soltera, jefa de hogar) con Geneviève Bessard (chambre garnie, en Riddes desde nov. 1849). Sin Lambiel todavía.</p>\n",
+    "snippet": "Hameau de Vignes — «Jeanne Clemenzoz» (n. 22-09-1812 declarada, soltera, jefa de hogar) con Geneviève Bessard (chambre garnie, en Riddes desde nov. 1849). Sin Lambiel todavía."
+  },
+  {
+    "slug": "censo-federal-1870-de-marie-elizabet-clemenzo-riddes",
+    "title": "Censo federal 1870 de Marie Elizabet Clemenzo — Riddes",
+    "personas": [
+      {
+        "id": "p76",
+        "name": "Marie Elizabet Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p76-1870-riddes-lambiel-censo.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Plan de Villy, bulletin 34 — hogar Lambiel: Jean Antoine (laboureur, d&#39;Ardon, n.1811) y Elisabeth née Clementz (n. 5-05-1824), con hijos Julie, Jean, Louis y Joseph (n. 9-04-1860). HIPÓTESIS EN ESTUDIO: Elisabeth podría ser p76 (n.1821) o Anne-Marie-Elisabeth de la rama de Jean-Baptiste (n.1820, †1890).</p>\n",
+    "snippet": "Plan de Villy, bulletin 34 — hogar Lambiel: Jean Antoine (laboureur, d'Ardon, n.1811) y Elisabeth née Clementz (n. 5-05-1824), con hijos Julie, Jean, Louis y Joseph (n. 9-04-1860). HIPÓTESIS EN ESTUDIO: Elisabeth podría ser p76 (n.1821) o Anne-Marie-Elisabeth de la rama de Jean-Baptiste (n.1820, †1890)."
+  },
+  {
+    "slug": "censo-federal-1880-de-janne-marie-clemenzo-riddes",
+    "title": "Censo federal 1880 de Janne Marie Clemenzo — Riddes",
+    "personas": [
+      {
+        "id": "p74",
+        "name": "Janne Marie Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p74-1880-riddes-censo.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Bulletin de ménage N°22, casa 18: «Jeanne Clemenzoz» (n. 22-09-1813, soltera, jefa de hogar), con sirvienta Geneviève Bessard y pensionista Joseph Lambiel (n. 1859).</p>\n",
+    "snippet": "Bulletin de ménage N°22, casa 18: «Jeanne Clemenzoz» (n. 22-09-1813, soltera, jefa de hogar), con sirvienta Geneviève Bessard y pensionista Joseph Lambiel (n. 1859)."
+  },
+  {
+    "slug": "censo-nacional-de-1895-de-etienne-clemenzo-buenos-aires",
+    "title": "Censo nacional de 1895 de Etienne Clemenzo — Buenos Aires",
+    "personas": [
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p40-censo-1895.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Esteban (Etienne) Clemenzo, 31, suizo, casado, con Estefanía Venegas y sus hijos María Luisa, Fortunato, Juan y Germán (4 hijos, 9 años de matrimonio).</p>\n",
+    "snippet": "Esteban (Etienne) Clemenzo, 31, suizo, casado, con Estefanía Venegas y sus hijos María Luisa, Fortunato, Juan y Germán (4 hijos, 9 años de matrimonio)."
+  },
+  {
+    "slug": "censo-poco-legible-de-etienne-clemenzo",
+    "title": "Censo poco legible de Etienne Clemenzo",
+    "personas": [
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p40-censo.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "enrolamiento-militar-de-esteban-clemenzoz",
+    "title": "Enrolamiento militar de Esteban Clemenzoz",
+    "personas": [
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p40-enrolamiento-militar.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "enrolamiento-militar-de-francisco-clemenzo",
+    "title": "Enrolamiento militar de Francisco Clemenzo",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-enrolamiento-militar.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "enrolamiento-militar-de-francois-clemenzo-en-santa-fe",
+    "title": "Enrolamiento militar de François Clemenzo en Santa Fe",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-militar-1.webp",
+      "assets/images/personas/p26-militar-2.webp",
+      "assets/images/personas/p26-militar-3.webp",
+      "assets/images/personas/p26-militar-4.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "firma-de-celestina-roh",
+    "title": "Firma de Celestina Roh",
+    "personas": [
+      {
+        "id": "p27",
+        "name": "María Celestina Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p27-firma.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "firma-de-felix-clemenzo",
+    "title": "Firma de Felix Clemenzo",
+    "personas": [
+      {
+        "id": "p18",
+        "name": "Felix Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p18-firma.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "firma-de-francois-clemenzo-1",
+    "title": "Firma de François Clemenzo (1)",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-firma-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "firma-de-francois-clemenzo-2",
+    "title": "Firma de François Clemenzo (2)",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-firma-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "firma-de-leon-francisco-clemenzo",
+    "title": "Firma de Leon Francisco Clemenzo",
+    "personas": [
+      {
+        "id": "p20",
+        "name": "Leon Francisco Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p20-firma.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "foto-de-maria-luisa-clemenzo-con-dos-muchachos",
+    "title": "Foto de Maria Luisa Clemenzo con dos muchachos",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-con-agustin-magallanes.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>A uno lo identifica el archivo como Agustín Magallanes (c. década de 1960).</p>\n",
+    "snippet": "A uno lo identifica el archivo como Agustín Magallanes (c. década de 1960)."
+  },
+  {
+    "slug": "foto-de-maria-luisa-clemenzo-con-un-joven-magallanes",
+    "title": "Foto de Maria Luisa Clemenzo con un joven Magallanes",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-con-magallanes-represa.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Frente a una represa (c. 1965–1972).</p>\n",
+    "snippet": "Frente a una represa (c. 1965–1972)."
+  },
+  {
+    "slug": "foto-de-maria-luisa-clemenzo-en-sus-ultimos-anos",
+    "title": "Foto de Maria Luisa Clemenzo en sus últimos años",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-con-citroen.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Junto a un Citroën, con un joven de la familia (c. 1965–1972).</p>\n",
+    "snippet": "Junto a un Citroën, con un joven de la familia (c. 1965–1972)."
+  },
+  {
+    "slug": "foto-de-maria-luisa-clemenzo-y-agustin-costabile",
+    "title": "Foto de Maria Luisa Clemenzo y Agustín Costabile",
+    "personas": [
+      {
+        "id": "p29",
+        "name": "Maria Luisa Clemenzo"
+      },
+      {
+        "id": "p81",
+        "name": "Agustin Costabile"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p29-p81-familia-auto.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Con tres jóvenes, frente al auto familiar (c. década de 1960).</p>\n",
+    "snippet": "Con tres jóvenes, frente al auto familiar (c. década de 1960)."
+  },
+  {
+    "slug": "francois-clemenzo-en-el-libro-de-la-colonia",
+    "title": "François Clemenzo en el libro de la colonia",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-libro-colonia.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "libreta-de-defuncion-de-felix-clemenzo-e-isabel-queipo",
+    "title": "Libreta de defuncion de Felix Clemenzo e Isabel Queipo",
+    "personas": [
+      {
+        "id": "p18",
+        "name": "Felix Clemenzo"
+      },
+      {
+        "id": "p19",
+        "name": "Isabel Maria Queipo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p18-p19-defuncion.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "libreta-de-enrolamiento-militar-de-mauricio-francisco-roh",
+    "title": "Libreta de enrolamiento militar de Mauricio Francisco Roh",
+    "personas": [
+      {
+        "id": "p97",
+        "name": "Mauricio Francisco Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-enrolamiento-militar-mauricio-francisco.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Clase 1878, nacido en Diamante.</p>\n",
+    "snippet": "Clase 1878, nacido en Diamante."
+  },
+  {
+    "slug": "libreta-de-matrimonio-de-felix-clemenzo-e-isabel-queipo",
+    "title": "Libreta de matrimonio de Felix Clemenzo e Isabel Queipo",
+    "personas": [
+      {
+        "id": "p18",
+        "name": "Felix Clemenzo"
+      },
+      {
+        "id": "p19",
+        "name": "Isabel Maria Queipo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p18-p19-libreta-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "libreta-de-matrimonio-de-felix-e-isabel",
+    "title": "Libreta de matrimonio de Felix e Isabel",
+    "personas": [
+      {
+        "id": "p18",
+        "name": "Felix Clemenzo"
+      },
+      {
+        "id": "p19",
+        "name": "Isabel Maria Queipo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p18-p19-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "libreta-de-matrimonio-de-leon-francisco-clemenzo-con-emiliana-elena-baster",
+    "title": "Libreta de matrimonio de Leon Francisco Clemenzo con Emiliana Elena Baster",
+    "personas": [
+      {
+        "id": "p20",
+        "name": "Leon Francisco Clemenzo"
+      },
+      {
+        "id": "p21",
+        "name": "Emiliana Elena Baster"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p20-p21-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "licencia-de-inhumacion-de-maria-celestina-roh",
+    "title": "Licencia de inhumación de María Celestina Roh",
+    "personas": [
+      {
+        "id": "p27",
+        "name": "María Celestina Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p27_defuncion.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>N° 616, Santa Fe, 5-10-1950. (No es el acta de defunción completa.)</p>\n",
+    "snippet": "N° 616, Santa Fe, 5-10-1950. (No es el acta de defunción completa.)"
+  },
+  {
+    "slug": "matrimonio-de-angela-clemenzo-con-francisco-mediavilla",
+    "title": "Matrimonio de Ángela Clemenzo con Francisco Mediavilla",
+    "personas": [
+      {
+        "id": "p63",
+        "name": "Angela Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p63-matrimonio-1912.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>Parroquia San Carlos, Buenos Aires, 28-09-1912. La declara hija de Esteban (Etienne) Clemenzo, de Suiza, y Estefanía Venegas.</p>\n",
+    "snippet": "Parroquia San Carlos, Buenos Aires, 28-09-1912. La declara hija de Esteban (Etienne) Clemenzo, de Suiza, y Estefanía Venegas."
+  },
+  {
+    "slug": "matrimonio-de-esteban-clemenzoz-con-estefania-venegas-2",
+    "title": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+    "personas": [
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      },
+      {
+        "id": "p41",
+        "name": "Estefania Venegas"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p40-p41-matrimonio-2.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "matrimonio-de-esteban-clemenzoz-con-estefania-venegas",
+    "title": "Matrimonio de Esteban Clemenzoz con Estefanía Venegas",
+    "personas": [
+      {
+        "id": "p40",
+        "name": "Etienne Clemenzo"
+      },
+      {
+        "id": "p41",
+        "name": "Estefania Venegas"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p40-p41-matrimonio-1.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "matrimonio-de-fortunato-abelardo-clemenzoz",
+    "title": "Matrimonio de Fortunato Abelardo Clemenzoz",
+    "personas": [
+      {
+        "id": "p60",
+        "name": "Fortunato Abelardo Clemenzoz"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p60-matrimonio.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "partida-de-nacimiento-de-felix-ricardo-clemenzo",
+    "title": "Partida de nacimiento de Felix Ricardo Clemenzo",
+    "personas": [
+      {
+        "id": "p10",
+        "name": "Felix Ricardo Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p10-nacimiento.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "partida-de-nacimiento-de-maria-isidora-roh",
+    "title": "Partida de nacimiento de María Isidora Roh",
+    "personas": [
+      {
+        "id": "p123",
+        "name": "María Isidora Roh"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/roh-1907-partida-maria-isidora.webp"
+    ],
+    "hasBody": true,
+    "bodyHtml": "<p>N.º 22, Registro Civil de Villa Mantero, Entre Ríos. Padres: Mauricio Roh y Rogelia Hernández; abuelos paternos José Roh y María Putallaz.</p>\n",
+    "snippet": "N.º 22, Registro Civil de Villa Mantero, Entre Ríos. Padres: Mauricio Roh y Rogelia Hernández; abuelos paternos José Roh y María Putallaz."
+  },
+  {
+    "slug": "planilla-de-enrolamiento-militar-de-felix-clemenzo",
+    "title": "Planilla de enrolamiento militar de Felix Clemenzo",
+    "personas": [
+      {
+        "id": "p18",
+        "name": "Felix Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p18-enrolamiento-militar.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  },
+  {
+    "slug": "posible-registro-de-llegada-de-francois-clemenzo",
+    "title": "Posible registro de llegada de François Clemenzo",
+    "personas": [
+      {
+        "id": "p26",
+        "name": "François Clemenzo"
+      }
+    ],
+    "paginas": [
+      "assets/images/personas/p26-posibleLlegada.webp"
+    ],
+    "hasBody": false,
+    "bodyHtml": "",
+    "snippet": ""
+  }
+]

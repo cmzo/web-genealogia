@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-08-13-documentos-buscá-una-carta-o-un-censo-puntual-desde-k",
+    "date": "2026-08-13",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Documentos: buscá una carta o un censo puntual desde ⌘K",
+    "html": "<p>Hasta ahora, encontrar un documento concreto —una carta, un censo, un acta— significaba saber de antemano a qué persona estaba atada y navegar hasta su ficha. Se armó un inventario de los 176 archivos que había en la base y se agruparon en <strong>99 documentos reales</strong> (algunas cartas y censos tienen varias páginas, que ahora se muestran juntas en vez de sueltas). Cada uno tiene su propia página dedicada: todas sus imágenes, más su transcripción cuando ya está hecha. Buscando en ⌘K (por ejemplo «carta conthey» o «censo 1895») el resultado te lleva directo a esa página — ya no a la ficha completa de la persona. La carta del tribunal de Conthey de 1905 es el primer documento con transcripción completa (original en francés y traducción). El resto se va a ir completando de a poco.</p>\n"
+  },
+  {
+    "id": "2026-08-13-imágenes-rotas-en-línea-de-tiempo-de-francisco",
+    "date": "2026-08-13",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Imágenes rotas en «Línea de tiempo de Francisco»",
+    "html": "<p>Las dos imágenes de la carta del tribunal de Conthey y la del acta de defunción no cargaban en ese post — quedaron apuntando a archivos que ya no existían desde una reorganización anterior de las fotos. Ya se ven correctamente.</p>\n"
+  },
+  {
     "id": "2026-08-13-hipótesis-todo-lo-que-falta-confirmar-en-un-solo-lugar",
     "date": "2026-08-13",
     "type": "cambio",
@@ -302,21 +318,5 @@
     "tag": "nueva",
     "title": "Laboratorio de fractales",
     "html": "<p>Un segundo experimento en el área lab: <strong>L-systems</strong> sobre Canvas 2D. Elegís el fractal —Koch, Sierpiński, árbol o curva dragón—, ajustás las iteraciones y el ángulo de giro, y ves cómo cambia en tiempo real. El panel derecho muestra la gramática que lo genera, cómo crece el string con cada paso y la dimensión fractal del resultado. Sin dependencias externas.</p>\n"
-  },
-  {
-    "id": "2026-06-22-índice-del-lab-con-tarjetas-visuales",
-    "date": "2026-06-22",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Índice del lab con tarjetas visuales",
-    "html": "<p>El área lab tiene ahora su propia página de entrada (<code>/lab</code>), separada de genealogía. Cada herramienta aparece como una tarjeta con una visualización previa —un grafo esquemático o un Sierpiński— hecha con el mismo lenguaje visual del resto del sitio. El lab también tiene su propio lugar en la barra de navegación y en el menú mobile.</p>\n"
-  },
-  {
-    "id": "2026-06-21-la-versión-mobile-más-prolija",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "La versión mobile, más prolija",
-    "html": "<p>En el teléfono, la barra de arriba quedó minimal —solo el buscador (como lupa) y el modo día/noche—, y el resto de la navegación —todas las secciones y el GitHub— se mudó al <strong>menú lateral</strong>, ahora con el estilo del sitio. Colaborar y Cambios salieron del pie de página y viven en ese menú.</p>\n"
   }
 ]

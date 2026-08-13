@@ -283,12 +283,12 @@ Ce que cela confirme et ce que cela corrige :
 
 ### 14 juin 2026 — Le généalogiste de Conthey donne des noms et des dates
 
-Une autre pièce attendait dans mon propre dossier : un PDF intitulé *Émigrés de Conthey*, téléchargé de [valais-argentine.ch](https://www.valais-argentine.ch/) et jamais lu attentivement. Compilé par **Gabriel Antonin**, généalogiste de Conthey. Dans le groupe **« 1873 — Amérique du Sud »** :
+Une autre pièce attendait dans mon propre dossier : un PDF intitulé *Émigrés de Conthey*, téléchargé de [valais-argentine.ch](https://www.valais-argentine.ch/) et jamais lu attentivement. C'est l'article « Les émigrés de Conthey », de **Paul Bourban**, publié dans *Los Primos* — le bulletin de l'Association Valais-Argentine — en avril 2009 : une liste des Contheysans partis en Argentine entre 1859 et 1875, avec les dates de naissance et la filiation que le généalogiste contheysan **Gabriel Antonin** est allé chercher acte par acte. Dans le groupe **« 1873 — Amérique du Sud »** :
 
 > **Roh Jean Joseph**, (5.10.1840), *maréchal*, de Jean Joseph et d'Anne Marie Papilloud ; **Putallaz Marie**, (01.11.1835), de Jean François et de Catherine Roh, épouse du précédent depuis le 01.05.1859. Ils ont eu 4 enfants : Marianne (19.02.1862), Marie Rosalie (24.10.1864), Marie Célestine (22.12.1867) et Joseph Marie (27.02.1870).
 
-![L'entrée « 1873 — Amérique du Sud » dans la liste des émigrés de Conthey de Gabriel Antonin, avec la famille Roh-Putallaz](../../assets/images/posts/roh-1873-emigres-conthey.webp)
-_L'entrée « 1873 — Amérique du Sud » dans la liste des émigrés de Conthey de Gabriel Antonin._
+![L'entrée « 1873 — Amérique du Sud » dans l'article de Paul Bourban sur les émigrés de Conthey, avec la famille Roh-Putallaz](../../assets/images/posts/roh-1873-emigres-conthey.webp)
+_L'entrée « 1873 — Amérique du Sud » dans l'article de Paul Bourban sur les émigrés de Conthey._
 
 Un seul paragraphe, et il résout presque tout. La famille avec des dates confirmées :
 
@@ -321,7 +321,7 @@ Ce que cela corrige et ce que cela ferme :
 - **Jean Joseph est né le 5 octobre 1840 et était *maréchal*** — le métier qu'hériteraient ses fils José Luciano et Mauricio.
 - **Apparaissent ses parents et ceux de sa femme.** Lui, fils de **Pierre Joseph Roh** et d'**Anne Marie Papilloud** (voir ci-dessous) ; elle, fille de **Jean François Putallaz** et **Catherine Roh**. Quatre ancêtres qui étaient des cases vides.
 
-Le plus beau est d'où cela est sorti : un PDF gardé tout ce temps sans être lu. Parfois, la source qui manque est déjà à la maison. Mes remerciements à **Gabriel Antonin**.
+Le plus beau est d'où cela est sorti : un PDF gardé tout ce temps sans être lu. Parfois, la source qui manque est déjà à la maison. Mes remerciements à **Paul Bourban**, qui a écrit l'article, et à **Gabriel Antonin**, qui a fait le travail acte par acte.
 
 ### 14 juin 2026 (II) — Le recensement de 1850 et les frères et sœurs restés en Suisse
 

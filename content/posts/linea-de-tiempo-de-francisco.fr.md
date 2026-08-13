@@ -99,9 +99,9 @@ Ceci nous laisse quelques questions :
 
 Quant à la famille de Francisco, il existe une lettre de 1905 du tribunal de Conthey, concernant un héritage, où est mentionné **Etienne**, un frère de Francisco :
 
-![Lettre du tribunal de Conthey - Page 1](../../assets/images/posts/FJHC_1859_cartaConthey_1.JPG)
+![Lettre du tribunal de Conthey - Page 1](../../assets/images/personas/p26-p40-carta-conthey-1.webp)
 
-![Lettre du tribunal de Conthey - Page 2](../../assets/images/posts/FJHC_1859_cartaConthey_2.JPG)
+![Lettre du tribunal de Conthey - Page 2](../../assets/images/personas/p26-p40-carta-conthey-2.webp)
 
 Ceci a mené à l'hypothèse qu'Etienne Clemenzo pourrait être **Esteban Clemenzoz**, qui a plusieurs registres sur FamilySearch. Parmi eux, on retrouve ce qui suit :
 

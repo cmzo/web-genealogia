@@ -3,12 +3,17 @@
 // Construye la sección Wiki (grafo de conocimiento + páginas/notas renderizadas).
 //
 //  Fuentes:
-//   - content/wiki/*.md      → páginas de lugar/fuente/evento/tema (con frontmatter y [[enlaces]])
-//   - content/personas/*.md  → notas de investigación por persona (pNN = nombre del archivo)
-//   - assets/data/arbol.json → personas (nombres, ramas, relaciones)
+//   - content/wiki/*.md       → páginas de lugar/fuente/evento/tema (con frontmatter y [[enlaces]])
+//   - content/personas/*.md   → notas de investigación por persona (pNN = nombre del archivo)
+//   - content/documentos/*.md → documentos curados (cartas, censos, actas…), un archivo por
+//                                documento REAL (no por fila de media): frontmatter `title` +
+//                                `personas: pNN, pNN` (a quiénes atañe) + `paginas: archivo1.webp,
+//                                archivo2.webp` (sus páginas, en orden). Cuerpo = transcripción.
+//   - assets/data/arbol.json  → personas (nombres, ramas, relaciones)
 //
 //  Salidas:
 //   - assets/data/wiki-graph.json   { nodes, edges }  para el grafo D3
+//   - assets/data/documentos.json   documentos curados + su HTML renderizado, para ⌘K y la wiki
 //   - dist/wiki/<slug>.html         página de cada nodo con contenido (modal la lee on-demand)
 //
 //  Enlaces:
@@ -26,11 +31,13 @@ const ROOT = path.join(__dirname, '..');
 const WIKI_DIR = path.join(ROOT, 'content/wiki');
 const PERSONAS_DIR = path.join(ROOT, 'content/personas');
 const HIPOTESIS_DIR = path.join(ROOT, 'content/hipotesis');
+const DOCUMENTOS_DIR = path.join(ROOT, 'content/documentos');
 const TEMPLATE_FILE = path.join(ROOT, 'content/templates/wiki-template.html');
 const ARBOL_JSON = path.join(ROOT, 'assets/data/arbol.json');
 const BLOG_ENTRIES = path.join(ROOT, 'assets/data/blog-entries.json');
 const OUTPUT_DIR = path.join(ROOT, 'dist/wiki');
 const GRAPH_FILE = path.join(ROOT, 'assets/data/wiki-graph.json');
+const DOCUMENTOS_FILE = path.join(ROOT, 'assets/data/documentos.json');
 const BASE_URL = 'https://cmzo.net';
 
 const TYPE_LABEL = {
@@ -77,42 +84,26 @@ function renderRich(md) {
 }
 
 // ── Galería «Documentos» ──────────────────────────────────────────────────────
-// La media de arbol.json (fotos y documentos por persona) vive en la wiki:
-// respalda la investigación. Misma agrupación por group_label que tenía la
-// pestaña Archivos del árbol; las fotos van como .wiki-figure → heredan los
-// estilos del content y el lightbox del modal/página sin código extra.
-const IMG_EXT = /\.(webp|jpe?g|png|gif|avif)$/i;
-
-function mediaHtml(p) {
-  const media = p.media || [];
-  if (!media.length) return '';
-  const isImg = m => m.type !== 'document' || IMG_EXT.test(m.url);
-  const fig = m => {
-    const cap = [m.caption, m.source_label].filter(Boolean).join(' · ');
-    return `<figure class="wiki-figure"><img src="../../${m.url}" alt="${escapeHtml(m.caption || p.name)}" loading="lazy">${cap ? `<figcaption>${escapeHtml(cap)}</figcaption>` : ''}</figure>`;
+// Documentos curados (content/documentos/*.md) que nombran a esta persona en su
+// frontmatter `personas:`. Cada uno es una card con su primera página como
+// miniatura — clic abre la vista enfocada del documento (todas sus páginas +
+// transcripción) vía data-doc, sin generar nodo propio en el grafo.
+function mediaHtml(docsForPersona) {
+  if (!docsForPersona || !docsForPersona.length) return '';
+  const IMG_EXT = /\.(webp|jpe?g|png|gif|avif)$/i;
+  const card = d => {
+    const cover = d.paginas[0];
+    const thumb = cover && IMG_EXT.test(cover)
+      ? `<img src="../../${cover}" alt="${escapeHtml(d.title)}" loading="lazy">`
+      : '📄';
+    const pages = d.paginas.length > 1 ? `<span class="wiki-doc-pages">${d.paginas.length} páginas</span>` : '';
+    return `<a class="wiki-doc-card" href="#" data-doc="${d.slug}">
+      <span class="wiki-doc-thumb">${thumb}</span>
+      <span class="wiki-doc-card-title">${escapeHtml(d.title)}</span>
+      ${pages}
+    </a>`;
   };
-  const docLink = m => `<p class="wiki-doc-file"><a href="../../${m.url}" target="_blank" rel="noopener">📄 ${escapeHtml(m.caption || m.url.split('/').pop())}</a></p>`;
-
-  let html = '';
-  let grid = [];
-  let docs = [];
-  const flush = () => {
-    if (grid.length) { html += `<div class="wiki-docs-grid">${grid.join('')}</div>`; grid = []; }
-    if (docs.length) { html += docs.join(''); docs = []; }
-  };
-  const push = m => (isImg(m) ? grid.push(fig(m)) : docs.push(docLink(m)));
-  const seen = new Set();
-  media.forEach(m => {
-    if (!m.group_label) { push(m); return; }
-    if (seen.has(m.group_label)) return;
-    seen.add(m.group_label);
-    flush();
-    html += `<h3>${escapeHtml(m.group_label)}</h3>`;
-    media.filter(x => x.group_label === m.group_label).forEach(push);
-    flush();
-  });
-  flush();
-  return `<section class="wiki-docs"><h2>Documentos</h2>${html}</section>`;
+  return `<section class="wiki-docs"><h2>Documentos</h2><div class="wiki-docs-grid">${docsForPersona.map(card).join('')}</div></section>`;
 }
 
 function vitals(p) {
@@ -139,6 +130,28 @@ function build() {
       const { metadata, body } = extractFrontMatter(fs.readFileSync(path.join(PERSONAS_DIR, file), 'utf8'));
       const stub = body.includes('_Investigación pendiente._');
       notaById.set(id, { body, summary: metadata.summary || '', tags: parseTags(metadata.tags), stub });
+    });
+  }
+
+  // ── 1.5 Documentos curados (content/documentos/*.md) ───────────────────────
+  // Un archivo por documento REAL (no por fila de media): frontmatter `personas:`
+  // (a quiénes atañe) + `paginas:` (sus imágenes, en orden). El cuerpo se
+  // renderiza más abajo, una vez que renderBracketLinks está disponible.
+  const documentos = [];
+  const documentosByPersona = new Map();   // pNN -> [documento, ...]
+  if (fs.existsSync(DOCUMENTOS_DIR)) {
+    fs.readdirSync(DOCUMENTOS_DIR).filter(f => f.endsWith('.md')).forEach(file => {
+      const slug = file.replace(/\.md$/, '');
+      const { metadata, body } = extractFrontMatter(fs.readFileSync(path.join(DOCUMENTOS_DIR, file), 'utf8'));
+      const personaIds = String(metadata.personas || '').split(',').map(s => s.trim()).filter(Boolean);
+      const paginas = String(metadata.paginas || '').split(',').map(s => s.trim()).filter(Boolean)
+        .map(f => `assets/images/personas/${f}`);
+      const doc = { slug, title: metadata.title || slug, personaIds, paginas, body };
+      documentos.push(doc);
+      personaIds.forEach(pid => {
+        if (!documentosByPersona.has(pid)) documentosByPersona.set(pid, []);
+        documentosByPersona.get(pid).push(doc);
+      });
     });
   }
 
@@ -177,9 +190,9 @@ function build() {
     const p = personaById.get(id);
     if (!p) return null;
     const hasNote = notaById.has(id) && !notaById.get(id).stub;
-    // La media (fotos/documentos de arbol.json) también es contenido: una persona
-    // sin investigación escrita pero con documentos genera página igual.
-    const hasContent = hasNote || (p.media || []).length > 0;
+    // Los documentos curados también son contenido: una persona sin investigación
+    // escrita pero con documentos genera página igual.
+    const hasContent = hasNote || documentosByPersona.has(id);
     const node = {
       id, title: p.name, type: 'persona', branch: p.branch || '',
       url: hasContent ? `dist/wiki/${id}.html` : `arbol.html?focus=${id}`,
@@ -414,7 +427,7 @@ function build() {
   personaById.forEach((p, id) => {
     const nota = notaById.get(id);
     const hasNote = nota && !nota.stub;
-    const gallery = mediaHtml(p);
+    const gallery = mediaHtml(documentosByPersona.get(id));
     if (!hasNote && !gallery) return;
     const content = (hasNote
       ? renderRich(linkifyPersonas(renderBracketLinks(nota.body), id).replace(/^\s*#\s+[^\n]+\n+/, ''))
@@ -429,6 +442,24 @@ function build() {
     personaPages++;
   });
   console.log(`  ✅ Páginas de persona: ${personaPages} (nota y/o documentos)`);
+
+  // ── 6. Documentos (para ⌘K y la vista enfocada de la wiki) ────────────────
+  // Cada documento curado se renderiza acá (renderBracketLinks/renderRich ya
+  // están disponibles) y se emite completo — la wiki inyecta bodyHtml directo
+  // en el modal, sin volver a pedir nada.
+  const documentosOut = documentos.map(d => {
+    const hasBody = d.body.trim().length > 0;
+    const bodyHtml = hasBody ? renderRich(renderBracketLinks(d.body)) : '';
+    const snippet = d.body.replace(/[#>*_`[\]]/g, '').replace(/\s+/g, ' ').trim().slice(0, 400);
+    return {
+      slug: d.slug, title: d.title,
+      personas: d.personaIds.map(pid => ({ id: pid, name: (personaById.get(pid) || {}).name || pid })),
+      paginas: d.paginas, hasBody, bodyHtml, snippet,
+    };
+  });
+  fs.writeFileSync(DOCUMENTOS_FILE, JSON.stringify(documentosOut, null, 2));
+  const nBody = documentosOut.filter(d => d.hasBody).length;
+  console.log(`✅ Generado: ${path.relative(ROOT, DOCUMENTOS_FILE)} (${documentosOut.length} documentos, ${nBody} transcriptos)`);
 }
 
 if (require.main === module) build();
