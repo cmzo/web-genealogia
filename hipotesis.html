@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <script>(function(){try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hipótesis · Genealogía Clemenzo</title>
+  <meta name="description" content="Lo que está sin confirmar y lo que falta por buscar en la investigación genealógica Clemenzo: hipótesis abiertas y tareas pendientes, en un solo lugar." />
+  <link rel="canonical" href="https://cmzo.net/hipotesis" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hipótesis · Genealogía Clemenzo" />
+  <meta property="og:description" content="Lo que está sin confirmar y lo que falta por buscar, en un solo lugar." />
+  <meta property="og:url" content="https://cmzo.net/hipotesis" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="./assets/css/home.css" />
+  <link rel="stylesheet" href="./assets/css/hipotesis.css" />
+</head>
+<body data-section="gen" data-page="hipotesis">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <symbol id="ico-llave" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11.2 10.8 20 19.6M16.5 15.3l2.3 2.3M19 12.8l2.3 2.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="ico-checklist" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 9.5l1.6 1.6L11.5 8M7.5 15.5l1.6 1.6L11.5 14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 9h4M14.5 15h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="ico-hipotesis" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="5.3" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="1.6"/><path d="M9.7 18.5h4.6M10.3 21h3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 6.3v4.6M9.9 8.9h4.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <header class="cmzo-top"><!-- la genera nav.js según data-section --></header>
+
+  <main class="cmzo cmzo-wrap cmzo-page" id="main-content">
+    <section class="cmzo-hero">
+      <div class="cmzo-kicker">Genealogía Clemenzo</div>
+      <p class="cmzo-lede">Todo lo que está <strong>sin confirmar</strong> y todo lo que falta <strong>por buscar</strong>, en un solo lugar. <span class="soft">Pasá el mouse sobre <span class="hyp-ref" data-hyp="h1-clemence">una referencia como esta</span> para ver la hipótesis sin salir de la página.</span></p>
+    </section>
+
+    <section class="cmzo-mod hip-section">
+      <div class="cmzo-mod-inner">
+        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24"><use href="#ico-llave"/></svg></span><h2>Llaves</h2></div>
+        <p class="hip-note">Documentos que, si aparecen, resuelven más de una cosa a la vez — el resto de las tareas son en su mayoría hojas sueltas que no destraban nada más allá de sí mismas.</p>
+        <div class="key-grid" id="llavesGrid"><p class="hip-loading">Cargando…</p></div>
+      </div>
+    </section>
+
+    <section class="cmzo-mod hip-section">
+      <div class="cmzo-mod-inner">
+        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24"><use href="#ico-checklist"/></svg></span><h2>Por hacer</h2></div>
+        <p class="hip-note">Agrupadas por el tipo de trámite, para atacarlas en tanda en vez de saltar de persona en persona.</p>
+        <div class="cmzo-filterbar" id="todoTabs"></div>
+        <div id="todoPanes"><p class="hip-loading">Cargando…</p></div>
+      </div>
+    </section>
+
+    <section class="cmzo-mod hip-section">
+      <div class="cmzo-mod-inner">
+        <div class="cmzo-mod-head"><span class="cmzo-mod-icon"><svg viewBox="0 0 24 24"><use href="#ico-hipotesis"/></svg></span><h2>Hipótesis</h2></div>
+        <p class="hip-note">Curadas a mano — cruzan varias generaciones o varias personas. Autogeneradas.</p>
+        <div class="hyp-grid" id="hipGrid"><p class="hip-loading">Cargando…</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="hypPopup" role="tooltip"></div>
+
+  <footer class="cmzo-foot">
+    <div class="cmzo-foot-inner">
+      <div class="sig">// diseñado y mantenido por <b>Matías Clemenzo</b> · 2026</div>
+      <div class="cmzo-foot-links"><a href="colaborar.html">colaborar</a><a href="changelog.html">cambios</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const D = './assets/data/';
+      const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const pedir = f => fetch(D + f).then(r => r.ok ? r.json() : []).catch(() => []);
+
+      const CATS = [
+        { id: 'nacimiento', label: 'Nacimiento / bautismo' },
+        { id: 'matrimonio', label: 'Matrimonio' },
+        { id: 'defuncion', label: 'Defunción' },
+        { id: 'censos', label: 'Censos' },
+        { id: 'archivo', label: 'Archivo (AEV / presencial)' },
+        { id: 'otros', label: 'Otros / identificación' },
+      ];
+      const ESTADO_LABEL = {
+        confirmed: 'Confirmada', 'confirmed-informal': 'Confirmada informalmente',
+        solida: 'Sólida', plausible: 'Plausible', speculative: 'Especulativa',
+      };
+      const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+      const fmtFecha = iso => {
+        const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+        return m ? `${+m[3]} ${MESES[+m[2] - 1]}` : (iso || '');
+      };
+
+      let HIP = [], TODO = [], DUDAS = {};
+      const hipBySlug = {};
+
+      // Limpia una duda para el popup: [[destino|alias]] → alias, **bold** → <strong>
+      // (conversión manual: esta página no carga marked.js, no vale la pena por esto solo).
+      // Sin recorte — la pregunta se muestra entera, aunque haga crecer el popup.
+      function cleanDuda(s) {
+        const t = s.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (m, target, alias) => (alias || target).trim());
+        return esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      }
+      const personaTag = (pid, label) => {
+        const has = !!DUDAS[pid];
+        return `<a class="task-person${has ? ' has-dudas' : ''}" ${has ? `data-persona="${esc(pid)}"` : ''} href="wiki.html?focus=${encodeURIComponent(pid)}">${esc(label)}</a>`;
+      };
+
+      function renderLlaves() {
+        const llaves = HIP.filter(h => h.llave);
+        const el = document.getElementById('llavesGrid');
+        if (!llaves.length) { el.innerHTML = '<p class="hip-note">Ninguna hipótesis tiene una llave marcada todavía.</p>'; return; }
+        el.innerHTML = llaves.map(h => `
+          <a class="key-card${h.llave.nuevo ? ' key-new' : ''}" href="#hyp-${h.slug}">
+            ${h.llave.nuevo ? `<span class="key-badge">NUEVO · ${fmtFecha(h.llave.nuevo)}</span>` : ''}
+            <h3>${esc(h.llave.tarea)}</h3>
+            ${h.llave.donde ? `<p class="key-where">${esc(h.llave.donde)}</p>` : ''}
+            ${h.llave.destraba ? `<div class="key-unlocks"><span class="ku-lbl">Destraba:</span> ${esc(h.llave.destraba)}</div>` : ''}
+          </a>`).join('');
+      }
+
+      function taskRow(t) {
+        return `<div class="task"><div class="task-box"></div><div class="task-body">
+          <div class="task-text">${t.html}</div>
+          <div class="task-meta">${personaTag(t.persona, `${t.nombre} · ${t.persona}`)}</div>
+        </div></div>`;
+      }
+
+      function renderTabs() {
+        const wrap = document.getElementById('todoTabs');
+        const panes = document.getElementById('todoPanes');
+        wrap.innerHTML = CATS.map((c, i) => {
+          const n = TODO.filter(t => t.categoria === c.id).length;
+          return `<button class="cmzo-fpill${i === 0 ? ' is-on' : ''}" data-tab="${c.id}">${esc(c.label)} <span class="n">(${n})</span></button>`;
+        }).join('');
+        panes.innerHTML = CATS.map((c, i) => {
+          const items = TODO.filter(t => t.categoria === c.id);
+          return `<div class="tpane${i === 0 ? ' is-on' : ''}" data-pane="${c.id}">
+            ${items.length ? items.map(taskRow).join('') : '<p class="hip-note">Nada por acá.</p>'}
+          </div>`;
+        }).join('');
+      }
+
+      function renderHipotesis() {
+        const el = document.getElementById('hipGrid');
+        el.innerHTML = HIP.map(h => `
+          <div class="hyp-card" id="hyp-${h.slug}">
+            <div class="hyp-status ${h.estado}">${ESTADO_LABEL[h.estado] || h.estado}</div>
+            <h3>${esc(h.title)}</h3>
+            <p>${esc(h.resumen)}</p>
+            ${h.falta ? `<div class="hyp-falta"><b>Falta:</b> ${esc(h.falta)}</div>` : ''}
+            <div class="hyp-tagrow">${(h.personas || []).map(p => {
+              const has = !!DUDAS[p];
+              return `<a class="hyp-tag${has ? ' has-dudas' : ''}" ${has ? `data-persona="${esc(p)}"` : ''} href="wiki.html?focus=${encodeURIComponent(p)}">${esc(p)}</a>`;
+            }).join('')}</div>
+          </div>`).join('');
+      }
+
+      function wireTabs() {
+        document.getElementById('todoTabs').addEventListener('click', e => {
+          const b = e.target.closest('.cmzo-fpill'); if (!b) return;
+          document.querySelectorAll('#todoTabs .cmzo-fpill').forEach(x => x.classList.remove('is-on'));
+          document.querySelectorAll('#todoPanes .tpane').forEach(x => x.classList.remove('is-on'));
+          b.classList.add('is-on');
+          document.querySelector(`#todoPanes .tpane[data-pane="${b.dataset.tab}"]`).classList.add('is-on');
+        });
+      }
+
+      // Popup estilo Gwern: hover sobre .hyp-ref (hipótesis curada) o .has-dudas
+      // (dudas propias de esa persona, de su misma nota) muestra el contenido sin navegar.
+      function wirePopup() {
+        const popup = document.getElementById('hypPopup');
+        let hideTimer = null;
+        function place(el) {
+          const r = el.getBoundingClientRect();
+          let top = r.bottom + 8, left = r.left;
+          if (left + 420 > window.innerWidth - 16) left = window.innerWidth - 436;
+          const h = popup.offsetHeight || 160;
+          if (top + h > window.innerHeight) top = r.top - h - 8;
+          popup.style.top = Math.max(8, top) + 'px';
+          popup.style.left = Math.max(8, left) + 'px';
+          popup.classList.add('is-on');
+        }
+        function showHip(el) {
+          const h = hipBySlug[el.dataset.hyp];
+          if (!h) return;
+          popup.innerHTML = `<div class="hyp-status ${h.estado}">${ESTADO_LABEL[h.estado] || h.estado}</div><h4>${esc(h.title)}</h4><p>${esc(h.resumen)}</p>`;
+          place(el);
+        }
+        function showDudas(el) {
+          const dudas = DUDAS[el.dataset.persona];
+          if (!dudas || !dudas.length) return;
+          const shown = dudas.slice(0, 3);
+          popup.innerHTML = `<div class="hp-status dudas">${dudas.length} pregunta${dudas.length > 1 ? 's' : ''} abierta${dudas.length > 1 ? 's' : ''}</div>
+            <ul class="hp-dudas">${shown.map(d => `<li>${cleanDuda(d)}</li>`).join('')}</ul>
+            ${dudas.length > shown.length ? `<p class="hp-more">+ ${dudas.length - shown.length} más en su ficha</p>` : ''}`;
+          place(el);
+        }
+        function scheduleHide() { hideTimer = setTimeout(() => popup.classList.remove('is-on'), 180); }
+        document.body.addEventListener('mouseover', e => {
+          const ref = e.target.closest('.hyp-ref');
+          if (ref) { clearTimeout(hideTimer); showHip(ref); return; }
+          const pref = e.target.closest('.has-dudas');
+          if (pref) { clearTimeout(hideTimer); showDudas(pref); }
+        });
+        document.body.addEventListener('mouseout', e => { if (e.target.closest('.hyp-ref, .has-dudas')) scheduleHide(); });
+        popup.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+        popup.addEventListener('mouseleave', scheduleHide);
+      }
+
+      Promise.all([pedir('hipotesis.json'), pedir('todo.json'), pedir('dudas.json')]).then(([hip, todo, dudas]) => {
+        HIP = hip; TODO = todo; DUDAS = dudas || {};
+        hip.forEach(h => { hipBySlug[h.slug] = h; });
+        renderLlaves();
+        renderTabs();
+        renderHipotesis();
+        wireTabs();
+        wirePopup();
+      });
+    })();
+  </script>
+
+  <script src="./assets/js/path-config.js"></script>
+  <script src="./assets/js/nav.js" defer></script>
+  <script src="./assets/js/nav-drawer.js" defer></script>
+  <script src="./assets/js/theme.js" defer></script>
+  <script src="./assets/js/command-palette.js" defer></script>
+
+</body>
+</html>

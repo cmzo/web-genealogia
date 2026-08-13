@@ -11,7 +11,7 @@
     { id: 'gen',  label: 'gen',  href: 'gen.html' },
     { id: 'lab',  label: 'lab',  href: 'lab.html' },
   ];
-  const GEN_LABELS = { arbol: 'arbol', wiki: 'wiki', fuentes: 'fuentes', colaborar: 'colaborar' };
+  const GEN_LABELS = { arbol: 'arbol', wiki: 'wiki', fuentes: 'fuentes', hipotesis: 'hipotesis', colaborar: 'colaborar' };
 
   const body = document.body;
   const section = body.dataset.section || 'home';

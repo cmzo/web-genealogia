@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-08-13-hipótesis-todo-lo-que-falta-confirmar-en-un-solo-lugar",
+    "date": "2026-08-13",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Hipótesis: todo lo que falta confirmar, en un solo lugar",
+    "html": "<p>Nueva sección en la genealogía (quinta tarjeta de <code>/gen</code>): <strong>Hipótesis</strong>. Reúne, por primera vez en un solo lugar, tres cosas que antes vivían dispersas — las hipótesis que cruzan varias generaciones (¿se casaron Francisco y Celestina? ¿cuándo murió François Clemenzoz? ¿es Baptiste el ancestro común con la rama suiza de Jean-Yves?), 236 tareas de investigación pendientes agrupadas por tipo de trámite (nacimiento, matrimonio, defunción, censos, archivo), y una sección de <strong>Llaves</strong>: los cuatro documentos puntuales que, si aparecen, resuelven varias cosas a la vez en lugar de una sola. Pasando el mouse sobre cualquier referencia a una hipótesis o sobre una persona con preguntas abiertas aparece una tarjeta con el detalle, sin salir de la página.</p>\n"
+  },
+  {
+    "id": "2026-08-13-los-enlaces-dentro-de-una-nota-de-persona-ahora-se-ven",
+    "date": "2026-08-13",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Los enlaces dentro de una nota de persona ahora se ven",
+    "html": "<p>Un enlace entre corchetes dobles escrito dentro del texto de una nota de persona (por ejemplo, una mención a otra página de la wiki) nunca se convertía en un link — quedaba como corchetes sueltos en medio del párrafo. Solo funcionaba como chip en la lista de «relacionados» al pie de la página. Ya se ve como corresponde en el cuerpo del texto.</p>\n"
+  },
+  {
+    "id": "2026-08-12-el-registro-de-emigrados-de-1873-la-familia-viajó-completa",
+    "date": "2026-08-12",
+    "type": "cambio",
+    "tag": "novedad",
+    "title": "El registro de emigrados de 1873: la familia viajó completa",
+    "html": "<p>Un escaneo de <em>Valaisans émigrés au 19ème siècle</em> (Maurice Carron) trajo la entrada completa de la familia Clemenzoz en el registro de emigrados de Riddes — no solo la fila de Francisco, que ya se conocía. Viajaron los cinco juntos en 1873: François padre, Marie Louise Stalder y sus cuatro hijos, incluidas las dos hijas de Josephine. Esto tensiona la historia que se venía contando de que Francisco partió «huérfano de padre» — si François padre viajó con la familia, seguía vivo en 1873, y la muerte que se le atribuía antes de esa fecha queda en duda otra vez. La ficha de Baptiste Clemenzo, el patriarca más antiguo del árbol, tenía la investigación vacía pese a ser central en la hipótesis de que es ancestro común con la rama suiza de la familia — ya tiene contenido real.</p>\n"
+  },
+  {
+    "id": "2026-08-11-tarjetas-de-color-más-grandes-mismo-lenguaje-en-toda-la-genealogía",
+    "date": "2026-08-11",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Tarjetas de color más grandes, mismo lenguaje en toda la genealogía",
+    "html": "<p>Las tarjetas de color sólido de <code>/gen</code> (árbol, wiki, fuentes, colaborar) pasaron de cuatro a <strong>tres por fila</strong>, más grandes. El mismo componente se extendió a la portada (áreas blog/lab/genealogía) y al Lab (las tres herramientas), reemplazando los estilos de tarjeta que tenía cada una por separado — ahora todo el sitio usa el mismo lenguaje visual de tarjetas.</p>\n"
+  },
+  {
     "id": "2026-08-10-nueve-fichas-nuevas-en-el-árbol-y-la-wiki-ramas-queipo-cordero-y-arceo-vázquez",
     "date": "2026-08-10",
     "type": "cambio",
@@ -286,37 +318,5 @@
     "tag": "mejora",
     "title": "La versión mobile, más prolija",
     "html": "<p>En el teléfono, la barra de arriba quedó minimal —solo el buscador (como lupa) y el modo día/noche—, y el resto de la navegación —todas las secciones y el GitHub— se mudó al <strong>menú lateral</strong>, ahora con el estilo del sitio. Colaborar y Cambios salieron del pie de página y viven en ese menú.</p>\n"
-  },
-  {
-    "id": "2026-06-21-la-tarjeta-al-compartir-sin-foto",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "La tarjeta al compartir, sin foto",
-    "html": "<p>Al compartir el sitio (por WhatsApp y demás) ya no aparece esa imagen que no terminaba de quedar bien: la tarjeta muestra solo título y descripción, más limpio.</p>\n"
-  },
-  {
-    "id": "2026-06-21-las-notas-del-log-mejor-ordenadas-y-más-limpias",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Las notas del log, mejor ordenadas y más limpias",
-    "html": "<p>Las notas del mismo día ahora se ordenan por la más reciente (la última que escribo aparece arriba), y en el hilo se muestra solo la primera línea, limpia; el contenido completo —con sus listas y formato— queda en el recuadro que se abre al tocarla.</p>\n"
-  },
-  {
-    "id": "2026-06-21-una-presentación-más-honesta",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Una presentación más honesta",
-    "html": "<p>Cambié el texto de bienvenida de la portada por algo más personal y directo.</p>\n"
-  },
-  {
-    "id": "2026-06-21-una-home-nueva-índice-y-bitácora",
-    "date": "2026-06-21",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Una home nueva: índice y bitácora",
-    "html": "<p>La portada se rehízo de cero. Arriba, una presentación corta y tres áreas —<strong>blog</strong>, <strong>lab</strong> y <strong>genealogía</strong>— como &quot;directorios&quot;, cada una con una vista previa en vivo (las últimas entradas, los experimentos, el estado del árbol). Abajo, un <strong>log</strong>: un hilo cronológico que mezcla posts, notas cortas y cambios del sitio, filtrable por tipo. La idea es que el sitio se sienta vivo aunque pase tiempo entre un post largo y otro.</p>\n"
   }
 ]

@@ -25,6 +25,7 @@ const {
 const ROOT = path.join(__dirname, '..');
 const WIKI_DIR = path.join(ROOT, 'content/wiki');
 const PERSONAS_DIR = path.join(ROOT, 'content/personas');
+const HIPOTESIS_DIR = path.join(ROOT, 'content/hipotesis');
 const TEMPLATE_FILE = path.join(ROOT, 'content/templates/wiki-template.html');
 const ARBOL_JSON = path.join(ROOT, 'assets/data/arbol.json');
 const BLOG_ENTRIES = path.join(ROOT, 'assets/data/blog-entries.json');
@@ -204,6 +205,36 @@ function build() {
     return null;
   }
 
+  // Hipótesis (content/hipotesis/*.md): viven en hipotesis.html, no en el grafo —
+  // por eso NO pasan por resolvePageLink (evitaría aristas colgantes a un nodo
+  // inexistente). Solo sirven para el render inline de [[...]] más abajo.
+  const hipotesisBySlug = new Map();
+  if (fs.existsSync(HIPOTESIS_DIR)) {
+    fs.readdirSync(HIPOTESIS_DIR).filter(f => f.endsWith('.md')).forEach(file => {
+      const slug = file.replace(/\.md$/, '');
+      const { metadata } = extractFrontMatter(fs.readFileSync(path.join(HIPOTESIS_DIR, file), 'utf8'));
+      hipotesisBySlug.set(slug, metadata.title || slug);
+    });
+  }
+
+  // Resuelve un [[...]] para RENDER inline (hipótesis primero, después páginas/personas).
+  function resolveInlineLink(target) {
+    if (hipotesisBySlug.has(target)) return { href: `../../hipotesis.html#${target}`, label: hipotesisBySlug.get(target), persona: false };
+    return resolvePageLink(target);
+  }
+
+  // Reemplaza [[destino]] / [[destino|alias]] por <a> (o un span "missing" si no
+  // resuelve) en CUALQUIER cuerpo markdown — páginas y notas de persona por igual.
+  function renderBracketLinks(md) {
+    return md.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (full, target, alias) => {
+      const r = resolveInlineLink(target.trim());
+      const text = (alias || '').trim() || (r ? r.label : target.trim());
+      if (!r) return `<span class="wiki-link wiki-link--missing">${escapeHtml(text)}</span>`;
+      const cls = 'wiki-link' + (r.persona ? ' wiki-link--persona' : '');
+      return `<a class="${cls}" href="${r.href}" data-node="${r.nodeId || ''}">${escapeHtml(text)}</a>`;
+    });
+  }
+
   // Dedup por par no ordenado: una sola arista entre dos nodos, gane la que se
   // agregó primero (los enlaces temáticos tienen prioridad sobre los de familia).
   const seenPair = new Set();
@@ -367,13 +398,7 @@ function build() {
 
   // Páginas autoradas
   pages.forEach(page => {
-    let md = page.body.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (full, target, alias) => {
-      const r = resolvePageLink(target.trim());
-      const text = (alias || '').trim() || (r ? r.label : target.trim());
-      if (!r) return `<span class="wiki-link wiki-link--missing">${escapeHtml(text)}</span>`;
-      const cls = 'wiki-link' + (r.persona ? ' wiki-link--persona' : '');
-      return `<a class="${cls}" href="${r.href}" data-node="${r.nodeId}">${escapeHtml(text)}</a>`;
-    });
+    let md = renderBracketLinks(page.body);
     md = md.replace(/^\s*#\s+[^\n]+\n+/, '');
     const outIds = [...new Set(page.links.map(l => resolvePageLink(l.target)).filter(Boolean).map(r => r.nodeId))];
     writePage({
@@ -392,7 +417,7 @@ function build() {
     const gallery = mediaHtml(p);
     if (!hasNote && !gallery) return;
     const content = (hasNote
-      ? renderRich(linkifyPersonas(nota.body, id).replace(/^\s*#\s+[^\n]+\n+/, ''))
+      ? renderRich(linkifyPersonas(renderBracketLinks(nota.body), id).replace(/^\s*#\s+[^\n]+\n+/, ''))
       : '<p class="wiki-pending">La investigación de esta persona todavía está pendiente.</p>'
     ) + gallery;
     const outIds = [...nodes.keys()].filter(nid => edges.some(e =>

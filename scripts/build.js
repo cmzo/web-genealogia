@@ -558,6 +558,13 @@ function build() {
     console.warn('⚠️  build-wiki.js falló:', e.message);
   }
 
+  // Hipótesis + ToDo — depende de arbol.json ya actualizado
+  try {
+    require('./build-hipotesis.js').build();
+  } catch (e) {
+    console.warn('⚠️  build-hipotesis.js falló:', e.message);
+  }
+
   console.log('🎉 Build completado!');
 }
 

@@ -1,3 +1,25 @@
+### 13 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Hipótesis: todo lo que falta confirmar, en un solo lugar
+
+Nueva sección en la genealogía (quinta tarjeta de `/gen`): **Hipótesis**. Reúne, por primera vez en un solo lugar, tres cosas que antes vivían dispersas — las hipótesis que cruzan varias generaciones (¿se casaron Francisco y Celestina? ¿cuándo murió François Clemenzoz? ¿es Baptiste el ancestro común con la rama suiza de Jean-Yves?), 236 tareas de investigación pendientes agrupadas por tipo de trámite (nacimiento, matrimonio, defunción, censos, archivo), y una sección de **Llaves**: los cuatro documentos puntuales que, si aparecen, resuelven varias cosas a la vez en lugar de una sola. Pasando el mouse sobre cualquier referencia a una hipótesis o sobre una persona con preguntas abiertas aparece una tarjeta con el detalle, sin salir de la página.
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Los enlaces dentro de una nota de persona ahora se ven
+
+Un enlace entre corchetes dobles escrito dentro del texto de una nota de persona (por ejemplo, una mención a otra página de la wiki) nunca se convertía en un link — quedaba como corchetes sueltos en medio del párrafo. Solo funcionaba como chip en la lista de «relacionados» al pie de la página. Ya se ve como corresponde en el cuerpo del texto.
+
+### 12 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--novedad">Novedad</span> El registro de emigrados de 1873: la familia viajó completa
+
+Un escaneo de *Valaisans émigrés au 19ème siècle* (Maurice Carron) trajo la entrada completa de la familia Clemenzoz en el registro de emigrados de Riddes — no solo la fila de Francisco, que ya se conocía. Viajaron los cinco juntos en 1873: François padre, Marie Louise Stalder y sus cuatro hijos, incluidas las dos hijas de Josephine. Esto tensiona la historia que se venía contando de que Francisco partió «huérfano de padre» — si François padre viajó con la familia, seguía vivo en 1873, y la muerte que se le atribuía antes de esa fecha queda en duda otra vez. La ficha de Baptiste Clemenzo, el patriarca más antiguo del árbol, tenía la investigación vacía pese a ser central en la hipótesis de que es ancestro común con la rama suiza de la familia — ya tiene contenido real.
+
+### 11 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Tarjetas de color más grandes, mismo lenguaje en toda la genealogía
+
+Las tarjetas de color sólido de `/gen` (árbol, wiki, fuentes, colaborar) pasaron de cuatro a **tres por fila**, más grandes. El mismo componente se extendió a la portada (áreas blog/lab/genealogía) y al Lab (las tres herramientas), reemplazando los estilos de tarjeta que tenía cada una por separado — ahora todo el sitio usa el mismo lenguaje visual de tarjetas.
+
 ### 10 de agosto de 2026
 
 #### <span class="changelog-tag changelog-tag--novedad">Novedad</span> Nueve fichas nuevas en el árbol y la wiki: ramas Queipo-Cordero y Arceo-Vázquez

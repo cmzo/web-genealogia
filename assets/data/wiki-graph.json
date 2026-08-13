@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12T17:32:22.928Z",
+  "generated": "2026-08-13T11:15:41.912Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -681,7 +681,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p36.html",
-      "summary": "Padre de François (p26), José y Etienne Clemenzo. Natural de Ardon, burgués de Riddes. Vivió en el Valais hasta su muerte entre 1870 y 1874; sus hijos emigraron a Argentina poco después.",
+      "summary": "Padre de François (p26), José y Etienne Clemenzo. Natural de Ardon, burgués de Riddes. Su muerte entre 1870 y 1874 está en duda: un registro de 1873 lo lista viajando a Argentina con toda la familia.",
       "hasContent": true
     },
     {
@@ -690,7 +690,7 @@
       "type": "persona",
       "branch": "stalder",
       "url": "dist/wiki/p37.html",
-      "summary": "De Salins, como la granja de Turrin que vendieron en 1862. El censo de 1870 la declara nacida en 1828 (la DB dice 1826). Tras enviudar hacia 1871–74 sus hijos emigraron; de ella no hay rastro argentino.",
+      "summary": "De Salins, como la granja de Turrin que vendieron en 1862. El censo de 1870 la declara nacida en 1828 (la DB dice 1826). El registro de emigrados de 1873 la lista viajando a Argentina con toda la familia, marido incluido.",
       "hasContent": true
     },
     {
@@ -1095,7 +1095,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p78.html",
-      "summary": "La primera hija de Josephine (p77), nacida cuando su madre tenía 20 años y soltera. Su única aparición documental: el censo de 1870, a los 6 años, en el hogar de su abuelo p36. Padre desconocido.",
+      "summary": "La primera hija de Josephine (p77), nacida cuando su madre tenía 20 años y soltera. Emigró a Argentina en 1873 con toda la familia, a los 9 años. Padre desconocido.",
       "hasContent": true
     },
     {
@@ -1104,7 +1104,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p79.html",
-      "summary": "La segunda hija de Josephine (p77), censada con 10 meses en el hogar de su abuelo p36. Nació el mismo año del censo que la registra — su única huella documental. Padre desconocido.",
+      "summary": "La segunda hija de Josephine (p77), censada con 10 meses en el hogar de su abuelo p36. Emigró a Argentina en 1873 con toda la familia, a los 3 años. Padre desconocido.",
       "hasContent": true
     },
     {
@@ -1249,9 +1249,9 @@
       "title": "Baptiste Clemenzo",
       "type": "persona",
       "branch": "clemenzo",
-      "url": "arbol.html?focus=p93",
-      "summary": "n. 1750, Ardon, Valais, Suiza",
-      "hasContent": false
+      "url": "dist/wiki/p93.html",
+      "summary": "Ancestro más antiguo documentado de la familia Clemenzo, natural de Ardon, Valais. Padre hipotético de Jean Joseph (p57, abuelo de la rama argentina) y de Jean Baptiste (p94, ancestro de la rama de Jean-Yves en Suiza) — el ancestro común de ambas ramas, si H9/H11 se confirman.",
+      "hasContent": true
     },
     {
       "id": "p94",
@@ -1530,7 +1530,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 12
+      "weight": 14
     },
     {
       "id": "tag:metodologia",
@@ -2700,6 +2700,10 @@
     },
     {
       "source": "p26",
+      "target": "p77"
+    },
+    {
+      "source": "p26",
       "target": "p28"
     },
     {
@@ -2708,7 +2712,11 @@
     },
     {
       "source": "p26",
-      "target": "p77"
+      "target": "p78"
+    },
+    {
+      "source": "p26",
+      "target": "p79"
     },
     {
       "source": "p26",
@@ -2717,14 +2725,6 @@
     {
       "source": "p26",
       "target": "p27"
-    },
-    {
-      "source": "p26",
-      "target": "p78"
-    },
-    {
-      "source": "p26",
-      "target": "p79"
     },
     {
       "source": "p29",
@@ -3331,8 +3331,16 @@
       "target": "p104"
     },
     {
-      "source": "p94",
-      "target": "p93"
+      "source": "p93",
+      "target": "p26"
+    },
+    {
+      "source": "p93",
+      "target": "p36"
+    },
+    {
+      "source": "p93",
+      "target": "p94"
     },
     {
       "source": "p94",
@@ -5435,6 +5443,11 @@
       "rel": "tag"
     },
     {
+      "source": "p78",
+      "target": "tag:emigracion",
+      "rel": "tag"
+    },
+    {
       "source": "p79",
       "target": "tag:valais",
       "rel": "tag"
@@ -5452,6 +5465,11 @@
     {
       "source": "p79",
       "target": "tag:censos",
+      "rel": "tag"
+    },
+    {
+      "source": "p79",
+      "target": "tag:emigracion",
       "rel": "tag"
     },
     {

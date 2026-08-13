@@ -48,7 +48,7 @@
   </footer>
 
   <script>
-    // Las cuatro tarjetas del archivo. Las cifras salen de los datos reales; la
+    // Las cinco tarjetas del archivo. Las cifras salen de los datos reales; la
     // barra solo aparece donde hay una proporción que exista de verdad (el campo
     // `estado` de las fuentes está vacío en 33 de 34, así que no se inventa una).
     (function () {
@@ -70,8 +70,8 @@
         </a>`;
       }
 
-      Promise.all([pedir('arbol.json'), pedir('wiki-graph.json'), pedir('fuentes.json')])
-        .then(([arbol, grafo, fuentes]) => {
+      Promise.all([pedir('arbol.json'), pedir('wiki-graph.json'), pedir('fuentes.json'), pedir('hipotesis.json'), pedir('todo.json')])
+        .then(([arbol, grafo, fuentes, hipotesis, todo]) => {
           const cont = document.getElementById('genCards');
           if (!cont) return;
           const tarjetas = [];
@@ -123,6 +123,18 @@
               titulo: 'Fuentes', texto: 'Los archivos e instituciones de donde sale todo, con enlaces cuando existen.',
               ind: `${fuentes.length} archivos <span>/ ${suizas} suizos</span>`,
               bar: Math.round(100 * suizas / fuentes.length),
+            }));
+          }
+
+          // ── Hipótesis ─────────────────────────────────────────────────────
+          if (hipotesis && hipotesis.length) {
+            const llaves = hipotesis.filter(h => h.llave).length;
+            const solidas = hipotesis.filter(h => h.estado === 'solida' || h.estado === 'confirmed' || h.estado === 'confirmed-informal').length;
+            tarjetas.push(tarjeta({
+              cls: 'cmzo-gcard--hipotesis', href: 'hipotesis.html', badge: String((todo || []).length),
+              titulo: 'Hipótesis', texto: 'Lo que está sin confirmar y lo que falta por buscar, en un solo lugar — con las tareas que más destraban primero.',
+              ind: `${(todo || []).length} pendientes <span>/ ${llaves} llaves</span>`,
+              bar: Math.round(100 * solidas / hipotesis.length),
             }));
           }
 

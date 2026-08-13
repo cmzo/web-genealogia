@@ -27,6 +27,7 @@
     { title: 'Wiki',              url: 'wiki.html',             desc: 'Grafo de personas, lugares y fuentes' },
     { title: 'Blog',              url: 'blog.html',             desc: 'Entradas de investigación' },
     { title: 'Fuentes',           url: 'fuentes.html',          desc: 'Archivos y repositorios consultados' },
+    { title: 'Hipótesis',         url: 'hipotesis.html',        desc: 'Lo que falta confirmar y por dónde seguir' },
     { title: 'Colaborar',         url: 'colaborar.html',        desc: 'Dejar un comentario o aportar datos' },
     { title: 'Cambios',           url: 'changelog.html',        desc: 'Historial del sitio' },
   ];

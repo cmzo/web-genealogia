@@ -12,6 +12,7 @@
     { href: 'arbol.html',   label: 'Árbol' },
     { href: 'wiki.html',    label: 'Wiki' },
     { href: 'fuentes.html', label: 'Fuentes' },
+    { href: 'hipotesis.html', label: 'Hipótesis' },
   ];
 
   const secondaryLinks = [
@@ -91,6 +92,7 @@
     'wiki.html':              'hub',
     'blog.html':              'edit_note',
     'fuentes.html':           'description',
+    'hipotesis.html':         'checklist',
     'colaborar.html':         'forum',
     'changelog.html':         'history',
   };

@@ -1,0 +1,103 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   hipotesis.html — Llaves + Por hacer (ToDo por categoría) + Hipótesis.
+   2026-08: el estado de una hipótesis es una pastilla real — misma receta que
+   .tag-pill de la wiki (texto de color sobre fondo mezclado 19% con la
+   superficie), con la escala cálida de --stat-* (styles.css) en vez del
+   azul/naranja genérico de la primera versión. Las tabs de "Por hacer" son
+   los mismos chips .cmzo-fpill / .cmzo-filterbar del filtro del log de la
+   home — no un componente de tabs propio.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hip-note { font-family: var(--sans); font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0 0 22px; }
+.hip-loading { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+.hip-section + .hip-section { border-top: 1px solid var(--border); }
+
+/* ── Llaves ────────────────────────────────────────────────────────────────── */
+.key-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.key-card {
+  display: block; text-decoration: none; color: inherit;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-radius: 12px; padding: 18px 20px; position: relative; transition: transform .15s, box-shadow .15s;
+}
+.key-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -10px rgba(20,18,14,.25); }
+.key-card.key-new { border-color: var(--accent); }
+.key-badge {
+  position: absolute; top: -9px; left: 16px; font-family: var(--sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: .03em; background: var(--accent); color: var(--on-accent); padding: 2px 10px; border-radius: 100px;
+}
+.key-card h3 { font-family: var(--display); font-weight: 700; font-size: 16.5px; line-height: 1.3; margin: 5px 0 6px; color: var(--text); }
+.key-where { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin: 0 0 11px; font-style: italic; }
+.key-unlocks { font-family: var(--sans); font-size: 13px; line-height: 1.55; color: var(--text); padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--accent) 25%, var(--border)); }
+.ku-lbl { font-weight: 600; color: var(--accent); }
+
+/* ── Por hacer: tabs (.cmzo-fpill / .cmzo-filterbar, de home.css) + filas ──── */
+.cmzo-fpill .n { opacity: .65; margin-left: 3px; }
+
+.tpane { display: none; padding-top: 18px; }
+.tpane.is-on { display: block; }
+.task { display: flex; align-items: flex-start; gap: 12px; padding: 12px 6px; border-bottom: 1px solid var(--border); }
+.task:last-child { border-bottom: 0; }
+.task-box { width: 15px; height: 15px; border: 1.5px solid var(--muted); border-radius: 4px; flex-shrink: 0; margin-top: 3px; opacity: .5; }
+.task-body { flex: 1; min-width: 0; }
+.task-text { font-family: var(--sans); font-size: 15px; line-height: 1.55; color: var(--text); }
+.task-text strong { font-weight: 600; }
+.task-meta { margin-top: 5px; }
+.task-person { font-family: var(--sans); font-size: 12.5px; color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--border); }
+.task-person:hover { color: var(--accent); border-color: var(--accent); }
+.hyp-ref { font-weight: 600; color: var(--accent); text-decoration: none; cursor: help; border-bottom: 1px dotted var(--accent); padding-bottom: 1px; }
+
+/* Personas con dudas abiertas en su propia nota: mismo popup, disparador distinto
+   del .hyp-ref (que apunta a una de las 6 hipótesis curadas) — este es automático,
+   por estar en la misma nota, no un [[link]] explícito. */
+.task-person.has-dudas, .hyp-tag.has-dudas { border-bottom-style: dashed; cursor: help; }
+.task-person.has-dudas:hover, .hyp-tag.has-dudas:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Hipótesis: cards ─────────────────────────────────────────────────────── */
+.hyp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+.hyp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 17px 18px; display: flex; flex-direction: column; gap: 8px; scroll-margin-top: 80px; }
+.hyp-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+.hyp-status {
+  --c: var(--stat-terracota);
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--c); background: color-mix(in srgb, var(--c) 19%, var(--surface));
+  padding: 4px 10px; border-radius: 20px; display: inline-block; width: fit-content;
+}
+.hyp-status.speculative { --c: var(--stat-terracota); }
+.hyp-status.plausible { --c: var(--stat-ochre); }
+.hyp-status.solida { --c: var(--stat-salvia); }
+.hyp-status.confirmed-informal, .hyp-status.confirmed { --c: var(--accent); }
+.hyp-card h3 { font-family: var(--display); font-weight: 700; font-size: 16px; line-height: 1.3; margin: 0; color: var(--text); }
+.hyp-card p { font-family: var(--sans); font-size: 13.5px; line-height: 1.52; color: var(--muted); margin: 0; }
+.hyp-falta { font-family: var(--sans); font-size: 12px; line-height: 1.45; color: var(--text); margin: 2px 0 0; padding-top: 8px; border-top: 1px solid var(--border); }
+.hyp-falta b { font-weight: 600; }
+.hyp-tagrow { display: flex; gap: 5px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
+.hyp-tag { font-family: var(--sans); font-size: 10.5px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); border-radius: 100px; padding: 2px 9px; transition: border-color .15s; }
+.hyp-tag:hover { border-color: var(--accent); }
+
+/* ── Popup estilo Gwern ───────────────────────────────────────────────────── */
+#hypPopup {
+  position: fixed; z-index: 100; width: 420px; max-height: 60vh; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; box-shadow: 0 12px 32px rgba(20,18,14,.22);
+  opacity: 0; pointer-events: none; transform: translateY(4px); transition: opacity .12s ease, transform .12s ease;
+}
+#hypPopup.is-on { opacity: 1; pointer-events: auto; transform: translateY(0); }
+#hypPopup .hyp-status { margin-bottom: 8px; }
+#hypPopup h4 { font-family: var(--display); font-weight: 700; font-size: 14.5px; margin: 0 0 6px; line-height: 1.3; color: var(--text); }
+#hypPopup p { font-family: var(--sans); font-size: 12px; line-height: 1.5; color: var(--muted); margin: 0; }
+/* "N preguntas abiertas": no es un estado de certeza, pastilla neutra aparte */
+#hypPopup .hp-status.dudas {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--muted); background: var(--bg); padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 8px;
+}
+#hypPopup .hp-dudas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+#hypPopup .hp-dudas li { font-family: var(--sans); font-size: 12px; line-height: 1.48; color: var(--text); padding-left: 11px; position: relative; }
+#hypPopup .hp-dudas li::before { content: '·'; position: absolute; left: 0; color: var(--muted); }
+#hypPopup .hp-dudas strong { font-weight: 600; }
+#hypPopup .hp-more { margin-top: 8px; font-style: italic; opacity: .8; }
+
+@media (max-width: 760px) {
+  .key-grid, .hyp-grid { grid-template-columns: 1fr; }
+  #hypPopup { width: min(420px, calc(100vw - 32px)); }
+}

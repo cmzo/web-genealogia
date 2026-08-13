@@ -359,9 +359,10 @@ body[data-section="gen"] .cmzo-mod-head h2 { font-size: 48px; }
   transition: transform .18s ease, box-shadow .18s ease;
 }
 .cmzo-gcard:hover { transform: translateY(-3px); box-shadow: 0 10px 26px -12px rgba(30,26,20,.45); }
-.cmzo-gcard--escritura { --c: var(--pill-escritura); }
-.cmzo-gcard--experim   { --c: var(--pill-experim); }
-.cmzo-gcard--archivo   { --c: var(--pill-archivo); }
+.cmzo-gcard--escritura  { --c: var(--pill-escritura); }
+.cmzo-gcard--experim    { --c: var(--pill-experim); }
+.cmzo-gcard--archivo    { --c: var(--pill-archivo); }
+.cmzo-gcard--hipotesis  { --c: var(--pill-hipotesis); }
 
 .cmzo-gcard-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .cmzo-gcard-cluster { display: flex; align-items: center; }

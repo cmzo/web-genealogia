@@ -506,6 +506,46 @@
             </div>
           </div>
 
+          <div class="ds-sub">Estado de hipótesis (hipotesis.html)</div>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:0 0 20px;">Añadidos en 2026-08-13. <strong style="color:var(--text);">Tokens propios, no --tag-* reusados</strong>: --tag-metodo coincide con --accent en modo claro, así que no serviría para distinguir «sólida» de «confirmada». Es una escala de certeza (especulativa → plausible → sólida → confirmada), no categorías sueltas — reemplazó una primera versión con punto + azul/naranja/verde genérico, sin relación con la paleta del sitio.</p>
+          <div class="palette-grid">
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--stat-terracota);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--stat-terracota</div>
+                <div class="palette-use">Especulativa</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--stat-ochre);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--stat-ochre</div>
+                <div class="palette-use">Plausible</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--stat-salvia);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--stat-salvia</div>
+                <div class="palette-use">Sólida</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:var(--accent);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--accent</div>
+                <div class="palette-use">Confirmada (informalmente) — sin token propio</div>
+              </div>
+            </div>
+          </div>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:14px 0 0;">La pastilla en sí (<code class="td-mono">.hyp-status</code>) es <strong style="color:var(--text);">la misma receta que <code class="td-mono">.tag-pill</code></strong> de arriba: texto de color sobre <code class="td-mono">color-mix(in srgb, var(--c) 19%, var(--surface))</code>, mayúsculas, tracking. Mismo componente en la card y en el popup de hover.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0;">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--stat-terracota);background:color-mix(in srgb, var(--stat-terracota) 19%, var(--surface));padding:4px 10px;border-radius:20px;">Especulativa</span>
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--stat-ochre);background:color-mix(in srgb, var(--stat-ochre) 19%, var(--surface));padding:4px 10px;border-radius:20px;">Plausible</span>
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--stat-salvia);background:color-mix(in srgb, var(--stat-salvia) 19%, var(--surface));padding:4px 10px;border-radius:20px;">Sólida</span>
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb, var(--accent) 19%, var(--surface));padding:4px 10px;border-radius:20px;">Confirmada informalmente</span>
+          </div>
+
           <div class="ds-sub">Pastillas de área (home)</div>
           <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:0 0 20px;">Añadidas en 2026-08 con el rediseño de las tarjetas de <strong style="color:var(--text);">01 Áreas</strong>. Fórmula tomada de User Interviews: <strong style="color:var(--text);">fondo pastel saturado + tinta casi negra</strong> (<code class="td-mono">--pill-ink</code>), no el tono del color sobre un fondo lavado — que es lo que hacen las pastillas de etiqueta del blog. Son los <strong style="color:var(--text);">mismos valores en claro y oscuro</strong>: funcionan como chips luminosos sobre el grafito. El mismo color, mezclado al 55% con blanco, tiñe la portada de la tarjeta.</p>
           <div class="palette-grid">

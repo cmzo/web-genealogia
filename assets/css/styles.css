@@ -43,6 +43,14 @@
   --tag-tec:     #5a4a70;   /* ciruela — tecnología */
   --tag-otro:    #5a5040;   /* el gris cálido de siempre — sin familia */
 
+  /* Estado de una hipótesis (hipotesis.html): escala cálida de certeza, no
+     categorías sueltas — por eso son tokens propios y no --tag-* reusados
+     (--tag-metodo coincide con --accent en modo claro, no serviría para
+     distinguir "sólida" de "confirmada"). */
+  --stat-terracota: #b5715a;   /* especulativa */
+  --stat-ochre:     #a8763a;   /* plausible */
+  --stat-salvia:    #5c8a6e;   /* sólida — confirmada usa --accent */
+
   /* Anillos generacionales de /gen: degradé del más antiguo (--ring-from) al
      más nuevo (--ring-to). Los lee gen.html por getComputedStyle e interpola. */
   --ring-from: #cddfd5;
@@ -56,6 +64,7 @@
   --pill-experim:   #e0d9f4;   /* lavanda */
   --pill-investig:  #c9e6d5;   /* menta */
   --pill-archivo:   #f3e6b8;   /* amarillo pálido */
+  --pill-hipotesis: #cfe0f3;   /* celeste pálido */
 }
 
 /* ─── MODO OSCURO · grafito neutro, acento hueso ───────────────────────────
@@ -85,6 +94,10 @@
   --tag-metodo:  #8fb3a1;
   --tag-tec:     #b3a3d4;
   --tag-otro:    #9a9ea3;
+
+  --stat-terracota: #d69880;
+  --stat-ochre:     #d1a768;
+  --stat-salvia:    #8fc0a2;
 
   /* En oscuro el degradé arranca casi al ras del fondo y sube hasta el hueso:
      así el disco no queda como una mancha luminosa. */
