@@ -230,19 +230,26 @@ function build() {
     });
   }
 
-  // Resuelve un [[...]] para RENDER inline (hipótesis primero, después páginas/personas).
+  // Documentos curados (content/documentos/*.md): tampoco son nodos del grafo —
+  // mismo criterio que las hipótesis. Solo sirven para el render inline de [[...]].
+  const documentosBySlug = new Map(documentos.map(d => [d.slug, d.title]));
+
+  // Resuelve un [[...]] para RENDER inline (hipótesis y documentos primero, después páginas/personas).
   function resolveInlineLink(target) {
     if (hipotesisBySlug.has(target)) return { href: `../../hipotesis.html#${target}`, label: hipotesisBySlug.get(target), persona: false };
+    if (documentosBySlug.has(target)) return { href: `../../wiki.html?doc=${target}`, label: documentosBySlug.get(target), doc: true };
     return resolvePageLink(target);
   }
 
   // Reemplaza [[destino]] / [[destino|alias]] por <a> (o un span "missing" si no
-  // resuelve) en CUALQUIER cuerpo markdown — páginas y notas de persona por igual.
+  // resuelve) en CUALQUIER cuerpo markdown — páginas, notas de persona y documentos por igual.
   function renderBracketLinks(md) {
     return md.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (full, target, alias) => {
-      const r = resolveInlineLink(target.trim());
-      const text = (alias || '').trim() || (r ? r.label : target.trim());
+      const t = target.trim();
+      const r = resolveInlineLink(t);
+      const text = (alias || '').trim() || (r ? r.label : t);
       if (!r) return `<span class="wiki-link wiki-link--missing">${escapeHtml(text)}</span>`;
+      if (r.doc) return `<a class="wiki-link wiki-link--doc" href="${r.href}" data-doc="${t}">${escapeHtml(text)}</a>`;
       const cls = 'wiki-link' + (r.persona ? ' wiki-link--persona' : '');
       return `<a class="${cls}" href="${r.href}" data-node="${r.nodeId || ''}">${escapeHtml(text)}</a>`;
     });

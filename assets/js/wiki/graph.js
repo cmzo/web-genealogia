@@ -55,6 +55,18 @@ async function init() {
     (spousesOf.get(m.spouse1_id) || spousesOf.set(m.spouse1_id, []).get(m.spouse1_id)).push(m.spouse2_id);
     (spousesOf.get(m.spouse2_id) || spousesOf.set(m.spouse2_id, []).get(m.spouse2_id)).push(m.spouse1_id);
   });
+  const siblingsOf = new Map();
+  (arbol.personas || []).forEach(p => {
+    if (!p.father_id && !p.mother_id) return;
+    const sibs = (arbol.personas || [])
+      .filter(q => q.id !== p.id && ((p.father_id && q.father_id === p.father_id) || (p.mother_id && q.mother_id === p.mother_id)))
+      .map(q => q.id);
+    if (sibs.length) siblingsOf.set(p.id, sibs);
+  });
+  const docCountByPersona = new Map();
+  (documentos || []).forEach(d => (d.personas || []).forEach(p => {
+    docCountByPersona.set(p.id, (docCountByPersona.get(p.id) || 0) + 1);
+  }));
 
   // Adyacencia COMPLETA (incluye tags) — alimenta el panel, el filtro y el resaltado
   // temático, aunque los tags no se dibujen como nodos en el lienzo.
@@ -320,12 +332,52 @@ async function init() {
     return `<div class="wiki-panel-group"><h3 class="wiki-panel-group-title">${title}</h3><div class="wiki-chips">${valid.map(chip).join('')}</div></div>`;
   }
 
+  // Ficha: vitales derivados de arbol.json (nunca escritos a mano). Mismo dato,
+  // mismo lugar, en las 133 personas — cuando falta se ve el hueco a propósito.
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function fmtFecha(s) {
+    if (!s) return '';
+    const parts = String(s).split('-');
+    if (parts.length === 3) return `${+parts[2]} de ${MESES[+parts[1] - 1]} de ${parts[0]}`;
+    if (parts.length === 2) return `${MESES[+parts[1] - 1]} de ${parts[0]}`;
+    return parts[0];
+  }
+  function fichaRow(label, valueHtml) {
+    return `<div class="wiki-ficha-row"><span class="wiki-ficha-label">${label}</span>${valueHtml}</div>`;
+  }
+  function fichaHtml(p) {
+    const NONE = '<p class="wiki-ficha-val wiki-ficha-none">—</p>';
+    const nac = fmtFecha(p.birth_date);
+    let nacHtml = NONE;
+    if (nac || p.birth_place) {
+      nacHtml = `<p class="wiki-ficha-val">${nac ? `<b>${escapeHtml(nac)}</b>` : '<span class="wiki-ficha-none">fecha sin documentar</span>'}${p.birth_place ? `<br><span class="wiki-ficha-place">${escapeHtml(p.birth_place)}</span>` : ''}</p>`;
+    }
+    const def = fmtFecha(p.death_date);
+    let edad = '';
+    if (p.birth_date && p.death_date) {
+      const by = +String(p.birth_date).slice(0, 4), dy = +String(p.death_date).slice(0, 4);
+      if (by && dy) edad = String(dy - by);
+    }
+    let defHtml = NONE;
+    if (def || p.death_place) {
+      defHtml = `<p class="wiki-ficha-val">${def ? `<b>${escapeHtml(def)}</b>` : '<span class="wiki-ficha-none">fecha sin documentar</span>'}${edad ? ` <span class="wiki-ficha-edad">a los ${edad}</span>` : ''}${p.death_place ? `<br><span class="wiki-ficha-place">${escapeHtml(p.death_place)}</span>` : ''}</p>`;
+    } else if (p.vivo === 'si') {
+      defHtml = '<p class="wiki-ficha-val wiki-ficha-none">vive</p>';
+    }
+    return `<div class="wiki-panel-group wiki-ficha-block">${fichaRow('Nacimiento', nacHtml)}${fichaRow('Defunción', defHtml)}</div>`;
+  }
+  function docsGroup(id) {
+    const n = docCountByPersona.get(id) || 0;
+    const val = n ? `<button class="wiki-panel-doclink" data-read="${id}">${n} documento${n === 1 ? '' : 's'} →</button>` : '<p class="wiki-ficha-val wiki-ficha-none">—</p>';
+    return `<div class="wiki-panel-group"><h3 class="wiki-panel-group-title">Documentos</h3>${val}</div>`;
+  }
+
   function openPanel(n) {
     if (!n) return;
     let html = `<header class="wiki-panel-head">
       <span class="wiki-panel-type wiki-panel-type--${n.type}">${TYPE_LABEL[n.type] || n.type}</span>
       <h2 class="wiki-panel-title">${escapeHtml(n.title)}</h2>
-      ${n.summary ? `<p class="wiki-panel-summary">${escapeHtml(n.summary)}</p>` : ''}
+      ${n.type !== 'persona' && n.summary ? `<p class="wiki-panel-summary">${escapeHtml(n.summary)}</p>` : ''}
     </header>`;
 
     const typeOf = id => nodeById.get(id)?.type;
@@ -338,9 +390,12 @@ async function init() {
       const pageNeighbors = [...(neighbors.get(n.id) || [])].filter(id => {
         const t = typeOf(id); return id !== n.id && t && t !== 'persona' && t !== 'tag';
       });
+      html += fichaHtml(p);
       html += chipGroup('Padres', parents);
       html += chipGroup('Cónyuge', spousesOf.get(n.id) || []);
+      html += chipGroup('Hermanos', siblingsOf.get(n.id) || []);
       html += chipGroup('Hijos', childrenOf.get(n.id) || []);
+      html += docsGroup(n.id);
       html += chipGroup('Aparece en', pageNeighbors);
       html += chipGroup('Etiquetas', tagNbrs);
     } else if (n.type === 'tag') {
@@ -469,9 +524,10 @@ async function init() {
   }
   function closeModal() { modal.classList.remove('is-open'); document.body.style.overflow = ''; }
 
-  // Enlaces internos dentro del modal → navegan el grafo; una card de documento
-  // (data-doc) abre su vista enfocada; un chip de persona (data-doc-persona)
-  // cierra la vista de documento y abre la ficha completa de esa persona.
+  // Enlaces internos dentro del modal → llevan a la investigación del destino
+  // (no solo lo enfocan en el grafo): una card de documento (data-doc) abre su
+  // vista enfocada; un chip de persona (data-doc-persona) o un link en prosa
+  // (data-node) abren la ficha completa de ese nodo si tiene contenido.
   modalBody.addEventListener('click', e => {
     const docCard = e.target.closest('[data-doc]');
     if (docCard) { e.preventDefault(); openDocModal(docCard.dataset.doc); return; }
@@ -485,7 +541,11 @@ async function init() {
     if (!a) return;
     e.preventDefault();
     const id = a.dataset.node;
-    if (nodeById.has(id)) { closeModal(); recenterOn(id); selectNode(id); }
+    if (nodeById.has(id)) {
+      const n = nodeById.get(id);
+      recenterOn(id); selectNode(id);
+      if (n.hasContent) openModal(n); else closeModal();
+    }
     else location.href = `${rootBase()}arbol.html?focus=${id}`;
   });
 

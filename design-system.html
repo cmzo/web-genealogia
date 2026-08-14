@@ -1492,6 +1492,35 @@
               </div>
             </div>
 
+            <!-- Ficha de persona -->
+            <div class="comp-block">
+              <p class="comp-label">Ficha de persona (panel lateral, #wikiPanel)</p>
+              <div style="border:1px solid var(--border);border-radius:8px;padding:24px;max-width:300px;background:var(--surface);">
+                <div class="wiki-panel-group wiki-ficha-block">
+                  <div class="wiki-ficha-row"><span class="wiki-ficha-label">Nacimiento</span><p class="wiki-ficha-val"><b>31 de mayo de 1858</b><br><span class="wiki-ficha-place">Riddes, Valais, Suiza</span></p></div>
+                  <div class="wiki-ficha-row"><span class="wiki-ficha-label">Defunción</span><p class="wiki-ficha-val"><b>17 de abril de 1928</b> <span class="wiki-ficha-edad">a los 70</span><br><span class="wiki-ficha-place">Concepción del Uruguay, Entre Ríos</span></p></div>
+                </div>
+                <div class="wiki-panel-group"><h3 class="wiki-panel-group-title">Padres</h3><div class="wiki-chips"><button class="wiki-chip wiki-chip--persona" style="pointer-events:none;">François Clemenzoz</button><button class="wiki-chip wiki-chip--persona" style="pointer-events:none;">Marie Louise Stalder</button></div></div>
+                <div class="wiki-panel-group"><h3 class="wiki-panel-group-title">Documentos</h3><button class="wiki-panel-doclink" style="pointer-events:none;">10 documentos →</button></div>
+              </div>
+              <p style="margin:14px 0 0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Encabeza el panel de <strong>toda persona</strong>, generada por <code class="td-mono">fichaHtml()</code> en <code class="td-mono">assets/js/wiki/graph.js</code> desde <code class="td-mono">arbol.json</code> — nunca a mano, igual en las 133. Filas <code class="td-mono">.wiki-ficha-row</code> (label <code class="td-mono">.wiki-ficha-label</code> + valor) para nacimiento/defunción (con edad si hay ambas fechas); debajo, los mismos grupos de chips de siempre (<code class="td-mono">.wiki-panel-group</code>) para padres/cónyuge/hermanos/hijos y un link de documentos. Dato ausente → <code class="td-mono">.wiki-ficha-none</code> (<code class="td-mono">—</code>, o «vive» en defunción si <code class="td-mono">vivo:si</code>). El párrafo de resumen se sacó del panel para personas (quedaba duplicado con el del modal de lectura).</p>
+            </div>
+
+            <!-- Hover-preview -->
+            <div class="comp-block">
+              <p class="comp-label">Preview al hover, estilo Gwern (#wikiHoverPopup)</p>
+              <div style="border:1px solid var(--border);border-radius:8px;padding:32px;background:var(--bg);display:flex;justify-content:center;">
+                <div style="width:380px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 16px 40px rgba(0,0,0,.2);padding:20px 24px;">
+                  <span class="whv-badge">Persona</span>
+                  <p class="whv-title">Etienne Clemenzo</p>
+                  <p class="whv-meta">Clemenzo · n. 1862, Riddes</p>
+                  <p class="whv-body">Hermano de François (p26). Emigró a Argentina; en 1905 liquidó junto a François los bienes familiares en Riddes vía el Consulado de Suiza.</p>
+                  <span class="whv-cta">Clic → abre su ficha</span>
+                </div>
+              </div>
+              <p style="margin:14px 0 0;color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;">Autocontenido (<code class="td-mono">assets/js/wiki-hover.js</code>), sin depender del módulo del grafo. Escopado a <code class="td-mono">.wiki-link[data-node]</code>, <code class="td-mono">.wiki-link[data-doc]</code> y <code class="td-mono">.wiki-chip[data-node]</code> — links en prosa y chips de «relacionados», <strong>no</strong> las cards de la galería «Documentos» (ya son visuales, no ganan nada con una preview redundante). Documento en vez de persona/página → suma miniatura de la primera página y snippet de la transcripción. Toda la tarjeta es clickeable (reenvía el click al link original). 440px, <code class="td-mono">z-index 1100</code> — por encima del modal (<code class="td-mono">1000</code>) y del panel (<code class="td-mono">1001</code>).</p>
+            </div>
+
             <!-- Layout modal + panel -->
             <div class="comp-block">
               <p class="comp-label">Modal de lectura + panel de relaciones</p>

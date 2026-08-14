@@ -1,3 +1,21 @@
+### 14 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Preview al pasar el mouse por un link de la wiki
+
+Los links dentro de una investigación —a otra persona, a un lugar, a un documento— ahora muestran una tarjeta con lo esencial al pasar el mouse, sin salir de donde estás: quién es, cuándo nació, sus padres, o la transcripción de la carta que estás por abrir. Al hacer clic en cualquier parte de la tarjeta (no solo en el link) entra directo a esa ficha o documento.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Ficha con los datos de cada persona, siempre en el mismo lugar
+
+El panel que se abre al elegir a alguien en la wiki ahora empieza con una ficha fija —nacimiento, defunción, padres, cónyuge, hermanos, hijos y cuántos documentos tiene— antes de cualquier texto. Se arma sola desde la base de datos, así que están las 133 personas por igual, tengan mucho o casi nada investigado todavía: donde falta un dato, se ve el hueco.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Buscar a alguien te lleva a lo que escribiste sobre esa persona
+
+Buscar un nombre en ⌘K y elegirlo ahora abre directo su investigación (cuando existe), no solo la ubica en el grafo. Lo mismo al clickear un link dentro de una ficha: antes te sacaba de golpe a ver el nodo en el grafo, ahora te lleva a leer sobre esa persona.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Portada, genealogía y lab con el mismo título de sección
+
+Los títulos "Áreas" y "log" de la portada perdieron la numeración ("01", "02") y pasaron al mismo tamaño y estilo que ya tenían las demás secciones del sitio — incluido el título de `/lab`, que hasta ahora quedaba chico y en minúscula suelta.
+
 ### 13 de agosto de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Documentos: buscá una carta o un censo puntual desde ⌘K

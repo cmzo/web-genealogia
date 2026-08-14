@@ -1,5 +1,37 @@
 [
   {
+    "id": "2026-08-14-preview-al-pasar-el-mouse-por-un-link-de-la-wiki",
+    "date": "2026-08-14",
+    "type": "cambio",
+    "tag": "nueva",
+    "title": "Preview al pasar el mouse por un link de la wiki",
+    "html": "<p>Los links dentro de una investigación —a otra persona, a un lugar, a un documento— ahora muestran una tarjeta con lo esencial al pasar el mouse, sin salir de donde estás: quién es, cuándo nació, sus padres, o la transcripción de la carta que estás por abrir. Al hacer clic en cualquier parte de la tarjeta (no solo en el link) entra directo a esa ficha o documento.</p>\n"
+  },
+  {
+    "id": "2026-08-14-ficha-con-los-datos-de-cada-persona-siempre-en-el-mismo-lugar",
+    "date": "2026-08-14",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Ficha con los datos de cada persona, siempre en el mismo lugar",
+    "html": "<p>El panel que se abre al elegir a alguien en la wiki ahora empieza con una ficha fija —nacimiento, defunción, padres, cónyuge, hermanos, hijos y cuántos documentos tiene— antes de cualquier texto. Se arma sola desde la base de datos, así que están las 133 personas por igual, tengan mucho o casi nada investigado todavía: donde falta un dato, se ve el hueco.</p>\n"
+  },
+  {
+    "id": "2026-08-14-buscar-a-alguien-te-lleva-a-lo-que-escribiste-sobre-esa-persona",
+    "date": "2026-08-14",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Buscar a alguien te lleva a lo que escribiste sobre esa persona",
+    "html": "<p>Buscar un nombre en ⌘K y elegirlo ahora abre directo su investigación (cuando existe), no solo la ubica en el grafo. Lo mismo al clickear un link dentro de una ficha: antes te sacaba de golpe a ver el nodo en el grafo, ahora te lleva a leer sobre esa persona.</p>\n"
+  },
+  {
+    "id": "2026-08-14-portada-genealogía-y-lab-con-el-mismo-título-de-sección",
+    "date": "2026-08-14",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Portada, genealogía y lab con el mismo título de sección",
+    "html": "<p>Los títulos &quot;Áreas&quot; y &quot;log&quot; de la portada perdieron la numeración (&quot;01&quot;, &quot;02&quot;) y pasaron al mismo tamaño y estilo que ya tenían las demás secciones del sitio — incluido el título de <code>/lab</code>, que hasta ahora quedaba chico y en minúscula suelta.</p>\n"
+  },
+  {
     "id": "2026-08-13-documentos-buscá-una-carta-o-un-censo-puntual-desde-k",
     "date": "2026-08-13",
     "type": "cambio",
@@ -286,37 +318,5 @@
     "tag": "mejora",
     "title": "Los artículos de la wiki se leen mucho mejor",
     "html": "<p>Rehíce la tipografía de lectura de la wiki: una entradilla que resume, secciones bien marcadas, tablas más claras y citas destacadas. Además, al abrir un artículo, el recuadro de lectura se ubica a la izquierda y <strong>el panel de relaciones queda a la derecha</strong> —sin duplicarse—, así podés leer y saltar a personas o lugares vinculados a la vez.</p>\n"
-  },
-  {
-    "id": "2026-06-28-el-buscador-encuentra-páginas-de-la-wiki",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "El buscador encuentra páginas de la wiki",
-    "html": "<p>El buscador (⌘ + K) ahora también encuentra <strong>las páginas de la wiki</strong> por su nombre: escribís «jean-yves», «ardon» o «árbol» y te lleva al nodo en el grafo.</p>\n"
-  },
-  {
-    "id": "2026-06-28-nuevas-personas-y-documentos-en-el-árbol",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Nuevas personas y documentos en el árbol",
-    "html": "<p>Aparecieron papeles de la rama de los Roh y los Clemenzo en Santa Fe. Sumé al árbol tres personas con sus actas: <strong>María Isidora Roh</strong> (1907), <strong>Felisa Clemenzo Roh</strong> (1890) y <strong>José Martín Clemenzo</strong> (1905). Además se encontró el <strong>bautismo de José Domingo (Santa Fe, 1884)</strong> —el que en el post sobre los Roh figuraba como «pendiente»—, y apareció la <strong>segunda hoja del censo de Colón de 1895</strong>, con la familia de Francisco al completo.</p>\n"
-  },
-  {
-    "id": "2026-06-28-parentescos-corregidos-en-el-árbol",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "fix",
-    "title": "Parentescos corregidos en el árbol",
-    "html": "<p>Revisé ficha por ficha los lazos familiares contra los documentos y corregí varios que estaban mal: alguien marcado como «bisabuelo» que en realidad era tío abuelo, hijos atribuidos al hermano equivocado, y dos «hermanas» de Francisco que eran en verdad sus sobrinas (hijas de su hermana). También suavicé las paternidades que son hipótesis y no están probadas. La idea es que se pueda confiar en lo que dice el árbol.</p>\n"
-  },
-  {
-    "id": "2026-06-22-laboratorio-de-fractales",
-    "date": "2026-06-22",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "Laboratorio de fractales",
-    "html": "<p>Un segundo experimento en el área lab: <strong>L-systems</strong> sobre Canvas 2D. Elegís el fractal —Koch, Sierpiński, árbol o curva dragón—, ajustás las iteraciones y el ángulo de giro, y ves cómo cambia en tiempo real. El panel derecho muestra la gramática que lo genera, cómo crece el string con cada paso y la dimensión fractal del resultado. Sin dependencias externas.</p>\n"
   }
 ]

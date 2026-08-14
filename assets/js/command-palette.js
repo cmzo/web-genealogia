@@ -532,13 +532,22 @@
     paintActive();
   }
 
-  // Abrir una persona: si la página define un handler propio (árbol o wiki),
-  // enfoca sin salir; si no, navega al árbol. También lo usa «Persona al azar».
+  // Abrir una persona: buscar un nombre casi siempre significa querer LEER
+  // sobre esa persona, no solo ubicarla en un diagrama — así que si tiene
+  // investigación, Enter la abre directo (como «Leer investigación» del
+  // sub-menú), sin salir si ya estamos en la wiki. Sin investigación, cae al
+  // foco en árbol/wiki si la página lo expone, o navega (el árbol queda a un
+  // clic vía → «Ver en el árbol»).
   function openPersona(it) {
     remember(it);
+    if (it.read) {
+      if (typeof window.__wikiRead === 'function') { window.__wikiRead(it.id); close(); return; }
+      window.location.href = ROOT + 'wiki.html?read=' + encodeURIComponent(it.id);
+      return;
+    }
     const focusFn = window.__personaFocus || window.__treeFocus;
     if (typeof focusFn === 'function') { focusFn(it.id); close(); return; }
-    window.location.href = ROOT + 'arbol.html?focus=' + encodeURIComponent(it.id);
+    window.location.href = ROOT + 'wiki.html?focus=' + encodeURIComponent(it.id);
   }
 
   function activate() {
