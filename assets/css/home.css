@@ -141,10 +141,9 @@ a.cmzo-seg:hover { color: var(--accent); }
 /* Títulos de sección: mismo rol que el h2 de un post, así que llevan el mismo
    tratamiento — Fraunces en versalitas con tracking abierto. */
 .cmzo-mod-head h2 {
-  font-family: var(--display); font-weight: 700; font-size: 30px; margin: 0; color: var(--text);
+  font-family: var(--display); font-weight: 700; font-size: 48px; margin: 0; color: var(--text);
   text-transform: lowercase; font-variant-caps: small-caps; letter-spacing: 0.04em;
 }
-body[data-section="gen"] .cmzo-mod-head h2 { font-size: 48px; }
 .cmzo-mod-head .rule { flex: 1; height: 1px; background: var(--border); }
 
 .cmzo-body { font-family: var(--sans); color: var(--muted); font-size: 15.5px; line-height: 1.6; margin: 0 0 18px; }
