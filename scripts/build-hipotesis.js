@@ -136,7 +136,11 @@ function buildTodoData(hipotesisItems) {
       const pid = file.replace(/\.md$/, '');
       const raw = fs.readFileSync(path.join(PERSONAS_DIR, file), 'utf8');
       const { content } = extractFrontMatter(raw);
-      content.split('\n').forEach(line => {
+      // «## Versión anterior» marca investigación superada, conservada como
+      // historial — todo lo que sigue queda afuera (si no, tareas ya resueltas
+      // o duplicadas de la sección vigente reaparecían como pendientes).
+      const vigente = content.split(/^##\s*Versión anterior\b.*$/m)[0];
+      vigente.split('\n').forEach(line => {
         const m = line.match(/^\s*-\s*\[ \]\s*(.+)$/);
         if (!m) return;
         const text = m[1].trim();

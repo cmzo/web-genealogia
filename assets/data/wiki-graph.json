@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T18:24:43.816Z",
+  "generated": "2026-08-15T13:00:16.693Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -1032,7 +1032,7 @@
       "type": "persona",
       "branch": "fonteine",
       "url": "dist/wiki/p71.html",
-      "summary": "n. 1918-07-28, Santa Fe, Argentina",
+      "summary": "Nacida en Santa Fe en 1918, hija de p70 y p30. Casada con Bernardo C. Peralta en 1954, en San Antonio.",
       "hasContent": true
     },
     {
@@ -1840,7 +1840,7 @@
       "url": "",
       "summary": "",
       "hasContent": false,
-      "weight": 1
+      "weight": 2
     },
     {
       "id": "tag:saboya",
@@ -2727,6 +2727,22 @@
       "target": "p27"
     },
     {
+      "source": "p27",
+      "target": "p38"
+    },
+    {
+      "source": "p28",
+      "target": "p36"
+    },
+    {
+      "source": "p28",
+      "target": "p37"
+    },
+    {
+      "source": "p28",
+      "target": "p40"
+    },
+    {
       "source": "p29",
       "target": "p26"
     },
@@ -2800,10 +2816,6 @@
     },
     {
       "source": "p36",
-      "target": "p28"
-    },
-    {
-      "source": "p36",
       "target": "p40"
     },
     {
@@ -2832,10 +2844,6 @@
     },
     {
       "source": "p37",
-      "target": "p28"
-    },
-    {
-      "source": "p37",
       "target": "p40"
     },
     {
@@ -2857,10 +2865,6 @@
     {
       "source": "p38",
       "target": "p85"
-    },
-    {
-      "source": "p38",
-      "target": "p27"
     },
     {
       "source": "p38",
@@ -3149,6 +3153,10 @@
     {
       "source": "p67",
       "target": "p125"
+    },
+    {
+      "source": "p71",
+      "target": "p70"
     },
     {
       "source": "p73",
@@ -3754,11 +3762,6 @@
     {
       "source": "p7",
       "target": "p8",
-      "rel": "familia"
-    },
-    {
-      "source": "p71",
-      "target": "p70",
       "rel": "familia"
     },
     {
@@ -5270,6 +5273,11 @@
     {
       "source": "p70",
       "target": "tag:argentina",
+      "rel": "tag"
+    },
+    {
+      "source": "p71",
+      "target": "tag:fonteine",
       "rel": "tag"
     },
     {

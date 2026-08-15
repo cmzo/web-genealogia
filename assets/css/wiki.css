@@ -551,6 +551,23 @@ button.wiki-chip { background: var(--bg); }
   font-style: italic; color: var(--muted);
 }
 
+/* Investigación superada, conservada como historial (content/personas: unas
+   pocas notas viejas con «## Versión anterior») — arranca colapsada. */
+.wiki-page-content .wiki-legacy {
+  margin: 32px 0 0; padding: 16px 18px; border: 1px solid var(--border); border-radius: 8px;
+  background: color-mix(in srgb, var(--muted) 5%, var(--surface));
+}
+.wiki-page-content .wiki-legacy summary {
+  cursor: pointer; list-style: none;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--muted);
+}
+.wiki-page-content .wiki-legacy summary::-webkit-details-marker { display: none; }
+.wiki-page-content .wiki-legacy summary::before { content: '▸ '; }
+.wiki-page-content .wiki-legacy[open] summary::before { content: '▾ '; }
+.wiki-page-content .wiki-legacy[open] summary { margin-bottom: 14px; }
+.wiki-page-content .wiki-legacy > h2:nth-of-type(1) { margin-top: 0; }
+
 /* Enlace a documento dentro de la prosa (mismo trato visual que .wiki-link) */
 .wiki-link--doc { cursor: help; }
 

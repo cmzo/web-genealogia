@@ -83,6 +83,17 @@ function renderRich(md) {
   return html;
 }
 
+// Colapsa «## Versión anterior» (investigación superada, conservada como
+// historial en unas pocas notas viejas) para que no compita visualmente con
+// la investigación vigente — sigue completa adentro, solo arranca cerrada.
+function wrapVersionAnterior(html) {
+  const idx = html.search(/<h2 id="[^"]*">Versión anterior/);
+  if (idx === -1) return html;
+  return html.slice(0, idx)
+    + '<details class="wiki-legacy"><summary>Versión anterior de esta investigación (archivada, superada por lo de arriba)</summary>'
+    + html.slice(idx) + '</details>';
+}
+
 // ── Galería «Documentos» ──────────────────────────────────────────────────────
 // Documentos curados (content/documentos/*.md) que nombran a esta persona en su
 // frontmatter `personas:`. Cada uno es una card con su primera página como
@@ -133,6 +144,20 @@ function build() {
     });
   }
 
+  // La mayoría de las páginas de un documento viven en assets/images/personas/,
+  // pero un lote (los "roh-*" del censo/actas de la familia Roh) quedó en
+  // assets/images/posts/ desde una carga anterior — resolver por existencia real
+  // en vez de asumir un único directorio (bug encontrado el 2026-08-15: 26
+  // páginas across ~10 documentos apuntaban a un path que no existía).
+  const MEDIA_DIRS = ['assets/images/personas', 'assets/images/posts'];
+  function resolveMediaPath(filename, sourceFile) {
+    for (const dir of MEDIA_DIRS) {
+      if (fs.existsSync(path.join(ROOT, dir, filename))) return `${dir}/${filename}`;
+    }
+    console.warn(`⚠️  documentos/${sourceFile}: no se encontró "${filename}" en ${MEDIA_DIRS.join(' ni ')}`);
+    return `assets/images/personas/${filename}`;
+  }
+
   // ── 1.5 Documentos curados (content/documentos/*.md) ───────────────────────
   // Un archivo por documento REAL (no por fila de media): frontmatter `personas:`
   // (a quiénes atañe) + `paginas:` (sus imágenes, en orden). El cuerpo se
@@ -145,7 +170,7 @@ function build() {
       const { metadata, body } = extractFrontMatter(fs.readFileSync(path.join(DOCUMENTOS_DIR, file), 'utf8'));
       const personaIds = String(metadata.personas || '').split(',').map(s => s.trim()).filter(Boolean);
       const paginas = String(metadata.paginas || '').split(',').map(s => s.trim()).filter(Boolean)
-        .map(f => `assets/images/personas/${f}`);
+        .map(f => resolveMediaPath(f, file));
       const doc = { slug, title: metadata.title || slug, personaIds, paginas, body };
       documentos.push(doc);
       personaIds.forEach(pid => {
@@ -215,6 +240,11 @@ function build() {
     if (bySlug) return { nodeId: bySlug.slug, href: `${bySlug.slug}.html`, label: bySlug.title, persona: false, hasContent: true };
     const byTitle = pageByTitle.get(target.toLowerCase());
     if (byTitle) return { nodeId: byTitle.slug, href: `${byTitle.slug}.html`, label: byTitle.title, persona: false, hasContent: true };
+    // Posts del blog (id `post:<slug>`): recién existen en `nodes` después de
+    // «Posts del blog como nodos», más abajo — pero como esta función se llama
+    // en el RENDER (paso 5, ya tarde), siempre los encuentra a tiempo.
+    const post = nodes.get(`post:${target}`);
+    if (post) return { nodeId: post.id, href: `../${post.url.replace(/^dist\//, '')}`, label: post.title, persona: false, hasContent: true };
     return null;
   }
 
@@ -437,7 +467,7 @@ function build() {
     const gallery = mediaHtml(documentosByPersona.get(id));
     if (!hasNote && !gallery) return;
     const content = (hasNote
-      ? renderRich(linkifyPersonas(renderBracketLinks(nota.body), id).replace(/^\s*#\s+[^\n]+\n+/, ''))
+      ? wrapVersionAnterior(renderRich(linkifyPersonas(renderBracketLinks(nota.body), id).replace(/^\s*#\s+[^\n]+\n+/, '')))
       : '<p class="wiki-pending">La investigación de esta persona todavía está pendiente.</p>'
     ) + gallery;
     const outIds = [...nodes.keys()].filter(nid => edges.some(e =>

@@ -556,7 +556,7 @@
     "persona": "p26",
     "nombre": "François Clemenzo",
     "categoria": "censos",
-    "html": "Buscar «Clemenzo/Clemenzoz» en recensements.vallesiana.ch, censo 1880, distrito Martigny (Riddes) — verificación negativa para <span class=\"hyp-ref\" data-hyp=\"vacio-1873-1886\">el vacío 1873-1886</span>",
+    "html": "Buscar «Clemenzo/Clemenzoz» en recensements.vallesiana.ch, censo 1880, distrito Martigny (Riddes) — verificación negativa para <span class=\"hyp-ref\" data-hyp=\"vacio-1873-1886\">el vacío 1873-1886</span>: si no queda ningún Clemenzo(z) en Riddes, toda la familia había partido",
     "refs": [
       "vacio-1873-1886"
     ]
@@ -565,21 +565,28 @@
     "persona": "p26",
     "nombre": "François Clemenzo",
     "categoria": "archivo",
-    "html": "Solicitar al AEV el asiento original DI 358 de «Clémensoz François, 1873» (<a href=\"mailto:archives@admin.vs.ch\">archives@admin.vs.ch</a>)",
+    "html": "Solicitar al AEV el asiento original DI 358 de «Clémensoz François, 1873» (<a href=\"mailto:archives@admin.vs.ch\">archives@admin.vs.ch</a>) — el original puede traer más datos que la tabla impresa de Carron (fecha exacta, agencia, acompañantes)",
+    "refs": []
+  },
+  {
+    "persona": "p26",
+    "nombre": "François Clemenzo",
+    "categoria": "otros",
+    "html": "Investigar al tutor <strong>François Jardin</strong> (D 10/86) en los protocolos de tutela del distrito de Martigny — podrían documentar una autorización de emigración de los huérfanos",
     "refs": []
   },
   {
     "persona": "p26",
     "nombre": "François Clemenzo",
     "categoria": "nacimiento",
-    "html": "<strong>Nuevo 2026-08-12</strong>: identificar a «Stalder François» (jardinier), listado en la misma entrada de 1873 con madre «J. Clémensoz» — mismo patrón que Anaïs/Edwige. ¿Un tercer hijo de Josephine (p77) no documentado, nacido ~1871-73, registrado con el apellido de soltera de su abuela en vez de Clemenzoz? Buscar bautismo en Riddes 1871-73.",
+    "html": "<strong>Nuevo 2026-08-12</strong>: identificar a «Stalder François» (jardinier), listado en la misma entrada de 1873 con madre «J. Clémensoz» — mismo patrón que Anaïs/Edwige. ¿Un tercer hijo de Josephine (p77) no documentado, nacido ~1871-73, registrado con el apellido de soltera de su abuela en vez de Clemenzoz? Buscar bautismo en Riddes 1871-73",
     "refs": []
   },
   {
     "persona": "p26",
     "nombre": "François Clemenzo",
     "categoria": "defuncion",
-    "html": "<strong>Nuevo 2026-08-12</strong>: reconciliar la fecha de muerte de p36 (ventana 1870-1874, hipótesis basada en el documento D10/86 de enero 1874) con que él mismo figura como cabeza de familia viajando en el registro de emigrados de 1873 — o murió ya en Argentina poco después de llegar, o el documento D10/86 no implica lo que se pensaba. Sin dato que lo resuelva por ahora (aviso del usuario, 2026-08-12).",
+    "html": "<strong>Nuevo 2026-08-12</strong>: reconciliar la fecha de muerte de p36 (ventana 1870-1874, hipótesis basada en el documento D10/86 de enero 1874) con que él mismo figura como cabeza de familia viajando en el registro de emigrados de 1873 — o murió ya en Argentina poco después de llegar, o el documento D10/86 no implica lo que se pensaba. Sin dato que lo resuelva por ahora (aviso del usuario, 2026-08-12)",
     "refs": []
   },
   {
@@ -616,7 +623,7 @@
     "persona": "p26",
     "nombre": "François Clemenzo",
     "categoria": "censos",
-    "html": "Identificar a los «cousins Lambiel» de Riddes — carta del 30-08-1904 → <strong>avance 2026-06-11</strong>: probable hogar hallado en censo 1870 (Plan de Villy, vecinos de la familia): Jean Antoine Lambiel × <strong>Elisabeth née Clementz</strong>, posiblemente la tía Marie Elizabet (p76) — serían primos hermanos literales. Ver ficha p76 para las dos candidatas y cómo decidirlo",
+    "html": "Identificar a los «cousins Lambiel» de Riddes — carta del 30-08-1904 → <strong>avance 2026-06-11</strong>: probable hogar hallado en censo 1870 (Plan de Villy, vecinos de la familia): Jean Antoine Lambiel × Elisabeth née Clementz, posiblemente la tía Marie Elizabet (p76) — serían primos hermanos literales. Ver ficha p76 para las dos candidatas y cómo decidirlo",
     "refs": []
   },
   {
@@ -631,6 +638,41 @@
     "nombre": "François Clemenzo",
     "categoria": "censos",
     "html": "Edad de Celestina Roh (p27): el censo 1895 le da 28 años (n.~1867, suiza) pero el árbol dice 1863 — resolver con su acta",
+    "refs": []
+  },
+  {
+    "persona": "p27",
+    "nombre": "María Celestina Roh",
+    "categoria": "matrimonio",
+    "html": "Buscar acta de matrimonio de Celestina Roch y Francisco Clemenzo, Argentina, hacia 1886",
+    "refs": []
+  },
+  {
+    "persona": "p27",
+    "nombre": "María Celestina Roh",
+    "categoria": "censos",
+    "html": "Identificar a «Rog Mariano» (14 años, censo 1895): ¿hijo de Celestina o de Mariana Roh?",
+    "refs": []
+  },
+  {
+    "persona": "p27",
+    "nombre": "María Celestina Roh",
+    "categoria": "defuncion",
+    "html": "Conseguir el acta de defunción completa de Celestina (la licencia de inhumación no la reemplaza)",
+    "refs": []
+  },
+  {
+    "persona": "p28",
+    "nombre": "Jose Clemenzo",
+    "categoria": "defuncion",
+    "html": "Conseguir la transcripción/copia completa del acta de defunción de José Clemenzo (20/01/1899, Colonia Yeruá)",
+    "refs": []
+  },
+  {
+    "persona": "p28",
+    "nombre": "Jose Clemenzo",
+    "categoria": "matrimonio",
+    "html": "Investigar si tuvo descendencia o matrimonio en Argentina",
     "refs": []
   },
   {
@@ -777,7 +819,7 @@
     "persona": "p36",
     "nombre": "François Clemenzoz",
     "categoria": "defuncion",
-    "html": "Buscar acta de defunción de François Clemenzoz en el registro civil de Riddes, período 1870–1874 (Archivo del Estado del Valais o Registro Civil municipal de Riddes) <strong>y</strong> en Argentina 1873 en adelante — ver <span class=\"hyp-ref\" data-hyp=\"muerte-de-francois\">hallazgo 2026-08-12</span>",
+    "html": "Buscar acta de defunción de François Clemenzoz en el registro civil de Riddes, período 1870–1874 (Archivo del Estado del Valais o Registro Civil municipal de Riddes) <strong>y</strong> en Argentina desde 1873 en adelante — ver <span class=\"hyp-ref\" data-hyp=\"muerte-de-francois\">hallazgo 2026-08-12</span>",
     "refs": [
       "muerte-de-francois"
     ]
@@ -786,7 +828,7 @@
     "persona": "p36",
     "nombre": "François Clemenzoz",
     "categoria": "archivo",
-    "html": "Solicitar reproducción del documento D 10/86 al AEV: cota &#39;CH AEV, AC Riddes, D 10/86, 11/01/1874&#39; — acceso público sin restricciones — para identificar a François Jardin e investigar su rol",
+    "html": "Solicitar reproducción del documento D 10/86 al AEV: cota «CH AEV, AC Riddes, D 10/86, 11/01/1874» — acceso público sin restricciones — para identificar a François Jardin e investigar su rol",
     "refs": []
   },
   {
@@ -794,6 +836,13 @@
     "nombre": "François Clemenzoz",
     "categoria": "archivo",
     "html": "Investigar quién era François Jardin: ¿notario, tutor legal, vecino? Buscar en índices notariales del AEV para el distrito de Martigny, circa 1870–1875",
+    "refs": []
+  },
+  {
+    "persona": "p36",
+    "nombre": "François Clemenzoz",
+    "categoria": "otros",
+    "html": "Investigar el parentesco entre François-Joseph Clemenzoz (D10/40, venta de 1854) y p36 — ambos de Ardon y contemporáneos, sin relación establecida todavía",
     "refs": []
   },
   {
@@ -850,15 +899,8 @@
   {
     "persona": "p38",
     "nombre": "Juan José Roch",
-    "categoria": "archivo",
-    "html": "Confirmar si los registros parroquiales de Conthey (bautismos ~1841) están digitalizados o accesibles en línea; si no, solicitar copia del bautismo del 4-oct-1841 por correo/email al Archives de l&#39;Etat du Valais en Sion (servicio de reproducción a distancia). — <strong>sigue abierto</strong>, ver el ítem equivalente en la versión actual",
-    "refs": []
-  },
-  {
-    "persona": "p38",
-    "nombre": "Juan José Roch",
-    "categoria": "matrimonio",
-    "html": "Buscar el acta de matrimonio de Juan José Roch y María Putallaz en Conthey, hacia 1859-1860, por la misma vía remota; registrar los nombres de los padres de ambos. — <strong>sigue abierto</strong>, ídem",
+    "categoria": "defuncion",
+    "html": "Resolver la tensión entre la edad declarada en la licencia de inhumación de Celestina/p27 (87 años → n.~1863) y la fecha de Antonin + censo 1895 (1867) — conseguir su acta de defunción completa",
     "refs": []
   },
   {
@@ -894,6 +936,20 @@
     "nombre": "Maria Cecilia Vargas Yegros",
     "categoria": "nacimiento",
     "html": "Buscar acta de nacimiento en CABA.",
+    "refs": []
+  },
+  {
+    "persona": "p40",
+    "nombre": "Etienne Clemenzo",
+    "categoria": "defuncion",
+    "html": "Ubicar el certificado/partida de defunción completa de Etienne Clemenzo (22/12/1938)",
+    "refs": []
+  },
+  {
+    "persona": "p40",
+    "nombre": "Etienne Clemenzo",
+    "categoria": "matrimonio",
+    "html": "Investigar si tuvo descendencia o matrimonio en Argentina",
     "refs": []
   },
   {
@@ -1027,6 +1083,13 @@
     "nombre": "Jean Joseph Clemenzo",
     "categoria": "archivo",
     "html": "Consultar los censos de 1798 y 1802 en los Archives de l&#39;État du Valais (cote DI 3090) por el hogar de Baptiste Clemenzo en Riddes",
+    "refs": []
+  },
+  {
+    "persona": "p57",
+    "nombre": "Jean Joseph Clemenzo",
+    "categoria": "nacimiento",
+    "html": "Determinar en qué parroquia (Ardon o Riddes) se registraron los bautismos de los seis hijos (1805–1821)",
     "refs": []
   },
   {
@@ -1244,6 +1307,20 @@
     "nombre": "Antonio Fonteine",
     "categoria": "nacimiento",
     "html": "Buscar acta de nacimiento en Argentina.",
+    "refs": []
+  },
+  {
+    "persona": "p71",
+    "nombre": "Angélica Elvira Fonteine",
+    "categoria": "matrimonio",
+    "html": "Confirmar la lectura del padrino «Lorenzo Ferrandio (?)» en el acta de matrimonio",
+    "refs": []
+  },
+  {
+    "persona": "p71",
+    "nombre": "Angélica Elvira Fonteine",
+    "categoria": "defuncion",
+    "html": "Buscar fecha y lugar de defunción de Angélica Elvira Fonteine",
     "refs": []
   },
   {

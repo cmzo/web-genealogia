@@ -69,7 +69,7 @@
       + `<p class="whv-title">${escapeHtml(n.title)}</p>`
       + (meta ? `<p class="whv-meta">${escapeHtml(meta)}</p>` : '')
       + (n.summary ? `<p class="whv-body">${escapeHtml(n.summary)}</p>` : '')
-      + `<span class="whv-cta">${n.type === 'persona' ? 'Clic → abre su ficha' : 'Clic → abre la página'}</span>`;
+      + `<span class="whv-cta">${n.type === 'persona' ? 'Clic → abre su ficha' : n.type === 'post' ? 'Clic → abre el post' : 'Clic → abre la página'}</span>`;
   }
 
   function renderDoc(d) {

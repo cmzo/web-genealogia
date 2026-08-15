@@ -543,6 +543,8 @@ async function init() {
     const id = a.dataset.node;
     if (nodeById.has(id)) {
       const n = nodeById.get(id);
+      // Un post no se lee en el modal (no es contenido de la wiki) — navega directo.
+      if (n.type === 'post') { location.href = `${rootBase()}${n.url}`; return; }
       recenterOn(id); selectNode(id);
       if (n.hasContent) openModal(n); else closeModal();
     }
