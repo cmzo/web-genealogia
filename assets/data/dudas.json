@@ -23,6 +23,9 @@
     "**¿Qué fue de ella?** Después de 1870 (y de la partida presunta de 1873) no hay rastro: no está en el censo de Colón de 1895. Tres escenarios, cada uno con su registro posible: defunción infantil (registros de Conthey pre-1873, o de Colonia Cullen / Colón después), matrimonio antes de 1895 (estaría censada con apellido de casada), o permanencia en Suiza (censos valesanos de 1880).",
     "**¿1863 o 1864?** El censo de 1870 dice 12-10-1863; Antonin, 24-10-1864. El bautismo de Conthey resuelve."
   ],
+  "p118": [
+    "El censo autodeclarado da 27-**septiembre**-1870; Antonin/AEV (ver ficha de p38, hallazgo del 14-jun-2026, basado en partidas de bautismo) da 27-**febrero**-1870 — mismo día, mes distinto. Es la mayor discrepancia de los cuatro hermanos (en los demás casos varía el año, no el mes). Antonin ya reemplazó al censo en `arbol.db`, pero conviene la partida de bautismo real para zanjarlo del todo — un desvío de mes es más raro que uno de año en un censo autodeclarado."
+  ],
   "p125": [
     "¿Quién fue su padre? El acta lo deja en blanco — ni un nombre. José Martín nació cuando p84 tenía 19 años y vivía en la parroquia del Carmen; diez años después ella casó «soltera» con Eleuterio Troncoso, sin legitimación registrada de José Martín en el margen.",
     "¿**Blanca** o **Clara** Rosa Cardozo? La nota marginal se lee «Blanca»; la ficha decía «Clara». El acta de matrimonio de 1927 en la Parroquia San Juan lo zanjaría.",
@@ -79,6 +82,9 @@
     "¿Quién es su padre? Hipótesis principal: Francisco (p26). Indicios: nació ~un año antes del matrimonio de ~1886; el padrino de bautismo es el hermano de Francisco; el censo de 1895 la integra al hogar y la cuenta entre los «5 hijos tenidos». En contra: ningún documento lo declara, y conservó el apellido Roh toda su vida documentada.",
     "¿Fue la pareja José Clemenzo × Mariana Roh (p85) el puente entre las familias? José y Mariana ya tenían un hijo en Santa Fe en 1884 (p104, José Domingo) — *antes* del nacimiento de María Celestina y del matrimonio de Francisco y Celestina. La pareja mayor establecida en Santa Fe, con Celestina empleada doméstica en la misma ciudad, sugiere que Francisco y Celestina se conocieron a través de sus hermanos. La madrina «María Roch» podría ser la propia Mariana.",
     "Los tres hermanos mayores — María Celestina, Francisca (p23) y Pedro (p22) — desaparecen de la documentación después del censo de 1895. Tres adultos no se esfuman: tienen que haber dejado matrimonios, defunciones, censos de 1914/1947 o hijos en algún registro de Entre Ríos o Santa Fe."
+  ],
+  "p27": [
+    "La fecha que autodeclaró la familia en este censo (22-12-**1866**) no coincide con la de Antonin/AEV que sigue el árbol (22-12-**1867**) — mismo día y mes, un año de diferencia. No es una tensión sin resolver: el hallazgo de Bourban/Antonin (14-jun-2026, ver ficha de p38) ya estableció que sus fechas —basadas en partidas de bautismo de Conthey, no en la edad autodeclarada de un censo— corrigen a las de este censo en los cuatro hermanos por igual, y esa corrección ya está volcada a `arbol.db`. Queda anotado como referencia, no como pregunta abierta."
   ],
   "p29": [
     "¿Dónde y cuándo casó con Agustín Costabile? Antes de noviembre de 1917 (p82 nació «hija legítima»). ¿Ya en Santa Fe, adonde la familia llegó ~1905? El panteón ferroviario sugiere buscar a Agustín en los registros del personal del ferrocarril.",

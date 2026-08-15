@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-15T14:47:15.070Z",
+  "generated": "2026-08-15T19:43:40.943Z",
   "nodes": [
     {
       "id": "arbol-jean-yves",
@@ -300,9 +300,8 @@
       "type": "persona",
       "branch": "roh",
       "url": "dist/wiki/p118.html",
-      "summary": "n. 1870-02-27, Conthey (Aven), Valais, Suiza",
-      "hasContent": true,
-      "docsOnly": true
+      "summary": "Hijo menor de Juan José Roch (p38) y Marie Putallaz, nacido en Conthey en 1870. Emigró a Argentina con su familia en 1873, siendo un niño de tres años. Se casó con Manuela Locher en la Colonia San José en 1894, de profesión herrero.",
+      "hasContent": true
     },
     {
       "id": "p119",
@@ -726,7 +725,7 @@
       "type": "persona",
       "branch": "clemenzo",
       "url": "dist/wiki/p40.html",
-      "summary": "Hermano de François (p26), nacido en Riddes en 1862. Emigró a Argentina; en 1905 liquidó junto a François los bienes familiares en Riddes vía el Consulado de Suiza. Falleció en 1938.",
+      "summary": "Hermano de François (p26), nacido en Riddes en 1862. Se casó con Estefanía Venegas en Buenos Aires (1886) y tuvo al menos 9 hijos. En 1905 liquidó junto a François los bienes familiares en Riddes vía el Consulado de Suiza. Falleció en 1938.",
       "hasContent": true
     },
     {
@@ -2415,6 +2414,14 @@
       "target": "p118"
     },
     {
+      "source": "p118",
+      "target": "p38"
+    },
+    {
+      "source": "p118",
+      "target": "p39"
+    },
+    {
       "source": "p119",
       "target": "p38"
     },
@@ -2731,6 +2738,18 @@
       "target": "p38"
     },
     {
+      "source": "p27",
+      "target": "p39"
+    },
+    {
+      "source": "p27",
+      "target": "p85"
+    },
+    {
+      "source": "p27",
+      "target": "p118"
+    },
+    {
       "source": "p28",
       "target": "p36"
     },
@@ -2867,10 +2886,6 @@
       "target": "p85"
     },
     {
-      "source": "p38",
-      "target": "p118"
-    },
-    {
       "source": "p39",
       "target": "p121"
     },
@@ -2884,15 +2899,43 @@
     },
     {
       "source": "p39",
-      "target": "p27"
-    },
-    {
-      "source": "p39",
-      "target": "p118"
-    },
-    {
-      "source": "p39",
       "target": "p80"
+    },
+    {
+      "source": "p40",
+      "target": "p59"
+    },
+    {
+      "source": "p40",
+      "target": "p60"
+    },
+    {
+      "source": "p40",
+      "target": "p61"
+    },
+    {
+      "source": "p40",
+      "target": "p62"
+    },
+    {
+      "source": "p40",
+      "target": "p63"
+    },
+    {
+      "source": "p40",
+      "target": "p64"
+    },
+    {
+      "source": "p40",
+      "target": "p65"
+    },
+    {
+      "source": "p40",
+      "target": "p66"
+    },
+    {
+      "source": "p40",
+      "target": "p67"
     },
     {
       "source": "p41",
@@ -3068,10 +3111,6 @@
     },
     {
       "source": "p59",
-      "target": "p40"
-    },
-    {
-      "source": "p59",
       "target": "p84"
     },
     {
@@ -3095,14 +3134,6 @@
       "target": "p60"
     },
     {
-      "source": "p61",
-      "target": "p40"
-    },
-    {
-      "source": "p62",
-      "target": "p40"
-    },
-    {
       "source": "p62",
       "target": "p61"
     },
@@ -3121,10 +3152,6 @@
     {
       "source": "p63",
       "target": "p66"
-    },
-    {
-      "source": "p63",
-      "target": "p40"
     },
     {
       "source": "p64",
@@ -3317,10 +3344,6 @@
     {
       "source": "p84",
       "target": "p124"
-    },
-    {
-      "source": "p85",
-      "target": "p27"
     },
     {
       "source": "p85",
@@ -3722,31 +3745,6 @@
     {
       "source": "p55",
       "target": "p56",
-      "rel": "familia"
-    },
-    {
-      "source": "p60",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p64",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p65",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p66",
-      "target": "p40",
-      "rel": "familia"
-    },
-    {
-      "source": "p67",
-      "target": "p40",
       "rel": "familia"
     },
     {

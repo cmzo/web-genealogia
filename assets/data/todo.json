@@ -154,6 +154,20 @@
     "refs": []
   },
   {
+    "persona": "p118",
+    "nombre": "Joseph Marie Roch",
+    "categoria": "nacimiento",
+    "html": "Conseguir la partida de bautismo de Joseph Marie Roch en Conthey (~1870) para zanjar febrero vs. septiembre",
+    "refs": []
+  },
+  {
+    "persona": "p118",
+    "nombre": "Joseph Marie Roch",
+    "categoria": "otros",
+    "html": "Buscar descendencia de Joseph Marie Roch y Manuela Locher, casados en 1894",
+    "refs": []
+  },
+  {
     "persona": "p119",
     "nombre": "Jean Joseph Roch",
     "categoria": "archivo",
@@ -948,8 +962,8 @@
   {
     "persona": "p40",
     "nombre": "Etienne Clemenzo",
-    "categoria": "matrimonio",
-    "html": "Investigar si tuvo descendencia o matrimonio en Argentina",
+    "categoria": "otros",
+    "html": "Confirmar si tuvo más hijos además de los nueve ya documentados (p59–p67)",
     "refs": []
   },
   {
