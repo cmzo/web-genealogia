@@ -1,3 +1,17 @@
+### 15 de agosto de 2026
+
+#### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Imagen rota y links huérfanos en la wiki
+
+Un censo de la familia Roh no cargaba en ninguna ficha que lo citara — apuntaba al directorio equivocado, junto con otras 25 imágenes de la misma familia. Dos referencias a posts del blog dentro del texto de varias fichas tampoco funcionaban como link. Las dos cosas ya andan.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Ocho fichas de investigación, reordenadas al mismo formato que el resto
+
+Ocho fichas de investigación (entre ellas François Clemenzo, Juan José Roch y Jean Joseph Clemenzo) todavía tenían la estructura vieja de cuando no existía un formato común: encabezados propios, listas de tareas repetidas, secciones con nombres distintos. Se reescribieron con el mismo orden que ya tenían las demás fichas del árbol — sin perder ni un dato — para que investigar a cualquier persona se sienta igual.
+
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Las investigaciones viejas ya no se mezclan con las vigentes
+
+Cuando una ficha reemplazó una versión anterior de su propia investigación, esa versión vieja se conserva como archivo al pie de la página — pero ahora aparece colapsada por defecto, en vez de mostrarse abierta junto con la investigación actual.
+
 ### 14 de agosto de 2026
 
 #### <span class="changelog-tag changelog-tag--nueva">Función nueva</span> Preview al pasar el mouse por un link de la wiki

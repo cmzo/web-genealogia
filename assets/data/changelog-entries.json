@@ -1,5 +1,29 @@
 [
   {
+    "id": "2026-08-15-imagen-rota-y-links-huérfanos-en-la-wiki",
+    "date": "2026-08-15",
+    "type": "cambio",
+    "tag": "fix",
+    "title": "Imagen rota y links huérfanos en la wiki",
+    "html": "<p>Un censo de la familia Roh no cargaba en ninguna ficha que lo citara — apuntaba al directorio equivocado, junto con otras 25 imágenes de la misma familia. Dos referencias a posts del blog dentro del texto de varias fichas tampoco funcionaban como link. Las dos cosas ya andan.</p>\n"
+  },
+  {
+    "id": "2026-08-15-ocho-fichas-de-investigación-reordenadas-al-mismo-formato-que-el-resto",
+    "date": "2026-08-15",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Ocho fichas de investigación, reordenadas al mismo formato que el resto",
+    "html": "<p>Ocho fichas de investigación (entre ellas François Clemenzo, Juan José Roch y Jean Joseph Clemenzo) todavía tenían la estructura vieja de cuando no existía un formato común: encabezados propios, listas de tareas repetidas, secciones con nombres distintos. Se reescribieron con el mismo orden que ya tenían las demás fichas del árbol — sin perder ni un dato — para que investigar a cualquier persona se sienta igual.</p>\n"
+  },
+  {
+    "id": "2026-08-15-las-investigaciones-viejas-ya-no-se-mezclan-con-las-vigentes",
+    "date": "2026-08-15",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Las investigaciones viejas ya no se mezclan con las vigentes",
+    "html": "<p>Cuando una ficha reemplazó una versión anterior de su propia investigación, esa versión vieja se conserva como archivo al pie de la página — pero ahora aparece colapsada por defecto, en vez de mostrarse abierta junto con la investigación actual.</p>\n"
+  },
+  {
     "id": "2026-08-14-preview-al-pasar-el-mouse-por-un-link-de-la-wiki",
     "date": "2026-08-14",
     "type": "cambio",
@@ -294,29 +318,5 @@
     "tag": "nueva",
     "title": "El árbol de Jean-Yves, en la wiki",
     "html": "<p>Sumé una página nueva: el <strong>árbol genealógico manuscrito de Jean-Yves Clemenzo</strong>, la rama de los Clemenzo que se quedó en Ardon (Suiza) y que corre en paralelo a la que emigró a Entre Ríos. Trae las dos fotos del documento original, la transcripción generación por generación y un diagrama por cada una. De paso, resolvió una duda vieja de la investigación sobre quién era la «Elisabeth» casada con los Lambiel de Riddes.</p>\n"
-  },
-  {
-    "id": "2026-06-28-imágenes-en-los-artículos-de-la-wiki",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Imágenes en los artículos de la wiki",
-    "html": "<p>Los artículos de la wiki ahora pueden mostrar <strong>fotos</strong> —un pueblo, un documento, un árbol manuscrito— con su pie de foto, y al tocarlas se abren en el visor con zoom, igual que en el blog.</p>\n"
-  },
-  {
-    "id": "2026-06-28-diagramas-de-parentesco-dentro-de-un-artículo",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "novedad",
-    "title": "Diagramas de parentesco dentro de un artículo",
-    "html": "<p>Se pueden dibujar <strong>árboles y diagramas</strong> directamente dentro de un artículo de la wiki (con Mermaid). El árbol de Jean-Yves los estrena: un esquema por cada generación.</p>\n"
-  },
-  {
-    "id": "2026-06-28-los-artículos-de-la-wiki-se-leen-mucho-mejor",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "mejora",
-    "title": "Los artículos de la wiki se leen mucho mejor",
-    "html": "<p>Rehíce la tipografía de lectura de la wiki: una entradilla que resume, secciones bien marcadas, tablas más claras y citas destacadas. Además, al abrir un artículo, el recuadro de lectura se ubica a la izquierda y <strong>el panel de relaciones queda a la derecha</strong> —sin duplicarse—, así podés leer y saltar a personas o lugares vinculados a la vez.</p>\n"
   }
 ]
