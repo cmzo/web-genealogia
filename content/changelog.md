@@ -1,5 +1,9 @@
 ### 15 de agosto de 2026
 
+#### <span class="changelog-tag changelog-tag--mejora">Mejora</span> Los 99 documentos curados ya tienen transcripción
+
+Actas de bautismo, censos, enrolamientos militares, firmas y demás papeles curados en `content/documentos/` llegaron a transcripción completa: los 19 que faltaban (de un total de 99) quedaron leídos y pasados a texto. De paso aparecieron algunos hallazgos: François Clemenzo se naturalizó ciudadano argentino y era carpintero de oficio, dos "actas de bautismo" resultaron ser en realidad actas de nacimiento del Registro Civil, y un listado publicado de apellidos por comuna del Valais confirma a Riddes como origen de la familia.
+
 #### <span class="changelog-tag changelog-tag--fix">Arreglo</span> Imagen rota y links huérfanos en la wiki
 
 Un censo de la familia Roh no cargaba en ninguna ficha que lo citara — apuntaba al directorio equivocado, junto con otras 25 imágenes de la misma familia. Dos referencias a posts del blog dentro del texto de varias fichas tampoco funcionaban como link. Las dos cosas ya andan.

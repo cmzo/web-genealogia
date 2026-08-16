@@ -22,6 +22,10 @@ const rootBase = () => (window.PATH_CONFIG && window.PATH_CONFIG.base) || './';
 
 async function init() {
   const host = document.getElementById('wikiGraph');
+  // Único momento con espera real (fetch); el armado del disco de abajo es ~300
+  // pasos síncronos deliberadamente invisibles (ver comentario en reveal()), así
+  // que este mensaje solo cubre la carga de datos, no la física.
+  const loadingEl = document.getElementById('wikiGraphLoading');
   let data, arbol, documentos;
   try {
     [data, arbol, documentos] = await Promise.all([
@@ -30,6 +34,7 @@ async function init() {
       fetch(dataPath('documentos.json')).then(r => r.ok ? r.json() : []).catch(() => []),
     ]);
   } catch (e) {
+    loadingEl?.remove();
     host.innerHTML = '<p class="wiki-graph-empty">No se pudo cargar el grafo.</p>';
     return;
   }
@@ -37,7 +42,7 @@ async function init() {
   const nodes = data.nodes.map(d => ({ ...d }));
   const links = data.edges.map(d => ({ ...d }));
   const nodeById = new Map(nodes.map(n => [n.id, n]));
-  if (!nodes.length) { host.innerHTML = '<p class="wiki-graph-empty">Todavía no hay páginas en la wiki.</p>'; return; }
+  if (!nodes.length) { loadingEl?.remove(); host.innerHTML = '<p class="wiki-graph-empty">Todavía no hay páginas en la wiki.</p>'; return; }
 
   // ── Relaciones familiares desde arbol.json (alimentan el panel lateral) ──────
   const personaById = new Map((arbol.personas || []).map(p => [p.id, p]));
@@ -203,6 +208,7 @@ async function init() {
     if (revealed) return; revealed = true;
     cy.fit(undefined, 50);
     centerNodes();
+    loadingEl?.remove();
     host.style.transition = 'opacity 0.5s ease';
     host.style.opacity = '1';
   }
@@ -301,13 +307,74 @@ async function init() {
     const nd = cy.getElementById(id);
     if (nd.nonempty()) nd.addClass('focus');
   }
-  function selectNode(id) { selectedId = id; highlight(id); openPanel(nodeById.get(id)); }
+  // El foco vuelve al lienzo al seleccionar (clic o teclado): así, después de clickear
+  // un nodo con el mouse, las flechas ya funcionan sin necesitar un Tab de más.
+  function selectNode(id) { selectedId = id; highlight(id); openPanel(nodeById.get(id)); host.focus({ preventScroll: true }); }
   function deselect() { selectedId = null; highlight(null); closePanel(); }
 
   cy.on('tap', 'node', e => selectNode(e.target.id()));
   cy.on('tap', e => { if (e.target === cy) deselect(); });
   cy.on('mouseover', 'node', e => { if (!selectedId) highlight(e.target.id()); });
   cy.on('mouseout', 'node', () => { if (!selectedId) highlight(null); });
+
+  // ── Navegación por teclado ───────────────────────────────────────────────────
+  // El lienzo es un <canvas>: no hay un nodo del DOM por dato que Tab pueda alcanzar.
+  // Mismo patrón que assets/js/arbol/keyboard.js (foco en un nodo + flechas para
+  // moverse), adaptado a un grafo general en vez de una jerarquía familiar:
+  // →/↓ avanza al vecino visible (no-tag) más conectado del nodo en foco;
+  // ←/↑ vuelve sobre los pasos (historial de visita, como "atrás" del navegador);
+  // Enter/Space abre la lectura si el nodo tiene contenido; Escape suelta el foco.
+  const kbHistory = [];
+  function visibleNeighborsOf(id) {
+    const own = neighbors.get(id);
+    if (!own) return [];
+    return [...own]
+      .filter(nid => nid !== id && nodeById.has(nid) && nodeById.get(nid).type !== 'tag')
+      .sort((a, b) => (degreeMap.get(b) || 0) - (degreeMap.get(a) || 0) || nodeById.get(a).title.localeCompare(nodeById.get(b).title));
+  }
+  function initialKeyboardNode() {
+    // Sin selección todavía: arrancar por el hub más conectado del grafo visible.
+    let best = null;
+    visNodes.forEach(n => { if (!best || (degreeMap.get(n.id) || 0) > (degreeMap.get(best) || 0)) best = n.id; });
+    return best;
+  }
+  function goToByKeyboard(id) { recenterOn(id); selectNode(id); }
+  host.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { deselect(); kbHistory.length = 0; host.blur(); return; }
+    if (!selectedId) {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(e.key)) {
+        e.preventDefault();
+        const id = initialKeyboardNode();
+        if (id) goToByKeyboard(id);
+      }
+      return;
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      const opts = visibleNeighborsOf(selectedId);
+      if (!opts.length) return;
+      kbHistory.push(selectedId);
+      goToByKeyboard(opts[0]);
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = kbHistory.pop();
+      if (prev) goToByKeyboard(prev);
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const n = nodeById.get(selectedId);
+      if (n) { if (n.type === 'post') location.href = `${rootBase()}${n.url}`; else if (n.hasContent) openModal(n); }
+    }
+  });
+
+  // Popover de ayuda (ⓘ): único aviso visible de que el grafo se navega por teclado.
+  const infoBtn = document.getElementById('wikiInfoBtn');
+  const infoPop = document.getElementById('wikiInfoPop');
+  if (infoBtn && infoPop) {
+    const setInfoOpen = open => { infoPop.hidden = !open; infoBtn.setAttribute('aria-expanded', String(open)); };
+    infoBtn.addEventListener('click', e => { e.stopPropagation(); setInfoOpen(infoPop.hidden); });
+    document.addEventListener('click', e => { if (!infoPop.hidden && !infoPop.contains(e.target) && e.target !== infoBtn) setInfoOpen(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !infoPop.hidden) setInfoOpen(false); });
+  }
 
   function recenterOn(id) {
     const n = cy.getElementById(id);

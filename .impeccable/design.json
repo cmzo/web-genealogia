@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-16T00:00:00.000Z",
+  "title": "Design System: CMZO",
+  "extensions": {
+    "colorMeta": {
+      "bg": { "role": "neutral", "displayName": "Papel", "canonical": "#f6f6f4" },
+      "surface": { "role": "neutral", "displayName": "Superficie", "canonical": "#ffffff" },
+      "border": { "role": "neutral", "displayName": "Borde", "canonical": "#e8e8e6" },
+      "text": { "role": "neutral", "displayName": "Tinta", "canonical": "#1a1a1a" },
+      "muted": { "role": "neutral", "displayName": "Musgo cálido", "canonical": "#5a5040" },
+      "accent": { "role": "primary", "displayName": "Verde botella / Salvia sin matiz", "canonical": "#2d4a3e" },
+      "on-accent": { "role": "neutral", "displayName": "Texto sobre acento", "canonical": "#cad7d0" },
+      "tag-lugar": { "role": "semantic", "displayName": "Azul pizarra (geografía)", "canonical": "#3f5c6b" },
+      "tag-familia": { "role": "semantic", "displayName": "Terracota apagada (personas)", "canonical": "#8a5a3c" },
+      "tag-metodo": { "role": "semantic", "displayName": "Verde botella (investigación)", "canonical": "#2d4a3e" },
+      "tag-tec": { "role": "semantic", "displayName": "Ciruela (técnica)", "canonical": "#5a4a70" },
+      "tag-otro": { "role": "semantic", "displayName": "Gris cálido (sin familia)", "canonical": "#5a5040" },
+      "stat-terracota": { "role": "semantic", "displayName": "Especulativa", "canonical": "#b5715a" },
+      "stat-ochre": { "role": "semantic", "displayName": "Plausible", "canonical": "#a8763a" },
+      "stat-salvia": { "role": "semantic", "displayName": "Sólida", "canonical": "#5c8a6e" },
+      "pill-ink": { "role": "neutral", "displayName": "Tinta de pastilla de área", "canonical": "#262220" },
+      "pill-escritura": { "role": "semantic", "displayName": "Damasco (Blog)", "canonical": "#f6dcc6" },
+      "pill-experim": { "role": "semantic", "displayName": "Lavanda (Lab)", "canonical": "#e0d9f4" },
+      "pill-investig": { "role": "semantic", "displayName": "Menta (Genealogía)", "canonical": "#c9e6d5" },
+      "pill-archivo": { "role": "semantic", "displayName": "Amarillo pálido (Fuentes)", "canonical": "#f3e6b8" },
+      "pill-hipotesis": { "role": "semantic", "displayName": "Celeste pálido (Hipótesis)", "canonical": "#cfe0f3" },
+      "gcard-ink": { "role": "neutral", "displayName": "Pergamino (tinta de tarjeta)", "canonical": "#f3ead9" },
+      "gcard-gold": { "role": "semantic", "displayName": "Latón (badge compartido)", "canonical": "#e8c77a" },
+      "gcard-escritura": { "role": "semantic", "displayName": "Terracota quemada (Blog)", "canonical": "#a8562f" },
+      "gcard-experim": { "role": "semantic", "displayName": "Ciruela oscura (Lab)", "canonical": "#5d4a7a" },
+      "gcard-investig": { "role": "semantic", "displayName": "Verde botella profundo (Genealogía)", "canonical": "#3f6b4a" },
+      "gcard-archivo": { "role": "semantic", "displayName": "Bronce/oliva (Fuentes)", "canonical": "#8a6a1f" },
+      "gcard-hipotesis": { "role": "semantic", "displayName": "Azul pizarra profundo (Hipótesis)", "canonical": "#3f5f78" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Fraunces)", "purpose": "Títulos de página y h1/h2 de artículo. Versalitas solo en h2 de sección." },
+      "body": { "displayName": "Body (Source Serif 4)", "purpose": "Todo el cuerpo de texto, UI, botones, tablas y metadata." },
+      "label": { "displayName": "Label (IBM Plex Mono)", "purpose": "Breadcrumb de navegación, comando ⌘K, kickers." },
+      "code": { "displayName": "Code (JetBrains Mono)", "purpose": "Bloques de código y código inline únicamente." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "transition-standard", "value": "0.15s", "purpose": "Hover/focus de links, botones y nav — único ritmo de transición del sitio." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "760px" },
+      { "name": "sidebar-legacy", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button Outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Botón por defecto del sitio — outline en acento, uso uniforme en dashboards.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\"><span>Explorar</span><span>→</span></a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #2d4a3e; background: transparent; border: 1px solid #2d4a3e; border-radius: 4px; padding: 10px 18px; text-decoration: none; transition: background 0.15s, color 0.15s; } .ds-btn-outline:hover { background: #2d4a3e; color: #cad7d0; } .ds-btn-outline:focus-visible { outline: 2px solid #2d4a3e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Button Solid",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Botón primario, uso escaso — fondo de acento sólido.",
+      "html": "<a class=\"ds-btn-solid\" href=\"#\"><span>Enviar</span><span>→</span></a>",
+      "css": ".ds-btn-solid { display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500; color: #cad7d0; background: #2d4a3e; border: 1px solid #2d4a3e; border-radius: 4px; padding: 10px 18px; text-decoration: none; transition: opacity 0.15s; } .ds-btn-solid:hover { opacity: 0.88; }"
+    },
+    {
+      "name": "Tag Pill",
+      "kind": "chip",
+      "refersTo": "tag-pill",
+      "description": "Etiqueta semántica del blog/wiki — texto de color sobre fondo mezclado 19% con la superficie; el color codifica la familia del tag.",
+      "html": "<span class=\"ds-tag-pill\">valais</span>",
+      "css": ".ds-tag-pill { font-family: 'Source Serif 4', Georgia, serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #3f5c6b; background: color-mix(in srgb, #3f5c6b 19%, #ffffff); padding: 4px 10px; border-radius: 20px; display: inline-block; }"
+    },
+    {
+      "name": "Area Card (gcard)",
+      "kind": "card",
+      "refersTo": "card-gcard",
+      "description": "Tarjeta de color sólido de área/sección, paleta «Archivo cálido» (2026-08-16) — sin borde ni portada, tinta pergamino clara, badge dorado compartido; racimo de avatares solo con individuos reales que nombrar, barra solo con proporción real.",
+      "html": "<a class=\"ds-gcard\" href=\"#\"><div class=\"ds-gcard-top\"><span class=\"ds-gcard-badge\">+130</span><span class=\"ds-gcard-act\">→</span></div><h3>El árbol</h3><p>Seis generaciones enlazadas desde Ardon, en el Valais suizo, hasta Entre Ríos.</p><div class=\"ds-gcard-ind\">133 personas <span>/ 9 generaciones</span></div><div class=\"ds-gcard-bar\"><i></i></div></a>",
+      "css": ".ds-gcard { display: block; background: #3f6b4a; color: #f3ead9; border-radius: 8px; padding: 24px; text-decoration: none; transition: transform 0.15s; } .ds-gcard:hover { transform: translateY(-2px); } .ds-gcard-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; } .ds-gcard-badge { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; background: #e8c77a; color: #3a2c14; padding: 3px 9px; border-radius: 999px; } .ds-gcard-act { font-size: 16px; background: rgba(255,255,255,0.16); border-radius: 50%; padding: 6px; } .ds-gcard h3 { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 600; margin: 0 0 8px; } .ds-gcard p { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; line-height: 1.5; margin: 0 0 16px; opacity: 0.82; } .ds-gcard-ind { font-family: 'IBM Plex Mono', monospace; font-size: 11px; margin-bottom: 8px; } .ds-gcard-ind span { opacity: 0.68; } .ds-gcard-bar { height: 4px; background: rgba(255,255,255,0.18); border-radius: 2px; overflow: hidden; } .ds-gcard-bar i { display: block; height: 100%; width: 65%; background: #e8c77a; }"
+    },
+    {
+      "name": "Hypothesis Status Pill",
+      "kind": "chip",
+      "refersTo": "hyp-status",
+      "description": "Pastilla de estado de hipótesis — misma receta que Tag Pill, con la escala de certeza terracota/ocre/salvia/acento.",
+      "html": "<span class=\"ds-hyp-status\">Plausible</span>",
+      "css": ".ds-hyp-status { font-family: 'Source Serif 4', Georgia, serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #a8763a; background: color-mix(in srgb, #a8763a 19%, #ffffff); padding: 4px 10px; border-radius: 20px; display: inline-block; }"
+    },
+    {
+      "name": "Panel Row (srcrow)",
+      "kind": "custom",
+      "refersTo": "cmzo-srcrow",
+      "description": "Fila de índice dentro de un panel .cmzo-viz — icono, nombre/sublabel, meta a la derecha.",
+      "html": "<div class=\"ds-viz\"><div class=\"ds-viz-head\"><span>sources.index</span><span>02 archivos</span></div><a class=\"ds-srcrow\" href=\"#\"><span class=\"ic\">▤</span><span class=\"nm\"><span class=\"t\">Censos del Valais</span><span class=\"s\">archives de l'État · VS</span></span><span class=\"meta\">1802–1880</span></a></div>",
+      "css": ".ds-viz { border: 1px solid #e8e8e6; border-radius: 8px; overflow: hidden; background: #ffffff; } .ds-viz-head { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5a5040; padding: 10px 16px; border-bottom: 1px solid #e8e8e6; background: #f6f6f4; } .ds-srcrow { display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 12px; padding: 12px 16px; text-decoration: none; color: #1a1a1a; border-bottom: 1px solid #e8e8e6; } .ds-srcrow:last-child { border-bottom: none; } .ds-srcrow .t { display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 14px; } .ds-srcrow .s { display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 11px; color: #5a5040; } .ds-srcrow .meta { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5a5040; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El cuaderno de investigación encuadernado en papel de archivo",
+    "overview": "CMZO es el sitio personal de Matías Clemenzo, modelado sobre gwern.net: un blog, un \"lab\" de experimentos técnicos y un proyecto grande de investigación genealógica conviven bajo una identidad editorial única, sin quedar encasillados en un solo tema. La superficie es enteramente serif — Fraunces para títulos, Source Serif 4 para todo el resto — con monoespacio reservado exclusivamente a código, breadcrumbs de navegación y metadata técnica. Esa combinación deliberada (títulos de libro + cuerpo de archivo + navegación de terminal) es la firma visual del sitio: se lee como un cuaderno de investigación real, no como una plantilla de blog ni un producto genealógico de catálogo.\n\nEl sistema es plano por decisión: la jerarquía y la profundidad se transmiten con bordes de 1px y superficie clara/oscura, nunca con sombra. La paleta es cálida y desaturada — un verde botella como único acento, sin matiz de \"hacker\" ni fondo sepia. El color con significado (familias de tags, estados de hipótesis, pastillas de área) es la excepción deliberada a esa neutralidad: ahí el color codifica información, no decora.\n\nModo oscuro es una restricción permanente: cada color tiene su contraparte y se probaron y rechazaron explícitamente un fondo marrón/sepia y un verde \"hacker\" saturado para el modo oscuro.",
+    "keyCharacteristics": [
+      "Enteramente serif: Fraunces (títulos) + Source Serif 4 (todo el resto); monoespacio solo en código y navegación",
+      "Superficie plana, sin sombras: profundidad vía bordes de 1px y color de superficie",
+      "Un único acento neutro; el resto del color es semántico, nunca decorativo",
+      "Ritmo de espaciado editorial derivado del contenido, no una grilla de 8px estricta",
+      "Modo oscuro como invariante de primera clase en cada componente"
+    ],
+    "rules": [
+      { "name": "La Regla de la Neutralidad Oscura", "body": "El acento no tiene matiz en modo oscuro. Cualquier verde sobre fondo grafito lee como terminal de hacker; el color con significado real vive únicamente en las familias --tag-*.", "section": "colors" },
+      { "name": "La Regla del Color Semántico", "body": "Todo color fuera de la paleta base codifica un significado específico y estable: familia de etiqueta, estado de hipótesis o área del sitio. Nunca se introduce un color nuevo por preferencia estética puntual.", "section": "colors" },
+      { "name": "La Regla del Todo-Serif", "body": "Desde 2026-08 no hay tipografía sans-serif en el sitio; el único monoespacio real es JetBrains Mono en código e IBM Plex Mono en navegación/metadata.", "section": "typography" },
+      { "name": "La Regla de las Versalitas de Sección", "body": "Solo los h2 de sección editorial llevan versalitas; nunca un título de card, nunca un h1.", "section": "typography" },
+      { "name": "La Regla Sin Sombra", "body": "Ningún componente nuevo introduce box-shadow para jerarquía. Si algo necesita destacarse, usa borde o superficie más clara/oscura, no elevación simulada.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do mantener todo el sitio en serif (Fraunces + Source Serif 4); reservar monoespacio a código y navegación de sistema únicamente.",
+      "Do transmitir profundidad con bordes de 1px y diferencia de superficie, nunca con box-shadow.",
+      "Do reflejar todo cambio de token, componente o variante en design-system.html de inmediato.",
+      "Do usar color semántico solo con su significado fijo; nunca decorativo.",
+      "Do probar modo oscuro y modo claro en cada cambio."
+    ],
+    "donts": [
+      "Don't introducir un fondo marrón/sepia en modo oscuro — se probó y se rechazó explícitamente en 2026-08.",
+      "Don't dar matiz de verde al acento en modo oscuro.",
+      "Don't agregar sombras para jerarquía o elevación en ningún componente nuevo.",
+      "Don't usar versalitas en títulos de card ni en h1 de página.",
+      "Don't cargar fuentes desde Google Fonts o un CDN.",
+      "Don't inventar un color nuevo por preferencia estética puntual sin asignarle un significado semántico estable."
+    ]
+  }
+}

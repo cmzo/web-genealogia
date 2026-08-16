@@ -24,7 +24,21 @@
 
     <main id="main-content" class="cmzo-app">
       <div class="wiki-graph-wrapper">
-        <div class="wiki-graph" id="wikiGraph"></div>
+        <div class="wiki-graph" id="wikiGraph" tabindex="0" role="application" aria-label="Grafo de conocimiento — flechas para moverse entre nodos conectados, Enter para leer, Escape para salir"></div>
+        <p class="wiki-graph-empty" id="wikiGraphLoading">Armando el grafo…</p>
+
+        <button id="wikiInfoBtn" class="wiki-info-btn" type="button" title="Ayuda y atajos de teclado" aria-expanded="false" aria-controls="wikiInfoPop">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.5" fill="currentColor"/></svg>
+        </button>
+        <div class="wiki-info-pop" id="wikiInfoPop" role="dialog" aria-label="Ayuda y atajos de teclado" hidden>
+          <p class="wiki-info-title">Moverse por el grafo</p>
+          <div class="wiki-info-row"><kbd class="wiki-info-key">Tab</kbd><span>Entrar al grafo con el teclado</span></div>
+          <div class="wiki-info-row"><kbd class="wiki-info-key">→ ↓</kbd><span>Ir al vecino más conectado</span></div>
+          <div class="wiki-info-row"><kbd class="wiki-info-key">← ↑</kbd><span>Volver sobre los pasos</span></div>
+          <div class="wiki-info-row"><kbd class="wiki-info-key">Enter</kbd><span>Leer el nodo en foco</span></div>
+          <div class="wiki-info-row"><kbd class="wiki-info-key">Esc</kbd><span>Soltar el foco</span></div>
+          <p class="wiki-info-foot">Un clic en cualquier nodo también lo selecciona y deja el foco listo para seguir con flechas.</p>
+        </div>
 
         <div class="wiki-stats-card" id="wikiStats"><!-- métricas del grafo: las calcula graph.js desde wiki-graph.json --></div>
 

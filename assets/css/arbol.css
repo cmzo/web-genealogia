@@ -1329,6 +1329,14 @@
 .tl-detail::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 @keyframes tl-detail-in { from { opacity: 0; } to { opacity: 1; } }
 
+/* tl-fade y tl-detail-in ya son solo opacidad, quedan igual bajo reduced-motion.
+   tl-up/tl-flag-in/tl-snap-in mueven o escalan el elemento: se desactivan. */
+@media (prefers-reduced-motion: reduce) {
+  .tl-dialog { animation: none; }
+  .tl-sr-cell { animation: none; }
+  .tl-node--active .tl-node-text { animation: none; }
+}
+
 /* Bloque de documentos dentro del panel de persona */
 .tl-detail-block { margin-top: 14px; }
 .tl-detail-subhead {

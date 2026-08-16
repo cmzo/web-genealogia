@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "assets/css/home.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.735Z",
+        "reason": "design-system.html documents blockquote as border-left 3px --accent, an intentional editorial component, not a card accent"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "assets/css/arbol.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.776Z",
+        "reason": "3 instances: .panel-markdown blockquote (documented editorial pattern, same as design-system.html blockquote), .panel-markdown h2 (source comment 'acento izquierdo' marks it deliberate), .panel-peek (a literal functional pull-tab for the mobile panel, not a decorative card accent)"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "assets/css/styles.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.809Z",
+        "reason": "blockquote matches design-system.html's documented spec (border-left 3px --accent); .callout matches design-system.html's documented callout component (success/warning/danger/neutral variants shown in the system doc)"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "*",
+        "files": [
+          "assets/css/arbol.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.843Z",
+        "reason": "tl-flag-in/tl-snap-in bounce is a deliberate iOS-picker-snap metaphor for the timeline's slot-machine active-node effect, per the file's own comment 'como en un selector iOS' -- not a reflexive default"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "assets/css/arbol.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.877Z",
+        "reason": ".tree-panel is a real docked flex sibling that must reflow the tree canvas beside it as it opens/closes; width is the correct property here, transform would only visually squish it without freeing canvas space"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "assets/css/arbol.css"
+        ],
+        "createdAt": "2026-08-15T21:13:50.909Z",
+        "reason": "dot-grid is the tree app's canvas background, documented in CLAUDE.md as an intentional i3-style-gap design element -- the rule's own text exempts canvas/diagram surfaces"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "15px",
+        "createdAt": "2026-08-15T21:52:29.596Z",
+        "reason": "Impeccable live-mode exploratory variant CSS (lab.html gcard badge, session c115795a) — proportional to enlarged 1.15x badge, not a permanent site rule; reconciled against real type scale at accept/carbonize."
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-15T22:02:18.077Z",
+        "reason": "Inter is a font the project explicitly retired in 2026-08 (see CLAUDE.md/DESIGN.md); design-system.html documents it as a retired/self-hosted reference face on purpose, not a live design choice."
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-08-15T22:20:26.256Z",
+        "reason": "Fraunces is the site's deliberate, documented display typeface (see DESIGN.md Typography / CLAUDE.md) — not a generic AI-template default in this project."
+      }
+    ]
+  }
+}

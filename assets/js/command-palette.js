@@ -73,7 +73,7 @@
     padding: 14px 16px; border-bottom: 1px solid var(--border, #e8e8e6); flex-shrink: 0; }
   .cmdk-input-row > svg { width: 18px; height: 18px; color: var(--muted, #8a8a88); flex-shrink: 0; }
   .cmdk-input { flex: 1; border: none; outline: none; background: none;
-    font-family: 'Inter', sans-serif; font-size: 16px; color: var(--text, #1a1a1a); padding: 2px 0; }
+    font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 16px; color: var(--text, #1a1a1a); padding: 2px 0; }
   .cmdk-input::placeholder { color: var(--muted, #8a8a88); }
 
   .cmdk-results { overflow-y: auto; padding: 8px; flex: 1;
@@ -81,7 +81,7 @@
   .cmdk-results::-webkit-scrollbar { width: 6px; }
   .cmdk-results::-webkit-scrollbar-thumb { background: var(--border, #e8e8e6); border-radius: 3px; }
 
-  .cmdk-group-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700;
+  .cmdk-group-label { font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 10px; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted, #8a8a88);
     padding: 12px 12px 6px; }
   .cmdk-group:first-child .cmdk-group-label { padding-top: 4px; }
@@ -93,9 +93,9 @@
     background: var(--bg, #f6f6f4); border: 1px solid var(--border, #e8e8e6); color: var(--muted, #8a8a88); }
   .cmdk-item-icon svg { width: 17px; height: 17px; }
   .cmdk-item-text { min-width: 0; flex: 1; }
-  .cmdk-item-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+  .cmdk-item-title { font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 14px; font-weight: 500;
     color: var(--text, #1a1a1a); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .cmdk-item-sub { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--muted, #8a8a88);
+  .cmdk-item-sub { font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 12px; color: var(--muted, #8a8a88);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
   .cmdk-item-enter { flex-shrink: 0; font-size: 11px; color: var(--accent, #2d4a3e); opacity: 0; }
   .cmdk-item-actbtn { flex-shrink: 0; width: 22px; height: 22px; border: 1px solid var(--border, #e8e8e6);
@@ -110,14 +110,14 @@
   .cmdk-item.is-active .cmdk-item-title { color: var(--accent, #2d4a3e); }
   .cmdk-item.is-active .cmdk-item-enter { opacity: 1; }
 
-  .cmdk-empty { padding: 32px 16px; text-align: center; font-family: 'Inter', sans-serif;
+  .cmdk-empty { padding: 32px 16px; text-align: center; font-family: var(--sans, 'Source Serif 4', Georgia, serif);
     font-size: 13px; color: var(--muted, #8a8a88); font-style: italic; }
 
   .cmdk-footer { display: flex; align-items: center; gap: 16px; flex-shrink: 0;
     padding: 9px 16px; border-top: 1px solid var(--border, #e8e8e6); background: var(--bg, #f6f6f4); }
   .cmdk-footer span { display: inline-flex; align-items: center; gap: 5px;
-    font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted, #8a8a88); }
-  .cmdk-kbd { font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1;
+    font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 11px; color: var(--muted, #8a8a88); }
+  .cmdk-kbd { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1;
     color: var(--text, #1a1a1a); background: var(--surface, #fff);
     border: 1px solid var(--border, #e8e8e6); border-bottom-width: 2px; border-radius: 4px;
     padding: 3px 5px; min-width: 18px; text-align: center; }
@@ -125,11 +125,11 @@
 
   .cmdk-trigger { display: inline-flex; align-items: center; gap: 8px; padding: 5px 9px;
     background: var(--bg, #f6f6f4); border: 1px solid var(--border, #e8e8e6); border-radius: 7px;
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--muted, #8a8a88);
+    font-family: var(--sans, 'Source Serif 4', Georgia, serif); font-size: 13px; font-weight: 500; color: var(--muted, #8a8a88);
     cursor: pointer; transition: border-color 0.15s, color 0.15s; line-height: 1; }
   .cmdk-trigger:hover { border-color: var(--accent, #2d4a3e); color: var(--text, #1a1a1a); }
   .cmdk-trigger > svg { width: 15px; height: 15px; flex-shrink: 0; }
-  .cmdk-trigger .cmdk-kbd { font-size: 10px; }
+  .cmdk-trigger .cmdk-kbd { font-size: 11px; }
   @media (max-width: 600px) {
     .cmdk-trigger-label, .cmdk-trigger .cmdk-kbd { display: none; }
     .cmdk-trigger { padding: 6px; }

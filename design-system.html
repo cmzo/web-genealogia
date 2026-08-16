@@ -546,7 +546,7 @@
             <span style="font-family:'Source Serif 4',Georgia,serif;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb, var(--accent) 19%, var(--surface));padding:4px 10px;border-radius:20px;">Confirmada informalmente</span>
           </div>
 
-          <div class="ds-sub">Pastillas de área (home)</div>
+          <div class="ds-sub">Pastillas de texto de área (.cmzo-pill)</div>
           <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:0 0 20px;">Añadidas en 2026-08 con el rediseño de las tarjetas de <strong style="color:var(--text);">01 Áreas</strong>. Fórmula tomada de User Interviews: <strong style="color:var(--text);">fondo pastel saturado + tinta casi negra</strong> (<code class="td-mono">--pill-ink</code>), no el tono del color sobre un fondo lavado — que es lo que hacen las pastillas de etiqueta del blog. Son los <strong style="color:var(--text);">mismos valores en claro y oscuro</strong>: funcionan como chips luminosos sobre el grafito. El mismo color, mezclado al 55% con blanco, tiñe la portada de la tarjeta.</p>
           <div class="palette-grid">
             <div class="palette-swatch">
@@ -591,7 +591,61 @@
             <span class="cmzo-pill cmzo-pill--investig">investigación</span>
             <span class="cmzo-pill cmzo-pill--archivo">archivo</span>
           </div>
-          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:14px 0 0;">Misma paleta para la pastilla (<code class="td-mono">.cmzo-pill</code>) y la tarjeta de color sólido (<code class="td-mono">.cmzo-gcard</code>, más abajo): <strong style="color:var(--text);">escritura → blog, experim → lab, investig → genealogía (color por defecto), archivo → fuentes</strong>.</p>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:14px 0 0;">Misma asignación de familia → área que la tarjeta de color sólido (<code class="td-mono">.cmzo-gcard</code>, más abajo): <strong style="color:var(--text);">escritura → blog, experim → lab, investig → genealogía (color por defecto), archivo → fuentes</strong> — pero desde 2026-08-16 son <strong style="color:var(--text);">dos paletas distintas</strong>, no una compartida: la pastilla de texto sigue pastel (necesita tinta oscura para leerse), la tarjeta pasó a la paleta profunda de abajo.</p>
+
+          <div class="ds-sub">Tarjetas de área — «Archivo cálido» (.cmzo-gcard)</div>
+          <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:0 0 20px;">Reemplazó al pastel de arriba el 2026-08-16, a pedido explícito: "aburren rápido los tonos pastel". Tonos profundos y saturados por familia + tinta clara tipo pergamino (<code class="td-mono">--gcard-ink</code>) + badge en un dorado latón compartido por las cinco (<code class="td-mono">--gcard-gold</code>) — un sello, no un color de familia más. No reusa <code class="td-mono">--pill-*</code> a propósito.</p>
+          <div class="palette-grid">
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#a8562f;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-escritura</div>
+                <div class="palette-use">Terracota quemada · área Blog</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#5d4a7a;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-experim</div>
+                <div class="palette-use">Ciruela oscura · área Lab</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#3f6b4a;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-investig</div>
+                <div class="palette-use">Verde botella profundo · área Genealogía</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#8a6a1f;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-archivo</div>
+                <div class="palette-use">Bronce/oliva · tarjeta Fuentes (/gen)</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#3f5f78;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-hipotesis</div>
+                <div class="palette-use">Azul pizarra profundo · tarjeta Hipótesis</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#e8c77a;"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-gold</div>
+                <div class="palette-use">Badge, compartido por las cinco</div>
+              </div>
+            </div>
+            <div class="palette-swatch">
+              <div class="palette-chip" style="background:#f3ead9;border-bottom:1px solid var(--border);"></div>
+              <div class="palette-info">
+                <div class="palette-token">--gcard-ink</div>
+                <div class="palette-use">Tinta (pergamino) sobre las cinco</div>
+              </div>
+            </div>
+          </div>
 
           <div class="ds-sub">Referencia completa (ambos modos)</div>
 
@@ -1120,8 +1174,19 @@
                   <div class="cmzo-gcard-bar"><i style="width:44%"></i></div>
                 </a>
               </div>
+              <div style="max-width:300px;">
+                <a class="cmzo-gcard cmzo-gcard--experim" href="#" onclick="return false;">
+                  <div class="cmzo-gcard-top">
+                    <div class="cmzo-gcard-cluster"><span class="cmzo-gcard-badge">4</span></div>
+                    <span class="cmzo-gcard-act" aria-hidden="true">→</span>
+                  </div>
+                  <h3>Laboratorio de fractales</h3>
+                  <p>Koch, Sierpiński, árbol y curva dragón generados por L-systems, con iteraciones y ángulo en vivo.</p>
+                  <div class="cmzo-gcard-ind">4 fractales <span>/ L-systems en vivo</span></div>
+                </a>
+              </div>
             </div>
-            <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:12px 0 0;">Componente de tarjeta general del sitio (grilla <code class="td-mono">.cmzo-gcards</code>, 3 por fila): lo usan <code class="td-mono">/gen</code> (árbol · wiki · fuentes · colaborar), la home (01 Áreas: blog · lab · genealogía) y <code class="td-mono">/lab</code> (los tres laboratorios). <strong style="color:var(--text);">La tarjeta entera es el pastel</strong>: sin borde ni portada. Los colores salen de los mismos <code class="td-mono">--pill-*</code>, por familia (<code class="td-mono">--escritura/--experim/--archivo</code>, e <code class="td-mono">investig</code> por defecto) y <strong style="color:var(--text);">no cambian con el tema</strong> — son objetos de papel y la tinta casi negra necesita fondo claro.<br><br>
+            <p style="font-family:'Source Serif 4',Georgia,serif;font-size:12px;color:var(--muted);margin:12px 0 0;">Componente de tarjeta general del sitio (grilla <code class="td-mono">.cmzo-gcards</code>, 3 por fila): lo usan <code class="td-mono">/gen</code> (árbol · wiki · fuentes · colaborar), la home (01 Áreas: blog · lab · genealogía) y <code class="td-mono">/lab</code> (los tres laboratorios). <strong style="color:var(--text);">La tarjeta entera es el color</strong>: sin borde ni portada. Desde 2026-08-16 usa la paleta <strong style="color:var(--text);">«Archivo cálido»</strong> (ver arriba) — profunda y saturada por familia, tinta <code class="td-mono">--gcard-ink</code> clara, badge en <code class="td-mono">--gcard-gold</code> compartido por las cinco. Reemplazó al pastel + glow radial anterior; <strong style="color:var(--text);">no cambia con el tema</strong> en ninguno de los dos casos — sigue siendo un objeto de papel, solo que ahora es papel de archivo, no post-it.<br><br>
             El <strong style="color:var(--text);">racimo de círculos</strong> solo se usa donde hay individuos que nombrar (iniciales de la línea directa, hubs del grafo): con dos caracteres el solape los corta, así que va de a una letra; si no hay individuos, el badge va solo (Fuentes, Colaborar, y las tres del lab). El badge es <strong style="color:var(--text);">pastilla y no círculo</strong> para que crezca solo con textos como «+130». La <strong style="color:var(--text);">barra solo aparece si hay una proporción real</strong> que mostrar — no todas la llevan.</p>
           </div>
 
@@ -1182,25 +1247,26 @@
             <p class="comp-label">Blog listing — header + grid (alineación compartida)</p>
             <div class="ds-box" style="padding:24px 28px;">
               <p style="font-family:'Inter',sans-serif;font-size:12px;color:var(--muted);margin:0 0 12px;line-height:1.6;">
-                Tanto <code class="td-mono">.blog-header</code> como <code class="td-mono">.blog-grid</code> usan <code class="td-mono">max-width: 1128px</code> (3 × 360px + 2 × 24px) con <code class="td-mono">margin: auto</code>. Las cards se alinean a la izquierda dentro de ese bloque (<strong>sin</strong> <code class="td-mono">justify-content: center</code>). Así el título y las tarjetas comparten siempre el mismo borde izquierdo.
+                Tanto <code class="td-mono">.blog-header</code> como <code class="td-mono">.blog-grid</code> usan <code class="td-mono">max-width: 1128px</code> con <code class="td-mono">margin: auto</code>. Desde el rediseño CMZO, <code class="td-mono">.cmzo-page .blog-grid</code> agrega <code class="td-mono">justify-content: center</code> (en <code class="td-mono">home.css</code>): las columnas se centran dentro de ese bloque en vez de empacarse a la izquierda — el tamaño de las tarjetas no cambia, solo su reparto horizontal cuando sobra ancho.
               </p>
               <div style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px 24px;">
                 <header style="max-width:1128px;margin:0 auto 20px;padding-bottom:16px;border-bottom:1px solid var(--border);">
                   <h2 class="blog-header-title" style="font-size:28px;margin:0 0 4px;">Blog</h2>
                   <p class="blog-header-subtitle">Investigaciones, historias y memoria familiar</p>
                 </header>
-                <div style="max-width:1128px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,280px));gap:16px;">
+                <div style="max-width:1128px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,280px));gap:16px;justify-content:center;">
                   <div class="blog-card" style="pointer-events:none;">
-                    <div class="blog-card-content"><span class="blog-card-category">Investigación</span><h3 class="blog-card-title">Buscando a los Roh</h3><p class="blog-card-desc">Un cambio de método en la investigación familiar.</p><div class="blog-card-meta"><span>2026-06-13</span></div></div>
+                    <div class="blog-card-content"><div class="tag-pills"><span class="tag-pill" data-fam="metodo">investigación</span></div><h3 class="blog-card-title">Buscando a los Roh</h3><p class="blog-card-desc">Un cambio de método en la investigación familiar.</p><div class="blog-card-meta"><span>2026-06-13</span></div></div>
                   </div>
                   <div class="blog-card" style="pointer-events:none;">
-                    <div class="blog-card-content"><span class="blog-card-category">Investigación</span><h3 class="blog-card-title">La ruina de François</h3><p class="blog-card-desc">La prensa oficial del Valais, aviso a aviso.</p><div class="blog-card-meta"><span>2026-06-11</span></div></div>
+                    <div class="blog-card-content"><div class="tag-pills"><span class="tag-pill" data-fam="metodo">investigación</span><span class="tag-pill" data-fam="lugar">valais</span></div><h3 class="blog-card-title">La ruina de François</h3><p class="blog-card-desc">La prensa oficial del Valais, aviso a aviso.</p><div class="blog-card-meta"><span>2026-06-11</span></div></div>
                   </div>
                   <div class="blog-card" style="pointer-events:none;">
-                    <div class="blog-card-content"><span class="blog-card-category">Investigación</span><h3 class="blog-card-title">Clan Clemenzo</h3><p class="blog-card-desc">Recorrido por los censos del Valais.</p><div class="blog-card-meta"><span>2026-05-10</span></div></div>
+                    <div class="blog-card-content"><div class="tag-pills"><span class="tag-pill" data-fam="familia">clemenzo</span></div><h3 class="blog-card-title">Clan Clemenzo</h3><p class="blog-card-desc">Recorrido por los censos del Valais.</p><div class="blog-card-meta"><span>2026-05-10</span></div></div>
                   </div>
                 </div>
               </div>
+              <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);margin:10px 0 0;font-style:italic;">Pastillas: <code class="td-mono">.tag-pill</code>, ver «Etiquetas en pastilla» — el color codifica la familia del tag (<code class="td-mono">data-fam</code>), reemplazó a la categoría única en texto plano.</p>
             </div>
           </div>
 

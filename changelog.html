@@ -44,7 +44,7 @@
     /* ── Tipografía ──────────────────────────────────── */
 
     .changelog-entry h3 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 11px;
       font-weight: 600;
       color: var(--accent);
@@ -54,7 +54,7 @@
     }
 
     .changelog-entry h4 {
-      font-family: 'Source Serif 4', serif;
+      font-family: var(--sans);
       font-size: 18px;
       font-weight: 600;
       color: var(--text);
@@ -62,14 +62,19 @@
       line-height: 1.3;
     }
 
-    /* Etiqueta para marcar el tipo de cambio (ej. nueva funcionalidad) */
+    /* Etiqueta para marcar el tipo de cambio (ej. nueva funcionalidad). Misma
+       receta que .tag-pill/.hyp-status: texto de color sobre color-mix() al
+       19% con la superficie — se adapta solo a modo oscuro, a diferencia de
+       la paleta de hex fijos que tenía antes. */
     .changelog-tag {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+      color: var(--c);
+      background: color-mix(in srgb, var(--c) 19%, var(--surface));
       padding: 2px 8px;
       border-radius: 999px;
       vertical-align: middle;
@@ -77,16 +82,18 @@
       position: relative;
       top: -2px;
     }
-    /* Paleta coolors. Tipos de cambio:
-       Función nueva = herramienta/sección entirely new · Novedad = feature nueva en algo existente */
-    .changelog-tag          { background: #3d405b; color: #f4f1de; }  /* (por defecto) Novedad */
-    .changelog-tag--nueva   { background: #e07a5f; color: #f4f1de; }  /* Función nueva (terracota) */
-    .changelog-tag--novedad { background: #3d405b; color: #f4f1de; }  /* Novedad (azul pizarra)    */
-    .changelog-tag--mejora  { background: #81b29a; color: #3d405b; }  /* Mejora (verde salvia)     */
-    .changelog-tag--fix     { background: #f2cc8f; color: #3d405b; }  /* Arreglo (arena)           */
+    /* Tipos de cambio, mapeados a tokens ya existentes del sitio (nada de
+       color nuevo): Función nueva = herramienta/sección entera nueva ·
+       Novedad = feature nueva en algo existente (también el default) ·
+       Mejora = mejora de algo existente · Arreglo = corrección. */
+    .changelog-tag          { --c: var(--tag-tec); }        /* Novedad (por defecto, ciruela) */
+    .changelog-tag--nueva   { --c: var(--stat-terracota); } /* Función nueva */
+    .changelog-tag--novedad { --c: var(--tag-tec); }        /* Novedad */
+    .changelog-tag--mejora  { --c: var(--stat-salvia); }    /* Mejora */
+    .changelog-tag--fix     { --c: var(--stat-ochre); }     /* Arreglo */
 
     .changelog-entry p {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 14px;
       line-height: 1.7;
       color: var(--text);
@@ -99,7 +106,7 @@
     }
 
     .changelog-entry li {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 14px;
       line-height: 1.7;
       color: var(--text);
@@ -107,7 +114,7 @@
     }
 
     .changelog-entry code {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: var(--mono);
       font-size: 12px;
       background: var(--bg);
       border: 1px solid var(--border);
@@ -116,7 +123,7 @@
     }
 
     .changelog-loading {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 14px;
       color: var(--muted);
     }

@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-08-15-los-99-documentos-curados-ya-tienen-transcripción",
+    "date": "2026-08-15",
+    "type": "cambio",
+    "tag": "mejora",
+    "title": "Los 99 documentos curados ya tienen transcripción",
+    "html": "<p>Actas de bautismo, censos, enrolamientos militares, firmas y demás papeles curados en <code>content/documentos/</code> llegaron a transcripción completa: los 19 que faltaban (de un total de 99) quedaron leídos y pasados a texto. De paso aparecieron algunos hallazgos: François Clemenzo se naturalizó ciudadano argentino y era carpintero de oficio, dos &quot;actas de bautismo&quot; resultaron ser en realidad actas de nacimiento del Registro Civil, y un listado publicado de apellidos por comuna del Valais confirma a Riddes como origen de la familia.</p>\n"
+  },
+  {
     "id": "2026-08-15-imagen-rota-y-links-huérfanos-en-la-wiki",
     "date": "2026-08-15",
     "type": "cambio",
@@ -310,13 +318,5 @@
     "tag": "mejora",
     "title": "La portada se presenta como sitio personal",
     "html": "<p>Reescribí la presentación de la portada: CMZO es un <strong>sitio personal</strong> —un blog, un laboratorio de experimentos y la investigación genealógica de la familia—, no solo una página de genealogía. La genealogía sigue siendo el proyecto más largo, pero acá se puede escribir de cualquier cosa.</p>\n"
-  },
-  {
-    "id": "2026-06-28-el-árbol-de-jean-yves-en-la-wiki",
-    "date": "2026-06-28",
-    "type": "cambio",
-    "tag": "nueva",
-    "title": "El árbol de Jean-Yves, en la wiki",
-    "html": "<p>Sumé una página nueva: el <strong>árbol genealógico manuscrito de Jean-Yves Clemenzo</strong>, la rama de los Clemenzo que se quedó en Ardon (Suiza) y que corre en paralelo a la que emigró a Entre Ríos. Trae las dos fotos del documento original, la transcripción generación por generación y un diagrama por cada una. De paso, resolvió una duda vieja de la investigación sobre quién era la «Elisabeth» casada con los Lambiel de Riddes.</p>\n"
   }
 ]

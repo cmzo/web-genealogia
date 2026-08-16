@@ -32,7 +32,7 @@
     <section class="cmzo-mod">
       <div class="cmzo-mod-inner">
         <div class="cmzo-mod-head"><h2>Áreas</h2><span class="rule"></span><span class="cmzo-mod-meta">3 directorios</span></div>
-        <div class="cmzo-gcards" id="areaCards"></div>
+        <div class="cmzo-gcards" id="areaCards"><div class="loading-cards"><div class="loading-spinner"></div><p>Cargando…</p></div></div>
       </div>
     </section>
 
@@ -176,7 +176,7 @@
         }
         document.getElementById('streamModalHead').textContent = it.modal.head || it.type;
         let h = '';
-        if (it.modal.image) h += `<img src="${it.modal.image}" alt="">`;
+        if (it.modal.image) h += `<img src="${it.modal.image}" alt="${esc(it.title || '')}">`;
         h += it.modal.html || '';
         if (it.modal.link) h += `<p class="cmzo-modal-link"><a href="${it.modal.link}" target="_blank" rel="noopener noreferrer">${esc(it.modal.link)} →</a></p>`;
         document.getElementById('streamModalBody').innerHTML = h;

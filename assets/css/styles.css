@@ -678,7 +678,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .blog-header-subtitle {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--sans);
   font-size: 14px;
   color: var(--muted);
   margin: 0;
@@ -705,6 +705,11 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   flex-direction: column;
 }
 
+.blog-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .blog-card:hover {
   border-color: var(--accent);
   box-shadow: 0 2px 16px rgba(28, 24, 20, 0.08);
@@ -719,14 +724,6 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   flex: 1;
 }
 
-.blog-card-category {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
 /* ── Etiquetas en pastilla ────────────────────────────────────────────────
    El color viene de la familia temática del tag (ver tokens --tag-*), así que
    dice algo: azul = lugar, terracota = familia, verde = método, ciruela =
@@ -734,7 +731,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 .tag-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2px; }
 .tag-pill {
   --c: var(--tag-otro);
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--sans);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -762,7 +759,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .blog-card-desc {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--sans);
   font-size: 13px;
   line-height: 1.5;
   color: var(--muted);
@@ -798,14 +795,14 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 }
 
 .lang-chip {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--sans);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--accent);
-  background: rgba(45, 74, 62, 0.08);
-  border: 1px solid rgba(45, 74, 62, 0.18);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--surface));
   border-radius: 4px;
   padding: 2px 6px;
   line-height: 1.2;
@@ -843,6 +840,10 @@ html.ms-ready .sidebar-icon { visibility: visible; }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner { animation-duration: 2.4s; }
 }
 
 /* ─── ARTICLES ────────────────────────────────────────── */
@@ -1646,6 +1647,8 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   from { opacity: 0; transform: translateY(-12px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0)     scale(1);    }
 }
+
+@media (prefers-reduced-motion: reduce) { .contact-card { animation: none; } }
 
 .contact-header {
   display: flex;
