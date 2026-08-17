@@ -140,7 +140,6 @@ a.cmzo-seg:hover { color: var(--accent); }
   font-family: var(--display); font-weight: 700; font-size: 48px; margin: 0; color: var(--text);
   text-transform: lowercase; font-variant-caps: small-caps; letter-spacing: 0.04em;
 }
-.cmzo-mod-head .rule { flex: 1; height: 1px; background: var(--border); }
 
 .cmzo-body { font-family: var(--sans); color: var(--muted); font-size: 15.5px; line-height: 1.6; margin: 0 0 18px; }
 .cmzo-links { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -261,7 +260,7 @@ a.cmzo-seg:hover { color: var(--accent); }
 
 /* ════ Home dirección A: 01 Áreas + 02 Bitácora ════════════════════════════ */
 /* Meta a la derecha del encabezado de sección (ej. «3 directorios») */
-.cmzo-mod-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+.cmzo-mod-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); flex-shrink: 0; margin-left: auto; }
 
 /* Pastilla: fondo pastel + tinta casi negra, igual en ambos temas */
 .cmzo-pill {

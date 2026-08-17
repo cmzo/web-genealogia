@@ -681,7 +681,7 @@ html.ms-ready .sidebar-icon { visibility: visible; }
   font-family: var(--sans);
   font-size: 14px;
   color: var(--muted);
-  margin: 0;
+  margin: 8px 0 0;
 }
 
 .blog-grid {

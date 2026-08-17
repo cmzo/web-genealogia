@@ -219,6 +219,9 @@ Altura 58px, construida en runtime por `nav.js` leyendo `data-section`/`data-pag
 - **Shadow Strategy:** ninguna — ver Elevation.
 - **Border:** ninguno en `.cmzo-gcard` (el color es el borde visual); 1px `--border` en el resto.
 
+### Encabezado de sección (`.cmzo-mod-head` + `.cmzo-rub`)
+Desde 2026-08-16, todo `<h1>`/`<h2>` de página o sección (home, `/gen`, Fuentes, Hipótesis, Colaborar, Blog, Lab) lleva la **rúbrica** como subrayado — la firma real de León Francisco Clemenzo (p20), vectorizada y nivelada 6°, un `<symbol id="cmzo-rubrica">` compartido referenciado por `<use>` en cada página. Reemplazó al filete de 1px (`.rule`, retirado). `preserveAspectRatio="none"` estira el trazo a un ancho fijo (290px) manteniendo el alto, como un subrayado hecho a mano. `<h2>` + rúbrica van envueltos juntos en `.cmzo-mod-title`; un ícono opcional (`.cmzo-mod-icon`) o una meta a la derecha (`.cmzo-mod-meta`, `margin-left:auto`) quedan afuera de ese wrapper.
+
 ### Log / Stream (`.cmzo-stream` + `.cmzo-fpill`)
 Bitácora de la home: filtros como pastillas segmentadas (`.cmzo-fpill`, mismo componente que las tabs de Hipótesis), filas `.cmzo-s-item` con fecha/tipo/título/categoría. Pills de tipo: contenido real (post/lab) en acento; efímero (nota/imagen/enlace/cambio) en neutro.
 
